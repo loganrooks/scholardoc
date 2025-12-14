@@ -1,0 +1,134 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+
+      "Edit(scholardoc/**)",
+      "Edit(tests/**)",
+      "Edit(spikes/**)",
+      "Edit(docs/**)",
+      "Edit(CLAUDE.md)",
+      "Edit(README.md)",
+      "Edit(CHANGELOG.md)",
+      "Edit(ROADMAP.md)",
+      "Edit(REQUIREMENTS.md)",
+      "Edit(SPEC.md)",
+      "Edit(QUESTIONS.md)",
+      "Edit(pyproject.toml)",
+      "Edit(.claude/commands/**)",
+      "Edit(.claude/hooks/**)",
+
+      "Write(scholardoc/**)",
+      "Write(tests/**)",
+      "Write(spikes/**)",
+      "Write(docs/**)",
+      "Write(.claude/commands/**)",
+      "Write(.claude/hooks/**)",
+      "Write(.claude/logs/**)",
+
+      "Bash(uv sync:*)",
+      "Bash(uv run pytest:*)",
+      "Bash(uv run ruff:*)",
+      "Bash(uv run mypy:*)",
+      "Bash(uv run python spikes/:*)",
+      "Bash(uv add:*)",
+      "Bash(uv remove:*)",
+      "Bash(uv:*)",
+
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git checkout:*)",
+      "Bash(git branch:*)",
+      "Bash(git switch:*)",
+      "Bash(git stash:*)",
+      "Bash(git show:*)",
+      "Bash(git fetch:*)",
+      "Bash(git pull:*)",
+      "Bash(git push:*)",
+
+      "Bash(cat:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(wc:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(touch:*)",
+      "Bash(which:*)",
+      "Bash(python --version:*)",
+      "Bash(python3 --version:*)"
+    ],
+
+    "deny": [
+      "Bash(rm -rf:*)",
+      "Bash(rm -r:*)",
+      "Bash(sudo:*)",
+      "Bash(chmod 777:*)",
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Bash(git reset --hard:*)",
+      "Bash(pip install:*)",
+      "Bash(python -m pip:*)",
+
+      "Edit(.env)",
+      "Edit(.env.*)",
+      "Edit(.git/**)",
+      "Edit(__pycache__/**)",
+      "Read(.env)",
+      "Read(.env.*)"
+    ],
+
+    "ask": [
+      "Edit(.claude/settings.json)",
+      "Edit(.claude/settings.local.json)",
+      "Bash(git rebase:*)",
+      "Bash(rm:*)"
+    ]
+  },
+
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/block-dangerous.py\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/post-edit-quality.py\"",
+            "timeout": 60
+          }
+        ]
+      }
+    ],
+
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/stop-verify.py\"",
+            "timeout": 120
+          }
+        ]
+      }
+    ]
+  }
+}
