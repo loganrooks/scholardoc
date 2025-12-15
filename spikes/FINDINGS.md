@@ -297,10 +297,69 @@ Despite "DEGRADED" rating:
 
 Based on survey:
 - **~70% of target documents** have acceptable text layers (born-digital)
-- **~30% need correction** (scans with hyphenation issues)
+- **~30% need correction** (scans with various issues)
 - **<5% need full re-OCR** (very few are truly poor)
-- **Custom OCR probably not needed** for most philosophy texts
-- **Hyphenation fixing** should be a standard post-processing step
+
+**⚠️ IMPORTANT CAVEAT:** See Spike 08 below - "acceptable" OCR may still hurt RAG retrieval.
+
+---
+
+## Spike 08: Embedding Robustness Against OCR Errors
+
+**Run:** `CUDA_VISIBLE_DEVICES="" uv run python spikes/08_embedding_robustness.py`
+
+### Purpose
+
+Test whether semantic embeddings are robust to OCR errors - a key assumption for RAG pipelines.
+
+### Simulated Error Results
+
+| Error Type | 5% Rate | 10% Rate | Assessment |
+|------------|---------|----------|------------|
+| **Character errors** | 0.657 | 0.541 | ❌ DEVASTATING |
+| **Combined errors** | 0.682 | 0.608 | ❌ VERY POOR |
+| Hyphenation | 1.000 | 0.868 | ✅ Robust |
+| Word merge | 0.980 | 0.981 | ✅ Robust |
+| Real-word swap | 0.981 | 0.963 | ✅ Robust |
+
+**Threshold interpretation:**
+- \> 0.95: Excellent (identical semantic meaning)
+- \> 0.90: Good (usable for RAG)
+- \> 0.80: Marginal (may miss matches)
+- < 0.80: Poor (unreliable)
+
+### Real OCR Analysis (Kant PDF)
+
+**Error counts detected:**
+| Error Type | Count | Notes |
+|------------|-------|-------|
+| l/1/I confusion | 3,450 | Roman numerals, words |
+| Mid-word caps | 597 | "PuRE", "AEsTHEnc" |
+| tl→ti substitution | 381 | Character errors |
+| **Total** | **4,428** | 1.61% of 274,850 words |
+
+**Single-word embedding impact:**
+| OCR | Correct | Similarity |
+|-----|---------|------------|
+| "Beautlful" | "Beautiful" | **0.515** ❌ |
+| "Iii" | "lii" | **0.369** ❌ |
+| "jUdgment" | "judgment" | 1.000 ✅ |
+
+**Finding:** Case changes are fine, but character substitutions are devastating.
+
+### ⚠️ Critical Finding: RAG Assumption Invalid
+
+**What we assumed:** "OCR quality doesn't matter much for RAG"
+
+**What we found:**
+- Even 1-2 character errors per sentence can drop similarity 10-30%
+- 5% character error rate → similarity drops to 0.4-0.6 (unusable)
+- The Kant PDF has ~1.6% word error rate, concentrated in meaningful terms
+
+**Implication for ScholarDoc:**
+- OCR quality DOES matter for RAG applications
+- Error correction is more important than previously thought
+- Phase 4 OCR work may need higher priority
 
 ---
 
@@ -415,20 +474,25 @@ After running on 5+ documents:
 - [x] Page labels exist in some PDFs (critical for citations)
 - [x] Font size correlates with heading level
 - [x] Born-digital PDFs have excellent text quality
-- [x] OCR'd scans are mostly usable (99%+ valid words)
+- [x] Hyphenation errors don't hurt embeddings (robust)
+- [x] Word merge errors don't hurt embeddings (robust)
 
 ### Invalidated Assumptions
 
 - [x] ~~Footnotes appear on same page as markers~~ → Philosophy uses ENDNOTES
 - [x] ~~All PDFs have consistent heading styles~~ → Varies by publisher
-- [x] ~~OCR quality is a major blocker~~ → Actually quite good
+- [x] ~~OCR quality is a major blocker~~ → Actually character errors ARE a problem for RAG
+- [x] ~~Embeddings are robust to OCR errors~~ → Character errors devastate similarity (0.5-0.65)
+- [x] ~~"99% valid words" means good quality~~ → Heuristic, not accuracy measure
 
 ### Surprises
 
 - **Endnotes dominate:** Both tested books use endnotes, not footnotes
-- **OCR quality better than expected:** 99.76% valid words in scanned Kant
-- **Hyphenation is the main issue:** Not garbage characters
+- **Hyphenation doesn't hurt RAG:** Embeddings are robust to line-break hyphens
+- **Character errors DO hurt RAG:** Even 1-2% error rate degrades similarity significantly
 - **Page labels are valuable:** Derrida has proper roman/arabic numbering
+- **"Valid word" metrics are misleading:** 99.76% sounds great but doesn't measure accuracy
+- **Single-word errors cascade:** "Beautlful"→"Beautiful" drops similarity to 0.515
 
 ---
 
@@ -452,17 +516,25 @@ Based on spike findings:
 ### Scope Changes
 - [x] **Move footnote/endnote linking to Phase 2**
 - [x] Keep heading detection in Phase 1 (works well)
-- [x] Add hyphenation post-processing to Phase 1
+- [x] ~~Add hyphenation post-processing to Phase 1~~ → Not needed (embeddings robust)
+- [ ] **Consider: OCR error correction more important than thought**
+- [ ] **Consider: Prioritize born-digital PDFs for RAG use cases**
 
 ---
 
 ## Next Steps
 
-1. [x] ~~Run all spikes~~ ✅
-2. [x] ~~Document findings~~ ✅ (this document)
-3. [ ] Update ADR-001 with empirical confirmation
-4. [ ] Update SPEC.md with hyphenation handling
-5. [ ] Update QUESTIONS.md with answers
-6. [ ] Adjust ROADMAP.md: defer footnotes to Phase 2
-7. [ ] Create test fixtures from sample PDFs (Comay, Derrida, Kant)
-8. [ ] Begin Phase 1 implementation
+1. [x] ~~Run spikes 01-05~~ ✅
+2. [x] ~~Run spike 08 (embedding robustness)~~ ✅
+3. [x] ~~Document findings~~ ✅ (this document)
+4. [ ] Update ADR-001 with empirical confirmation
+5. [ ] Update SPEC.md: add OCR quality considerations
+6. [ ] Update QUESTIONS.md with answers
+7. [ ] Adjust ROADMAP.md: defer footnotes, consider OCR correction priority
+8. [ ] Create test fixtures from sample PDFs (Comay, Derrida, Kant)
+9. [ ] **Decision needed: How to handle OCR errors for RAG applications?**
+   - Option A: Recommend born-digital PDFs only
+   - Option B: Add error correction to pipeline
+   - Option C: Accept degraded retrieval for scanned docs
+   - Option D: Flag scanned docs with quality warnings
+10. [ ] Begin Phase 1 implementation
