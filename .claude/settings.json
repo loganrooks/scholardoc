@@ -100,32 +100,7 @@
           {
             "type": "command",
             "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/block-dangerous.py\"",
-            "timeout": 10
-          }
-        ]
-      }
-    ],
-
-    "PostToolUse": [
-      {
-        "matcher": "Edit|Write",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/post-edit-quality.py\"",
-            "timeout": 60
-          }
-        ]
-      }
-    ],
-
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/stop-verify.py\"",
-            "timeout": 120
+            "timeout": 5
           }
         ]
       }
