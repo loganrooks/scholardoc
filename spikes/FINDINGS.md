@@ -418,12 +418,34 @@ Test whether re-OCR with Microsoft's TrOCR produces better results than existing
 3. **TrOCR outputs ALL CAPS** - model limitation for this specific model
 4. **Ground truth needed** to properly evaluate which is better
 
+### ⚠️ Critical Finding: Embedding Impact
+
+Testing which OCR produces better embeddings for RAG (using ground truth comparison):
+
+| Ground Truth | Existing OCR Sim | TrOCR Sim | Winner |
+|-------------|------------------|-----------|--------|
+| "Beautiful" | 0.515 ("Beautlful") | 0.381 ("BEAUTIFAL") | Existing |
+| "judgment" | **1.000** ("jUdgment") | 0.288 ("JUDEMENT") | Existing |
+| "Practical Reason" | **1.000** | 0.621 ("PRACTION") | Existing |
+
+**Key insights:**
+1. **ALL CAPS doesn't hurt embeddings** - embeddings normalize case
+2. **Mid-word caps don't hurt** - "jUdgment" embeds perfectly!
+3. **Misspellings DEVASTATE embeddings** - TrOCR's errors are worse for RAG
+4. **Character confusions** (existing OCR) preserve word shape better than misspellings
+
 ### Recommendation
 
-For the Kant PDF specifically, the existing OCR + Phase 1 correction (spell check) is more practical than re-OCR. TrOCR would be more valuable for:
-- PDFs with truly bad/missing text layers
-- Documents where the scan quality is poor
-- After fine-tuning on philosophy text samples
+**For RAG applications: Existing OCR + Phase 1 correction > TrOCR re-OCR**
+
+The existing OCR's errors are more "fixable" by our spell checker because:
+- "Beautlful" → "Beautiful" is a known pattern we can correct
+- "JUDEMENT" is a novel misspelling harder to fix
+- Character confusions preserve enough word shape for partial embedding match
+
+TrOCR would only be valuable for:
+- PDFs with no/garbage text layer
+- After fine-tuning on domain-specific samples
 
 ---
 
