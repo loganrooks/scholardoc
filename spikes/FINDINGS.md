@@ -377,6 +377,56 @@ Based on these findings, we implemented Phase 1 OCR correction:
 
 ---
 
+## Spike 09: TrOCR Re-OCR Testing
+
+**Run:** `uv run python spikes/09_trocr_reocr.py <pdf> --pages 50,100,150 --compare`
+
+### Purpose
+
+Test whether re-OCR with Microsoft's TrOCR produces better results than existing PDF text layers.
+
+### Setup
+
+**GPU Configuration (GTX 1080 Ti / sm_61):**
+- Requires PyTorch with CUDA 11.8 (not 12.x which dropped sm_61 support)
+- Configured via `pyproject.toml` with `extra-index-url` for PyTorch cu118 wheels
+- GPU speedup: ~21x faster than CPU (7.5s vs 236s per page)
+
+### Results (Kant PDF)
+
+| Metric | Value | Notes |
+|--------|-------|-------|
+| Mean CER | 17.4% | TrOCR vs existing OCR |
+| Mean WER | 25.6% | Not ground truth comparison |
+| GPU Speed | ~7.5s/page | 21x faster than CPU |
+
+**⚠️ Caveat:** This compares TrOCR vs existing OCR - neither is ground truth!
+
+### Sample Comparisons
+
+| Existing OCR | TrOCR Output | Assessment |
+|--------------|--------------|------------|
+| "Beautlful" | "BEAUTIFAL" | Both wrong (should be "Beautiful") |
+| "jUdgment" | "JUDEMENT" | Both have issues |
+| "Practical" | "PRACTION" | TrOCR error |
+| "TRANSLATOR'S INTRODUCTION" | "TRANSLATOR'S INTRODUCTION" | ✅ Perfect match |
+
+### Key Findings
+
+1. **TrOCR not clearly better** than Adobe Paper Capture OCR for this scan
+2. **Different error types**: Existing = character confusions; TrOCR = misspellings
+3. **TrOCR outputs ALL CAPS** - model limitation for this specific model
+4. **Ground truth needed** to properly evaluate which is better
+
+### Recommendation
+
+For the Kant PDF specifically, the existing OCR + Phase 1 correction (spell check) is more practical than re-OCR. TrOCR would be more valuable for:
+- PDFs with truly bad/missing text layers
+- Documents where the scan quality is poor
+- After fine-tuning on philosophy text samples
+
+---
+
 ## Spike 06: Ground Truth Corpus
 
 **Run:** 
