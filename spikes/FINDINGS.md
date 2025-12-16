@@ -361,6 +361,20 @@ Test whether semantic embeddings are robust to OCR errors - a key assumption for
 - Error correction is more important than previously thought
 - Phase 4 OCR work may need higher priority
 
+### ✅ Response: OCR Correction Module Implemented
+
+Based on these findings, we implemented Phase 1 OCR correction:
+
+**Module:** `scholardoc/normalizers/ocr_correction.py`
+
+**Features:**
+- Quality scoring with `is_usable_for_rag` threshold (<2% error rate)
+- Pattern-based correction for known OCR errors (beautlful→beautiful, rnorning→morning)
+- Dictionary-based spell check with pyspellchecker
+- `OCRCorrectionNormalizer` for pipeline integration
+
+**Design doc:** `docs/design/OCR_STRATEGY.md` covers full Phase 1-3 strategy
+
 ---
 
 ## Spike 06: Ground Truth Corpus
