@@ -52,12 +52,12 @@ class Section:
 class ChunkHint:
     """
     Suggested chunk boundary for downstream RAG processing.
-    
+
     Even though ScholarDoc doesn't do chunking, we can provide hints
     about where it's safe to break the document based on our structural
     understanding.
     """
-    
+
     position: int  # Character offset in markdown
     hint_type: str  # "section_break", "paragraph", "page_break", "footnote_boundary"
     confidence: float  # 0.0-1.0, how confident we are this is a good break point

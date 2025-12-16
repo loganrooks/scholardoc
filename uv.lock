@@ -1090,6 +1090,15 @@ wheels = [
 ]
 
 [[package]]
+name = "pyspellchecker"
+version = "0.8.4"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/a8/f4/870865239781117f75f788594c98fc3c65836ad9b93779550f369700187a/pyspellchecker-0.8.4.tar.gz", hash = "sha256:48cafa76d65c30ce4d81d0831938f25e8f34ede243c1cc6840014b0eb51ad629", size = 7238678, upload-time = "2025-11-30T00:18:39.415Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/8e/79/2a6993dd02c537ae1344a693f20f9b556206a5385c398022fb66cb004b3a/pyspellchecker-0.8.4-py3-none-any.whl", hash = "sha256:20c53d119568011bbaef68608aceb956b888bcd9d563798f7770721a112b8255", size = 7236997, upload-time = "2025-11-30T00:18:37.411Z" },
+]
+
+[[package]]
 name = "pytest"
 version = "9.0.2"
 source = { registry = "https://pypi.org/simple" }
@@ -1335,6 +1344,7 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "pymupdf" },
+    { name = "pyspellchecker" },
     { name = "pyyaml" },
     { name = "sentence-transformers" },
 ]
@@ -1383,6 +1393,7 @@ requires-dist = [
     { name = "pymupdf4llm", marker = "extra == 'comparison'", specifier = ">=0.0.10" },
     { name = "pymupdf4llm", marker = "extra == 'enhanced'", specifier = ">=0.0.10" },
     { name = "pypdf", marker = "extra == 'comparison'", specifier = ">=4.0.0" },
+    { name = "pyspellchecker", specifier = ">=0.8.4" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.0.0" },
     { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=4.1.0" },
     { name = "pyyaml", specifier = ">=6.0.3" },
