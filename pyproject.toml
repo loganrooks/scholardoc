@@ -28,6 +28,8 @@ classifiers = [
 # Phase 1 dependencies - minimal
 dependencies = [
     "pymupdf>=1.24.0",
+    "pyyaml>=6.0.3",
+    "sentence-transformers>=5.2.0",
 ]
 
 [project.optional-dependencies]
