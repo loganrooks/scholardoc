@@ -8,10 +8,14 @@ the metadata and structure that researchers need.
 Example:
     >>> import scholardoc
     >>> doc = scholardoc.convert("document.pdf")
-    >>> print(doc.markdown)
-    >>> doc.save("output.md")
+    >>> print(doc.text)  # Clean text, ready for embedding
+    >>> doc.save("output.scholardoc")
 
-See SPEC.md for full API documentation.
+    >>> # Query document structure
+    >>> for chunk in doc.to_rag_chunks():
+    ...     print(chunk.citation)
+
+See SPEC.md and docs/design/CORE_REPRESENTATION.md for full documentation.
 """
 
 from scholardoc.config import ConversionConfig
@@ -22,9 +26,36 @@ from scholardoc.exceptions import (
     UnsupportedFormatError,
 )
 from scholardoc.models import (
+    # Content
+    BibEntry,
+    # Spans
+    BlockQuoteSpan,
+    # Enums
+    ChunkStrategy,
+    # Annotations
+    CitationRef,
+    CrossRef,
+    # Metadata & Quality
     DocumentMetadata,
-    DocumentStructure,
+    DocumentType,
+    EndnoteRef,
+    FootnoteRef,
+    Note,
+    NoteSource,
+    NoteType,
+    PageQuality,
+    PageSpan,
+    ParagraphSpan,
+    ParsedCitation,
+    QualityInfo,
+    QualityLevel,
+    # Output
+    RAGChunk,
     ScholarDocument,
+    SectionSpan,
+    Span,
+    TableOfContents,
+    ToCEntry,
 )
 
 __version__ = "0.1.0"
@@ -36,10 +67,37 @@ __all__ = [
     "supported_formats",
     # Configuration
     "ConversionConfig",
-    # Models
+    # Core Document
     "ScholarDocument",
+    # Enums
+    "DocumentType",
+    "NoteType",
+    "NoteSource",
+    "ChunkStrategy",
+    "QualityLevel",
+    # Annotations
+    "FootnoteRef",
+    "EndnoteRef",
+    "CitationRef",
+    "CrossRef",
+    "ParsedCitation",
+    # Spans
+    "Span",
+    "PageSpan",
+    "SectionSpan",
+    "ParagraphSpan",
+    "BlockQuoteSpan",
+    # Content
+    "Note",
+    "BibEntry",
+    "ToCEntry",
+    "TableOfContents",
+    # Metadata
     "DocumentMetadata",
-    "DocumentStructure",
+    "PageQuality",
+    "QualityInfo",
+    # Output
+    "RAGChunk",
     # Exceptions
     "ScholarDocError",
     "UnsupportedFormatError",
@@ -53,14 +111,14 @@ def convert(
     config: ConversionConfig | None = None,
 ) -> ScholarDocument:
     """
-    Convert a single document to structured Markdown.
+    Convert a single document to structured ScholarDocument.
 
     Args:
         source: Path to document file
         config: Conversion configuration (uses defaults if None)
 
     Returns:
-        ScholarDocument with markdown and metadata
+        ScholarDocument with text, annotations, and metadata
 
     Raises:
         FileNotFoundError: If source doesn't exist
@@ -69,8 +127,9 @@ def convert(
 
     Example:
         >>> doc = scholardoc.convert("kant.pdf")
-        >>> print(doc.markdown[:100])
-        >>> print(f"Pages: {doc.metadata.page_count}")
+        >>> print(doc.text[:100])  # Clean text
+        >>> for fn, note in doc.footnotes_in_range(0, 1000):
+        ...     print(f"Note: {note.text}")
     """
     # TODO: Implement in Phase 1
     raise NotImplementedError("Phase 1 implementation in progress")
