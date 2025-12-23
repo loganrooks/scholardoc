@@ -2,7 +2,7 @@
 Basic tests for ScholarDoc package structure.
 
 These tests verify the public API is importable and
-basic data models work correctly.
+basic configuration works correctly.
 """
 
 import pytest
@@ -30,13 +30,24 @@ class TestImports:
         config = ConversionConfig()
         assert config.include_page_markers is True
 
-    def test_import_models(self):
-        """Can import data models."""
-        from scholardoc import DocumentMetadata, DocumentStructure, ScholarDocument
+    def test_import_core_types(self):
+        """Can import core data types."""
+        from scholardoc import (
+            ChunkStrategy,
+            DocumentType,
+        )
 
-        assert DocumentMetadata is not None
-        assert DocumentStructure is not None
-        assert ScholarDocument is not None
+        assert DocumentType.BOOK.value == "book"
+        assert ChunkStrategy.SEMANTIC.value == "semantic"
+
+    def test_import_annotation_types(self):
+        """Can import annotation types."""
+        from scholardoc import (
+            FootnoteRef,
+        )
+
+        fn = FootnoteRef(position=10, marker="1", target_id="fn1")
+        assert fn.position == 10
 
     def test_import_exceptions(self):
         """Can import exception classes."""
@@ -95,89 +106,6 @@ class TestConversionConfig:
 
         with pytest.raises(ValueError, match="heading_detection_strategy"):
             ConversionConfig(heading_detection_strategy="invalid")
-
-
-class TestDocumentMetadata:
-    """Test DocumentMetadata model."""
-
-    def test_default_metadata(self):
-        """Can create metadata with defaults."""
-        from scholardoc.models import DocumentMetadata
-
-        meta = DocumentMetadata()
-
-        assert meta.title is None
-        assert meta.authors == []
-        assert meta.page_count == 0
-
-    def test_metadata_with_values(self):
-        """Can create metadata with values."""
-        from scholardoc.models import DocumentMetadata
-
-        meta = DocumentMetadata(
-            title="Critique of Pure Reason",
-            authors=["Immanuel Kant"],
-            page_count=856,
-        )
-
-        assert meta.title == "Critique of Pure Reason"
-        assert meta.authors == ["Immanuel Kant"]
-        assert meta.page_count == 856
-
-
-class TestScholarDocument:
-    """Test ScholarDocument model."""
-
-    def test_document_creation(self):
-        """Can create a ScholarDocument."""
-        from scholardoc.models import DocumentMetadata, DocumentStructure, ScholarDocument
-
-        doc = ScholarDocument(
-            markdown="# Test\n\nContent here.",
-            metadata=DocumentMetadata(title="Test"),
-            structure=DocumentStructure(),
-            source_path="/path/to/doc.pdf",
-        )
-
-        assert doc.markdown == "# Test\n\nContent here."
-        assert doc.metadata.title == "Test"
-        assert doc.warnings == []
-
-    def test_document_to_dict(self):
-        """Can convert document to dictionary."""
-        from scholardoc.models import DocumentMetadata, DocumentStructure, ScholarDocument
-
-        doc = ScholarDocument(
-            markdown="# Test",
-            metadata=DocumentMetadata(title="Test", page_count=10),
-            structure=DocumentStructure(),
-            source_path="/path/to/doc.pdf",
-            warnings=["Some warning"],
-        )
-
-        d = doc.to_dict()
-
-        assert d["markdown"] == "# Test"
-        assert d["metadata"]["title"] == "Test"
-        assert d["metadata"]["page_count"] == 10
-        assert d["warnings"] == ["Some warning"]
-
-    def test_document_save(self, tmp_path):
-        """Can save document to file."""
-        from scholardoc.models import DocumentMetadata, DocumentStructure, ScholarDocument
-
-        doc = ScholarDocument(
-            markdown="# Test\n\nContent.",
-            metadata=DocumentMetadata(),
-            structure=DocumentStructure(),
-            source_path="/path/to/doc.pdf",
-        )
-
-        output_path = tmp_path / "output.md"
-        doc.save(output_path)
-
-        assert output_path.exists()
-        assert output_path.read_text() == "# Test\n\nContent."
 
 
 class TestSupportedFormats:

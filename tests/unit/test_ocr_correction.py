@@ -7,11 +7,36 @@ Based on findings from Spike 08 (embedding robustness) and Spike 05 (OCR quality
 import pytest
 
 from scholardoc.normalizers import (
-    score_ocr_quality,
-    correct_known_patterns,
-    correct_with_spellcheck,
-    correct_ocr_errors,
+    WORD_FREQUENCY_AVAILABLE,
+    AnalyzedCorrectionResult,
+    CorrectionCandidate,
+    # New confidence-based correction system
+    CorrectionConfig,
     OCRCorrectionNormalizer,
+    analyze_correction,
+    correct_known_patterns,
+    correct_ocr_errors,
+    correct_with_analysis,
+    correct_with_spellcheck,
+    get_word_frequency,
+    score_ocr_quality,
+)
+
+# Check for optional dependencies
+try:
+    from spellchecker import SpellChecker
+    HAS_SPELLCHECKER = True
+except ImportError:
+    HAS_SPELLCHECKER = False
+
+# Skip decorators for optional dependencies
+requires_spellchecker = pytest.mark.skipif(
+    not HAS_SPELLCHECKER,
+    reason="pyspellchecker not installed"
+)
+requires_wordfreq = pytest.mark.skipif(
+    not WORD_FREQUENCY_AVAILABLE,
+    reason="wordfreq not installed (multilingual extra)"
 )
 
 
@@ -106,6 +131,7 @@ class TestKnownPatternCorrection:
         assert result.change_count == 0
 
 
+@requires_spellchecker
 class TestSpellCheckCorrection:
     """Tests for spell-check based correction."""
 
@@ -131,7 +157,8 @@ class TestSpellCheckCorrection:
     def test_aggressive_mode_processes_more(self):
         """Aggressive mode should process shorter words and capitalized words."""
         text = "The Xant philosophy is odd."
-        normal = correct_with_spellcheck(text, skip_capitalized=True)
+        # Run both modes - aggressive processes more aggressively
+        correct_with_spellcheck(text, skip_capitalized=True)  # Normal mode
         aggressive = correct_with_spellcheck(text, skip_capitalized=False, min_word_length=3)
         # Aggressive might change more (depends on dictionary)
         assert aggressive.corrected_text is not None
@@ -173,9 +200,7 @@ class TestOCRCorrectionNormalizer:
     def test_normalizer_processes_text(self):
         """Normalizer should process text through quality check and correction."""
         normalizer = OCRCorrectionNormalizer()
-        text, quality, correction = normalizer.process_text(
-            "The beautlful rnorning was warm."
-        )
+        text, quality, correction = normalizer.process_text("The beautlful rnorning was warm.")
         assert quality is not None
         assert "beautiful" in text.lower()
         assert "morning" in text.lower()
@@ -245,3 +270,368 @@ class TestRealWorldSamples:
         # Correction should help
         result = correct_ocr_errors(corrupted)
         assert "beautiful" in result.corrected_text.lower()
+
+
+# =============================================================================
+# NEW: Tests for Confidence-Based Correction System
+# =============================================================================
+
+
+class TestCorrectionConfig:
+    """Tests for CorrectionConfig dataclass."""
+
+    def test_default_config_values(self):
+        """Default config should have sensible values."""
+        config = CorrectionConfig()
+        assert config.apply_threshold == 0.7
+        assert config.review_threshold == 0.3
+        assert config.skip_threshold == 0.1
+        assert config.max_edit_distance == 2
+        assert config.language == "en"
+
+    def test_conservative_preset(self):
+        """Conservative preset should have stricter thresholds."""
+        config = CorrectionConfig.conservative()
+        assert config.apply_threshold >= 0.85
+        assert config.max_edit_distance == 1
+        assert config.apply_threshold > CorrectionConfig().apply_threshold
+
+    def test_balanced_preset(self):
+        """Balanced preset should match defaults."""
+        config = CorrectionConfig.balanced()
+        default = CorrectionConfig()
+        assert config.apply_threshold == default.apply_threshold
+        assert config.review_threshold == default.review_threshold
+
+    def test_aggressive_preset(self):
+        """Aggressive preset should have looser thresholds."""
+        config = CorrectionConfig.aggressive()
+        assert config.apply_threshold <= 0.5
+        assert config.max_edit_distance >= 3
+        assert config.apply_threshold < CorrectionConfig().apply_threshold
+
+    def test_config_validation_valid(self):
+        """Valid config should pass validation."""
+        config = CorrectionConfig(
+            apply_threshold=0.8,
+            review_threshold=0.4,
+            skip_threshold=0.1,
+        )
+        config.validate()  # Should not raise
+
+    def test_config_validation_invalid_threshold_order(self):
+        """Thresholds in wrong order should fail validation."""
+        config = CorrectionConfig(
+            apply_threshold=0.3,  # Lower than review!
+            review_threshold=0.5,
+            skip_threshold=0.1,
+        )
+        with pytest.raises(ValueError, match="Thresholds must be"):
+            config.validate()
+
+    def test_config_validation_invalid_edit_distance(self):
+        """Invalid max_edit_distance should fail validation."""
+        config = CorrectionConfig(max_edit_distance=0)
+        with pytest.raises(ValueError, match="max_edit_distance"):
+            config.validate()
+
+    def test_custom_weights(self):
+        """Custom weights should be accepted."""
+        config = CorrectionConfig(
+            frequency_weight=0.5,
+            edit_distance_weight=0.3,
+            ambiguity_weight=0.1,
+            foreign_marker_weight=0.05,
+            first_letter_weight=0.05,
+        )
+        assert config.frequency_weight == 0.5
+        assert config.edit_distance_weight == 0.3
+
+
+@requires_wordfreq
+class TestWordFrequency:
+    """Tests for word frequency utilities."""
+
+    def test_word_frequency_available(self):
+        """Word frequency should be available with multilingual extra."""
+        assert WORD_FREQUENCY_AVAILABLE is True
+
+    def test_real_word_has_frequency(self):
+        """Real words should have non-zero frequency."""
+        freq = get_word_frequency("beautiful")
+        assert freq > 0
+        # "beautiful" is a common word, should have zipf > 4
+        assert freq > 4
+
+    def test_ocr_error_has_zero_frequency(self):
+        """OCR errors should have zero frequency."""
+        freq = get_word_frequency("beautlful")
+        assert freq == 0
+
+    def test_common_words_higher_frequency(self):
+        """Common words should have higher frequency than rare words."""
+        the_freq = get_word_frequency("the")
+        philosophy_freq = get_word_frequency("philosophy")
+        assert the_freq > philosophy_freq
+
+    def test_frequency_language_parameter(self):
+        """Should accept language parameter."""
+        # German word
+        freq_de = get_word_frequency("und", "de")
+        freq_en = get_word_frequency("und", "en")
+        # "und" is common in German, rare in English
+        assert freq_de > freq_en
+
+
+@requires_spellchecker
+class TestAnalyzeCorrection:
+    """Tests for analyze_correction function."""
+
+    def test_correct_word_returns_none(self):
+        """Words in dictionary should return None (no correction needed)."""
+
+        spell = SpellChecker()
+        result = analyze_correction("beautiful", spell)
+        assert result is None
+
+    def test_scholarly_word_returns_none(self):
+        """Scholarly vocabulary words should return None."""
+
+        spell = SpellChecker()
+        result = analyze_correction("dasein", spell)
+        assert result is None
+
+    def test_ocr_error_returns_candidate(self):
+        """OCR errors should return a CorrectionCandidate."""
+
+        spell = SpellChecker()
+        result = analyze_correction("beautlful", spell)
+        assert result is not None
+        assert isinstance(result, CorrectionCandidate)
+        assert result.original == "beautlful"
+        assert result.suggested == "beautiful"
+
+    def test_clear_error_high_confidence(self):
+        """Clear OCR errors should have high confidence."""
+
+        spell = SpellChecker()
+        result = analyze_correction("beautlful", spell)
+        assert result.confidence >= 0.9
+        assert result.is_safe
+
+    def test_ambiguous_correction_lower_confidence(self):
+        """Ambiguous corrections should have lower confidence."""
+
+        spell = SpellChecker()
+        # "teh" has many possible corrections (the, tea, ten, etc.)
+        result = analyze_correction("teh", spell)
+        if result:
+            # Should flag ambiguity concern
+            assert result.candidate_count > 1
+
+    def test_config_affects_scoring(self):
+        """Different configs should affect confidence scores."""
+
+        spell = SpellChecker()
+
+        balanced = CorrectionConfig.balanced()
+        aggressive = CorrectionConfig.aggressive()
+
+        result_balanced = analyze_correction("struktur", spell, balanced)
+        result_aggressive = analyze_correction("struktur", spell, aggressive)
+
+        # Both should find "structure" but may have different confidence
+        if result_balanced and result_aggressive:
+            assert result_balanced.suggested == result_aggressive.suggested
+
+    def test_foreign_suffix_flagged(self):
+        """Words with foreign suffixes should be flagged."""
+
+        spell = SpellChecker()
+        # Word ending in German suffix "-ung"
+        result = analyze_correction("bildung", spell)
+        # If there's a correction candidate, it should note concerns
+        # (exact behavior depends on dictionary and whether "bildung" is known)
+        if result is not None:
+            assert isinstance(result, CorrectionCandidate)
+            # Concerns list exists even if empty
+            assert isinstance(result.concerns, list)
+
+
+class TestCorrectWithAnalysis:
+    """Tests for correct_with_analysis function."""
+
+    def test_returns_analyzed_result(self):
+        """Should return AnalyzedCorrectionResult."""
+        result = correct_with_analysis("The beautlful sunset.")
+        assert isinstance(result, AnalyzedCorrectionResult)
+        assert result.original_text == "The beautlful sunset."
+
+    def test_applies_high_confidence_corrections(self):
+        """High confidence corrections should be applied."""
+        result = correct_with_analysis("The beautlful sunset.")
+        assert "beautiful" in result.corrected_text.lower()
+        assert len(result.applied_corrections) > 0
+
+    def test_categorizes_corrections(self):
+        """Corrections should be categorized by confidence."""
+        text = "The beautlful phenomenology of dasein reveals the struktur."
+        result = correct_with_analysis(text)
+
+        # Should have some corrections
+        total = (
+            len(result.applied_corrections)
+            + len(result.flagged_corrections)
+            + len(result.skipped_corrections)
+        )
+        assert total > 0
+
+        # Applied should have high confidence
+        for c in result.applied_corrections:
+            assert c.confidence >= 0.7
+
+    def test_config_thresholds_respected(self):
+        """Config thresholds should affect categorization."""
+        text = "The beautlful phenomenology."
+
+        # Conservative: higher threshold
+        conservative = CorrectionConfig.conservative()
+        result_cons = correct_with_analysis(text, conservative)
+
+        # Aggressive: lower threshold
+        aggressive = CorrectionConfig.aggressive()
+        result_agg = correct_with_analysis(text, aggressive)
+
+        # Aggressive should apply at least as many corrections
+        assert len(result_agg.applied_corrections) >= len(result_cons.applied_corrections)
+
+    def test_overall_confidence_calculated(self):
+        """Overall confidence should be calculated from applied corrections."""
+        result = correct_with_analysis("The beautlful phslosophy.")
+        assert 0 <= result.overall_confidence <= 1
+
+        # If corrections applied, confidence should reflect them
+        if result.applied_corrections:
+            avg_conf = sum(c.confidence for c in result.applied_corrections) / len(
+                result.applied_corrections
+            )
+            assert abs(result.overall_confidence - avg_conf) < 0.01
+
+    def test_scholarly_vocabulary_preserved(self):
+        """Scholarly terms should not be corrected."""
+        text = "The phenomenology of dasein and the cogito."
+        result = correct_with_analysis(text)
+
+        # These terms should remain unchanged
+        assert "dasein" in result.corrected_text.lower()
+        assert "cogito" in result.corrected_text.lower()
+        assert "phenomenology" in result.corrected_text.lower()
+
+    def test_correction_count_property(self):
+        """correction_count property should match applied corrections."""
+        result = correct_with_analysis("The beautlful rnorning.")
+        assert result.correction_count == len(result.applied_corrections)
+
+
+class TestCorrectionCandidate:
+    """Tests for CorrectionCandidate dataclass."""
+
+    def test_is_safe_property(self):
+        """is_safe should check confidence and edit distance."""
+        safe = CorrectionCandidate(
+            original="beautlful",
+            suggested="beautiful",
+            confidence=0.9,
+            edit_distance=1,
+            candidate_count=1,
+        )
+        assert safe.is_safe is True
+
+        unsafe = CorrectionCandidate(
+            original="xyzzy",
+            suggested="fuzzy",
+            confidence=0.4,
+            edit_distance=3,
+            candidate_count=10,
+        )
+        assert unsafe.is_safe is False
+
+    def test_needs_review_property(self):
+        """needs_review should identify medium confidence corrections."""
+        needs_review = CorrectionCandidate(
+            original="kategorie",
+            suggested="category",
+            confidence=0.5,
+            edit_distance=2,
+            candidate_count=3,
+        )
+        assert needs_review.needs_review is True
+        assert needs_review.is_safe is False
+        assert needs_review.should_skip is False
+
+    def test_should_skip_property(self):
+        """should_skip should identify low confidence corrections."""
+        skip = CorrectionCandidate(
+            original="xyz",
+            suggested="xxy",
+            confidence=0.1,
+            edit_distance=1,
+            candidate_count=20,
+        )
+        assert skip.should_skip is True
+
+    def test_concerns_list(self):
+        """Concerns should be stored in list."""
+        candidate = CorrectionCandidate(
+            original="test",
+            suggested="test2",
+            confidence=0.5,
+            edit_distance=1,
+            candidate_count=5,
+            concerns=["first letter changed", "ambiguous"],
+        )
+        assert len(candidate.concerns) == 2
+        assert "first letter changed" in candidate.concerns
+
+
+class TestIntegrationScenarios:
+    """Integration tests for real-world scenarios."""
+
+    def test_german_philosophy_text(self):
+        """German philosophical terms should be handled appropriately."""
+        text = "Heidegger's analysis of dasein and Sein reveals the struktur of Being."
+
+        # Conservative should preserve German terms
+        conservative = CorrectionConfig.conservative()
+        result = correct_with_analysis(text, conservative)
+
+        assert "dasein" in result.corrected_text.lower()
+        # "struktur" might be flagged but not aggressively corrected
+
+    def test_mixed_language_scholarly_text(self):
+        """Mixed language scholarly text should be handled carefully."""
+        text = "The cogito ergo sum of Descartes and the Kritik of Kant."
+        result = correct_with_analysis(text)
+
+        # Latin and German terms should be preserved
+        assert "cogito" in result.corrected_text.lower()
+        # "Kritik" might or might not be preserved depending on vocabulary
+
+    def test_heavily_corrupted_text(self):
+        """Heavily corrupted text should still be processable."""
+        text = "Teh beautlful phslosophy of rnorning reveals struktur."
+        result = correct_with_analysis(text)
+
+        # Should make some corrections
+        assert result.correction_count > 0
+        # Should report overall confidence
+        assert result.overall_confidence > 0
+
+    def test_clean_text_unchanged(self):
+        """Clean text should not be modified."""
+        text = "The beautiful philosophy of morning reveals structure."
+        result = correct_with_analysis(text)
+
+        assert result.corrected_text == text
+        assert result.correction_count == 0
+        assert result.overall_confidence == 1.0
