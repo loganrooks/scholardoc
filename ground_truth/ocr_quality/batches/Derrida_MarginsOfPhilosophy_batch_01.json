@@ -1,0 +1,456 @@
+{
+  "batch_id": 1,
+  "document": "Derrida_MarginsOfPhilosophy",
+  "pages": [
+    {
+      "document": "Derrida_MarginsOfPhilosophy",
+      "page_num": 2,
+      "bucket": "D (5-10%)",
+      "error_rate": 7.7,
+      "unknown_words_sample": [
+        "lianslated"
+      ],
+      "full_text": "Jacques Derrida\nMARGINS\nof Philosophy\nlianslated, with\nAdditional Notes,\nby Alan Bass\nTHE HARVESTER PRESS\n"
+    },
+    {
+      "document": "Derrida_MarginsOfPhilosophy",
+      "page_num": 3,
+      "bucket": "C (3-5%)",
+      "error_rate": 3.7,
+      "unknown_words_sample": [
+        "isbn",
+        "philosophie"
+      ],
+      "full_text": "13\nb33\nFirst published in Great Britain in 1982 by\nTHE HARVESTER PRESS LIMITED\nPublisher: John Spiers\n16 Ship Street, Brighton, Sussex\n\u00a9 1982 by The University of Chicago\nThis work was published in Paris under the title\nMarges de in philosophic, \u00a9 1972 by Les Editions de Minuit.\nBritish Library cataloguing in Publication Data\nDerrida, Jacques\nMargins of philosophy.\n1. Philosophy\nI. Title\nII. Marges de Ia philosophie. English\n190\nBD22\nISBN 0-7108-0454-7\nManufactured in the United States of America\nAll rights reserved\n"
+    },
+    {
+      "document": "Derrida_MarginsOfPhilosophy",
+      "page_num": 4,
+      "bucket": "E (10%+)",
+      "error_rate": 12.3,
+      "unknown_words_sample": [
+        "sourcep",
+        "vii",
+        "metaphcir",
+        "diff",
+        "ousia",
+        "valery",
+        "qual"
+      ],
+      "full_text": "Contents\nTranslator's Note\nvii\nTympan\nix\n\u2014 Diff\u00e9rance\nOusia and Gram me:\nNote on a Note from\nBeing and Time\n29\nThe Pit and the Pyramid:\nIntroduction to Hegel's\nSemiology\n69\nThe Ends of Man\n109\nThe Linguistic Circle\nof Geneva\nr\n137\nForm and Meaning: A Note\non the Phenomenology of\nLanguage\n155\nThe Supplement of Copula:\nPhilosophy before\nLinguistics\n-\n175\nWhite Mythology:\nMetaphcir in the Text\nof Philosophy\n207\nQual Queue:\nValery's Sourcep\n273\n/ Signature Event Context\n307\nV\n"
+    },
+    {
+      "document": "Derrida_MarginsOfPhilosophy",
+      "page_num": 6,
+      "bucket": "E (10%+)",
+      "error_rate": 10.6,
+      "unknown_words_sample": [
+        "vers",
+        "gramm",
+        "trans",
+        "vii",
+        "creech",
+        "nijhoff",
+        "traduction",
+        "ousia",
+        "lianslator",
+        "differance"
+      ],
+      "full_text": "'lianslator 's Note\nMany of these essays have been translated before. Although all the translations\nin this volume are \"new\" and \"my own\"\u2014the quotation marks serving here,\nas Derrida might say, as an adequate precaution\u2014I have been greatly assisted\nin my work by consulting:\n\"Differance,\" trans. David Allison, in Speech and Phenomena (Evanston: North-\nwestern University Press, 1973).\n\"Ousia and Gramm\u00e9,\" trans. Edward Casey, in Phenomenology in Perspective, ed.\nF. Joseph Smith (The Hague: Nijhoff, 1970).\n\"The Ends of Man,\" trans. Edouard Morot-Sir, Wesley C. Puisol, Hubert L.\nDreyfus, and Barbara Reid, Philosophy and Phenomenological Research 30, no. 1\n(1969).\n\"Form and Meaning,\" trans. David Allison, in Speech and Phenomena.\n\"The Supplement of Copula,\" trans. James S. Creech and Josue Harrari, The\nGeorgia Review 30 (1976).\n\"White Mythology,\" trans. F. C. T. Moore, New Literary History 6, no. 1 (1974).\n\"Signature Event Context,\" trans. Samuel Weber and Jeffrey Mehlman, Glyph:\nJohns Hopkins Textual Studies 7 (1977).\nAlthough I read it after completing the work on this volume, I believe that\nPhilip Lewis's \"Vers Ia traduction abusive\" (in Les fins de l'homme\u20144 partir du\ntravail de Jacques Derrida, Paris: Galilee, 1981) contains the criteria by which all\ntranslations of Derrida will be judged.\nALAN BAss\nNew York City\nJuly 1982\nVII\n"
+    },
+    {
+      "document": "Derrida_MarginsOfPhilosophy",
+      "page_num": 8,
+      "bucket": "E (10%+)",
+      "error_rate": 15.5,
+      "unknown_words_sample": [
+        "viously",
+        "cisely",
+        "hinein",
+        "antinomies",
+        "vides",
+        "aufgehobene",
+        "bodenlos",
+        "sich",
+        "grenze",
+        "ibid"
+      ],
+      "full_text": "Tympan\nThe thesis and antithesis and their proofs therefore rep-\nresent nothing but the opposite assertions, that a limit\nis (eine Grenze ist), and that the limit equally is only a\nsublated (aufgehobene [relev\u00e9]) one; that the limit has a be-\nyond with which however it stands in relation (in Bezie-\nhung ste/it), and beyond which it must pass, but that in\ndoing so there arises another such limit, which is no\nlimit. The solution of these antinomies, as of those pre-\nviously mentioned, is transcendental, that is.\nHegel, Science of Logic\nThe essence of philosophy pro-\nvides no ground (bodenlos) pre-\ncisely for peculiarities, and in\norder to attain philosophy, it is\nnecessary, if its body expresses\nthe sum of its peculiarities, that\nit cast itself into the abyss a corps\nperdu (sich a corps perdu hinein-\nzusf\u00fcrzen).\nHegel, The Difference between the\nFichtean and Schellingian Systems\nof Philosophy\nThe need for philosophy can be\nexpressed as its presupposition\nif a sort of vestibule (eine Art von\nVorhof) is supposed to be made\nfor philosophy, which begins\nwith itself.\nIbid.\n"
+    },
+    {
+      "document": "Derrida_MarginsOfPhilosophy",
+      "page_num": 9,
+      "bucket": "D (5-10%)",
+      "error_rate": 9.2,
+      "unknown_words_sample": [
+        "iegelian",
+        "cho",
+        "ver",
+        "tympanize",
+        "penser",
+        "peras",
+        "rek",
+        "nean",
+        "grenze",
+        "clined"
+      ],
+      "full_text": "To tympanize'\u2014phiosophy.\nBeing at the limit: these words do not yet form\na proposition, and even less a discourse. But there\nis enough in them, provided that one plays upon\nit, to engender almost all the sentences in this\nbook.\nDoes philosophy answer a need? How is it to be\nunderstood? Philosophy? The need?\nAmple to the point of believing itself intermi-\nnable, a discourse that has called itself philosophy\u2014\ndoubtless the only discourse that has ever in-\ntended to receive its name only from itself, and\nhas never ceased murmuring its initial letter to\nitself from as close as possible\u2014has always, in-\ncluding its own, meant to say its limit. In the fa-\nmiliarity of the languages called (instituted as)\nnatural by philosophy, the languages elementary\nto it, this discourse has always insisted upon as-\nsuring itself mastery over the limit (peras, limes,\nGrenze). It has recognized, conceived, posited, de-\nclined the limit according to all possible modes;\nand therefore by the same token, in order better\nto dispose of the limit, has transgressed it. Its own\nlimit had not to remain foreign to it. Therefore it\nhas appropriated the concept for itself; it has be-\nlieved that it controls the margin of its volume and\nthat it thinks its other.\nPhilosophy has always insisted upon this: think-\ning its other. Its other: that which limits it, and\nfrom which it derives its essence, its definition, its\nproduction. To think its other: does this amount\nsolely to\n(aufheben) that from which it de-\nrives, to head the procession of its method only\n\"And I have cho-\nsen, as the sign be-\nneath which to place\nthem, the entirely\nfloral and subterra-\nnean name of Perse-\nphon4e, which is thus\nextracted from its\ndark\nterrestrial\ndepths and lifted to\nthe heavens of a\nchapter heading.\nThe acanthus leave\ncopied in school\nwhen, for better or\nfor worse, one learns\nto use the fusain,\nthe stem of a morn-\ning glory or other\nclimbing plant,\nthe helix inscribed\non the shell of a snail,\nthe meanders of the\nsmall and the large\nintestine,\nthe sandy serpentine\nexcreted by an earth\nworm,\nthe curl of childish\nhair encased in a\nmedallion, the pu-\ntrid\nsimulacrum\n1. Translator's note (hereafter abbreviated as \"TN\"). In French, tVrnpaniser is an\narchaic verb meaning to criticize, to ridicule publicly. I have transliterated it here.\n2. TN. On Derrida's translation of the l-Iegelian term aufizeben as relever, see below,\n\"La differance,\" note 23, for a system of notes. There is an untranslatable play of\nwords here: \"Penser son autre: cela revient-il seulement a rek'ver (aufheben) Ce dont\nelk' reUve\n.\n. . ?\"\nx\n"
+    },
+    {
+      "document": "Derrida_MarginsOfPhilosophy",
+      "page_num": 12,
+      "bucket": "D (5-10%)",
+      "error_rate": 5.1,
+      "unknown_words_sample": [
+        "tvmpanum",
+        "dle",
+        "perce",
+        "maldoror",
+        "brane",
+        "tympanon",
+        "tially",
+        "exterionty",
+        "oreille",
+        "tympanizes"
+      ],
+      "full_text": "5. The hammer, as is well known, belongs to the chain of small bones, along with\nthe anvil and the stirrup. It is placed on the internal surface of the tympanic mem-\nbrane. It always has the role of mediation and communication: it transmits sonic\nvibrations to the chain of small bones, and then to the inner ear. Bichat recognized\nthat it has another paradoxical function. This small hone protects the tympanum\nwhile acting upon it. \"Without it, the tvmpanum would be affected painfully by\nvibrations set up by too powerful sounds.\" The hammer, thus, can weaken the\nblows, muffle them on the threshold of the inner ear. The latter\u2014the labyrinth\u2014\nincludes a vestibule, the semicircular canals, a cochlea (with its two spirals), that is, two\norgans of balance and one organ of hearing. Perhaps we shall penetrate it more\ndeeply later. For the moment, it suffices to mark the role of the middle ear: it tends\nto equalize the acoustic resistance of the air and the resistance of the labyrinthine\nliquids, to balance internal pressures and external pressures.\nxiii\nTympan\nsianism. In order to teach them \"to hear with their\neyes\" too.\nBut we will analyze the metaphysical exchange,\nthe circular complicity of the metaphors of the eye\nand the ear.\nBut in the structure of the tympanum there is\nsomething called the \"luminous triangle.\" It is\nnamed in Les Chants de Maldoror (II), very close to\na \"grandiose trinity.\"\nBut along with this triangle, along with the pars\ntensa of the tympanon, there is also found the han-\ndle of a \"hammer.\"\nIn order effectively, practically to transform what\none decries (tympanizes), must one still be heard\nand understood within it, henceforth subjecting\noneself to the law of the inner hammer?5 In relaying\nthe inner hammer, one risks permitting the noisiest\ndiscourse to participate in the most serene, least\ndisturbed, best served economy of philosophical\nirony. Which is to say, and examples of this meta-\nphysical drumming are not lacking today, that in\ntaking this risk, one risks nothing.\nFrom philosophy\u2014to separate oneself, in order\nto describe and decry its law, in the direction of\nthe absolute exterionty of another place. But ex-\nteriority and alterity are concepts which by them-\nselves have never surprised philosophical discourse.\nPhilosophy by itself has always been concerned with\nthem. These are not the conceptual headings un-\nhas not yet emerged.\nTherefore, essen-\ntially, in question is\na spiraled name\u2014or\nmore broadly:\na\ncurved name, but\nwhose gentleness is\nnot to be confused\nwith the always more\nor less lenitive char-\nacter of that which\nhas been dulled,\nsince\u2014quite to the\ncontrary\u2014what is\npiercing and pene-\ntrating about it\nis\nconfirmed by the\nrapprochement to be\nmade between the\nsyllables that com-\npose its name and\nthe syllables forming\nthe civil status of the\ninsect\ncalled\n[in\nFrench] perce-oreille\n(ear-piercer) [and in\nEnglish, \"earwig\"l.\nFor not only do \"Per-\n"
+    },
+    {
+      "document": "Derrida_MarginsOfPhilosophy",
+      "page_num": 14,
+      "bucket": "D (5-10%)",
+      "error_rate": 6.0,
+      "unknown_words_sample": [
+        "vers",
+        "tym",
+        "loxos",
+        "tympanize",
+        "artaud",
+        "avaric",
+        "strument",
+        "musi",
+        "phiosopheme",
+        "ithin"
+      ],
+      "full_text": "Tympan\ntransparent partition separating the auditory canal\nfrom the middle ear (the cavity), is stretched\nobliquely (lox\u00f6s). Obliquely from above to below,\nfrom outside to inside, and from the back to the\nfront. Therefore it is not perpendicular to the axis\nof the canal. One of the effects of this obliqueness\nis to increase the surface of impression and hence\nthe capacity of vibration. It has been observed,\nparticularly in birds, that precision of hearing is in\ndirect proportion to the obliqueness of the tym-\npanum. The tympanum squints.\nConsequently, to luxate the philosophical ear, to\nset the loxOs in the logos to work, is to avoid frontal\nand symmetrical protest, opposition in all the\nforms of anti-, or in any case to inscribe ant ism and\noverturning,8 domestic denegation, in an entirely\nother form of ambush, of lokhos, of textual maneu-\nvers.\nUnder what conditions, then, could one mark,\nfor a phiosopheme in general, a limit, a margin\nthat it could not infinitely reappropriate, conceive\nas its own, in advance engendering and interning\nthe process of its expropriation (Hegel again, al-\nways), proceeding to its inversion by itself? How\nto unbalance the pressures that correspond to each\nof the organ by\nmeans of which au-\nditory sensations\npenetrate into us),\nand less directly in\nplay for the goddess\nby means of the suf-\nfix phone, also found\nin \"telephone\" and\n\"gramophone,\" the\nlatter being an in-\nstrument for which\nis more appropriate\nthan the former the\nvery euphonic end-\ning that beautifully\ndefines it as a musi-\ncal mechanism.\nThe insect whose\nprincipal work is to\ngnaw on the inside\nof fruit pits in order\nto take subsistence\nfrom them, and\n8. On the problematic of overturning and displacement, see Dissemination and\nPositions(Chicago: University of Chicago Press, 1980). To luxate, to tympanize phil-\nosophical autism is never an operation u'ithin the concept and without some carnage\nof language. Thus it breaks open the roof, the closed spiral unity of the palate. It\nproliferates outside to the point of no longer being understood. It is no longer a tongue.\nHematographic music.\n\"Sexual jubilation is a choice of glottis,\nof the splinter of the cyst of a dental root.\na choice of otic canal,\nof the bad auricular ringing,\nof a bad instillation of sound,\nof current brocaded on the bottom carpet,\nof the opaque thickness,\nthe elect application of the choice of the candelabra of chiselled string,\nin order to escape the prolific avaric obtuse music\nwithout ram, or age, or ramage,\nand which has neither tone nor age.\"\nARTAUD (December 1946)\nxv\n"
+    },
+    {
+      "document": "Derrida_MarginsOfPhilosophy",
+      "page_num": 15,
+      "bucket": "D (5-10%)",
+      "error_rate": 7.2,
+      "unknown_words_sample": [
+        "reappropriation",
+        "tym",
+        "unicity",
+        "der",
+        "ginous",
+        "philos",
+        "forations",
+        "das",
+        "nean",
+        "xvi"
+      ],
+      "full_text": "Tympan\nother on either side of the membrane? How to\nblock this correspondence destined to weaken,\nmuffle, forbid the blows from the outside, the\nother hammer? The \"hammer that speaks\" to him\n\"who has the third ear\" (der das dritte Ohr hat).\nHow to interpret\u2014but here interpretation can no\nlonger be a theory or discursive practice of philos-\nophy\u2014the strange and unique property of a dis-\ncourse that organizes the economy of its\nrepresentation, the law of its proper weave, such\nthat its outside is never its outside, never surprises\nit, such that the logic of its heteronomy still reasons\nfrom within the vault of its autism?\nFor this is how Being is understood: its proper.\nIt assures without let-up the relevant movement of\nreappropriation. Can one then pass this singular\nlimit which is not a limit, which no more separates\nthe inside from the outside than it assures their\npermeable and transparent continuity? What form\ncould this play of limit/passage have, this logos\nwhich posits and negates itself in permitting its\nown voice to well up? Is this a well-put question?\nThe analyses that give rise to one another in this\nbook do not answer this question, bringing to it\nneither an answer nor an answer. They work,\nrather, to transform and deplace its statement, and\ntoward examining the presuppositions of the ques-\ntion, the institution of its protocol, the laws of its\nprocedure, the headings of its alleged homogene-\nity, of its apparent unicity: can one treat of philos-\nophy itself (metaphysics itself, that is, ontotheology)\nwithout already permitting the dictation, along\nwith the pretention to unity and unicity, of the\nungraspable and imperial totality of an order? If\nthere are margins, is there still a philosophy, the\nphilosophy?\nNo answer, then. Perhaps, in the long run, not\neven a question. The copulative correspondence,\nthe opposition question/answer is already lodged\nxvi\nwhich occasionally,\nso they say, perfo-\nrates human tym-\npanums with\nits\npincers, has in com-\nmon\nwith\nthe\ndaughter of Demeter\nthat it too buries it-\nself in a subterra-\nnean kingdom. The\ndeep country\nof\nhearing, described in\nterms of geology\nmore than in those\nof any other natural\nscience, not only by\nvirtue of the cartila-\nginous cavern that\nconstitutes its organ,\nbut also by virtue of\nthe relationship that\nunites it to grottoes,\nto chasms, to all the\npockets hollowed out\nof the terrestrial crust\nwhose emptiness\nmakes them into re-\nsonating drums for\nthe slightest sounds.\nJust as one might\nworry about the idea\nof the tympanum, a\nfragile membrane\nthreatened with per-\nforations by the min-\nute pincers of an\ninsect\u2014unless it had\n"
+    },
+    {
+      "document": "Derrida_MarginsOfPhilosophy",
+      "page_num": 18,
+      "bucket": "D (5-10%)",
+      "error_rate": 8.7,
+      "unknown_words_sample": [
+        "reappropriation",
+        "resentation",
+        "omy",
+        "ereignis",
+        "gerian",
+        "agamst",
+        "ture",
+        "econ",
+        "nahe",
+        "sci"
+      ],
+      "full_text": "Tympan\nIf Being is in effect a process of reappropriation,\nthe \"Question of Being\" of a new type can never\nbe percussed without being measured agamst the\nabsolutely coextensive question of the proper.\nNow this latter question does not permit itself to\nbe separated from the idealizing value of the very-\nnear, which itself receives its disconcerting powers\nonly from the structure of hearing-oneself-speak.\nThe proprius presupposed in all discourses on econ-\nomy, sexuality, language, semantics, rhetoric, etc.,\nrepercusses its absolute limit only in sonorous rep-\nresentation. Such, at least, is the most insistent\nhypothesis of this book. A quasi-organizing role\nis granted, therefore, to the motif of sonic vibration\n(the Hegelian Erzittern) as to the motif of the prox-\nimity of the meaning of Being in speech (Heideg-\ngerian Nahe and Ereignis). The logic of the event\nis examined from the vantage of the structures of\nexpropriation called timbre (tympanum), style, and\nsignature. Timbre, style, and signature are the same\nobliterating division of the proper. They make\nevery event possible, necessary, and unfindable.\nWhat is the specific resistance of philosophical\ndiscourse to deconstruction? It is the infinite mas-\ntery that the agency of Being (and of the) proper\nseems to assure it; this mastery permits it to in-\nteriorize every limit as being and as being its own\nproper. To exceed it, by the same token, and there-\nfore to preserve it in itself. Now, in its mastery and\nits discourse on mastery (for mastery is a signifi-\ncation that we still owe to it),\nalways seems to combine two types.\nparticular sci-\nences and regional\nare subordinated to\ngeneral ontology, and then to fundamental ontol-\nogy.\nthis point of view all the questions that\nsolicit Being and the proper upset the order that\nsubmits the determined fields of science, its formal\nnames, a durable su-\nture is thus formed\nbetween the throat\nand the tympanum,\nwhich, the one as\nmuch as the other,\nare subject to a fear\nof being injured, be-\nsides both belonging\nto the same cavern-\nous domain. And in\nthe final analysis\ncaverns become the\ngeometric place in\nwhich all are joined\ntogether:\nthe\nchthonian divinity,\nthe insect piercer of\npits, the matrix in\nwhich the voice is\nformed, the drum\nthat each noise comes\nto strike with its\nwand of vibrating air;\ncaverns:\nobscure\npipe-works reaching\ndown into the most\nsecret part of being\nin order to bring even\nto the totally naked\na\ncavity of our mental\nspace the exhala-\ntions\u2014of variable\ntemperature, con-\nsistency, and orna-\nmentation\u2014that are\n10. The putting into question of this ontological subordination was begun in Of\nGrarnmatology (Baltimore: Johns Hopkins University Press, 1978).\nxix\n"
+    },
+    {
+      "document": "Derrida_MarginsOfPhilosophy",
+      "page_num": 19,
+      "bucket": "D (5-10%)",
+      "error_rate": 8.9,
+      "unknown_words_sample": [
+        "sim",
+        "phellos",
+        "slve",
+        "fermen",
+        "aquarun",
+        "expressiones",
+        "tations",
+        "chanfante",
+        "complicities",
+        "ernous"
+      ],
+      "full_text": "Tympan\nobjects or materials (logic and mathematics, or se-\nmantics, linguistics, rhetoric, science of literature,\npolitical economy, psychoanalysis, etc.), to philo-\nsophical jurisdiction. In principle, then, these\nquestions are prior to the constitution of a rigorous,\nsystematic, and orderly theoretical discourse in\nthese domains (which therefore are no longer sim-\nply domains, regions circumscribed, delimited,\nand assigned from outside and above).\nOn the other hand, an envelqpment: the whole\n)\nis implied, in the speculative mode of reflection\nand expression, in each part. Homogenous, con-\ncentric, and circulating indefinitely, the movement\nof the whole is remarked in the partial determi-\nnations of the system or encyclopedia, without the\nstatus of that remark, and the partitioning of the\npart, giving rise to any general deformation of the\nspace.\nThese two kinds of appropriating mastery, hi-\nerarchy and envelopment, communicate with each\naccording to complicities we shall define. If\none of the two types is more powerful here (Ar-\nistotle, Descartes, Kant, Husserl, Heidegger) or\nthere (Spinoza, Leibniz, Hegel), they both follow\nthe movement of the same wheel, whether it is a\nquestion, finally, of Heidegger's\ncir-\nde or of Hegel's ontotheological circle. (\"White\nMythology\" deviates according to another wheel.)\nFor as long as this tympanum will not have been\ndestroyed, (the tympanum as also a hydraulic\nwheel, described minutely by Vitruvius),u which\npropagated in long\nhorizontal waves\nafter rising straight\nup from the fermen-\ntations of the outside\nworld.\nOn the one hand,\ntherefore, is the out-\nside; on the other\nhand, the inside; be-\ntween them, the cav-\nernous.\nA voice is usually\ndescribed as 'cavern-\nous' to give the idea\nthat it is low and\ndeep, and even a bit\ntoo much so. For ex-\nample: a basse taille,**\nin relation to a basse\nchanfante with\na\nhigher register and\nalso more supple\nline, whereas that of\nthe basse taille rather\nwould seem more\nproper\u2014in that it\nseems rough, as if\nhewn with an ax\u2014to\nthe stone breaker, the\nttTN. The basse-taille is the voice called in English and Italian the basso profundo,\nwhile the basse chantante is the voice usually called \"bass\" (between basso profundo\nand baritone). Leiris is playing on the taille in basse-taille, from the verb tailler mean-\ning to hew, to cut, to chisel, etc.\n11. In De Architecture Vitruvius described not only the water clock of Ctesibius,\nwho had conceived aquarun: expressiones automatopoetasque machines mutt aque delici-\narum genera (\"First he made a hollow tube of gold. or pierced a gem; for these\nmaterials are neither worn by the passage of water nor so begrimed that they\nbecome clogged. The water flows smoothly through the passage, and raises an\ntnverted bowl which the craftsmen call the cork or drum (quad ab artificihus phellos\nslve tympanum dicitur). The bowl is connected with a bar on which a drum revolves.\nThe drums are wrought with equal teeth\" (On Architecture, translated and edited\nxx\n"
+    },
+    {
+      "document": "Derrida_MarginsOfPhilosophy",
+      "page_num": 20,
+      "bucket": "D (5-10%)",
+      "error_rate": 8.7,
+      "unknown_words_sample": [
+        "phellos",
+        "phaflocentrism",
+        "thedretical",
+        "lafaye",
+        "qui",
+        "ibid",
+        "sive",
+        "vitruvius",
+        "sublevatur",
+        "viii"
+      ],
+      "full_text": "Tympan\ncannot be achieved by means of a simply discursive\nchiseler of funerary\nor thedretical gesture, for as long as these two\nmarbles, to the miner\ntypes of mastery will not have been\nwith his pick, to the\ntheir essential familiarity\u2014which is also that of\ngravedigger,\nthe\nphaflocentrism and\nfor as long\nditchdigger, and (if\nby Frank Granger, New York: Putnam, 1934; Book IX, C. VIII, p. 259). One ought\nto cite all the \"corks or drums\" which follow. Vitruvius also describes the axle of\nthe anaphorical clock, ex qua pendef cx una parte phellos (sive tympanum) qui ab aqua\nsublevatur (\"On one end hangs a cork or drum raised by the water,\" ibid., p. 263),\nand the famous hydraulic wheel which bears his name: a drum or hollow cylinder\nis divided by wedges which are open on the surface of the drum. They fill up with\nwater. Reaching the level of the axle, the water passes into the hub and flows out.\nInstead of the wedges of Vitruvius' tympanum, L4aye's tympanum has cylindrical\npartitions following the developables of a circle. The angles are economized. The\nwater, entering into the wheel, no longer is lodged in the angles. Thus the shocks\nare reduced, and so, by the same token, is the loss of labor. Here, I am reproducing\nthe perhaps Hegelian figure of Lafaye's tympanum (1717).\nBItt\n12. This ecorch\u00e9 (Dissemination too was to \"skin the ear\"), bares the phallogocentric\nsystem in its most sensitive philosophical articulations. ITN. An ecorch\u00e9 (from the\nverb ecorcher, to skin) is a model of a human or animal without its skin used to teach\nthe techniques of life drawing.J Therefore, it pursues the deconstruction of the\ntriangulocircular structure (Oedipus, Trinity, Speculative Dialectics) already long\nsince begun, and does so explicitly in the texts of Dissemination and of Positions.\n,\n"
+    },
+    {
+      "document": "Derrida_MarginsOfPhilosophy",
+      "page_num": 21,
+      "bucket": "C (3-5%)",
+      "error_rate": 4.7,
+      "unknown_words_sample": [
+        "ioned",
+        "misconstrual",
+        "tympanotribe",
+        "naivet",
+        "tergo",
+        "tached",
+        "cipitation",
+        "prive",
+        "pre",
+        "phallogocentric"
+      ],
+      "full_text": "Tympan\nas even the philosophical concept of mastery will\nnot have been\nliberties one\nclaims to take with the philosophical order will\nremain activated a tergo by misconstrued philo-\nsophical machines, according to denegation or pre-\ncipitation, ignorance or stupidity. They very quickly,\nknown or unknown to their \"authors,\" will have\nbeen called back to order.\nCertainly one will never prove philosophically that\none has to transform a given situation and proceed\nto an effective deconstruction in order to leave ir-\nreversible marks. In the name of what and of\nwhom in effect? And why not permit the dictation\nof the norm and the rule of law a tergo (viz, the\ntympanotribe)? If the displacement of forces does\nnot effectively transform the situation, why de-\nprive oneself of the pleasure, and specifically of\nthe laughter, which are never without a certain\nrepetition? This hypothesis is not secondary. With\nwhat is one to authorize oneself, in the last analysis,\nif not once more with philosophy, in order to dis-\nqualify naivet\u00e9, incompetence, or misconstrual, in\norder to be concerned with passivity or to limit\npleasure? And if the value of authority remained\nfundamentally, like the value of the critique itself,\nthe most naive? One can analyze or transform the\ndesire for im-pertinence, but one cannot, within\ndiscourse, make it understand pertinence, and that\nI can refer to a social\nsituation\nwhich,\nstrictly speaking, is\nno longer a profes-\nsion) to the monk,\npursued\nwith\nweighty steps, down\nalong cloistered cor-\nridors and through\nthe years, by the slow\nvoyage toward an\ninternal prey.\nOf this basse taille,\nwith the idea at-\ntached to it, like a\nstone around its\nneck, of steps fash-\nioned in the ground,\nas if in order to go to\nthe basement or step\nby step to descend a\ncertain number of\nmeters below sea-\nlevel (.\n. .) to open\nup a passageway\nthrough the organs\nby\nburrowing\nThis structure, the mythology of the proper and o organic indifference, is often\nthe architectural figure of the tympanum, the part of a pediment included in the\ntriangle of the three cornices, sometimes shot through with a circular opening called\nan ocutus. The issue here is not one of paying it the tribute of an oracular denegation\nor of a thesis without a strategy of writing that the phallogocentric order manipulates\nat every turn in its conceptual argumentation and in its ideological, political, and\nliterary connotations. The issue, rather, is to mark the conceptual holds and turns\nof writing that the order cannot turn inside out in order to get its gloves back on\nor to start up once more. Here, margin, march, and demarcation pass between\ndenegation (plurality of modes) and deconstruction (systematic unity of a spiral).\nSpeaking of the ecorclit, there are then at least two anatomy lessons, as there are\ntwo labyrinths and two cities. In one of them, a brain dissection, the surgeon's\nhead remains invisible. It seems to be cut off by the painter with a line. In fact, it\nWas burned, in 1723, along with a quarter of the painting.\nxxii\n"
+    },
+    {
+      "document": "Derrida_MarginsOfPhilosophy",
+      "page_num": 22,
+      "bucket": "C (3-5%)",
+      "error_rate": 4.4,
+      "unknown_words_sample": [
+        "volve",
+        "tations",
+        "teurt",
+        "cantat",
+        "cantra",
+        "canta",
+        "eral",
+        "frain",
+        "stroys",
+        "cantafeur"
+      ],
+      "full_text": "Tympan\none must (know how to) destroy what one de-\nstroys.\nTherefore, if they appear to remain marginal to\nsome of the great texts in the history of philosophy,\nthese ten writings in fact ask the question of the\nmargin. Gnawing away at the border which would\nmake this question into a particular case, they are\nto blur the line which separates a text from its\ncontrolled margin. They interrogate philosophy\nbeyond its meaning, treating it not only as a dis-\ncourse but as a determined text inscribed in a gen-\neral text, enclosed in the representation of its own\nmargin. Which compels us not only to reckon with\nthe entire logic of the margin, but also to take an\nentirely other reckoning: which is doubtless to re-\ncall that beyond the philosophical text there is not\na blank, virgin, empty margin, but another text,\na weave of differences of forces without any pres-\nent center of reference (everything\u2014\"history,\"\n\"politics,\" \"economy,\" \"sexuality,\" etc.\u2014said not\nto be written in books: the worn-out expression\nwith which we appear not to have finished step-\nping backward, in the most regressive argumen-\ntations and in the most apparently unforeseeable\nplaces); and also to recall that the written text of\nphilosophy (this time in its books) overflows and\ncracks its meaning.\nA\nTo philosophize a corps perdu.'3 How did Hegel\nunderstand that?\nCan this text become the margin of a margin?\nWhere has the body of the text gone when the\nmargin is no longer a secondary virginity but an\ninexhaustible reserve, the stereographic activity of\nan entirely other ear?\nthrough the canal of\na wound narrow but\ndeep enough to in-\nvolve the innermost\nmuscles; whether it\nis that of an artist\nfrom the opera, cut\nfrom the heart of the\nrock, or fashioned in\nthe most supple steel\nif it is that of a singer,\nemerging from the\nmoist earth of a hot-\nhouse or stretched\nout in breaking glass\nfilament if that of one\nof the creatures more\nreadily called cantra-\ntrices than chanteuses\n(even though canta-\nteurt is an unknown\nspecies); or whether\nit is the most vulgar\nvoice, issuing from\nthe most insignifi-\ncant being for the\nmost insipid ballad\nor most trivial re-\nfrain, mysterious is\nthe voice that sings,\nin relation to the\nvoice that speaks.\nThe mystery\u2014if\nt Cantat rice has the sense of an opera singer, a diva (a hothouse, glass-breaking\nvoice), while chanteuse is simply a female singer. There is no masculine form cantafeur\ncorresponding to cantat rice.\n13. TN. See the second epigraph above for Hegel's use of the expression a corps\nperdu. It means impetuously, passionately.\n"
+    },
+    {
+      "document": "Derrida_MarginsOfPhilosophy",
+      "page_num": 23,
+      "bucket": "D (5-10%)",
+      "error_rate": 7.3,
+      "unknown_words_sample": [
+        "ticular",
+        "polysemia",
+        "losophy",
+        "philosopheme",
+        "xxiv",
+        "phy",
+        "philosoph",
+        "aufgehoben",
+        "ically",
+        "mus"
+      ],
+      "full_text": "Tympan\nOverflows and cracks: that is, on the one hand\ncompels us to count in its margin more and less\nthan one believes is said or read, an unfolding due\nto the structure of the mark (which is the same\nword as marche,'4 as limit, and as margin); and on\nthe other hand, luxates the very body of statements\nin the pretensions to univocal rigidity or regulated\npolysemia. A lock opened to a double understand-\ning no longer forming a single system.\nWhich does not amount to acknowledging that\nthe margin maintains itself within and without.\nPhilosophy says so too: within because philosoph-\nical discourse intends to know and to master its\nmargin, to define the line, align the page, envel-\noping it in its volume. Without because the margin,\nits margin, its outside are\nare outside: a\nnegative about which there seems to be nothing\nto do, a negative without effect in the text or a\nnegative working in the service of meaning, the\nmargin relev\u00e9 (aufgehoben) in the dialectics of the\nBook. Thus, one will have said nothing, or in any\nevent done nothing, in declaring \"against\" phi-\nlosophy that its margin is within or without, within\nand without, simultaneously the inequality of its\ninternal spacings and the regularity of its borders.\nSimultaneously, by means of rigorous, philosoph-\nically intransigent analyses, and by means of the\ninscription of marks which no longer belong to\nphilosophical space, not even to the neighborhood\nof its other, one would have to displace philoso-\nphy's alignment of its own types. To write other-\nwise. To delimit the space of a closure no longer\nanalogous to what pliik,sophy can represent for\nitself under this name, according to a straight or\ncircular line enclosing a homogenous space. To\ndetermine, entirely against any philosopheme, the\nwe wish at any price,\nfor the purposes of\ndiscourse, to give a\nfigure of speech to\nthat which by defi-\nnition cannot have\none\u2014can be repre-\nsented as a margin,\na fringe surrounding\nthe object, isolating\nit at the same time as\nit underlines\nits\npresence, masking it\neven as it qualifies it,\ninserting it into an\nuntied harlequin of\nfacts with no identi-\nfiable cause at the\nsame time as the par-\nticular color that it\ndyes the object ex-\ntracts it from the\nswampy depths in\nwhich ordinary facts\nare mixed up. Mus-\nical elocution, com-\npared to ordinary\nelocution, appears to\nbe endorsed with a\nsimilar irisation, a\nfairy's coat, which is\nthe index of a con-\nnivance between that\nwhich could seem to\n14. TN. Derrida often plays on the series marque. marche, uzarge (mark, step,\nmargin).\nxxiv\n"
+    },
+    {
+      "document": "Derrida_MarginsOfPhilosophy",
+      "page_num": 24,
+      "bucket": "D (5-10%)",
+      "error_rate": 5.3,
+      "unknown_words_sample": [
+        "iogy",
+        "xxv",
+        "stant",
+        "ges",
+        "struc",
+        "tained",
+        "phallogocentrism",
+        "losophy",
+        "eral",
+        "spo"
+      ],
+      "full_text": "intransigence that prevents it from calculating its\nmargin, by means of a limitrophic violence im-\nprinted according to new types. To eat the margin\nin luxating the tympanum, the relationship to itself\nof the double membrane. So that philosophy can\nno longer reassure itself that it has always main-\ntained its tympanum. The issue here is the\ntenant [maintaining, now]: it travels through the\nentire book. How to put one's hands [mains] on\nthe tympanum and how the tympanum could es-\ncape from the hands of the philosopher in order\nto make of phallogocentrism an impression that he\nno longer recognizes, in which he no longer re-\ndiscovers himself, of which he could become con-\nscious only afterward and without being able to say\nto himself, again turning on his own hinge: I will\nhave anticipated it, with absolute knowledge.\nThis impression, as always, is made on some\ntympanum, whether resonating or still, on the\ndouble membrane that can be struck from either\nside.\nAs in the case of the mystic writing pad, I am\nasking in terms of- the manual printing press the\nquestion of the writing machine which is to upset\nthe entire space of the proper body in the unlimited\nenmeshing of machines-of-machines, hence of\nmachines without hands.'5 The question of the\nmachine is asked ,one more time, between the pit\nand the pyramid, in the margins (of the Hegelian\ntext).\nIn terms of the printing press, therefore, the\nmanual press, what is a tympan? We must know\nthis, in order to provoke within the balance of the\ninner ear or the homogenous correspondence of\nthe two ears, in the relation to itself in which phi-\nlosophy understands itself to domesticate its march,\n15. As concerns the metaphysical concept of the machine, see, (or what is ques-\ntioned here, the piece on Hegel (\"The Pit and the Pyramid,\" below); \"Freud and\nthe Scene of Writing,\" in Writing and Difference; and 01 Gra,n,nat.iogy.\nxxv\nTympan\nbe only a human\nvoice\nand\nthe\nrhythms of the fauna\nand flora, that is, the\nrhythms of the min-\neral domain in which\nevery velleity of ges-\nture is transcribed\ninto a frozen form.\nAnd when from spo-\nken\nlanguage\u2014\nwhich is sufficiently\nenigmatic itself, since\nit is only from the in-\nstant in which it is\nformulated,\nin\nexternal fashion or\nnot, that thought\ntakes on its reality\u2014\none comes to sung\nlanguage, what one\nencounters before\none is an enigma of\nthe second degree,\nseeing that the closer\none is in a sense to\nthe corporal struc-\ntures (of which each\nnote emitted has the\nappearance of being\nthe direct fruit) and,\nconsequently, the\nmore certain one is\nof apparently stand-\n"
+    },
+    {
+      "document": "Derrida_MarginsOfPhilosophy",
+      "page_num": 25,
+      "bucket": "C (3-5%)",
+      "error_rate": 3.8,
+      "unknown_words_sample": [
+        "littr",
+        "tion",
+        "verletzung",
+        "tym",
+        "pography",
+        "mechan",
+        "ical",
+        "phono",
+        "miliar",
+        "iom"
+      ],
+      "full_text": "Tympan\nsome dislocation without measure. And, if the\nHegelian wound (Beleidigung, Verletzung) always\nappears sewn up again, to give birth, from the lesion\nwithout suture, to some unheard-of partition.\nIn terms of the manual printing press, then,\nthere is not one\nbut several. Two frame-\nworks, of different material, generally wood and\niron, fit into one another, are lodged, if one can\nput it thus, in one another. One tympan in the\nother, one of wood the other of iron, one large and\none small. Between them, the sheet of paper.\nTherefore, in question is an apparatus, and one of\nits essential functions will be the regular calcula-\ntion of the margin. This apparatus is lowered onto\nthe marble on which the inked form is found. A\ncrank rolls the carriage under the platen, which is\nthen, with the aid of the bar, lowered onto the\nsmall tympan. The carriage is rolled. The tympan\nand the frisket are lifted (\"Frisket. Printing term.\nThe piece of the hand-operated press that the\nprinter lowers onto the sheet, both to keep it on\nthe tympan and to prevent the margins and spaces\nfrom being soiled.\" Littr\u00e9), and the sheet is then\nprinted on one of its sides. From a treatise on ty-\npography: \"The large tym pan is a wood chassis\nwith a piece of silk stretched over it; the points,\nthe margin, and successively each of the sheets to\nbe printed are placed on the tympan. The lever to\nwhich the frisket is attached is made of iron. The\nlarge tympan is attached to the drum in its lower\npart, that is to the right-hand end of the press; it\nis held by a double hinge called the couplets of the\nIt is ordinarily of the same width as the\ndrum. In each of the bars that extend along its\nwidth, the large fym pan is pierced by two holes,\ning on firm ground,\none finds oneself, in\ntruth, in the grasp of\nthe ineffable, the\nmelodic line present-\ning itself as the\ntranslation,\nin\na\npurely sonorous id-\niom, of that which\ncould not be said by\nmeans of words. And\neven more so when\nthe source of the\nsong, rather than\nbeing\na\nhuman\nmouth (that is, an\norgan with which we\nare more or less fa-\nmiliar), is a mechan-\nical device adding to\nwhat\nis\nalready\nstrange in musical\nspeech the surprise\nof being reproduced;\none is then face to\nface with a mystery\nin the almost pure\nstate. (.\n. .) I myself\npossessed a phono-\ngraph (.\n. .) not only\nwere there no pro-\nvisions for using it as\na recording device,\n16. TN. In French all the words whose senses Derrida plays on throughout this\nessay are tympan. In English they are all tympanum, with the single exception of\nthe printing term, which is tympan (as in French). I have kept the original French\nthis essay.\nxxvi\n"
+    },
+    {
+      "document": "Derrida_MarginsOfPhilosophy",
+      "page_num": 27,
+      "bucket": "D (5-10%)",
+      "error_rate": 8.2,
+      "unknown_words_sample": [
+        "tvmpan",
+        "tym",
+        "gation",
+        "inci",
+        "vibra",
+        "dia",
+        "brane",
+        "mea",
+        "terial",
+        "cas"
+      ],
+      "full_text": "1.1.e. the bell-shaped horn, in French pavilion. See above, note 6, translator's\ninterpolation.\nTvmpan\nthe \"luminous triangle\" or oculus of the tym-\npanum, is that this thing, a tympanum, punctures\nitself or grafts itself. And this, however one writes\nit, resists the concepts of machine or of nature, of\nbreak or of body, resists the metaphysics of cas-\ntration as well as its similar underside, the dene-\ngation of modern Rousseauisms, in their very\nacademic vulgarity.\nWill it be said, then, that what resists here is the\nunthought,\nthe r4ressed of phi-\norder no\nto be taken in, as one\nso\nof\nthese three notions, a conceptual elaboration must\nintroduce into them a new play of opposition, of\narticulation, of difference. An introduction, then,\nto differance. If there is a here of this book, let it be\ninscribed on these steps.\nIt has already begun, and all of this refers, cites,\nrepercusses, propagates its rhythm without mea-\nsure. But it remains entirely unforeseen: an inci-\nsion into an organ made by a hand that is blind\nfor never having seen anything but the here-and-\nthere of a tissue.\nWhat is then woven does not play the game of\ntight succession. Rather, it plays on succession. Do\nnot forget that to weave (trainer, trarneare) is first\nto make holes, to traverse, to work one-side-and-\nthe-other of the warp. The canal of the ear, what\nis called the auditory meatus, no longer closes after\nbeing struck by a simulated succession, a second-\nary phrase, the echo and logical articulation of a\nsound that has not yet been received, already an\neffect of that which does not take place. \"Hollow\ntime, / a kind of exhausting void between the\nblades of cutting / wood, I nothingness calling\nman's trunk / the body taken as man's trunk,\" such\nis the \"tyrnpanon\" of the Tarahumaras.\nsired proportions by\nmeans of the addi-\ntion just described.\nLinked to the horns\nby a short rubber\ntube analogous to the\njoints of gas ovens\nand of a brick-red-\ndish color, a dia-\nphragm of the type\nordinarily\ncalled\n\"sapphire\"\u2014a small\nround box with a\nbottom made of a\nthin sheet of mica or\nsome analogous ma-\nterial which bore the\ntiny hard appendix\nthat was supposed\nto transmit the vibra-\ntions inscribed in the\nwax cylinder to the\nsensitive\nmem-\nbrane\u2014a diaphragm\nwhich, when taken\napart, could fit in toto\nin the palm of your\nhand, did its best to\ntransform into sound\nwaves the oscilla-\ntions communicated\nto by the roll, which\nseemed to be marked\nall over its surface\n(in a helicoid too tight\nxxviii\n"
+    },
+    {
+      "document": "Derrida_MarginsOfPhilosophy",
+      "page_num": 28,
+      "bucket": "E (10%+)",
+      "error_rate": 10.6,
+      "unknown_words_sample": [
+        "gallimard",
+        "donc",
+        "leiris",
+        "nar",
+        "prinsengracht",
+        "biffures",
+        "xxix"
+      ],
+      "full_text": "Tympan\nThis already enervated repercussion, of a kind\nthat has not yet sounded, this timbered time be-\ntween writing and speech, call for/themselves a\ncoup de donc.\nAs soon as it perforates, one is dying to replace\nit by some glorious cadaver. It suffices, in sum,\nbarely, to wait.\nPrinsengracht, eight\u2014twelve May 1972\n\u00a7 Michel Leiris, Biffures (Paris: Gallimard), pp. 85ff.\nxxix\nto show anything\nother than the nar-\nrow, dense stripes)\nby the furrow of\nvarying depth that\nthe original waves\nhad dug into it.\"\nMichel\n"
+    },
+    {
+      "document": "Derrida_MarginsOfPhilosophy",
+      "page_num": 30,
+      "bucket": "E (10%+)",
+      "error_rate": 28.6,
+      "unknown_words_sample": [
+        "seuil",
+        "tel",
+        "theorie",
+        "diff",
+        "philosophie",
+        "francaise",
+        "quel",
+        "societe"
+      ],
+      "full_text": "Diff\u00e9rance\nAddress given before the Societe francaise de philosophie, 27 January 1968, published\nsimultaneously in the Bulletin de Ia sociEtE francaise de philosophie, July\u2014September 1968, and\nin ThEorie d'ensemble, coil. Tel Quel (Paris: Editions du Seuil, 1968).\n1\n"
+    },
+    {
+      "document": "Derrida_MarginsOfPhilosophy",
+      "page_num": 32,
+      "bucket": "C (3-5%)",
+      "error_rate": 3.3,
+      "unknown_words_sample": [
+        "neographism",
+        "tion",
+        "whyif",
+        "itis",
+        "concet",
+        "pre",
+        "facto",
+        "differance",
+        "permuta",
+        "iwill"
+      ],
+      "full_text": "I will speak, therefore, of a letter.\nOf the first letter, if the alphabet, and most of the speculations which have\nventured into it, are to be believed.\nIwill speak, therefore, of the lettera, this initial letter which it apparently has been\nnecessary to insinuate, here and there, into the writing of the word difference;\nand to do so in the course of a writing on writing, and also of a writing within\nwriting whose different trajectories thereby find themselves, at certain very\ndetermined points, intersecting with a kind of gross spelling mistake, a lapse\nin the discipline and law which regulate writing and keep it seemly. One can\nalways, de facto or de jure, erase or reduce this lapse in spelling, and find it\n(according to situations to be analyzed each time, although amounting to the\nsame), grave or unseemly, that is, to follow the most ingenuous hypothesis,\namusing. Thus, even if one seeks to pass over such an infraction in silence, the\ninterest that one takes in it can be recognized and situated in advance as pre-\nscribed by the mute irony, the inaudible misplacement, of this literal permuta-\ntion. One can always act as if it made no difference. And I must state here and\nnow that today's discourse will be less a justification of, and even less an apology\nfor, this silent lapse in spelling, than a kind of insistent intensification of its play.\nOn the other hand, I will have to be excused if I refer, at least implicitly, to\nsome of the texts I have ventured to publish. This is precisely because I would\nlike to attempt, to a certain extent, and even though in principle and in the last\nanalysis this is impossible, and impossible for essential reasons, to reassemble\nin a sheaf the different directions in which I have been able to utilize what I\nwould call provisionally the word or concept of differance, or rather to let it\nimpose itself upon me in its neographism, although as we shall see, di \u00e9rance\na word\nconcet. And I insist upon the word s iea for\ntwo reasons. On the one hand, I will not be concerned, as I might have been,\nwith describing a history and narrating its stages, text by text, context by context,\ndemonstrating the economy that each time imposed this graphic disorder; rather,\nI will be concerned with the genera! system of this economy. On the other hand,\nthe word sheaf seems to mark more appropriately that the assemblage to be\nproposed has the complex structure of a weaving, an interlacing which permits\nthe different threads and different lines of meaning\u2014or of force\u2014to go off again\nin different directions, just as it is always ready to tie itself up with others.\nTherefore, preliminarily, let me recall that this discreet graphic intervention,\nwhich neither primarily nor simply aims to shock the reader or the grammarian,\ncame to be formulated in the course of a written investigation of a question\nabout writing. Now it happens, I would say in effect, that this graphic difference\n(a instead of e), this marked difference between two apparently vocal notations,\nbetween two vowels, remains purely graphic: itis read, or it is written, but it\ncannot be heard. It cannot be apprehended in speech, and we will see whyif\n3\n"
+    },
+    {
+      "document": "Derrida_MarginsOfPhilosophy",
+      "page_num": 36,
+      "bucket": "D (5-10%)",
+      "error_rate": 5.4,
+      "unknown_words_sample": [
+        "reappropriation",
+        "lbgical",
+        "pherein",
+        "ceeding",
+        "littr",
+        "diff",
+        "efficacity",
+        "sym",
+        "philosoph",
+        "iithe"
+      ],
+      "full_text": "Diff\u00e9rance\nwill propose here will not be elaborated simply as a philosophical discourse,\noperating according to principles, postulates, axioms or definitions, and pro-\nceeding along the discursive lines of a linear order of reasons. In the delineation\nof differance everything is strategic and adventurous. Strategic because no tran-\nscendent truth present outside the field of writing can govern theologically the\ntotality of the field. Adventurous because this strategy is not a simple strategy\nin the sense that strategy orients tactics according to a final goal, a telos or theme\nof domination, a mastery and ultimate reappropriation of the development of\nthe field. Finally, a strategy without finality, what might be called blind tactics,\nor empirical wandering iithe value of empiricism did not itself acquire its entire\nmeaning in its opposition to philosophical responsibility. If there is a certain\nwandering in the tracing of differance, it no more follows the lines of philosoph-\nical-logical discourse than\nsym\ninverse, empirical-\nlbgical disc\u00f3ursi The concept of play keeps itself beyond this opposition, an-\nn\u00f6uncing, on the eve of philosophy and beyond it, the unity of chance and\nnecessity in calculations without end.\nAlso, by decision and as a rule of the game, if you will, turning these prop-\nositions back on themselves, we will be introduced to the thought of differance\nby the theme of strategy or the strategem. By means of this solely strategic\njustification, I wish to underline that the efficacity of the thematic of diff\u00e9rance\nmay very well, indeed must, one day be superseded, lending itself if not to its\nown replacement, at least to enmeshing itself in a chain that in truth it never\nwill have governed. Whereby, once again, it is not theological.\nI would say, first off, that differance, which is neither a word nor a\nstrategically seemed to me the most proper one to think, if not to master\u2014\nthought, here, being that which is maintained in a certain necessary relationship\nwith the structural limits of mastery\u2014what is most irreducible\nTherefore I am starting, strategically,\nthe place and the time in which \"we\"\nare, even though in the last analysis my opening is not justifiable, since it is\nonly on the basis of differance and its \"history\" that we can allegedly know who\nand where \"we\" are, and what the limits of an \"era\" might be.\nj\nEven though differanceis neither a word nor a concept, let us nevertheless\nattempt a\napproximate semantic\ntake us to within\nsight of what is at stake.\nWe know that the verb differer (Latin verb differre) has two meanings which\nseem quite distinct;7 for example in Littr\u00e9 they are the object of two separate\narticles. In this sense the Latin differre is not simply a translation of the Greek\ndin pherein, and this will not be without consequences for us, linking our discourse\nto a particular language, and to a language that passes as less philosophical,\nless originally philosophical than the other. For the distribution of meaning in\n7. TN. In English the two distinct meanings of the Latin differre have become two separate\nWords: to defer and to differ.\n7\n"
+    },
+    {
+      "document": "Derrida_MarginsOfPhilosophy",
+      "page_num": 37,
+      "bucket": "D (5-10%)",
+      "error_rate": 6.1,
+      "unknown_words_sample": [
+        "porization",
+        "polysemia",
+        "polemos",
+        "temporalization",
+        "simul",
+        "nomenology",
+        "perseverence",
+        "taneously",
+        "teniporizafi",
+        "diff"
+      ],
+      "full_text": "Diff\u00e9rance\nthe Greek diapherein does not comport one of the two motifs of the Latin differre,\nto wit, the action of putting off until later, of taking into account, of taking\naccount of time and of the forces of an operation that implies an economical\ncalculation, a detour, a delay, a relay, a reserve, a representation\u2014concepts that\nI would summarize here in\nI have never used but that could be inscribed\nin this chain: teniporizafi6n. Diff\u00e9rer in this sense is to temporize, to take recourse,\nconsciously or unconsciously, in the temporal and temporizing mediation of a\ndetour that suspends the accomplishment or fulfillment of \"desire\" or \"will,\"\nand equally effects this suspension in a mode that annuls or tempers its own\neffect. And we will see, later, how this temporization is also temporalization and\nspacing, the becoming-time of space and the becoming-space of time, the \"or-\niginary constitution\" of time and space, as metaphysics or transcendental phe-\nnomenology would say, to use the language that here is criticized and displaced.\nThe other sense of differer is the more common and identifiable one: to be not\nidentical, to be other, discernible, etc. When dealing with differen(ts)(ds), a word\nthat can be written with a final ts or a final ds, as you will, whether it is a question\nof dissimilar otherness or of allergic and polemical othemess, \u00e0\u00f1ititerval, a\ndistance, spacing, must be produced between the elements other, and be pro-\nduced with a certain perseverence in repetition.8\nthe word difference (with an e) can never refer either to differer as tem-\nporization or to diff\u00e9rends as polemos.9 Thus the word difference (with an a) is to\ncompensate\u2014economically\u2014this loss of meaning, for differance can refer simul-\ntaneously to the entire\nof its meanings. It is immediately and\nirreducibly polysemic, which will not be indifferent to the economy of my dis-\ncourse here. In its polysemia this word, of course, like any meaning, must defer\nto the discourse in which it occurs, its interpretive context; but in a way it defers\nitself, or at least does so more readily than any other word, the a immediately\nderiving from the present participle (differant), thereby bringing us close to the\nvery action of the verb differer, before it has even produced an effect constituted\nsomething different or as difference (with an e).'\u00b0 In a conceptuality adhering\n8. TN. The next few sentences will require some annotation, to be found in this note\nand the next two. In this sentence Derrida is pointing out that two words that sound\nexactly alike in French (diff\u00e9rents, diff\u00e9rends) refer to the sense of differre that implies spacing,\notherness\u2014difference in its usual English sense. Les diff\u00e9rents are different things; les\ndiff\u00e9rends are differences of opinion, grounds for dispute\u2014whence the references to allergy\n(from the Greek allos, other) and polemics.\n9. TN. However, to continue the last note, difference (in French) does not convey the\nsense of active putting off, of deferring (diff\u00e9rance in what would be its usual sense in\nFrench, if it were a word in common usage), or the sense of active polemical difference,\nactively differing with someone or something. (\"Active\" here, though, is not really correct,\nFor reasons that Derrida will explain below.) The point is that there is no noun-verb, no\ngerund for either sense in French.\n10. TN. Such a gerund would normally be constructed from the present participle of\nthe verb: diffCrant. Curiously then, the noun differance suspends itself between the two\nsenses of diff\u00e9rant\u2014deferring, differing. We might say that it defers differing, and differs\nfrom deferring, in and of itself.\n8\n"
+    },
+    {
+      "document": "Derrida_MarginsOfPhilosophy",
+      "page_num": 38,
+      "bucket": "D (5-10%)",
+      "error_rate": 5.7,
+      "unknown_words_sample": [
+        "certainj",
+        "ence",
+        "diff",
+        "towardj",
+        "somethin",
+        "ductive",
+        "eslclia",
+        "orlinal",
+        "nontransitivity",
+        "exi"
+      ],
+      "full_text": "Diff\u00e9rance\nto classical strictures \"differance\" would be said to designate a constitutive, pro-\nductive, and originary causality, the process of scission and division which would\nproduce or constitute different things or differences. But, because it brings\nclose to the infinitive and active kernel of differer, differance (with an a) neutralizes\nwhat the infinitive denotes as simply active, just as inouvance in our language\ndoes not simply mean the fact of moving, of moving oneself or of being moved.\nNo more is resonance the act of resonating. We must consider that in the usage\nof our language the ending -ance remains undecided between the active and the\npassive. And we will see why that which lets itself be designated differance is\nneither simply active nor simply passive, announcing or rather recalling some-\nthing like the middle voice, saying an operation that is not an operation, an\noperation that cannot be conceived either as passion or as the action of a subject\non an object, or on the basis of the categories of agent or patient, neither on the\nbasis of nor moving toward any of these terms. For the middle voice, a certainj\nnontransitivity, may be what philosophy, at its outset, distributed into an active\nand a passive voice, thereby constituting itself by means of this repression.\nDifferance as temporization, diff\u00e9rance as spacing. How are they to be\nLet us start, since we are already there, from the problematic of the sign and\nof writing. The sign is usually said to be put in the place of the thing itself, the\npresent thing, \"thing\" here standing equally for meaning or referent. The sign\nrepresents\nthe place of the present. When we\ncannot grasp or\nthe thing, state the present, the being-present, when the\npresent cannot be presented, we signify, we go through the detour of the sign.\nWe take or give signs. We signal.\nin this sense, is deferred presencej\nWhether we are concerned with the verbal or the\nthe\nsign, or with electoral delegation and political representation, the circulation of\nsigns defers the moment in which we can encounter the thing itself, make it\nours, consume or expend it, touch it, see it, intuit its presence. What I am\ndescribing here in order to define it is the classically determined structure of the\nsign in all the banality of its characteristics\u2014signification as the differance of\ntemporization. And this structure presupposes that the sign, which defers pres-\nence, is conceivable only on the basis of the presence that it defers and moving\ntoward the deferred presence that it aims to reappropriate. According to this\nclassical semiology, the substitution of the sign for the thing itself is both secondary\nand provisional: secondary due to an original and lost presence from which the\nsign thus derives; provisional as concerns this final and missing presence towardJ\nwhich the sign in this sense is a movement of mediation.\nIn attempting to put into question these traits of the provisional secondariness\nof the substitute, one would come to see somethin1 like an originary diff\u00e9rance;\nbut one could no longer call it originary orlinal in the exi\nowhich the values\nof origin, archi-, telos, eslclia ton, etc. have always denoted presence\u2014ousia, par-\nousia.\" To put into question the secondary and provisional characteristics of the\nI 1.TN. Ousia and parousia imply presence as both origin and end, the founding principle\n(ark-he-) as that toward which one moves (felos, eskhaton).\n9\n"
+    },
+    {
+      "document": "Derrida_MarginsOfPhilosophy",
+      "page_num": 39,
+      "bucket": "C (3-5%)",
+      "error_rate": 5.0,
+      "unknown_words_sample": [
+        "questibns",
+        "ril",
+        "ltw",
+        "nscerid",
+        "originary",
+        "ontico",
+        "ical",
+        "temporalization",
+        "ousia",
+        "horizoriof"
+      ],
+      "full_text": "Differance\nsign, to oppose to them an \"originary\" differance, therefore would have two\nconsequences.\n1. One could no longer include differance in the concept\nwhich\nalways has meant the representation of a presence, and has been constituted\nin a system (thought or language) governed by and moving toward presence.\nAnd thereby one puts into question the authority of presence, or of its\nI simple symmetrical opposite, absence or lack. Thus one questibns the limit\n'which has always constrained us, which still constrains us\u2014as inhabitants of\na language and a system of thought\u2014to formulate the meaning of Being in\nas presence or absence, in the categories of being or beingness (ousia).\nAlready it appears that the type of question to which we are redirected is, let\nus say, of the Heideggerian type, and that differance seems to lead back to the\nontico-ontological difference. I will be permitted to hold off on this reference.\nI\ncan no longer be conceived within the horizoriof the present, and what Hei-\ntemporalization as the ti\u00e4nscerid\u00e9ril\u00e1l ho-\nrizon of\nmetaphysical domination by\nBut first let us remain within the semiological problematic in order to see\ndifferance as temporization and differance as spacing conjoined. Most of the Se-\nmiological or linguistic researches that dominate the field of thought today,\nwhether due to their own results or to the regulatory model that they find\nthemselves acknowledging everywhere, refer genealogically to Saussure (cor-\nor incorrectly) as their common inaugurator. Now Saussure first of all is\nthe thinker who put the arbitrary character of the sign and the differential character\nof the sign at the very foundation of general semiology, particularly linguistics.\nAnd, as we know, these two motifs\u2014arbitrary and differential\u2014are inseparable\nin his view. There can be arbitrariness only because the system of signs is\nconstituted solely by the differences in terms, and not by their plenitude. The\nelements of signification function due not to the compact force of their nuclei\nbut rather to the network of oppositions that distinguishes them, and then\nrelates them one to another. \"Arbitrary and differential,\" says Saussure, \"are\nLtW0 correlative characteristics.\"\n- Now this principle of difference, as the condition for signification, affects the\ntotality of the sign, that is the sign as both signified and signifier. The signified\nis the concept, the ideal meaning; and the signifier is what Saussure calls the\n\"image,\" the \"psychical imprint\" of a material, physical\u2014for example, acoust-\nical\u2014phenomenon. We do not have to go into all the problems posed by these\ndefinitions here. Let us cite Saussure only at the point which interests us: \"The\nconceptual side of value is made up solely of relations and differences with\nrespect to the other terms of language, and the same can be said of its material\ncside. . . Everything that has been said up to this point boils down to this: in\n10\n"
+    }
+  ]
+}

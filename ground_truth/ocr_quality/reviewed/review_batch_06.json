@@ -1,0 +1,326 @@
+{
+  "document": "Derrida_WritingAndDifference",
+  "batch_number": 6,
+  "pages_to_review": [
+    {
+      "page_number": 133,
+      "evidence": "This page shows significant OCR degradation with multiple problematic artifacts. Unknown_words_sample includes concerning fragments: 'pos', 'aeternitatis', 'munion', 'und', 'icity', 'ation'. The phrase 'sub specie aeternitatis' appears compromised (sample shows 'aeternitatis' as unknown). Discussion of mystical communion, theoretism vs objectivity shows argument structure, but character-level corruptions are evident. 'munion' suggests 'communion' was corrupted.",
+      "confidence": 0.58,
+      "footnote_artifacts": "Significant evidence of problematic footnote integration beyond simple marker splitting. Terms like 'munion' and 'premetaphysical' fragments suggest compression or corruption errors.",
+      "extracted_text": " \nagainst theoretism and objectivism. On the contrary, there will be\nmore force\u2014and danger\u2014in denouncing the blindness of theoretism, its\ninability to depart from itself towards absolute exteriority, towards the\ntotally-other, the in\ufb01nitely-other \u201cmore objective than objectivity\u201d\n(TI). The complicity of theoretical objectivity and mystical com-\nmunion will be Levinas\u2019s true target. The premetaphysical unity of one\nand the same violence. An alternation which always modi\ufb01es the same\ncon\ufb01nement of the other.\nIn 1930 Levinas turns toward Heidegger against Husserl. Sein und Zeit is\npublished, and Heidegger\u2019s teaching begins to spread. Everything\nwhich over\ufb02ows the commentary and \u201cletter\u201d of Husserl\u2019s texts moves\ntoward \u201contology,\u201d \u201cin the very special sense Heidegger gives to the\nterm\u201d (Th\u00e9orie de l\u2019intuition [hereafter THI]). In his critique of Husserl,\nLevinas retains two Heideggerean themes: (1) despite \u201cthe idea, so\nprofound, that in the ontological order the world of science is pos-\nterior to the concrete and vague world of perception, and depends\nupon it,\u201d Husserl \u201cperhaps was wrong to see in this concrete world, a\nworld of perceived objects above all\u201d (THI). Heidegger goes further,\nsince for him this world is not primarily given over to the glance, but is\nrather\u2014and we wonder whether Heidegger would have accepted this\nformulation\u2014\u201c in its very Being like a center of action, a \ufb01eld of activity\nor of solicitude\u201d (ibid.). (2) if Husserl was right in his opposition to\nhistoricism and naturalistic history, he neglected \u201cthe historical situ-\nation of man. . . understood in another sense.\u201d17 There exist a histor-\nicity and a temporality of man that are not only predicates but \u201cthe\nvery substantiality of his substance.\u201d It is \u201cthis structure . . . which\noccupies such an important place in Heidegger\u2019s thought\u201d (ibid.).\nOne already foresees the unease to which a thought rejecting the\nexcellence of a \u201cphilosophy\u201d which \u201cappears . . . as independent of\nman\u2019s historical situat"
+    },
+    {
+      "page_number": 136,
+      "evidence": "This page shows significant OCR degradation with multiple German words corrupted. The text includes quoted German: 'Was bedeutet \"Existenz\" in Sein und Zeit? Das wort nennt eine Weise des Seins...' with critical corruptions: 'enheit' (should be 'Eigentlichkeit'?), 'dasein', 'weise' appear fragmented. Unknown_words_sample includes concerning items: 'existenz', 'dasein', 'der', 'und', 'weise', 'metaphysik', 'das' - these are fundamental German words that should not be 'unknown'. The quote appears partially corrupted with character-level errors preventing proper reading of technical German terminology.",
+      "confidence": 0.45,
+      "footnote_artifacts": "Superscript marker '19' present but extensive German language corruption suggests genuine OCR failure beyond footnote integration.",
+      "extracted_text": " \nexistent in its existence. These are the translations of Seiendes and Sein chosen\nby Levinas at this point \u201cfor reasons of euphony\u201d (TA).19 This choice\nwill always retain a certain ambiguity: by existent, in e\ufb00ect, Levinas\nalmost if not always understands the being which is man, being in the\nform of Dasein. Now, thus understood, the existent is not being (Seiendes)\nin general, but refers to what Heidegger calls Existenz\u2014mainly because it\nhas the same root\u2014that is \u201cthe mode of Being, and precisely, the Being\nof the being which keeps itself open for the aperture of Being, and\nwithin it.\u201d \u201cWas bedeutet \u2018Existenz\u2019 in Sein und Zeit? Das wort nennt\neine Weise des Seins, und zwar das Sein desjenigen Seienden, das o\ufb00en\nsteht f\u00fcr die O\ufb00enheit des Seins, in der es steht, indem es sie aussteht\u201d\n(Introduction to Was ist Metaphysik).\nNow this solitude of the \u201cexistent\u201d in its \u201cexistence\u201d would be\nprimordial and could not be conceived on the basis of the neutral unity\nof existence which Levinas often and profoundly describes under the\nheading of the \u201cthere is.\u201d But is not the \u201cthere is\u201d the totality of\nindeterminate, neutral, anonymous beings rather than Being itself? The\ntheme of the \u201cthere is\u201d calls for systematic confrontation with\nHeidegger\u2019s allusions to the \u201ces gibt\u201d (Being and Time, Letter on Humanism),\nand for a confrontation too, of terror, which Levinas opposes to\nHeideggerean anguish, with the experience of fright, which Heidegger\nsays, in the Nachwort to Was ist Metaphysik, \u201calways resides near essential\nanxiety.\u201d\nThe relationship to the other arises from the depths of this solitude.\nWithout it, without this primordial secret, parricide is philosophy\u2019s\ntheatrical \ufb01ction. To understand the secret on the basis of the unity of\nexistence, on the pretext that it exists or that it is the secret of the\nexistent, \u201cis to con\ufb01ne oneself to unity, and to let Parmenides escape\nevery parricide\u201d (TA). Therefore, Levinas henceforth will move toward\na thought of original di\ufb00erence."
+    },
+    {
+      "page_number": 285,
+      "evidence": [
+        "Multiple significant errors accumulate: 'litterae' (correct), 'ssel'/'schl' (Schl\u00fcssel/key)",
+        "OCR corruption in key philosophical terms: 'speci-' (specific), 'ect' fragments",
+        "Dream interpretation section has garbled segments affecting readability",
+        "Proper name references partially corrupted: 'Artemidorous' correct but surrounding context damaged",
+        "Multiple ligature and special character issues (U+FB01, U+FB02)"
+      ],
+      "confidence": 0.65,
+      "footnote_artifacts": [
+        "Footnote markers present but surrounding text degraded",
+        "Some textual citations unclear due to OCR errors"
+      ],
+      "extracted_text": " \ndisplaced into a forest of script, the Traumdeutung, the interpretation of\ndreams, no doubt, on the \ufb01rst approach will be an act of reading and\ndecoding. Before the analysis of the Irma dream, Freud engages in\nconsiderations of method. In one of his familiar gestures, he opposes\nthe old popular tradition to so-called scienti\ufb01c psychology. As always,\nit is in order to justify the profound intention which inspires the\nformer. Popular tradition may err, of course, when according to a\n\u201csymbolical\u201d procedure, it treats dream content as an indivisible and\nunarticulated whole, for which a second, possibly prophetic whole\nmay be substituted. But Freud is not far from accepting the \u201cother\npopular method\u201d: \u201cIt might be described as the \u2018decoding\u2019 method\n(Chi\ufb00riermethode), since it treats dreams as a kind of cryptography\n(Geheimschrift) in which each sign can be translated into another sign\nhaving a known meaning, in accordance with a \ufb01xed key (Schl\u00fcssel)\u201d (IV,\n97). Let us retain the allusion to a permanent code: it is the weakness of\na method to which Freud attributes, nevertheless, the merit of being\nanalytic and of spelling out the elements of meaning one by one.\nA strange example, the one chosen by Freud to illustrate this trad-\nitional procedure: a text of phonetic writing is cathected and functions\nas a discrete, speci\ufb01c, translatable and unprivileged element in the\noverall writing of the dream. Phonetic writing as writing within writ-\ning. Assume, for example, says Freud, that I have dreamed of a letter\n(Brief / epistola), then of a burial. Open a Traumbuch, a book in which the\nkeys to dreams are recorded, an encyclopedia of dream signs, the\ndream dictionary which Freud will soon reject. It teaches us that letter\nmust be translated (\u00fcbersetzen) by spite, and burial by engagement to be\nmarried. Thus a letter (epistola) written with letters (litterae), a document\ncomposed of phonetic signs, the transcription of verbal discourse, may\nbe translated by a nonverbal signi\ufb01er"
+    },
+    {
+      "page_number": 286,
+      "evidence": [
+        "Highest error rate in batch: multiple garbled words",
+        "Significant corruption: 'proceded' (proceeded), 'hermeneuts' (hermeneutics)",
+        "Structure fragmentation: 'structed' (structured), 'guage' (language)",
+        "Complex philosophical argument on Egyptian hieroglyphics becomes difficult to parse",
+        "Multiple incomplete word fragments: 'ics', 'rst' making dense text harder to recover"
+      ],
+      "confidence": 0.62,
+      "footnote_artifacts": [
+        "Footnote structure degraded",
+        "References to Warburton and Egyptian systems partially corrupted",
+        "Section 'freud and the scene of writing 261' correct but surrounding context damaged"
+      ],
+      "extracted_text": " \ndescribes the system of hieroglyphics, and discerns in it (rightly or\nwrongly it is of no concern to us here) various structures (hieroglyph-\nics strictly speaking or symbolical ones, each type being either curio-\nlogical or tropological, the relation here being of analogy or of part to\nwhole) which ought to be systematically confronted with the mechan-\nisms of dream-work (condensation, displacement, overdetermination).\nNow Warburton, interested, for reasons of self-justi\ufb01cation, in demon-\nstrating, against Father Kircher, \u201cthe high antiquity of Egyptian learn-\ning,\u201d chooses the example of an Egyptian science which draws all its\nresources from hieroglyphic writing. That science is Traumdeutung, also\nknown as oneirocriticism. When all is said and done, it was only a\nscience of writing in priestly hands. God, the Egyptians believed, had\nmade man a gift of writing just as he inspired dreams. Interpreters, like\ndreams themselves, then had only to draw upon the curiological or\ntropological storehouse. They would readily \ufb01nd there the key to\ndreams, which they would then pretend to divine. The hieroglyphic\ncode itself served as a Traumbuch. An alleged gift of God, in fact con-\nstructed historically, it had become the common source from which\nwas drawn oneiric discourse: the setting and the text of the dream\u2019s\nmise en sc\u00e8ne. Since dreams are constructed like a form of writing, the\nkinds of transposition in dreams correspond to condensations and\ndisplacements already performed and enregistered in the system of\nhieroglyphics. Dreams would only manipulate elements (stoicheia, says\nWarburton, elements or letters) contained in the storehouse of hiero-\nglyphics, somewhat as written speech would draw on a written lan-\nguage: \u201cSo that the question will be, on what grounds or rules of\ninterpretation the Onirocritics proceded, when, if a man dreamt of a\ndragon, the Interpreter assured him it signi\ufb01ed majesty; if of a serpent, a\ndisease; a viper, money; frogs, impostors.\u201d10 What th"
+    },
+    {
+      "page_number": 317,
+      "evidence": "Significant OCR quality issues with multiple garbled words affecting readability. Error rate of 17.3% is highest in batch. French philosophical text severely compromised: 'toujours' \u2192 'toujours' (okay), but 'cruaut\u00e9' \u2192 'cruaut', 'Paule' \u2192 'paule', 'acutal' (should be 'actual'). Artaud quotation partially garbled. Opening epigraph from Mallarm\u00e9 nearly incomprehensible due to OCR errors. Philosophical meaning partially obscured.",
+      "confidence": 0.45,
+      "footnote_artifacts": "Page footer attribution 'for Paule Th\u00e9venin' shows spelling artifact (paule). Mallarm\u00e9 epigraph corrupted. Multiple character encoding issues throughout French text.",
+      "extracted_text": " \n8\nTHE THEATER OF CRUELTY\nAND THE CLOSURE OF\nREPRESENTATION\nfor Paule Th\u00e9venin\nUnique fois au monde, parce qu\u2019en raison d\u2019un \u00e9v\u00e9nement\ntoujours que j\u2019expliquerai, il n\u2019est pas de Present, non\u2014un\npresent n\u2019existe pas \n(Mallarme, Quant au livre)\n. . . as for my forces, they are only a supplement, the supple-\nment of an acutal state,\nit is that there has never been an origin\n(Artaud, 6 June 1947)\n\u201c. . . Dance / and consequently the theater / have not yet begun to\nexist.\u201d This is what one reads in one of Antonin Artaud\u2019s last writings\n(Le th\u00e9\u00e2tre de la cruaut\u00e9, in 84, 1948). And in the same text, a little\nearlier, the theater of cruelty is de\ufb01ned as \u201cthe a\ufb03rmation / of a\nterrible / and, moreover, implacable necessity.\u201d Artaud, therefore, does\nnot call for destruction, for a new manifestation of negativity. Despite\n"
+    },
+    {
+      "page_number": 347,
+      "evidence": "Multiple significant OCR errors including German philosophical terms with garbled characters: 'Bewusstsein' appears with diacritics/encoding issues ('Bewusstseins' malformed), 'aufhalten' preserved but context has disruptions. Multiple fragmentation points: 'medi-', 'bearbe-iten', 'hemmen', 'aufhalten' appear broken. High error rate (9.6%) reflects genuine OCR quality issues not just philosophical obscurity.",
+      "confidence": 0.62,
+      "footnote_artifacts": "[ibid.]', various truncated reference markers",
+      "extracted_text": " \nseparated: the master must stay alive in order to enjoy what he has\nwon by risking his life; and, at the end of this progression so admir-\nably described by Hegel, the \u201ctruth of the independent consciousness\nis accordingly the consciousness of the bondsman\u201d (Hegel, p. 237).\nAnd when servility becomes lordship, it keeps within it the trace of its\nrepressed origin, \u201cbeing a consciousness within itself (zur\u00fcckgedr\u00e4ngtes\nBewusstsein), it will enter into itself, and change round into real and\ntrue independence\u201d (ibid.). It is this dissymmetry, this absolute priv-\nilege given to the slave, that Bataille did not cease to meditate. The\ntruth of the master is in the slave; and the slave become a master\nremains a \u201crepressed\u201d slave. Such is the condition of meaning, of\nhistory of discourse, of philosophy, etc. The master is in relation to\nhimself, and self-consciousness is constituted, only through the medi-\nation of servile consciousness in the movement of recognition; but\nsimultaneously through the mediation of the thing, which for the\nslave is initially the essentiality that he cannot immediately negate in\npleasurable consumption, but can only work upon, \u201celaborate\u201d (bearbe-\niten); which consists in inhibiting (hemmen) his desire, in delaying\n(aufhalten) the disappearance of the thing. To stay alive, to maintain\noneself in life, to work, to defer pleasure, to limit the stakes, to have\nrespect for death at the very moment when one looks directly at it\u2014such\nis the servile condition of mastery and of the entire history it makes\npossible.\nHegel clearly had proclaimed the necessity of the master\u2019s retaining\nthe life that he exposes to risk. Without this economy of life, the \u201ctrial\nby death, however, cancels both the truth which was to result from it,\nand therewith the certainty of self altogether\u201d (Hegel, p. 233). To rush\nheadlong into death pure and simple is thus to risk the absolute loss of\nmeaning, in the extent to which meaning necessarily traverses the truth\nof the maste"
+    },
+    {
+      "page_number": 404,
+      "evidence": "11.4% error rate with multiple word distortions. Examples: 'monglond' (likely Monglond), 'pleasur' (pleasure), 'univers' (univers/universe), 'preromanticism' correct but 'harcourt' questionable. Notes section shows degradation. While some content recoverable, scholarly accuracy severely compromised.",
+      "confidence": 0.82,
+      "footnote_artifacts": "footnote section shows OCR strain with partial author names",
+      "extracted_text": " \nNOTES\nFor abbreviations used in text and notes, see chapter 4, note 1; chapter 6,\nnote 8; chapter 7, note 2; and chapter 9, note 6. Translator\u2019s notes are\nindicated at the beginning of each such note by the abbrevation TN. Trans-\nlator\u2019s interpolations in author\u2019s notes are enclosed in brackets.\n1: FORCE AND SIGNIFICATION\n1. In L\u2019univers imaginaire de Mallarm\u00e9 (Paris: Editions du Seuil, 1961, p.\n30, n. 27), Jean-Pierre Richard writes: \u201cWe would be content if our work\ncould provide some new materials for a future history of imagination\nand affectivity; this history, not yet written for the nineteenth century,\nwould probably be an extension of the works of Jean Rousset on the\nBaroque, Paul Hazard on the eighteenth century, Andr\u00e9 Monglond on\npreromanticism.\u201d\n2. In his Anthropology (New York: Harcourt, Brace and World, 1948, p.\n325) A. L. Kroeber notes: \u201c \u2018Structure\u2019 appears to be just a yielding to a\nword that has a perfectly good meaning but suddenly becomes fash-\nionably attractive for a decade or so\u2014like \u2018streamlining\u2019\u2014and during\nits vogue tends to be applied indiscriminately because of the pleasur-\nable connotations of its sound.\u201d\nTo grasp the profound necessity hidden beneath the incontestable\nphenomenon of fashion, it is \ufb01rst necessary to operate negatively: the\n"
+    },
+    {
+      "page_number": 406,
+      "evidence": "10.7% error rate with significant degradation. Examples: 'univers' (universe), 'tique' (incomplete), 'essais' present but context uncertain. Notes section compromised with partial words and unclear citations. While some passages recovered, reliable scholarly reading difficult.",
+      "confidence": 0.8,
+      "footnote_artifacts": "footnote section significantly degraded",
+      "extracted_text": " \nd\u2019\u00e8crivain (Paris: Seuil, 1963). Attentive to the fact that the critic takes\nhis material from the work rather than bringing anything to it, Flaubert\nwrites: \u201cOne writes criticism when one cannot create art, just as one\nbecomes a spy when one cannot be a soldier . . . . Plautus would have\nlaughed at Aristotle had he known him! Corneille resisted him all he\ncould! Voltaire himself was belittled by Boileau! We would have been\nspared much evil in modern drama without Schlegel. And when the\ntranslation of Hegel is \ufb01nished, Lord knows where we will end up!\u201d\n(Boll\u00e8me, p. 42). The translation of Hegel hasn\u2019t been \ufb01nished, thank\nthe Lord, thus explaining Proust, Joyce, Faulkner and several others.\nThe difference between Mallarm\u00e9 and these authors is perhaps the\nreading of Hegel. Or that Mallarm\u00e9 chose, at least, to approach Hegel.\nIn any event, genius still has some respite, and translations can be left\nunread. But Flaubert was right to fear Hegel: \u201cOne may well hope that\nart will continue to advance and perfect itself, but its form has ceased\nto be the highest need of the spirit. In all these relationships art is and\nremains for us, on the side of its highest vocation, something past\u201d\n(\u201cVorlesungen \u00fcber die Aesthetik,\u201d in Martin Heidegger: Poetry, Lan-\nguage, Thought, trans. Albert Hofstadter [New York: Harper and Row,\n1971]). The citation continues: \u201cIt [art] has lost, for us, its truth and its\nlife. It invites us to a philosophical re\ufb02ection which does not insure it\nany renewal, but rigorously recognizes its essence.\u201d\n5. Richard, L\u2019univers imaginaire de Mallarm\u00e9, p. 14.\n6. Cf. G\u00e9rard Genette, \u201cUne po\u00e9tique structurale,\u201d Tel Quel, no. 7,\nAutumn 1961, p. 13.\n7. Cf. Jean Rousset, La litt\u00e9rature de l\u2019\u00e2ge baroque en France, vol. 1: Circe et\nle paon (Paris: Jos\u00e9 Corti, 1954). In particular, the following passage \u00e0\npropos of a German example, can be read: \u201cHell is a world in pieces, a\npillage that the poem imitates closely through its disordered shouts,\nbristling with scatter"
+    },
+    {
+      "page_number": 409,
+      "evidence": "14.9% error rate - highest in batch. Multiple significant distortions: 'civilis' (civilis\u00e9s), 'contiennent' garbled, 'phane' (epiphany?), 'artistique' unclear context. Footnote section degraded. While some recovery possible, accuracy unreliable for scholarly purposes.",
+      "confidence": 0.78,
+      "footnote_artifacts": "footnote citations heavily affected",
+      "extracted_text": " \nHegel would be of more assistance here. For even though he too, in\na spiritual metaphorization of natural elements, thinks that \u201cair is the\nunchanging factor, purely universal and transparent; water, the reality\nthat is forever being resolved and given up; \ufb01re, their animating unity,\u201d\nhe nevertheless posits that \u201cearth is the tightly compact knot of this\narticulated whole, the subject in which these realities are, where their\nprocesses take effect, that which they start from and to which they\nreturn\u201d (Phenomenology of the Mind, trans. J. B. Baillie [London:\nGeorge Allen & Unwin, 1931], p. 518.\nThe problem of the relation between writing and the earth is also\nthat of the possibility of such a metaphorization of the elements. Of its\norigin and meaning.\n24. TN. The Hebrew ruah, like the Greek pneuma, means both wind or\nbreath and soul or spirit. Only in God are breath and spirit, speech and\nthought, absolutely identical; man can always be duplicitous, his\nspeech can be other than his thought.\n25. G. W. Leibniz, Theodicy: Essays on the Goodness of God, the Freedom of\nMan, and the Origin of Evil, trans. E. M. Huggard (New Haven: Yale\nUniversity Press, 1952), pp. 370\u201372. [At issue again is the distinction\nbetween the divine and the human, the Book and books. For Leibniz,\nGod\u2019s thought is his action and he is not in the world; but for man,\nwhose action is limited but whose thoughts are not, being in the world\nmeans that he must always choose between alternatives. Man\u2019s will,\nthe power to choose between alternatives as a function of their merits,\nimplies that he is \ufb01nite, that his actions do not always equal his\nthought. God is in\ufb01nite because his thought and his action are\ncoextensive, because he is extraworldly, transcendent.\u2014Trans.]\n26. St\u00e9phane Mallarm\u00e9, Selected Poems, Essays and Letters, trans. Bradford\nCook (Baltimore: Johns Hopkins University Press, 1956), p. 15.\n27. \u201c . . . \u00e0 illuminer ceci\u2014que, plus ou moins, tous les livres contiennent\nla fusion des qelques red"
+    },
+    {
+      "page_number": 410,
+      "evidence": "11% error rate with scholarly impact. Distortions: 'eerdman' (Eerdman), 'empiricity' correct but 'unreproducibly' questionable rendering. Technical terms partially affected: 'guistic' (linguistic), 'schaff' (Schaff). While partially recoverable, reliability compromised.",
+      "confidence": 0.76,
+      "footnote_artifacts": "footnote citations show author name degradation",
+      "extracted_text": " \ndoes more than foretell the most apparently original themes of \u201cmod-\nern\u201d aesthetics. Particularly through a certain anti-Platonism which\ndoes not exclude, as Canguilhem demonstrates, a profound alliance\nwith Plato, beyond Platonism \u201cunderstood without malice.\u201d\n30. TN. According to Leibniz, each monad\u2014the spiritual (nonmaterial)\nbuilding blocks of the universe\u2014is the representation of the entire\nuniverse as preordained by God. Cf. Monadology.\n31. Maurice Merleau-Ponty, \u201cAn Unpublished Text,\u201d trans. Arleen B. Bal-\nlery, in The Primacy of Perception, ed. James M. Edie (Evanston: North-\nwestern University Press, 1964), pp. 8\u20139. The text was \ufb01rst published\nin the Revue de metaphysique et de morale, October\u2014December, 1962.\n32. \u201cProbl\u00e8mes actuels de la ph\u00e9nom\u00e9nologie,\u201d in Actes du colloque inter-\nnationale de ph\u00e9nom\u00e9nologie (Paris, 1952), p. 97.\n33. Saint John Chrysostom, Homilies on the Gospel of Saint Matthew, vol.\n10 of the Select Library of the Nicene and Post-Nicene Fathers of the\nChristian Church, ed. Philip Schaff (Grand Rapids: William B. Eerdman,\n1956), p. 1.\n34. TN. In his translation of the Old Testament, Buber attempted to\nrestore as much as possible the polysemantic structure of certain key\nwords upon which he based his interpretations. Derrida here is\nattempting to examine the presuppositions of construing certain\nwords or ideas as the source of the play of difference implied in lin-\nguistic multivalence. The idea that seems to support the next few\nsentences (in the text) is that if there is no source of \u201cBeing,\u201d \u201cBeing\u201d\nmust then be understood like a game, that is, only in function of itself.\nLanguage would then most accurately \u201capproximate\u201d Being when it,\ntoo, functions only in relation to itself\u2014\u201cpoetry\u201d\u2014without attempting\nto adequate itself to any particular existent. One could then be led to\nspeak of language as having no reference to signi\ufb01ed meanings but\nrather as creating these meanings through the play of signi\ufb01ers. The\nsigni\ufb01er is always that whi"
+    },
+    {
+      "page_number": 421,
+      "evidence": "Error rate: 17.2% | Bucket: E (10%+) | Potential errors: cile, nity, judaisme",
+      "confidence": 0.75,
+      "footnote_artifacts": [
+        "1947",
+        "99",
+        "10",
+        "11",
+        "1963",
+        "1930",
+        "1961",
+        "25",
+        "1964",
+        "1969"
+      ],
+      "extracted_text": " \nbroken tables in Nietzsche as they relate to writing as the mark of\notherness, the \u201crupture\u201d that \u201cbegins\u201d history.\n5. TN. Derrida is referring here to the moment of the unhappy con-\nsciousness in Hegel\u2019s Phenomenology of the Mind. Hegel\u2019s \ufb01rst model\nfor the unhappy consciousness was Abraham.\n6. TN. The silence and hiding of Being are Heideggerean themes, for they\nare, as Heidegger says, \u201cthe question of Nothing.\u201d\n7. TN. \u201cTo leave speech\u201d is to leave behind a trace which always means\nthat the writer is not present.\n8. TN. On the Leibnizian Book, cf. \u201cForce and Signi\ufb01cation,\u201d chap. 1\nabove, note 25.\n9. TN. On these questions, cf. \u201cViolence and Metaphysics.\u201d\n10. TN. That Being is neither present nor outside difference are the\nthemes of Identity and Difference by Heidegger.\n11. TN. The ontological double genitive is also a theme of Identity and\nDifference.\n4: VIOLENCE AND METAPHYSICS\n1. Emmanuel Levinas, Th\u00e9orie de l\u2019intuition dans la ph\u00e9nom\u00e9nologie de\nHusserl (1st ed., Paris: Alcan, 1930; 2d ed., Vrin, 1963); De l\u2019existence \u00e0\nl\u2019existant (Fontaine, 1947); Le temps et l\u2019autre, in Le Choix, le Monde,\nl\u2019Existence, Cahiers du Coll\u00e8ge philosophique (Arthaud, 1949); En\nd\u00e9couvrant l\u2019existence, avec Husserl et Heidegger (Vrin, 1949); Totalit\u00e9 et\nin\ufb01ni, Essai sur l\u2019ext\u00e9riorit\u00e9 (The Hague: Martinus Nijhoff, 1961); Dif\ufb01cile\nlibert\u00e9, Essais sur le judaisme (Albin Michel, 1963).\nI shall also refer to several articles which I shall mention at the\nproper moment. The principal works will be designated by the initials\nof their titles: Th\u00e9orie de l\u2019intuition . . . : THI; De l\u2019existence \u00e0 l\u2019existant:\nEE; Le temps et l\u2019autre: TA; En d\u00e9couvrant l\u2019existence: EDE; Totalit\u00e9 et\nin\ufb01ni: TI [see below]; Dif\ufb01cile libert\u00e9: DL.\nThis essay was already written when two important texts by\nEmmanuel Levinas appeared: \u201cLa trace de l\u2019autre\u201d, in Tijdschrift voor\nFiloso\ufb01e, September 1963; and \u201cLa signi\ufb01cation et le sens,\u201d Revue de\nm\u00e9taphysique et de morale, 1964, no. 2. Unfortunately we can make but\nbrief "
+    },
+    {
+      "page_number": 422,
+      "evidence": "Error rate: 10.6% | Bucket: E (10%+) | Potential errors: sacri, gure, philosophia",
+      "confidence": 0.75,
+      "footnote_artifacts": [
+        "1967",
+        "24",
+        "31",
+        "397",
+        "147",
+        "100",
+        "29",
+        "1958"
+      ],
+      "extracted_text": " \n3. After desiring to restore the properly ontological intention dormant\nwithin metaphysics, after having reawakened the \u201cfundamental ontol-\nogy\u201d beneath \u201cmetaphysical ontology,\u201d Heidegger, faced by the ten-\nacity of traditional ambiguity, \ufb01nally proposes to abandon the terms\n\u201contology\u201d and \u201contological\u201d (Introduction to Metaphysics). The ques-\ntion of Being cannot be submitted to an ontology.\n4. That is, to relativism: the truth of philosophy does not depend upon its\nrelation to the actuality of the Greek or European event. On the con-\ntrary, we must gain access to the Greek or European eidos through an\nirruption or a call whose point of departure is variously determined by\nHusserl and Heidegger. It remains that, for both, \u201cthe irruption of\nphilosophy\u201d (\u201cAufbruch oder Einbruch der Philosophie,\u201d Husserl, Kri-\nsis . . .) is the \u201coriginal\u201d phenomenon which characterizes Europe as a\n\u201cspiritual \ufb01gure\u201d (ibid.). For both, the \u201cword philosophia tells us that\nphilosophy is something which, \ufb01rst of all, determines the existence of\nthe Greek world. Not only that\u2014philosophia also determines the\ninnermost basic feature of our Western-European history, the often\nheard expression \u2018Western-European philosophy\u2019 is, in truth, a tautol-\nogy. Why? Because philosophy is Greek in its nature; Greek, in this\ninstance, means that in origin the nature of philosophy is of such a\nkind that it \ufb01rst appropriated the Greek world, and only it, in order to\nunfold.\u201d Heidegger, What Is Philosophy?, trans. William Kluback and\nJean T. Wilde (London: Vision Press, 1958), pp. 29\u201331.\n5. Husserl: \u201cReason does not suffer being distinguished into \u2018theor-\netical,\u2019 \u2018practical,\u2019 or \u2018esthetic,\u2019 etc.\u201d (Verit\u00e9 et libert\u00e9, trans. P. Ricoeur).\nHeidegger: \u201cTerms such as \u2018logic,\u2019 \u2018ethics,\u2019 \u2018physics,\u2019 appear only at\nthe moment when original thinking loses its hold\u201d (Brief \u00fcber den\n\u201cHumanismus,\u201d in Wegmerken [Frankfurt, 1967], p. 147).\n6. TN. Lingis\u2019s note, TI, p. 24: \u201cWith the author\u2019s permission, we are\ntranslating "
+    },
+    {
+      "page_number": 426,
+      "evidence": "Error rate: 15.7% | Bucket: E (10%+) | Potential errors: kierkegaardiennes, ontologie, priori",
+      "confidence": 0.75,
+      "footnote_artifacts": [
+        "1951",
+        "191",
+        "1961",
+        "308",
+        "37",
+        "1950",
+        "35",
+        "31",
+        "34",
+        "341"
+      ],
+      "extracted_text": " \nempirical and pathological immediacy. Nevertheless, how do they\nescape according to Levinas? It is perhaps to be regretted that no\nsystematic and patient confrontation has been organized with Kant in\nparticular. To our knowledge, only an allusion is made to the \u201cKantian\nechos,\u201d and \u201cto Kant\u2019s practical philosophy to which we feel particu-\nlarly close,\u201d\u2014and this barely in passing\u2014in one article (\u201cL\u2019ontologie\nest-elle fondamentale?\u201d Revue de m\u00e9taphysique et de morale 1951;\nreprinted in Ph\u00e9nom\u00e9nologie, Existence.) This confrontation is called for\nnot only because of the ethical themes but also because of the differ-\nence between totality and in\ufb01nity, about which Kant, among others\nand perhaps more than others, had a number of thoughts.\n27. Levinas often makes accusations against the Socratic mastery which\nteaches nothing, teaches only the already known, and makes every-\nthing arise from the self, that is from the Ego, or from the Same as\nMemory. Anamnesis too, would be a procession of the Same. On this\npoint, at least, Levinas cannot oppose himself to Kierkegaard (cf., for\nexample, J. Wahl, Etudes Kierkegaardiennes, pp. 308\u20139), for his critique\nof Platonism here is literally Kierkegaardian. It is true that Kierkegaard\nopposed Socrates to Plato each time that reminiscence was in ques-\ntion. The latter would belong to the Platonic \u201cspeculation\u201d from which\nSocrates \u201cseparates\u201d himself (Post scriptum).\n28. G. W. F. Hegel. The Philosophy of Fine Art, trans. F. P. B. Osmaston\n(London: C. Bell and Sons, 1920) 1:206\u20137.\n29. Ibid., 3:15.\n30. Ibid.\n31. Ibid., p. 341.\n32. \u201cA priori et subjectivit\u00e9,\u201d Revue de m\u00e9taphysique et de morale, 1962.\n33. Ludwig Feuerbach, Kleine philosophische Schriften (Leipzig 1950),\np. 191.\n34. M. de Gondillac, Introduction aux oeuvres choisies de Nicolas de Cues,\np. 35.\n35. Nouvelle revue fran\u00e7aise, December 1961, \u201cConnaissance de\nl\u2019inconnu.\u201d\n36. It is true that for Merleau-Ponty\u2014differing from Levinas\u2014the phe-\nnomenon of alterity was primordially, if"
+    },
+    {
+      "page_number": 430,
+      "evidence": "Error rate: 16.2% | Bucket: E (10%+) | Potential errors: des, nglich, ontologie",
+      "confidence": 0.75,
+      "footnote_artifacts": [
+        "209",
+        "49",
+        "1929",
+        "405",
+        "222",
+        "54",
+        "1968",
+        "124",
+        "58",
+        "10"
+      ],
+      "extracted_text": " \nthe essential reading, and if it respects all levels of eidetic generality, in\nno case could it found or demonstrate any necessity of essence. For\nexample, we are not sure that these technical, as well as transcen-\ndental precautions are taken by Claude L\u00e9vi-Strauss when, in Tristes\ntropiques, amongst many beautiful pages, he advances the \u201chypoth-\nesis\u201d \u201cthat the primary function of written communication it to facili-\ntate servitude.\u201d If writing\u2014and, indeed, speech in general\u2014retains\nwithin it an essential violence, this cannot be \u201cdemonstrated\u201d or\n\u201cveri\ufb01ed\u201d on the basis of \u201cfacts,\u201d whatever sphere they are borrowed\nfrom and even if the totality of the \u201cfacts\u201d in this domain were avail-\nable. One can often see in the descriptive practice of the \u201csocial sci-\nences\u201d the most seductive (in every sense of the word) confusion of\nempirical investigation, inductive hypothesis and intuition of essence,\nwithout any precautions as to the origin and function of the proposi-\ntions advanced.\n47. Alterity, difference, and time are not suppressed but retained by absolute\nknowledge in the form of the Aufhebung.\n48. Formale und transzendentale Logik (Halle 1929), p. 209. Husserl\u2019s\nitalics.\n49. Ibid., pp. 209\u201310.\n50. Ibid., p. 222.\n51. Of course we cannot do so here. Far from thinking that this \ufb01fth of the\nCartesian Mediations must be admired in silence as the last word on\nthis problem, we have sought here only to begin to experience and to\nrespect its power of resistance to Levinas\u2019s criticisms.\n52. \u201cDie Frage des Warum ist urspr\u00fcnglich Frage nach der Geschichte.\u201d\nHusserl (unpublished E, III, 9, 1931.)\n53. Logische Untersuchungen (T\u00fcbingen 1968), vol.2, I, para. 4, p. 115.\n54. Ibid., p. 124.\n55. L\u2019ontologie est-elle fundamentale?\n56. Brief \u00fcber den \u2018Humanismus,\u2019 p. 192.\n57. \u201cWe go further, and at the risk of seeming to confuse theory and\npractice, we treat the one and the other as modes of metaphysical\ntranscendence. The apparent confusion is willful, and constitutes one\nof the th"
+    },
+    {
+      "page_number": 431,
+      "evidence": "Error rate: 11.7% | Bucket: E (10%+) | Potential errors: sorge, des, benveniste",
+      "confidence": 0.75,
+      "footnote_artifacts": [
+        "63",
+        "170",
+        "233",
+        "75",
+        "26",
+        "20",
+        "406",
+        "188",
+        "67",
+        "66"
+      ],
+      "extracted_text": " \nconfusions, we do not understand, here, as Heidegger does occasion-\nally when the context is clear enough to prevent misunderstanding,\nthe Being-existent of the existent, existenthood (Seiendheit), but rather\nthe Being of existenthood, which Heidegger also calls the truth of\nBeing.\n61. \u201cThe thought which asks the question of the truth of Being . . . is\nneither ethics nor ontology. This is why the question of the relation-\nship between these two disciplines is henceforth without foundation\nin this domain.\u201d (Humanismus p. 188).\n62. L\u2019ontologie est-elle fondamentale?\n63. An explicit theme in Being and Time, for example. Cf. the opposition of\nSorge, besorgen and F\u00fcrsorge in section 26.\n64. In the same problematical horizon, one may confront Heidegger\u2019s\nprocedures (for example, in the Introduction to Metaphysics, \u201cOn the\nGrammar and Etymology of the Word \u2018Being\u2019 \u201d) with Benveniste\u2019s\n(\u201cEtre et avoir dans leurs fonctions linguistiques,\u201d in Probl\u00e8mes de\nlinguistique g\u00e9n\u00e9rale).\n65. Here we could refer to a hundred passages from Heidegger. Rather, let\nus cite Levinas, who had written, however: \u201dFor Heidegger, the com-\nprehension of Being is not a purely theoretical act . . . an act of know-\nledge like any other\u201d (EDE).\n66. It is not necessary to return to the pre-Socratics here. Aristotle already\nhad rigorously demonstrated that Being is neither genre nor principle.\n(Cf. for example, Metaphysics B, 3, 998 b 20). Does not this demonstra-\ntion, made at the same time as a critique of Plato, in truth con\ufb01rm one\nof the Sophist\u2019s intentions? There, Being was certainly de\ufb01ned as one\nof the \u201clargest genres,\u201d and as the most universal of predicates, but\nalso as that which permits all predication in general. As the origin and\npossibility of predication, it is not a predicate, not, at least, a predicate\nlike any other, but a transcendental or transcategorical predicate. Fur-\nther, the Sophist\u2014and this is its theme\u2014teaches us to think that\nBeing\u2014which is other than the other and other "
+    },
+    {
+      "page_number": 433,
+      "evidence": "Error rate: 10.4% | Bucket: E (10%+) | Potential errors: germain, routledge, nist",
+      "confidence": 0.75,
+      "footnote_artifacts": [
+        "77",
+        "75",
+        "74",
+        "73",
+        "79",
+        "1954",
+        "78",
+        "133",
+        "81",
+        "76"
+      ],
+      "extracted_text": " \n73. Humanismus, p. 154.\n74. Ibid.\n75. Ibid., p. 133.\n76. Ibid.\n77. Rather, let us cite a passage from Of Learned Ignorance in which Nicho-\nlas of Cusa says: \u201cThe creature comes from God, yet it cannot, in\nconsequence of that, add anything to Him who is the Maximum\n[Being]. How are we going to be able to form an idea of creature as\nsuch?\u201d And in order to illustrate \u201cthe double process of envelopment\nand development\u201d \u201cwhose mode is absolutely unknown,\u201d he writes:\n\u201cIt is as if a face were reproduced in its own image. With multiplication\nof the image we get distant and close reproductions of the face. (I do\nnot mean distance in space but a gradual distance from the true face,\nsince without that multiplication would be impossible.) In the many\ndifferent images of that face one face would appear in many, different\nways, but it would be an appearance that the senses would be incap-\nable of recognizing and the mind of understanding.\u201d Of Learned Ignor-\nance, trans. Father Germain Heron [London: Routledge and Kegan\nPaul, 1954], p. 79.\n78. The thought of Being is what permits us to say, without na\u00efvet\u00e9, reduc-\ntion, or blasphemy, \u201cGod, for example.\u201d That is, to think God as what\nhe is without making an object of him. This is what Levinas, here in\nagreement with all the most classical in\ufb01nist metaphysics, would\njudge to be impossible, absurd, or purely verbal: how to think what\none says when one proposes the expression, God\u2014or the in\ufb01nite\u2014for\nexample? But the notion of exemplariness would offer more than one\npiece of resistance to this objection.\n79. In a violent article (Heidegger, Gagarine et nous in Dif\ufb01cile libert\u00e9,\nHeidegger is designated as the enemy of technology and classed\namong the \u201cenemies of industrial society,\u201d who \u201cmost often are\nreactionaries.\u201d This is an accusation to which Heidegger has so fre-\nquently and so clearly responded that we can do no better than to refer\nto his writings, in particular to La question de la technique, which treats\ntechnology as a \u201cmo"
+    },
+    {
+      "page_number": 434,
+      "evidence": "Error rate: 12.0% | Bucket: E (10%+) | Potential errors: homme, lderlins, des",
+      "confidence": 0.75,
+      "footnote_artifacts": [
+        "181",
+        "14",
+        "1963",
+        "82",
+        "83",
+        "27",
+        "409",
+        "81",
+        "80",
+        "84"
+      ],
+      "extracted_text": " \nsacred would be the neutralization of the personal God. The \u201creaction\u201d\nagainst technology would not have as its target the danger of technical\ndepersonalization, but precisely that which liberates from ravishment\nby the Sacred and implantation in the Site.\n80. Since we cannot unfold this debate here, we will refer to the clearest of\nHeidegger\u2019s texts on this point: (a) Sein und Zeit: the themes of essen-\ntial Unheimlichkeit, of the \u201cnudity\u201d of being-in-the-world, \u201cals Un-\nzuhause.\u201d It is precisely this authentic condition that the neutral exist-\nence of the One \ufb02ees from. (b) Humanismus: concerning H\u00f6lderlin\u2019s\npoem Return, Heidegger notes that in his commentary the word\n\u201ccountry\u201d is \u201cthought in an essential sense, not at all a patriotic sense,\nnor a nationalist sense, but rather, from the point of view of the\nHistory of Being.\u201d (c) In the same location, Heidegger writes in part-\nicular: \u201cOn the metaphysical plane, every nationalism is an anthropolo-\ngism, and as such, a subjectivism. Nationalism is not overcome by\npure internationalism, but is rather enlarged and Set up as a system.\u201d\n(d) Finally, as concerns the dwelling and the home (whose praises\nLevinas also understands himself to sing, but, it is true, as a moment\nof interiority, and precisely as economy), Heidegger indeed speci\ufb01es\nthat the home does not metaphorically determine Being on the basis\nof its economy but, on the contrary, can only be determined as such on\nthe basis of the essence of Being. Cf. also . . . L\u2019homme habite en po\u00e8te,\nin which, let us note in passing, Heidegger distinguishes the Same\nand the Equal (das Selbe\u2014das Gleiche): \u201cThe Same sets to one side any\nhaste to resolve differences in the Equal,\u201d in Essais et conf\u00e9rences.\n81. Cf., for example, Erl\u00e4uterungen zu H\u00f6lderlins Dichtung (Frankfurt,\n1963), p. 14.\n82. Ibid.\n83. Ibid., p. 27.\n84. Cf. also Vom Wesen des Grundes. Theology, the thinking of the existent-\nGod, of the essence and existence of God, thus would suppose the\nthinking of Being"
+    },
+    {
+      "page_number": 438,
+      "evidence": "Error rate: 14.8% | Bucket: E (10%+) | Potential errors: vii, elementaren, husserliana",
+      "confidence": 0.75,
+      "footnote_artifacts": [
+        "12",
+        "1970",
+        "1929",
+        "101",
+        "187",
+        "53",
+        "1968",
+        "1894",
+        "195",
+        "413"
+      ],
+      "extracted_text": " \n5: GENESIS AND STRUCTURE\n1. Husserl, Formale und transzendentale Logik (Halle, 1929), p. 76.\n2. Husserl, Logische Untersuchungen (T\u00fcbingen, 1968), 2, I, sec. 21,\np. 101.\n3. Husserl says at this time that it is a question of, \u201cpreparing by a\nseries of \u2018psychological and logical researches\u2019 the scienti\ufb01c founda-\ntions for a future structure on which to erect mathematics and phil-\nosophy\u201d (Philosophie der Arithmetik, Husserliana, vol. 12 [The Hague,\n1970], p. 5). In the Logische Untersuchungen he writes: \u201cI set out from\nan absolute conviction that, like logic in general, the logic of deductive\nscience awaited its philosophical clari\ufb01cation from psychology (ibid.,\nvol. 1, p. vi). And an article written shortly after the Philosophic der\nArithmetik, Husserl asserts again: \u201cI believe it possible to maintain\nthat no theory of judgment will ever be in agreement with the facts if it\nis not based upon a profound study of the descriptive and genetic\nrelations between intuitions and representations\u201d (\u201cPsychologische\nStudien zur elementaren Logik,\u201d Philosophische Monatshefte 33 [Berlin,\n1894]: 187 (my italics).\n4. The Philosophie der Arithmetik is dedicated to Brentano.\n5. Speaking of the attempt made in Philosophie der Arithmetik, Husserl\nnotes, in the preface to the Logische Untersuchungen: \u201cCorrespond-\ningly, the psychological researches occupy a very large place in the \ufb01rst\n(and only published) volume of my philosophy of arithmetic. This\npsychological foundation never seemed to me to suf\ufb01ce for certain\ndevelopments. Whenever it was a question of the origin of mathemat-\nical determinations, or of the in fact psychologically determined shap-\ning of practical methods, the results of psychological analysis\nappeared to me to be clear and instructive. But as soon as the transi-\ntion from the psychological developments of thought to the logical\nunity of the content of thought (the unity of theory) was made, no real\ncontinuity or clarity was apparent\u201d (ibid., vol. 1, p. vii).\n6.\nHu"
+    },
+    {
+      "page_number": 441,
+      "evidence": "Error rate: 11.5% | Bucket: E (10%+) | Potential errors: logische, der, medi",
+      "confidence": 0.75,
+      "footnote_artifacts": [
+        "416",
+        "68",
+        "91",
+        "1887",
+        "20",
+        "18",
+        "1960",
+        "37",
+        "66",
+        "61"
+      ],
+      "extracted_text": " \n(Conclusion of Formale und transzendentale Logik and Cartesian Medi-\ntations, see. 61).\n18. Notably this is the project of K\u00f6hler, for whom psychology must sur-\nrender to \u201cphenomenological description,\u201d and of Koffka, a disciple of\nHusserl who seeks to show, in his Principles of Gestalt Psychology, that\nthe \u201cpsychology of form\u201d escapes the criticism of psychologism by\nmeans of its structuralism.\nThe conjunction of phenomenology and the \u201cpsychology of form\u201d\nwas readily foreseeable. Not at the moment when Husserl had to\n\u201creturn\u201d to the \u201cnotion of \u2018con\ufb01guration\u2019 and even of Gestalt\u201d in the\nCrisis, as Merleau-Ponty suggests (Ph\u00e9nom\u00e9nologie de la perception,\np. 62, n. 1), but, on the contrary, because Husserl always alleged, and\nwith some justi\ufb01cation, that Gestaltpsychologie borrowed his own con-\ncepts, particularly the concept of \u201cmotivation\u201d (cf. Ideas, sec. 47, and\nCartesian Meditations, sec. 37) which had already appeared in the\nLogische Untersuchungen, and the concept of an organized totality,\nthe uni\ufb01ed plurality, already present in Philosophie der Arithmetik\n(1887\u201391). Concerning all these questions we refer to A. Gurwitsch\u2019s\nimportant work Th\u00e9orie du champ de la conscience.\n19. (Halle, 1913), pp. 564ff.\n20. \u201cSince the monadically concrete ego includes also the whole of actual\nand potential conscious life, it is clear that the problem of explicating\nthis monadic ego phenomenologically (the problem of his constitution\nfor himself) must include all constitutional problems without exception.\nConsequently, the phenomenology of this self-constitution coincides\nwith phenomenology as a whole.\u201d (Cartesian Meditations, trans. Dorian\nCairns [The Hague: Martinus Nijhoff, 1960], see. 33, p. 68).\n21. \u201cNow, however, we must call attention to a great gap in our exposition.\nThe ego is himself existent for himself in continuous evidence; thus, in\nhimself, he is continuously constituting himself as existing. Heretofore we\nhave touched on only one side of this self-constitution, "
+    },
+    {
+      "page_number": 443,
+      "evidence": "Error rate: 13.3% | Bucket: E (10%+) | Potential errors: gure, blanchot, cruaut",
+      "confidence": 0.75,
+      "footnote_artifacts": [
+        "209",
+        "207",
+        "1948",
+        "1970",
+        "1961",
+        "418",
+        "1954",
+        "1959",
+        "57",
+        "15"
+      ],
+      "extracted_text": " \nthe possibility of its purity, its conditions, or its \u201cimmotivation,\u201d will\nnever cease to be problematical. Nor did it ever cease to be so for\nHusserl himself, like the possibility of the transcendental reduction\nitself. The latter maintains an essential af\ufb01nity with metaphysics.\n29. Die Krisis der europaischen Wissenschaften und die transzendentale\nPh\u00e4nomenologie (The Hague: Martinus Nijhoff, 1954), pp. 502\u20133.\n6: LA PAROLE SOUFFL\u00c9E\n1. TN. On the question of madness and the work, cf. above, \u201cCogito and\nthe History of Madness,\u201d in which Derrida examines at length\nFoucault\u2019s de\ufb01nition of madness as \u201cthe absence of the work.\u201d\n2. Michel Foucault \u201cLe \u2018non\u2019 du p\u00e8re,\u201d Critique, March 1962, pp. 207\u20138.\n[Foucault\u2019s article is a review of Jean Laplanche\u2019s H\u00f6lderlin et la ques-\ntion du p\u00e8re; Paris: P.U.F., 1961.]\n3. TN. Maurice Blanchot, Le livre \u00e0 venir (Paris: Gallimard, 1959), p. 48.\n4. TN. This is a pre-Hegelian concept of the relations between truth,\nerror, and history because, for Hegel, historical \u201cerror\u201d is dialectically\nintrinsic to historical truth, and individual experience is never isolated\nfrom historical process.\n5. Blanchot, Le livre \u00e0 venir, p. 48.\n6. Ibid., p. 57.\n7. TN. This is the \ufb01gure of the \u201cbeautiful soul\u201d from the Phenomenology.\nHegel is generally considered to have been describing Novalis in his\nanalysis of the \u201cbeautiful soul.\u201d Derrida seems to be saying here that\njust as Hegel makes Novalis an example of a transcendental structure\nwithout considering anything in Novalis that does not participate in\nthis structure, so Blanchot is making an example of Artaud, inevitably\nreducing to the level of error that which is particular to Artaud.\n8. This af\ufb01rmation, whose name is \u201cthe theater of cruelty,\u201d is pronounced\nafter the letters to Jacques Rivi\u00e8re and after the early works, but it\nalready governs them. \u201cThe theater of cruelty / is not the symbol of an\nabsent void, / or a horrifying inability to realize oneself within one\u2019s life\n/ as a person, / it is the"
+    },
+    {
+      "page_number": 468,
+      "evidence": "Error rate 12.3% with significant fragmentation. Multiple word fragments create noise (xlix, der, weidenfeld, econ, anthropologie). Key references to Mauss and L\u00e9vi-Strauss readable but surrounded by OCR artifacts. Section header '10: STRUCTURE, SIGN, AND PLAY' clear but reference quality compromised. Recovery requires substantial context inference.",
+      "confidence": 0.82,
+      "footnote_artifacts": [
+        {
+          "text": "der",
+          "issue": "German article artifact"
+        },
+        {
+          "text": "econ",
+          "issue": "Truncated word - likely 'economy'"
+        }
+      ],
+      "extracted_text": " \n10: STRUCTURE, SIGN, AND PLAY IN THE DISCOURSE OF HUMAN\nSCIENCES\n1\nTN. The reference, in a restricted sense, is to the Freudian theory of\nneurotic symptoms and of dream interpretation in which a given sym-\nbol is understood contradictorily as both the desire to ful\ufb01ll an\nimpulse and the desire to suppress the impulse. In a general sense the\nreference is to Derrida\u2019s thesis that logic and coherence themselves\ncan only be understood contradictorily, since they presuppose the\nsuppression of diff\u00e9rance, \u201cwriting\u201d in the sense of the general econ-\nomy. Cf. \u201cLa pharmacie de Platon,\u201d in La dissemination, pp. 125\u201326,\nwhere Derrida uses the Freudian model of dream interpretation in\norder to clarify the contractions embedded in philosophical coherence.\n2. The Raw and the Cooked, trans. John and Doreen Wightman (New\nYork: Harper and Row, 1969), p. 14. [Translation somewhat modi\ufb01ed.]\n3. The Elementary Structures of Kinship, trans. James Bell, John von\nSturmer, and Rodney Needham (Boston: Beacon Press, 1969), p. 8.\n4. Ibid., p. 3.\n5. The Savage Mind (London: George Weidenfeld and Nicolson; Chicago:\nThe University of Chicago Press, 1966), p. 247.\n6. Ibid., p. 17.\n7. The Raw and the Cooked, p. 2.\n8. Ibid., pp. 5\u20136.\n9. Ibid., p. 12.\n10. Ibid. pp. 17\u201318.\n11. Ibid., pp. 7\u20138.\n12. TN. This double sense of supplement\u2014to supply something which is\nmissing, or to supply something additional\u2014is at the center of Der-\nrida\u2019s deconstruction of traditional linguistics in De la grammatologie.\nIn a chapter entitled \u201cThe Violence of the Letter: From L\u00e9vi-Strauss to\nRousseau\u201d (pp. 149ff.), Derrida expands the analysis of L\u00e9vi-Strauss\nbegun in this essay in order further to clarify the ways in which the\ncontradictions of traditional logic \u201cprogram\u201d the most modern con-\nceptual apparatuses of linguistics and the social sciences.\n13. \u201cIntroduction \u00e0 l\u2019oeuvre de Marcel Mauss,\u201d in Marcel Mauss,\nSociologie et anthropologie (Paris: P.U.F., 1950), p. xlix.\n14. Ibid., pp. xlix\u2014l.\n15. George Charbonnier, E"
+    },
+    {
+      "page_number": 469,
+      "evidence": "Error rate 13.3% with heavy fragmentation. Numerous unknown words create substantial noise (tristes, catesson, cardinaux, yukel, tropiques). Section title '11: ELLIPSIS' clear but references heavily corrupted. Author names partially recognizable (Jab`es, Mauss). Requires expert knowledge to reconstruct meaning.",
+      "confidence": 0.8,
+      "footnote_artifacts": [
+        {
+          "text": "Tristes tropiques",
+          "issue": "Title fragmented"
+        },
+        {
+          "text": "catesson",
+          "issue": "Author name garbled or unknown"
+        }
+      ],
+      "extracted_text": " \n17. \u201cIntroduction \u00e0 l\u2019oeuvre de Marcel Mauss,\u201d p. xlvi.\n18. TN. The reference is to Tristes tropiques, trans. John Russell (London:\nHutchinson and Co., 1961).\n11: ELLIPSIS\n1. This is the title of the third volume of the Livre des questions (1965). The\nsecond volume, the Livre de Yukel, appeared in 1964. Cf. chap. 3 above,\n\u201cEdmond Jab\u00e8s and the Question of the Book.\u201d\n2. TN. The exit from the identical into the same recalls the \u201cleap out of\nmetaphysics\u201d into the question of difference, which is also the ques-\ntion of the same, as elaborated by Heidegger in Identity and Difference.\n3. TN. The eternal return is the Nietzschean conception of the same.\n4. Jean Catesson, \u201cJournal non-intime et points cardinaux,\u201d Measures,\nno. 4, October 1937.\nnotes to pages 368\u201378\n444\n"
+    },
+    {
+      "page_number": 470,
+      "evidence": "Error rate 29.8% - critically high. Severe fragmentation with numerous artifacts (criture, coll, salle, cerisy, taphysique, conomie). The page appears to be a bibliography/sources section, which explains some abbreviation artifacts. However, OCR quality is significantly degraded. Multiple proper names and references corrupted beyond quick recovery.",
+      "confidence": 0.78,
+      "footnote_artifacts": [
+        {
+          "text": "criture",
+          "issue": "Likely '\u00e9criture' - accent lost, letter lost"
+        },
+        {
+          "text": "taphysique",
+          "issue": "Likely 'm\u00e9taphysique' - prefix truncated"
+        },
+        {
+          "text": "conomie",
+          "issue": "Likely '\u00e9conomie' - accent and letter lost"
+        }
+      ],
+      "extracted_text": " \nSOURCES\n1\n\u201cForce et signi\ufb01cation.\u201d Critique, nos. 193\u201394, June\u2014July 1963.\n2\n\u201cCogito et l\u2019histoire de la folie.\u201d Lecture delivered 4 March 1963 at the\nColl\u00e8ge Philosophique and published in Revue de m\u00e9taphysique et de\nmorale, 1964, nos. 3 and 4.\n3\n\u201cEdmond Jab\u00e8s et la question du livre.\u201d Critique, no. 201, January\n1964.\n4\n\u201cViolence et m\u00e9taphysique: Essai sur la pens\u00e9e d\u2019Emmanuel Levi-\nnas.\u201d Revue de m\u00e9taphysique et de morale, 1964, nos. 3 and 4.\n5\n\u201c\u2018Gen\u00e8se et structure\u2019 et la ph\u00e9nom\u00e9nologie.\u201d Lecture delivered 1959\nat Cerisy-la-Salle and published in Gen\u00e8se et structure, edited by Gan-\ndillac, Goldmann and Piaget. The Hague: Mouton, 1964.\n6\n\u201cLa parole souf\ufb02\u00e9e.\u201d Tel Quel, no. 20, winter 1965.\n7\n\u201cFreud et la sc\u00e8ne de l\u2019\u00e9criture.\u201d Lecture delivered at the Institut de\nPsychanalyse and published in Tel Quel, no. 26, summer 1966.\n8\n\u201cLe th\u00e9\u00e2tre de la cruaut\u00e9 et la cl\u00f4ture de la repr\u00e9sentation.\u201d Lecture\ndelivered at the Artaud colloquium, International Festival of Uni-\nversity Theater, Parma, April 1966, and published in Critique, no. 230,\nJuly 1966.\n9\n\u201cDe l\u2019\u00e9conomie restreinte \u00e0 l\u2019\u00e9conomie g\u00e9n\u00e9rale: Un hegelianisme\nsans r\u00e9serve.\u201d L\u2019arc, May 1967.\n10\n\u201cLa structure, le signe et le jeu dans le discours des sciences\nhumaines.\u201d Lecture delivered 21 October 1966 at the International\n"
+    }
+  ],
+  "total_in_batch": 23
+}

@@ -1,0 +1,302 @@
+[
+  {
+    "ocr_text": "atural",
+    "correct_text": "natural",
+    "error_type": "unknown",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 11,
+    "context": "t of a Technic of Nature Dogmatically  Is That a ~atural Purpose Is Inexplicable  277  \u00a775.  The Concept o",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "righLful",
+    "correct_text": "rightful",
+    "error_type": "character_substitution",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 16,
+    "context": " step toward securing for the third Critique its  righLful place in the Kantian corpus.  MARY 1. GREGOR  San",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "tbese",
+    "correct_text": "these",
+    "error_type": "character_substitution",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 23,
+    "context": "XXIV  TRANSLATOR'S INTRODUCTION  tbese judgments is, roughly, the following. When we cal",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "tbe",
+    "correct_text": "the",
+    "error_type": "character_substitution",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 23,
+    "context": "XXIV  TRANSLATOR'S INTRODUCTION  tbese judgments is, roughly, the following. When we c",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "untit",
+    "correct_text": "until",
+    "error_type": "character_substitution",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 27,
+    "context": "from the point of view  of social psychology; not untit a few years before publication of the  third Crit",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "ewton",
+    "correct_text": "newton",
+    "error_type": "unknown",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 31,
+    "context": "ally dogmatic, and utterly implausible  as well. Newton undeniably had discovered some basic laws of natu",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "llYfhe",
+    "correct_text": "blythe",
+    "error_type": "character_substitution",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 32,
+    "context": "ists in visualizing purely in terms of space and  llYfhe distinction between a phenomenal world and a worl",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "sllbsumed",
+    "correct_text": "subsumed",
+    "error_type": "unknown",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 35,
+    "context": "ibutes of the  instances that fall (i.e., can be \"sllbsumed\") under it, but omits the  particular attributes ",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "ithin",
+    "correct_text": "within",
+    "error_type": "unknown",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 37,
+    "context": "eat that reason  easily strays beyond the bounds ~ithin which theoretical knowledge  is possible for us a",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "lhe",
+    "correct_text": "the",
+    "error_type": "character_substitution",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 37,
+    "context": "reason, we must let our own critique remind us of lhe  limits of our cognitive powers. We must let it r",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "strued",
+    "correct_text": "trued",
+    "error_type": "unknown",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 41,
+    "context": "gy about human motivation. Accordingly, Hume con- strued ethical judgments as seeking merely to influence ",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "circum",
+    "correct_text": "circus",
+    "error_type": "character_substitution",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 42,
+    "context": "where doing so requires that we  struggle against circumstances in nature or against our natural  inclinat",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "willI",
+    "correct_text": "will",
+    "error_type": "unknown",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 42,
+    "context": "says: ''Act  in such a way that the maxim of your willI could 1 always hold at the  same time as a princi",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "pos",
+    "correct_text": "pop",
+    "error_type": "character_substitution",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 42,
+    "context": "e, not conditioned by this or  that particular purpose we happen to be pursuing. But his main  objectio",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "fhis",
+    "correct_text": "this",
+    "error_type": "character_substitution",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 42,
+    "context": " of the Metaphysics of Morals.  Ak. IV, 448n.  29'fhis claim hinges on the fact that the moral law deman",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "versalizable",
+    "correct_text": "verbalizable",
+    "error_type": "character_substitution",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 43,
+    "context": "hat the moral law commands us to act only on uni- versalizable maxims. Hence in obeying that law our reason impo",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "typus",
+    "correct_text": "types",
+    "error_type": "character_substitution",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 44,
+    "context": " helped by understanding) is what Kant calls  the typus of the moral law: the same law regarded as a law ",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "typus",
+    "correct_text": "types",
+    "error_type": "character_substitution",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 44,
+    "context": " helped by understanding) is what Kant calls  the typus of the moral law: the same law regarded as a law ",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "typus",
+    "correct_text": "types",
+    "error_type": "character_substitution",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 44,
+    "context": " helped by understanding) is what Kant calls  the typus of the moral law: the same law regarded as a law ",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "bered",
+    "correct_text": "bored",
+    "error_type": "character_substitution",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 44,
+    "context": "chieve in this life, because we are beings encum- bered by sensibility, by certain obstacles which nature",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "mands",
+    "correct_text": "hands",
+    "error_type": "character_substitution",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 45,
+    "context": "chievable  in principle, because the moral law commands it and the moral law is  a matter of fact (fact o",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "indeter",
+    "correct_text": "indexer",
+    "error_type": "character_substitution",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 45,
+    "context": "o leave the idea of this supersensible completely indeter- minate. The second Critique, as Kant puts it, ma",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "zable",
+    "correct_text": "able",
+    "error_type": "unknown",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 46,
+    "context": "rminate (and hence makes the supersensible cogni- zable practically): through the final purpose as enjoin",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "perfec",
+    "correct_text": "perfect",
+    "error_type": "unknown",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 48,
+    "context": "ct. But they denied that sense perception can  be perfected only by making it distinct and thereby turning",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "singu",
+    "correct_text": "sing",
+    "error_type": "unknown",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 48,
+    "context": " we do by abstracting from the  individuality and singularity (Le., from the detail and concreteness) it ",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "larity",
+    "correct_text": "clarity",
+    "error_type": "unknown",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 48,
+    "context": "o by abstracting from the  individuality and singularity (Le., from the detail and concreteness) it  prese",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "aller",
+    "correct_text": "alley",
+    "error_type": "character_substitution",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 48,
+    "context": "gsbuchhandlung, 1961) and  Meier's Anfangsgriinde aller schOnen WisselUchaften (FoundatioIU of all Fine S",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "perfec",
+    "correct_text": "perfect",
+    "error_type": "unknown",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 49,
+    "context": "en and Meier. when our sense perception  has this perfection peculiar to it, this perfected perception all",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "alsu",
+    "correct_text": "also",
+    "error_type": "character_substitution",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 51,
+    "context": "an be perceived by the moral \"sense,\" but  it can alsu produce aesthetic delight. (Vice can be represent",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  },
+  {
+    "ocr_text": "idifferent",
+    "correct_text": "different",
+    "error_type": "unknown",
+    "source_pdf": "Kant_CritiqueOfJudgement.pdf",
+    "page_num": 52,
+    "context": "s a  contingent uniformity in the organization of idifferent] subjects\" (Ak.  345-46). Hence the empiricist an",
+    "verification_method": "spell_check",
+    "confidence": 0.7
+  }
+]

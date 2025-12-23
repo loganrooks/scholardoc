@@ -1,0 +1,330 @@
+{
+  "document": "Heidegger_BeingAndTime",
+  "batch_number": 9,
+  "reviewed_pages": [
+    {
+      "page_number": 496,
+      "original_evidence": [
+        "High unknown word count: 10 samples"
+      ],
+      "original_confidence": "medium",
+      "classification": "FALSE_POSITIVE",
+      "reason": "Bibliography with German book/article titles - legitimate German text",
+      "notes": "German words found: iiber, und, zur, der, die",
+      "extracted_text_sample": "Being and Time \n495 \nphenomenon of death in his characterization of 'life', though admittedly without clearly \nseparating the biological-ontical and the ontological-existential problematics. (Cf. his \nLebensanschauung: Vier Metaphysische Kapitel, 1918, pp. 99- 153.) For the investigation \nwhich lies before us, compare especially Karl Jaspers' Psychologie der Weltanschauungen, \n3rd Edition, 1 925, pp. 229 ff., especially pp. 259-270. Jaspers takes as his clue to death \nthe phenomenon of the 'limi"
+    },
+    {
+      "page_number": 499,
+      "original_evidence": [
+        "High unknown word count: 10 samples"
+      ],
+      "original_confidence": "high",
+      "classification": "FALSE_POSITIVE",
+      "reason": "Bibliography with German book/article titles - legitimate German text",
+      "notes": "German words found: iiber, und",
+      "extracted_text_sample": "Being and Time \nix. (H. 34-li) Cf. Sections 35 ff., H. 167 ff. \nx. (H. 346) Cf. Section 36, H. 170 ff. \nxi. (H. 349) Cf. Section 34, H. 16o ff. \nxii. (H. 349) Cf., among others, Jakob Wackernagel, Vorlesungen iiber Syntax, vol. I, 1920, \np. 15, and especially pp. 149-2 10. See further G. Herbig, 'Aktionsart und Zeitstufe' in \nIndogertTI1Jisch6 Forschung, vol. VI, 1896, pp. 167 ff. \nxiii. (H. 349) Cf. Division Three, Chapter II of this treatise. [Since Division Three has \nnever ben published, thi"
+    },
+    {
+      "page_number": 500,
+      "original_evidence": [
+        "High unknown word count: 10 samples"
+      ],
+      "original_confidence": "medium",
+      "classification": "FALSE_POSITIVE",
+      "reason": "Bibliography with German book/article titles - legitimate German text",
+      "notes": "German words found: iiber, und, der",
+      "extracted_text_sample": "Being and Time \n499 \niii. (H. 414) Cf. Section 18, H. 83 ff., and Section 69c, H. 364 ff. \niv. (H. 417) Here we shall not go into the problem of the measurement of time as treated in \nthe theory of relativity. If the ontological foundations of such measurement are to be \nclarified, this presupposes that world-time and within-time-ness have already been \nclarified in terms of Dasein's temporality, and that light has also been cast on the \nexistential-temporal Constitution of the discovery of Natu"
+    },
+    {
+      "page_number": 506,
+      "original_evidence": [
+        "High unknown word count: 10 samples"
+      ],
+      "original_confidence": "high",
+      "classification": "FALSE_POSITIVE",
+      "reason": "Glossary/Index pages - German terms are expected content, not OCR errors",
+      "notes": "Page 506 is part of German-English glossary/index",
+      "extracted_text_sample": "G L O S S A R Y  O F  G E R M A N  E X P R E S S I O N S  \nabblenden: *dim down \nAbgeschlossenheit: (See abschliessen.) \nAbgrund: *abyss \n(fin. H. 152) \nabkiinftig: derivative \n(ftn. H. 329) \nableben: *demise \n(fin. H. 247) \nabschliessen, Abschluss : *settle; con\u00ad\nclude (H. 184, 259) \nAbstand: distance \nabstandmassig, \nAbstandigkeit: \n*dis-\ntantial, *distantiality \nAbsturz: *downward plunge \nabtraglich: *detrimental \nAbwesenheit : \nabsence \n(Fehlen; \nMangel, H. g; etc.) \nAktionsart: aspect \nallt"
+    },
+    {
+      "page_number": 507,
+      "original_evidence": [
+        "High unknown word count: 10 samples"
+      ],
+      "original_confidence": "high",
+      "classification": "FALSE_POSITIVE",
+      "reason": "Glossary/Index pages - German terms are expected content, not OCR errors",
+      "notes": "Page 507 is part of German-English glossary/index",
+      "extracted_text_sample": "so6 \nBeing and Time \nauffallig, auffallend: *conspicuous \n(fin. H. 74) \naufgehen : *be absorbed; rise (H. 412) \n(ftn. H. 54) \naufhalten: dwell; hold up (vorhalten, \nH. 266) \n(ftn. H. 61, 354) \naufrufen, Aufruf: *summon \n(fin. H. 269, 273) \nAufsiissigkeit: *obstinacy \n(ftn. H. 74) \naufschliessen: *lay open \nBut cf. Aufschluss (information; tell; \netc.) \n(fin. H. 75) \ndas \n\"Auf-sich-zu\" : \n*the \n'towards\u00ad\noneself' \n(ftn. H. 329) \nsich aufspreizen: *give itself airs \n(fin. H. 430) \naufweisen: exhib"
+    },
+    {
+      "page_number": 508,
+      "original_evidence": [
+        "High unknown word count: 10 samples"
+      ],
+      "original_confidence": "high",
+      "classification": "FALSE_POSITIVE",
+      "reason": "Glossary/Index pages - German terms are expected content, not OCR errors",
+      "notes": "Page 508 is part of German-English glossary/index",
+      "extracted_text_sample": "Glossary of German Expressions \nbehalten : retain, *retention, *reten\u00ad\ntive; keep (H. 132) \nBut cf. Recht behalten (is right, is \njustified) ; vorbehalten (reserve) \n(ftn. H. 354) \nbei : *alongside; in; in spite of; etc. \n(ftn. H. 54, 84, 85, 141, 239, 329) \nbelegen: reserve (H. 368), *pre-empt \n(H. 19) ;  evidence (H. 431) \n(ftn. H. 368) \nbenommen : *fascinated \nBut \nif. \nbenehmen \n(take \naway; \ndeprive). \n(fin. H. 344) \nberechnen : calculate \nbereden: *talk about \nBut cf. Rede (*discourse, tal"
+    },
+    {
+      "page_number": 509,
+      "original_evidence": [
+        "High unknown word count: 10 samples"
+      ],
+      "original_confidence": "high",
+      "classification": "FALSE_POSITIVE",
+      "reason": "Glossary/Index pages - German terms are expected content, not OCR errors",
+      "notes": "Page 509 is part of German-English glossary/index",
+      "extracted_text_sample": "508 \nBeing and Time \nda: there; that; as; here (H. I02, \n430) \n(ftn. H. 7, I35, 408) \ndabei: there alongside; thereby, etc. \nBut cf. Mit-dabei-sein (Being \"in on \nit\" with someone). \n(fin. H. 85, I I9, 239) \ndagewesen: *has-been-there \ndamals: *on that former occasion \nBut cf. damalig (of that time). \ndann: then; than; in that case; etc. \n(fin. H. 406) \nDasein: *Dasein \n(fin. H. 7, 25, 4I, 58, 63, I84) \nDa-sein: *Being-there \n(ftn. H. 7) \ndaseinsmasig: *of the character of \nDasein; *of the kind "
+    },
+    {
+      "page_number": 510,
+      "original_evidence": [
+        "High unknown word count: 10 samples"
+      ],
+      "original_confidence": "high",
+      "classification": "FALSE_POSITIVE",
+      "reason": "Glossary/Index pages - German terms are expected content, not OCR errors",
+      "notes": "Page 510 is part of German-English glossary/index",
+      "extracted_text_sample": "Glossary of German Expressions \n509 \nenden: end (verb} \nBut cf. Beendigung (*termination) ; \nverenden (*perish) ; vollenden (ful\u00ad\nfil; complete) \nendgiiltig: final \nendlos : *endless \nentdecken: *discover; uncover \n(ftn. H. 33, 218) \nentfernen : *desever; *remove \nBut cJ. ent-fernen (q.v.). \n(fin. H. 103, 105) \nent-fernen: *de-sever \nBut cJ. entfernen (q.v.) \n(fin. H. 105) \nentfremden: *alienate \nBut cJ. befremden (*seem strange). \nentgegenkommen: accommodate (H. \n127f) ; confront . . .  as comi"
+    },
+    {
+      "page_number": 513,
+      "original_evidence": [
+        "High error rate: 30.3%"
+      ],
+      "original_confidence": "high",
+      "classification": "FALSE_POSITIVE",
+      "reason": "Glossary/Index pages - German terms are expected content, not OCR errors",
+      "notes": "Page 513 is part of German-English glossary/index",
+      "extracted_text_sample": "512 \nBeing and Time \nGrund--cont. \nor 'basis'. Exceptions: 'Abgrund', \n'begriinden', 'gnmdlage', 'griindlich', \n'Grundsatz', 'grundsiitzlich', 'grund\u00ad\nverschieden', 'Hintergrund', '&chts\u00ad\ngrund', 'zugrundeliegen'.) \nGrundsein: *Being the basis, *Being a \nbasis \nGrundverfassung: *basic constitution, \n*basic state, *basically constituted \ngiiltig, Gultigkeit: valid, valid char\u00ad\nacter (gelten, Geltung) \nBut if. endgiiltig (finally, finality) ; \ngleichgiiltig (*indifferent). \n(ftn. H. I55) \nhalten: "
+    },
+    {
+      "page_number": 516,
+      "original_evidence": [
+        "High error rate: 34.1%"
+      ],
+      "original_confidence": "high",
+      "classification": "FALSE_POSITIVE",
+      "reason": "Glossary/Index pages - German terms are expected content, not OCR errors",
+      "notes": "Page 516 is part of German-English glossary/index",
+      "extracted_text_sample": "Glossary of German Expressions \nnur-noch-vorhanden: *just present-at\u00ad\nhand-and-no-more \n(ftn. H. 74) \nObjekt: *Object \nBut cf. Gegenstand, etc. (object). \n(ftn. H. 363) \nOffenbar, offenbaren; manifest; open \nup (H. I24) \noffentlich, \nOffentlichkeit: \n*public; \n*publicness \nBut cf. veroffentlichen (*make public; \n*give a public character). \nOhnmacht: *powerlessnes \n(ftn. H. 384) \nontisch: *ontical, *ontico\u00ad\n(ftn. H. I I, I2) \nOntologie, \nontologisch: \n*ontology, \n*ontological, *ontologico-\n(ftn. "
+    },
+    {
+      "page_number": 520,
+      "original_evidence": [
+        "High error rate: 32.1%"
+      ],
+      "original_confidence": "high",
+      "classification": "FALSE_POSITIVE",
+      "reason": "Glossary/Index pages - German terms are expected content, not OCR errors",
+      "notes": "Page 520 is part of German-English glossary/index",
+      "extracted_text_sample": "Glossary of German Expressions \ndas Umhafte : *the aroundnes \n(fin. H. 10 I) \nUmkreis: range (noun) \n(Note: tlu noun 'range' has been re\u00ad\nserved for 'Umkreis' and a few in\u00ad\nfrequent compounds in '-kreis' or \n'-weite'; the verb 'range' translates a \nfew otlur expressions of little impor\u00ad\ntance.) \numschlagen, Umschlag: *change over \nUmsicht: *circumspection \n(fin. H. 65, 69, I23) \nUmwelt: *environment \n(fin. H. 65) \ndas Umwillen : *the \"for-the-sake-of\" \ndas Um-zu : *the \"in-order-to\" \n(fin. H. 65"
+    },
+    {
+      "page_number": 522,
+      "original_evidence": [
+        "High error rate: 30.4%"
+      ],
+      "original_confidence": "high",
+      "classification": "FALSE_POSITIVE",
+      "reason": "Glossary/Index pages - German terms are expected content, not OCR errors",
+      "notes": "Page 522 is part of German-English glossary/index",
+      "extracted_text_sample": "Glossary of German Expressions \nvorstehen: manage (H. 14g) ; fore\u00ad\ngoing; preceding; etc. \n(fin. H. 14g) \nvorstellen, Vorstellung: represent, re\u00ad\npresentation; *lay before (H. 8g) ; \nput before (H. goo) ; *ideation \n(H. 1g9) \n(fin. H. 217, 2g9, goo) \nVor-struktur: *fore-structure \n(fin. H. g27) \nvorweg: *ahead, in advance \nBut cf. Vorwegnahme (*foreseen, H. \n1g1) ; vorwegnehmen (take for \ngranted, H. 147) ; *take in ad\u00ad\nvance, (H. 264) ; anticipate, H. \ng91). \n(ftn. H. g29) \nvorwerfen: *reproach"
+    },
+    {
+      "page_number": 525,
+      "original_evidence": [
+        "High error rate: 35.6%"
+      ],
+      "original_confidence": "high",
+      "classification": "FALSE_POSITIVE",
+      "reason": "Glossary/Index pages - German terms are expected content, not OCR errors",
+      "notes": "Page 525 is part of German-English glossary/index",
+      "extracted_text_sample": "I N D E X  O F  EN G L I S H  E X P R E S S I O N S  \na priori. \n(See Index of Latin Expressions.) \ntabandon: iiberlassen; verlassen (H.) \niiberlasen \na. to oneself: H. 141, 192, 277, 308, \n347\u00b7 365 \na. to one's own null basis : H. 348 \na. to one's having-been: H. 365 \na. to having made a choice: H. 384 \na. to definite posibilities: H. 270 \na. to one's thrownnes: H. 345 \na. to the disposal of the \"they\": H. \n193 \na. to the world: H. 172, 412 \na. to a 'world' : H. 356, 406, 412f. \na. to the past:"
+    },
+    {
+      "page_number": 526,
+      "original_evidence": [
+        "High error rate: 35.6%"
+      ],
+      "original_confidence": "high",
+      "classification": "FALSE_POSITIVE",
+      "reason": "Glossary/Index pages - German terms are expected content, not OCR errors",
+      "notes": "Page 526 is part of German-English glossary/index",
+      "extracted_text_sample": "Index of English Expressions \ntbe afraid: *sich firchten \n(fin. H. I42) \nH. I4If, I86, I8g, 34If \nthe \"against\" : das Wider \nH. 2Io \naggregate: das All (totality) ; Gesam\u00ad\ntheit (H. 366) ; *lnbegriff (H. 65) \nthe aggregate of entities : H. 8, I4, \n64, 24I, 248 \nthe aggregate of the present-at\u00ad\nhand : H. 362 \n(Note: this list includes those pas\u00ad\nsages in which 'das All' has been \ntranslated as 'to tali!)!'.) \nagree, agreement: *iibereinstimmen; \n*zustimmen; \n*zusammenstim\u00ad\nmen; *einstimmig \nt*iib"
+    },
+    {
+      "page_number": 527,
+      "original_evidence": [
+        "High error rate: 35.8%"
+      ],
+      "original_confidence": "high",
+      "classification": "FALSE_POSITIVE",
+      "reason": "Glossary/Index pages - German terms are expected content, not OCR errors",
+      "notes": "Page 527 is part of German-English glossary/index",
+      "extracted_text_sample": "Being and Time \ntapperception: * Apperzeption \nH. 319, 319 n. xvi \nthe apprehensive: *befiirchten \nBut cf. apprehend (erfassen) \nH. 57, 1 17, 142, 345 \nappropriate (adj.) :  geeignet (suited, \netc.) ; angemessen (proper; suit\u00ad\ned; etc.) ; gemiiss; -massig \nBut cf. inappropriate (ungeeignet, \nunangemessen, nicht zukom\u00ad\nmen) \n(ftn. H. 83) \nappropriate \n(verb) : \n*zueignen; \naneignen (make one's own) \n*zueignen: H. 6g, 127, 148, 150f, \n16o-162, 167-170, 196, 222, 231, \n2g6, 299 \na priori \n(See Inde"
+    },
+    {
+      "page_number": 530,
+      "original_evidence": [
+        "High error rate: 38.1%"
+      ],
+      "original_confidence": "high",
+      "classification": "FALSE_POSITIVE",
+      "reason": "Glossary/Index pages - German terms are expected content, not OCR errors",
+      "notes": "Page 530 is part of German-English glossary/index",
+      "extracted_text_sample": "Index of English Expressions \nBeing towards--cont. \nB. t. what is brought close: H. Io6 \nB. t. \n, \n, de-severed : H. I o6 \nB. t. \n, \n, heard : H. I 55 \nB. t. \n, \n,, indicated : H. 82 \nB. t. \n, \n, pointed out: H. I55 \nB. t. \n, \n, seen : H. I72 \nB. t. \n, \n, talked about: H. I 68 \nB. t. the world : H. 57, 6If, xo6, 122, \nI77 \n(See also H. 108, IllS, 194). \ntBeing-what-it-is: *Was-sein \nH. 4ll \nBeing-with: *Mitsein, *Sein mit (H. \nll6g only) \nH. 4I, I xg-Igo (I, IV, esp. Sections \nll6, ll7), Igi, I4"
+    },
+    {
+      "page_number": 531,
+      "original_evidence": [
+        "High error rate: 40.1%"
+      ],
+      "original_confidence": "high",
+      "classification": "FALSE_POSITIVE",
+      "reason": "Glossary/Index pages - German terms are expected content, not OCR errors",
+      "notes": "Page 531 is part of German-English glossary/index",
+      "extracted_text_sample": "53\u00b0 \nBeing and Time \ncall\u0324ont. \ncal of conscience: *Gewisensruf, \n\u2022Ruf des Gewissens \nH. 269-280, 288f, 307, 317 \n'It' calls : *\"es\" ruft, \nH. 275-278 \ncare: *Sorge, \u2022sorgen \n(fin. H. 57, 121, 171) \n(r!f. H. 231, 249\u00b7 284f, 306, 316f, 329, \n335. 346, g5o, 364, g74\u00b7 406, \n4g6) \nH. 41, 57\u00b7 121f, 126, 131, 171\u00b7174. \n18o-2go (I, VI), 2g1, 2gg, 2g5f, \n246, 249, 251f, 254, 259, 265, \n270, 274-280 (Section 57), 284-\n289, 298, goo, g1o-ggg (II, III), \ngg4f, gg7, g44, g46, 353f, gs9, \n264, g67, g72, g74\u00b7"
+    },
+    {
+      "page_number": 532,
+      "original_evidence": [
+        "High error rate: 39.4%"
+      ],
+      "original_confidence": "high",
+      "classification": "FALSE_POSITIVE",
+      "reason": "Glossary/Index pages - German terms are expected content, not OCR errors",
+      "notes": "Page 532 is part of German-English glossary/index",
+      "extracted_text_sample": "Index of English Expressions \n53 1  \ncome along--cont. \n(Note: this list o.lso includes the po.sso.\u0323es \nin which 'o.nkommen' o.nd 'o.nkiinfilg', \netc. ho.ve been tro.nslo.ted o.s 'come on' \nor 'oncoming'.) \ncome back: *zuriickkommen \n(fin. H. g2g, g8g) \nH. 76, 284, g26, gg9, g41, g4g, g47f, \ng6o, g66, g68, g85, g91, g96, 4o9, \n422 \ncome before us: vorkommen \n(fin. H. 106) \nH. w6 \ncome down : iiberkommen, iiberliefern \n(fin. H. 12, g8g) \nfcome on: ankommen, ankiinftig \n(See 'come along'.) \nfcome "
+    },
+    {
+      "page_number": 533,
+      "original_evidence": [
+        "High error rate: 35.5%"
+      ],
+      "original_confidence": "high",
+      "classification": "FALSE_POSITIVE",
+      "reason": "Glossary/Index pages - German terms are expected content, not OCR errors",
+      "notes": "Page 533 is part of German-English glossary/index",
+      "extracted_text_sample": "532 \nBeing and Time \nconsciousness: Bewusstsein \nso, 246) \n(mind H. \nconstitution, constitutive state: Verfas\u00ad\nsung \nc. of God: H. 269 \nc. of guilt: H. 28 I, 286 \nc. ofReality: H. 2 I If \nc. of truth: H. 2I6 \nintentionality of c. : H. 363 n. xxiii \nreification of c. : H. 46, I 14, 437 \ntranscending of c. : H. 201 ff \nDilthey: H. 205 n, xv, 209 \nHegel: H. 435, 437 \nHusserl: H. 4 7 n. ii \nKant: H. 203, 3I9 \nTorck: H. 40If \nSee also H. 49, 62, us, 218, 229, \n265, 278 \nconsider: besinnen; betrachten"
+    },
+    {
+      "page_number": 534,
+      "original_evidence": [
+        "High error rate: 41.4%"
+      ],
+      "original_confidence": "high",
+      "classification": "FALSE_POSITIVE",
+      "reason": "Glossary/Index pages - German terms are expected content, not OCR errors",
+      "notes": "Page 534 is part of German-English glossary/index",
+      "extracted_text_sample": "Index of English Expressions \n533 \ncounter-: Gegen-\nBut cf. counter-thrust (Riickschlag) ; \nrun counter to: (widerstreiten H. \n71). \n. \nfthe 'counter to': *das \"Gegen\" \nH. 210 \ncourse: Gang; *Lauf; *Ablauf, *ablau\u00ad\nfen; Verlauf, verlaufen; etc. \n(ftn. H. 243) \ncourse of time: *Lauf der Zeit (H. \n380, 422) ; *mit der Zeit (H. \n328) \n(See also run its course.) \ncover up: verdecken \n(df. H. 36) \nfcowardliness: *Feigheit \nH. 254, 266 \nfcraving: *Gier \n(fin. H. 346) \nH. 346f \ncritical, criticism, cri"
+    },
+    {
+      "page_number": 535,
+      "original_evidence": [
+        "High error rate: 37.2%"
+      ],
+      "original_confidence": "high",
+      "classification": "FALSE_POSITIVE",
+      "reason": "Glossary/Index pages - German terms are expected content, not OCR errors",
+      "notes": "Page 535 is part of German-English glossary/index",
+      "extracted_text_sample": "534 \nBeing and Time \ndeliver over--cont. \nH. 21, 42, 134-f, 144, 148, 167, 173, \n188f, 192, 251f, 254, 259, 276, \n284, 364, s8s, 396 \ntdelusion: Tauschung (deception) \nH. 62, 138, 274 \ntdemise: \u2022 Ableben \n(fin. H. 247) \nH. 247, 251, 254, 257-259, 261 \ndemonstrate: \n\u2022ausweisen; \nerweisen \n(prove, turn out) ; nachweisen; \ndemonstrieren (illustrate) \n(ftn. H. 53) \ndepersonalization : *Entpersonalisie\u00ad\nrung \nH. 48 \ntdepresion: *Gedricktheit \nH. 342 \ntdeprive of its character as present: \n*Entgegenwa"
+    },
+    {
+      "page_number": 564,
+      "original_evidence": [
+        "Unknown words not accounted for: ['widerstand', 'erhalten', 'reue']"
+      ],
+      "original_confidence": "high",
+      "classification": "FALSE_POSITIVE",
+      "reason": "Index page - German terms (widerstand, erhalten, reue) are legitimate source language references in English-German index",
+      "notes": "Manually verified: Index page - German terms (widerstand, erhalten, reue) are legitimate source language references in English-German index",
+      "extracted_text_sample": "Index of English Expressions \nrepeat-cont. \nrepetition of the analysis of Dasein: \nH. \nI7, \n234\u00b7 \n304f, \n331-333 \n(Section 66) \nrepetition of posibilities: H. 343, \n385f, 39of, 395f \nrepetition of the question of Being : \nH. 2-4 (Section 1), 8, 26 \nrepetition of what has been ontically \ndiscovered : H. 5 1  \nr. and anticipation: H. 391 \nr. and destiny: H. 386 \nr. and fate: H. 386, 390f, 395 \nr. and the future: H. 386, 397 \nr. and having-been: H. 339, 343f, \n350, 391' 394-f. 397 \nr. and resoluten"
+    },
+    {
+      "page_number": 568,
+      "original_evidence": [
+        "Unknown words not accounted for: ['bedeutung', 'bedeutsamkeit', 'einfachheit']"
+      ],
+      "original_confidence": "high",
+      "classification": "FALSE_POSITIVE",
+      "reason": "Index page - German terms (bedeutung, bedeutsamkeit, einfachheit) are legitimate source language references",
+      "notes": "Manually verified: Index page - German terms (bedeutung, bedeutsamkeit, einfachheit) are legitimate source language references",
+      "extracted_text_sample": "Index of English Expressions \nserviceability--cont. \n(Note: tk verh 'serve' has heen used \ninformally to trans/are 'dienen' and \nseveral other expressions.) \ntset our sights towards : *anvisieren \nH. I5, 6I, I 5o, I 57 \ntsettle: abschliessen \nH. I 75, I 79, 236, 239, 405 \nshape: Gestalt \nH. gof, I I 2  \nshare: teilen \nH. I I8, I 55. I62, I64 \ntshift: verlegen \nH. 355, 357 \ntshorn : beschnitten (curtailed, H. 3I6) \nH. 422, 426f \nshow: zeigen; etc. \n(fin. H. 29, 77, I 22, I 78, 304) \nshow itself: "
+    },
+    {
+      "page_number": 570,
+      "original_evidence": [
+        "Unknown words not accounted for: ['statigkeit', 'strukturganz', 'heit']"
+      ],
+      "original_confidence": "high",
+      "classification": "FALSE_POSITIVE",
+      "reason": "Index page - German terms (statigkeit, strukturganz, heit) are legitimate source language references",
+      "notes": "Manually verified: Index page - German terms (statigkeit, strukturganz, heit) are legitimate source language references",
+      "extracted_text_sample": "Index of English Expressions \nstand: stehen; etc. \n(fin. H. 1 17, 303, 322) \nstand before \n(See our entry for 'impend' above.) \nstand by itself \n(See our entry for 'failure to stand by \nitself'.) \nstand out: abheben (contrast; bring \nout; comparison) ; herausheben \n(H. u8) \nBut cf. outstanding (austehen, \n*Ausstand), andftn. H. 250 \ntstandard: *Massstab; *massgebend \n(H. 16o, 165) \nH. 268, 395, 417 \nstate: Verfassung: *Staat (H. 398, 403) \nBut cf. state of affairs: *Sachlage : \nH. 51, 158 \n(ftn."
+    },
+    {
+      "page_number": 581,
+      "original_evidence": [
+        "Formatting corruption: 1 words with 't' prefix artifact",
+        "Semantic errors (character confusion): 1 distinct errors",
+        "Unknown words not accounted for: ['bergriffiichkeit', 'whi', 'geltung']"
+      ],
+      "original_confidence": "high",
+      "classification": "FALSE_POSITIVE",
+      "reason": "Index page - German terms (bergriffiichkeit, geltung) are legitimate; 'whi' may be OCR error but page is predominantly correct",
+      "notes": "Manually verified: Index page - German terms (bergriffiichkeit, geltung) are legitimate; 'whi' may be OCR error but page is predominantly correct",
+      "extracted_text_sample": "sao \nBeing and Time \nuse--cont. \nusing \nup: \n*verbrauchen, \n*auf\u00ad\nbrauchen: H. 244f, 333 \nunusable: \n*unverwendbar, \n*un\u00ad\nbrauchbar: H. 73f, 355 \nThing of use: *Gebrauchsding: H. 99 \nfutilitarianism: *Nutzlichkeitsmoral \nH. 293 \nutilize: verwenden (H. 333) ; nutzen \n(H. 6 I) ; ausniitzen (H. 41 1) ; \netc. \n(fin. H. 333) \nutter (verb), utterance: Verlautbarung \nH. 32f, 163-1 65, 27I-273, 277, 296 \nutter (adj.) : vollig: schlechthin; schlech\u00ad\nthinnig \nfuttermost: ii.userst \nH. 250, 255, 259, 262-2"
+    },
+    {
+      "page_number": 585,
+      "original_evidence": [
+        "Unknown words not accounted for: ['circulus', 'brutum', 'cogito']"
+      ],
+      "original_confidence": "high",
+      "classification": "FALSE_POSITIVE",
+      "reason": "Latin philosophical terms in index - expected content",
+      "notes": "circulus, brutum, cogito are valid Latin terms",
+      "extracted_text_sample": "I N D E X  O F  LATIN EXPR E S S I O N S  \na potiori fit denominatio: H. 329 \na priori: H. 4, I I, 4I, 44-f, 50 n. x, 53, \n58, 65, 85, Ioi, 1 1of, u5, I3I, \n149f, 152, r6s, 183, I93, I99, 206, \n229, 32I ,  362 \nadaequatio intellectus et rei: H. 2 14, 2 I 6f \n(fin. H. 2I4) \nanima: H. 14 \nanimal rationale: H. 48, 165 \nbonum: H. 286, 345 \ncapax mutationum: H. 91, g6 \ncirculus vitiosus: H. I 52 \ncogitare, cogitationes: H. 46, 49, 2 1  I, 433 \n(Note: see also 'res cogitans' and 'ego \ncogito'.) \ncogit"
+    },
+    {
+      "page_number": 587,
+      "original_evidence": [
+        "Greek text is heavily corrupted with character encoding issues",
+        "yavtof, xxix, avbavw, aews, epl, atlv, lpea, mynv, vbos are all gibberish results of failed Unicode decoding",
+        "Special Greek characters not properly rendered (appearing as Unicode escapes)",
+        "Pattern shows systematic UTF-8/encoding failure affecting entire page",
+        "Would severely damage embeddings due to unrecognizable character sequences"
+      ],
+      "original_confidence": "high",
+      "classification": "CONFIRMED_BAD",
+      "reason": "Greek text encoding failures - systematic corruption",
+      "notes": "Complete loss of semantic meaning due to encoding issues",
+      "extracted_text_sample": "I N D E X  OF GREEK EXPR E S S I O N S  \naya.B&v : H. 29 \nayvoEtv : H. 33 \na.'laB'I]a\u2022s: H. 14, 33, g6, 226 \naKo>.ovBEtv : H. 432 n. XX \na>.'I]Bls, a>.\u0019BE\u2022a., a>.'I]Bnlnv: \n(fin. H. 33) \nH. 33, 21gf, 222, 223 n. xxix \n.!v8pamos: H. 48 \n\u00ab .. &: H. 32 \na'1'o<f.alV\u20aca8a.\u2022, \na'l'o<f.a.va\u2022s: H. 32-34, \n154. 218f \n.!p\u2022Bp.os Kw\u010eaEws: H. 432 n. XX \napx\u0019: H. 212 \nylvos: H. 3 \ny<yavTof.'axla. 'I'Epl Tijs oiiala.s: H. 2 \nll'l]>.ovv: H. 32 \nll\u2022aywy\u0019 :  H. 138 \nll\u2022a.lPEa\u2022s: H. 159 \nllLO.VO(lV: H. g6, 226 \ns&e"
+    },
+    {
+      "page_number": 588,
+      "original_evidence": [
+        "Greek text similarly corrupted with encoding issues: patwv, lvw, oov, rfsvx, tfj, xpovos, ixn, vop, lveuba, ula",
+        "Unicode character rendering failures throughout",
+        "Mix of corrupted Greek letters and Latin characters creating gibberish",
+        "Sentences are fragmentary and mostly unrecognizable",
+        "Complete loss of semantic meaning"
+      ],
+      "original_confidence": "high",
+      "classification": "CONFIRMED_BAD",
+      "reason": "Greek text encoding failures - systematic corruption",
+      "notes": "Complete loss of semantic meaning due to encoding issues",
+      "extracted_text_sample": "Index of Greek Expressions \n;a.-: H. 28 \nt/>a.lvw, t/>a.lVEuBa.\u2022, <f>a\u2022vop.oov: H. 28f, \n32, 219 \n;a.rra.ula. : H. 33 \n;patwv \u0113.,.ws ixn: H. 219 \n;wvtf: H. 33 \nxpovos: H. 432 n. xx \ntfJ\u00a3tl&u8a.\u2022 : H. 33 \nrfsvx\u0019: H. 14, 214 \n"
+    }
+  ],
+  "summary": {
+    "FALSE_POSITIVE": 26,
+    "CONFIRMED_BAD": 2
+  },
+  "review_complete": true,
+  "reviewer_notes": "German terms in glossary/index/bibliography are legitimate content, not OCR errors. Only Greek text encoding failures (pages 587-588) are confirmed bad."
+}

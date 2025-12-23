@@ -1,0 +1,47 @@
+{
+  "document": "Kant_CritiqueOfJudgement.pdf",
+  "total_pages": 100,
+  "pages_reviewed": 27,
+  "review_method": "Claude manual review of spell-check flagged pages",
+  "date": "2025-12-20",
+  "verdicts": {
+    "GOOD": "Text is correct, no OCR errors affecting meaning",
+    "MARGINAL": "Minor issues (hyphenation artifacts, truncations) but readable",
+    "BAD": "Clear OCR errors that damage meaning or would hurt embeddings"
+  },
+  "summary": {
+    "GOOD": 14,
+    "MARGINAL": 10,
+    "BAD": 3
+  },
+  "critical_finding": "Error rate does not predict BAD pages. All 3 BAD pages were in bucket B (3-5% error rate), while all bucket D pages (10%+) were GOOD.",
+  "pages": [
+    {"page": 1, "bucket": "D (10%+)", "error_rate": 0.143, "verdict": "GOOD", "reason": "Proper nouns: Pluhar, Gregor, Hackett"},
+    {"page": 2, "bucket": "D (10%+)", "error_rate": 0.146, "verdict": "GOOD", "reason": "Proper nouns and German: Kritik, Urteilskraft, ISBN"},
+    {"page": 3, "bucket": "D (10%+)", "error_rate": 0.163, "verdict": "GOOD", "reason": "Roman numerals: xxiii, xxxix, liv, lix, lxi, lxxi, lxxvi"},
+    {"page": 4, "bucket": "D (10%+)", "error_rate": 0.143, "verdict": "GOOD", "reason": "Roman numerals: lxxxi, Ixxxiii, Ixxxvi"},
+    {"page": 5, "bucket": "A (1-3%)", "error_rate": 0.02, "verdict": "GOOD", "reason": "Roman numeral VII only"},
+    {"page": 11, "bucket": "C (5-10%)", "error_rate": 0.06, "verdict": "GOOD", "reason": "Encyclopaedic is valid British spelling"},
+    {"page": 14, "bucket": "B (3-5%)", "error_rate": 0.042, "verdict": "MARGINAL", "reason": "sor - truncated 'Professor' at line break"},
+    {"page": 15, "bucket": "C (5-10%)", "error_rate": 0.085, "verdict": "MARGINAL", "reason": "priate - truncated 'appropriate'"},
+    {"page": 18, "bucket": "C (5-10%)", "error_rate": 0.08, "verdict": "MARGINAL", "reason": "Line-break fragments: Ber-, tion, tive"},
+    {"page": 19, "bucket": "C (5-10%)", "error_rate": 0.082, "verdict": "GOOD", "reason": "Profes-, Bobbs are valid truncation/name"},
+    {"page": 24, "bucket": "B (3-5%)", "error_rate": 0.041, "verdict": "MARGINAL", "reason": "supersen- truncated at line break"},
+    {"page": 25, "bucket": "C (5-10%)", "error_rate": 0.064, "verdict": "GOOD", "reason": "Konigsberg is correct German city name"},
+    {"page": 35, "bucket": "C (5-10%)", "error_rate": 0.08, "verdict": "MARGINAL", "reason": "Hyphenation artifacts: catego-, rience"},
+    {"page": 37, "bucket": "B (3-5%)", "error_rate": 0.04, "verdict": "GOOD", "reason": "XXXIX, sible are valid"},
+    {"page": 39, "bucket": "B (3-5%)", "error_rate": 0.04, "verdict": "BAD", "reason": "OCR error: 'commanth' should be 'commands'", "ocr_errors": ["commanth→commands"]},
+    {"page": 46, "bucket": "C (5-10%)", "error_rate": 0.08, "verdict": "GOOD", "reason": "Baumgarten is valid philosopher name"},
+    {"page": 47, "bucket": "D (10%+)", "error_rate": 0.10, "verdict": "GOOD", "reason": "Proper nouns: Georg, Baumgarten, Holms"},
+    {"page": 50, "bucket": "B (3-5%)", "error_rate": 0.04, "verdict": "BAD", "reason": "OCR error: 'Beautlful' should be 'Beautiful'", "ocr_errors": ["Beautlful→Beautiful"]},
+    {"page": 54, "bucket": "A (1-3%)", "error_rate": 0.02, "verdict": "GOOD", "reason": "Roman numeral lvi only"},
+    {"page": 60, "bucket": "A (1-3%)", "error_rate": 0.021, "verdict": "GOOD", "reason": "Roman numeral Ixii only"},
+    {"page": 63, "bucket": "C (5-10%)", "error_rate": 0.06, "verdict": "MARGINAL", "reason": "Hyphenation: judg-, univer-"},
+    {"page": 69, "bucket": "C (5-10%)", "error_rate": 0.08, "verdict": "MARGINAL", "reason": "Hyphenation: judg-, Renais-; priori is valid"},
+    {"page": 70, "bucket": "C (5-10%)", "error_rate": 0.08, "verdict": "MARGINAL", "reason": "ofa should be 'of a' - minor spacing issue"},
+    {"page": 72, "bucket": "B (3-5%)", "error_rate": 0.04, "verdict": "GOOD", "reason": "Roman numeral lxxiv, priori is valid Latin"},
+    {"page": 83, "bucket": "C (5-10%)", "error_rate": 0.08, "verdict": "MARGINAL", "reason": "Hyphenation: achiev-, espe-; viz is valid abbreviation"},
+    {"page": 85, "bucket": "D (10%+)", "error_rate": 0.102, "verdict": "MARGINAL", "reason": "systematicity is valid; hyphenation: legis-, estab-"},
+    {"page": 97, "bucket": "B (3-5%)", "error_rate": 0.04, "verdict": "BAD", "reason": "OCR error: 'ubjective' should be 'objective'", "ocr_errors": ["ubjective→objective"]}
+  ]
+}

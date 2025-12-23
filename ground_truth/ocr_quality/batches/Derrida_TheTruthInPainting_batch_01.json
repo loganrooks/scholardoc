@@ -1,0 +1,439 @@
+{
+  "document": "Derrida_TheTruthInPainting",
+  "batch_number": 1,
+  "total_batches": 9,
+  "pages": [
+    {
+      "document": "Derrida_TheTruthInPainting",
+      "page_num": 1,
+      "bucket": "E (10%+)",
+      "error_rate": 11.8,
+      "unknown_words_sample": [
+        "thetruth",
+        "geoff"
+      ],
+      "full_text": "JACQUES \nDERRIDA \nTHETRUTH \nIN PAINTING \nTranslated by \nGeoff Bennington \nand Ian McLeod \nThe University of Chicago Press \nChicago and London \n"
+    },
+    {
+      "document": "Derrida_TheTruthInPainting",
+      "page_num": 2,
+      "bucket": "D (5-10%)",
+      "error_rate": 8.2,
+      "unknown_words_sample": [
+        "pbk",
+        "peinture",
+        "flammarion",
+        "isbn"
+      ],
+      "full_text": "The University of Chicago Press, Chicago 60637 \nThe University of Chicago Press, Ltd., London \n\u00a9 1987 by The University of Chicago \nAll rights reserved. Published 1987 \nPrinted in the United States of America \n03 02 01 0099 98 97 9 69 5  94 \n6 7 8 9 1 0  \nFirst published as LA VERITE EN PEINTURE in Paris, \u00a9 1978, \nFlammarion, Paris. \nLIBRARY OF CONGRESS CATALOGING-IN-PUBLICATION DATA \nDerrida, Jacques. \nThe truth in painting. \nTranslation of La verite en peinture. \nIncludes index. \nI. Aesthetics. \nI. Title. \nBH39\u00b7D45 \n1987 \n7 01'.1'7 \nISBN 0-2 2 6-143 24-4 (pbk.) \n"
+    },
+    {
+      "document": "Derrida_TheTruthInPainting",
+      "page_num": 3,
+      "bucket": "E (10%+)",
+      "error_rate": 25.9,
+      "unknown_words_sample": [
+        "partout",
+        "vii",
+        "xiii",
+        "restitutions",
+        "parergon",
+        "iii",
+        "passe"
+      ],
+      "full_text": "Contents \nList of Illustrations vii \nTranslators' Preface xiii \nPasse-Partout \n1 \n1. \nParergon \n15 \nI. \nLemmata \n17 \nII. \nThe Parergon 37 \nIII. \nThe Sans of the Pure Cut \n83 \nIV. \nThe Colossal \n119 \n2. \n+ R (Into the Bargain) \n149 \n3. \nCartouches \n183 \n4. \nRestitutions \n255 \nIndex \n383 \n"
+    },
+    {
+      "document": "Derrida_TheTruthInPainting",
+      "page_num": 5,
+      "bucket": "E (10%+)",
+      "error_rate": 23.8,
+      "unknown_words_sample": [
+        "kulturbesitz",
+        "girau",
+        "nive",
+        "flammarion",
+        "xiv",
+        "parergon",
+        "tulia",
+        "gemaldegalerie",
+        "sexangula",
+        "viollet"
+      ],
+      "full_text": "List of Illustrations \nParergon \nJohannes Kepler, De Nive Sexangula, printer's mark (photo, \nFlammarion) \n2 5  \nLucas Cranach, Lucretia, 1 5 3 3, Berlin, Staatliche Museen Preus\u00ad\nsische Kulturbesitz, \nGemaldegalerie (photo, Walter Stein-\nkopf) \n58 \nAntonio Fantuzzi, a cryptoportico, 1 54 5  (photo, Flammarion) \n60 \nMaster L. D., cryptoporticQ of the grotto in the pinegarden, at \nFontainebleau (photo, Flammarion) \n62 \nAntonio Fantuzzi, ornamental panel with empty oval, 1 542 - 43 \n(photo, Flammarion) \n65 \nAntonio Fantuzzi, empty rectangular cartouche, 1 5 44 - 45 (photo, \nFlammarion) \n66 \nDoorframe, in the style of Louis XIV, anonymous engraving (photo, \nRoger Viollet) \n72 \nNicolas Robert, The Tulip, in Tulia's Garland (photo, Girau-\ndon) \n86 \nFrontispiece to New Drawings of Ornaments, Panels, Carriages, \nEtc. (photo, Roger Viollet) \n99 \n"
+    },
+    {
+      "document": "Derrida_TheTruthInPainting",
+      "page_num": 6,
+      "bucket": "E (10%+)",
+      "error_rate": 12.8,
+      "unknown_words_sample": [
+        "meccanica",
+        "caron",
+        "ingit",
+        "adami",
+        "flamarion",
+        "giraudon",
+        "viii",
+        "disegno",
+        "autobiografia",
+        "quattro"
+      ],
+      "full_text": "viii \nThe Truth in Painting \nThe Colossus of Rhodes, Gobelins Tapestry, Seventeenth Cen\u00ad\ntury \n1 23 \nAntoine Caron, The Massacre of the Triumvirates, The Louvre \n(photo, Flamarion) \n124 \nFrancisco Goya, The Colossus, aquatint (photo, Rogert Viol-\nlet) \n1 30 \nFrancisco Goya, The Colossus or Panic, oil; Prado museum (photo, \nGiraudon) \n141 \n+ R (Into the Bargain) \nValerio Adami, Study for a Drawing after Glas by Jacques Derrida, \n27 February 1975 \n1 5 3  and 1 67 \nValerio Adami, Study for a Drawing after Glas by Jacques Derrida, \n27 February 1975, graphite pencil; private collection \n1 54 \nand 1 68 \nValerio Adami, Concerto a quattro mani, 3 I March 1975, graphite \npencil \n1 5 5  and 1 56 \nValerio Adami, Study for a Drawing after Glas by Jacques Derrida, \n22 May 1 975, graphite pencil; private collection \n1 5 7  \nValerio Adami, Autobiografia, 6 April 1975, graphite pencil \n164 \nValerio Adami, Elegy for Young Lovers, I April 1 975, graphite \npencil \n1 6 5  \nValerio Adami, L a  piscina, 1966, oil on canvas; Schwartz Gallery, \nMilan (photo, Bacci) \n170 \nValerio Adami, La meccanica dell 'avven tura, 25 March 1975, \ngraphi te pencil \n1 73 \nValerio Adami, Disegno par un ritratto di W Benjamin, 24 August \n1 973, graphite pencil; private collection \n1 76 and 1 82 \nPhotograph of Walter Benjamin which served as the model for the \nDisegno \n1 82 \n(Photos, Maeght Gallery; except number 7 :  photo, Bacci) \nCartouches \nGerard Titus-Carmel, photograph of the \"real\" model (The Pocket \nSize 71ingit Coffin, 1975 ) in the author's hand \n187 \n"
+    },
+    {
+      "document": "Derrida_TheTruthInPainting",
+      "page_num": 8,
+      "bucket": "D (5-10%)",
+      "error_rate": 8.9,
+      "unknown_words_sample": [
+        "pri",
+        "ula",
+        "nuenen",
+        "morain",
+        "musee",
+        "restitutions",
+        "collec",
+        "wertheim",
+        "davlyn",
+        "baaren"
+      ],
+      "full_text": "x \nThe Truth in Painting \nH.I. O.X.-O, 19 73, pencil and collage on paper, S. and Z. Mis \ncollection, Brussels \n2 52 \nDismantling-Dismantling 6, 1 9 72, pencil and collage on paper; \nprivate collection, Paris \n2 52 \n15 Latin Incisions-Lucretius (detail), 19 73, pencil on paper; pri-\nvate collection, Liege \n2 53 \n(Photos, Andre Morain, except where museum photos indicated) \nRestitutions \nVincent Van Gogh, Old Shoes with Laces, 1886, National Vincent \nVan Gogh Museum, Amsterdam (museum photo) \n2 58 \nVincent Van Gogh, Still Life (basket with oranges and lemons, \nbranches, gloves), ArIes, 1889 ; Mellon Collection, Upperville, \nVirginia (photo, MACULA) \n2 70 \nVincent Van Gogh, Peasant Woman of Brabant, 188 5; National \nVincent Van Gogh Museum, Amsterdam (museum photo) \n280 \nVincent Van Gogh, The Shoes, Paris, 188 7; Baltimore Museum of \nArt (photo, MACULA) \n289 \nVincent Van Gogh, The Shoes, Paris, 1886 -8 7; Schumacher Col-\nlection, Brussels (photo, MACULA) \n289 \nVincent Van Gogh, Three Pairs of Shoes, 1 886 -8 7; M. Wertheim \nCollection, Fogg Art Museum, Harvard University, Cambridge, \nMassachusetts (museum photo) \n3 10 \nRene Magritte, The Red Model, 1935 ; Georges Pompidou Center, \nMusee National d'Art Moderne, Paris (museum photo) \n3 1 5  \nRene Magritte, Philosophy in the Boudoir, 194 7; private collec-\ntion, Washington, D.C. (photo, X.) \n3 1 6  \nRene Magritte, The Well of Truth, 1963 ; Davlyn Galleries, New \nYork (photo, X.) \n3 1 7 \nVincent Van Gogh, Still Life (bottles, vases, clogs), Nuenen, 1884 ; \nStichting \nMuseum \nvan \nBaaren, \nUtrecht \n(photo, \nMAC-\nULA) \n330 \n"
+    },
+    {
+      "document": "Derrida_TheTruthInPainting",
+      "page_num": 9,
+      "bucket": "E (10%+)",
+      "error_rate": 11.1,
+      "unknown_words_sample": [
+        "maeght",
+        "seum",
+        "kramarsky",
+        "lindner",
+        "lery",
+        "arnolfini",
+        "etc"
+      ],
+      "full_text": "ILLUSTRATIONS \nxi \nVincent Van Gogh, Still Life (cabbages, clogs, etc.). The Hague, \n1 88 1, National Vincent Van Gogh Museum, Amsterdam (mu-\nseum photo) \n330 \nRene Magritte, The Key of Dreams, The Moon (detail), 1930j \nprivate collection (photo, X.) \n333 \nRichard Lindner, The Shoe, \n19 76 -77 (photo, Maeght Gal-\nlery) \n33 5 \nJan Van Eyck, The Arnolfini Marriage, 1434j National Gallery, \nLondon (museum photo) \n3 50 \nVincent Van Gogh, The Shoes, Arles, August 1 888j Kramarsky \nTrust Fund, New York (photo, MACULA) \n3 75 \n"
+    },
+    {
+      "document": "Derrida_TheTruthInPainting",
+      "page_num": 11,
+      "bucket": "B (1-3%)",
+      "error_rate": 2.0,
+      "unknown_words_sample": [
+        "proj",
+        "jthough",
+        "ect",
+        "miseration"
+      ],
+      "full_text": "Translators' Preface \nClassically speaking, any translator is placed in the uncomfortable \nposition of absolute generosity with respect to his or her readers, \ngiving them as a gift a meaning they would not otherwise be able \nto obtain. The translator's task, in this conception, is a noble and \neven saintly one, an act of pure charity independent of incidental \nfinancial reward. This position is uncomfortable because it is \nfalse: in fact the translator's attitude to the reader is profoundly \nambivalent, and this ambivalence can only be increased when \ns/he has learned from the author to be translated that the task is \nstrictly speaking an impossible one. The absolutely generous proj\u00ad\nect of giving Derrida's meaning to be read would rapidly produce \nthe absolutely ungenerous result of leaving the text in French, \nleaving ourselves a certain amount of self-congratulation on being \nable at least to begin to read it that way, and slyly affecting com\u00ad\nmiseration for those unable to do so. The classical ideal of self\u00ad\neffacing, respectful, and charitable translation is in fact the death \nof translation. \nYet Derrida's work undeniably calls for translation, but for \ntranslation as transformation: that transformation affects both \nlanguages at work-our English is transformed as is Derrida's \nFrench. As Derrida notes, however, such a transformation must \nbe regulated jthough not, we would add, by the principle of charity \nfor the reader): yet no single rule is sufficient for that regulation, \nand least of all the rule that our aim should be to reproduce in \nthe English or American reader the same \"effect\" that Derrida's \nFrench produces on the French. Any such rule would be a radical \n"
+    },
+    {
+      "document": "Derrida_TheTruthInPainting",
+      "page_num": 12,
+      "bucket": "D (5-10%)",
+      "error_rate": 6.7,
+      "unknown_words_sample": [
+        "mise",
+        "peinture",
+        "logocentrism",
+        "revenir",
+        "etymologization",
+        "turation",
+        "geoff",
+        "xiv",
+        "restitutions",
+        "destric"
+      ],
+      "full_text": "xiv \nTranslators' Preface \nrefusal of the trace of translation, and is in fact the fantasy of \nlogocentrism itself. Refusing any such rule implies the adoption \nof flexible strategies, including those of supplying some of the \nFrench text, adding some explanatory footnotes, sometimes being \nguided almost exclusively by the signifier, as in parts of \" +  R\" \nand in the subtitle of \"Restitutions.\" \nThe problems facing the translator are at their greatest in the \ncase of idiom (The Truth in Painting is also \"about\" the idiom \n[in painting]): pure idiom is the untranslatable itself. Here the \nbest we can hope is that the reader might learn some French-it \nwas a guiding fantasy of our work (a fantasy which remained just \nthat) that by the end of the book the reader would have learned \nFrench and that our translation would thus have made itself un\u00ad\nnecessary, although not self-effacing. No translation could be self\u00ad\neffacing before the mise en boite of \"Cartouches\" or the revenir \nand rendre of \"Restitutions.\" Not that these are pure idioms: but \nin Derrida's work of reliteralization and etymologization of such \nexamples, the idiom becomes disseminated throughout the whole \nof French (and therefore several other languages too). This type \nof strategy completes the translators' discomfiture, in that it dis\u00ad\npossesses of mastery even the claim to have read La Verite en \npeinture. \nIt may seem paradoxical that in this situation we should claim \nthe need for accuracy and rigor: but rigor here needs to be re\u00ad\nthought in terms of flexibility and compromise, just as, in \"Res\u00ad\ntitutions,\" stricture has also to be thought in terms of destric\u00ad\nturation. The \"compromise English\" in which this translation is \nwritten is inevitable and should stand in no need of excuse, if \nonly because the supplement is never simply a substitute. \"Com\u00ad\npromise English\" also recognizes that the supplement is never \nfinal or definitive: this version is therefore also a call for retransla\u00ad\ntion and modification. \nGeoff Bennington \nIan McLeod \n"
+    },
+    {
+      "document": "Derrida_TheTruthInPainting",
+      "page_num": 16,
+      "bucket": "C (3-5%)",
+      "error_rate": 4.6,
+      "unknown_words_sample": [
+        "pictographed",
+        "peinture",
+        "contreo",
+        "ula",
+        "econ",
+        "potheses",
+        "semiologie",
+        "une",
+        "etc",
+        "huit"
+      ],
+      "full_text": "2 \nThe Truth in Painting \nspecificity of pictorial art, of that \"language\" which painting is \nsupposed to be, etc.? \nWhich makes, if you count them well, at least four hy\u00ad\npotheses; but each one divides again, is grafted and contaminated \nby all the others, and you would never be finished translating \nthem. \nNor will I. \nAnd if you were to bide your time awhile here in these pages, \nyou would discover that I cannot dominate the situation, or trans\u00ad\nlate it, or describe it. I cannot report what is going on in it, or \nnarrate it or depict it, or pronounce it or mimic it, or offer it up \nto be read or formalized without remainder. I would always have \nto renew, reproduce, and reintroduce into the formalizing econ-\n0my of my tale-overloaded each time with some supplement\u00ad\nthe very indecision which I was trying to reduce. At the end of \nthe line it would be just as if I had just said: \"I am interested in \nthe idiom in painting.\" \nAnd should I now write it several times, loading the text with \nquotation marks, with quotation marks within quotation marks, \nwith italics, with square brackets, with pictographed gestures, \neven if I were to multiply the refinements of punctuation in all \nthe codes, I wager that at the end the initial residue would return. \nIt would have set in train a divided Prime Mover. \nAnd I leave you now with someone who comes and says the \nwords, it is not I: \"I am interested in the idiom in painting.\" \n-2 -\nThe Truth in Painting is signed Cezanne. It is a saying of \nCezanne's. \nResounding in the title of a book, it sounds, then, like a due. \nSo, to render it to Cezanne; and first of all to Damisch, who \ncites it before me,t I shall acknowledge the debt. I must do that. \nIn order that the trait should return to its rightful owner. \nBut the truth in painting was always something owed. \nCezanne had promised to pay up: \"lOWE YOU THE TRUTH IN \nPAINTING AND I WILL TELL IT TO YOU\" (to Emile Bernard, 2 3  Oc\u00ad\ntober 1 905). \n1. Huit theses pour (ou contreO une semiologie de la peinture, Mac\u00ad\nula 2 (I977). From Damisch I even take the saying \"saying\" (\"following \nthe deliberately ambiguous saying or utterance of Cezanne\") even if I \nwere not to take what it says literally, for a reserve as to the limits of \ndeliberation always remains here. \n"
+    },
+    {
+      "document": "Derrida_TheTruthInPainting",
+      "page_num": 20,
+      "bucket": "D (5-10%)",
+      "error_rate": 5.8,
+      "unknown_words_sample": [
+        "expres",
+        "repre",
+        "omy",
+        "chiasmi",
+        "tural",
+        "parasitizes",
+        "tropological",
+        "orous",
+        "represen",
+        "pictural"
+      ],
+      "full_text": "6 \nThe Truth in Painting \nthe \"stroke\" [Riss] which not only opens above the gulf but also \nholds together the opposite edges of it.) If we are to understand \nCezanne's sentence, the truth (presentation or representation, un\u00ad\nveiling or adequation) must be rendered \"in painting\" either by \npresentation or by representation, according to the two models \nof truth. Truth, the painter's model, must be rendered in painting \naccording to the two models of truth. Henceforth, the abyssal \nexpression \"truth of the truth,\" which will have made it be said \nthat the truth is the nontruth, can be crossed with itself according \nto all sort of chiasmi, according as one determines the model as \npresentation or as representation. Presentation of the represen\u00ad\ntation, presentation of the presentation, representation of the rep\u00ad\nresentation, representation of the presentation. Have I counted \nthem correctly? That makes at least fc'lI possibilities. \n3 .  That which pertains to the picturality, in the \"proper\" \nsense, of the presentation or of the representation. Truth could \nbe presented or represented quite otherwise, according to other \nmodes. Here it is done in painting: and not in discourse (as is \ncommonly the case), in literature, poetry, theater; nor is it done \nin the time of music or in other spaces (architecture or sculpture). \nThus we retain here that which is proper to an art, the art of the \nsignatory, of Cezanne the painter. That which is proper to an art \nand an art understood in the proper sense this time, in the expres\u00ad\nsion \"in painting.\" We did not do this in the two previous cases: \n\"painting\" was there to figure the presentation or representation \nof a model, which happened to be the truth. But this troping \nfiguration was valid for the logic of any other art of presentation \nor representation. In the French language, if there is one that is \none and if it is not a painting, \"the truth in painting\" could mean \nand be understood as: the truth, as shown, presented or repre\u00ad\nsented in the field of the pictural properly speaking, in the pic\u00ad\ntural, properly pictural mode, even if this mode is tropological \nwith respect to truth itself. To understand the expression \"truth \nin painting\" in this way, no doubt one has to move away a little \nfrom the greater force of usage (assuming that there are any rig\u00ad\norous criteria for evaluating it), while nevertheless maintaining \ngrammatical and syntactical and even semantic normality. But \nthat's what an idiom is, if there is any such thing. It does not \nmerely fix the economic propriety of a \"focus,\" but regulates the \npossibility of play, of divergences, of the equivocal-a whole econ\u00ad\nomy, precisely, of the trait. This economy parasitizes itself. \n"
+    },
+    {
+      "document": "Derrida_TheTruthInPainting",
+      "page_num": 21,
+      "bucket": "C (3-5%)",
+      "error_rate": 3.1,
+      "unknown_words_sample": [
+        "partout",
+        "parasitizing",
+        "exergues",
+        "parerga",
+        "asitized",
+        "determina",
+        "potentializes",
+        "tions",
+        "parasitized",
+        "passe"
+      ],
+      "full_text": "PASSE-PARTOUT \n7 \n4. That which pertains to truth in the order of painting, then, \nand on the subject of painting, not only as regards the pictorial \npresentation or representation of truth. The parasitizing of the \nexpression \"in painting\" by itself allows it to harbor a new sense: \nthe truth as regards painting, that which is true on that art which \nis called pictural. If one now defines that art by its truth-value, \nin one sense or the other, one will understand here the true on \nthe true. In the French language, if there is one that is one and \nwhich is not painting, and if nonetheless it can open its system \nup to its own parasitism, \"the truth in painting\" can mean and \nbe understood as: truth in the domain of painting and on the \nsubject of it, in painting, as in the saying \"to be knowledgeable \nin painting.\" l owe you the truth on painting and I will tell it to \nyou, and as painting ought to be the truth, l owe you the truth \nabout the truth and I will tell it to you. In letting itself be par\u00ad\nasitized, the system of language as a system of the idiom has \nperhaps parasitized the system of painting; more precisely, it will \nhave shown up, by analogy, the essential parasitizing which opens \nevery system to its outside and divides the unity of the line [trait] \nwhich purports to mark its edges. This partition of the edge is \nperhaps what is inscribed and occurs everywhere [se passe partout] \nin this book; and the protocol-frame is endlessly multiplied in it, \nfrom lemmata to parerga, from exergues to cartouches. Starting \nwith the idiom of the passe-partout. One is always tempted by \nthis faith in the idiom: it supposedly says only one thing, properly \nspeaking, and says it only in linking form and meaning too strictly \nto lend itself to translation. But if the idiom were this, were it \nwhat it is thought it must be, it would not be that, but it would \nlose all strength and would not make a language. It would be \ndeprived of that which in it plays with truth-effects. If the phrase \n\"the truth in painting\" has the force of \"truth\" and in its play \nopens onto the abyss, then perhaps what is at stake in painting \nis truth, and in truth what is at stake (that idiom) is the abyss. \nCezanne's trait is easily freed from an immediate context. Is \nit even necessary to know that it was signed by a painter? Its \nforce even depends on this capacity to play with the determina\u00ad\ntions of the context without making itself indeterminate. No \ndoubt the trait acts as a passe-partout. It circulates very quickly \namong its possibilities. With disconcerting agility it displaces its \naccents or its hidden punctuation, it potentializes and formalizes \nand economizes on enormous discourses, it multiplies the deal-\n"
+    },
+    {
+      "document": "Derrida_TheTruthInPainting",
+      "page_num": 23,
+      "bucket": "D (5-10%)",
+      "error_rate": 6.3,
+      "unknown_words_sample": [
+        "sophical",
+        "atopics",
+        "torial",
+        "ergon",
+        "parergon",
+        "prob",
+        "passe",
+        "trans",
+        "lematic",
+        "performatives"
+      ],
+      "full_text": "PASSE-PARTOUT \n9 \nsaying, producing a truth which was not already there, or a pic\u00ad\ntorial doing which, by reason of some occupancy of painting by \nspeech, would have the value of saying. In the performance of this \nperformative promising another performative saying nothing that \nwill be there, the allegory of truth in painting is far from offering \nitself completely naked on a canvas. \nThus one dreams of a painting without truth, which, without \ndebt and running the risk of no longer saying anything to anyone \n[of not interesting anyone: ne plus rien dire i1 personne-TRANS .], \nwould still not give up painting. And this \"without,\" for example \nin the phrase \"without debt\" or \"without truth,\" forms one of \nthe lightweight imports of this book. \nWhat happens everywhere where these supplements of un\u00ad\nchained performatives interlace their simulacra and the most se\u00ad\nrious quality of their literality? What happens in a game so per\u00ad\nverse but also so necessary? One wonders what is left of it when \nthe idiom-effect joins the party, the trait scarcely leaving the ini\u00ad\ntiative to the so-called signatory of the promise. Did Cezanne \npromise, truly promise, promise to say, to say the truth to say \nin painting the truth in painting\u00ad \nAnd me? \n-4 -\nI write four times here, around painting. \nThe first time I am occupied with folding the great philo\u00ad\nsophical question of the tradition (\"What is art?\" \"the beautiful?\" \n\"representation? \"  \"the origin of the work of art?\" etc.) on to the \ninsistent atopics of the parergon: neither work (ergon) nor outside \nthe work [hors d'oeuvre], neither inside nor outside, neither above \nnor below, it disconcerts any opposition but does not remain in\u00ad\ndeterminate and it gives rise to the work. It is no longer merely \naround the work. That which it puts in place-the instances of \nthe frame, the title, the signature, the legend, etc.-does not stop \ndisturbing the internal order of discourse on painting, its works, \nits commerce, its evaluations, its surplus-values, its speculation, \nits law, and its hierarchies. On what conditions, if it's even pos\u00ad\nsible, can one exceed, dismantle, or displace the heritage of the \ngreat philosophies of art which still dominate this whole prob\u00ad\nlematic, above all those of Kant, Hegel, and, in another respect, \nthat of Heidegger? These prolegomena of The Truth in Painting, \nthemselves the parergon of this book, are ringed together by a \ncircle. \n"
+    },
+    {
+      "document": "Derrida_TheTruthInPainting",
+      "page_num": 24,
+      "bucket": "C (3-5%)",
+      "error_rate": 4.8,
+      "unknown_words_sample": [
+        "polylogue",
+        "cerne",
+        "revenir",
+        "duction",
+        "tus",
+        "adami",
+        "schapiro",
+        "valerio",
+        "amoun",
+        "duc"
+      ],
+      "full_text": "[0 \nThe Truth in Painting \nThe second time, more attentive to the ring [cerne] itself, I \nattempt to decrypt or unseal a singular contract, the one that can \nlink the phonic trait to the so-called graphic trait, even prior to \nthe existence of the word (e.g., GL, or TR, or + R). Invisible and \ninaudible, this contract follows other paths, through different \npoint-changes: it has to do with the letter and the proper name \nin painting, with narration, technical reproduction, ideology, the \nphoneme, the biographeme, and politics, among other things and \nstill in painting. The opportunity will be given by The Journey of \nthe Drawing J y Valerio Adami. \nThe third time, putting in question again the trait as a signature, \nwhether this signature passes via the proper name known as pa\u00ad\ntronymic or via the idiom of the draftsman sometimes called duc\u00ad\ntus, I explore in its logical consistency the system of duction (pro\u00ad\nduction, reproduction, induction, reduction, etc.). This amoun ts to \ntreating the trait, its unity and divisibility, otherwise, and it goes \nwithout saying that this has to do with the initial, as in \"someone's \ninitials,\" and with repetition and number, the model and paradigm, \nthe series, the date, the event (the time, the chance, the throw, the \nturn), above all with genealogy and remainders, in the work of \nmourning: in painting. Cartouches gives its name-proper and \ncommon, masculine and feminine2-to the opportunity furnished \nby The Pocket Size Tlingit Coffin, by Gerard Titus-Carmel. \nThe fourth time, I interweave all these threads through a \npolylogue of n + I voices, which happens to be that of a woman. \nWhat happens (and of what? and of whom? )  wherever shoelaces \nare presented? Present themselves and disappear (da/fort), pass \nover and under, inside and outside, from left to right and vice \nversa? And what happens with (does without) shoelaces when \nthey are more or less undone? What takes place when they are \nunlaced in painting? One looks for the revenue (return on in\u00ad\nvestment) or the ghost [revenant], that which has just come back \n[vient de revenir], in these steps without steps, in these shoes of \nwhich nothing assures us that they make a pair. Thus the question \nof the interlace [l'entrelacs] and the disparate resounds. To whom \nand to what do the \"shoes of Van Gogh\" return in their truth of \npainting? What is a desire of restitution if it pertains to [a trait \nd] the truth in painting? The opportunity here was given by a sort \nof duel between Heidegger and Schapiro. A third party (more than \na third party, nothing less than witnesses) feigned death while the \n2. Le cartouche means a cartouche, la cartouche a cartridge.\u00ad\nTRANS. \n"
+    },
+    {
+      "document": "Derrida_TheTruthInPainting",
+      "page_num": 26,
+      "bucket": "C (3-5%)",
+      "error_rate": 3.4,
+      "unknown_words_sample": [
+        "partout",
+        "iui",
+        "avertissement",
+        "fait",
+        "retrac",
+        "misunder",
+        "mouille",
+        "foreward",
+        "fonds",
+        "undiscoverable"
+      ],
+      "full_text": "I2 \nThe Truth in Painting \nthe frame. It works the frame, makes it work, lets it work, gives \nit work to do (let, make, and give will be my most misunder\u00ad\nstood words in this book). The trait is attracted and retrac(t)ed \nthere by itself, attracts and dispenses with itself there [il s'y \nattire et s'y passe, de iui-meme]. It is situated. It situates be\u00ad\ntween the visible edging and the phantom in the center, from \nwhich we fascinate. I propose to use this word intransitively, \nas one would say \"we hallucinate,\" \"I salivate,\" \"you expire,\" \n\"she has a hard-on,\" or \"the boat lies at anchor\" [ie bateau \nmouille]. Between the outside and the inside, between the ex\u00ad\nternal and the internal edge-line, the framer and the framed, the \nfigure and the ground, form and content, signifier and signified, \nand so on for any two-faced opposition. The trait thus divides \nin this place where it takes place. The emblem for this tapas \nseems undiscoverable; I shall borrow it from the nomenclature \nof framing: the passe-partout. \nThe passe-partout which here creates an event must not pass \nfor a master key. You will not be able to pass it from hand to \nhand like a convenient instrument, a short treatise, a viaticum \nor even an organon or pocket canon, in short a transcendental \npass, a password to open all doors, decipher all texts and keep \ntheir chains under surveillance. If you rushed to understand it \nin this way, I would have to issue a warning [avertissement): \nthis forward [avertissement] is not a passe-partout. \nI write right on the passe-partout well known to picture\u00ad\nframers. And in order to broach it, right on this supposedly virgin \nsurface, generally cut out of a square of cardboard and open in \nits \"middle\" to let the work appear. The latter can, moreover, \nbe replaced by another which thus slides into the passe-partout \nas an \"example.\" To that extent, the passe-partout remains a \nstructure with a movable base; but although it lets something \nappear, it does not form a frame in the strict sense, rather a \nframe within the frame. Without ceasing (that goes without \nsaying) to space itself out, it plays its card or its cardboard \nbetween the frame, in what is properly speaking its internal \nedge, and the external edge of what it gives us to see, lets or \nmakes appear in its empty enclosure: the picture, the painting, \nthe figure, the form, the system of strokes [traits] and of colors. \nWhat appears, then, and generally under glass, only appears \nto do without the passe-partout on which it banks [fait fonds]. \nThis would be almost the place for a preface or a foreward, \nbetween, on the one hand, the cover that bears the names (au-\n"
+    },
+    {
+      "document": "Derrida_TheTruthInPainting",
+      "page_num": 27,
+      "bucket": "D (5-10%)",
+      "error_rate": 5.1,
+      "unknown_words_sample": [
+        "partout",
+        "engrav",
+        "seuls",
+        "ings",
+        "trouvent",
+        "theophile",
+        "passe",
+        "trans"
+      ],
+      "full_text": "PASSE-PARTOUT \n13 \nthor and publisher) and the titles (work and series or field), the \ncopyright, the fly leaf, and, on the other hand, the first word of \nthe book, here the first line of Lemmata, with which one ought \nto \"begin.\" \nPasse-partout, the word and the thing, has other uses, but \nwhat would be the point of listing them? They can be found \neasily fils se trouvent tout seuls]. And if I were to put them all \nin a table [tableau: also \"picture\"-TRANs.], there would always \nbe one that would play among the others, one taken out of the \nseries in order to surround it, with yet one more turn. \nPasse-partout nevertheless cannot be written in the plural, \nby reason of grammatical law. This derives from its idiomatic \nmakeup and the grammatical invariability of the adverb. But it \ncan be understood in the plural: \"Curiosities of all sorts, plaster \ncasts, molds, sketches, copies, passe-partout containing engrav\u00ad\nings\" (Theophile Gautier). In a word, it is written in the singular \nbut the law of its agreements may require the plural. \nThe internal edges of a passe-partout are often beveled. \n"
+    },
+    {
+      "document": "Derrida_TheTruthInPainting",
+      "page_num": 31,
+      "bucket": "D (5-10%)",
+      "error_rate": 5.4,
+      "unknown_words_sample": [
+        "satis",
+        "uniess",
+        "voil",
+        "ergon",
+        "avec",
+        "suffic",
+        "faile"
+      ],
+      "full_text": "I. Lemmata \nit's enough \nto say: abyss and satire of the abyss \nbegin and end with a \"that's enough\" \nwhich would have nothing to do with the sufficing or self-suffic\u00ad\ning of sufficiency, nothing to do with satisfaction. Reconsider, \nfurther on, the whole syntax of these untranslatable locutions, \nthe with of the nothing to do [lien a VOil avec, lien a faile avec]. \nWrite, if possible, finally, without with, not without1 but without \nwith, finally, not even oneself. \nOpening with the satis, the enough (inside and outside, \nabove and below, to left and right), satire, farce on the edge of \nexcess \nNOTE.-Uniess followed by the author's initials, all notes to \"Par\u00ad\nergon\" have been added by the translators. The longer passages from Kant \nare quoted from the English translation, Kant's Critique of Aesthetic \nJudgement by James Creed Meredith (Oxford: Clarendon Press, 1 9II), \nand page references to this work are given in brackets in the text. \nI. In English in the text. \n"
+    },
+    {
+      "document": "Derrida_TheTruthInPainting",
+      "page_num": 34,
+      "bucket": "C (3-5%)",
+      "error_rate": 4.1,
+      "unknown_words_sample": [
+        "nue",
+        "combinatory",
+        "ture",
+        "ahistorical",
+        "ysis",
+        "depar",
+        "syntagm",
+        "originary",
+        "une",
+        "ahistoricity"
+      ],
+      "full_text": "20 \nThe Truth in Painting \njected to the same deconstructive treatment. But I am already \nleading into next year's seminar ( 1974-5) \nto delimit \nnow a narrower entry into what I shall try to expound this year \nin the course. Traditionally, a course begins by the semantic anal\u00ad\nysis of its title, of the word or concept which entitles it and which \ncan legitimate its discourse only by receiving its own legitimation \nfrom that discourse. Thus one would begin by asking oneself: \nWhat is art? Then: Where does it come from? What is the origin \nof art? This assumes that we reach agreement about what we \nunderstand by the word art. Hence: What is the origin of the \nmeaning of \"art\"? For these questions, the guiding thread (but it \nis precisely toward the notion of the thread and the interlacing \nthat I should like to lead you, from afar) will always have been \nthe existence of \"works,\" of \"works of art.\" Hegel says so at the \nbeginning of the Lectures on Aesthetics: we have before us but a \nsingle representation, namely, that there are works of art. This \nrepresentation can furnish us with an appropriate point of depar\u00ad\nture. So the question then becomes: What is \"the origin of the \nwork of art\"? And it is not without significance that this question \ngives its title to one of the last great discourses on art, that of \nHeidegger. \nThis protocol of the question installs us in a fundamental \npresupposition, and massively predetermines the system and \ncombinatory possibilities of answers. What it begins by implying \nis that art-the word, the concept, the thing-has a unity and, \nwhat is more, an originary meaning, an etymon, a truth that is \none and naked rune verite une et nue], and that it would be \nsufficient to unveil it through history. It implies first of all that \n\"art\" can be reached following the three ways of word, concept, \nand thing, or again of signifier, signified, and referent, or even by \nsome opposition between presence and representation. \nThrough history: the crossing can in this case just as well \ndenote historicism, the determining character of the historicity \nof meaning, as it can denote ahistoricity, history crossed, trans\u00ad\nfixed in the direction of meaning, in the sense of a meaning [le \nsens d'un sens] in itself ahistorical. The syntagm \"through his-\n"
+    },
+    {
+      "document": "Derrida_TheTruthInPainting",
+      "page_num": 35,
+      "bucket": "B (1-3%)",
+      "error_rate": 2.3,
+      "unknown_words_sample": [
+        "precomprehended",
+        "cept",
+        "ceptual",
+        "physis",
+        "parergon",
+        "etc",
+        "tekhne"
+      ],
+      "full_text": "PARERGON \n21 \ntory\" could entitle all our questions without constraining them \nin advance. By presupposing the etymon-one and naked [un et \nnu ]-a presupposition without which one would perhaps never \nopen one's mouth, by beginning with a meditation on the apparent \npolysemy of tekhne in order to lay bare the simple kernel which \nsupposedly lies hidden behind the multiplicity, one gives oneself \nto thinking that art has a meaning, one meaning. Better, that its \nhistory is not a history or that it is one history only in that it is \ngoverned by this one and naked meaning, under the regime of its \ninternal meaning, as history of the meaning of art. If one were to \nconsider the physis/tekhne opposition to be irreducible, if one \nwere to accredit so hastily its translation as nature/art or nature/ \ntechnique, one would easily commit oneself to thinking that art, \nbeing no longer nature, is history. The opposition nature/history \nwould be the analogical relay of physis/tekhne. One can thus \nalready say: as for history, we shall have to deal with the contra\u00ad\ndiction or the oscillation between two apparently incompatible \nmotifs. They both ultimately come under one and the same logical \nformality: namely, that if the philosophy of art always has the \ngreatest difficulty in dominating the history of art, a certain con\u00ad\ncept of the historicity of art, this is, paradoxically, because it too \neasily thinks of art as historical. What I am putting forward here \nobviously assumes the transformation of the concept of history, \nfrom one statement to the other. That will be the work of this \nseminar \nIf, there\u00ad\nfore, one were to broach lessons on art or aesthetics by a question \nof this type (\"What is art?\" \"What is the origin of art or of works \nof art?\" \"What is the meaning of art?\" \"What does art mean?\" \netc.), the form of the question would already provide an answer. \nArt would be predetermined or precomprehended in it. A con\u00ad\nceptual opposition which has traditionally served to comprehend \nart would already, always, be at work there: for example the op\u00ad\nposition between meaning, as inner content, and form. Under the \napparent diversity of the historical forms of art, the concepts of \nart or the words which seem to translate \"art\" in Greek, Latin, \nthe Germanic languages, etc. (but the closure of this list is already \nproblematic), one would be seeking a one-and-naked meaning [un \n"
+    },
+    {
+      "document": "Derrida_TheTruthInPainting",
+      "page_num": 37,
+      "bucket": "C (3-5%)",
+      "error_rate": 3.7,
+      "unknown_words_sample": [
+        "degger",
+        "nomi",
+        "introduc",
+        "hei",
+        "sprache",
+        "nennen",
+        "parergon",
+        "tions",
+        "dichtung",
+        "nondecomposable"
+      ],
+      "full_text": "PARERGON \n23 \nthe philosophical en\u00ad\ncloses art in its circle but its discourse on art is at once, by the \nsame token, caught in a circle. \nLike the figure of the third term, the figure of the circle asserts \nitself at the beginning of the Lectures on Aesthetics and the Origin \nof the Work of Art. So very different in their aim, their procedure, \ntheir style, these two discourses have in common, as a common \ninterest, that they exclude-(that) which then comes to form, \nclose and bound them from inside and outside alike. \nAnd if it were a frame \none of them, Hegel's, \ngives classical teleology its greatest deployment. He finishes off, \nas people say a little too easily, onto-theology. The other, Hei\u00ad\ndegger's, attempts, by taking a step backwards, to go back behind \nall the oppositions that have commanded the history of aesthetics. \nFor example, in passing, that of form and matter, with all its \nderivatives. Two discourses, then, as different as could be, on \neither side of a line whose tracing we imagine to be simple and \nnondecomposable. Yet how can it be that they have in common \nthis: the subordination of all the arts to speech, and, if not to \npoetry, at least to the poem, the said, language, speech, nomi\u00ad\nnation (Sage, Dichtung, Sprache, Nennen)? (Reread here the third \nand final part of the Origin . . .  , \"Truth and Art./I) \nnot go any further, for the moment, in the reading \nof these two discourses. Keeping provisionally to their introduc\u00ad\ntions, I notice the following: they both start out from a figure of \nthe circle. And they stay there. They stand in it even if their \nresidence in the circle apparently does not have the same status \nin each case. For the moment I do not ask myself: What is a circle? \nI leave to one side the figure of the circle, its place, its privilege \nor its decadence in the history of art. Since the treatment of the \ncircle is part of the history of art and is delimited in it as much \nas it delimits it, it is perhaps not a neutral gesture to apply to it \n"
+    },
+    {
+      "document": "Derrida_TheTruthInPainting",
+      "page_num": 38,
+      "bucket": "B (1-3%)",
+      "error_rate": 1.3,
+      "unknown_words_sample": [
+        "mands",
+        "abyme",
+        "hors",
+        "topos"
+      ],
+      "full_text": "24 \nThe Truth in Painting \nsomething that is also nothing other than one of its figures. It is \nstill a circle, which redoubles, re-marks, and places en abyme the \nsingularity of this figure. Circle of circles, circle in the encircled \ncircle. How could a circle place itself en abyme? \nThe circle and the abyss, that would be the title. On the way \nwe will no doubt encounter the question of the title. What hap\u00ad\npens when one entitles a \"work of art\"? What is the topos of the \ntitle? Does it take place (and where? )  in relation to the work? On \nthe edge? Over the edge? On the internal border? In an overboard \nthat is re-marked and reapplied, by invagination, within, between \nthe presumed center and the circumference? Or between that \nwhich is framed and that which is framing in the frame? Does \nthe topos of the title, like that of a cartouche, command the \n\"work\" from the discursive and juridical instance of an hors\u00ad\nd'oeuvre, a place outside the work, from the exergue of a more \nor less directly definitional statement, and even if the definition \noperates in the manner of a performative? Or else does the title \nplay inside the space of the \"work,\" inscribing the legend, with \nits definitional pretension, in an ensemble that it no longer com\u00ad\nmands and which constitutes it-the title-as a localized effect? \nIf I say for example that the circle and the abyss will be the title \nof the play that I am performing today, as an introduction, what \nam I doing and what is happening? Will the circle and the abyss \nbe the object of my discourse and defined by it? Or else do they \ndescribe the form which constrains my discourse, its scene rather \nthan its object, and moreover a scene stolen away by the abyss \nfrom present representation? As if a discourse on the circle also \nhad to describe a circle, and perhaps the very one that it describes, \ndescribe a circular movement at the very moment that it describes \na circular movement, describe it displacing itself in its meaning \n[sens] ; or else as if a discourse on the abyss had to know the abyss, \nin the sense that one knows something that happens to or affects \none, as in \"to know failure\" or \"to know success\" rather than to \nknow an object. The circle and the abyss, then, the circle en \nabyme. \n"
+    },
+    {
+      "document": "Derrida_TheTruthInPainting",
+      "page_num": 39,
+      "bucket": "C (3-5%)",
+      "error_rate": 4.7,
+      "unknown_words_sample": [
+        "duction",
+        "cenlis",
+        "intro",
+        "soqieta",
+        "telos",
+        "perior",
+        "parergon"
+      ],
+      "full_text": "PARERGON \n25 \nbeginning \nof the Lectures on Aesthetics. From the first pages of the intro\u00ad\nduction, Hegel poses, as always, the question of the point of \ndeparture. How is one to begin a philosophical discourse on \naesthetics? Hegel had already linked the essence of the beautiful \nto the essence of art. According to the determinate opposition \nof nature and mind, and thus of nature and art, he had already \nposited that a philosophical work devoted to aesthetics, the \nphilosophy or science of the beautiful, must exclude natural \nbeauty. It is in everyday life that one speaks of a beautiful sky. \nBut there is no natural beauty. More precisely, artistic beauty is \nsuperior to natural beauty, as the mind that produces it is su\u00ad\nperior to nature. One must therefore say that absolute beauty, \nthe telos or final essence of the beautiful, appears in art and not \nin nature as such. Now the problem of the introduction causes \nno difficulty in the case of the natural or mathematical sciences: \ntheir object is given or determined in advance, and with it the \nmethod that it requires. When, on the contrary, the sciences \nbear on the products of the mind, the \"need for an introduction \nra }\\. P. C:A . \u2022. 9 L< I M A L A P-tt a. t I I Belt \n\u2022 \n. M011Cenlis .e SoQieta)e l \n"
+    },
+    {
+      "document": "Derrida_TheTruthInPainting",
+      "page_num": 40,
+      "bucket": "D (5-10%)",
+      "error_rate": 5.1,
+      "unknown_words_sample": [
+        "gast",
+        "cir",
+        "autodetermination",
+        "duction",
+        "pre",
+        "cipitates",
+        "cular",
+        "pastness",
+        "philos",
+        "intro"
+      ],
+      "full_text": "The Truth in Painting \nor preface makes itself felt.\" Since the object of such sciences \nis produced by the mind, by that which knows, the mind will \nhave to have engaged in a self-knowledge, in the knowledge of \nwhat it produces, of the product of its own production. This \nautodetermination poses singular problems of priority. The mind \nmust put itself into its own product, produce a discourse on \nwhat it produces, introduce itself of itself into itself. This cir\u00ad\ncular duction, this intro-reduction to oneself, calls for what He\u00ad\ngel names a \"presupposition\" (VoraussetzungJ. In the science of \nthe beautiful, the mind presupposes itself, anticipates itself, pre\u00ad\ncipitates itself. Head first. Everything with which it commences \nis already a result, a work, an effect of a projection of the mind, \na resultare. Every foundation, every justification (BegriindungJ \nwill have been a result-this is, as you know, the mainspring \nof the speculative dialectic. Presuppositions must proceed from \na \"proven and demonstrated necessity,\" explains Hegel. \"In phi\u00ad\nlosophy, nothing must be accepted which does not possess the \ncharacter of necessity, which means that everything in philos\u00ad\nophy must have the value of a result.\" \nWe are, right from the introduction, encircled. \nN a doubt art figures one of those productions of mind thanks \nto which the latter returns to itself, comes back to consciousness \nand cognizance and comes to its proper place by returning to \nit, in a circle. What is called [s'appelle: lit. \"calls itself\"] mind \nis that which says to itself \"come\" only to hear itself already \nsaying \"come back.\" The mind is what it is, says what it means, \nonly by returning. Retracing its steps, in a circle. But art forms \nonly one of the circles in the great circle of the Geist or the \nrevenant (this visitor can be called Gast, or ghost, guest or \nGespenstJ. The end of art, and its truth, is religion, that other \ncircle of which the end, the truth, will have been philosophy, \nand so on. And you know-we shall have to get the most out \nof this later on-the function of the ternary rhythm in this \ncirculation. The fact remains that here art is studied from the \npoint of view of its end. Its pastness is its truth. The philosophy \nof art is thus a circle in a circle of circles: a \"ring\" says Hegel, \nin the totality of philosophy. It turns upon itself and in annulling \nitself it links onto other rings. This annular concatenation forms \nthe circle of circles of the philosophical encyclopedia. Art cuts \nout a circumscription or takes away a circumvolution from it. \nIt encircles itself \n"
+    },
+    {
+      "document": "Derrida_TheTruthInPainting",
+      "page_num": 42,
+      "bucket": "D (5-10%)",
+      "error_rate": 6.9,
+      "unknown_words_sample": [
+        "aes",
+        "sozusagen",
+        "vorwiirts",
+        "darity",
+        "gewohnlichen",
+        "clopedia",
+        "pre",
+        "lemmatisch",
+        "bewusstsein",
+        "represen"
+      ],
+      "full_text": "The Truth in Painting \nway, Hegel has to have recourse, certainly, to the metaphor of the \ncircle and of the circle of circles which he says, moreover, is only \na representation. But also to the metaphor of the organic whole. \nOnly philosophy in its entirety (gesammte Philosophie) gives us \nknowledge of the universe as a unique organic totality in itself, \nwhich develops \"from its own concept.\" Without losing anything \nof what makes it a whole \"which returns to itself,\" this \"sole \nworld of truth\" is contained, retained, and gathered together in \nitself. In the \"circlet\" of this scientific necessity, each part rep\u00ad\nresents a \"circle returning into itself\" and keeping a tie of soli\u00ad\ndarity with the others, a necessary and simultaneous interlacing. \nIt is animated by a \"backward movement\" (ein Riickwiirts) and \nby a \"forward movement\" ( Vorwiirts) by which it develops and \nreproduces itself in another in a fecund way (fruchtbar). Thus it \nis that, for us, the concept of the beautiful and of art is \"a pre\u00ad\nsupposition given by the system of philosophy./I Philosophy alone \ncan pose the question \"What is the beautiful?\" and answer it: the \nbeautiful is a production of art, i.e., of the mind. The idea of beauty \nis given to us by art, that circle inside the circle of the mind and \nof the philosophical encyclopedia, etc. \nBefore beginning to speak of the beautiful and of the fine arts, \none ought therefore, by right, to develop the whole of the Ency\u00ad\nclopedia and the Greater Logic. But since it is necessary, in fact, \nto begin \"lemmatically, so to speak\" (sozusagen lemmatisch) by \nanticipation or precipitation of the circlet, Hegel recognizes that \nhis point of departure is vulgar, and its philosophical justification \ninsufficient. He will have begun by the \"representation\" ( Vor\u00ad\nstellung) of art and of the beautiful for the \"common conscious\u00ad\nness\" (im gewohnlichen Bewusstsein). The price to be paid may \nseem very heavy: it will be said for example that the whole aes\u00ad\nthetics develops, explicates, and lays out the representations of \nnaIve consciousness. But does not this negative cancel itself at \nonce? On the immediately following page, Hegel explains that on \na circle of circles, one is justified in starting from any point. \n\"There is no absolute beginning in science.\" \nThe chosen point of departure, in everyday representation: \nthere are works of art, we have them in front of us in represen\u00ad\ntation ( Vorstellung). But how are they to be recognized? This is \nnot an abstract and juridical question. At each step, at each ex\u00ad\nample, in the absence of enormous theoretical, juridical, political, \netc. protocols, there is a trembling of the limit between the \"there \nis\" and the \"there is not\" \"work of art,\" between a \"thing\" and \n"
+    },
+    {
+      "document": "Derrida_TheTruthInPainting",
+      "page_num": 43,
+      "bucket": "D (5-10%)",
+      "error_rate": 6.2,
+      "unknown_words_sample": [
+        "voir",
+        "hyle",
+        "insi",
+        "weise",
+        "darstellung",
+        "der",
+        "faire",
+        "laisser",
+        "vergangenes",
+        "umfassendsten"
+      ],
+      "full_text": "PARERGON \n29 \na \"work,\" a \"work\" in general and a \"work of art.\" Let's leave it. \nWhat does \"leave\" [laisser] mean ((laisser) voir [allow to see (or \nbe seen)), (laisser) faire [allow to do (or be done)), voir faire, faire \nvoir, faire /aire [cause (something) to be done), leave as a remain\u00ad\nder, leave in one's will), what does \"leave\" do? etc. \ncertainly not insi\u00ad\ngnificant that more than a century later, a meditation on art begins \nby turning in an analogous circle while pretending to take a step \nbeyond or back behind the whole of metaphysics or western onto\u00ad\ntheology. The Origin of the Work of Art will have taken a running \nstart for an incommensurable leap. Certainly, and here are some \ndry indications of it, pending a more patient reading. \n1 .  All the oppositions which support the metaphysics of art \nfind themselves questioned, in particular that of form and matter, \nwith all its derivatives. This is done in the course of a questioning \non the being-work of the work and the being-thing of a thing in \nall the determinations of the thing that more or less implicitly \nsupport any philosophy of art (hypokeimenon, aistheton, hyle). \n2 .  As the Post/ace indicates, it is from the possibility of its \ndeath that art can here be interrogated. It is possible that art is \nin its death throes, but \"it will take a good few centuries\" until \nit dies and is mourned (Heidegger does not mention mourning). \nThe Origin is situated in the zone of resonance of Hegel's Lectures \non Aesthetics in as much as they think of art as a \"past\": \"In the \nmost comprehensive (umfassendsten) meditation which the West \npossesses on the essence of art-comprehensive because thought \nout from metaphysics-in Hegel's Lectures on Aesthetics, stands \nthe following proposition: 'But we no longer have an absolute \nneed to bring a content to presentation (zur Darstellung) in the \nform of art. Art, from the aspect of its highest destination, is for \nus something past (ein Vergangenes).' \" After recalling that it would \nbe laughable to elude this proposition under the pretext that works \nhave survived this verdict-a possibility which, one can be sure, \ndid not escape its author-Heidegger continues: \"But the question \nremains: is art still, or is it no longer, an essential and necessary \nmode ( Weise) according to which the decisive [deciding] truth \n"
+    }
+  ]
+}

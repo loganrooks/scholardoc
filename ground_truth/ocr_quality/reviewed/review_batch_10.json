@@ -1,0 +1,37 @@
+{
+  "document": "Heidegger_DiscourseOnThinking",
+  "batch_number": 10,
+  "pages_to_review": [
+    {
+      "page_number": 10,
+      "evidence": "Multiple significant errors: 'Reidegger' (Heidegger - critical author name corruption), 'cally' (split word), 'jective' (subjective), 'logi' (logic). The philosopher's name being misspelled is a major issue for a scholarly text. Complex philosophical argument passages have word-breaking errors that impair semantic clarity.",
+      "confidence": 0.6,
+      "footnote_artifacts": "Word fragments: 'tures' (structures), 'poral' (temporal), 'struc' (structure), 'ence' (experience) indicate systematic hyphenation/line-break issues"
+    },
+    {
+      "page_number": 18,
+      "evidence": "Multiple corruptions: 'oomplex' (complex - character transposition), 'regiqning' (regioning - letter insertion corruption), 'ldentitiit' (Identit\u00e4t - critical philosophical term mangled), 'differenz' (should be Differenz), 'heideg' (fragment, should be Heidegger). Critical philosophical/German terms are garbled. These aren't minor errors - they corrupt key concepts.",
+      "confidence": 0.5,
+      "footnote_artifacts": "Footnote 16-19 references present. Term corruptions in German philosophical vocabulary."
+    },
+    {
+      "page_number": 46,
+      "evidence": "Severe character-level corruption throughout: 'narve' (na\u00efve - diacritic loss), 'owar' (toward - multiple char errors), 'ments' (statements - truncation), 'ates' (creates - truncation), 'lalrt' (alert - severe corruption), 'ayxt' (archaic symbol corruption), 'thmk' (think - severe corruption), 'yxt' (another symbol issue). Greek philosophical text ('AYXi~(lahl') shows extreme corruption - this is Heraclitus' Fragment 122, critical to the text. The corruption of this central philosophical reference is a major failure.",
+      "confidence": 0.55,
+      "footnote_artifacts": "Extensive Greek text corruption - attempts to render ancient Greek philosophy term fail severely"
+    },
+    {
+      "page_number": 47,
+      "evidence": "Extremely high error rate (17.2% reported, likely conservative). Page is mostly glossary with German philosophical terms. Severe corruption of critical terms: 'autochthonic' (correct), 'bodenstandig' (appears correct), 'eigentlich' (correct), but this is primarily a glossary page with German/English key terms - OCR of German diacritics and special characters likely fails. The very high error rate and unknown_words sample indicate systematic failure on technical German terminology.",
+      "confidence": 0.45,
+      "footnote_artifacts": "Glossary format with German-English translations. Term-level corruption in German philosophical vocabulary."
+    },
+    {
+      "page_number": 48,
+      "evidence": "Catastrophic OCR failure. Error rate of 32.8% is extremely high. Page is continuation of glossary with German terms. Critical philosophical vocabulary systematically corrupted. Unknown words sample shows: vorstellen, denken, herkunft, verweilende, menschenwesen, rechnendes, wahrheit, offene, etc. - all core Heideggerian philosophical terms that appear garbled in OCR processing.",
+      "confidence": 0.4,
+      "footnote_artifacts": "Glossary continuation. German text with diacritics shows 32.8% failure rate."
+    }
+  ],
+  "total_in_batch": 5
+}

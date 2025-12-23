@@ -1,0 +1,239 @@
+{
+  "document": "Heidegger_Pathmarks",
+  "batch_number": 11,
+  "reviewer": "Claude",
+  "review_date": "2025-12-21",
+  "pages_reviewed": [
+    {
+      "page_number": 5,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "rationale": "Severe OCR corruption not related to German terms. Examples: 'Wrgrtòrkm' (should be 'Wegmarken'), 'Pres' (Press), 'Univtnity' (University), 'Dt' (De), 'ezception' (exception), 'o·' corruption. These are genuine OCR failures, not German language.",
+      "confidence": 0.95
+    },
+    {
+      "page_number": 12,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "rationale": "Critical metadata corruption not related to German. 'WiJJiam McNtiJJ' (William McNeill), 'DtPau/' (DePaul), 'Univtnity' (University). These are proper names in English that are severely corrupted.",
+      "confidence": 0.95
+    },
+    {
+      "page_number": 79,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "rationale": "Latin philosophical terms corrupted, not German. 'primitit' (primitiva), 'nateria' (materia). While this is a Heidegger text about Leibniz, the corrupted terms are Latin, not German. The Latin quotations are critical source material and are substantially damaged.",
+      "confidence": 0.85
+    },
+    {
+      "page_number": 80,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "rationale": "Latin philosophical terminology corrupted. 'aaiva' (activa), 'lbid' (Ibid). The corruptions are in Latin quotations from Leibniz, not German terms. English text is mostly preserved but source citations compromised.",
+      "confidence": 0.85
+    },
+    {
+      "page_number": 81,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "rationale": "Mixed corruption in Latin and English. 'collocaverunt', 'detennined' (determined), 'vhen' (When), 'lation' (fragment). While discussing Leibniz, the corruptions affect both Latin source material and English exposition.",
+      "confidence": 0.85
+    },
+    {
+      "page_number": 82,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "rationale": "Latin and Greek terminology corrupted. 'peifectibabia' (perfectihabia), 'pcr' (per), 'dieval' (medieval), 'aaiva' (activa). Discussion of Aristotelian 'entelecheia' shows heavy corruption in technical philosophical terms.",
+      "confidence": 0.9
+    },
+    {
+      "page_number": 83,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "rationale": "French and Latin corrupted, not German. French quotation from Leibniz heavily damaged: 'nru', 'qui', 'appelle', 'composee'. This is a French letter being quoted, not German terminology.",
+      "confidence": 0.9
+    },
+    {
+      "page_number": 84,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "rationale": "Latin quotations and English corrupted. 'plurimum', 'actionis', 'aliquod', 'aaiva' (activa). Letter to de Voider in Latin is heavily degraded. Not German terms.",
+      "confidence": 0.85
+    },
+    {
+      "page_number": 85,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "rationale": "French letter text severely corrupted, not German. Leibniz's letter to Queen Sophia Charlotte in French shows heavy damage: 'apper', 'lettre', 'avoir', 'sensibles'. This is French, not German.",
+      "confidence": 0.9
+    },
+    {
+      "page_number": 87,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "rationale": "Latin terminology corrupted. 'erdriingt' appears to be German but other corruptions are Latin: 'extensio', 'totius', 'substantiae', 'resistentia'. Mixed corruption affecting philosophical exposition.",
+      "confidence": 0.8,
+      "note": "Contains one German word 'erdrängt' but majority of errors are Latin/English"
+    },
+    {
+      "page_number": 90,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "rationale": "Latin quotations heavily corrupted. 'monadis', 'actionis', 'temporale', 'mutationis'. Letter to de Voider in Latin is severely damaged. Not German.",
+      "confidence": 0.85
+    },
+    {
+      "page_number": 91,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "rationale": "Latin quotations corrupted. 'porro', 'progredi', 'appctitus' (appetitus), 'percipiente'. Fundamental monadology material in Latin is severely damaged.",
+      "confidence": 0.85
+    },
+    {
+      "page_number": 95,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "rationale": "Latin and French corrupted. 'penitus', 'diversitatis', 'miroir', 'dividuation' (individuation). Letter to de Voider and French terms show corruption, not German.",
+      "confidence": 0.85
+    },
+    {
+      "page_number": 96,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "rationale": "Latin terminology corrupted. 'extensio', 'totius', 'acterizes' (characterizes), 'substantiae'. One German term 'erdrängt' but majority of errors are Latin philosophical terms.",
+      "confidence": 0.8,
+      "note": "Contains one German word but primarily Latin corruption"
+    },
+    {
+      "page_number": 112,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "rationale": "English corruptions affecting critical metadata. 'bzff' (pp.), 'wonhy' (worthy), 'principk' (principle), 'wil' (will), 'mcneill' (McNeill), 'rrason' (reason). Translator attribution corrupted. Not German.",
+      "confidence": 0.9
+    },
+    {
+      "page_number": 113,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "rationale": "Greek text heavily corrupted. Error rate 19.1%. Greek philosophical citations from Aristotle are largely garbled, not German terms. Critical philosophical content compromised.",
+      "confidence": 0.9
+    },
+    {
+      "page_number": 116,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "rationale": "Latin quotations from Leibniz severely corrupted. Error rate 27.9%. 'identicis', 'analysin', 'veritas', 'denominatione', 'conringentium'. Latin source material is critical and is largely garbled.",
+      "confidence": 0.95
+    },
+    {
+      "page_number": 128,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "rationale": "Latin quotations from Augustine severely corrupted. Error rate 22.4%. 'lljtolj', 'carna', 'testimonium', 'habitent', 'mund'. Latin theological-philosophical passages are largely unrecoverable.",
+      "confidence": 0.95
+    },
+    {
+      "page_number": 153,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "rationale": "Latin philosophical terms corrupted. 'stimmt 11icht' (stimmt nicht - this IS German!), 'odaequntio' (adaequatio), 'intellectziS' (intellectus). Mixed German/Latin corruption. Critical technical terms degraded.",
+      "confidence": 0.85,
+      "note": "Contains legitimate German term 'stimmt nicht' but also has Latin corruption"
+    },
+    {
+      "page_number": 154,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "rationale": "Latin terms corrupted. 'adoeq11atio' (adaequatio), 'vn\"itas' (veritas), 'intellectlS' (intellectus), 'Weltvenunft' appears to be German compound. Mixed corruption affecting philosophical terminology.",
+      "confidence": 0.8,
+      "note": "Contains German 'Weltvernunft' but also extensive Latin corruption"
+    },
+    {
+      "page_number": 163,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "rationale": "Greek text and English heavily corrupted. Error rate 65% confidence. Unicode substitutions (\\u324c-\\u324f) replacing critical text. 'xolvov', 'concealing' corrupted. Not German.",
+      "confidence": 0.95
+    },
+    {
+      "page_number": 171,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "rationale": "Entirely Greek text with complete OCR failure. Error rate 80% confidence (0.2 quality score). Systematic character corruption throughout Greek original. Not recoverable. Not German.",
+      "confidence": 0.98
+    },
+    {
+      "page_number": 173,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "rationale": "Extended Greek passage with severe OCR failure. Error rate 75% confidence (0.25 quality score). Complete systematic corruption of Greek dialogue. Not German.",
+      "confidence": 0.98
+    },
+    {
+      "page_number": 175,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "rationale": "Extended Greek passage with severe OCR failure. Error rate 70% confidence (0.3 quality score). Plato's allegory of the cave dialogue in Greek is unrecoverable. Not German.",
+      "confidence": 0.98
+    },
+    {
+      "page_number": 177,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "rationale": "Greek dialogue completely corrupted. Error rate 75% confidence (0.25 quality score). Systematic Unicode substitution throughout. Plato's original Greek is lost. Not German.",
+      "confidence": 0.98
+    },
+    {
+      "page_number": 183,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "rationale": "Greek term corruption. Error rate 5.3% with multiple significant errors. Greek 'alētheia' and 'paideia' corrupted. While error rate is lower, critical Greek philosophical terms are damaged. Not German.",
+      "confidence": 0.85
+    },
+    {
+      "page_number": 188,
+      "original_classification": "BAD",
+      "reviewed_classification": "FALSE_POSITIVE",
+      "rationale": "Error rate 10.6% but appears to be mostly Greek philosophical terms that are intentionally preserved (not OCR errors). 'idea', 'quiditas', 'essentia', 'existentia' are Latin philosophical vocabulary that may be correctly rendered. Needs human review to verify if these are intended technical terms vs. OCR errors.",
+      "confidence": 0.6,
+      "note": "Borderline case - may be technical philosophical vocabulary, not OCR errors"
+    },
+    {
+      "page_number": 193,
+      "original_classification": "BAD",
+      "reviewed_classification": "FALSE_POSITIVE",
+      "rationale": "Error rate 11.8% but Greek terms appear intentionally preserved. 'alētheia', 'idea', 'opOA', 'pilyflCXO2' may be mix of Greek and footnote artifacts. The philosophical Greek terms are likely intentional. Lower confidence without seeing full context.",
+      "confidence": 0.65,
+      "note": "Philosophical Greek vocabulary may be intentional, not OCR corruption"
+    },
+    {
+      "page_number": 222,
+      "original_classification": "BAD",
+      "reviewed_classification": "FALSE_POSITIVE",
+      "rationale": "Error rate 12.4% but corruption appears to be primarily in Greek philosophical terms that may be intentionally preserved. 'physis', 'arche', 'kinesis' are technical philosophical vocabulary. Footnote markers present but philosophical content may be acceptable.",
+      "confidence": 0.65,
+      "note": "Greek philosophical technical vocabulary may be intentional"
+    },
+    {
+      "page_number": 233,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "rationale": "Error rate 11.9% with significant garbling. Greek terms corrupted: 'I),)\"Yaflu:;', '/)1)VIlto0', '\u0528 toO', 'o,)o(a'. Footnote markers merged with words. While some Greek is intentional, the corruption level affects readability.",
+      "confidence": 0.85,
+      "note": "Mix of intentional Greek and corruption - corruption level justifies BAD rating"
+    }
+  ],
+  "summary": {
+    "total_pages_reviewed": 30,
+    "confirmed_bad": 27,
+    "false_positives": 3,
+    "notes": [
+      "Most errors are in Latin, Greek, and French quotations/terminology, not German",
+      "Pages 153, 154 contain some legitimate German terms (stimmt nicht, Weltvernunft) mixed with Latin corruption",
+      "Page 87 contains 'erdrängt' (German) but majority of errors are Latin",
+      "Pages 188, 193, 222 are borderline - may contain intentional philosophical Greek vocabulary",
+      "Pages 171, 173, 175, 177 have complete OCR failure on Greek text",
+      "No cases found where German philosophical terms were incorrectly flagged as OCR errors"
+    ]
+  }
+}

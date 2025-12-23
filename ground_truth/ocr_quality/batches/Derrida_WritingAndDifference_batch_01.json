@@ -1,0 +1,459 @@
+{
+  "document": "Derrida_WritingAndDifference",
+  "batch_number": 1,
+  "total_batches": 11,
+  "pages": [
+    {
+      "document": "Derrida_WritingAndDifference",
+      "page_num": 4,
+      "bucket": "A (0-1%)",
+      "error_rate": 0.0,
+      "unknown_words_sample": [],
+      "full_text": " \nJacques\nDerrida\nWriting and Difference\nTranslated, with an introduction and\nadditional notes, by Alan Bass\nLondon and New York\n"
+    },
+    {
+      "document": "Derrida_WritingAndDifference",
+      "page_num": 5,
+      "bucket": "E (10%+)",
+      "error_rate": 11.3,
+      "unknown_words_sample": [
+        "ditions",
+        "routledge",
+        "isbn",
+        "ebooks",
+        "utilised",
+        "tandf",
+        "rst",
+        "pbk",
+        "www",
+        "ebookstore"
+      ],
+      "full_text": " \nFirst published 1967 by \u00c9ditions du Seuil\nThis translation \ufb01rst published in Great Britain 1978\nby Routledge & Kegan Paul Ltd\nFirst published in Routledge Classics 2001\nby Routledge\n11 New Fetter Lane, London EC4P 4EE\nRoutledge is an imprint of the Taylor & Francis Group\nTranslation \u00a9 1978 The University of Chicago\nAll rights reserved. No part of this book may be reprinted\nor reproduced or utilised in any form or by any electronic,\nmechanical, or other means, now known or hereafter\ninvented, including photocopying and recording, or in\nany information storage or retrieval system, without\npermission in writing from the publishers.\nBritish Library Cataloguing in Publication Data\nA catalogue record for this book is available from the British Library\nISBN 0\u2013415\u201325537\u20136 (hbk)\nISBN 0\u2013415\u201325383\u20137 (pbk)\nThis edition published in the Taylor & Francis e-Library, 2005.\n\u201cTo purchase your own copy of this or any of Taylor & Francis or Routledge\u2019s\ncollection of thousands of eBooks please go to www.eBookstore.tandf.co.uk.\u201d\nISBN 0-203-99178-8\r\n\r\n  Master e-book ISBN\n"
+    },
+    {
+      "document": "Derrida_WritingAndDifference",
+      "page_num": 8,
+      "bucket": "D (5-10%)",
+      "error_rate": 6.2,
+      "unknown_words_sample": [
+        "souf",
+        "cogito",
+        "levinas",
+        "signi"
+      ],
+      "full_text": " \nCONTENTS\nTranslator\u2019s Introduction\nix\n1\nForce and Signi\ufb01cation\n1\n2\nCogito and the History of Madness\n36\n3\nEdmond Jab\u00e8s and the Question of the Book\n77\n4\nViolence and Metaphysics: An Essay on the Thought\nof Emmanuel Levinas\n97\n5\n\u2018Genesis and Structure\u2019 and Phenomenology\n193\n6\nLa parole souf\ufb02\u00e9e\n212\n7\nFreud and the Scene of Writing\n246\n8\nThe Theater of Cruelty and the Closure of\nRepresentation\n292\n9\nFrom Restricted to General Economy: A\nHegelianism without Reserve\n317\n10\nStructure, Sign, and Play in the Discourse of the\nHuman Sciences\n351\n11\nEllipsis\n371\nNotes\n378\nSources\n445\n"
+    },
+    {
+      "document": "Derrida_WritingAndDifference",
+      "page_num": 10,
+      "bucket": "E (10%+)",
+      "error_rate": 25.0,
+      "unknown_words_sample": [
+        "interpr",
+        "texte",
+        "veut",
+        "abandonnant",
+        "criture",
+        "relire",
+        "tative",
+        "blancs",
+        "ronse",
+        "dessiner"
+      ],
+      "full_text": " \nTRANSLATOR\u2019S INTRODUCTION\n\u201cPar la date de ces textes, nous voudrions marquer qu\u2019\u00e0 l\u2019instant, pour\nles relier, de les relire, nous ne pouvons nous tenir \u00e0 \u00e9gale distance de\nchacun d\u2019eux. Ce qui reste ici le d\u00e9placement d\u2019une question forme certes un\nsyst\u00e8me. Par quelque couture interpr\u00e9tative, nous aurions su apr\u00e8s-coup le\ndessiner. Nous n\u2019en avons rien laiss\u00e9 para\u00eetre que le pointill\u00e9, y m\u00e9n-\nageant ou y abandonnant ces blancs sans lesquels aucun texte jamais ne\nse propose comme tel. Si texte veut dire tissu, tous ces essais en ont\nobstin\u00e9ment de\ufb01ni la couture comme fau\ufb01lure. (D\u00e9cembre 1966.)\u201d This\nnote originally appeared appended to the bibliography of L\u2019\u00e9criture et la\ndi\ufb00\u00e9rence, a collection of Derrida\u2019s essays written between 1959 and\n1967 and published as a volume in the latter year. A glance at the list of\nsources (p. 445 below) will show that although Derrida has arranged\nthe essays in order of their original publication, the essay that occupies\nthe approximate middle of the volume was actually written in 1959,\nand therefore precedes the others. Before translating the note\u2014in fact\none of the most di\ufb03cult passages in the book to translate\u2014let us look at\nwhat Derrida said about the chronology of his works up to 1967 in an\ninterview with Henri Ronse published in Lettres fran\u00e7aises, 12 December\n1967 and entitled \u201cImplications.\u201d (This interview, along with two\nothers, has been collected in a small volume entitled Positions, Paris:\nEditions de Minuit, 1972.) Hopefully this discussion of chronology\n"
+    },
+    {
+      "document": "Derrida_WritingAndDifference",
+      "page_num": 12,
+      "bucket": "D (5-10%)",
+      "error_rate": 5.4,
+      "unknown_words_sample": [
+        "fth",
+        "heideggerean",
+        "tion",
+        "mysti",
+        "nom",
+        "deconstruc",
+        "rence",
+        "theo",
+        "gramma",
+        "criture"
+      ],
+      "full_text": " \nideas about the sign, writing and metaphysics which are scattered\nthroughout L\u2019\u00e9criture et la di\ufb00\u00e9rence\u2014can be de\ufb01ned as the \u201cdeconstruc-\ntion\u201d of philosophy by examining in the most faithful, rigorous way\nthe \u201cstructured genealogy\u201d of all of philosophy\u2019s concepts; and to do\nso in order to determine what issues the history of philosophy has\nhidden, forbidden, or repressed. The \ufb01rst step of this deconstruction\nof philosophy, which attempts to locate that which is present nowhere\nin philosophy. i.e., that which philosophy must hide in order to\nremain philosophy, is precisely the examination of the notion of presence\nas undertaken by Heidegger. Heidegger, says Derrida, recognized in the\nnotion of presence the \u201cdestiny of philosophy,\u201d and the reference to\nthe Heideggerean deconstruction of presence is a constant throughout\nDerrida\u2019s works. (Indeed, the reader unfamiliar with Heidegger may\nwell be mysti\ufb01ed by Derrida\u2019s frequent references to the notion of\npresence as the central target in the deconstruction of philosophy.) The\ngrammatological (from the Greek gramma meaning letter or writing)\nopening consists in the examination of the treatment of writing by\nphilosophy, as a \u201cparticularly revelatory symptom\u201d (Positions, p. 15)\nboth of how the notion of presence functions in philosophy and of\nwhat this notion serves to repress. Derrida arrived at this position\nthrough a close scrutiny of the philosophical genealogy of linguistics,\nespecially the philosophical treatment of the sign. From Plato to\nHeidegger himself, Derrida demonstrates, there is a persistent exclu-\nsion of the notion of writing from the philosophical de\ufb01nition of the\nsign. Since this exclusion can always be shown to be made in the name\nof presence\u2014the sign allegedly being most present in spoken discourse\u2014\nDerrida uses it as a \u201csymptom\u201d which reveals the workings of the\n\u201crepressive\u201d logic of presence, which determines Western philosophy\nas such.\nDerrida\u2019s division of L\u2019\u00e9criture et la di\ufb00\u00e9rence into two parts, then, serves\nto remind the reader that between the sixth and seventh essays a \u201ctheo-\nretical matrix\u201d was elaborated whose principles are to some extent\nderived from the \ufb01rst six essays and are more systematically put to\nwork in the last \ufb01ve. However, I would like to propose another division\nof the book, a division between the \ufb01fth (\u201c\u2018Genesis and Structure\u2019 and\nPhenomenology\u201d) and sixth essays. My reason for placing the division\nat this point stems from what Derrida says about La voix et le ph\u00e9nom\u00e8ne,\ntranslator\u2019s introduction\nxi\n"
+    },
+    {
+      "document": "Derrida_WritingAndDifference",
+      "page_num": 14,
+      "bucket": "C (3-5%)",
+      "error_rate": 4.8,
+      "unknown_words_sample": [
+        "nom",
+        "husserlian",
+        "erence",
+        "rence",
+        "speci",
+        "vol",
+        "ume",
+        "ence",
+        "systematicity",
+        "criture"
+      ],
+      "full_text": " \nalways \u2018empty\u2019 itself . . . .\u201d If La voix et le ph\u00e9nom\u00e8ne, then, is the counter-\npart to the introduction to The Origin of Geometry, and if it can be attached\nto L\u2019\u00e9criture et la di\ufb00\u00e9rence as a long note, it seems that this would be the\nplace to do so, for here the general conditions for a deconstruction of\nmetaphysics based on the notions of writing and di\ufb00erence, and \ufb01rst\narrived at through a reading of how the notion of the sign functions in\nHusserlian phenomenology, are explicitly stated. This would make La\nvoix et le ph\u00e9nom\u00e8ne the sixth essay of a hypothetical twelve in L\u2019\u00e9criture et la\ndi\ufb00\u00e9rence, but in the form of a long footnote attached to the middle of\nthe volume.\nChronologically, of course, Derrida\u2019s division of L\u2019\u00e9criture et la di\ufb00\u00e9rence\nis more reasonable than the one I am proposing. I o\ufb00er this division,\nagain, to help orient the reader who comes to Writing and Di\ufb00erence\nknowing only that Derrida is very di\ufb03cult to read. Indeed, without\nsome foreknowledge of (1) the attempt already begun by Derrida in\n1959, but not presented until approximately the middle of this vol-\nume, to expand the deconstruction of metaphysics via a reading of\nHusserl\u2019s treatment of the sign; a reading which always pushes toward\na moment of irreducible di\ufb00erence conceived not only as the danger to\nthe doctrines of truth and meaning which are governed by presence,\nbut also as an inevitable danger in the form of writing which allows\ntruth and meaning to present themselves; and (2) the constant refer-\nence to Heidegger\u2019s analyses of the notion of presence, the \ufb01rst \ufb01ve\nessays of Writing and Di\ufb00erence might be incomprehensible. This is not to\ngainsay Derrida\u2019s statement that the last \ufb01ve essays only are \u201cengaged\nin the grammatological opening.\u201d These last \ufb01ve essays do follow\nDerrida\u2019s original publication (in Critique) of a systematic theoretical\nmatrix for a deconstruction of metaphysics along the lines \ufb01rst laid out\nin the analyses of Husserl; this is why La voix et le ph\u00e9nom\u00e8ne comes \ufb01rst.\nTherefore, without setting aside the speci\ufb01c, individual contents of the\n\ufb01rst \ufb01ve essays, one must also be alerted to their developing systematic-\nity, a systematicity whose guiding thread is embedded in the passage\njust cited from \u201c\u2018Genesis and Structure\u2019 and Phenomenology.\u201d The\nbest way to follow this thread is to pay close attention to Derrida\u2019s\ndemonstrations\u2014less and less elliptical as one continues through Writing\nand Di\ufb00erence\u2014of how philosophically \u201ctraditional\u201d some of the most\n\u201cmodern\u201d concepts of criticism and philosophy are, for example in the\ntranslator\u2019s introduction\nxiii\n"
+    },
+    {
+      "document": "Derrida_WritingAndDifference",
+      "page_num": 18,
+      "bucket": "D (5-10%)",
+      "error_rate": 5.1,
+      "unknown_words_sample": [
+        "ered",
+        "cogito",
+        "substi",
+        "erence",
+        "eds",
+        "miscompre",
+        "rer",
+        "tute",
+        "signi",
+        "rst"
+      ],
+      "full_text": " \nand unequivocal translatability. Within the limits to which it is possible,\nor at least appears possible, translation practices the di\ufb00erence between\nsigni\ufb01ed and signi\ufb01er. But if this di\ufb00erence is never pure, translation is\nno more so; and for the notion of translation we would have to substi-\ntute a notion of transformation: a regulated transformation of one lan-\nguage by another, of one text by another. We will never have, and in fact\nhave never had, any \u2018transfer\u2019 of pure signi\ufb01eds\u2014from one language\nto another, or within one language\u2014which would be left virgin and\nintact by the signifying instrument or \u2018vehicle\u2019 \u201d (Positions, p. 31).\nThe translator, then, must be sure that he has understood the syntax\nand lexicon of the original text in order to let his own language carry\nout the work of transformation. Again, this is best facilitated by obey-\ning the strictures of his language, for a precipitate bending of it into\nunaccustomed forms may be indicative more of his own miscompre-\nhension than of di\ufb03culties in the original text. In this respect, the\ntranslator\u2019s position is analogous to that of the psychoanalyst who\nattempts to translate the manifest language of dreams into a latent\nlanguage. To do so, the analyst must \ufb01rst be sure that he has understood\nthe manifest language. As Derrida says in note 3 of \u201cCogito and the\nHistory of Madness,\u201d \u201cThe latent content of a dream (and of any\nconduct or consciousness in general) communicates with the manifest\ncontent only through the unity of a language; a language which the\nanalyst, then, must speak as well as possible.\u201d The discussion of terms\no\ufb00ered below, and the translator\u2019s footnotes in the text, are an attempt\nto provide a guide to the \u201cmanifest\u201d language of Writing and Di\ufb00erence.\nLike the analyst, however, the reader must let his attention \ufb02oat, and be\nsatis\ufb01ed with a partial understanding of a given essay on any particular\nreading. As the manifest language begins to become more familiar, the\npersistence of the \u201clatent\u201d content\u2014what Derrida has called \u201cthe\nunconscious of philosophical opposition\u201d (Positions, p. 60, note 6; my\nitalics)\u2014will become a surer guide, a more salient thread in the weave\nof these texts.\nDerrida\u2019s terms. Wherever Derrida uses di\ufb00\u00e9rance as a neologism I have left\nit untranslated. Its meanings are too multiple to be explained here fully,\nbut we may note brie\ufb02y that the word combines in neither the active\nnor the passive voice the coincidence of meanings in the verb di\ufb00\u00e9rer: to\ntranslator\u2019s introduction xvii\n"
+    },
+    {
+      "document": "Derrida_WritingAndDifference",
+      "page_num": 20,
+      "bucket": "D (5-10%)",
+      "error_rate": 6.7,
+      "unknown_words_sample": [
+        "macquar",
+        "ibid",
+        "xix",
+        "lish",
+        "sinn",
+        "ected",
+        "rst",
+        "culties",
+        "modi",
+        "tre"
+      ],
+      "full_text": " \nabove. Derrida also consistently plays on the derivation of sens (mean-\ning or sense; Sinn in German) which includes both a supposedly intelli-\ngible, rational sense (a signi\ufb01ed meaning) and a vehicle dependent on\nthe senses for its expression (the signi\ufb01er). Further, in French sens also\nmeans direction; to lose meaning is to lose direction, to be lost, to feel\nthat one is in a labyrinth. I have in\ufb02ected the translation of sens to\nconform to its play of meanings wherever possible.\nHeidegger\u2019s terms. While the concept of Being belongs to the entire meta-\nphysical tradition, its translation into English has become particularly\ndi\ufb03cult since Heidegger\u2019s analyses of it. German and French share the\nadvantage that their in\ufb01nitives meaning to be (sein, \u00eatre) can also be used\nas substantives that mean Being in general. Further, in each language\nthe present participle of the in\ufb01nitive (seiend, \u00e9tant) can also be used as a\nsubstantive meaning particular beings. No such advantage exists in Eng-\nlish, and since Heidegger is always concerned with the distinction\nbetween Sein (\u00eatre, Being in general) and Seiendes (\u00e9tant, beings) the cor-\nrect translation of these substantives becomes the \ufb01rst problem for any\nconsideration of Heidegger in English. (The verb forms present no\ndi\ufb03culties: sein and \u00eatre as in\ufb01nitives become to be, and the gerunds seiend\nand \u00e9tant become being.) I have followed the practice of John Macquar-\nrie and Edward Robinson in their translation of Being and Time (New\nYork: Harper and Row, 1962) and have translated the substantive\n(derived from the in\ufb01nitive) Sein (\u00eatre) as \u201cBeing\u201d (with a capital initial)\nwherever it appears in this volume. However I have modi\ufb01ed their\ntranslation of Seiendes (\u00e9tant)\u2014the substantive from the present\nparticiple\u2014as \u201centity\u201d or \u201centities,\u201d and have translated it as \u201cbeing\u201d or\n\u201cbeings.\u201d Macquarrie and Robinson, in fact, state that \u201cthere is much\nto be said\u201d for this translation (Being and Time, p. 22, note 1). I feel that it\nis preferable to \u201centity\u201d not only because, as they state, \u201cin recent\nBritish and American philosophy the term \u2018entity\u2019 has been used more\ngenerally to apply to anything whatsoever, no matter what its onto-\nlogical status\u201d (ibid.), but also because \u201centity\u201d derives from ens, the\nLatin present participle for the verb to be, esse. No one has been more\nattentive than Heidegger to the di\ufb03culties caused by the translation of\nGreek thought into Latin. The Latin inheritance of \u201centity\u201d continues\nthe tradition of these di\ufb03culties. Once more, we face the problem of\ntranslator\u2019s introduction\nxix\n"
+    },
+    {
+      "document": "Derrida_WritingAndDifference",
+      "page_num": 21,
+      "bucket": "D (5-10%)",
+      "error_rate": 6.0,
+      "unknown_words_sample": [
+        "contradic",
+        "dasein",
+        "ontical",
+        "nity",
+        "lingis",
+        "speci",
+        "pre",
+        "erence",
+        "tions",
+        "theo"
+      ],
+      "full_text": " \nthe transformation of one language by another. There is one major excep-\ntion to the translation of \u00eatant by \u201cbeing,\u201d and this is in Violence and\nMetaphysics, Derrida\u2019s essay on Emmanuel Levinas. The major work by\nLevinas under consideration in this essay, Totalit\u00e9 et In\ufb01ni, has been trans-\nlated into English. Since much of this work is concerned with\nHeidegger, I have maintained the translation of \u00e9tant as \u201cexistent\u201d\u2014the\nsolution chosen by Alphonso Lingis, the translator of Totality and In\ufb01nity\u2014\nin all citations from this work. This translation is particularly problem-\natical in that it tends to confuse the distinction (in terms of Being and\nTime) between the existential, ontological status of Being, and the ontical\nstatus of being. The reader is requested to read \u201cbeing\u201d for \u201cexistent\u201d\nwherever the latter appears.\nThis brings us to another term, one from Heidegger\u2019s later\nthought\u2014that of di\ufb00erence. From the existential analytic of Dasein\u2014\nman\u2019s Being\u2014in Being and Time, Heidegger moved to a contemplation of\nthe di\ufb00erence between beings and Being in his later works. He calls this\nthe ontico-ontological di\ufb00erence, and this idea itself is submitted to powerful\nscrutiny in his Identity and Di\ufb00erence. The title of this work alone should\nbring it to the attention of the serious reader of Writing and Di\ufb00erence; in\nthe introduction to \u201cFreud and the Scene of Writing\u201d Derrida gives a\nbrief indication of the importance of Identity and Di\ufb00erence to Writing and\nDi\ufb00erence when he speaks of \u201cdi\ufb00\u00e9rance and identity,\u201d \u201cdi\ufb00\u00e9rance as the pre-\nopening of the ontico-ontological di\ufb00erence.\u201d From Identity and Di\ufb00erence\nalso comes the term onto-theology which characterizes Western meta-\nphysics as such. Very roughly put, Heidegger analyzes the contradic-\ntions of the logic of presence which is forced to conceive Being as the\nmost general attribute of existence (onto-), and as the \u201chighest,\u201d most\nspeci\ufb01c attribute of God (theo-). Logos is the true verb: the spoken dis-\ncourse in which the notion of truth governed by this onto-theo-logy of\npresence is revealed. Also from Identity and Di\ufb00erence, among other places\nin Heidegger, comes the concept of di\ufb00erence as it is inscribed in the\n\u201contological double genitive,\u201d i.e., the necessary \ufb02uctuation of the\nsubjective and objective cases in order to speak of Being, which always\nmeans the Being of beings and the beings of Being.\nFrom Kant and the Problem of Metaphysics, the work which immediately\nfollows Being and Time, comes the term \u201cauto-a\ufb00ection, which Derrida\nuses often, and which I have discussed brie\ufb02y in note 25 of \u201c\u2018Genesis\ntranslator\u2019s introduction\nxx\n"
+    },
+    {
+      "document": "Derrida_WritingAndDifference",
+      "page_num": 22,
+      "bucket": "D (5-10%)",
+      "error_rate": 6.1,
+      "unknown_words_sample": [
+        "cogito",
+        "xxi",
+        "hyletic",
+        "erence",
+        "vol",
+        "ition",
+        "boyce",
+        "voluntas",
+        "vouloir",
+        "reson"
+      ],
+      "full_text": " \nand Structure\u2019 and Phenomenology.\u201d Brie\ufb02y here too, \u201cauto-a\ufb00ection\u201d\nrefers to the classical notion of time as a self-produced, in\ufb01nite chain of\npresent moments that also, as scrutinized by Kant and Heidegger,\ncauses some problems for the traditional opposition of senses and\nintellect: does time belong to the sensible or the intelligible? From\nHeidegger\u2019s extended confrontation with Nietzsche\u2019s doctrine of the\nwill comes the concept of voluntarism. Throughout Writing and Di\ufb00erence\n\u201cvoluntarism\u201d must be read in its etymological sense of \u201cdoctrine of\nthe will,\u201d deriving as it does from the Latin voluntas (whence our \u201cvol-\nition\u201d). The French vouloir, to want, maintains its etymological reson-\nances in more striking fashion than do any of its English equivalents;\nDerrida plays on these resonances especially in connection with vouloir\ndire, which means either \u201cmeaning\u201d or \u201cto mean,\u201d but has a strong\nconnotation of \u201cthe will to say.\u201d The concluding paragraphs of \u201cCogito\nand the History of Madness\u201d develop this point.\nHusserl\u2019s terms. The most important terms from Husserl are the linked\nconcepts of bracketing, epoch\u00e9, and the phenomenological reduction.\nThese are carefully explained in sections 31, 32, and 33 of Ideas (trans-\nlated by W. R. Boyce Gibson, New York: Macmillan, 1962). Husserl,\nfollowing Descartes\u2019s attempt to \ufb01nd absolutely certain truths by putt-\ning everything into doubt, proposes to put between brackets (or paren-\ntheses) \u201cthe general thesis which belongs to the essence of the natural\nstandpoint.\u201d This phenomenological \u201cabstention\u201d (epoch\u00e9) prohibits\nthe use of any \u201cjudgment that concerns spatio-temporal existence\u201d\n(Ideas, p. 100). \u201cPure consciousness\u201d becomes accessible through this\ntranscendental epoch\u00e9, which Husserl therefore speaks of as the phenom-\nenological reduction. The relationship of this \u201cpure consciousness\u201d\nto \u201cpure essences\u201d is governed by intentionality, for all consciousness is\nconsciousness of something, although again it is not a question of a\nrelationship to a psychological event (experience) or to a real object.\nSensory experience, the relationship to hyl\u00e9 (matter) contains nothing\nintentional for Husserl; it is intentional morph\u00e9 (form, shape) which\nbestows meaning on sensory experience. The opposition of hyl\u00e9 to\nmorph\u00e9 (matter to form) leads Husserl to divide \u201cphenomenological\nbeing\u201d into its hyletic and noetic (intentionally meaningful; from the\nGreek nous, meaning mind or spirit) sides. The pure form of the noesis is\ntranslator\u2019s introduction\nxxi\n"
+    },
+    {
+      "document": "Derrida_WritingAndDifference",
+      "page_num": 23,
+      "bucket": "D (5-10%)",
+      "error_rate": 7.7,
+      "unknown_words_sample": [
+        "ict",
+        "gure",
+        "ure",
+        "etc",
+        "derissa",
+        "percep",
+        "aufhebung",
+        "erence",
+        "noema",
+        "noematic"
+      ],
+      "full_text": " \nin noema, which Husserl construes as the immanent meaning of percep-\ntion, judgment, appreciation, etc. in the \u201cpure,\u201d i.e., phenomenologic-\nally reduced, form of these experiences themselves. As much of Ideas is\nconcerned with the theory of noetic-noematic structures, the reader\nwill appreciate the inadequacy of these remarks.\nHegel\u2019s terms. The most important term from Hegel, Aufhebung, is untrans-\nlatable due to its double meaning of conservation and negation. (The\nvarious attempts to translate Aufhebung into English seem inadequate.)\nThe reader is referred to Derrida\u2019s discussion of the term in \u201cViolence\nand Metaphysics,\u201d section III, \ufb01rst subsection (\u201cOf the Original\nPolemic), B, and to the translator\u2019s notes in \u201cFrom Restricted to General\nEconomy,\u201d where other terms from Hegel are discussed. The Hegelian\n\ufb01gure of the \u201cunhappy consciousness\u201d is discussed in note 23 of Vio-\nlence and Metaphysics, but there is also an important discussion of it at the\nbeginning of \u201cCogito and the History of Madness.\u201d The unhappy con-\nsciousness, for Hegel, is always divided against itself; its historical \ufb01g-\nure is Abraham, the prototype of the \u201cJewish\u201d consciousness for which\nthere is an intrinsic con\ufb02ict between God and nature. In many ways the\ntheme of the unhappy consciousness runs throughout Writing and Di\ufb00er-\nence. \u201cViolence and Metaphysics\u201d is epigraphically submitted to the\ncon\ufb02ict between the Greek\u2014\u201chappy,\u201d at one with nature\u2014and the\nHebraic\u2014unhappy\u2014consciousnesses. Like all inherited oppositions, this\none too is programmed by the logic of presence which demands a\nchoice between the terms, or a resolution of the con\ufb02ict. Derrida\npushes the unhappy consciousness to its logical limits in order to bring\nit to the point where the division within it becomes irreducible. This\noccurs most importantly in the two essays devoted to Jab\u00e8s, whose\npoetry interrogates the meaning of the Jewish, divided consciousness.\nThis interrogation becomes particularly poignant for Derrida in its ties\nto the Jewish, unhappy consciousness as the experience of the (people\nof the) Book and Writing, for, as discussed above, these are the\ninherited concepts which are Derrida\u2019s central targets. Derrida has\nclosed each of the essays on Jab\u00e8s with the name of one of Jab\u00e8s\u2019s\nimaginary rabbis: Rida and Derissa. In this way he alerts us to the\n\u201clatent,\u201d philosophically \u201cunconscious\u201d impact of Writing and Di\ufb00erence:\nan expanded concept of di\ufb00erence through the examination of writing.\ntranslator\u2019s introduction\nxxii\n"
+    },
+    {
+      "document": "Derrida_WritingAndDifference",
+      "page_num": 24,
+      "bucket": "E (10%+)",
+      "error_rate": 15.0,
+      "unknown_words_sample": [
+        "criture",
+        "rey",
+        "und",
+        "speci",
+        "mehlman",
+        "xxiii",
+        "rence",
+        "schrift",
+        "verlag",
+        "gasch"
+      ],
+      "full_text": " \nDerrida\u2019s rebus-like play on his own name across this volume reminds\nus how unlike the Book this one is.\nAll Greek terms have been transliterated. Unless the English translation\nof a French or German text is speci\ufb01cally referred to, citations of texts\nin these languages are of my own translation. I owe a debt of thanks to\nProfessor Richard Macksey of the Johns Hopkins University for the\nassistance he o\ufb00ered me at the outset of this project, and for his gener-\nous permission to revise his own \ufb01ne translation of \u201cStructure, Sign\nand Play in the Discourse of the Human Sciences.\u201d Most of the transla-\ntion of this essay belongs to Professor Macksey. I consulted Je\ufb00rey\nMehlman\u2019s translation of \u201cFreud and the Scene of Writing,\u201d which\nappeared in Yale French Studies, no. 48 (1972). And I have also pro\ufb01ted\ngreatly from the careful scholarship of Rodolphe Gasch\u00e9\u2019s German\ntranslation of L\u2019\u00e9criture et la di\ufb00\u00e9rence (Die Schrift und Die Di\ufb00erenz, Frankfurt:\nSuhrkamp Verlag, 1972).\nALAN BASS\nNew York City\nApril 1977\ntranslator\u2019s introduction xxiii\n"
+    },
+    {
+      "document": "Derrida_WritingAndDifference",
+      "page_num": 26,
+      "bucket": "B (1-3%)",
+      "error_rate": 2.5,
+      "unknown_words_sample": [
+        "rst",
+        "crivain",
+        "erences",
+        "certed"
+      ],
+      "full_text": " \n1\nFORCE AND SIGNIFICATION\nIt might be that we are all tattooed savages since Sophocles.\nBut there is more to Art than the straightness of lines and the\nperfection of surfaces. Plasticity of style is not as large as the\nentire idea. . . . We have too many things and not enough\nforms.\n(Flaubert, Pr\u00e9face \u00e0 la d\u2019\u00e9crivain)\nIf it recedes one day, leaving behind its works and signs on the shores\nof our civilization, the structuralist invasion might become a question\nfor the historian of ideas, or perhaps even an object. But the historian\nwould be deceived if he came to this pass: by the very act of consider-\ning the structuralist invasion as an object he would forget its meaning\nand would forget that what is at stake, \ufb01rst of all, is an adventure\nof vision, a conversion of the way of putting questions to any object\nposed before us, to historical objects\u2014his own\u2014in particular. And,\nunexpectedly among these, the literary object.\nBy way of analogy: the fact that universal thought, in all its domains,\nby all its pathways and despite all di\ufb00erences, should be receiving a\nformidable impulse from an anxiety about language\u2014which can only\nbe an anxiety of language, within language itself\u2014is a strangely con-\ncerted development; and it is the nature of this development not to be\n"
+    },
+    {
+      "document": "Derrida_WritingAndDifference",
+      "page_num": 30,
+      "bucket": "D (5-10%)",
+      "error_rate": 6.9,
+      "unknown_words_sample": [
+        "etc",
+        "rousset",
+        "bachelard",
+        "kinships",
+        "historico",
+        "poulet",
+        "essais",
+        "erence",
+        "picon",
+        "rst"
+      ],
+      "full_text": " \nlability. This operation is called (from the Latin) soliciting. In other\nwords, shaking in a way related to the whole (from sollus, in archaic Latin\n\u201cthe whole,\u201d and from citare, \u201cto put in motion\u201d). The structuralist\nsolicitude and solicitation give themselves only the illusion of technical\nliberty when they become methodical. In truth, they reproduce, in the\nregister of method, a solicitude and solicitation of Being, a historico-\nmetaphysical threatening of foundations. It is during the epochs of\nhistorical dislocation, when we are expelled from the site, that this\nstructuralist passion, which is simultaneously a frenzy of experimenta-\ntion and a proliferation of schematizations, develops for itself. The\nbaroque would only be one example of it. Has not a \u201cstructural\npoetics\u201d \u201cfounded on a rhetoric\u201d6 been mentioned in relation to the\nbaroque? But has not a \u201cburst structure\u201d also been spoken of, a \u201crent\npoem whose structure appears as it bursts apart\u201d?7\nThe liberty that this critical (in all the senses of this word)8 dis-\nengagement assures us of, therefore, is a solicitude for and an opening\ninto totality. But what does this opening hide? And hide, not by virtue\nof what it leaves aside and out of sight, but by virtue of its very power\nto illuminate. One continually asks oneself this question in reading Jean\nRousset\u2019s \ufb01ne book: Forme et signi\ufb01cation: Essais sur les structures litt\u00e9raires de\nCorneille \u00e0 Claudel.9 Our question is not a reaction against what others\nhave called \u201cingenuity\u201d and what seems to us, except in a few\ninstances, to be something more and something better. Confronted by\nthis series of brilliant and penetrating exercises intended to illustrate a\nmethod, it is rather a question of unburdening ourselves of a mute\nanxiety, and of doing so at the point at which this anxiety is not only\nours, the reader\u2019s, but also seems to conform, beneath the language,\noperations, and greatest achievements of this book, to the anxiety of\nthe author himself.\nRousset certainly acknowledges kinships and a\ufb03liations: Bachelard,\nPoulet, Raymond, Picon, Starobinski, Richard, etc. However, despite the\nfamilial air, the many borrowings and numerous respectful acknow-\nledgments, Forme et Signi\ufb01cation seems to us, in many respects, a solitary\nattempt.\nIn the \ufb01rst place, this is due to a deliberate di\ufb00erence. Rousset does not\nisolate himself within this di\ufb00erence, keeping his distance; rather, he\nscrupulously examines a community of intentions by bringing to the\nforce and signification\n5\n"
+    },
+    {
+      "document": "Derrida_WritingAndDifference",
+      "page_num": 32,
+      "bucket": "C (3-5%)",
+      "error_rate": 4.0,
+      "unknown_words_sample": [
+        "pos",
+        "sible",
+        "blanchot",
+        "indissociable",
+        "focillon",
+        "rousset",
+        "ect",
+        "signi",
+        "rst",
+        "interiority"
+      ],
+      "full_text": " \nin the fact that it schematizes without a concept.\u201d16 This enigmatic\norigin of the work as a structure and indissociable unity\u2014and as an\nobject for structuralist criticism\u2014is, according to Kant, \u201cthe \ufb01rst thing\nto which we must pay attention.\u201d17 According to Rousset also. From his\n\ufb01rst page on, he links \u201cthe nature of the literary fact,\u201d always insu\ufb03-\nciently examined, to the \u201crole in art of imagination, that fundamental\nactivity\u201d about which \u201cuncertainties and oppositions abound.\u201d This\nnotion of an imagination that produces metaphor\u2014that is, everything in\nlanguage except the verb to be\u2014remains for critics what certain philo-\nsophers today call a naively utilized operative concept. To surmount this\ntechnical ingenuousness is to re\ufb02ect the operative concept as a thematic\nconcept. This seems to be one of Rousset\u2019s projects.\nTo grasp the operation of creative imagination at the greatest pos-\nsible proximity to it, one must turn oneself toward the invisible\ninterior of poetic freedom. One must be separated from oneself in\norder to be reunited with the blind origin of the work in its darkness.\nThis experience of conversion, which founds the literary act (writing\nor reading), is such that the very words \u201cseparation\u201d and \u201cexile,\u201d\nwhich always designate the interiority of a breaking-o\ufb00 with the world\nand a making of one\u2019s way within it, cannot directly manifest the\nexperience; they can only indicate it through a metaphor whose\ngenealogy itself would deserve all of our e\ufb00orts.18 For in question here\nis a departure from the world toward a place which is neither a non-place\nnor an other world, neither a utopia nor an alibi, the creation of \u201ca\nuniverse to be added to the universe,\u201d according to an expression of\nFocillon\u2019s cited by Rousset (Forme et Signi\ufb01cation, p. 11). This universe\narticulates only that which is in excess of everything, the essential\nnothing on whose basis everything can appear and be produced within\nlanguage; and the voice of Maurice Blanchot reminds us, with the\ninsistence of profundity, that this excess is the very possibility of writing\nand of literary inspiration in general. Only pure absence\u2014not the absence of\nthis or that, but the absence of everything in which all presence is\nannounced\u2014can inspire, in other words, can work, and then make one\nwork. The pure book naturally turns toward the eastern edge of this\nabsence which, beyond or within the prodigiousness of all wealth, is\nits \ufb01rst and proper content. The pure book, the book itself, by virtue of\nwhat is most irreplaceable within it, must be the \u201cbook about nothing\u201d\nforce and signification\n7\n"
+    },
+    {
+      "document": "Derrida_WritingAndDifference",
+      "page_num": 35,
+      "bucket": "C (3-5%)",
+      "error_rate": 3.5,
+      "unknown_words_sample": [
+        "rationes",
+        "thetics",
+        "erence",
+        "canguilhem",
+        "mal",
+        "aes",
+        "rst",
+        "leibnizian",
+        "merly",
+        "ations"
+      ],
+      "full_text": " \ncoming into view all the characteristics of a portion of the life of that\nSextus.\u201d25\nTo write is not only to conceive the Leibnizian book as an impossible\npossibility. Impossible possibility, the limit explicitly named by Mal-\nlarm\u00e9. To Verlaine: \u201cI will go even further and say: the Book, for I am\nconvinced that there is only One, and that it has [unwittingly] been\nattempted by every writer, even by Geniuses.\u201d26 \u201c . . . revealing that, in\ngeneral, all books contain the amalgamation of a certain number of\nage-old truths; that actually there is only one book on earth, that it is\nthe law of the earth, the earth\u2019s true Bible. The di\ufb00erence between\nindividual works is simply the di\ufb00erence between individual interpret-\nations of one true and established text, which are proposed in a mighty\ngathering of those ages we call civilized or literary.\u201d27 To write is not\nonly to know that the Book does not exist and that forever there are\nbooks, against which the meaning of a world not conceived by an\nabsolute subject is shattered, before it has even become a unique mean-\ning; nor is it only to know that the non-written and the non-read\ncannot be relegated to the status of having no basis by the obliging\nnegativity of some dialectic, making us deplore the absence of the Book\nfrom under the burden of \u201ctoo many texts!\u201d It is not only to have lost\nthe theological certainty of seeing every page bind itself into the\nunique text of the truth, the \u201cbook of reason\u201d as the journal in which\naccounts (rationes) and experiences consigned for Memory was for-\nmerly called,28 the genealogical anthology, the Book of Reason this\ntime, the in\ufb01nite manuscript read by a God who, in a more or less\ndeferred way, is said to have given us use of his pen. This lost certainty,\nthis absence of divine writing, that is to say, \ufb01rst of all, the absence of\nthe Jewish God (who himself writes, when necessary), does not solely\nand vaguely de\ufb01ne something like \u201cmodernity.\u201d As the absence and\nhaunting of the divine sign, it regulates all modern criticism and aes-\nthetics. There is nothing astonishing about this. \u201cConsciously or not,\u201d\nsays Georges Canguilhem, \u201cthe idea that man has of his poetic power\ncorresponds to the idea he has about the creation of the world; and to\nthe solution he gives to the problem of the radical origin of things. If\nthe notion of creation is equivocal, ontological and aesthetic, it is not\nso by chance or confusion.\u201d29 To write is not only to know that\nthrough writing, through the extremities of style, the best will not\nwriting and difference\n10\n"
+    },
+    {
+      "document": "Derrida_WritingAndDifference",
+      "page_num": 36,
+      "bucket": "C (3-5%)",
+      "error_rate": 3.0,
+      "unknown_words_sample": [
+        "priori",
+        "ouranios",
+        "taneously",
+        "ering",
+        "ponty",
+        "merleau",
+        "leibnizian",
+        "topos",
+        "simul",
+        "nitely"
+      ],
+      "full_text": " \nnecessarily transpire, as Leibniz thought it did in divine creation, nor\nwill the transition to what transpires always be willful, nor will that\nwhich is noted down always in\ufb01nitely express the universe, resembling\nand reassembling it.30 It is also to be incapable of making meaning\nabsolutely precede writing: it is thus to lower meaning while simul-\ntaneously elevating inscription. The eternal fraternity of theological\noptimism and of pessimism: nothing is more reassuring, but nothing is\nmore despairing, more destructive of our books than the Leibnizian\nBook. On what could books in general live, what would they be if they\nwere not alone, so alone, in\ufb01nite, isolated worlds? To write is to know\nthat what has not yet been produced within literality has no other\ndwelling place, does not await us as prescription in some topos ouranios,\nor some divine understanding. Meaning must await being said or writ-\nten in order to inhabit itself, and in order to become, by di\ufb00ering from\nitself, what it is: meaning. This is what Husserl teaches us to think in The\nOrigin of Geometry. The literary act thus recovers its true power at its\nsource. In a fragment of a book he intended to devote to The Origin of\nTruth, Merleau-Ponty wrote: \u201cCommunication in literature is not the\nsimple appeal on the part of the writer to meanings which would be\npart of an a priori of the mind; rather, communication arouses these\nmeanings in the mind through enticement and a kind of oblique\naction. The writer\u2019s thought does not control his language from with-\nout; the writer is himself a kind of new idiom, constructing itself.\u201d31\n\u201cMy own words take me by surprise and teach me what I think,\u201d32 he\nsaid elsewhere.\nIt is because writing is inaugural, in the fresh sense of the word, that it\nis dangerous and anguishing. It does not know where it is going, no\nknowledge can keep it from the essential precipitation toward the\nmeaning that it constitutes and that is, primarily, its future. However, it\nis capricious only through cowardice. There is thus no insurance\nagainst the risk of writing. Writing is an initial and graceless recourse\nfor the writer, even if he is not an atheist but, rather, a writer. Did Saint\nJohn Chrysostom speak of the writer? \u201cIt were indeed meet for us not\nat all to require the aid of the written Word, but to exhibit a life so\npure, that the grace of the spirit should be instead of books to our\nsouls, and that as these are inscribed with ink, even so should our\nhearts be with the Spirit. But, since we have utterly put away from us\nforce and signification\n11\n"
+    },
+    {
+      "document": "Derrida_WritingAndDifference",
+      "page_num": 38,
+      "bucket": "D (5-10%)",
+      "error_rate": 5.3,
+      "unknown_words_sample": [
+        "tionality",
+        "tion",
+        "func",
+        "telos",
+        "leitwort",
+        "neo",
+        "signaliza",
+        "signi",
+        "tions",
+        "tech"
+      ],
+      "full_text": " \nics can be observed, in a certain way, in the possible correspondence of\nthe preexisting secret to the Idea of the Renaissance thinkers stripped of\nall Neo-Platonism.\u201d\nThis revelatory power of true literary language as poetry is indeed\nthe access to free speech, speech unburdened of its signalizing func-\ntions by the word \u201cBeing\u201d (and this, perhaps, is what is aimed at\nbeneath the notion of the \u201cprimitive word\u201d or the \u201ctheme-word,\u201d\nLeitwort, of Buber).34 It is when that which is written is deceased as a sign-\nsignal that it is born as language; for then it says what is, thereby\nreferring only to itself, a sign without signi\ufb01cation, a game or pure\nfunctioning, since it ceased to be utilized as natural, biological, or tech-\nnical information, or as the transition from one existent to another,\nfrom a signi\ufb01er to a signi\ufb01ed. And, paradoxically, inscription alone\u2014\nalthough it is far from always doing so\u2014has the power of poetry, in\nother words has the power to arouse speech from its slumber as sign.\nBy enregistering speech, inscription has as its essential objective, and\nindeed takes this fatal risk, the emancipation of meaning\u2014as concerns\nany actual \ufb01eld of perception\u2014from the natural predicament in which\neverything refers to the disposition of a contingent situation. This is\nwhy writing will never be simple \u201cvoice-painting\u201d (Voltaire). It creates\nmeaning by enregistering it, by entrusting it to an engraving, a groove,\na relief, to a surface whose essential characteristic is to be in\ufb01nitely\ntransmissible. Not that this characteristic is always desired, nor has it\nalways been; and writing as the origin of pure historicity, pure tradi-\ntionality, is only the telos of a history of writing whose philosophy is\nalways to come. Whether this project of an in\ufb01nite tradition is realized\nor not, it must be acknowledged and respected in its sense as a project.\nThat it can always fail is the mark of its pure \ufb01nitude and its pure\nhistoricity. If the play of meaning can over\ufb02ow signi\ufb01cation (signaliza-\ntion), which is always enveloped within the regional limits of nature,\nlife and the soul, this over\ufb02ow is the moment of the attempt-to-write.\nThe attempt-to-write cannot be understood on the basis of voluntar-\nism. The will to write is not an ulterior determination of a primal will.\nOn the contrary, the will to write reawakens the willful sense of the\nwill: freedom, break with the domain of empirical history, a break\nwhose aim is reconciliation with the hidden essence of the empirical,\nwith pure historicity. The will and the attempt to write are not the\nforce and signification\n13\n"
+    },
+    {
+      "document": "Derrida_WritingAndDifference",
+      "page_num": 39,
+      "bucket": "D (5-10%)",
+      "error_rate": 6.3,
+      "unknown_words_sample": [
+        "zeichencharakter",
+        "rousset",
+        "bedeutungscharakter",
+        "speci",
+        "ectivity",
+        "foun",
+        "nitude",
+        "poulet",
+        "erence",
+        "bility"
+      ],
+      "full_text": " \ndesire to write, for it is a question here not of a\ufb00ectivity but of freedom\nand duty. In its relationship to Being, the attempt-to-write poses itself\nas the only way out of a\ufb00ectivity. A way out that can only be aimed at,\nand without the certainty that deliverance is possible or that it is out-\nside a\ufb00ectivity. To be a\ufb00ected is to be \ufb01nite: to write could still be to\ndeceive \ufb01nitude, and to reach Being\u2014a kind of Being which could\nneither be, nor a\ufb00ect me by itself\u2014from without existence. To write\nwould be to attempt to forget di\ufb00erence: to forget writing in the pres-\nence of so-called living and pure speech.35\nIn the extent to which the literary act proceeds from this attempt-to-\nwrite, it is indeed the acknowledgment of pure language, the responsi-\nbility confronting the vocation of \u201cpure\u201d speech which, once\nunderstood, constitutes the writer as such. Heidegger says of pure\nspeech that it cannot \u201cbe conceived in the rigor of its essence\u201d on the\nbasis of its \u201ccharacter-as-sign\u201d (Zeichencharakter), \u201cnor even perhaps of\nits character-as-signi\ufb01cation\u201d (Bedeutungscharakter).36\nDoes not one thus run the risk of identifying the work with original\nwriting in general? Of dissolving the notion of art and the value of\n\u201cbeauty\u201d by which literature is currently distinguished from the letter\nin general? But perhaps by removing the speci\ufb01city of beauty from\naesthetic values, beauty is, on the contrary, liberated? Is there a\nspeci\ufb01city of beauty, and would beauty gain from this e\ufb00ort?\nRousset believes so. And the structuralism proper to Jean Rousset is\nde\ufb01ned, at least theoretically, against the temptation to overlook this\nspeci\ufb01city (the temptation that would be Poulet\u2019s, for example, since\nhe \u201chas little interest in art\u201d),37 putting Rousset close to Leo Spitzer and\nMarcel Raymond in his scrupulousness about the formal autonomy of\nthe work\u2014an \u201cindependent, absolute organism that is self-su\ufb03cient\u201d\n(Forme et Signi\ufb01cation p. xx). \u201cThe work is a totality and always gains from\nbeing experienced as such\u201d (p. xxi). But here again, Rousset\u2019s position\ndepends upon a delicate balance. Always attentive to the uni\ufb01ed foun-\ndations of dissociation, he circumvents the \u201cobjectivist\u201d danger\ndenounced by Poulet by giving a de\ufb01nition of structure that is not\npurely objective or formal; or circumvents the \u201cobjectivist\u201d danger\ndenounced by Poulet by giving a de\ufb01nition of structure that is not\npurely objective or formal; or circumvents it by at least not in principle\ndissociating form from intention, or from the very act of the writer: \u201cI\nwriting and difference\n14\n"
+    },
+    {
+      "document": "Derrida_WritingAndDifference",
+      "page_num": 41,
+      "bucket": "C (3-5%)",
+      "error_rate": 4.1,
+      "unknown_words_sample": [
+        "xxii",
+        "compre",
+        "acknowledg",
+        "erence",
+        "taneously",
+        "rousset",
+        "hend",
+        "ter",
+        "ection",
+        "simul"
+      ],
+      "full_text": " \ncontinue to signify. Thus, when he distinguishes his task from that of\nJean-Pierre Richard,38 Rousset aims directly at this totality of thing and\nact, form and intention, entelechy and becoming, the totality that is the\nliterary fact as a concrete form: \u201cIs it possible to embrace simul-\ntaneously imagination and morphology, to experience and to compre-\nhend them in a simultaneous act? This is what I would like to attempt,\nalthough well persuaded that this undertaking, before being unitary,\nwill often have to make itself alternative [my italics]. But the end in sight\nis indeed the simultaneous comprehension of a homogenous reality in\na unifying operation\u201d (p. xxii).\nBut condemned or resigned to alternation, the critic, in acknowledg-\ning it, is also liberated and acquitted by it. And it is here that Rousset\u2019s\ndi\ufb00erence is no longer deliberate. His personality, his style will a\ufb03rm\nthemselves not through a methodological decision but through the\nplay of the critic\u2019s spontaneity within the freedom of the \u201calternative.\u201d\nThis spontaneity will, in fact, unbalance an alternation construed by\nRousset as a theoretical norm. A practiced in\ufb02ection that also provides\nthe style of criticism\u2014here Rousset\u2019s\u2014with its structural form. This lat-\nter, Claude L\u00e9vi-Strauss remarks about social models and Rousset about\nstructural motifs in a literary work, \u201cescapes creative will and clear\nconsciousness\u201d (p. xv). What then is the imbalance of this preference?\nWhat is the preponderance that is more actualized than acknowledged?\nIt seems to be double.\nII\nThere are lines which are monsters. . . . A line by itself has no\nmeaning; a second one is necessary to give expression to\nmeaning. Important law.\n(Delacroix)\nValley is a common female dream symbol.\n(Freud)\nOn the one hand, structure becomes the object itself, the literary thing\nitself. It is no longer what it almost universally was before: either a\nheuristic instrument, a method of reading, a characteristic particularly\nrevelatory of content, or a system of objective relations, independent of\nwriting and difference\n16\n"
+    },
+    {
+      "document": "Derrida_WritingAndDifference",
+      "page_num": 42,
+      "bucket": "E (10%+)",
+      "error_rate": 10.2,
+      "unknown_words_sample": [
+        "stricto",
+        "des",
+        "sensu",
+        "tural",
+        "aristotelean",
+        "cognescendi",
+        "arti",
+        "vaincre",
+        "pyramides",
+        "adresse"
+      ],
+      "full_text": " \ncontent and terminology; or, most often, both at once, for the fecund-\nity of structure did not exclude, but, on the contrary, rather implied\nthat relational con\ufb01guration exists within the literary object. A struc-\ntural realism has always been practiced, more or less explicitly. But\nnever has structure been the exclusive term\u2014in the double sense of the\nword\u2014of critical description. It was always a means or relationship for\nreading or writing, for assembling signi\ufb01cations, recognizing themes,\nordering constants and correspondences.\nHere, structure, the framework of construction, morphological\ncorrelation, becomes in fact and despite his theoretical intention the critic\u2019s\nsole preoccupation. His sole or almost sole preoccupation. No longer\na method within the ordo cognescendi, no longer a relationship in the\nordo essendi, but the very being of the work. We are concerned with an\nultrastructuralism.\nOn the other hand (and consequently), structure as the literary thing is\nthis time taken, or at least practiced, literally. Now, stricto sensu, the\nnotion of structure refers only to space, geometric or morphological\nspace, the order of forms and sites. Structure is \ufb01rst the structure of an\norganic or arti\ufb01cial work, the internal unity of an assemblage, a construc-\ntion; a work is governed by a unifying principle, the architecture that is\nbuilt and made visible in a location. \u201cSuperbes monuments de l\u2019orgueil\ndes humains, / Pyramides, tombeaux, dont la noble structure / a\ntemoign\u00e9 que l\u2019art, par l\u2019adresse des mains / Et l\u2019assidu travail peut\nvaincre la nature\u201d (\u201cSplendid monuments of human pride, pyramids,\ntombs, whose noble structure Bears witness that art, through the skill\nof hands and hard work, can vanquish nature\u201d\u2014Scarron). Only meta-\nphorically was this topographical literality displaced in the direction of its\nAristotelean and topical signi\ufb01cation (the theory of commonplaces in\nlanguage and the manipulation of motifs or arguments.) In the seven-\nteenth century they spoke of \u201cthe choice and arrangement of words,\nthe structure and harmony of the composition, the modest grandeur of\nthe thoughts.\u201d39 Or further: \u201cIn bad structure there is always something\nto be added, or diminished, or changed, not simply as concerns the\ntopic, but also the words.\u201d40\nHow is this history of metaphor possible? Does the fact that language\ncan determine things only by spatializing them su\ufb03ce to explain that,\nin return, language must spatialize itself as soon as it designates and\nforce and signification\n17\n"
+    },
+    {
+      "document": "Derrida_WritingAndDifference",
+      "page_num": 45,
+      "bucket": "C (3-5%)",
+      "error_rate": 4.8,
+      "unknown_words_sample": [
+        "scalewise",
+        "altus",
+        "distanciation",
+        "erence",
+        "nal",
+        "corneillean",
+        "delity",
+        "ment",
+        "signi",
+        "ect"
+      ],
+      "full_text": " \nsymmetrical to the \ufb01rst, \ufb01nal conjunction. The destination is a return\nto the point of departure after a circuit in the form of a crossed ring\u201d\n(p. 8). What is singular is the crossed ring, for the destination as\nreturn to the point of departure is of the commonest devices. Proust\nhimself . . . (cf. p. 144).\nThe framework is analogous in Le Cid: \u201cThe ring-like movement with\na median crossing is maintained\u201d (p. 9). But here a new signi\ufb01cation\nintervenes, one that panorography immediately transcribes in a new\ndimension. In e\ufb00ect, \u201cat each step along the way, the lovers develop\nand grow, not only each one for himself, but through the other and for\nthe other, according to a very Corneillean [my italic] law of progressively\ndiscovered interdependence; their union is made stronger and deeper\nby the very ruptures that should have destroyed it. Here, the phases of\ndistanciation are no longer phases of separation and inconstancy, but\ntests of \ufb01delity\u201d (p. 9). The di\ufb00erence between La galerie du palais and Le\nCid, one could be led to believe, is no longer in the design and move-\nment of presences (distance-proximity), but in the quality and inner\nintensity of the experiences (tests of \ufb01delity, manner of being for the\nother, force of rupture, etc.). And it could be thought that by virtue of\nthe very enrichment of the play, the structural metaphor will now be\nincapable of grasping the play\u2019s quality and intensity, and that the work\nof forces will no longer be translated into a di\ufb00erence of form.\nIn believing so one would underestimate the resources of the critic.\nThe dimension of height will now complete the analogical equipment.\nWhat is gained in the tension of sentiments (quality of \ufb01delity, way of\nbeing-for-the-other, etc.) is gained in terms of elevation; for values, as we\nknow, mount scalewise, and the Good is most high. The union of the\nlovers is deepened by an \u201caspiration toward the highest\u201d (p. 9). Altus:\nthe deep is the high. The ring, which remains, has become an \u201cascend-\ning spiral\u201d and \u201chelical ascent.\u201d And the horizontal \ufb02atness of La galerie\nwas only an appearance still hiding the essential: the ascending move-\nment. Le Cid only begins to reveal it: \u201cAlso the destination (in Le Cid),\neven if it apparently leads back to the initial conjunction, is not at all a\nreturn to the point of departure; the situation has changed, for the\ncharacters have been elevated. This is the essential [my italics]: the Corneil-\nlean movement is a movement of violent elevation . . .\u201d (but where has this\nviolence and the force of movement, which is more than its quantity or\nwriting and difference\n20\n"
+    },
+    {
+      "document": "Derrida_WritingAndDifference",
+      "page_num": 47,
+      "bucket": "C (3-5%)",
+      "error_rate": 3.5,
+      "unknown_words_sample": [
+        "oppo",
+        "sitions",
+        "canaque",
+        "rousset",
+        "ssuring",
+        "erences",
+        "nondivine",
+        "gures",
+        "dence",
+        "ities"
+      ],
+      "full_text": " \nstraight, now circular, and now of any other description, it is possible\nto \ufb01nd a mental equivalent, a formula or an equation common to all\nthe points of this line by virtue of which formula the changes in the\ndirection of the line must occur. There is no instance of a fact whose\ncontour does not form part of a geometric line and which can not be\ntraced entire by a certain mathematical motion.\u201d44\nBut Leibniz was speaking of divine creation and intelligence: \u201cI use\nthese comparisons to picture a certain imperfect resemblance to the\ndivine wisdom. . . . I do not pretend at all to explain thus the great\nmystery upon which depends the whole universe.\u201d45 As concerns qual-\nities, forces and values, and also as concerns nondivine works read by\n\ufb01nite minds, this con\ufb01dence in mathematical-spatial representation seems\nto be (on the scale of an entire civilization, for we are no longer dealing\nwith the question of Rousset\u2019s language, but with the totality of our\nlanguage and its credence) analogous to the con\ufb01dence placed by\nCanaque artists46 in the level representation of depth. A con\ufb01dence that\nthe structural ethnographer analyzes, moreover, with more prudence\nand less abandon than formerly.\nOur intention here is not, through the simple motions of balancing,\nequilibration or overturning, to oppose duration to space, quality to\nquantity, force to form, the depth of meaning or value to the surface of\n\ufb01gures. Quite to the contrary. To counter this simple alternative, to\ncounter the simple choice of one of the terms or one of the series\nagainst the other, we maintain that it is necessary to seek new concepts\nand new models, an economy escaping this system of metaphysical oppo-\nsitions. This economy would not be an energetics of pure, shapeless\nforce. The di\ufb00erences examined simultaneously would be di\ufb00erences of\nsite47 and di\ufb00erences of force. If we appear to oppose one series to the\nother, it is because from within the classical system we wish to make\napparent the noncritical privilege naively granted to the other series by\na certain structuralism. Our discourse irreducibly belongs to the system\nof metaphysical oppositions. The break with this structure of belonging\ncan be announced only through a certain organization, a certain strategic\narrangement which, within the \ufb01eld of metaphysical opposition, uses\nthe strengths of the \ufb01eld to turn its own stratagems against it, producing\na force of dislocation that spreads itself throughout the entire system,\n\ufb01ssuring it in every direction and thoroughly delimiting it.48\nwriting and difference\n22\n"
+    },
+    {
+      "document": "Derrida_WritingAndDifference",
+      "page_num": 48,
+      "bucket": "D (5-10%)",
+      "error_rate": 5.9,
+      "unknown_words_sample": [
+        "priori",
+        "nal",
+        "etc",
+        "corneillean",
+        "nds",
+        "rousset",
+        "consid",
+        "sters",
+        "poulet",
+        "metaphorization"
+      ],
+      "full_text": " \nAssuming that, in order to avoid \u201cabstractionism,\u201d one \ufb01xes upon\u2014\nas Rousset does at least theoretically\u2014the union of form and meaning,\none then would have to say that the aspiration toward the highest, in\nthe \u201c\ufb01nal leap which will unite them . . . in God,\u201d etc., the passionate,\nqualitative, intensive, etc., aspiration, \ufb01nds its form in the spiraling\nmovement. But to say further that this union\u2014which, moreover author-\nizesevery metaphor of elevation\u2014isdi\ufb00erence itself, Corneille\u2019s own idiom\u2014\nis this to say much? And if this were the essential aspect of \u201cCorneillean\nmovement,\u201d where would Corneille be? Why is there more beauty in\nPolyeucte than in \u201can ascending movement of two rings\u201d? The force of\nthe work, the force of genius, the force, too, of that which engenders in\ngeneral is precisely that which resists geometrical metaphorization and\nis the proper object of literary criticism. In another sense than Poulet\u2019s,\nRousset sometimes seems to have \u201clittle interest in art.\u201d\nUnless Rousset considers every line, every spatial form (but every\nform is spatial) beautiful a priori, unless he deems, as did a certain\nmedieval theology (Consid\u00e9rans in particular), that form is transcen-\ndentally beautiful, since it is and makes things be, and that Being is\nBeautiful; these were truths for this theology to the extent that mon-\nsters themselves, as it was said, were beautiful, in that they exist\nthrough line or form, which bear witness to the order of the created\nuniverse and re\ufb02ect divine light. Formosus means beautiful.\nWill Bu\ufb00on not say too, in his Supplement to Natural History (vol. XI,\np. 417): \u201cMost monsters are such with symmetry, the disarray of the\nparts seeming to have been arranged in orderly fashion?\u201d\nNow, Rousset does not seem to posit, in his theoretical Introduction,\nthat every form is beautiful, but only the form that is aligned with\nmeaning, the form that can be understood because it is, above all, in\nleague with meaning. Why then, once more, this geometer\u2019s privilege?\nAssuming, in the last analysis, that beauty lets itself be espoused or\nexhausted by the geometer, is he not, in the case of the sublime\u2014and\nCorneille is said to be sublime\u2014forced to commit an act of violence?\nFurther, for the sake of determining an essential \u201cCorneillean\nmovement,\u201d does one not lose what counts? Everything that de\ufb01es a\ngeometrical-mechanical framework\u2014and not only the pieces which\ncannot be constrained by curves and helices, not only force and quality,\nwhich are meaning itself, but also duration, that which is pure qualitative\nforce and signification\n23\n"
+    },
+    {
+      "document": "Derrida_WritingAndDifference",
+      "page_num": 49,
+      "bucket": "D (5-10%)",
+      "error_rate": 5.9,
+      "unknown_words_sample": [
+        "ection",
+        "polyeucte",
+        "nal",
+        "corneillean",
+        "ibid",
+        "cluded",
+        "rousset",
+        "speci",
+        "ition",
+        "rst"
+      ],
+      "full_text": " \nheterogeneity within movement\u2014is reduced to the appearance of the\ninessential for the sake of this essentialism or teleological structuralism.\nRousset understands theatrical or novelistic movement as Aristotle\nunderstood movement in general: transition to the act, which itself is\nthe repose of the desired form. Everything transpires as if everything\nwithin the dynamics of Corneillean meaning, and within each of\nCorneille\u2019s plays, came to life with the aim of \ufb01nal peace, the peace\nof the structural energeia: Polyeucte. Outside this peace, before and after it,\nmovement, in its pure duration, in the labor of its organization, can\nitself be only sketch or debris. Or even debauch, a fault or sin as\ncompared to Polyeucte, the \u201c\ufb01rst impeccable success.\u201d Under the word\n\u201cimpeccable,\u201d Rousset notes: \u201cCinna still sins in this respect\u201d (p. 12).\nPreformationism, teleologism, reduction of force, value and\nduration\u2014these are as one with geometrism, creating structure. This is\nthe actual structure which governs, to one degree or another, all the\nessays in this book. Everything which, in the \ufb01rst Marivaux, does not\nannounce the schema of the \u201cdouble register\u201d (narration and look at\nthe narration) is \u201ca series of youthful novelistic exercises\u201d by which\n\u201che prepares not only the novels of maturity, but also his dramatic\nworks\u201d (p. 47). \u201cThe true Marivaux is still almost absent from it\u201d [my\nitalics]. \u201cFrom our perspective, there is only one fact to retain . . .\u201d\n(ibid.). There follows an analysis and a citation upon which is con-\ncluded: \u201cThis outline of a dialogue above the heads of the characters,\nthrough a broken-o\ufb00 narration in which the presence and the absence\nof the author alternate, is the outline of the veritable Marivaux. . . .\nThus is sketched, in a \ufb01rst and rudimentary form, the properly\nMarivauldian combination of spectacle and spectator, perceived and\nperceiver. We will see it perfect itself\u201d (p. 48).\nThe di\ufb03culties accumulate, as do our reservations, when Rousset\nspeci\ufb01es that this \u201cpermanent structure of Marivaux\u2019s,\u201d49 although\ninvisible or latent in the works of his youth, \u201cbelongs,\u201d as the \u201cwillful\ndissolution of novelistic illusion,\u201d to the \u201cburlesque tradition\u201d (p. 50;\ncf. also p. 60). Marivaux\u2019s originality, which \u201cretains\u201d from this trad-\nition only \u201cthe free construction of a narration which simultaneously\nshows the work of the author and the author\u2019s re\ufb02ection on his work,\u201d\nis then \u201ccritical consciousness\u201d (p. 51). Marivaux\u2019s idiom is not to be\nfound in the structure described but in the intention that animates a\nwriting and difference\n24\n"
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "document": "ComayRebecca_MourningSickness_HegelAndTheFrenchRevolution",
+  "batch_number": 2,
+  "reviewed_pages": [
+    {
+      "page_number": 203,
+      "classification": "FALSE_POSITIVE",
+      "rationale": "Clean academic text. Contains proper nouns (Eichendorff, Schlegel, Wilhelm Meister, Baudelaire, Louis-Napoléon, Hölderlin, Hyperion), foreign terms (crimen inexpiabile), and bibliographic entries. The 'uf731', 'uf738', 'uf736' appear to be page number encoding artifacts, not OCR errors in the main text. The body text is coherent and grammatically correct.",
+      "confidence": 0.95
+    },
+    {
+      "page_number": 206,
+      "classification": "FALSE_POSITIVE",
+      "rationale": "Clean scholarly text. Contains German proper nouns (Luther, Steinhauser, Beichtpfennig), Latin phrases (De captivitate Babylonica ecclesia praeludium), academic citations, and foreign language titles. The 'uf731', 'uf738', 'uf739' are page number artifacts. Main body text is perfectly coherent with no garbled English.",
+      "confidence": 0.95
+    },
+    {
+      "page_number": 207,
+      "classification": "FALSE_POSITIVE",
+      "rationale": "Clean academic endnotes. Contains proper names (Augustine, Derrida, Lacan, Nietzsche, Paul de Man, Foucault, Chloë Taylor), book titles, foreign phrases (ius aggratiandi). The 'uf731', 'uf739', 'uf730' are page number encoding artifacts. Text is grammatically correct and coherent.",
+      "confidence": 0.95
+    },
+    {
+      "page_number": 208,
+      "classification": "FALSE_POSITIVE",
+      "rationale": "Clean scholarly citations. Contains German names (Hodgson, Baczko, Kojève, Niethammer), foreign proper nouns (Bronisaw, Alexandre), and academic references. The 'uf731', 'uf739', 'uf731' are page number artifacts. Main text is well-formed and grammatically correct.",
+      "confidence": 0.95
+    },
+    {
+      "page_number": 209,
+      "classification": "FALSE_POSITIVE",
+      "rationale": "Clean academic notes. Contains German text (Vorlesungen über Rechtsphilosophie, Jenaer Systementwürfe, Empörung), proper names (Ilting, Stirner, Adorno, Beckett), and scholarly citations. The 'uf731', 'uf739', 'uf732' are page number encoding artifacts. Text is coherent and grammatically correct.",
+      "confidence": 0.95
+    },
+    {
+      "page_number": 210,
+      "classification": "FALSE_POSITIVE",
+      "rationale": "Clean index page. Contains alphabetized entries with proper names (Abbé Grégoire, Sieyès, Abraham Nicolas, Adorno, Agamben), foreign terms (Verwirklichung, crimen inexpiabile), and standard index formatting. The 'uf731', 'uf739', 'uf734' at the top are page number artifacts. This is a well-formed scholarly index with cross-references.",
+      "confidence": 0.98
+    },
+    {
+      "page_number": 211,
+      "classification": "FALSE_POSITIVE",
+      "rationale": "Clean index continuation. Contains proper names (Bourel, Braunschweiger, Buchez, Burke, Campe, Carrier, Chambers, Charlemagne, Chateaubriand, Cicero, Condorcet), foreign terms (Verdeutschung, Sittlichkeit, Sonderweg), and index entries. The 'uf731', 'uf739', 'uf734' are page number artifacts. Text is well-structured index content.",
+      "confidence": 0.98
+    },
+    {
+      "page_number": 212,
+      "classification": "FALSE_POSITIVE",
+      "rationale": "Clean index continuation. Contains proper names (Eichmann, Engels, Engelsing, Fichte, Foucault, Friedrich Wilhelm III, Furet, Gans, Gentz), foreign terms (Aufklärung, lumières, Entäußerung, Ungeschehenmachen, Anstoss, Reden an die deutsche Nation), and standard index formatting. The 'uf731', 'uf739', 'uf735' are page number artifacts. Well-formed index text.",
+      "confidence": 0.98
+    },
+    {
+      "page_number": 213,
+      "classification": "FALSE_POSITIVE",
+      "rationale": "Clean index continuation. Contains proper names (Friedrich Wilhelm III, Furet, Gans, Gentz, Goethe, Goldstein, Grégoire, Habermas, Harris, Hassoun, Haym, Heidegger, Hegel), foreign terms (Verdeutschung, Sittlichkeit, Sonderweg, Verwirklichung), and index entries. The 'uf731', 'uf739', 'uf736' are page number artifacts. Text is well-structured.",
+      "confidence": 0.98
+    },
+    {
+      "page_number": 215,
+      "classification": "FALSE_POSITIVE",
+      "rationale": "Clean index continuation with Kant entries. Contains foreign terms (hypotyposis, crimen inexpiabile, summum bonum, sensus communis), proper names (Lisbon, Moravians, Niethammer), book titles (Metaphysics of Morals, Religion within the Boundaries of Mere Reason), and academic references. The 'uf731', 'uf739', 'uf738' are page number artifacts. Text is grammatically correct index content.",
+      "confidence": 0.98
+    },
+    {
+      "page_number": 216,
+      "classification": "FALSE_POSITIVE",
+      "rationale": "Clean index continuation. Contains proper names (Mann, Mannoni, Marat, Marx, McLellan, Merleau-Ponty, Metternich, Michelet, Mirabeau, Möser), foreign terms (Eighteenth Brumaire, sensus communis), and index entries. The 'uf731', 'uf739', 'uf739' are page number artifacts. Well-formed index text.",
+      "confidence": 0.98
+    },
+    {
+      "page_number": 218,
+      "classification": "FALSE_POSITIVE",
+      "rationale": "Clean index continuation. Contains proper names (Richard II, Richelieu, Richter, Ricoeur, Ritter, Robespierre, Rogozinski, Rosenkranz, Rottenburg, Rousseau, Sand, Sartre, Schiller, Schlegel, Schleiermacher, Schmidt, Schulte-Sasse), foreign terms (Athenæum, Lucinde), and index entries. The 'uf732', 'uf730', 'uf731' are page number artifacts. Text is well-structured.",
+      "confidence": 0.98
+    },
+    {
+      "page_number": 219,
+      "classification": "FALSE_POSITIVE",
+      "rationale": "Clean index continuation. Contains proper nouns (Thersites, Thermidorian, Tocqueville, Torok), foreign terms (translatio crimini, translatio evangelii, translatio imperii, translatio studii, translatio stultitiae, Ungeschehenmachen, Unwirklichkeit, Urtext), and index entries. The 'uf732', 'uf730', 'uf732' are page number artifacts. Well-formed index text.",
+      "confidence": 0.98
+    },
+    {
+      "page_number": 220,
+      "classification": "FALSE_POSITIVE",
+      "rationale": "Clean bibliography/series page. Contains proper names (Kadir, Cavell, Mehlman, Rogozinski, Hénaff, Patton, Fagenblat, Geroulanos, Herscher, Rheinberger, Taubes, Hitchcock, Wiesing, Esposito, Cooppan, Früchtl, Ankersmit, Rothberg, Lyotard), book titles, and academic series information. No garbled text, all content is coherent.",
+      "confidence": 0.98
+    },
+    {
+      "page_number": 221,
+      "classification": "FALSE_POSITIVE",
+      "rationale": "Clean bibliography continuation. Contains proper names (Mosès, Hadot, Lefebvre, Haj, Perpich, Detienne, Delaporte, Girard, Baxstrom, Culbert, Frost, Schwartz, Anidjar, Khanna, Peeren, Peretz, Sorensen, Damisch, van Dijck, Hollander, Szafraniec, Guyer, Ross, Richter, Brodzki), book titles, and publication information. All text is coherent and well-formed.",
+      "confidence": 0.98
+    },
+    {
+      "page_number": 222,
+      "classification": "FALSE_POSITIVE",
+      "rationale": "Clean bibliography continuation. Contains proper names (Gasché, Peucker, Melas, Culler, Levine, Jordan, Menke, Zarader, Assmann, Scott, Hirschkind, Pandey, Siegel, Bernstein, Jennings, Rorty, Mendieta, Derrida, Barbaras, Bennett, Wang, Phillips, Ankersmit, Rév, Marrati, Ziarek, Mondzain), book titles, and academic references. All text is well-formed and coherent.",
+      "confidence": 0.98
+    },
+    {
+      "page_number": 223,
+      "classification": "FALSE_POSITIVE",
+      "rationale": "Clean bibliography continuation. Contains proper names (Sjöholm, Derrida, Roudinesco, Weber, Malabou, Seel, Salomon, Taubes, Marion, Michaud, Freadman, Cavell, McLean, Rössler, Faure, Ricciardi, Badiou, Anidjar, Culler, Lamb, Nancy, Adorno, Pisters, Huyssen, Asad, von Mücke, Redfield, Levinas, Zahavi, Gasché), book titles, and publication data. All text is coherent and well-structured.",
+      "confidence": 0.98
+    },
+    {
+      "page_number": 224,
+      "classification": "FALSE_POSITIVE",
+      "rationale": "Clean bibliography continuation. Contains proper names (Naas, Pauer-Studer, Marion, Adorno, Horkheimer, Balfour, Stokhof, Vattimo, Derrida, Rottenberg, Levinson, Reiss, de Vries, Weber, Luhmann, Rasch, Fabian, Henry, Anidjar, Cixous, Ankersmit, Marder, Koselleck, Damisch, Nancy, Lyotard, Patočka), book titles (Dialectic of Enlightenment, I Am the Truth, etc.), and publication information. All text is coherent.",
+      "confidence": 0.98
+    },
+    {
+      "page_number": 225,
+      "classification": "FALSE_POSITIVE",
+      "rationale": "Clean bibliography continuation. Contains proper names (Damisch, Hoving, Rand, Rasch, Derrida, Dufourmantelle, Lyotard, Silverman, Weber, Librett, Baer, Wheeler, Ferris, Gasché, Winter, Fioretos, Hölderlin, Miller, Asensi, Sas, Schwenger, Maleuvre, Wachtel, Luhmann, Bal, Vattimo), book titles, and academic publication details. All text is well-formed and coherent.",
+      "confidence": 0.98
+    }
+  ],
+  "summary": {
+    "total_reviewed": 19,
+    "false_positives": 19,
+    "confirmed_bad": 0,
+    "notes": "All pages in this batch are FALSE_POSITIVE. Pages 203-209 are endnotes/references with proper academic citation formatting. Pages 210-219 are index pages with proper names, foreign terms, and technical vocabulary. Pages 220-225 are bibliography pages listing academic publications. The error rate flags were triggered by: (1) page number encoding artifacts (uf731, uf738, etc.), (2) foreign language terms (German, French, Latin), (3) proper nouns from multiple languages, (4) specialized academic vocabulary, and (5) footnote reference markers. None of the pages contain actual garbled English or OCR errors in the substantive text content."
+  }
+}

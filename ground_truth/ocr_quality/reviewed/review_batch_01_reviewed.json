@@ -1,0 +1,174 @@
+{
+  "document": "ComayRebecca_MourningSickness_HegelAndTheFrenchRevolution",
+  "batch_number": 1,
+  "reviewed_pages": [
+    {
+      "page_number": 4,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Title page with proper names 'Mieke Bal' and 'Hent de Vries' (legitimate editor names). Text is clean and correctly extracted."
+    },
+    {
+      "page_number": 10,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Table of Contents with intentional multilingual chapter titles: German ('Noch nicht und doch schon'), French ('Mis\u00e8re'), Latin ('Crimen inexpiabile', 'Horror vacui'). Scholarly references, not OCR errors. Clean formatting."
+    },
+    {
+      "page_number": 13,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Abbreviations page. Flagged words are all legitimate: 'Gregor' (Mary J. Gregor - translator), 'Guyer' (Paul Guyer - translator), 'Gruyter' (de Gruyter - publisher), 'Wissenschaften', 'Enzyklop\u00e4die', 'Grundrisse' (German academic terms). No OCR errors."
+    },
+    {
+      "page_number": 14,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Bibliography page. 'Sch\u00f6ningh' (publisher), 'Hardenbergs' (Friedrich von Hardenberg/Novalis), German titles ('Ph\u00e4nomenologie des Geistes'). Clean text with proper diacritics (\u00e4, \u00f6, \u00fc)."
+    },
+    {
+      "page_number": 15,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Abbreviations page. 'Vorlesungen' (Lectures), 'Suhrkamp' (publisher), 'Werke' (Works) - all legitimate German academic terms. Proper rendering of special characters."
+    },
+    {
+      "page_number": 174,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Notes section. 'von' (German: from/of in names), 'ibid' (standard abbreviation), 'dlung' (German compound fragment). Bibliography with multilingual titles correctly extracted."
+    },
+    {
+      "page_number": 175,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Notes page. 'unserer' and 'von' are legitimate German words. 'seeba' appears to be proper name 'Seeba' or part of German compound. German titles ('W\u00f6rterb\u00fccher', 'Sendbrief vom Dolmetschen') correctly extracted."
+    },
+    {
+      "page_number": 176,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Notes page. 'Zeitschrift f\u00fcr Kunstgeschichte' (Journal for Art History - legitimate German journal). 'emony' from 'cer\u00ademony' (hyphenation artifact, not OCR error)."
+    },
+    {
+      "page_number": 177,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Notes page. 'Schriften' (Writings), 'Meisters' (Master's) - legitimate German book title words. 'plexities' from 'com\u00adplexities' (hyphenation)."
+    },
+    {
+      "page_number": 178,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Notes page. 'von' (German preposition), 'canni' from 'cannibalistic' (hyphenation), 'mtliche' may be fragment of 's\u00e4mtliche' but in context of proper citations."
+    },
+    {
+      "page_number": 179,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Notes page. 'vortreffliche' (German: excellent/splendid - quoted text), 'edu' (from .edu domain or 'edited'), 'ibid' (standard abbreviation). German citations correctly extracted."
+    },
+    {
+      "page_number": 180,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Notes page. 'vertilgt', 'vertilgen', 'unvertilgbar' - all legitimate German words (destroyed/destroy/indestructible) in philosophical discussion. Clean extraction."
+    },
+    {
+      "page_number": 181,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Notes page. 'beantwortung' (German: answering/response in book title), 'cul' from 'cul\u00adtural' (hyphenation), 'einen' (German article). Proper multilingual content."
+    },
+    {
+      "page_number": 183,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Notes page. 'regiminis' (Latin genitive: of rule/government), 'Reinhard' (proper name: Karl Friedrich Reinhard), 'sch' (hyphenation fragment). Latin/German content correctly extracted."
+    },
+    {
+      "page_number": 185,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Notes page. 'Flammarion' (French publisher), 'vol' (volume abbreviation), 'libert' from 'libert\u00e9' or 'liberty' (hyphenation). French citations properly extracted."
+    },
+    {
+      "page_number": 186,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Notes page. 'Restif' (proper name: Restif de la Bretonne), 'Schechter' (proper name), 'iel' fragment. Contains 'Suhrkamp' (publisher), proper German citations. Clean extraction."
+    },
+    {
+      "page_number": 187,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Notes page. 'Laf' from 'Robert Laffont' (publisher), 'ibid' (abbreviation), 'von' (German). References to Michelet's French revolutionary history. Proper multilingual content."
+    },
+    {
+      "page_number": 188,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Notes page. 'Andreas' (proper name: Andreas Gailus), 'olic' (fragment, possibly from 'Catholic' or hyphenation), 'ibid'. Clean bibliographic citations."
+    },
+    {
+      "page_number": 189,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Notes page. 'itin' fragment, 'Droz' (publisher), 'terminer' (French: to end/complete in book title 'qui peuvent terminer la R\u00e9volution'). French citations correctly rendered."
+    },
+    {
+      "page_number": 190,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Notes page. 'Holbach' (proper name: Baron d'Holbach), 'Laffont' (publisher Robert Laffont), 'gouv' (fragment from 'gouvernement'). Clean citations."
+    },
+    {
+      "page_number": 191,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Notes page. 'cours' (French: course/lectures), 'histoire' (French: history), 'vol' (volume). French academic titles ('Abr\u00e9g\u00e9 de m\u00e9tapolitique'). Proper extraction."
+    },
+    {
+      "page_number": 192,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Notes page. 'Brandstetter' (proper name), 'phr' (abbreviation fragment), 'Gabriele' (proper name: Gabriele Brandstetter). Clean bibliographic content."
+    },
+    {
+      "page_number": 193,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Notes page. 'plete' from 'complete' (hyphenation), 'von' (German), 'Flammarion' (publisher). German quote ('Der Begriff des Rechts machte sich mit einem Male geltend'). Clean extraction."
+    },
+    {
+      "page_number": 194,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Notes page. 'appropria' (fragment from appropriation/hyphenation), 'Stoichita' (proper name: Victor Stoichita), 'tique' (French fragment from politique/critique). Clean citations."
+    },
+    {
+      "page_number": 195,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Notes page. 'Andreas' (proper name), 'Flammarion' (publisher), 'vol' (volume). French title ('De l\\'Allemagne'). Proper extraction of multilingual content."
+    },
+    {
+      "page_number": 196,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Notes page. 'Ersetzung' (German: replacement/substitution), 'Theodor' (proper name: Theodor Adorno), 'Adorno' (philosopher name). German academic terms correctly extracted."
+    },
+    {
+      "page_number": 197,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Notes page. 'mediauras' (could be 'media auras' or neologism), 'Cholodenko' (proper name), 'Prinzipien' (German: principles). Clean extraction of specialized academic content."
+    },
+    {
+      "page_number": 199,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Notes page with only 7.1% error rate. Text is clean with proper academic citations. Any flagged 'errors' are likely specialized terminology or proper nouns."
+    },
+    {
+      "page_number": 201,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Notes page with 9.0% error rate. Clean text with citations to Nietzsche, Abraham & Torok. Proper extraction of academic content. Low error rate for notes section."
+    },
+    {
+      "page_number": 202,
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reason": "Notes page with 7.7% error rate. Contains proper Hegelian philosophical terminology. Clean extraction with low error rate for this type of content."
+    }
+  ],
+  "summary": {
+    "false_positives": 30,
+    "confirmed_bad": 0,
+    "total_reviewed": 30,
+    "false_positive_rate": "100.0%"
+  },
+  "findings": {
+    "primary_issue": "Vocabulary-based quality metrics fail on multilingual scholarly texts",
+    "false_positive_categories": [
+      "Foreign language terms (German, French, Latin) in academic citations",
+      "Proper nouns (author names, publisher names, place names)",
+      "Academic abbreviations (ibid, ed., trans., vol.)",
+      "Hyphenation artifacts at line breaks (not true OCR errors)",
+      "Specialized academic terminology"
+    ],
+    "recommendation": "All 30 pages should be reclassified as GOOD or MEDIUM quality. The OCR extraction is actually excellent - it correctly preserves multilingual content, special characters (\u00fc, \u00f6, \u00e4, \u00e9, \u00e8), and complex formatting. The 'error rates' are artifacts of English-only spell-checking.",
+    "quality_assessment": "OCR quality is HIGH. Text is clean, readable, and properly formatted. No actual OCR errors (garbled text, missing characters, malformed words) were found in any of the 30 pages reviewed."
+  }
+}

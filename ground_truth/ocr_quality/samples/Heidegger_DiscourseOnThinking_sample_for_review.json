@@ -1,0 +1,335 @@
+{
+  "document": "Heidegger_DiscourseOnThinking",
+  "total_pages": 45,
+  "sample_size": 18,
+  "bucket_distribution": {
+    "A (0-1%)": 1,
+    "B (1-3%)": 22,
+    "C (3-5%)": 18,
+    "D (5-10%)": 1,
+    "E (10%+)": 3
+  },
+  "sample_distribution": {
+    "D (5-10%)": 1,
+    "E (10%+)": 3,
+    "C (3-5%)": 9,
+    "B (1-3%)": 4,
+    "A (0-1%)": 1
+  },
+  "pages": [
+    {
+      "document": "Heidegger_DiscourseOnThinking",
+      "page_num": 3,
+      "bucket": "D (5-10%)",
+      "error_rate": 9.1,
+      "unknown_words_sample": [
+        "gelassenheit",
+        "freund",
+        "torchbooks"
+      ],
+      "full_text": "by ,\nMARTIN\nHEIDEGGER\nDISCOURSE\nON\nTHINKING\nA Translation\nof Gelassenheit\nJOHN M. ANDERSON\nand E. HANS\nFREUND\nWith an Introduction\nby\nJOHN\nM. ANDERSON\n\u2022\nHARPER\nTORCHBOOKS\nHarper & Row, Publishers,\nNew York\nGrand Rapids, Philadelphia,\nSt. Louis, San Francisco\nLondon, Singapore,\nSydney, Tokyo, Toronto\n"
+    },
+    {
+      "document": "Heidegger_DiscourseOnThinking",
+      "page_num": 4,
+      "bucket": "E (10%+)",
+      "error_rate": 10.1,
+      "unknown_words_sample": [
+        "rrd",
+        "pfuuingen",
+        "americli",
+        "originauy",
+        "freund",
+        "duced",
+        "isbn",
+        "verlag",
+        "gelassenheit",
+        "neske"
+      ],
+      "full_text": "DISCOURSE ON THINKING\nCONTENTS\n43\nPREFACE\n7\nINTRODUCTION\n11\nCopyright \u00a9 1966 in the English translation by Harper & Row,\nPublishers, New York.\nPrinted in the United States of AmericlI.\nEnglish translation by John M. Anderson and E. Hans Freund.\nAll rights reserved. No part of this book may be used or repro-\nduced in any manner whatsoever without written permission\nexcept in the case of brief quotations\nembodied in critical\narticles and reviews. For information address Harper\n& Row,\nPublishers, Inc., 10East 53rd St.\u2022New York, N.Y. 10022.\nFirst HARPER COLOPHON edition published 1969by\nHarper & Row, Publishers, Inc.,\nNew York, N.Y. 10022.\nISBN: 0-06-\\3\\459-5\nDISCOURSE\nON THINKING\n41\n1. MEMORIAL ADDRESS\nn. CONVERSATION ON A COUNTRY PATH\nABOUT THINKING\n58\nGLOSSARY\n91\nOriginaUy published. by Verlag Gunther Neske, PfuUingen, under\nthe.tide Gelassenheit.,copyright \u00a9 1959by Verlag Gunther Nuke.\n09 08 07 06\nRRD(H) 40 39 38\n"
+    },
+    {
+      "document": "Heidegger_DiscourseOnThinking",
+      "page_num": 5,
+      "bucket": "C (3-5%)",
+      "error_rate": 3.5,
+      "unknown_words_sample": [
+        "pfullingen",
+        "verlag",
+        "conradin",
+        "gelassenheit",
+        "neske"
+      ],
+      "full_text": "PREFACE\nMartin\nHeidegger's\nDiscourse\non\nThinking/\nwhich\nis\ntranslated\nhere,\nwas published\nin 1959. It comprises a\nstatement of the point of view of his later thought.\nSince\nHeidegger's\nlater\nthought\nhas evoked so much\ninterest\namong philosophers and, in the last few years, theologians,\nit seems important to have significant examples of it avail-\nable in English. Discourse on Thinking\nis a particularly\ngood example for this purpose not only because it is so re-\ncent, but because of its format and style.\nDiscourse on Thinking\nhas two parts:\na Memorial Ad-\ndress in honor of the German composer, Conradin Kreutzer,\nwhich Heidegger\ndelivered to a general\naudience,\nand a\ndialogue-or\nconversation-in\nwhich the theme stated in\nthe address is developed in a more specialized and profound\nway. The dialogue was written\nfrom more extended notes\non a conversation dating from 1944-45 between a teacher,\na scientist, and a scholar.\nThe work provides an introduction\nto the later thought\nof Martin Heidegger, an introduction\nvia his conception of\nmeditative thinking,\nwhich is easily intelligible as it is ex-\npressed in the Memorial Address. The Memorial Address\n1. Martin Heidegger, Gelassenheit\n(Pfullingen:\nGUnther Neske Verlag,\n1959) .\n7\n"
+    },
+    {
+      "document": "Heidegger_DiscourseOnThinking",
+      "page_num": 6,
+      "bucket": "B (1-3%)",
+      "error_rate": 2.8,
+      "unknown_words_sample": [
+        "vania",
+        "dertaking",
+        "tional",
+        "ffeidegger",
+        "freund",
+        "pennsyl",
+        "losophy",
+        "transi"
+      ],
+      "full_text": "8\nPREFACE\nformulates\nHeidegger's\nconcern for meditative\nthinking,\nwithout elaborating\nthe details of its fundamental\nnature.\nNonetheless the Memorial Address makes clear Heidegger's\nunderstanding\nof the relation\nof meditative\nthinking\nto\ncontemporary\nhuman life, and it states his claim that such\nthinking\nhas a most important\npart to play in our life\ntoday. In addition, the style of the Address is clear, there\nis no technical terminology,\nand the Address has a poetic\ntone which conveys the high seriousness of the subject.\nFurther,\nthe explanatory Conversation provides a transi-\ntional\nintroduction\ninto the complexities\nof Heidegger's\nphilosophy. It does so by virtue\nof being a conversation :\nthe characters of the protagonists can be seen in relation to\nthe ideas they are discussing, the goal of the enterprise\nis\nreflected in the attitudes of the speakers, and the free and\npoetic tone of the speech emphasizes the human significance\nof the undertaking.\nThis is not to say that the Conversation\nis easily understood,\nfor it is not. But the reader will be\nable to see why Heidegger's\nundertaking\nis important,\nand\nwill be able to appreciate why the fulfillment\nof this un-\ndertaking is so extraordinarily\ndifficult.\nThose\nwell\nversed\nin the\nintricacies\nof Heidegger's\nthought\nmay find the\nConversation\na refreshingly\ncon-\ncrete presentation\nof one of the fundamental\npoints in his\nphilosophy.\nThe interplay\nof thought\nand argument,\nthe\nfree use of word and metaphor,\nthe poetic summaries,\nall\noffer a new perspective on an abstract\nargument,\nwhich\nshould be of help in rounding\nout an awareness\nof the\nvision Heidegger\nhas of the place of man in Being. And\nfor the philosopher or theologian as yet unacquainted\nwith\nMartin\nFfeidegger's\nthought,\nthe Memorial\nAddress and\nPREFACE\n9\nConversation might well provide a tempting taste of a phi-\nlosophy which already has a place in history.\nWe wish to acknowledge our indebtedness to Professor\nGlenn\nGray\nfor many\nvaluable\nsuggestions\nwhich\nhave\nmaterially\nimproved\nthe translation.\nWe thank\nhim\nfor\nthese and for much other help in this enterprise.\nWe are\nindebted to the Central Fund for Research of The Pennsyl-\nvania State University\nfor grants which made possible the\ncompletion of this work.\nJOHN M. ANDERSON\nE. HANS FREUND\n"
+    },
+    {
+      "document": "Heidegger_DiscourseOnThinking",
+      "page_num": 7,
+      "bucket": "C (3-5%)",
+      "error_rate": 3.9,
+      "unknown_words_sample": [
+        "flects",
+        "lating",
+        "formu",
+        "panchatantra",
+        "ous",
+        "vari"
+      ],
+      "full_text": "INTRODUCTION\nThere are many who resist a certain kind of philosophy.\nThey find it hard to enjoy, abstract, and apparently of no\ngreat practical value. It seems to them vague and obscure\nnonsense. There have always been such people in the vari-\nous epochs of human history, just as there have always been\nthose who find the revelations of speculative thinking to be\nof utmost importance. In early Hindu thought, for example,\nthe contrast between the beast fable and the Upanishads re-\nflects this difference in outlook. The beast fables of the\nPanchatantra\ndescribe and point up a science of survival, a\nhard calculative view of life and its possibilities, and an\nunsentimental\nevaluation of its content:\nMake friends, make friends, however strong\nOr weak they be:\nRecall the captive elephants\nThat mice set free.\nHow sharply such admonitions contrast with the mystical\nmessages of the Upanishads! How clear they are in formu-\nlating the problems and methods of human\nsurvival, by\ncasting them in the terms of animals\nand their\nways-\nand how opaque and obscure are the Upanishads in their\nunremitting\nefforts to reveal the ultimate nature of things:\n11\n"
+    },
+    {
+      "document": "Heidegger_DiscourseOnThinking",
+      "page_num": 9,
+      "bucket": "C (3-5%)",
+      "error_rate": 4.4,
+      "unknown_words_sample": [
+        "adays",
+        "macquarrie",
+        "organi",
+        "ist",
+        "phyrsik",
+        "zur",
+        "niemeyer",
+        "pfullingen",
+        "tech",
+        "tiibingen"
+      ],
+      "full_text": "14\nINTRODUCTION\nprise, for the words only sum. up and stand for the whole\nof what is being said, which is to be grasped' on the basis\nof the entire presentation.\nThat is, we should come to see\nthe meaning of these special words as we are led toward the\ngoal Heidegger sets for us.\nHow does Heidegger\nlead us toward the transmutation\nof man he desires, if not by making extensive use of tech-\nnical terminology\nas in his earlier works? He does it, in\npart, by using a language that is simple and has the flavor\nof the earth. He strives for simile and metaphor involving\nthe soil and growth, and by this means he achieves a poetic\ntone. Not that his sentence structure\nor paragraph\norgani-\nzation is poetic, for it is not; but phrases and words oc-\ncurring\nin the larger\ncontext\noften\nevoke overtones\nof\nfeeling associated with the land, with fields, and with what\nis the ground of things.1 There is, then, no veil of words\nstanding between the audience and Heidegger's\nconception\nof man's authentic nature; rather, words are used with the\ndirectness\nof reference\nwhich only poetic handling\ncan\nachieve. Yet the Address and dialogue are not especially\neasy to follow, although the former is much simpler than\nthe latter. Actually, Heidegger\nwrites in the manner\nand\nwith the poetic tone of the mystics, as for example Meister\nEckhart to whom he refers. Thus his enterprise might be\nconceived as similar in difficulty to the task of the mystics\nwho, by an extraordinary\nand poetic use of words, want to\ntake us with them beyond the ordinary and the familiar, to\nwhat is ultimate.\n1. For Heidegger's views on language and its function cf. Was ist Meta-\nphyrsik?\npp. 50 if. (Frankfurt\na.M.: Klostermann, 1929, 8th ed. 1960), and\nUnterwegs zur Sprache (Pfullingen: Giinther Neske, 1959).\n, INTRODUCTION\n15\nThis raises the question of whether Heidegger's methods,\ntypical of his later writings,\nprovide a better method for\ndealing with the ultimate than is to be found in his earlier\nwritings,\nparticularly\nin Being and Time.\nIt\nis often\nclaimed that Heidegger\nin Being and Time failed to ac-\ncomplish what he intended. But what did he intend?\nThe\namount\nof technical\nterminology\nthat\nmust be mastered\nif we are to judge whether the enterprise projected in Being\nand Time succeeds or not is very great. Fortunately,\nsuch\nmastery is not essential to an understanding\nof the outlines\nof the enterprise itself. Indeed, Heidegger states the nature\nof the enterprise succinctly in the first pages of this work:\nDo we in our time have an answer to the question of what we really\nmean by the word \"being\"? Not at all. So it-is fitting that we should\nraise anew the question of the meaning\nof Being. But are we now-\nadays even perplexed at our inability to understand the expression\n\"Being\"? Not at all. So first of all we must reawaken an under-\nstanding for the meaning of this question. Our aim in the follow-\ning treatise is to work out the question of the meaning of Being\nand to do so concretely.f\nEvidently, Heidegger\nintends to reawaken modern man to\nthe significance of the nature of Being, and to provide an\naccount of its nature.\nThis is a bold enterprise,\nand one\nwhich belongs in the mainstream\nof Western philosophy.\nThose who have read Being and Time will remember\nthat one of its major themes is the claim that the traditional\napproaches to Being have failed; that the conception of Be-\ning as a generic object, as beyond experience, has misled\nphilosophical efforts to grasp its nature. In Being and Time,\nby contrast with that tradition, Heidegger follows a method\n2. Being and Time\n(Tiibingen: Niemeyer, 1929), English translation by\nMacquarrie and Robinson (New York: Harper & Row, 1962), p. 1.\n"
+    },
+    {
+      "document": "Heidegger_DiscourseOnThinking",
+      "page_num": 10,
+      "bucket": "C (3-5%)",
+      "error_rate": 4.9,
+      "unknown_words_sample": [
+        "incompletable",
+        "reidegger",
+        "tures",
+        "poral",
+        "transcen",
+        "jective",
+        "logi",
+        "ence",
+        "struc",
+        "cally"
+      ],
+      "full_text": "16\nINTRODUCTION\nthat begins with man and claims to prooeed from his au-\nthentic\nexistence to an understanding\nof Being. If a rich\nand complex analysis may be stated in a few sentences,\none might say that Heidegger's\nmethod is to develop, first,\nan account of experience which discloses man as that being\nfor whom his own being is at stake. He then proceeds to\nshow that such a being as man is through\nand through\ntemporal. Finally, he adumbrates an account which would\nlead from time to Being. To restate this analysis of!experi-\nence: when and to the extent that\nman comes to define\nhimself as aware that his own being is at stake, he comes\nto authentic existence as temporal;\nand, as authentic, takes\na place in and comprehends Being.\nThe analysis of experience in Being and Time which is\ndirected toward this end uses what is called the phenomeno-\nlogical method, that is, it elicits from a variety of experi-\nences certain\npervasive\nstructures\nof experience.\nThese\npervasive structures are, to use the Kantian term, transcen-\ndental,\nor, as Reidegger\ncalls them,\nontological;\nthat is,\nthey structure\nall of experience. Such structures ultimately\nreveal the temporal ground of man's being; as, for exam-\nple, the structures\ncalled being toward death and resolve\ndo, when we come to see that in them man is actively en-\ngaged in caring.\nThe question we must ask next is whether\na method\neliciting man's temporal being in the terms of these tran-\nscendental\nstructures\nenables Reidegger\nto carry out his\nenterprise\nand to formulate\nthe nature\nof Being. As has\nbeen indicated,\nmany\nreaders\nof Being\nand Time\nhave\nfound the enterprise incomplete and incompletable.\nLogi-\ncally, the difficulty standing\nin the way\nof completion\nINTRODUCTION\n17\nseems to be that the transcendental\nstructures of experience\nwhich Heidegger\nelicits are formulated\nas static and final,\nThese structures\nprovide a grasp of man's being\nas tem-\nporal; but because they are the structures of man's experi-\nence, they can do this in a limited way only. These struc-\ntures constitute the horizons of human\nawareness, and a\nmethod which explicitly formulates\nthem extends our un-\nderstanding\nbeyond the contents of awareness to its deeper\nnature\nas such. The formulation\nOf the horizons, the con-\nditions 0\u00a3 awareness, reveals man as temporal;\nbut such a\nformulation\nreveals this solely as man sees it, solely in hu-\nman terms, There is in such a method an ineluctably\nsub-\njective orientation which must characterize its results. Thus\nit seems impossible to escape from subjective distortions and\nto learn\nanything\nabout Being as such by means of the\nmethod Heidegger\nused in Being and Tithe. What\nseems\nto be necessary in order to comprehend\nBeing is a method\nof understanding\nwhich can grasp man's\nnature\nas tem-\nporal in terms of its ground, rather\nthan simply in terms\nof the horizons of experience. Such a method could reveal\nman's\ntemporality\nin relation to what was beyond man,\nand not merely in the terms of' man himself.\nBut there is circumstantial\nas well as logical evidence for\nbelieving that the enterprise\nof Being c:-ndTime remains\nincomplete.\nWe know, for example, that Reidegger\nout-\nlined this work, initially, to include material not published\nin the book, although\nit is probable that it was written.\nBeing and Time\nas published consists of but a part of a\nlonger\nprojected\nstudy. We know what\nthe unpublished\nparts of this study were intended to contain, for we have,\nReidegger's\nword on the matter. In part, the projected but\n"
+    },
+    {
+      "document": "Heidegger_DiscourseOnThinking",
+      "page_num": 16,
+      "bucket": "B (1-3%)",
+      "error_rate": 2.7,
+      "unknown_words_sample": [
+        "tative",
+        "sug",
+        "senting",
+        "evi",
+        "pre",
+        "fortu",
+        "empha",
+        "releasement",
+        "dence",
+        "medi"
+      ],
+      "full_text": "28\nINTRODUCTION\nquestion; but the key to its answer can be suggested. The\nwhole of the claim implicit in the account Heidegger gives\nof Being in the Conversation rests upon the assumption that\nthe analysis of man's nature, as found in meditative think-\ning, provides the key to a direct approach to Being. Close\nattention to the nature of this assumption, and to the evi-\ndence which Heidegger gives for it, will provide consider-\nable insight into the problem of 'its justification.\nIn the Conversation, three kinds of evidence seem to be\noffered for the justification\nof this assumption. This evi-\ndence amounts to showing that Being as reached through\nmeditative thinking is partly identical with the nature and\nmovement of such thinking.\nCertainly if this were not so,\nmeditative\nthinking\nwould be powerless to reach\nBeing.\nThe\ndetails given in the\nConversation\nmust\nbe studied\ncarefully\nto understand\nthe point fully,\nand here a sug-\ngestion of the argument\nand its results must suffice. Fortu-\nnately, it is the nature of the evidence, and not its details,\nwhich is important\nfor an understanding\nof Heidegger's\ngeneral claim. Thus we may observe first that meditative\nthinking\nis an opening of man to something, as is empha-\nsized by calling such thinking releasement.\nIn releasement man is open, that is, is an openness. What\nthen, we may ask, does man open to? In a word, of course,\nthe answer is: to the given. But Heidegger\nis not content\nto present this answer, for he wishes to justify the identity\nhe is claiming. To do so, he argues that the given, too, is an\nopenness and, as we shall see, an opening. Meditative think-\ning characterizes man's true nature, his being, as openness\nin which he is partly identified with the given. Man be-\nINTRODUCTION\n29\ncomes partly identified with the given by opening to it as\n.\n,\nill turn, the given opens to him.\nLet us consider this argument\nsomewhat more carefully.\nAs already noted, meditative thinking\ninvolves an aware-\nness of the field of awareness, or, as Heidegger likes to say,\nan awareness of the horizon of the consciousness of objects.\nIf one comprehends this situation fully, one sees that medi-\ntative thinking is an opening to what is beyond the horizon\nof such knowing. But the possibility of any such opening\nmust depend to some degree upon what lies beyond the\nhorizon, and, indeed, upon the openness of that. To restate\nthe argument:\nviewed from within, our consciousness of the\nworld of objects is an unbounded field of awareness; viewed\nfrom within,\nthis field of awareness has no fixed limits,\nbut only a horizon. In part, meditative thinking\nconsists in\nbecoming aware of the horizon as such, that is, as an open-\ning out and so as standing open. But an awareness of the\nhorizon in this explicit sense as an openness is possible just\nbecause the horizon is set within an openness of which it is\nbut one side, as it were. The openness in which the horizon\nof consciousness is set Heidegger calls the region.\nWhat is evident of the horizon [its openness], then, is but the side\nfacing us of an openness which surrounds us; an openness which\nis filled with views of the appearances of what to our re-pre-\nsenting\nare objects. In\nconsequence the\nhorizon\nis still some-\nthing else besides a horizon ...\n[and] this something else is the\nother side of itself, and so the same as itself. You say that the\nhorizon is the openness which surrounds us. But what is this open-\nness as such, if we disregard that it can also appear as the horizon\nof our re-presenting? It strikes me as something like a region ....\n12\n12. \"Conversation,\"\np. 64 ff. below.\n"
+    },
+    {
+      "document": "Heidegger_DiscourseOnThinking",
+      "page_num": 18,
+      "bucket": "C (3-5%)",
+      "error_rate": 4.1,
+      "unknown_words_sample": [
+        "evi",
+        "heideg",
+        "diffi",
+        "oomplex",
+        "dence",
+        "regiqning",
+        "tinction",
+        "ldentitiit",
+        "differenz",
+        "pful"
+      ],
+      "full_text": "52\nINTRODUCTION\nthat-which-regions\nbecause this belongs to it so essentially,\nthat without man that-which-regions\ncan not be a coming\nforth of all natures, as it is. ,,16 Man is essential to this dis-\nclosure.\nClearly, then, the identity noted in man's opening and\nopenness and the\nopening\nand openness of that-which-\nregions expresses only the relation of man to the given, and\nso is but a partial identity. The relation between man and\nthat-which-regions\nis much more oomplex than this, for\nthe sense in which\nmeditative\nthinking\nreceives and is\nnecessary for the coming forth of all natures is as important\nas this identity.\nThus, to proceed from man's nature\nto\nBeing, Heidegger\nneeds to produce a second kind of evi-\ndence that this is possible. This is the evidence that man's\nnature\nas it expresses the requirement\nof becoming true,\nthe coming forth of all natures,\nis compatible with that-\nwhich-regions and can playa positive part in this respect.\nMan, in this sense, is the peculiar being with respect to\nwhom that-which-regions\nunveils and discloses. This dis-\ntinction of man, expressed in his resolve for truth,\nmakes\nhim the standard for and the recipient of the disclosure of\nthat-which-regions;\nman stands out in order to be where\nthat-which-regions\nunveils. Or, we might say, man, as in-\ndwelling, stands within that-which-regions\nand effectively\nresolves for its disclosure, its coming forth in truth.\nBut\nhow can this disclosure take place? How is this aspect of\nman's nature interwoven compatibly with the underlying\nidentity already noted? The difficulty of showing how this\nis done is just the difficulty of showing how man is brought\nforth in the regioning of that-which-regions\nand yet comes\n16. \"Conversation,\" p. 85 below.\nINTRODUCTION\nforth in such a distinctive way-of\nshowing, that is, how it\nis that man's\nnature\nis necessary because of having\nits\nground in the givenness of that-which-regions,\nand yet is\nemergent as a nature\nwhich resolves for and receives the\ndisclosure of its ground. Heidegger seeks to make the diffi-\ncult analysis which will clarify this point, first in terms of\nhistory,\nand then\nin an interesting\ngeneralization\nwith\nrespect to truth based upon his interpretation\nof history.\nThere is a sense in which, as a consequence of man's re-\nsolve for truth, that-which-regions\nis disclosed in history.F\nTo understand this we must observe initially that the process\nof that-which-regions,\nits regiqning,\ntakes place in two\nquite different ways. To emphasize this difference, Heideg-\nger refers to this process when it results in things as deter-\nmining, but when it results in man he calls it regioning\nwith respect to man. Put in this way, this duality empha-\nsizes man's nature as involved in and involving truth,\nand\ncontrasts it with the nature of things. Yet Heidegger holds\nthat man's requirement\nof truth is the basis of the relation\nof man to things and that this relation occurs as history. To\nbe grasped as functioning\nin this way, history\nmust be\nunderstood in a very fundamental\nsense, that is, as \".\n. . a\nhistory which does not consist in the happenings and deeds\nof the world.\n. . . Nor in the cultural\nachievements\nof\nman. ,,18 What is fundamental\nin history is not its obvious\nsequential\ncharacter\nbut,\nrather,\nhistorical\nthinking.\nThus\".\n. . the concept of the historical means a mode of\nknowing and is understoo~ broadly. ,,1~From this perspec-\n17. For a general account of history\nsee ldentitiit\nund Differenz\n(Pful-\nlingen: Giinther Neske, 1957), p. 64 and elsewhere.\n18. \"Conversation,\" p. 79 below.\n19. Cf. ldentitiit und Differenz, p. 51.\n"
+    },
+    {
+      "document": "Heidegger_DiscourseOnThinking",
+      "page_num": 21,
+      "bucket": "B (1-3%)",
+      "error_rate": 2.5,
+      "unknown_words_sample": [
+        "oun",
+        "ulti",
+        "pendence",
+        "releasement",
+        "terpretation",
+        "regioning",
+        "gioning",
+        "ments",
+        "determin",
+        "hich"
+      ],
+      "full_text": "58\nINTRODUCTION\ning Heidegger's claim that Being is attainable has just been\ngiven. It is an analysis suggesting that the continuity be-\ntween the two aspects of thought\nwhich is found in the\nmovement of \"coming-into-the-nearness\nof distance\" must\nreflect\na\ncontinuity\nbetween\nthe\napparently\ndifferent\ngrounds\nof these aspects, that\nis, between\nthat-which-\nregions as such and its nature.\nAs soon as this final analysis is presented it justifies shift-\ning perspective from man to Being. It justifies such state-\nments as \"Truth's\nnature can come forth independently of\nman only because the nature\nof man\n(as releasement\nto\nthat-v. hich-regions)\nis used by that-which-regions\nin re-\ngioning both with respect to man and to sustain determin-\ning. Evidently truth's independence from\nman is a relation\nto human nature, a relation which rests on the regioning\nof human\nnature\ninto that-which-regions.\n,,26 It justifies\nasking such a question as, \"Yet what then would be the\nnature\nof thinking\nif that-which-regions\nis the nearness\nof distance ?,,27 From the perspective afforded by this final\nanalysis, one is able to see man's nature, the nature of think-\ning,\nas determined\nby Being, as \".\n. . the\nessentially\nhuman relation to that-which-regions.\n. . .,,28 Evidently\nwe stand here in the midst of the ultimate, having stepped\nbeyond our subjective human perspective-yet\na word of\ncaution is necessary! And, indeed, Heidegger cautions us in\na number of ways. Thus, to depict this view he uses, and\nsays he uses, the subjunctive mood, \".\n. . for some time\n. . we have said everything in the mode of supposition\n26. \"Conversation,\" p. 84 below.\n27. \"Conversation,\" p. 86 below.\n28. \"Conversation,\" p. 87 below.\nINTRODUCTION\n59\nonly.,,29 Thus, to name the nature\nof thinking\nin its de-\npendence upon that-which-regions,\nhe falls back upon the\nGreek word comprising Heraclitus'\n122nd Fragment,\nand\nthen deliberately reads meaning into it until it seems to be\nh\nf\nd \"so B\n.\nhi\n\"the best name for what we\nave oun .\nut at Just t\ns\npoint he adds, \"Which\nin its nature,\nnevertheless, we are\nstill seeking.,,81 And, finally, he personifies Being in the\nimaginative\nfigure\nof Night\nand\nrecasts the\nargument\nimaginatively, for \"the child in man. ,,82\nBy such cautionary\nwords and modes of expression,\nHeidegger wishes to prevent too literal and too strict an in-\nterpretation\nof what can be said from the midst of the ulti-\nmate. We may understand the significance of this caution\nif we recall that it is the continuity,\nattained in the inter-\nweaving in thinking\nof opening and openness on the one\nhand, and the resolve for truth on the other, that provides\nthe final step to Being. We may be inclined to forget, in\nthe intoxicating moment when we stand on this step, that\nthe continuity achieved is specific and particular, that it is\njust that continuity\nwhich it is, and that it probably will\nvanish. If we forget this, we shall forget,\ntoo, that\nthe\ncontinuity of thinking as specific and particular must reflect\nsomething\nspecific and\nparticular\nabout\nthe\nmovement\nidentifying that-which-regions\nas such and its nature, some-\nthing of the vanishing which is an aspect of Being.\nJOHN M. ANDERSON\n29. \"Conversation,\" p. 85 below.\n50. \"Conversation,\" r- 89 below.\n51. \"Conversation,\" p. 89 below.\n52. \"Conversation,\" p. 89 below.\n"
+    },
+    {
+      "document": "Heidegger_DiscourseOnThinking",
+      "page_num": 24,
+      "bucket": "B (1-3%)",
+      "error_rate": 1.5,
+      "unknown_words_sample": [
+        "ence",
+        "bration",
+        "ingly",
+        "ately",
+        "unknow",
+        "conradin",
+        "cele"
+      ],
+      "full_text": "44\nDISCOURSE\nON\nTHINKING\nsong and chorus, in opera and in chamber music. In these\nsounds the artist himself is present; for the master's pres-\nence in the work is the only true presence. The greater the\nmaster, the more completely his person vanishes behind his\nwork.\nThe musicians and singers who take part in today's cele-\nbration are a warrant\nthat Conradin Kreutzer's work will\ncome to be heard on this occasion.\nBut does this alone constitute a memorial celebration?\nA memorial celebration means that we think back, that we\nthink. Yet what are we to think and to say at a memorial\nwhich is devoted to a composer? Is it not the distinction of\nmusic to \"speak\" through the 'sounding of tones and so not\nto need ordinary language, the language of words? So they\nsay. And yet the question remains: Do playing and singing\nalone make our celebration a thoughtful\ncelebration, one in\nwhich we think? Hardly! And so a \"memorial address\" has\nbeen put on the program. It is to help us to think back both\nto the composer we honor and to his work. These memories\ncome alive as soon as we relate\nthe story of Conradin\nKreutzer's\nlife,\nand\nrecount\nand\ndescribe\nhis\nworks.\nThrough\nsuch a relating we can find much that is joyful\nand sorrowful, much that is instructive and exemplary. But\nat bottom we merely allow ourselves to be entertained\nby\nsuch a talk. In listening to such a story, no thinking\nat all\nis needed, no reflecting\nis demanded\non what\nconcerns\neach one of us immediately\nand continuously in his very\nbeing. Thus even a memorial address gives no assurance\nthat we will think at a memorial celebration.\nLet us not fool ourselves. All of us, including those who\nthink professionally, as it were, are often enough thought-\nMEMORIAL\nADDRESS\n45\npoor; we all are far too easily thought-less. Thoughtlessness\nis an uncanny\nvisitor who comes and goes everywhere\nin\ntoday's world. For nowadays we take in everything in the\nquickest and cheapest way, only to forget it just as quickly,\ninstantly.\nThus one gathering\nfollows on the heels of an-\nother. Commemorative celebrations grow poorer and poorer\nin thought. Commemoration and thoughtlessness are found\nside by side.\nBut even while we are thoughtless,\nwe do not give up\nour capacity to think. We rather use this capacity implicitly,\nthough strangely:\nthat is, in thoughtlessness we let it lie\nfallow. Still only that can lie fallow which in itself is a\nground for growth, such as a field. An expressway, where\nnothing\ngrows, cannot be a fallow field. Just as we can\ngrow deaf only because we hear, just as we can grow old\nonly because we were young; so we can grow thought-poor\nor even thought-less\nonly because man at the core of his\nbeing has the capacity to think;\nhas \"spirit\nand reason\"\nand is destined to think. We can only lose or, as the phrase\ngoes, get loose from that which we knowingly or unknow-\ningly possess.\nThe\ngrowing\nthoughtlessness\nmust,\ntherefore,\nspring\nfrom some process that gnaws at the very marrow of man\ntoday: man today is in flight from\nthinking.\nThis flight-\nfrom-thought\nis the ground of thoughtlessness. But part of\n.this flight is that man will neither\nsee nor admit it. Man\ntoday will even flatly deny this flight from thinking.\nHe\nwill assert the opposite. He will say-and\nquite rightly-\nthat there were at no time such far-reaching\nplans, so many\ninquiries in so many areas, research carried on as passion-\nately as today. Of course. And this display of ingenuity and\n"
+    },
+    {
+      "document": "Heidegger_DiscourseOnThinking",
+      "page_num": 30,
+      "bucket": "C (3-5%)",
+      "error_rate": 4.0,
+      "unknown_words_sample": [
+        "heuberg",
+        "tru",
+        "ction",
+        "destru",
+        "hebel",
+        "releasement",
+        "vate",
+        "rageous",
+        "cou",
+        "conradin"
+      ],
+      "full_text": "56\nDISCOURSE\nON\nTHINKING\ndestru.ction of the earth? No. In this dawning atomic age\na far greater danger threatens-precisely\nwhen the danger\nof a third world war has been removed. A strange assertion!\nStrange indeed, but only as long as we do not meditate.\nIn what sense is the statement\njust made valid? This\nassertion is valid in the sense that the approaching tide of\ntechnological revolution in the atomic age could so capti-\nvate,\nbewitch,\ndazzle, and beguile\nman\nthat\ncalculative\nthinking\nmay someday come to be accepted and practiced\nas the only way of thinking.\nWhat\ngreat\ndanger\nthen might\nmove upon us? Then\nthere might go hand in hand with the greatest ingenuity\nin calculative planning\nand inventing\nindifference\ntoward\nmeditative thinking, total thoughtlessness. And then? Then\nman would have denied and thrown away his own special\nnature--that\nhe is a meditative being. Therefore,\nthe issue\nis the saving of man's essential nature. Therefore, the issue\nis keeping meditative thinking\nalive.\nYet releasement\ntoward\nthings\nand\nopenness to\nthe\nmystery never happen of themselves. They do not befall us\naccidentally.\nBoth flourish\nonly through\npersistent,\ncou-\nrageous thinking.\nPerhaps today's memorial celebration will prompt us to-\nward this. If we respond to the prompting,\nwe think\nof\nConradin Kreutzer by thinking\nof the origin of his work,\nthe life-giving\npowers of his Heuberg\nhomeland.\nAnd it\nis we who think\nif we know ourselves here and now as\nthe men who must find and prepare the way into the atomic\nage, through it and out of it.\nIf releasement toward things and openness to the mystery\nawaken within\nus, then we should arrive at a path that\nMEMORIAL\nADDRESS\n57\nwill lead to a new ground and foundation.\nIn that ground\nthe creativity\nwhich produces lasting\nworks could strike\nnew roots.\nThus in a different manner\nand in a changed age, the\ntru.th of what Johann Peter Hebel says should be renewed:\nWe are plants which-whether\nwe like to admit it to ourselves or\nnot-must\nwith our roots rise out of the earth in order to bloom\nin the ether and to bear fruit.\n"
+    },
+    {
+      "document": "Heidegger_DiscourseOnThinking",
+      "page_num": 33,
+      "bucket": "C (3-5%)",
+      "error_rate": 3.4,
+      "unknown_words_sample": [
+        "tradi",
+        "iii",
+        "prescntinj",
+        "entist",
+        "thinkinr",
+        "appearanc",
+        "consolate",
+        "tional",
+        "horizonal",
+        "releasement"
+      ],
+      "full_text": "62\nDISCOURSE\nON\nTHINKING\nTeacher: From whom, all the same, much can be learned.\nScholar:\nCertainly;\nbut what we have called releasement\nevidently does not mean casting off sinful selfishness and\nletting self-will go in favor of the divine will.\nTeacher: No, not that.\nScientist:\nIn many respects it is clear to me what the word\nreleasement should not signify for us. But at the same\ntime, I know less and less what we are talking\nabout.\nWe are' trying\nto determine\nthe nature\nof thinking.\nWhat has releasement to do with thinking?\n.Teacher: Nothing if we conceive thinking in the traditional\nway as re-presenting.\nYet perhaps the nature\nof think-\ning we are seeking is fixed in releasement.\nScientist: With the best of will, I can not re-present to my-\nself this nature\nof thinking.\nTeacher:\nPrecisely \"because this will of yours and your\nmode of thinking\nas re-presenting\nprevent it.\nScientist:\nBut then, what in the world am I to do?\nScholar: I am asking myself that too.\nTeacher: We are to do nothing but wait.\nScholar: That is poor consolation.\nTeacher:\nPoor or not, we should not await consolation-\nsomething we would still be doing if we became dis-\nconsolate.\nScientist:\nThen what are we to wait for? And where are\nwe to wait? I hardly know anymore who and where I am.\nTeacher: None of us knows that, as soon as we stop fooling\nourselves.\nScholar: And yet we still have our path?\nTeacher:\nTo be sure. But by forgetting\nit too quickly we\ngive up thinking.\nCON V E R SAT ION\n0 N A co UN TRY\nPAT\nH\n63\nScientist:\nWhat\nare we still to think\nabout, in order to\npass over to and -into the nature\nof thinking\nwhich we\nhave not yet come to know?\nTeacher: Why, about that from whence alone such a transi-\ntion can happen.\nScholar: That means that you would not discard the tradi-\ntional view of the nature of thinking?\nTeacher:\nHave you forgotten\nwhat I said in our earlier\nconversation about what is revolutionary?\nScz:entist: Forgetfulness\ndoes seem to be an especial danger\nIII such conversations .\nScholar: So now, if I understand\ncorrectly, we are to view\nwhat we call releasement in connection with the nature\n?f thinking as talked about, even though we hardly know\nIt and above all are unable to place it properly.\nTeacher: I mean exactly that.\nScientist:\nPreviously,\nwe had come to see thinkinr- in the\nb\nform of transcendental-horizonal\nre-prescntinj-,\nScholar:\nThis re-presenting,\nfor instance, places before us\nwhat is typical of a tree, of a pitcher,\nof a bowl, of a\nstone, of plants, and of animals as that view into which\nwe look when one thing confronts us in the appearance\nof. a .tree, another thing in the appearance of a pitcher,\nthis III the appearance of a bowl, various things in the\nappearanc~ of stones, many in the appearance of plants,\nand many III the appearance of animals.\nScientist:\nYou describe, once again, the horizon which en-\ncircles the view of a thing-the\nfield of vision.\nTeacher:\nIt goes beyond the appearance of the objects.\nScholar : Just as transcendence passes beyond the perception\nof objects.\n"
+    },
+    {
+      "document": "Heidegger_DiscourseOnThinking",
+      "page_num": 34,
+      "bucket": "A (0-1%)",
+      "error_rate": 0.8,
+      "unknown_words_sample": [
+        "eason",
+        "jects",
+        "regioning"
+      ],
+      "full_text": "64\nDISCOURSE\nON\nTHINKING\nTeacher:\nThus we determine\nwhat is called horizon\nand\ntranscendence by means of this going beyond and pass-\ning beyond\n...\nScholar:\n. . . which\nrefer\nback: to objects and our re-\npresenting\nof objects.\nTeacher: Horizon and transcendence, thus, are experienced\nand\ndetermined\nonly relative\nto objects and our\nre-\npresenting\nthem.\nScholar: Why\ndo you stress this?\nTeacher: To suggest that in this way what lets the horizon\nbe what it is has not yet been encountered at all.\nScientist: What do you have in mind in this statement?\nTeacher: We say that we look into the horizon. Therefore\nthe field of vision is something open, but its openness is\nnot due to' our looking.\nScholar: Likewise we do not place the appearance\nof ob-\njects, which the view within a field of vision offers us,\ninto this openness . . .\nScientist : . . . rather that comes out of this to meet us.\nTeacher: What is evident of the horizon, then, is but the\nside facing us of an openness which surrounds\nus; an\nopenness which is filled with views of the appearances of\nwhat to our re-presenting\nare objects.\nScientist: In consequence the horizon is still something else\nbesides a horizon.\nYet after\nwhat\nhas been said this\nsomething else is the other side of itself, and so the same\nas itself. You say that the horizon is the openness which\nsurrounds us. But what is this openness as such, i~ we dis-\nregard that it can also appear as the horizon of our re-\npresenting?\nCONVERSATION\nON\nA COUNTRY\nPATH\n65\nTeacher:\nIt strikes me as something like a region,\nan en-\nchanted\nregion\nwhere\neverything\nbelonging\nthere\nre-\nturns to that in which it rests.\nScholar: I'm not sure I understand what you say now.\nTeacher:\nI don't understand\nit either, if by \"understand-\ning\" you mean the capacity to re-present what is put be-\nfore us as if sheltered amid the familiar\nand so secured.,\nfor I, too, lack the familiar\nin which to place what I\ntried to say about openness as a region.\nScientist:\nThat is perhaps impossible here, if for no other\n~eason than because presumably what you call a region\nIS exactly that which alone permits all sheltering.\nTeacher: I mean something like this; but not only this.\nScholar: You spoke of \"a\" region in which everything\nre-\n~urns to itself. Strictly speaking, a region for everything\nIS not one region\namong many,\nbut the region\nof all\nregions.\nTeacher: You are right; what is in question is the region.\nScientist:\nAnd the enchantment\nof this region might well\nbe the reign of its nature,\nits regioning,\nif I may call\nit that.\nScholar:\nIt seems a region\nholds what\ncomes forward\nto\nmeet us; but we also said of the horizon that out of the\nview which it encircles, the appearance of objects comes\nto meet us. If now we comprehend the horizon through\nthe region, we take the region itself as that which comes\nto meet us.\nTeacher:\nIn this way, indeed, we would characterize\nthe\nregion through its relation to us, just as we did a moment\nago with the horizon-whereas\nwe are searching for the\n"
+    },
+    {
+      "document": "Heidegger_DiscourseOnThinking",
+      "page_num": 35,
+      "bucket": "C (3-5%)",
+      "error_rate": 4.1,
+      "unknown_words_sample": [
+        "gegenden",
+        "relp",
+        "acteristic",
+        "openn",
+        "whlch",
+        "theynot",
+        "gion",
+        "enghsh",
+        "regl",
+        "neverthless"
+      ],
+      "full_text": "66\nDISCOURSE\nON\nTHINKING\nnature,\nin itself, of the openn~ss that surrounds us. If\nwe now say this is the region, and say it with the mean-\ning we just gave it, then the word must name something\nelse.\nScientist:\nMoreover, the coming to meet us is not at all a\nbasic characteristic\nof region, let alone the basic char-\nacteristic. What does this word imply?\nScholar: In its older form it is \"Gegnet\"\nand means open\nexpanse. Can anything\nbe learned from this about the\nnature of what we now call the region?\n.\nTeacher:\nThe\nregion\ngathers,\njust\nas if nothing\nwere\nhappening,\neach to each and each to all into an abiding,\nwhile resting\nin itself. Regioning\nis a gathering\nand\nre-sheltering\nfor an expanded resting in an abiding.\nScholar: So the region itself is at once an expanse and an\nabiding. It abides into the expanse of resting. It expands\ninto the abiding of what has freely turned toward itself.\nIn view of this usage of the word, we may also say \"that-\nf h f\n'1'\n\"\n.\n,,1\nwhich-regions\"\nin place 0 t e arm iar\nregIOn.\nTeacher: That-which-regions\nis an abiding expanse which,\ngathering\nall, opens itself, so that in it openness is halted\nand held, letting everything merge in its own resting.\nScientist: I believe I see that-which-regions\nas withdrawing\nrather than coming to meet us ...\n1. The German word for region is Gegend.\nWhat is in question. here,\nhowever is not region in general, but as Heidegger says, \"the relp0n of\nall regions\"\n(\"die\nGegend\naller\nGegenden\")\nor\nthe\n~egion.. Heidegger\nuses an old variant of Gegend\nas the word for the regl~n: die Gegnet-\na word that still occurs in spoken German although only ill So~th German\ndialects. Since an analogous variant is not available for the Enghsh coun~er-\npart, die Gegnet\nhas been rendered in the text by .the phrase t~at-whlch-\nregions.\nThat-which-regions\nreflects a movement attributed by Heidegger to\ndie Gegnet\nand further emphasized by his use of the verb gegnen\n(to re-\ngion). (Tr.)\n'CONVERSATION\nON\nA COUNTRY\nPATH\n67\nScholar: ...\nso that things which appear in that-which-\nregions no longer have the character of objects.\nTeacher: Theynot\nonly no longer stand opposite us, they\nno longer stand at all.\nScientist: Do they lie, then, or how about them?\nTeacher:\nThey lie, if by this we mean that resting which\nwas just discussed.\nScientist:\nBut where\ndo things\nrest? What\ndoes resting\nconsist of?\nTeacher:\nThey rest in the return\nto the abiding of the\nexpanse of their self-belonging.\nScholar: But in this return,\nwhich after all is movement,\ncan there be rest?\nTeacher: Indeed there can, if rest is the seat and the reign\nof all movement.\nScientist: I must confess that I can't quite re-present in my\nmind all that you say about region, expanse and abiding,\nand about return\nand resting.\nScholar: Probably it can't be re-presented\nat all, in so far\nas in re-presenting\neverything\nhas become an object\nthat stands opposite us within a horizon.\nScientist:\nThen\nwe can't\nreally\ndescribe what\nwe have\nnamed?\nTeacher: No. Any description would reify it.\nScholar:\nNeverthless\nit lets itself be\nnamed,\nand being\nnamed it can be thought\nabout\n. . .\nTeacher: ...\nonly if thinking is no longer re-presenting.\nScientist: But then what else should it be?\nTeacher: Perhaps we now. are close to being released into\nthe nature of thinking\n...\nScholar:\n. . . through waiting for its nature.\n"
+    },
+    {
+      "document": "Heidegger_DiscourseOnThinking",
+      "page_num": 46,
+      "bucket": "C (3-5%)",
+      "error_rate": 4.6,
+      "unknown_words_sample": [
+        "narve",
+        "owar",
+        "ments",
+        "ates",
+        "lalrt",
+        "ayxt",
+        "ment",
+        "thmk",
+        "lahl",
+        "yxt"
+      ],
+      "full_text": "88\nDISCOURSE\nON\nTHINKING\nTeacher: And even if this word, earlier esteemed by you as\na valuable suggestion, is no longer suitable, it could make\nclear to us that meanwhile\nwe have come to confront\nsomething ineffable.\nScholar: This word is Heraclitus' word.\nScientist:\nFrom which fragment\ndid you take it?\nScholar: This word struck me because it stands alone. It is\nthat word, which, all by itself, constitutes Fragment\n122.\nScientist:\nI don't know this shortest of Heraclitus'\nFrag-\nments.\nScholar: It is scarcely noticed by others either, because one\ncan do hardly anything with a single word.\nScientist: Bow does the fragment\nread?\nScholar: 'AYXt~(lahl\nScientist: What does it mean?\n1\n\".\nt\nd\"\nScholar: The Greek word trans ates as\ngomg\nowar .\nScientist: I regard this word as an excellent name for desig-\nnating\nthe nature\nof knowledge;\nfor the character\nof\nadvancing and moving toward objects is strikingly\nex-\npressed in it.\nScholar: It appeared so to me too. That is also probably why\nit occurred to me in our first conversation, when we spoke\nof the action, the achievement,\nthe work inherent\nin\nmodern scientific knowledge, and, above all, in research.\nScientist: Actually, one could use this Greek word to make\nclear the fact that scientific research is a kind of attack\non nature\nbut one which nevertheless allows nature to\n,\n.\nbe heard.\n'AYXt~(laLrt; \"going toward\":\nI could thmk of\nHeraclitus'\nword as keyword in an essay on the nature\nof modern science.\nScholar: For that reason, too, I have hesitated to utter the\nCONVERSATION\nON\nA COUNTRY\nPATH\n89\nword at this point;\nfor it does not hit that\nnature\nof\nthinking which we have come to assume along our way.\nScientist:\nIndeed, waiting is really almost a counter-move-\nment to going toward.\nScholar: Not to say a counter-rest.\nTeacher: Or simply rest. Yet has it been definitely decided\nthat 'A YXt~(l(jLrtmeans going toward?\nScholar: Translated\nliterally it says \"going near.\"\nTeacher:\nPerhaps we could think of it also as: \"moving-\ninto-nearness. \"\nScientist: You mean that quite literally in the sense of \"let-\nting-oneself-into-nearness\"\n?\nTeacher, About that.\nScholar: Then this word might be the name, and perhaps\nthe best name, for what we have found.\nTeacher:\nWhich,\nin its nature,\nnevertheless,\nwe are still\nseeking.\nScholar:\n'AYXt~(l(jtrt:\n\"moving-into-nearness.\"\nThe\nword\ncould rather,\nso it seems to me now, be the name for\nour walk today along this country path.\nTeacher: Which guided us deep into the night\n.\nScientist:\nthat gleams ever more splendidly\n.\nScholar:\nand overwhelms the stars ...\nTeacher:\nbecause it nears their distances in the heav-\nens\n.\nScientist:\nat least for the narve observer, although not\nfor the exact scientist.\nTeacher:\nEver to the child in man, night\nneighbors\nthe\nstars.\nScholar: She binds together without seam or edge or thread.\n"
+    },
+    {
+      "document": "Heidegger_DiscourseOnThinking",
+      "page_num": 47,
+      "bucket": "E (10%+)",
+      "error_rate": 17.2,
+      "unknown_words_sample": [
+        "autochthonic",
+        "denken",
+        "bodenstandig",
+        "eigentlich",
+        "ahnen",
+        "besinnliches",
+        "boden",
+        "ausdauer",
+        "autochthony",
+        "edelmut"
+      ],
+      "full_text": "90\nD I S C 0 U R S EON\nT H INK\nI N G\nScientist:\nShe neighbors; because she works only with near-\nness.\nScholar: If she ever works rather than rests ...\nTeacher: ... while wondering upon the depths of the height.\nScholar: Then wonder can open what is locked?\nScientist:\nBy way of waiting\n.\nTeacher:\n...\nif this is released\n.\nScholar:\n. . . and human\nnature\nremains appropriated\nto\nthat\n.\nTeacher,'\nfrom whence we are called.\nGLOSSARY\nThis glossary includes only those words especially important\nto the\nargument which are translated\nin more or less unusual ways.\nahnen\nAusdauer\nto presage\nsteadfastness\nBedingnis\ndetermining,\nregioning\nwith respect\nto things\nmeditative\nthinking\nsteadfastness\nfoundation,\nground,\nsoil\nrooted, autochthonic\nrootedness, autochthony\nbesinnliches Denken\nBestandnis\nBoden\nbodenstandig\nBodenstandigkeit\nEdelmut\neigentlich\neinlassen , sich einlassen\nnoble mind, noble-mindedness\nauthentic\nlet in, release; release oneself to, let\noneself in, engage in\nresolve\nEntschlossenheit\nFeldweg\nfern\nFerne\ncountry path\ndistant\ndistance\nge-eignet, geeignet\ngegnen\nappropriated,\nappropriate (d)\nto region\n91\n"
+    },
+    {
+      "document": "Heidegger_DiscourseOnThinking",
+      "page_num": 48,
+      "bucket": "E (10%+)",
+      "error_rate": 32.8,
+      "unknown_words_sample": [
+        "vorstellen",
+        "denken",
+        "herkunft",
+        "verweilende",
+        "boden",
+        "menschenwesen",
+        "rechnendes",
+        "wahrheit",
+        "offene",
+        "der"
+      ],
+      "full_text": "92\nGegnet\ngelassen\nGelassenheit\nGelassenheit zu den Dingen\nGrund\nGrund und Boden\nHaltung\nHerkunft\nIn -sich -beruhen\nInstandigkeit\nMenschenwesen\nnahe\nNiihe\nOffene, das\nOffenheit fur das Geheimnis\nrechnendes Denken\nTechnik\ntranszendental- horizontal\niiberlassen (adj.)\nunheimlich\nvereignet\nVergegnis\nGLOSSARY\nthat-which-regions\nreleased\nreleasement\nreleasement\ntoward things\nground\nground and foundation\ncomportment\norigins, origin\nresting in itself\nin-dwelling\nhuman nature\nnear\nnearness\nopenness\nopenness to the mystery\ncalculative thinking\ntechnology\ntranscendental- horizonal\nreleased\nuncanny\nappropriated\nby\nregioning\n(with respect to man)\nverhalten\n(adj.)\nVerhaltenheit\nverweilen\nverweilende Weite\nvorstellen\nwalten\nwarten auf\nWeile\nWeile der Weite, die\nWeite\nWeite der Weile, die\nWesen\nwesende Wahrheit\nwest, Gegnet\nwest, Wahrheit\nGLOSSARY\ncomposed\ncomposure\nto abide, endure\nabiding expanse\nto re-present\nto reign\nto wait for, upon\nabiding\nabiding expanse\nexpanse\nexpanse of the abiding\nnature,\nessence (rarely)\ncoming forth of truth's nature\nthat-which-regions\nfirst brings\nforth a nature\ntruth's\nnature\ncomes forth\n93\n"
+    }
+  ]
+}

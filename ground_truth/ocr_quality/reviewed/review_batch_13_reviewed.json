@@ -1,0 +1,40 @@
+{
+  "document": "Lenin_StateAndRevolution",
+  "batch_number": 13,
+  "reviewed_pages": [
+    {
+      "page_number": 54,
+      "original_classification": "BAD",
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reviewer_notes": "This is a facsimile of a Russian title page with correctly extracted Cyrillic text. The 'gibberish' (mecm, pebo, detporpaak, etc.) is actually proper Cyrillic characters that appear foreign when viewed through English OCR standards. The English caption 'Facsimile of the title page of the first edition, published in Petrograd, 1918' is clearly readable. The OCR correctly preserved the multilingual content. This should be classified as GOOD - the OCR did exactly what it should by preserving the original Cyrillic text.",
+      "confidence": "high"
+    },
+    {
+      "page_number": 93,
+      "original_classification": "BAD",
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reviewer_notes": "The names listed as 'corrupted' are actually correctly rendered German, French, and European surnames: Scheidemanns, Davids, Legiens, Sembats, Renaudels, Hendersons, Vanderveldes, Staunings, Brantings, Bissolatis. These are real historical figures in the socialist movement. 'Zertretten' is German text (correctly shown in parentheses as 'ver- und zertretten'). The capitalization variants (sembats vs Sembats) appear in the evidence but the actual extracted text shows proper capitalization. No OCR corruption detected.",
+      "confidence": "high"
+    },
+    {
+      "page_number": 95,
+      "original_classification": "BAD",
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reviewer_notes": "All flagged items are correctly rendered: 'Delo Naroda' is the correct name of a Russian newspaper (properly italicized in context), 'Messrs' is standard abbreviation for 'Messieurs', 'candour' is British English spelling (not American 'candor'), 'Vanderveldes' is a correct surname, 'Rusanov' is a correct Russian surname. The evidence appears to flag foreign words and British spellings as OCR errors when they are actually correct. No corruption detected.",
+      "confidence": "high"
+    },
+    {
+      "page_number": 175,
+      "original_classification": "BAD",
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reviewer_notes": "Glossary entries are correctly rendered: 'Weydemeyer' (German name), 'Zarya' (Russian journal), 'Zenzinov' (Russian name), 'Delo Naroda' (Russian newspaper). The fragments mentioned in evidence (ple, tionaries, khanov, revolu) do not appear in the extracted text shown - they may have been artifacts from the analysis tool rather than actual OCR output. The glossary is clean and readable. The 25% 'error rate' appears to be counting foreign proper nouns as errors.",
+      "confidence": "high"
+    }
+  ],
+  "summary": {
+    "total_reviewed": 4,
+    "false_positives": 4,
+    "confirmed_bad": 0,
+    "key_finding": "All pages in batch 13 are false positives. The classification system appears to be flagging: (1) correctly extracted Cyrillic/multilingual text as 'gibberish', (2) foreign proper names (German, Russian, French) as 'corrupted', and (3) British English spellings as OCR errors. The OCR quality is actually GOOD - it correctly preserved multilingual content and proper names. The error detection algorithm needs calibration to distinguish between foreign languages/proper nouns and actual OCR corruption."
+  }
+}

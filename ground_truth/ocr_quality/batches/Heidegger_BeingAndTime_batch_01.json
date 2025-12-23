@@ -1,0 +1,455 @@
+{
+  "batch_id": 1,
+  "document": "Heidegger_BeingAndTime",
+  "pages": [
+    {
+      "document": "Heidegger_BeingAndTime",
+      "page_num": 2,
+      "bucket": "E (10%+)",
+      "error_rate": 21.4,
+      "unknown_words_sample": [
+        "blaci",
+        "usa",
+        "macquarrie"
+      ],
+      "full_text": "MARTIN HEIDEGGER \nBEING AND TIME \nTranslated by \nJohn Macquarrie & Edward Robinson \nI] \nBLACI<WELL \nCJ./on/ UK \u0311 Com\u0314\u2022i4r\u2022 USA \n"
+    },
+    {
+      "document": "Heidegger_BeingAndTime",
+      "page_num": 4,
+      "bucket": "E (10%+)",
+      "error_rate": 16.7,
+      "unknown_words_sample": [
+        "cip",
+        "niemeyer",
+        "tiibingen",
+        "mpg",
+        "ijf",
+        "pbk",
+        "bodmin",
+        "und",
+        "verlag",
+        "zeit"
+      ],
+      "full_text": "This translation copyright\u00a9 Blackwell Publishers Ltd 1962 \nFirst English edition 1962 \nReprinted 1967, 1973, 1978, 1980, 1983, 1985, 1987, 1988, \n1990, 1992, 1993, 1995 (twice), 1996, 1997, 1998, 1999,2000 (twice), 2001 \nBlackwell Publishers Ltd \nI 08 Cowley Road \nOxford OX4 IJF, UK \nTranslated from the German \nSein und Zeit (seventh edition) \nby permission of \nMax Niemeyer Verlag, Tiibingen \nBritish Library Cataloguing in Publication Data \nA CIP catalogue record for this book \nis available from the British Library \n0-631-19770-2(pbk) \nPrinted and bound in Great Britain \nby MPG Books Ltd, Bodmin, Cornwall \nThis book is printed on acid-free paper. \n"
+    },
+    {
+      "document": "Heidegger_BeingAndTime",
+      "page_num": 6,
+      "bucket": "E (10%+)",
+      "error_rate": 18.2,
+      "unknown_words_sample": [
+        "odtnauberg",
+        "boden"
+      ],
+      "full_text": "Dedicated to \nEDMUND HUSSERL \nin friendship and admiration \nT odtnauberg in Boden, Black Forest \n8 April rg:z6 \n"
+    },
+    {
+      "document": "Heidegger_BeingAndTime",
+      "page_num": 8,
+      "bucket": "C (3-5%)",
+      "error_rate": 4.5,
+      "unknown_words_sample": [
+        "osition",
+        "dasein",
+        "temporality",
+        "ihe",
+        "exp",
+        "ior",
+        "ity"
+      ],
+      "full_text": "CONTENTS \n[Page references marked 'H' indicate the pagination of ihe later German editions, as shown in the \nouter margins of the text.] \nTranslators' Preface \nAuthor's Preface to the Seventh German Edition \nIntroduction \nExposition of the Question of the Meaning of Being \nJ. THE NECESSITY, \nSTRUCTURE, AND \nPR IOR ITY OF THE \nQuESTION OF BEING \nI. The necessity for explicitly restating the question of \nBeing \n2. The formal structure of the question of Being \n3\u00b7 The ontological priority of the question of Being \n4\u00b7 The on tical priority of the question of Being \nII. THE TwoFOLD TAsK IN WoRKING OuT THE QuESTION \nOF BEING. METHOD AND DESIGN OF OUR INVESTIGATION \n5\u00b7 The ontological analytic of Dasein as laying bare \nthe horizon for an Interpretation of the meaning of \nBeing in general \n6. The task of Destroying the history of ontology \n7\u00b7 The phenomenological method of investigation \nA. The concept of phenomenon \nB. The concept of the logos \nc. The preliminary conception of phenomenology \n8. Design of the treatise \nPart One \nH. 2 \nH. 2 \nH. 2 \nH.5 \nH.8 \nH. I I \nH. I5 \nH. I5 \nH. Ig \nH. 17 \nH. 27 \nH. 32 \nH. 34 \nH. 39 \nI3 \n21 \n2 I  \nThe Interpretation of Dasein in Terms of Temporality, and the \nExplication of Time as the Transcendental Horizon for the \nQuestion of Being \nDIVISION ONE: PREPARATORY FUNDAMENTAL ANALYSIS OF \nDASEIN \nJ. EXP OSITION OF THE TASK OF A PREPARATOR Y ANALYSIS \nOF DASEIN \nq. The theme of the analytic of Dasein \nH. 41 \nH. 41 \n"
+    },
+    {
+      "document": "Heidegger_BeingAndTime",
+      "page_num": 9,
+      "bucket": "D (5-10%)",
+      "error_rate": 7.5,
+      "unknown_words_sample": [
+        "vironment",
+        "ioi",
+        "ofthe",
+        "dasein",
+        "aroundness",
+        "environmentality",
+        "worldhood",
+        "extensa",
+        "thespatiality",
+        "anarysis"
+      ],
+      "full_text": "8 \nBeing and Time \nIO. How the analytic of Dasein is to be distinguished \nfrom anthropology, psychology, and biology \nH. 45 \n71 \nI I. The existential analytic and the Interpretation of \nprimitive Dasein. The difficulties of achieving a \n'natural conception of the world' \nH. 50 \n76 \nII. BEING\u00b7IN\u00b7THE\u2022WORLD IN GE NERAL AS THE BASIC STATE \nOF DASEIN \nH. 52 \n78 \nI 2. A preliminary sketch of Being-in-the-world, in \nterms of an orientation towards Being-in as such \nH. 52 \n78 \nI3. A founded mode in which Being-in is exemplified. \nKnowing the world \nH. 59 \n86 \nIII. THE WoRLDHOOD OF THE WoRLD \nI4. The idea of the worldhood of the world in general \nA. Anarysis of environmentality and worldhood in general \nI 5\u00b7 The Being of the entities encountered in the en\u00ad\nvironment \nI6. How the worldly character of the environment \nannounces itself in entities within-the-world \nI 7, Reference and signs \nI8. Involvement and significance: the worldhood of \nthe world \nB. A contrast between our anarysis of worldhood and \nDescartes' Interpretation of the world \nIg. The definition of the 'world' as res extensa \n20. Foundations of the ontological definition of the \n'world' \n2I. Hermeneutical discussion of the Cartesian ontology \nof the 'world' \nc. The aroundness of the environment, and Dasein' s spatiality \n22. Thespatiality ofthe ready-to-hand within-the-world \n23. The spatiality of Being-in-the-world \n24. Space, and Dasein's spatiality \nIV. BEING-IN-THE-WORLD AS BEING-WITH AND BEING\u00ad\nONE'S\u00b7SELF. THE 'THEY' \n25. An approach to the existential question of the \n\"who\" of Dasein \n26. The Dasein-with of Others, and everyday Being\u00ad\nwith \n27. Everyday Being-one's-Self and the \"they\" \nH. 63 \ngi \nH. 63 \n9I \nH. 66 \n95 \nH. 66 \n95 \nH. 72 I02 \nH, 76 I07 \nH. 83 Il4 \nH. 8g I22 \nH. 89 I23 \nH. 92 I25 \nH. 95 I28 \nH. IOI I34 \nH. I02 I35 \nH. I04 138 \nH. I IO I45 \nH. I I3 149 \nH. I I4 ISO \nH. II7 153 \nH. 126 I63 \n"
+    },
+    {
+      "document": "Heidegger_BeingAndTime",
+      "page_num": 12,
+      "bucket": "D (5-10%)",
+      "error_rate": 8.9,
+      "unknown_words_sample": [
+        "ntic",
+        "everydayness",
+        "dasein",
+        "authe",
+        "disclosedness",
+        "stitution",
+        "pote",
+        "temporality",
+        "teristic",
+        "ntiality"
+      ],
+      "full_text": "Contents \nIII. DASEIN's AUTHE NTIC \nPoTE NTIALITY-FOR-BEING-A\u00ad\nWHOLE, AND TEMPORALITY AS THE ONTOLOGICAL \nMEANING OF CARE \n6 I. A preliminary sketch of the methodological step \nfrom the definition of Dasein's authentic Being\u00ad\na-whole to the laying-bare of temporality as a \nphenomenon \n62. Anticipatory resoluteness as the way in which \nDasein's \npotentiality-for-Being-a-whole \nhas \nexistentiell authenticity \n63. The hermeneutical situation at which we have \narrived for Interpreting the meaning of the \nBeing of care; and the methodological character \nof the existential analytic in general \n64. Care and selfhood \n65. Temporality as the ontological meaning of care \n66. Dasein's temporality and the tasks arising there\u00ad\nfrom of repeating the existential analysis in a \nmore primordial manner \nIV. TEMPORALITY AND EVERYDAYNESS \n67. The basic content of Dasein's existential con\u00ad\nstitution, \nand a \npreliminary sketch \nof \nthe \ntemporal Interpretation of it \n68. The temporality of disclosedness in general \n(a) The temporality of understanding \n(b) \nThe temporality of state-of-mind \n(c) \nThe temporality of falling \n(d) The temporality of discourse \n69. The temporality of Being-in-the-world and the \nproblem of the transcendence of the world \n(a) The temporality of circumspective concern \n(b) \nThe temporal meaning of the way in which \ncircumspective concern becomes modified \ninto the theoretical discovery of the present\u00ad\nat-hand within-the-world \n(c) \nThe temporal problem of the transcendence \nof the world \n70. The temporality of the spatiality that is charac-\nH. 30I \nH. 301 \nH. 305 \nH. 310 \nH. 316 \nH. 323 \nH. 33I \nH. 334 \nH. 334 \nH. 335 \nH. 336 \nH. 339 \nH. 346 \nH. 349 \nH. 350 \nH. 352 \nH. 356 \nII \n349 \n349 \n352 \n380 \nteristic of Dasein \nH. 367 \n418 \n7I. The temporal meaning ofDasein's everydayness H. 370 \n421 \n"
+    },
+    {
+      "document": "Heidegger_BeingAndTime",
+      "page_num": 15,
+      "bucket": "D (5-10%)",
+      "error_rate": 5.4,
+      "unknown_words_sample": [
+        "faktisch",
+        "interpretieren",
+        "sions",
+        "sache",
+        "sorge",
+        "gliedern",
+        "duced",
+        "dasein",
+        "ialized",
+        "tatsiichlich"
+      ],
+      "full_text": "Being and Time \nexpressions in new ways. Adverbs, prepositions, pronouns, conjunctions \nare made to do service as nouns; words which have undergone a long \nhistory of semantical change are used afresh in their older senses; spec\u00ad\nialized modem idioms are generalized far beyond the limits within which \nthey would ordinarily be applicable. Puns are by no means uncommon \nand frequently a key-word may be used in several senses, successively or \neven simultaneously. He is especially fond of ringing the changes on \nwords with a common stem or a common prefix. He tends on the whole \nto avoid personal constructions, and often uses abstract nouns ('Dasein', \n'Zeitlichkeit', 'Sorge', 'ln-der-Welt-sein', and so forth) as subjects of \nsentences where a personal subject would ordinarily be found. Like \nAristotle or Wittgenstein, he likes to talk about his words, and seldom \nmakes an innovation without explaining it; but sometimes he will have \nused a word in a special sense many times before he gets round to the \nexplanation; and he may often use it in the ordinary senses as well. In \nsuch cases the reader is surely entitled to know what word Heidegger is \nactually talking about, as well as what he says about it; and he is also \nentitled to know when and how he actually uses it. \nWe have tried in the main to keep our vocabulary under control, \nproviding a German-English glossary for the more important expres\u00ad\nsions, and a rather full analytical index which will also serve as an English\u00ad\nGerman glossary. We have tried to use as few English terms as possible \nto represent the more important German ones, and we have tried not to \nto use these for other purposes than those we have specifically indicated. \nSometimes we have had to coin new terms to correspond to Heidegger's. \nIn a number of cases there are two German terms at the author's disposal \nwhich he has chosen to differentiate, even though they may be synonyms \nin ordinary German usage; if we have found only one suitable English \nterm to correspond to them, we have sometimes adopted the device of \ncapitalizing it when it represents the German word to which it is etymo\u00ad\nlogically closer: thus 'auslegen' becomes 'interpret', but 'interpretieren' \nbecomes 'Interpret'; 'gliedern' becomes 'articulate', but 'artikulieren' \nbecomes 'Articulate'; 'Ding' becomes 'Thing', but 'thing' represents \n'Sache' and a number of other expressions. In other cases we have coined \na new term. Thus while 'tatsiichlich' becomes 'factual', we have intro\u00ad\nduced 'factical' to represent 'faktisch'. We have often inserted German \nexpressions in square brackets on the occasions of their first appearance \nor on that of their official definition. But we have also used bracketed \nexpressions to call attention to departures from our usual conventions, or \nto bring out etymological connections which might otherwise be over\u00ad\nlooked. \n"
+    },
+    {
+      "document": "Heidegger_BeingAndTime",
+      "page_num": 16,
+      "bucket": "B (1-3%)",
+      "error_rate": 1.6,
+      "unknown_words_sample": [
+        "tiw",
+        "heideggerian",
+        "sistent",
+        "subtlbties",
+        "yorck",
+        "ings"
+      ],
+      "full_text": "Being and Tiw \nIn many cases bracketing is insufficient, and we have introduced foot\u00ad\nnotes of our own, discussing some of the more important terms on the \noccasion of their first appearance. We have not hesitated to quote German \nsentences at length when they have been ambiguous or obscure; while we \nhave sometimes taken pains to show where the ambiguity lies, we have \nmore often left this to the reader to puzzle out for himself. We have often \nquoted passages with verbal subtlbties which would otherwise be lost in \ntranslation. We have also called attention to a number of significant \ndifferences between the earlier and later editions of Heidegger's work. \nThe entire book was reset for the seventh edition; while revisions were by \nno means extensive, they went beyond the simple changes in punctuation \nand citation which Heidegger mentions in hiS preface. We have chosen the \nthird edition (1931) as typical of the earlier editions, and the eighth \n(1957) as typical of the later ones. In general we have preferred the read\u00ad\nings of the eighth edition, and our marginal numbering and cross-references \nfollow its pagination. Heidegger's very valuable footnotes have been \nrenumbered with roman numerals and placed at the end of the text \nwhere we trust they will be given the attention they deserve. Hoping that \nour own notes will be of immediate use to the reader, we have placed \nthem at the bottoms of pages for easy reference, indicating them with \narabic numerals. \nIn general we have tried to stick to the text as closely as we can without \nsacrificing intelligibility; but we have made numerous concessions to the \nreader at the expense of making Heidegger less Heideggerian. We have, \nfor instance, frequently used personal constructions where Heidegger has \navoided them. We have also tried to be reasonably flexible in dealing with \nhyphenated expressions. Heidegger does not seem to be especially con\u00ad\nsistent in his use of quotation marks, though in certain expressions (for \ninstance, the word 'Welt') they are very deliberately employed. Except in \na few footnote references and some of the quotations from Hegel and \nCount Yorck in the two concluding chapters, our single quotation marks \nrepresent Heidegger's double ones. But we have felt free to introduce \ndouble ones of our own wherever we feel that they may be helpful to \nthe reader. We have followed a similar policy with regard to italicization. \nWhen Heidegger uses italics in the later editions (or spaced type in the \nearlier ones), we have generally used italics; but in the relatively few cases \nwhere we have felt that some emphasis of our own is needed, we have \nresorted to wide spacing. We have not followed Heidegger in the use of \nitalics for proper names or for definite articles used demonstratively to \nintroduce restrictive relative clauses. But we have followed the usual \npractice of italicizing words and phrases from languages other than English \n"
+    },
+    {
+      "document": "Heidegger_BeingAndTime",
+      "page_num": 18,
+      "bucket": "E (10%+)",
+      "error_rate": 10.6,
+      "unknown_words_sample": [
+        "phiinomenologische",
+        "niemeyer",
+        "jahrbuch",
+        "dasein",
+        "tiibingen",
+        "utho",
+        "rman",
+        "forschung",
+        "husser",
+        "manheim"
+      ],
+      "full_text": "A UTHO R'S PREFACE TO THE SEVENTH GE RMAN \nEDITIO N \nTHIS treatise first appeared in the spring of 1927 in the Jahrbuch for \nPhiinomenologie und phiinomenologische Forschung edited by Edmund Husser!, \nand was published simultaneously in a special printing. \nThe present reprint, which appears as the seventh edition, is unchanged \nin the text, but has been newly revised with regard to quotations and \npunctuation. The page-numbers of this reprint agree with those of the \nearlier editions except for minor deviations.1 \nWhile the previous editions have borne the designation 'First Half', \nthis has now been deleted. Mter a quarter of a century, the second half \ncould no longer be added unless the first were to be presented anew. Yet \nthe road it has taken remains even today a necessary one, if our Dasein is \nto be stirred by the question of Being. \nFor the elucidation of this question the reader may refer to my Einfuhrung \nin die Metaphysik, which is appearing simultaneously with this reprinting \nunder the same publishers. 2 This work presents the text of a course of \nlectures delivered in the summer semester of 1935. \n1 See Translators' Preface, p. 15. \n2 Max Niemeyer Verlag, Tiibingen, 1953\u00b7 English translation by Ralph Manheim, \nYale University Press and Oxford University Pres, 1959\u00b7 \n"
+    },
+    {
+      "document": "Heidegger_BeingAndTime",
+      "page_num": 20,
+      "bucket": "E (10%+)",
+      "error_rate": 10.4,
+      "unknown_words_sample": [
+        "bedeutung",
+        "rpo",
+        "seiendes",
+        "interpretieren",
+        "schlick",
+        "legung",
+        "ductory",
+        "husser",
+        "ime",
+        "heissen"
+      ],
+      "full_text": "BE ING AND T IME \n8ij>.ov yd.p WS' VI-'\u00a3 'iS' 1-'3v TavTa. ( Tl 7TOTE {3oo>.\u00a3u8\u00a3 CTJI-'alv\u00a3w o7ToTav ov \ncfo8ly'f'Ju8\u00a3) ?Tif>.<U y,yvc!JuK\u00a3T\u00a3, \u00f4I-'\u00a3'S' 83 1rpo Toil 1-'3v c/Jo1-'\u00a38a, vvv 8' \u00f57Top\u001f\u00ad\nKal-'\u00a3v \u2022\n\u2022\n\u2022\n \n'For manifestly you have long been aware of what you mean when you \nuse the expression \"being\". We, however, who used to think we under\u00ad\nstood it, have now become perplexed.'1 \nDo we in our time have an answer to the question of what we really \nmean by the word 'being' ?1 Not at all. So it is fitting that we should \nraise anew the question of the meaning2 of Being. But are we nowadays even \nperplexed at our inability to understand the expression 'Being'? Not at \nall. So first of all we must reawaken an understanding for the meaning of \nthis question. Our aim in the following treatise is to work out the question \nof the meaning of Being and to do so concretely. Our provisional aim \nis the Interpretation3 of time as the possible horizon for any understanding \nwhatsoever of Being.' \nBut the reasons for making this our aim, the investigations which such \na purpose requires, and the path to its achievement, call for some intro\u00ad\nductory remarks. \n1 'seiend'. Heidegger translates Plato's present participle ov by this present participle \nof the verb 'sein' ('to be'). We accordingly translate 'seiend' here and in a number of \nlater passages by the present participle 'being'; where such a translation is inconvenient \nwe shall resort to other constructions, usually subjoining the German word in brackets or \nin a footnote. The 'participle 'seiend' must be distinguished from the infinitive 'sein', \nwhich we shall usually translate either by the infinitive 'to be' or by the gerund 'being'. \nIt must also be distinguished from the important substantive 'Sein' (always capitalized), \nwhich we shall translate as 'Being' (capitalized), and from the equally important sub\u00ad\nstantive 'Seiendes', which is directly derived from 'seiend', and which we shall usually \ntranslate as 'entity' or 'entities'. (See our note 6, H. 3 below.) \n2 'Sinn.' In view of the importance of the distinction between 'Sinn' and 'Bedeutung' \nin German writers as diverse as Dilthey, Husser!, Frege and Schlick, we shall translate \n'Sinn' by 'meaning' or 'sense', depending on the context, and keep 'signification' and \n'signify' for 'Bedeutung' and 'bedeuten'. (The verb 'mean' will occasionally be used to \ntranslate such verbs as 'besagen', 'sagen', 'heissen' and 'meinen', but the noun 'meaning' \nwill be reserved for 'Sinn'.) On 'Sinn', see H. 151, 324; on 'Bedeutung', etc., see H. 87, \nand our note 47 ad loc. \n3 Heidegger uses two words which might well be translated as 'interpretation': 'Aus\u00ad\nlegung' and 'Interpretation'. Though in many cases these may be regarded as synonyms, \ntheir connotations are not quite the same. 'Auslegung' seems to be used in a broad sense \nto cover any activity in which we interpret something 'as' something, whereas 'Inter\u00ad\npretation' seems to apply to interpretations which are more theoretical or systematic, as \nin the exegesis of a text. See especially H. 148 ff. and 199 f. We shall preserve this distinc\u00ad\ntion by writing 'interpretation' for 'Auslegung', but 'Interpretation' fo.r Heidegger's \n'Interpretation', following similar conventions for the verbs 'auslegen' and 'interpretieren'. \n4 ' \u2022\n\u2022\n\u2022\n als des miiglichen Horizontes eines jeden Seinsverstiindnisses iiberhaupt . .  .' \nThroughout this work the word 'horizon' is used with a connotation somewhat different \nfrom that to which the English-speaking reader is likely to be accustomed. We tend to \nthink of a horizon as something which we may widen or extend or go beyond; Heidegger, \nhowever, seems to think of it rather as something which we can neither widen nor go \nbeyond, but which provides the limits for certain intellectual activities performed 'within' it. \n"
+    },
+    {
+      "document": "Heidegger_BeingAndTime",
+      "page_num": 23,
+      "bucket": "D (5-10%)",
+      "error_rate": 9.2,
+      "unknown_words_sample": [
+        "includitur",
+        "seiendes",
+        "univer",
+        "unitp",
+        "cuius",
+        "apprehensione",
+        "transcendens",
+        "ceptually",
+        "cadit",
+        "sality"
+      ],
+      "full_text": "Being and Time \nINT. I \naccount of the presuppositions and prejudices which are constantly \nreimplanting and fostering the belief that an inquiry into Being is unneces-\n3 \nsary. They are rooted in ancient ontology itself, and it will not be possible \nto interpret that ontology adequately until the question of Being has been \nclarified and answered and taken as a clue-at least, if we are to have \nregard for the soil from which the basic ontological concepts developed, \nand if we are to see whether the categories have been demonstrated in a \nway that is appropriate and complete. We shall therefore carry the dis\u00ad\ncussion of these presuppositions only to the point at which the necessity \nfor restating the question about the meaning of Being become plain. \nThere are three such presuppositions. \n1 .  First, it has been maintained that 'Being' is the 'most universal' \nconcept: To ov Jan Ka86>-.ov p.aAtUTa 7TaVTwv.1 lllud quod primo cadit sub \napprehensione est ens, cuius intellectus includitur in omnibus, quaecumque quis \napprehendit. 'An understanding of Being is already included in conceiving \nanything which one apprehends as an entity.'1\u202211 But the 'universality' of \n'Being' is not that of a class or genus. The term 'Being' does not define that \nrealm of entities which is uppermost when these are Articulated con\u00ad\nceptually according to genus and species: oiJT\u00a3 To ov ylvos.m The 'univer\u00ad\nsality' of Being 'transcends' any universality of genus. In medieval ontology \n'Being' is designated as a 'transcendens'. Aristotle himself knew the unity of \nthis transcendental 'universal' as a unitp of analogy in contrast to the \nmultiplicity of the highest generic concepts applicable to things. With \nthis discovery, in spite of his dependence on the way in which the \nontological question had been formulated by Plato, he put the problem \nof Being on what was, in principle, a new basis. To be sure, even Aristotle \nfailed to clear away the darkness of these categorial interconnections. In \nmedieval ontology this problem was widely discussed, especially in the \nThomist and Scotist schools, without reaching clarity as to principles. \nAnd when Hegel at last defines 'Being' as the 'indeterminate immediate' \nand makes this definition basic for all the further categorial explications \nof his 'logic', he keeps looking in the same direction as ancient ontology, \n1 ' \" \u2022\n\u2022\n\u2022\n was einer am Seienden erfasst\" '. The word 'Seiendes\u00b7, which Heidegger uses \nin his paraphrase, is one of the most important words in the book. The substantive 'das \nSeiende' is derived from the participle 'seiend' (see note 1, p. tg), and means literally \n'that which is'; 'ein Seiendes' means 'somet)ling which is'. There is much to be said for \ntranslating 'Seiendes' by the noun 'being' or 'beings' (for it is often used in a collective \nsense). We feel, however, that it is smoother and less confusing to write 'entity' or 'en\u00ad\ntities'. We are well aware that in recent British and American philosophy the term \n'entity' has been used more generally to apply to almost anything whatsoever, no matter \nwhat its ontological status. In this translation, however, it will mean simply 'something \nwhich if'. An alternative translation of the Latin quotation is given by the English \nDominican Fathers, Summa Theologica, Thomas Baker, London, 1915: 'For that which, \nbefore aught else, falls under apprehension, is being, the notion of which is included in all \nthings whatsoever a man apprehends.' \n"
+    },
+    {
+      "document": "Heidegger_BeingAndTime",
+      "page_num": 24,
+      "bucket": "D (5-10%)",
+      "error_rate": 9.4,
+      "unknown_words_sample": [
+        "ratsel",
+        "additur",
+        "behaviour",
+        "finitio",
+        "proximum",
+        "reframs",
+        "vernunft",
+        "enti",
+        "liegt",
+        "macht"
+      ],
+      "full_text": "INT. I \nBeing and Time \nexcept that he no longer pays heed to Aristotle's problem of the unity of \nBeing as over against the multiplicity of 'categories' applicable to \nthings. So if it is said that 'Being' is the most universal concept, this \ncannot mean that it is the one which is clearest or that it needs no further \ndiscussion. It is rather the darkest of al. \n2. It has been maintained secondly that the concept of 'Being' is \n4 \nindefinable. This is deduced from its supreme universality,tv and rightly \nso, if de.finitio fit per genus proximum et diferentiam specijicam. 'Being' cannot \nindeed be conceived as an entity; enti non additur aliqua natura: nor can it \nacquire such a character as to have the term \"entity\" applied to it. \n\"Being\" cannot be derived from higher concepts by definition, nor can \nit be presented through lower ones. But does this imply that 'Being' no \nlonger offers a problem? Not at all. We can infer only that 'Being' cannot \nhave the character of an entity. Thus we cannot apply to Being the concept \nof 'definition' as presented in traditional logic, which itself has its founda\u00ad\ntions in ancient ontology and which, within certain limits, provides a \nquite justifiable way of' defining \"entities\". The indefinability of Being \ndoes not eliminate the question of its meaning; it demands that we look \nthat question in the face. \n3\u00b7 Thirdly, it is held that 'Being' is of all concepts the one that is self\u00ad\nevident. Whenever one cognizes anything or makes an assertion, whenever \none comports oneself towards entities, even towards oneself, 1 some use \nis made of 'Being'; and this expression is held to be intelligible 'without \nfurther ado', just as everyone understands \"The sky is blue', 'I am merry', \nand the like. But here we have an average kind of intelligibility, which \nmerely demonstrates that this is unintelligible. It makes manifest that in \nany way of comporting oneself towards entities as entities-even in any \nBeing towards entities as entities-there lies a priori an enigma. 2 The very \nfact that we already live in an understanding of Being and that the mean\u00ad\ning of Being is still veiled in darkness proves that it is necessary in principle \nto raise this question again. \nWithin the rangeof basic philosophical concepts-especiallywhen we come \nto the concept of 'Being'-it is a dubious procedure to invoke self-evidence, \neven if the 'self-evident' (Kant's 'covert judgments of the common reason') 3 \n1 ' .\n.\n\u2022\n in jedem Verhalten zu Seiendem, in jedem Sich-zu-sich-selbst-verhalten .. .' \nThe verb 'verhalten' can refer to any kind of behaviour or way of conducting onest;lf, \neven to the way in which one relates oneself to something else, or to the way one reframs \nor holds oneself back. We shall translate it in various ways. \n2 'Sie macht offenbar, dass in jedem Verhalten und Sein zu Seiendem als Seiendem a \npriori ein Ratsel liegt.' The phrase 'Sein zu Seiendem' is typical of many similar expressions \nin which the substantive 'Sein' is followed by the preposition 'zu'. In such expressions \nwe shall usually translate 'zu' as 'towards': for example, 'Being-towards-death', 'Being \ntowards Others', 'Being towards entities within-the-world'. \n3 '  \"die geheimen Urteile der gemeinen Vernunft\" '. \n"
+    },
+    {
+      "document": "Heidegger_BeingAndTime",
+      "page_num": 25,
+      "bucket": "D (5-10%)",
+      "error_rate": 8.7,
+      "unknown_words_sample": [
+        "gefragtes",
+        "bei",
+        "intendieren",
+        "durchsichtigkeit",
+        "sosein",
+        "husser",
+        "behaviour",
+        "anfragen",
+        "erjragte",
+        "bedarf"
+      ],
+      "full_text": "Being and Time \nINT. I \nis to become the sole explicit and abiding theme for one's analytic\u00ad\n'the business of philosophers'. \nBy considering these prejudices, however, we have made plain not only \nthat the question of Being lacks an answer, but that the question itself is \nobscure and without direction. So if it is to be revived, this means that \nwe must first work out an adequate way offormulating it. \n5 \nv 2. The Formal Structure of the Question of Being \nThe question of the meaning of Being must be formulated. If it is a \nfundamental question, or indeed the fundamental question, it must be \nmade transparent, and in an appropriate way. 1 We must therefore \nexplain briefly what belongs to any question whatsoever, so that from this \nstandpoint the question of Being can be made visible as a very special one \nwith its own distinctive character. \nEvery inquiry is a seeking [Suchen]. Every seeking gets guided before\u00ad\nhand by what is sought. Inquiry is a cognizant seeking for an entity both \nwith regard to the fact t h a t  it is and with regard to its Being as it is. 2 \nThis cognizant seeking can take the form of ' investigating' [\"Untersuchen\"], \nin which one lays bare that which the question is about and ascertains its \ncharacter. Any inquiry, as an inquiry about something, has that which is \nasked about [sein Gefragtes]. But all inquiry about something is somehow a \nquestioning of something [Anfragen bei . . .  ]. So in addition to what is \nasked about, an inquiry has that which is interrogated [ein Befragtes]. In \ninvestigative questions-that is, in questions which are specifically theo\u00ad\nretical-what is asked about is determined and conceptualized. Further\u00ad\nmore, in what is asked about there lies also that which is to be found out by \nthe asking [das Erjragte] ; this is what is really intended:3 with this the \ninquiry reaches its goal. Inquiry itself is the behaviour of a questioner, and \ntherefore of an entity, and as such has its own character of Being. When one \nmakes an inquiry one may do so 'just casually' or one may formulate the \n1 ' \u2022\n.\n\u2022\n dann bedarf solches Fragen der angemessenen Durchsichtigkeit'. The adjective \n'durchsichtig' is one of Heidegger's favourite expressions, and means simply 'transparent', \n'perspicuous', something that one can 'see through'. We shall ordinarily translate it by \n'transparent'. See H. 146 for further discussion. \nll ' \u2022\n\u2022\n\u2022\n in seinem Dass- und Sosein'. \n3 ' \u2022\n\u2022\n\u2022\n das eigentlich Intendierte . . .  ' The adverb 'eigentlich' occurs very often in this \nwork. It may be used informally where one might write 'really' or 'on its part', or in a \nmuch stronger sense, where something like 'genuinely' or 'authentically' would be more \nappropriate. It is not always possible to tell which meaning Heidegger has in mind. In the \ncontexts which seem relatively informal we shall write 'really'; in the more technical \npassages we shall write 'authentically', reserving 'genuinely' for 'genuin' or 'edit'. The \nreader must not confuse this kind of 'authenticity' with the kind, which belongs to an \n'authentic text' or an 'authentic account'. See H. 42 for further discussion. In the present \npassage, the verb 'intendieren' is presumably used in the medieval sense of 'intending', as \nadapted and modified by Brentano and Husser!. \n"
+    },
+    {
+      "document": "Heidegger_BeingAndTime",
+      "page_num": 27,
+      "bucket": "D (5-10%)",
+      "error_rate": 5.2,
+      "unknown_words_sample": [
+        "ent",
+        "flv",
+        "sosein",
+        "woraufhin",
+        "geltung",
+        "dasein",
+        "liegt",
+        "vorhandenheit",
+        "int",
+        "dass"
+      ],
+      "full_text": "Being and Time \nINT. I \n[ woraufhin] ent1t1es are already understood, however we may discuss \nthem in detail. The Being of entities 'is' not itself an entity. If we are to \nunderstand the problem of Being, our first philosophical step consists in \nnot fLV6ov nva 8t7Jy\u20aci:a6w.,v in not 'telling a story'-that is to say, in not \ndefining entities as entities by tracing them back in their origin to some \nother entities, as if Being had the character of some possible entity. Hence \nBeing, as that which is asked about, must be exhibited in a way of its own, \nessentially different from the way in which entities are discovered. Accord\u00ad\ningly, what is to be found out by the asking-the meaning of Being-also \ndemands that it be conceived in a way of its own, essentially contrasting \nwith the concepts in which entities acquire their determinate signification. \nIn so far as Being constitutes what is asked about, and \"Being\" means \nthe Being of entities, then entities themselves turn out to be what is inter\u00ad\nrogated. These are, so to speak, questioned as regards their Being. But if \nthe characteristics of their Being can be yielded without falsification, then \nthese entities must, on their part, have become accessible as they are in \nthemselves. When we come to what is to be interrogated, the question of \nBeing requires that the right way of access to entities shall have been \nobtained and secured in advance. But there are many things which we \ndesignate as 'being' (\"seiend\"], and we do so in various senses. Everything \nwe talk about, everything we have in view, everything towards which we \n7 \ncomport ourselves in any way, is being; what we are is being, and so is \nhow we are. Being lies in the fact that something is, and in its Being as it is; \nin Reality; in presence-at-hand; in subsistence; in validity; in Dasein; \nin the 'there is' .1 In which entities is the meaning of Being to be discerned? \nFrom which entities is the disclosure of Being to take its departure? Is \nthe starting-point optional, or does some particular entity have priority \nwhen we come to work out the question of Being? Which entity shall we \ntake for our example, and in what sense does it have priority? \nIf the question about Being is to be explicitly formulated and carried \nthrough in such a manner as to be completely transparent to itself, then \nany treatment of it in line with the elucidations we have given requires \nus to explain how Being is to be looked at, how its meaning is to be under\u00ad\nstood and conceptually grasped; it requires us to prepare the way for \nchoosing the right entity for our example, and to work out the genuine \nway of access to it. Looking at something, understanding and conceiving it, \nchoosing, access to it-all these ways of behaving are constitutive for our \ninquiry, and therefore are modes of Being for those particular entities \n1 'Sein liegt im Dass- und Sosein, in Realitiit, Vorhandenheit, Bestand, Geltung, \nDasein, im \"es gibt\".' On 'Vorhandenheit' ('presence-at-hand') see note 1, p. 48, H. 25. \nOn 'Dasein', see note 1, p. 27. \n"
+    },
+    {
+      "document": "Heidegger_BeingAndTime",
+      "page_num": 29,
+      "bucket": "D (5-10%)",
+      "error_rate": 7.4,
+      "unknown_words_sample": [
+        "frage",
+        "begrundung",
+        "fassung",
+        "eigensten",
+        "beantwortung",
+        "sondern",
+        "nicht",
+        "ver",
+        "dasein",
+        "strated"
+      ],
+      "full_text": "Being and Time \nINT. I \nactivity of taking a look at Being arises from the average understanding \nof Being in which we always operate and which in the end belongs to the \nessential constitution1 of Dasein itself. Such 'presupposing' has nothing to do \nwith laying down an axiom from which a sequence of propositions is \ndeductively derived. It is quite impossible for there to be any ' circular \nargument' in formulating the question about the meaning of Being; for \nin answering this question, the issue is not one of grounding something \nby such a derivation; it is rather one of laying bare the grounds for it \nand exhibiting them. 2 \nIn the question of the meaning of Being there is no ' circular reasoning' \nbut rather a remarkable ' relatedness backward or forward' which what \nwe are asking about (Being) bears to the inquiry itself as a mode of Being \nof an entity. Here what is asked about has an essential pertinence to the \ninquiry itself, and this belongs to the ownmost meaning [ eigensten Sinn] \nof the question of Being. This only means, however, that there is a way\u00ad\nperhaps even a very special one-in which entities with the character of \nDasein are related to the question of Being. But have we not thus demon\u00ad\nstrated that a certain kind of entity has a priority with regard to its Being? \nAnd have we not thus presented that entity which shall serve as the \nprimary example to be interrogated in the question of Being? So far our \ndiscussion has n o t  demonstrated Dasein's priority, nor has it shown \ndecisively whether Dasein may possibly or even necessarily serve as the \nprimary entity to be interrogated. But indeed something like a priority of \nDasein has announced itself. \nv 3\u00b7 The Ontological Priority of the Question of Being \nWhen we pointed out the characteristics of the question of Being, \ntaking as our clue the formal structure of the question as such, we made it \n1 'Wesensverfassung'. 'Verfassung' is the standard word for the 'constitution' of a \nnation or any political organization, but it is also used for the 'condition' or 'state' in \nwhich a person may find himself. Heidegger seldom uses the word in either of these senses; \nbut he does use it in ways which are somewhat analogous. In one sense Dasein's 'Ver\u00ad\nfassung' is its 'constitution', the way it is constituted, 'sa condition humaine'. In another \nsense Dasein may have several 'Verfassungen' as constitutive 'states' or factors which \nenter into its 'constitution'. We shall, in general, translate 'Verfassung' as 'constitution' or \n'constitutive state' according to the context; but in passages where 'constitutive state' \nwould be cumbersome and there is little danger of ambiguity, we shall simply write \n'state'. These states, however, must always be thought of as constitutive and essential, \nnot as temporary or transitory stages like the 'state' of one's health or the 'state of the \nnation'. When Heidegger uses the word 'Konstitution', we shall usually indicate this by \ncafitalizing 'Constitution'. \n' . . .  weil es in der Beantwortung der Frage nicht um eine ableitende Begrundung, \nsondern um aufweisende Grund-Freilegung geht.' Expressions of the form 'es geht . . .  \n\u00f7m:-' al?pear very ouen in this work. We shall usually translate them by variants on \n-1s an 1ssue for . . .\n. \n"
+    },
+    {
+      "document": "Heidegger_BeingAndTime",
+      "page_num": 31,
+      "bucket": "C (3-5%)",
+      "error_rate": 3.6,
+      "unknown_words_sample": [
+        "historiology",
+        "fof",
+        "historie",
+        "offaith",
+        "relativities",
+        "historisch",
+        "historiological",
+        "strated",
+        "geistlswissenscluzften",
+        "geschichtlich"
+      ],
+      "full_text": "Being and Time \nINT. I \none of obtaining and securing the primary way of access to what are \nsupposedly the objects of this science. The relativity theory of p\u04c1sics \narises from the tendency to exhibit the interconnectedness of Nature as \nit is 'in itself'. As a theory of the conditions under which we have access \nto Nature itself, it seeks to preserve the changelessness of the laws of \n10 \nmotion by ascertaining all relativities, and thus comes up against the \nquestion of the structure of its own given area of study-the problem of \nmatter. In biology there is an awakening tendency to inquire beyond the \ndefinitions which mechanism and vitalism have given foF \"life\" and \n\"organism\", and to define anew the kind of Being which belongs to the \nliving as such. In those humane sciences which are historiological in character, 1 \nthe urge towards historical actuality itself has been strengthened in the \ncourse of time by tradition and by the way tradition has been presented \nand handed down : the history of literature is to become the history of \nproblems. Theology is seeking a more primordial interpretation of man's \nBeing towards God, prescribed by the meaning offaith itself and remaining \nwithin it. It is slowly beginning to understand once more Luther's insight \nthat the 'foundation' on which its system of dogma rests has not arisen \nfrom an inquiry in which faith is primary, and that conceptually this \n'foundation' not only is inadequate for the problematic of theology, but \nconceals and distorts it. \nBasic concepts determine the way in which we get an understanding \nbeforehand of the area of subject-matter underlying all the objects a \nscience takes as its theme, and all positive investigation is guided by this \nunderstanding. Only after the area itself has been explored beforehand \nin a corresponding manner do these concepts become genuinely demon\u00ad\nstrated and 'grounded'. But since every such area is itself obtained from \nthe domain of entities themselves, this preliminary research, from which \nthe basic concepts are drawn, signifies nothing else than an interpretation \nof those entities with regard to their basic state of Being. Such research \nmust run ahead of the positive sciences, and it can. Here the work of Plato \nand Aristotle is evidence enough. Laying the foundations for the sciences \nin this way is different in principle from the kind of 'logic' which limps \nalong after, investigating the status of some science as it chances to find \nit, in order to discover its 'method'. Laying the foundations, as we have \ndescribed it, is rather a productive logic-in the sense that it leaps ahead, \n1 'In den histcrischen Geistlswissenscluzften \u2022\n\u2022\n\u2022\n ' Heidegger makes much of the distinction \nbetween 'Historie' and 'Geschichte' and the corresponding adjectives 'historisch' and \n'geschichtlich'. 'Historie' stands for what Heidegger calls a 'science of history'. (See \nH. 375, 378.) 'Geschichte' usually stands for the kind of'history' that actually happens. We \nshall as a rule translate these respectively as 'historiology' and 'history', following similar \nconventions in handling the two adjectives. See especially Sections 6 and 76 below. \n"
+    },
+    {
+      "document": "Heidegger_BeingAndTime",
+      "page_num": 33,
+      "bucket": "D (5-10%)",
+      "error_rate": 9.6,
+      "unknown_words_sample": [
+        "ontologisch",
+        "wahrer",
+        "pos",
+        "dieser",
+        "seinsverhaltnis",
+        "tence",
+        "sachhaltigen",
+        "ganze",
+        "seinsverfassung",
+        "begriindungszusammenhanges"
+      ],
+      "full_text": "32 \nBeing and Time \n\u0101 4\u00b7 The Ontical Priority of the Question of Being \nINT. I \nScience in general may be defined as the totality established through an \ninterconnection of true propositions.1 This definition is not complete, nor \ndoes it reach the meaning of science. As ways in which man behaves, \nsciences have the manner of Being which this entity-man himself- pos\u00ad\nsesses. This entity we denote by the term \"Dasein\". Scientific research is \nnot the only manner of Being which this entity can have, nor is it the \none which lies closest. Moreover, Dasein itself has a special distinctiveness \n12 \nas compared with other entities, and it is worth our while to bring this to \nview in a provisional way. Here our discussion must anticipate later \nanalyses, in which our results will be authentically exhibited for the first time. \nDasein is an entity which does not just occur among other entities. \nRather it is ontically distinguished by the fact that, in its very Being, \nthat Being is an issue for it. But in that case, this is a constitutive state of \nDasein's Being, and this implies that Dasein, in its Being, has a relation\u00ad\nship towards that Being-a relationship which itself is one of Being. 2 And \nthis means further that there is some way in which Dasein understands \nitself in its Being, and that to some degree it does so explicitly. It is pecu\u00ad\nliar to this entity that with and through its Being, this Being is disclosed \nto it. Understanding of Being is itself a definite characteristic of Dasein's Being. \nDasein is ontically distinctive in that it is ontological. 3 \nHere \"Being-ontological\" is not yet tantamount to \"developing an \nontology\". So if we should reserve the term \"ontology\" for that theoreti\u00ad\ncal inquiry which is explicitly devoted to the meaning of entities, then what \nwe have had in mind in speaking of Dasein's \"Being-ontological\" is to be \ndesignated as something \"pre-ontological\". It does not signify simply \n\"being-ontical\", however, but rather \"being in such a way that one has \nan understanding of Being\". \nThat kind of Being towards which Dasein can comport itself in one \nway or another, and always does comport itself somehow, we call \"exis\u00ad\ntence\" [Existen\u04c2]. And because we cannot define Dasein's essence by citing \na \"what\" of the kind that pertains to a subject-matter [eines sachhaltigen \nWas], and because its essence lies rather in the fact that in each case it \n1 ' \u2022\n\u2022\n\u2022\n das Ganze eines Begriindungszusammenhanges wahrer Satze . . .  \n' See H. 357 \nbelow. \n2 'Zu dieser Seinsverfassung des Daseins gehort aber dann, dass es in seinem Sein zu \ndiesem Sein ein Seinsverhaltnis hat.' This passage is ambiguous and might also be read \nas: ' \u2022\n.\n.\n and this implies that Dasein, in its Being towards this Being, has a relationship of \nBeing.' \na '  \n\u2022\n.\n.\n dass es ontologisch ist'. As 'ontologisch' may be either an adjective or an \nadverb, we might also write : ' . . .  that it is ontologically'. A similar ambiguity occurs in \nthe two following sentences, where we read 'Ontologisch-sein' and 'ontisch-seiend' \nrespectively. \n"
+    },
+    {
+      "document": "Heidegger_BeingAndTime",
+      "page_num": 34,
+      "bucket": "D (5-10%)",
+      "error_rate": 6.6,
+      "unknown_words_sample": [
+        "derwelt",
+        "reiner",
+        "dvance",
+        "innerweltlich",
+        "dasein",
+        "der",
+        "existenzial",
+        "existentiell",
+        "int",
+        "existentiality"
+      ],
+      "full_text": "INT. I \nBeing and Time \n33 \nhas its Being to be, and has it as its own,1 we have chosen to designate \nthis entity as \"Dasein\", a term which is purely an expression of its Being \n[als reiner Seinsausdruck]. \nDasein always understands itself in terms of its existence-in terms of a \npossibility of itself: to be itself or not itself. Dasein has either chosen these \npossibilities itself, or got itself into them, or grown up in them already. \nOnly the particular Dasein decides its existence, whether it does so by \ntaking hold or by neglecting. The question of existence never gets straight-\nened out except through existing itself. The understanding of oneself which \nleads along this way we call \"existentiell\". 3 The question of existence is one \nof Dasein's on tical 'affairs'. This does not require that the ontological \nstructure of existence should be theoretically transparent. The question \nabout that structure aims at the analysis [ Auseinanderlegung) of what \nconstitutes existence. The context [Zusamenhang] of such structures we \ncall \"existentiality\". Its analytic has the character of an understanding \nwhich is not existentiell, but rather existential. The task of an existential \nanalytic of Dasein has been delineated in 11dvance, as regards both its \n13 \npossibility and its necessity, in Dasein's ontical constitution. \nSo far as existence is the determining character of Dasein, the onto\u00ad\nlogical analytic of this entity always requires that existentiality be con\u00ad\nsidered beforehand. By \"existentiality\" we understand the state of Being \nthat is constitutive for those entities that exist. But in the idea of such a \nconstitutive state of Being, the idea of Being is already included. And thus \neven the possibility of carrying through the analytic ofDasein depends on \nworking out beforehand the question about the meaning of Being in general. \nSciences are ways of Being in which Dasein comports itself towards \nentities which it need not be itself. But to Dasein, Being in a world is \nsomething that belongs essentially. Thus Dasein's understanding of Being \npertains with equal primordiality both to an understanding of something \nlike a 'world', and to the understanding of the Being of those entities \nwhich become accessible within the world.a So whenever an ontology \ntakes for its theme entities whose character of Being is other than that of \nDasein, it has its own foundation and motivation in Dasein's own ontical \nstructure, in which a pre-ontological understanding of Being is comprised \nas a definite characteristic. \n1 ' \u2022\n\u2022\n\u2022\n class es je sein Sein als seiniges zu sein hat . . .  ' \nll We shall translate 'existenziell' by 'existentiell', and 'existenzial' by 'existential' \nThere seems to be little reason for resorting to the more elaborate neologisms proposed by \nother writers. \n3 \u2022 \u2022\n\u2022\n\u2022\n innerhalb der Welt . . . ' Heidegger uses at least three expresions which \nmight be translated as 'in the world' : 'innerhalb derWelt', 'in der Welt', and the adjective \n(or adverb) 'innerweltlich'. We shall translate these respectively by 'within the world', \n'in the world', and 'within-the-world'. \nB \n"
+    },
+    {
+      "document": "Heidegger_BeingAndTime",
+      "page_num": 35,
+      "bucket": "D (5-10%)",
+      "error_rate": 6.7,
+      "unknown_words_sample": [
+        "natum",
+        "cum",
+        "lcmv",
+        "transcendens",
+        "ontico",
+        "dasein",
+        "transcendentia",
+        "subjectivizing",
+        "existentiell",
+        "ontologies"
+      ],
+      "full_text": "34 \nBeing and Time \nINT. I \nTherefore fundamental ontology, from which alone all other ontologies \ncan take their rise, must be sought in the existential analytic of Dasein. \nDasein accordingly takes priority over all other entities in several ways. \nThe first priority is an ontical one : Dasein is an entity whose Being has the \ndeterminate character of existence. The second priority is an ontological \none : Dasein is in itself'ontological', because existence is thus determinative \nfor it. But with equal primordiality Dasein also possesses-as constitutive \nfor its understanding of existence-an understanding of the Being of all \nentities of a character other than its own. Dasein has therefore a third \npriority as providing the ontico-ontological condition for the possibility \nof any ontologies. Thus Dasein has turned out to be, more than any other \nentity, the one which must first be interrogated ontologically. \nBut the roots of the existential analytic, on its part, are ultimately \nexistentiell, that is, ontical. Only if the inquiry of philosophical research is \nitself seized upon in an existentiell manner as a possibility of the Being \nof each existing Dasein, does it become at all possible to disclose the \nexistentiality of existence and to undertake an adequately founded onto-\n14 \nlogical problematic. But with this, the ontical priority of the question of \nbeing has also become plain. \nDasein's ontico-ontological priority was seen quite early, though \nDasein itself was not grasped in its genuine ontological structure, and did \nnot even become a problem in which this structure was sought. Aristotle \nsa<ys : \u0131 !fvx- -ra ov-ra TTW> lcmv.vl \"Man's soul is, in a certain way, \nentities.\" The 'soul' which makes up the Being of man has ata87JCM and \nvo7JC1t> among its ways of Being, and in these it discovers all entities, both \nin the fact t h a t  they are, and in their Being as they are-that is, always \nin their Being. Aristotle's principle, which points back to the ontological \nthesis of Parmenides, is one which Thomas Aquinas has taken up in a \ncharacteristic discussion. Thomas is engaged in the task of deriving the \n'transcendentia'-those characters of Being which lie beyond every possible \nway in which an entity may be classified as coming under some generic \nkind of subject-matter (every modus specialis entis), and which belong \nnecessarily to anything, whatever it may be. Thomas has to demonstrate \nthat the verum is such a transcendens. He does this by invoking an entity \nwhich, in accordance with its very manner of Being, is properly suited \nto 'come together with' entities of any sort whatever. This distinctive \nentity, the ens quod natum est convenire cum omni ente, is the soul (anima).v11 \nHere the priority of 'Dasein' over all other entities emerges, although it \nhas not been ontologically clarified. This priority has obviously nothing \nin common with a vicious subjectivizing of the totality of entities. \nBy indicating Dasein's ontico-ontological priority in this provisional \n"
+    },
+    {
+      "document": "Heidegger_BeingAndTime",
+      "page_num": 36,
+      "bucket": "C (3-5%)",
+      "error_rate": 4.3,
+      "unknown_words_sample": [
+        "ontico",
+        "dasein",
+        "trans",
+        "analysed",
+        "pre",
+        "int"
+      ],
+      "full_text": "INT. I \nBeing and Time \n35 \nmanner, we have grounded our demonstration that the question of Being \nis ontico-ontologically distinctive. But when we analysed the structure of \nthis question as such (Section 2), we came up against a distinctive way \nin which this entity functions in the very formulation of that question. \nDasein then revealed itself as that entity which must first be worked out \nin an ontologically adequate manner, if the inquiry is to become a trans\u00ad\nparent one. But now it has been shown that the ontological analytic of \nDasein in general is what makes up fundamental ontology, so that Dasein \nfunctions as that entity which in principle is to be interrogated beforehand \nas to its Being. \nIf to Interpret the meaning of Being becomes our task, Dasein is not \nonly the primary entity to be interrogated; it is also that entity which \n15 \nalready comports itself, in its Being, towards what we are asking about \nwhen we ask this question. But in that case the question of Being is nothing \nother than the radicalization of an essen\u0132al tendency-of-Being which \nbelongs to Dasein itself-the pre-ontological understanding of Being. \n"
+    },
+    {
+      "document": "Heidegger_BeingAndTime",
+      "page_num": 37,
+      "bucket": "C (3-5%)",
+      "error_rate": 5.0,
+      "unknown_words_sample": [
+        "anafytic",
+        "explicidy",
+        "ontico",
+        "dasein",
+        "cally",
+        "ownmost",
+        "inve",
+        "gation",
+        "bestimmung",
+        "ontologi"
+      ],
+      "full_text": "I I  \nTHE TWOF OLD TASK I N  WORKING OUT THE \nQUEST I O N  O F  B E I N G .  M E T H O D  AND D E S I G N  OF \nO U R  INVE S T I GATION \n\u0101 5. The Ontological Anafytic of Dasein as Laying Bare the Horizon for an \nInterpretation of the Meaning of Being in General \nIN designating the tasks of 'formulating' the question of Being, we have \nshown not only that we must establish which entity is to serve as our \nprimary object of interrogation, but also that the right way of access to this \nentity is one which we must explicidy make our own and hold secure. We \nhave already discussed which entity takes over the principal role within \nthe question of Being. But how are we, as it were, to set our sights towards \nthis entity, Dasein, both as something accessible to us and as something \nto be understood and interpreted ? \nIn demonstrating that Dasein in ontico-ontologically prior, we may \nhave misled the reader into supposing that this entity must also be what \nis given as ontico-ontologically primary not only in the sense that it can \nitself be-grasped 'immediately', but also in that the kind of Being which \nit possesses is presented just as 'immediately'. Ontically, of course, Dasein \nis not only close to us-even that which is closest : we are it, each of us, \nwe ourselves. In spite of this, or rather for just this reason, it is ontologically \nthat which is farthest. To be sure, its ownmost Being is such that it has \nan understanding of that Being, and already maintains itself in each case \nas if its Being has been interpreted in some manner. But we are certainly \nnot saying that when Dasein's own Being is thus interpreted pre-ontologi\u00ad\ncally in the way which lies closest, this interpretation can be taken over \nas an appropriate clue, as if this way of understanding Being is what must \nemerge when one's ownmost state of Being is considered1 as an onto\u00b7 \nlogical theme. The kind of Being which belongs to Dasein is rather such \nthat, in understanding its own Being, it has a tendency to do so in terms \nof that entity towards which it comports itself proximally and in a way \nwhich is essentially constant-in terms of the 'world'. In Dasein itself, \nand therefore in its own understanding of Being, the way the world is \n1 'Besinnung'. The earliest editions have 'Bestimmung' instead. \n"
+    },
+    {
+      "document": "Heidegger_BeingAndTime",
+      "page_num": 38,
+      "bucket": "D (5-10%)",
+      "error_rate": 6.3,
+      "unknown_words_sample": [
+        "behaviour",
+        "tation",
+        "construc",
+        "writingof",
+        "situdes",
+        "ontico",
+        "dasein",
+        "interpre",
+        "ordiality",
+        "existentiell"
+      ],
+      "full_text": "INT. II \nBeing and Time \n37 \nunderstood is, as we shall show, reflected back ontologically upon the way \n16 \nin which Dasein itself gets interpreted. \nThus because Dasein is ontico-ontologically prior, its own specific state \nof Being (if we understand this in the sense of Dasein's 'categorial \nstructure') remains concealed from it. Dasein is ontically 'closest' to itself \nand ontologically farthest; but pre-ontologically it is surely not a stranger. \nHere we have merely indicated provisionally that an Interpretation of \nthis entity is confronted with peculiar difficulties grounded in the kind of \nBeing which belongs to the object taken as our theme and to the very \nbehaviour of so taking it. These difficulties are not grounded in any short\u00ad\ncomings of the cognitive powers with which we are endowed, or in the \nlack of a suitable way of conceiving-a lack which seemingly would not \nbe hard to remedy. \nNot only, however, does an understanding of Being belong to Dasein; \nbut this understanding develops or decays along with whatever kind of \nBeing Dasein may possess at the time ; accordingly there are many ways in \nwhich it has been interpreted, and these are all at Dasein's (lisposal. \nDasein's ways of behaviour, its capacities, powers, possibilities, and vicis\u00ad\nsitudes, have been studied with varying extent in philosophical psychology, \nin anthropology, ethics, and 'political science', in poetry, biography, and \nthe writingof history,each in a different fashion. But the question remains \nwhether these interpretations of Dasein have been carried through with \na primordial existentiality comparable to whatever existentiell prim\u00ad\nordiality they may have possessed. Neither of these excludes the \nother but they do not necessarily go together. Existentiell interpre\u00ad\ntation can demand an existential analytic, if indeed we conceive of \nphilosophical cognition as something possible and necessary. Only when \nthe basic structures of Dasein have been adequately worked out with \nexplicit orientation towards the problem of Being itself, will what we \nhave hitherto gained in interpreting Dasein get its existential justification. \nThus an analytic of Dasein must remain our first requirement in the \nquestion of Being. But in that case the problem of obtaining and securing \nthe kind of access which will lead to Dasein, becomes even more a burning \none. To put it negatively, we have no right to resort to dogmatic construc\u00ad\ntions and to apply just any idea of Being and actuality to this entity, no \nmatter how 'self-evident' that idea may be ; nor may any of the 'cate\u00ad\ngories' which such an idea prescribes be forced upon Dasein without \nproper ontological consideration. We must rather choose such a way of \naccess and such a kind of interpretation that this entity can show itselfin \nitself and from itself [an ihm selbst von ihm selbst her] . And this \nmeans that it is to be shown as it is proximally and for the most part-\n"
+    },
+    {
+      "document": "Heidegger_BeingAndTime",
+      "page_num": 39,
+      "bucket": "D (5-10%)",
+      "error_rate": 6.2,
+      "unknown_words_sample": [
+        "zunachst",
+        "alltaglichkeit",
+        "zeigen",
+        "niodes",
+        "zeitlich",
+        "seiende",
+        "umeist",
+        "durchschnittlichen",
+        "dasein",
+        "temporality"
+      ],
+      "full_text": "Being and Time \nINT. II \nin its average everydayness.1 In this everydayness there are certain structures \n1 7 \nwhich we shall exhibit-not just any accidental structures, but essential \nones which, in every kind of Being that factical Dasein may possess, \npersist as determinative for the character of its Being. Thus by having \nregard\u2022for the basic state of Dasein's everydayness, we shall bring out the \nBeing of this entity in a preparatory fashion. \nWhen taken in this way, the analytic ofDasein remains wholly oriented \ntowards the guiding task of working out the question of Being. Its limits \nare thus determined. It cannot attempt to provide a complete ontology of \nDasein, which assuredly must be constructed if anything like a 'philo\u00ad\nsophical' anthropology is to have a philosophically adequate basis. 2 \nIf our purpose is to make such an anthropology possible, or to lay its \nontological foundations, our Interpretation will provide only some of the \n'pieces', even though they are by no means inessential ones. Our \nanalysis of Dasein, however, is not only incomplete ; it is also, in the first \ninstance, provisional. It merely brings out the Being of this entity, without \nInterpreting its meaning. It is rather a preparatory procedure by which \nthe horizon for the most primordial way of interpreting Being may be \nlaid bare. Once we have arrived at that horizon, this preparatory analytic \nof Dasein will have to be repeated on a higher and authentically onto\u00ad\nlogical basis. \nWe shall point to temporality3 as the meaning of the Being of that entity \nwhich we call \"Dasein\". If this is to be demonstrated, those structures of \nDasein which we shall provisionally exhibit must be Interpreted over \nagain as niodes of temporality. In thus interpreting Dasein as temporality, \nhowever, we shall not give the answer to our leading question as to the \nmeaning of Being in general. But the ground will have been prepared for \nobtaining such an answer. \n1 'Und zwar soli sie das Seiende in dem zeigen, wie es z;uniichst und z;umeist ist, in seiner \ndurchschnittlichen Alltiiglichkeit.' The phrase 'zunachst und zumeist' is one that occurs \nmany times, though Heidegger does not explain it until Section 71 (H. 370 below), where \n'Alltaglichkeit' too gets explained. On 'zunachst' see our note 1, p. 25, H. 6. \n2 The ambiguity of the pronominal references in this sentence and the one before it, \nreflects a similar ambiguity in the German. (The English-speaking reader should be \nreminded that the kind of philosophical 'anthropology' which Heidegger has in mind \nis a study of man in the widest sense, and is not to be confused with the empirical sciences \nof 'physical' and 'cultural' anthropology.) \n3 ',Zeitlichkeit'. 'While it is tempting to translate the adjective 'zeitlich' and the noun \n'Zeitlichkeit' by their most obvious English cognates, 'timely' and 'timeliness', this would \nbe entirely misleading; for 'temporal' and 'temporality' come much closer to what \nHeidegger has in mind, not only when he is discussing these words in their popular \nsenses (as he does on the following page) but even when he is using them in his own special \nsense, as in Section 65 below. (See especially H. 326 below, where 'Zeitlichkeit' is defined.) \nOn the other hand, he occasionally uses the noun 'Temporalitat' and the adjective \n'temporal' in a sense which he will explain later (H. 19). We shall translate these by \n'Temporality' and 'Temporal', with initial capitals. \n"
+    },
+    {
+      "document": "Heidegger_BeingAndTime",
+      "page_num": 40,
+      "bucket": "C (3-5%)",
+      "error_rate": 5.0,
+      "unknown_words_sample": [
+        "wie",
+        "tinguished",
+        "verstehen",
+        "dasein",
+        "eans",
+        "etwas",
+        "ist",
+        "temporality",
+        "distinc",
+        "weise"
+      ],
+      "full_text": "INT. II \nBeing and Time \n39 \nWe have already intimated that Dasein has a pre-ontological Being as \nits ontically constitutive state. Dasein is in such a way as to b e  some-\nthing which understands something like Being. 1 Keeping this inter\u00ad\nconnection firmly in mind, we shall show that whenever Dasein tacitly \nunderstands and interprets something like Being, \nit does so \nwith \ntime as its standpoint. Time must be brought to light-and genuinely \nconceived-as the horizon for all understanding of Being and for any \nway of interpreting it. In order for us to discern this, time needs to be \nexplicated primordially as the horizon for the understanding of Being, and in terms \nof temporality as the Being of Dasein, which understands Being. This task as a \nwhole requires that the conception of time thus obtained shall be dis\u00ad\ntinguished from the way in which it is ordinarily understood. This \nordinary way of understanding it has become explicit in an interpretation \n18 \nprecipitated in the traditional concept of time, which has persisted from \nAristotle to Bergson and even later. Here we must make clear that this \nconception of time and, in general, the ordinary way of understanding it, \nhave sprung from temporality, and we must show how this has come \nabout. We shall thereby restore (o the ordinary conception the autonomy \nwhich is its rightful due, as against Bergson's thesis that the time one has \nin mind in this conception is space. \n'Time' has long functioned as an ontological--or rather an ontical\u00ad\ncriterion for naively discriminating various realms of entities. A distinc\u00ad\ntion has been made between 'temporal' entities (natural processes and \nhistorical happenings) and 'non-temporal' entities (spatial and numerical \nrelationships) . We are accustomed to contrasting the 'timeless' meaning \nof propositions with the 'temporal' course of propositional assertions. It is \nalso held that there is a 'cleavage' between 'temporal' entities and the \n'supra-temporal' eternal, and efforts are made to bridge this over. Here \n'temporal' always \u0133eans simply being [seiend] 'in time'-a designation \nwhich, admittedly, is still pretty obscure. The Fact remains that time, in \nthe sense of 'being [ sein] in time', functions as a criterion for distinguishing \nrealms of Being. Hitherto no one has asked or troubled to investigate how \ntime has come to have this distinctive ontological function, or with what \nright anything like time functions as such a criterion ; nor has anyone \nasked whether the authentic ontological relevance which is possible for \nit, gets expressed when \"time\" is used in so naively ontological a manner. \n'Time' has acquired this 'self-evident' ontological function \u00b7 'of its own \naccord', so to speak; indeed it has done so within the horizon of the way \nit is ordinarily understood. And it has maintained itself in this function \nto this day. \n1 'Dasein ist in der Weise, seiend so etwas wie Sein zu verstehen.' \n"
+    },
+    {
+      "document": "Heidegger_BeingAndTime",
+      "page_num": 44,
+      "bucket": "D (5-10%)",
+      "error_rate": 5.6,
+      "unknown_words_sample": [
+        "iibergibt",
+        "verfallt",
+        "syste",
+        "iiberlieferten",
+        "scholastics",
+        "dasein",
+        "ownmost",
+        "physicae",
+        "matics",
+        "int"
+      ],
+      "full_text": "INT. II \nBeing and Time \n43 \ninquiring or in choosing. This holds true-and by no means least-for that \nunderstanding which is rooted in Dasein's ownmost Being, and for the \npossibility of developing it-namely, for ontological understanding. \nWhen tradition thus becomes master, it does so in such a way that what \nit 'transmits' is made so inaccessible, proximally and for the most part, \nthat it rather becomes concealed. Tradition takes what has come down to \nus and delivers it over to self-evidence; it blocks our access to those \nprimordial 'sources' from which the categories and concepts handed down \nto us have been in part quite genuinely drawn.1 Indeed it makes us forget \nthat they have had such an origin, and makes us suppose that the neces\u00ad\nsity of going back to these sources is something which we need not even \nunderstand. Dasein has had its historicality so thoroughly uprooted by \ntradition that it confines its interest to the multiformity of possible types, \ndirections, and standpoints of philosophical activity in the most exotic \nand alien of cultures; and by this very interest it seeks to veil the fact that \nit has no ground of its own to stand on. Consequently, despite all its \nhistoriological interests and all its zeal for an Interpretation which is \nphilologically 'objective' [\"sachliche\"], Dasein no longer understands the \nmost elementary conditions which would alone enable it to go back to \nthe past in a positive manner and make it productively its own. \nWe have shown at the outset (Section 1) not only that the question of \nthe meaning of Being is one that has not been attended to and one that \nhas been inadequately formulated, but that it has become quite forgotten \nin spite of all our interest in 'metaphysics'. Greek ontology and its history \n-which, in their numerous filiations and distortions, determine the con\u00ad\nceptual character of philosophy even today-prove that when Dasein \n22 \nunderstands either itself or Being in general, it does so in terms of the \n'world', and that the ontology which has thus arisen has deteriorated \n[ verfallt] to a tradition in which it gets reduced to something self-evident \n-merely material for reworking, as it was for Hegel. In the Middle Ages \nthis uprooted Greek ontology became a fixed body of doctrine. Its syste\u00ad\nmatics, however, is by no means a mere joining together of traditional \npieces into a single edifice. Though its basic conceptions of Being have \nbeen taken over dogmatically from the Greeks, a great deal of unpre\u00ad\ntentious work has been carried on further within these limits. With the \npeculiar character which the Scholastics gave it, Greek ontology has, in \nits essentials, travelled the path that leads through the Disputationes ,meta\u00ad\nphysicae of Suarez to the 'metaphysics' and transcendental philosophy \u00b7of \nmodern times, determining even the foundations and the aims of Hegel's \n1 In this passage!Heidegger juxtaposes a number of words beginning with the prefix \n'tiber-' ; 'iibergibt' ('transmits') ; 'iiberantwortet' ('delivers over') ;  'das Oberkommene' \n('what has come down to us') ; 'iiberlieferten' ('handed down to us'). \n"
+    }
+  ]
+}

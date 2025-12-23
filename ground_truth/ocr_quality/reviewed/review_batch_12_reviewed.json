@@ -1,0 +1,141 @@
+{
+  "document": "Heidegger_Pathmarks",
+  "batch_number": 12,
+  "review_date": "2025-12-21",
+  "reviewer": "Claude",
+  "pages_reviewed": [
+    {
+      "page_number": 240,
+      "classification": "CONFIRMED_BAD",
+      "rationale": "Genuine OCR corruption affecting readability. While 'φύσις' is Greek (expected), there are severe actual errors: 'rp·.lmc;' (corrupted Greek), 'μορφή' badly rendered as 'f!optp\"f.', multiple Unicode corruption sequences ('ot€pJjOL&', 'ot€plJOL&'), footnote markers merged with words. The garbling of Greek philosophical terms makes this genuinely bad OCR, not false positives from German.",
+      "confidence": 0.9
+    },
+    {
+      "page_number": 245,
+      "classification": "CONFIRMED_BAD",
+      "rationale": "Severe Greek text corruption. While some German may be present, the primary issue is corrupted Greek: 'xp·);.\"Ce:aOa\f', 'rp·)a\f<;', 'xp·)r.\"Ce:a9a\f', 'a-At.9e:\fa' (should be ἀλήθεια/aletheia). The philosophical argument is compromised by OCR failures on Greek terms. Contains 'o·)a{a' corruption and other technical Greek that makes content unreliable.",
+      "confidence": 0.85
+    },
+    {
+      "page_number": 251,
+      "classification": "CONFIRMED_BAD",
+      "rationale": "Extremely severe corruption with 19+ corrupted Unicode sequences making text unrecoverable. Contains garbage like 'th\u065b', '_!lJldJ\u0095t,S', '\u065cnse_\u065d9_th.\u065e', 'S_!>\u0663di\u0664g', 'th\u0665Q.\u0666cl', 'ne\u0667-be', 'somethl\u066cd', 'i\u066dd;ed-hea', 'in\u066e'. This is catastrophic OCR failure affecting the core philosophical argument, not a German language issue.",
+      "confidence": 0.95
+    },
+    {
+      "page_number": 284,
+      "classification": "CONFIRMED_BAD",
+      "rationale": "Extensive Greek corruption in Heraclitus fragment discussion. Terms like 'aoc', 'xeae', 'vov', 'jxe', 'appogvtllc', 'xlll' are unrecognizable Greek OCR failures. The fragment 'Yjθοc; av6pw1t<tl OLL(pwv' (Fragment 119) is partially corrupted. While this is a philosophical text about Greek terms, the OCR quality prevents proper reconstruction of the argument.",
+      "confidence": 0.8
+    },
+    {
+      "page_number": 292,
+      "classification": "FALSE_POSITIVE",
+      "rationale": "The French quotation 'Ainsi toute la Philosophie est comme un arbre, dont les racines sont la Metaphysique...' is CORRECT French, not corruption. 'Descartes', 'Picot', 'Principia Philosophiae' are proper Latin/names. The only real error is 'essenceJ' (should be 'essence'). Error rate of 11.5% is overstated - most flagged items are legitimate French/Latin. The philosophical content is actually recoverable.",
+      "confidence": 0.75
+    },
+    {
+      "page_number": 327,
+      "classification": "CONFIRMED_BAD",
+      "rationale": "Multiple character corruption issues: 'zzff' (page reference garbled), 'tha\u0255' (Unicode corruption), 'scendens' (should be 'transcendens'), 'gibtj' (should be 'gibt'). While some German may be present ('Ubermieg'), the primary issue is systematic character substitution and Unicode errors that compromise meaning.",
+      "confidence": 0.75
+    },
+    {
+      "page_number": 346,
+      "classification": "CONFIRMED_BAD",
+      "rationale": "Severe errors in key philosophical terms: 'lcgcl' (should be 'Hegel'), 'detennined' (determined), 'itsejr' (itself), 'Evtpye\u00dfDll' (corrupted Greek 'ενέργεια'). The Greek term 'ἐνέργεια' (energeia) is critically important in Aristotle discussion and is badly corrupted. Error rate 6.1% with severe corruption of proper names and technical terms.",
+      "confidence": 0.85
+    },
+    {
+      "page_number": 348,
+      "classification": "CONFIRMED_BAD",
+      "rationale": "Critical Greek philosophical terminology is destroyed: 'oyoc' (λόγος), 'evtpyelct' (ἐνέργεια), 'oela' (ουσία), 'tttr', 'dval'. The proper Greek transliterations ('Ἐνέργεια', 'οὐσία', 'λόγος') are completely corrupted. Error rate 5.7% with severe character corruption making Greek philosophy content unrecoverable.",
+      "confidence": 0.85
+    },
+    {
+      "page_number": 351,
+      "classification": "CONFIRMED_BAD",
+      "rationale": "Catastrophic corruption in footnote: 'Separarurn from Tbt Prsm oftbt Grtlu in Modrn Thought' is completely garbled (should be 'Separated from The Prism of the Greeks in Modern Thought'). Terms like 'grtlu', 'separarurn', 'oftbt', 'prsm', 'tbt', 'modrn', 'lci' show systematic OCR failure. Error rate 9.3% is highest in batch with severe semantic damage.",
+      "confidence": 0.9
+    },
+    {
+      "page_number": 380,
+      "classification": "CONFIRMED_BAD",
+      "rationale": "Edition notes page with extensive corruption of proper names and references: 'phmommology' (Phenomenology), 'beingtmdttme' (Being and Time), 'Wegmarkm' (Wegmarken), 'maraldo' (Maraldo), 'tmsition' (transition), 'ges' fragments, 'esay' (essay). This reference material page is critical for citations and is unreliable due to OCR failures.",
+      "confidence": 0.8
+    },
+    {
+      "page_number": 381,
+      "classification": "CONFIRMED_BAD",
+      "rationale": "Severe OCR failures in scholarly references: 'vhitehead' (Whitehead), 'Grundkgung' (Grundlegung), 'gesamtausgabe' fragmented, 'wep' (Weg), 'buchenau' (Buchenau), 'Philosophische Bibliothek' corrupted. German term 'Grundlegung' is a real word but corrupted to 'Grundkgung'. Bibliography material is unreliable.",
+      "confidence": 0.8
+    },
+    {
+      "page_number": 382,
+      "classification": "CONFIRMED_BAD",
+      "rationale": "Critical corruption in Latin philosophical references: 'tk' (should be 'de'), 'limitiuus' (limitative), 'tmtea' (editia), 'ftcirotis' (sufficientis), 'Zureicbrodro' (zureichenden - this IS German but completely garbled), 'phii' fragments. German 'zureichenden' (sufficient) is destroyed to 'Zureicbrodro'. Reference material >25% corrupted.",
+      "confidence": 0.85
+    },
+    {
+      "page_number": 383,
+      "classification": "FALSE_POSITIVE",
+      "rationale": "Most flagged items are legitimate Latin and German terms: 'affectum' (correct Latin), 'clxxviii' (correct Roman numerals), 'suma' could be 'Summa' (acceptable), 'durch'/'gemacht' (correct German). Only real errors are 'vhen' (When), minor fragments. The philosophical content about ontology and modal logic is actually recoverable. Error rate overstated.",
+      "confidence": 0.7
+    },
+    {
+      "page_number": 384,
+      "classification": "CONFIRMED_BAD",
+      "rationale": "Systematic corruption in German philosophical terms: 'wundlackm' (Wundlacken), 'gmgesetut' (entgegengesetzt), 'neuaufgefondenen' (neuaufgefundenen), 'prindpiis' (principiis), 'pur' (pure). These are real German/Latin words but badly corrupted. The German term 'entgegengesetzt' (opposed) is destroyed to 'gmgesetut'. References unreliable.",
+      "confidence": 0.8
+    },
+    {
+      "page_number": 387,
+      "classification": "FALSE_POSITIVE",
+      "rationale": "Most flagged items are legitimate German with diacritics or acceptable variants: 'wegmarkm' might be acceptable variant, 'existenz' is acceptable German, 'ojfenstiindigkeit' appears to be OCR of 'Offenständigkeit' (recognizable). 'begrijndung' could be recognizable as 'Begründung'. The scholarly content is substantially recoverable. Error rate overstated for German diacritics.",
+      "confidence": 0.65
+    },
+    {
+      "page_number": 388,
+      "classification": "CONFIRMED_BAD",
+      "rationale": "Severe corruption in Greek/Latin and critical philosophical terms: 'twv' (τῶν), 'xtv' fragments, 'esroce' (essence), 'cfosed' (closed), 'mslati' (translated), 'entsch' fragments. The Greek article corruption and philosophical terminology damage compromises the Plato discussion. Translation notes are unreliable.",
+      "confidence": 0.8
+    },
+    {
+      "page_number": 389,
+      "classification": "FALSE_POSITIVE",
+      "rationale": "Most items are legitimate German terms: 'metapbysisch' could be recognizable as 'metaphysisch', 'gesprochen' is correct German, 'andmken' might be 'Andenken' (recognizable). 'srimung'/'Stimmung' is a minor error but word is recognizable. 'ignis' is Latin. The philosophical content about Hegel and Stimmung (mood/attunement) is recoverable. Error rate overstated.",
+      "confidence": 0.7
+    },
+    {
+      "page_number": 391,
+      "classification": "FALSE_POSITIVE",
+      "rationale": "Most flagged terms are recognizable German: 'iiher' (\u00fcber - recognizable despite diacritic), 'verwmdung' is recognizable as 'Verwindung' (critical Heidegger concept of 'recovery'/'overcoming'), 'voomdet' might be 'vollendet', 'werk' (correct). The philosophical discussion of Verwindung der Metaphysik is substantially recoverable. Minor OCR issues don't prevent understanding.",
+      "confidence": 0.7
+    },
+    {
+      "page_number": 392,
+      "classification": "CONFIRMED_BAD",
+      "rationale": "Multiple severe errors: 'dmlrm' (dritten), 'sinnt' (unclear), 'bkibt' (bleibt), 'gtsamt' (Gesamtausgabe), 'ritselhafte' (Rätselhafte). While 'Rätselhafte' (enigmatic) is German, the corruption removes diacritics. The 21.1% error rate with systematic diacritic loss and consonant errors makes bibliography unreliable.",
+      "confidence": 0.8
+    },
+    {
+      "page_number": 395,
+      "classification": "CONFIRMED_BAD",
+      "rationale": "Severe corruption in proper names and publication information: 'phmommology' (Phenomenology), 'bulonann' (Bultmann), 'fonchung' (Forschung), 'tiibingen' (Tübingen), 'coune' (course), 'correcmess' (correctness). Scholarly references with author names corrupted. Bibliography material unreliable.",
+      "confidence": 0.85
+    },
+    {
+      "page_number": 396,
+      "classification": "CONFIRMED_BAD",
+      "rationale": "Severe multilingual corruption: 'pmsirro' (Il Pensiero - Italian journal), 'tiibingen' (Tübingen), 'ioteca' (Biblioteca), 'smcr' fragments, 'akademie' context unclear. Italian 'Il Pensiero' and 'Biblioteca' are badly corrupted. Publication dates and multilingual references (Italian/German) degraded. 18% error rate with heavy proper name corruption.",
+      "confidence": 0.85
+    }
+  ],
+  "summary": {
+    "total_pages_reviewed": 21,
+    "confirmed_bad": 17,
+    "false_positives": 4,
+    "false_positive_pages": [292, 383, 387, 389, 391],
+    "notes": "German terms like 'metaphysisch', 'Verwindung', 'Stimmung', 'Offenständigkeit', 'Begründung', 'Andenken', and French/Latin quotations from Descartes are NOT errors. However, most pages show genuine OCR corruption: Greek philosophical terms (φύσις, ἀλήθεια, ἐνέργεια, οὐσία, λόγος) are severely corrupted, proper names are garbled, and Unicode sequences are damaged. Pages 292, 383, 387, 389, 391 are reclassified as FALSE_POSITIVE because the foreign language content (French, Latin, German) is substantially recoverable despite minor OCR artifacts."
+  }
+}

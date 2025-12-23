@@ -1,0 +1,465 @@
+{
+  "document": "Derrida_TheBeastAndTheSovereignVol1",
+  "batch_number": 1,
+  "total_batches": 10,
+  "pages": [
+    {
+      "document": "Derrida_TheBeastAndTheSovereignVol1",
+      "page_num": 4,
+      "bucket": "E (10%+)",
+      "error_rate": 13.6,
+      "unknown_words_sample": [
+        "lisse",
+        "michaud",
+        "ginette"
+      ],
+      "full_text": "The Beast & the Sovereign\nv o l u m e  1\ny\nJacques Derrida\nEdited by Michel Lisse, Marie-Louise Mallet,\nand Ginette Michaud\nTranslated by Geoffrey Bennington\nThe University of Chicago Press  \u2021  c h i c a g o  a n d  l o n d o n\n"
+    },
+    {
+      "document": "Derrida_TheBeastAndTheSovereignVol1",
+      "page_num": 5,
+      "bucket": "D (5-10%)",
+      "error_rate": 9.0,
+      "unknown_words_sample": [
+        "minaire",
+        "alk",
+        "directeur",
+        "sociales",
+        "des",
+        "ditions",
+        "ansi",
+        "iii",
+        "galil",
+        "souverain"
+      ],
+      "full_text": "jacques derrida (1930\u20132004) was Directeur d\u2019\u00e9tudes at the \u00c9cole des \nhautes \u00e9tudes en sciences sociales, Paris, and professor of humanities at the University \nof California, Irvine. He is the author of many books published by the Press, including \nWriting and Difference; Dissemination; and The Work of Mourning.\nThe University of Chicago Press, Chicago 60637\nThe University of Chicago Press, Ltd., London\n\u00a9 2009 by The University of Chicago\nAll rights reserved. Published 2009\nPrinted in the United States of America\n17 16 15 14 13 12 11 10 09  1 2 3 4 5\nOriginally published as S\u00e9minaire: La b\u00eate et le souverain, \nVolume 1 (2001\u20132002). \u00a9 2008 \u00c9ditions Galil\u00e9e.\nisbn- 13: 978- 0- 226- 14428- 3 (cloth)\nisbn- 10: 0- 226- 14428- 3 (cloth)\nLibrary of Congress Cataloging-in-Publication Data\nDerrida, Jacques.\n[B\u00eate et le souverain. English]\nThe beast and the sovereign / Jacques Derrida; translated by Geoffrey Bennington.\np. cm. \u2014 (Seminars of Jacques Derrida; v. 1)\nTranslation of: S\u00e9minaire: la b\u00eate et le souverain.\nisbn- 13: 978- 0- 226- 14428- 3 (cloth: alk. paper)\nisbn- 10: 0- 226- 14428- 3 (cloth: alk. paper)\n1. Sovereignty. 2. Power (Social sciences)\u2014Philosophy. 3. Responsibility. \n4. Capital punishment. 5. Perjury. I. Bennington, Geoffrey. II. Title. \nIII. Series: Derrida, Jacques. Selections. English. 2009; v. 1.\nb2430.d483b4813 2009\n194\u2014dc22   2009011389\no The paper used in this publication meets the minimum \nrequirements of the American National Standard for \nInformation Sciences \u2014 Permanence of Paper for Printed \nLibrary Materials, ansi z39.48- 1992.\n"
+    },
+    {
+      "document": "Derrida_TheBeastAndTheSovereignVol1",
+      "page_num": 6,
+      "bucket": "D (5-10%)",
+      "error_rate": 5.8,
+      "unknown_words_sample": [
+        "vii",
+        "xiii",
+        "glish"
+      ],
+      "full_text": "Foreword to the En glish Edition : vii\nGeneral Introduction to the French Edition : ix\nEditorial Note : xiii\n \nfirst session December 12, 2001 : 1\n \nsecond session December 19, 2001 : 32\n \nthird session January 16, 2002 : 63\n \nfourth session January 23, 2002 : 97\n \nfifth session January 30, 2002 : 136\n \nsixth session February 6, 2002 : 164\n \nseventh session February 13, 2002 : 187\n \neighth session February 20, 2002 : 206\n \nninth session February 27, 2002 : 236\n \ntenth session March 6, 2002 : 250\n \neleventh session March 13, 2002 : 276\n \ntwelfth session March 20, 2002 : 305\n \nthirteenth session March 27, 2002 : 335\nc o n t e n t s\n"
+    },
+    {
+      "document": "Derrida_TheBeastAndTheSovereignVol1",
+      "page_num": 8,
+      "bucket": "C (3-5%)",
+      "error_rate": 3.6,
+      "unknown_words_sample": [
+        "cally",
+        "ditions",
+        "libitum",
+        "glish",
+        "ventions",
+        "modi",
+        "speci",
+        "rst",
+        "galil",
+        "cept"
+      ],
+      "full_text": "When the decision was made to edit and publish Jacques Derrida\u2019s teaching \nlectures, there was little question that they would and should be translated \ninto En glish. From early in his career, in 1968, and annually thereafter un-\ntil 2003, Derrida regularly taught at U.S. universities. It was his custom to \nrepeat for his American audience the lectures delivered to his students in \nFrance the same year. Teaching \ufb01 rst at Johns Hopkins and then at Yale, \nhe read the lectures in French as they had been written. But from 1987, \nwhen he began teaching at the University of California, Irvine, Derrida \nundertook to lecture in En glish, improvising on-the-spot translations of his \nFrench text. Recognizing that the greater part of his audience outside of \nFrance depended on translation was easier, however, than providing an ad \nlibitum En glish version of his own elegant, complex, and idiomatic writ-\ning. In the circumstance, to his evident joy in teaching was often added a \nmeasure of suffering and regret for all that remained behind in the French \noriginal. It is to the memory of Derrida the teacher as well as to all his stu-\ndents past and still to come that we offer these En glish translations of \u201cThe \nSeminars of Jacques Derrida.\u201d\nThe volumes in this series are translations of the original French editions \npublished by \u00c9ditions Galil\u00e9e, Paris, and will in each case follow shortly the \npublication of the corresponding French volume. The scope of the project, \nand the basic editorial principles followed in establishing the text, are out-\nlined in the \u201cGeneral Introduction to the French Edition,\u201d translated here. \nEditorial issues and decisions relating more speci\ufb01 cally to this volume are \naddressed in an \u201cEditorial Note.\u201d Editors\u2019 footnotes and other editorial inter-\nventions are, with a few exceptions, translated without modi\ufb01 cation, ex cept \nin the case of footnoted citations of quoted material, which refer to extant \nEn glish translations of the source as necessary. Additional translator\u2019s notes \nhave been kept to a minimum. To facilitate scholarly reference, the page \nnumbers of the French edition are printed in the margin on the line at \nwhich the new page begins.\nf o r e w o r d  t o  t h e  e ng l i s h  e d i t i o n\n"
+    },
+    {
+      "document": "Derrida_TheBeastAndTheSovereignVol1",
+      "page_num": 9,
+      "bucket": "E (10%+)",
+      "error_rate": 10.8,
+      "unknown_words_sample": [
+        "rottenberg",
+        "pascale",
+        "viii",
+        "glish",
+        "dif",
+        "naas",
+        "brault",
+        "kamuf",
+        "rst"
+      ],
+      "full_text": "viii  \u2021  foreword to the english edition\nTranslating Derrida is a notoriously dif\ufb01 cult enterprise, and while the \ntranslator of each volume assumes full responsibility for the integrity of \nthe translation, as series editors we have also reviewed the translations and \nsought to ensure a standard of accuracy and consistency across the volumes. \nToward this end, in the \ufb01 rst phase of work on the series, we have called \nupon the advice of other experienced translators of Derrida\u2019s work into En-\nglish and wish to thank them here:  Pascale- Anne Brault, Michael Naas, \nElizabeth Rottenberg, and David Wills.\nGeoffrey Bennington\nPeggy Kamuf\njanuary 2009\n"
+    },
+    {
+      "document": "Derrida_TheBeastAndTheSovereignVol1",
+      "page_num": 11,
+      "bucket": "D (5-10%)",
+      "error_rate": 5.4,
+      "unknown_words_sample": [
+        "nally",
+        "glish",
+        "ehess",
+        "amination",
+        "glas",
+        "parture",
+        "grammatology",
+        "acter",
+        "agr",
+        "nitive"
+      ],
+      "full_text": "x  \u2021  general introduction\nthe type of teaching: classes with a very variable number of sessions (from \none to \ufb01 fteen) until 1964; what he always called \u201cseminars\u201d thereafter. Fi-\nnally \u2014 and, no doubt, most relevantly for the editorial work \u2014 according \nto the tools used: we have handwritten sessions from 1960 to 1970; type-\nscripts, with manuscript annotations and corrections, from 1970 to 1988; \nelectronic \ufb01 les and printouts from 1988 to 2003.\nDerrida\u2019s seminars, which already had their own style and had already \n attracted a broad and numerous following at the rue d\u2019Ulm (where the \nchoice of subjects and authors, if not the way they were treated, was con-\nstrained by the program of the Agr\u00e9gation),2 take on their de\ufb01 nitive char-\nacter at the EHESS, where, on Wednesdays from 5:00 pm to 7:00 pm, a \ndozen times a year, Jacques Derrida, sometimes improvising a little, would \nread before a large audience the text of his seminar, entirely written out for \neach session as the year proceeded. (Add to that a few improvised sessions, \nsometimes around a reading, and a few discussion sessions.) Henceforth \nfree in his choice of subjects, Derrida launched research projects over peri-\nods of several years, which link together in explicit, coherent, and gripping \nfashion. The great question of philosophical nationality and nationalism \n(1984\u201388) leads to that of the \u201cPolitics of Friendship\u201d (1988\u201391), and then to \nthe long series of \u201cQuestions of Responsibility\u201d (1991\u2013 2003), focusing suc-\ncessively on the Secret (1991\u201392), on Testimony (1992\u201395), Hostility and \nHospitality (1995\u201397), Perjury and Pardon (1997\u201399), and the Death Pen-\nalty (1999\u20132001), with the \ufb01 nal two years devoted to \u201cThe Beast and the \nSovereign\u201d (2001\u20133).\nJacques Derrida was in the habit of drawing on the abundant mate-\nrial of these seminars for the very numerous lectures he gave every year \nthroughout the world, and often, via this route, parts of the seminars were \nreworked and published. Several of his books also \ufb01 nd their point of de-\nparture in the work of the seminar: Of Grammatology (1967), for example, \nin large part develops sessions of the 1965\u201366 seminar on \u201cNature, Culture, \nWriting\u201d; the seminar on \u201cHegel\u2019s Family\u201d (1971\u201372) is picked up in Glas \n(1974). Politics of Friendship (1994) is explicitly presented as the expansion of \nthe \ufb01 rst session of the 1988\u201389 seminar, and there are traces in it of other \nsessions too. But in spite of these partial convergences and correspondences, \nin En glish: Derrida would improvise during the session an En glish version of his text, \nwhich he had previously annotated for this purpose. \n2. [Translator\u2019s note:] The Agr\u00e9gation is the notoriously competitive qualifying ex-\namination taken by prospective higher-level teachers in the secondary and university \nsystems.\n \n11\n"
+    },
+    {
+      "document": "Derrida_TheBeastAndTheSovereignVol1",
+      "page_num": 14,
+      "bucket": "D (5-10%)",
+      "error_rate": 7.9,
+      "unknown_words_sample": [
+        "ehess",
+        "des",
+        "delib",
+        "tion",
+        "aristo",
+        "etc",
+        "fontaine",
+        "logics",
+        "tise",
+        "gures"
+      ],
+      "full_text": "The seminar entitled \u201cThe Beast and the Sovereign\u201d was the last seminar \ngiven by Jacques Derrida at the \u00c9cole des hautes \u00e9tudes en sciences sociales \n(EHESS), in Paris, from the fall of 2001 to the spring of 2003. Rather than \nattempt what could only be a reductive summary, we reproduce here the \npresentation given by Derrida in the \u00c9cole\u2019s yearbook:\nWe pursued the research that in previous years, centering on the prob-\nlem of the death penalty, had led us to study sovereignty, the political and \nontotheological history of its concept and its \ufb01 gures. This year we delib-\nerately privileged what intertwined this history with that of a thinking \nof the living being (the biological and the zoological), and more precisely \nwith the treatment of so- called animal life in all its registers (hunting and \ndomestication, political history of zoological parks and gardens, breeding, \nindustrial and experimental exploitation of the living animal, \ufb01 gures of \nbestiality and b\u00eatise, etc.). The point was not merely to study, from Aristo-\ntle to contemporary discussions (Foucault, Agamben), the canonical texts \naround the interpretation of man as a \u201cpolitical animal.\u201d We had above all \nto explore the \u201clogics\u201d organizing both the submission of the beast (and \nthe living being) to political sovereignty, and an irresistible and overloaded \nanalogy between a beast and a sovereign supposed to share a space of some \nexteriority with respect to \u201claw\u201d and \u201cright\u201d (outside the law: above the law: \norigin and foundation of the law).\n \nWe studied a great many philosophical, rhetorical, political, and other \nindices of this overdetermined analogy (La Fontaine\u2019s Fables and the tradi-\ntion that precedes and follows them, texts by Machiavelli, Schmitt, etc.). We \nalso attempted a sort of taxonomy of the animal \ufb01 gures of the political, no-\ntably from the point of view of sovereignty (always outside the law: above \nthe laws). Alongside the lion, the fox, etc., the \u201ccharacter\u201d of the wolf (in \nmany cultures) and often the \u201cwerewolf\u201d (in Europe) interested us a great \ndeal, from Plautus to Hobbes and Rousseau.\n \nOn the permanent horizon of our work were general questions about \ne d i t o r i a l  n o t e\n14\n"
+    },
+    {
+      "document": "Derrida_TheBeastAndTheSovereignVol1",
+      "page_num": 16,
+      "bucket": "D (5-10%)",
+      "error_rate": 5.0,
+      "unknown_words_sample": [
+        "propriate",
+        "nally",
+        "numer",
+        "lled",
+        "edi",
+        "tion",
+        "cient",
+        "dif",
+        "glish",
+        "modi"
+      ],
+      "full_text": "editorial note  \u2021  xv\na recording (made and preserved by Marie- Louise Mallet), even though the \nreader must of course be aware that these sessions are inevitably less reliable \nthan the others, in that the author could not read and review the transcrip-\ntion. Also, Derrida often left time for discussion with seminar participants. \nWe have signaled such moments in the sessions, but we also decided not to \ninclude these discussions, which, although they were recorded (but often in \na technically de\ufb01 cient manner, with some voices being inaudible and above \nall dif\ufb01 cult to identify), seemed to us to raise too many questions. In this we \nhave followed what was most usually done at the Cerisy and other major \nconferences devoted to Derrida\u2019s work.\nIn the typescript of the seminar, the bibliographical indications were, \nmost often, clearly indicated but in abbreviated form: we have completed \nthem and \ufb01 lled in those that were missing. A number of quotations were \nnot copied out in the typescript: they were included as photocopies of pages \nfrom books, and we have reinserted them, where necessary resorting to the \ntape recording of the sessions to be sure of where to begin and end. Else-\nwhere, we used Jacques Derrida\u2019s own books, whenever it was possible to \n\ufb01 nd them in the library of his house at Ris- Orangis. In doubtful cases or \nwhere it was impossible to track down the copy he would have used, we \nhave referred to the editions that are generally thought to be the most reli-\nable. We have checked and where necessary corrected the quotations made \nby Jacques Derrida, rectifying without signaling the fact whatever seemed \nto be obvious errors of transcription; but we have signaled, when they \nmight be signi\ufb01 cant, certain modi\ufb01 cations to quotations or translations. Fi-\nnally, to end on this question of references: Jacques Derrida makes numer-\nous references throughout the seminar to his own earlier work, whether \npublished or not: we give references whenever the citation is explicit, even \nwhen the work cited belongs to the still unpublished body of the seminars \nthemselves.7\nAs for the more technical aspects of our work, they are relatively slight. \nThis edition is of the entire text of Derrida\u2019s 2001\u20132 seminar as it was com-\nposed and laid out by him, notably as to its sometimes very long sentences \nand paragraphs. Similarly, at a more micrographic level, the punctuation \nhas been preserved; in particular all the brackets, which are Derrida\u2019s own.8 \nWe have, however, on rare occasions made some corrections or minute al-\n7. [Translator\u2019s note:] Unless otherwise indicated, all notes are provided by the edi-\ntors of the French edition. I have added references to En glish translations where ap-\npropriate.\n8. [Translator\u2019s note:] Except for translator\u2019s glosses.\n16\n"
+    },
+    {
+      "document": "Derrida_TheBeastAndTheSovereignVol1",
+      "page_num": 17,
+      "bucket": "D (5-10%)",
+      "error_rate": 6.8,
+      "unknown_words_sample": [
+        "iso",
+        "lation",
+        "lisse",
+        "benveniste",
+        "ginette",
+        "michaud",
+        "vanasten",
+        "indo",
+        "dif",
+        "sarrazin"
+      ],
+      "full_text": "xvi  \u2021  editorial note\nterations when the proliferation of signs such as brackets, parentheses, and \ndashes (or else their absence) made it dif\ufb01 cult to follow the argument.\nWe have kept all the signs of the seminar\u2019s oral quality, and especially \nthe \u201cpickups\u201d Derrida placed in brackets, even if these were often quite \nsubstantially modi\ufb01 ed in the actual reading out. In the same spirit, we have \nchosen to leave in parentheses some stage directions, such as \u201c(Board),\u201d \n\u201c(Read and comment),\u201d \u201c(Reread),\u201d \u201c(Develop),\u201d which give a sense of the \nrhythm of the seminar, its accents and intonations. In the case of expressions \nthat recur with slight differences in spelling (use of capital letters, quotation \nmarks, italics or roman face, optional elisions, and so on), we did not see \n\ufb01 t to attempt any systematic harmonization of these variations, as they do \nnot hinder the legibility of the text. Words placed in angle brackets were \nadded by us to \ufb01 ll certain lacunae in the typescript \u2014 most often omitted \nwords.9 On the typescript, at the end of each session, Derrida was in the \nhabit of noting down in more or less telegraphic style lines of research to \nbe explored. These \u201coff cuts\u201d are sometimes reproduced from one session \nto the next, sometimes modi\ufb01 ed and augmented. Given that they did not \nconstitute a sustained text, they have not been included in this edition.\nFinally, we thank Gil Anidjar, Joseph Cohen, Jean- Jacques Lavoie, Ursula \nSarrazin, and St\u00e9phanie Vanasten, whom we consulted to explain or verify \nlinguistic points concerning the transliteration of Hebrew words, the trans-\nlation of German expressions, and certain references. We especially and \nwarmly thank Georges Leroux, who carefully revised the transliterations \nfrom the Greek. On his suggestion, we decided to follow here the code used \nby \u00c9mile Benveniste in his Vocabulary of Indo- European Institutions.10\nMichel Lisse\nMarie- Louise Mallet\nGinette Michaud\n9. [Translator\u2019s note:] Not all such cases are reproduced in the translation.\n10. [Translator\u2019s note:] Greek transliterations in the translation follow the ISO 843 \nstandard.\n \n17\n"
+    },
+    {
+      "document": "Derrida_TheBeastAndTheSovereignVol1",
+      "page_num": 18,
+      "bucket": "E (10%+)",
+      "error_rate": 10.8,
+      "unknown_words_sample": [
+        "cit",
+        "tre",
+        "mal",
+        "souverainet",
+        "fernanda",
+        "apories",
+        "juin",
+        "venir",
+        "politique",
+        "ther"
+      ],
+      "full_text": "f i r s t  s e s s i o n\nDecember 12, 20011\ny\nFeminine . . . masculine [La . . . le].\nLet me recall the title proposed for this year\u2019s seminar: the beast [femi-\nnine: la b\u00eate] and the sovereign [masculine: le souverain]. La, le.\nNaturally I shall try to justify this title as I go along, step by step, perhaps \nstealthily, like a wolf [peut- \u00eatre \u00e0 pas de loup]. Those of you who followed the \nlast few years\u2019 seminars on the death penalty know that the huge and for-\nmidable question of sovereignty was central to them. So this inexhaustible \nquestion will provide for a certain continuity between the previous semi-\nnars and what still remains untrodden from this new approach, by the turn \nor at the turning of the seminar to come.\nThe question of the animal was also, here and elsewhere, one of our \npermanent concerns. But the beast is not exactly the animal, and it was only \nafter the fact, after having chosen this title, the literal formulation of this \ntitle, the [feminine] beast and the [masculine] sovereign, that I understood \n1. This session was published, almost in its entirety, in the proceedings of the 2002 \nCerisy conference, La d\u00e9mocratie \u00e0 venir, ed. Marie-Louise Mallet (Paris: Galil\u00e9e, 2004), \npp. 433\u201356. With some variants and additions, it was again given as a lecture at the \n2003 Coimbra conference (La souverainet\u00e9: Critique, d\u00e9construction, apories: Autour de \nla pens\u00e9e de Jacques Derrida), and published, \ufb01 rst separately in a bilingual edition, un-\nder the title Le souverain Bien / O soberano Bem (Portuguese translation by Fernanda \nBernardo [Viseu: Palimage Editores, 2004]), and then in the proceedings of the confer-\nence Jacques Derrida \u00e0 Coimbra / Derrida em Coimbra (ed. Fernanda Bernardo [Viseu, \nPalimage Editores, 2005], pp. 75\u2013105), under the title \u201cLe souverain Bien, ou \u00catre en \nmal de souverainet\u00e9\u201d [The Sovereign Good, or Being Wanting Sovereignty]. Finally, \npreceded by a quite long introduction, the Coimbra text was used again (with some fur-\nther variants and additions) for the last lecture Jacques Derrida gave in France, in 2004 \nat Strasbourg, published by Joseph Cohen in the journal Cit\u00e9s, special issue, Derrida \npolitique\u2014La d\u00e9construction de la souverainet\u00e9 (puissance et droit), no. 30 (2007): 103\u201340, \nunder the title: \u201cLe souverain bien\u2014ou l\u2019Europe en mal de souverainet\u00e9: La conf\u00e9rence \nde Strasbourg du 8 juin 2004.\u201d \n20\n"
+    },
+    {
+      "document": "Derrida_TheBeastAndTheSovereignVol1",
+      "page_num": 19,
+      "bucket": "D (5-10%)",
+      "error_rate": 5.7,
+      "unknown_words_sample": [
+        "riage",
+        "unnotice",
+        "unobtru",
+        "erally",
+        "thiev",
+        "allons",
+        "heure",
+        "fontaine",
+        "colombe",
+        "une"
+      ],
+      "full_text": "2  \u2021  first session\none at least of the lines of force or one of the silent but insistent connotations \nin what seemed to me to impose the very letter, down to my unconscious, \ndown to the title\u2019s unconscious, \u201cLa b\u00eate et le souverain,\u201d namely the sexual \ndifference marked in the grammar of the de\ufb01 nite articles, la, le (feminine, \nmasculine), as if we were naming in it, ahead of time, a certain couple, a \ncertain coupling, a plot involving alliance or hostility, war or peace, mar-\nriage or divorce \u2014 not only between two types of living beings (animal and \nhuman) but between two sexes which, already in the title, and in a certain \nlanguage \u2014 French \u2014 se font une sc\u00e8ne, are going at each other, are making \na scene.\nWhat scene?\n\u201cWe\u2019re shortly going to show it\u201d [Nous l\u2019allons montrer tout \u00e0 l\u2019heure: lit-\nerally, \u201cWe are going to show it in a moment\u201d].2 (Board)\nStealthy as a wolf. Imagine a seminar that began thus, stealthy as a wolf:\n\u201cWe\u2019re shortly going to show it.\u201d\nWhat? What are we going to show shortly? Well, \u201cWe\u2019re shortly going \nto show it.\u201d\nImagine a seminar that began thus, saying almost nothing, with a \u201c \u2018We\u2019re \nshortly going to show it.\u2019 \u2018What? What are we going to show shortly?\u2019 Well, \n\u2018We\u2019re shortly going to show it.\u2019 \u201d\nWhy would one say of such a seminar that it moves stealthy as a wolf?\nThis is, however, what I\u2019m saying. Stealthy as a wolf. I\u2019m saying it with \nreference to the [French] proverbial expression \u00e0 pas de loup, which in gen-\neral signi\ufb01 es a sort of introduction, a discreet intrusion or even an unobtru-\nsive effraction, without show, all but secret, clandestine, an entrance that \ndoes all it can to go unnoticed and especially not to be stopped, intercepted, \nor interrupted. To move \u00e0 pas de loup is to walk without making a noise, to \narrive without warning, to proceed discreetly, silently, invisibly, almost in-\naudibly and imperceptibly, as though to surprise a prey, to take it by surpris-\ning what is in sight but does not see coming the one that is already seeing it, \nalready getting ready to take it by surprise, to grasp it by surprise. Speech \n(for we are dealing with silent speech here) \u2014 speech proceeding \u00e0 pas de \nloup would not be proceeding \u00e0 pas de colombe, dove- footed, according to \nwhat a great philosophical tradition says of the dove, of the all but unnotice-\nable procedure or proceeding of truth advancing in history like one thiev-\n2. [Translator\u2019s note:] In La Fontaine\u2019s classical French, \u201ctout \u00e0 l\u2019heure\u201d means \n\u201cforthwith,\u201d rather than, as in modern French, \u201clater on.\u201d \n \n21\n"
+    },
+    {
+      "document": "Derrida_TheBeastAndTheSovereignVol1",
+      "page_num": 20,
+      "bucket": "E (10%+)",
+      "error_rate": 13.6,
+      "unknown_words_sample": [
+        "lence",
+        "gesamtausgabe",
+        "kommen",
+        "giorgio",
+        "herrschen",
+        "sturm",
+        "comme",
+        "ight",
+        "meiner",
+        "taubenf"
+      ],
+      "full_text": "first session  \u2021  3\ning or else \ufb02 ying [comme un voleur ou encore en volant] (remember,3 while \nwe\u2019re in the columbarium of philosophy, what Kant already said about it \nin the Introduction to the Critique of Pure Reason, about the light dove [die \nleichte Taube]4 which, in its \ufb02 ight, does not feel the resistance of the air and \nimagines it would be still better in empty space. And especially Zarathustra, \nin the book that is one of the richest bestiaries in the Western philosophical \nlibrary. A political bestiary, what is more, rich in animal \ufb01 gures as \ufb01 gures of \nthe political. A dove crosses a song at the very end of the second part of Also \nsprach Zarathustra, \u201cDie stillste Stunde,\u201d \u201cThe Hour of Supreme Silence\u201d \n([The stillest hour] that\u2019s the title of the song). This hour of supreme silence \nspeaks, speaks to me, addresses me, and it is mine, it is my hour, it spoke to \nme yesterday, he says, it murmurs in my ear, it is closest to me, as though \nin me, like the voice of the other in me, like my voice of the other, and its \nname, the name of this hour of silence, my hour of silence, is the name of a \nfearsome sovereign mistress [souveraine]: \u201cGestern gen Abend sprach zu mir \nmeine stillste Stunde: das ist der Name meiner furchtbaren Herrin\u201d [Last night \nmy hour of supreme silence (my hour of the greatest silence, of sovereign si-\nlence) spoke to me: this is the name of my terrifying sovereign mistress: \u201cdas \nist der Name meiner furchtbaren Herrin.\u201d]5 (Commentary: the hour, my hour, \nthe hour of my sovereign silence speaks to me, and its name, the name of \nthis absolutely silent one, is that of my most fearsome mistress, the one who \nspeaks to me in silence, who commands me in silence, whispering through \nthe silence, who orders me in silence, as silence.) So what is she going to say \nto him, to me, during this song I\u2019m leaving you to read? After saying to him \n(to me, says Zarathustra), \u201cwhat is the most unpardonable thing about you \n[dein Unverzeihlichtses] is that you have the power [Macht] and you do not \nwant to reign [du willst nicht herrschen],\u201d you have the power and you do not \nwant to be sovereign. Zarathustra\u2019s reply, again convoking sovereign power \nand beast: \u201cFor all command I lack the lion\u2019s voice.\u201d At that moment, his \nmost silent voice tells him, as though in a whisper: \u201c(Da sprach es wieder \nwie ein Fl\u00fcstern zu mir): Die stillsten Worte sind es, welche den Sturm bringen. \nGedanken, die mit Taubenf\u00fcssen kommen, lenken die Welt.\u201d [\u201cIt is the stillest \n3. The parenthesis opened here does not close in the typescript.\n4. Immanuel Kant, Critique of Pure Reason, A5 / B8. \n5. Friedrich Nietzsche, Also sprach Zarathustra, in Kritische Gesamtausgabe, tome 6, \nvol. 1, ed. Giorgio Colli and Mazzino Montinari (Berlin and New York: Walter de Gruy-\n ter, 1968), p. 183. Derrida\u2019s own translation. [Translator\u2019s note: For the sake of consis-\ntency, I have translated these passages with an eye to Derrida\u2019s French version, as well \nas to the original German.]\n22 \n"
+    },
+    {
+      "document": "Derrida_TheBeastAndTheSovereignVol1",
+      "page_num": 22,
+      "bucket": "C (3-5%)",
+      "error_rate": 3.6,
+      "unknown_words_sample": [
+        "syntagm",
+        "tasma",
+        "tes",
+        "seuil",
+        "schvicg",
+        "ferred",
+        "brun",
+        "ditions",
+        "blaise",
+        "compl"
+      ],
+      "full_text": "first session  \u2021  5\nare the same on this side or the other side of the Pyrenees or the Alps;8 but \nthe \ufb01 gures of the wolf belong to cultures, nations, languages, myths, fables, \nfantasies, histories.\nIf I chose the expression that names the wolf\u2019s \u201cstep\u201d in the pas de loup, \nit was no doubt because the wolf itself is there named in absentia, as it were; \nthe wolf is named where you don\u2019t yet see or hear it coming; it is still absent, \nsave for its name. It is looming, an object of apprehension; it is named, re-\nferred to, even called by its name; one imagines it or projects toward it an \nimage, a trope, a \ufb01 gure, a myth, a fable, a fantasy, but always by reference to \nsomeone who, advancing \u00e0 pas de loup, is not there, not yet there, someone \nwho is not yet present or represented; you can\u2019t even see its tail; as another \nproverb says: \u201cWhen you speak of the wolf, you see its tail,\u201d meaning that \nsomeone, a human this time, shows up just when you are talking about him \nor her. Here you don\u2019t yet see or hear anything of what is advancing \u00e0 pas de \nloup, when at the beginning of a seminar I might say: \u201cWe\u2019re shortly going \nto show it.\u201d\nFor one of the reasons \u2014 they are many, too many, I won\u2019t get through \nenumerating them, and I will in fact be devoting the whole seminar to \nthem \u2014 one of the many reasons why I chose, in this bunch of proverbs, \nthe one which forms the syntagm pas de loup, is precisely that the absence \nof the wolf is also expressed in it in the silent operation of the pas, the word \npas which implies, but without any noise, the savage intrusion of the adverb \nof negation (pas, pas de loup, il n\u2019y a pas de loup [there is no wolf], il n\u2019y a pas \nle loup [\u201cthe wolf is not here,\u201d perhaps even \u201cthere is no such thing as the \nwolf\u201d]) \u2014 the clandestine intrusion, then, of the adverb of negation (pas) in \nthe noun, in le pas de loup. An adverb haunts a noun. The adverb pas has \nslipped in silently, stealthy as a wolf, \u00e0 pas de loup, into the noun pas [step].\nWhich is to say that where things are looming \u00e0 pas de loup, the wolf is \nnot there yet, no real wolf, no so- called natural wolf, no literal wolf. There \nis no wolf yet when things are looming \u00e0 pas de loup. There is only a word, a \nspoken word, a fable, a  fable- wolf, a fabulous animal, or even a fantasy (fan-\ntasma in the sense of a revenant, in Greek; or fantasy in the enigmatic sense \nof psychoanalysis, in the sense, for example, that a totem corresponds to a \nfantasy); there is only another \u201cwolf\u201d that \ufb01 gures something else \u2014 some-\nthing or somebody else, the other that the fabulous \ufb01 gure of the wolf, like \n8. [Translator\u2019s note:] French readers would perceive the allusion to Pascal\u2019s remark \nabout truths on one side of the Pyrenees being errors on the other. See Pens\u00e9es, 60 (in \nBlaise Pascal, Oeuvres compl\u00e8tes, ed. L. Lafuma [Paris: \u00c9ditions du Seuil, 1963]); (Brun-\nschvicg ed., p. 294; see n. 12 below). \n24 \n"
+    },
+    {
+      "document": "Derrida_TheBeastAndTheSovereignVol1",
+      "page_num": 23,
+      "bucket": "C (3-5%)",
+      "error_rate": 4.1,
+      "unknown_words_sample": [
+        "ungraspable",
+        "identi",
+        "raison",
+        "nonsensible",
+        "avoir",
+        "stron",
+        "routledge",
+        "sence",
+        "trans",
+        "galil"
+      ],
+      "full_text": "6  \u2021  first session\na metonymic substitute or supplement, would come both to announce and \nconceal, to manifest and mask.\nAnd do not forget that in French we also call loup the black velvet mask \nthat used to be worn, that women especially, \u201cladies\u201d more often than men, \nused to wear at one time, in certain milieux, and especially at masked balls. \nThe so- called loup allowed them to see sovereignly without being seen, to \nidentify without allowing themselves to be identi\ufb01 ed. This woman in the \nloup would be the feminine \ufb01 gure of what I once called a \u201cvisor effect,\u201d the \nupper part of the armor played on by the father or spectral king in Hamlet, \nwho sees without being seen when he puts down his visor.9 This time, in \nthe case of the loup, the mask nicknamed loup, the visor effect would play \nespecially, or at least most often, on the feminine side.\nWhy this loup, why loup- woman rather than the loup- man, in this \nmasked unobtrusiveness, whereas in the proverb \u201cWhen you speak of the \nwolf, you see its tail,\u201d we seem to be taken more toward the masculine side \nof sexual difference?\nIn both cases, in any case, of sexual difference, pas de loup signi\ufb01 es the ab-\nsence, the literal non- presentation of the wolf itself in response to its name, \nand so an evocation that is only \ufb01 gural, tropic, fabulous, phantasmic, con-\nnotative: there is no wolf, there is pas de loup. And the absence of this wolf, \nungraspable in person other than according to the words of a fable \u2014 this \nabsence bespeaks at the same time power, resource, force, cunning, ruse of \nwar, stratagem or strategy, operation of mastery. The wolf is all the stron-\nger, the meaning of its power is all the more terrorizing, armed, threaten-\ning, virtually predatory for the fact that in these appellations, these turns of \nphrase, these sayings, the wolf does not yet appear in person but only in the \ntheatrical persona of a mask, a simulacrum or a piece of language, i.e. a fable \nor a fantasy. The strength of the wolf is all the stronger, sovereign even, is \nall the more all- conquering [a raison de tout] for the fact that the wolf is not \nthere, that there is not the wolf itself, were it not for a pas de loup, except for \na pas de loup, save a pas de loup, only a pas de loup.\nI would say that this force of the insensible wolf (insensible because one \nneither sees nor hears it coming, because it is invisible and inaudible, and \ntherefore nonsensible, but also insensible because it is all the crueler for this, \nimpassive, indifferent to the suffering of its virtual victims) \u2014 that the force \nof this insensible beast seems then to overcome [avoir raison de] everything \nbecause through that other untranslatable idiomatic expression (avoir raison \n9. See Jacques Derrida, Spectres de Marx (Paris: Galil\u00e9e, 1993), especially pp. 26\u201327; \ntrans. Peggy Kamuf as Spectres of Marx (London: Routledge, 1994), pp. 5\u20136.\n \n25\n \n26\n"
+    },
+    {
+      "document": "Derrida_TheBeastAndTheSovereignVol1",
+      "page_num": 25,
+      "bucket": "D (5-10%)",
+      "error_rate": 8.4,
+      "unknown_words_sample": [
+        "est",
+        "meilleure",
+        "clas",
+        "anidjar",
+        "nally",
+        "fontaine",
+        "essais",
+        "legislations",
+        "politiques",
+        "ologico"
+      ],
+      "full_text": "8  \u2021  first session\nparole mang\u00e9e, et autres essais  th\u00e9ologico- politiques.11 This chapter of Marin\u2019s \nbook is, moreover, entitled \u201cLa raison du plus fort est toujours la meilleure\u201d \n[The reason of the strongest is always the best] and it is preceded by a brief \nchapter entitled \u201cL\u2019animal- fable\u201d [the  fable- animal]. Although the path \nwe\u2019re going down is not exactly the same, we\u2019ll often be crossing this anal-\nysis of Marin\u2019s, which I therefore strongly recommend that you read. One \nof the many interesting things about Marin\u2019s approach is that it proposes a \nhistorical articulation between several exactly contemporary texts: this fable \nof La Fontaine\u2019s, then the Port- Royal General Grammar and Art of Think-\ning, and \ufb01 nally a famous Pens\u00e9e of Pascal\u2019s on the relation between justice \nand force, a Pens\u00e9e to which Marin often returned, and the logic of which \nis very important to us here. I\u2019m referring to what Pascal places under the \ntitle \u201cReason of effects,\u201d and I\u2019ll read the whole fragment, even though we\u2019ll \nhave to come back to it in more detail later, because interpreting it requires \nwhole  treasure- houses of attention and vigilance (298 in Brunschvicg\u2019s clas-\nsi\ufb01 cation, 103 in Lafuma\u2019s):\nJustice, force. It is just that what is just be followed; it is necessary that what \nis strongest be followed. Justice without force is impotent; force without \njustice is tyrannical. Justice without force is contradicted, because there are \nalways bad people; force without justice stands accused. So justice and force \nmust be put together; and to do so make what is just, strong and what is \nstrong, just.\n \nJustice is subject to dispute; force is easy to recognize and indisputable. \nAnd so one could not give force to justice, because force contradicted justice \nand said that it was unjust, and said that it was force that was just. And \nthus not being able to make what is just, strong; one made what is strong, \njust.12\nApart from Marin\u2019s, I refer you, among the texts that are one way or \nan other devoted to this fragment, to my little book Force de loi13 and the \nremarkable chapter that Geoffrey Bennington devotes to Paul de Man in \nLegislations: The Politics of Deconstruction.14\n11. Louis Marin, La parole mang\u00e9e, et autres essais  th\u00e9ologico-politiques (Paris: M\u00e9ri-\ndiens / Klincksieck, 1986).\n12. Blaise Pascal, Pens\u00e9es et opuscules, ed. L\u00e9on Brunschvicg (Paris: Hachette, 1946), \nno. 298, p. 470. \n13. Jacques Derrida, Force de loi (Paris: Galil\u00e9e, 1994); trans. Mary Quaintance, in \nActs of Religion, ed. G. Anidjar (London: Routledge, 2002), pp. 230\u201398. \n14. Geoffrey Bennington, \u201cAberrations: de Man (and) the Machine,\u201d in Legislations: \nThe Politics of Deconstruction (London: Verso Books, 1994), pp. 137\u201351.\n \n28\n"
+    },
+    {
+      "document": "Derrida_TheBeastAndTheSovereignVol1",
+      "page_num": 26,
+      "bucket": "C (3-5%)",
+      "error_rate": 3.6,
+      "unknown_words_sample": [
+        "manabozho",
+        "ognizing",
+        "mytheme",
+        "ght",
+        "ter",
+        "ror",
+        "mustn",
+        "glish",
+        "rec",
+        "jumeaux"
+      ],
+      "full_text": "first session  \u2021  9\nMany wolves will, then, be crossing the stage of this seminar. We are going \nto show in a moment that one cannot be interested in the relations of beast \nand sovereign, and all the questions of the animal and the political, of the \npolitics of the animal, of man and beast in the context of the state, the polis, \nthe city, the republic, the social body, the law in general, war and peace, ter-\nror and terrorism, national or international terrorism, etc., without rec-\nognizing some privilege to the \ufb01 gure of the \u201cwolf\u201d; and not only in the \ndirection of a certain Hobbes and that fantastic, phantasmic, insistent, re-\ncurrent altercation between man and wolf, between the two of them, the \nwolf for man, man for the wolf, man as wolf for man, man as humankind, \nthis time, beyond sexual difference, man and woman (homo homini lupus, \nthis dative making clear that it is also a way for man, within his human \nspace, to give himself, to represent or recount to himself this wolf story, \nto hunt the wolf by making it come, tracking it (in French this wolf hunt \nis called louveterie) [it is just as much a way for man, within his human \nspace, to give himself, to represent or recount to himself this wolf story, \nto hunt the wolf] in a fantasy, a narrative, a mytheme, a fable, a trope, a \nrhetorical turn, where man tells himself the story of politics, the story of \nthe origin of society, the story of the social contract, etc.: for man, man is \na wolf).\nWhen I say wolf, you mustn\u2019t forget the she- wolf. What counts here is \nno longer the sexual difference between the wolf as real animal and the \nmask [loup] worn by the woman. Here we are not dealing with this double \nwolf, this \u201ctwin\u201d word, masculine in both cases, the natural wolf, the real \nwolf and its mask le loup, its simulacrum, but indeed with the she- wolf, \noften a symbol of sexuality or even of sexual debauchery or fecundity, of \nthe she- wolf mother of other twins, for example the she- wolf that, at the \nfoundation of Rome, suckled turn by turn, each in turn or both at once, the \ntwins Remus and Romulus. And while we\u2019re on twins15 and myths of origi-\nnary foundation, it is frequent among North American Indians \u2014 for we \nhave also been in America for a moment \u2014 for two twins to \ufb01 ght over their \nmother\u2019s breast; and among the Ojibwa, in certain variants of the story, the \nhero Manabozho (who most of the time gets on well with his brother) either \nremains inconsolable at his death or else kills him himself; and his brother, \ndead or killed by him, is a Wolf: the Wolf. His brother is the wolf, his next \nof kin is the wolf. For this man, the twin brother is a wolf: a friendly wolf, \na friendly brother whose death leaves him inconsolable, beyond all possible \n15. [Translator\u2019s note:] In all three occurrences in this sentence, Derrida supplies the \nEn glish word \u201ctwins\u201d as well as the French word \u201cjumeaux.\u201d\n29 \n"
+    },
+    {
+      "document": "Derrida_TheBeastAndTheSovereignVol1",
+      "page_num": 30,
+      "bucket": "C (3-5%)",
+      "error_rate": 3.6,
+      "unknown_words_sample": [
+        "evanes",
+        "theo",
+        "domi",
+        "avait",
+        "syntagm",
+        "avoir",
+        "raison",
+        "disap",
+        "ibid",
+        "rea"
+      ],
+      "full_text": "first session  \u2021  13\n[And this is indeed the reasoning of a sovereign, the reason given by a \nsovereign, let us not forget that: Rousseau is certainly marking the fact \nthat this discourse, this \u201creasoning,\u201d was signed, and signed not by a phi-\nlosopher or a political scientist but by a chief, an emperor, and therefore \nby a sovereign himself situated by analogy and in the \u201canimal\u201d analogy \nthat he thus accredits, an analogy from which man has in the end disap-\npeared, between god and beast: \u201ckings were gods, peoples were beasts.\u201d \nThe sovereign says, the emperor Caligula proclaims, he edicts, speaking \nthus of sovereignty from sovereignty, from the place of the sovereign, he \nsays: there are gods and there are beasts, there is, there is only, the theo-\n zoological, and in the theo- anthropo- zoological, man is caught, evanes-\ncent, disappearing, at the very most a simple mediation, a hyphen between \nthe sovereign and the beast, between God and cattle. Taking up the thread \nof the quotation again:]\nThe reasoning of this Caligula comes down to the same thing as in Hobbes \nand Grotius. Aristotle, before any of them, had also said that men are not \nnaturally equal, but that some were born for slavery and others for domi-\nnation.\n \nAristotle was right [avait raison: reason again! This time in the syntagm \n\u201cavoir raison\u201d the point is not to avoir raison de but just to avoir raison, to \nbe just or right]; but he took the effect for the cause. Any man born into \nslavery is born for slavery, nothing is more certain. Slaves lose everything in \ntheir irons, even the desire to be free of them; they love their enslavement \nas Odysseus\u2019s companions loved their brutishness. So if there are slaves by \nnature, this is because there have been slaves against nature. Force made the \n\ufb01 rst slaves.19\nRousseau\u2019s thesis is thus both that \u201cthe reason of the strongest\u201d is in fact the \nbest, that it has prevailed and prevails in fact (the stronger has reason of the \nweaker, the wolf of the lamb), but that if in fact the reason of the stronger \nwins out, by right the reason of the strongest is not the best, ought not to be, \nought not to have been the best, ought not to have been right, and every-\nthing will turn around the semantic pivot of the word \u201creason\u201d in the fable: \nwhen the fable says \u201cthe reason of the strongest is always the best,\u201d is it rea-\nson itself, the good reason, the most just reason, true reason, or the reason \ngiven, alleged by the stronger (Caligula or the sovereign or the wolf in the \nfable) which is the best? And \u201cbest\u201d can still mean two radically hetero -\n19. Ibid., p. 237. This last sentence of Rousseau ends thus: \u201cForce made the \ufb01 rst \nslaves, their cowardice perpetuated their slavery.\u201d \n34 \n"
+    },
+    {
+      "document": "Derrida_TheBeastAndTheSovereignVol1",
+      "page_num": 32,
+      "bucket": "E (10%+)",
+      "error_rate": 11.5,
+      "unknown_words_sample": [
+        "contre",
+        "donc",
+        "amples",
+        "calcul",
+        "bowlby",
+        "sujet",
+        "violences",
+        "tion",
+        "dif",
+        "anthropolo"
+      ],
+      "full_text": "first session  \u2021  15\namples of what are called animal societies, the appearance of re\ufb01 ned, com-\nplicated organizations, with hierarchical structures, attributes of authority \nand power, phenomena of symbolic credit, so many things that are so often \nattributed to and so na\u00efvely reserved for so- called human culture, in opposi-\ntion to nature. For example \u2014 to cite only this sign, which has interested me \nfor a long time and touches on what so many philosophers and anthropolo-\ngists hold to be proper to man and human law \u2014 the interdiction of incest. \nAmong all that modern primatology has taught us, and among all the fea-\ntures that \u2014 forgive me for recalling this \u2014 I have been emphasizing wher-\never (i.e. just about everywhere) I have been interested in the great question \nof the animal and what is proper to man, as everything I nicknamed carno-\n phallogocentrism (among the most recent and the most recapitulatory texts I \npermit myself, for simple reasons of economy in order to gain time in this \nseminar, to refer to: Of Spirit, \u201cEating Well\u201d in Points . . . , \u201cThe animal that \ntherefore I am,\u201d in L\u2019animal autobiographique, and For What Tomorrow . . . , \nread, and follow up the references given in all the texts in L\u2019animal \nautobiographique),20 for some time now I have been emphasizing the fragil-\nity and porosity of this limit between nature and culture, and the fact that \nthere is also avoidance of incest in some societies of so- called great apes \u2014 \nthe limit between avoidance and interdiction will always be dif\ufb01 cult to \nrecognize \u2014 just as there is also, in human societies, some inevitability about \nincest, if one looks closely, in the very place where incest appears forbidden. \nThe only rule that for the moment I believe we should give ourselves in this \nseminar is no more to rely on commonly accredited oppositional limits \n between what is called nature and culture, nature / law, physis / nomos, God, \nman, and animal or concerning what is \u201cproper to man\u201d [no more to rely on \ncommonly accredited oppositional limits] than to muddle everything and \n20. De l\u2019esprit: Heidegger et la question (Paris: Galil\u00e9e, 1987); trans. Geoffrey Ben-\nnington and Rachel Bowlby as Of Spirit: Heidegger and the Question (Chicago: Univer-\nsity of Chicago Press, 1989); \u201cIl faut bien manger, ou le calcul du sujet,\u201d in Points de \nsuspension (Paris: Galil\u00e9e, 1992), pp. 269\u2013301; trans. Peter Connor and Avital Ronell as \n\u201c \u2018Eating Well,\u2019 or the Calculation of the Subject,\u201d in Points . . . : Interviews 1974\u20131994 \n(Stanford: Stanford University Press, 1995), pp. 255\u201387; \u201cL\u2019animal que donc je suis (\u00e0 \nsuivre), in M-L Mallet, ed., L\u2019animal autobiographique: Autour de Jacques Derrida (Paris: \nGalil\u00e9e, 1999), pp. 251\u2013301. Subsequently published in Jacques Derrida, L\u2019animal que \ndonc je suis, ed. M-L. Mallet (Paris: Galil\u00e9e, 2006), pp. 15\u201377; trans. David Wills as The \nAnimal That Therefore I Am (New York: Fordham University Press, 2008), pp. 1\u201351 \nJacques Derrida and Elizabeth Roudinesco, \u201cViolences contre les animaux,\u201d in De quoi \ndemain: Dialogue (Paris: Fayard / Galil\u00e9e, 2001), pp. 105\u201327; trans. Jeff Fort as For What \nTomorrow . . . (Stanford: Stanford University Press, 2004), pp. 62\u201376.\n36 \n"
+    },
+    {
+      "document": "Derrida_TheBeastAndTheSovereignVol1",
+      "page_num": 33,
+      "bucket": "B (1-3%)",
+      "error_rate": 2.1,
+      "unknown_words_sample": [
+        "eral",
+        "socie",
+        "ections",
+        "hierarchized",
+        "suf",
+        "schmitt",
+        "analogism",
+        "etc"
+      ],
+      "full_text": "16  \u2021  first session\nrush, by analogism, toward resemblances and identities. Every time one \nputs an oppositional limit in question, far from concluding that there is \nidentity, we must on the contrary multiply attention to differences, re\ufb01 ne \nthe analysis in a restructured \ufb01 eld. To take only this example, very close to \nour seminar, it will not be enough to take into account this hardly contest-\nable fact that there are animal societies, animal organizations that are re\ufb01 ned \nand complicated in the organization of family relations and social relations \nin general, in the distribution of work and wealth, in architecture, in the \ninheritance of things acquired, of goods or non- innate abilities, in the con-\nduct of war and peace, in the hierarchy of powers, in the institution of an \nabsolute chief (by consensus or force, if one can distinguish them), of an \nabsolute chief who has the right of life and death over the others, with the \npossibility of revolts, reconciliations, pardons granted, etc. \u2014 it will not suf-\n\ufb01 ce to take into account these scarcely contestable facts to conclude from \nthem that there is politics and especially sovereignty in communities of non-\nhuman living beings. \u201cSocial animal\u201d does not necessarily mean political \nanimal; every law is not necessarily ethical, juridical, or political. So it is the \nconcept of law, and with it that of contract, authority, credit, and therefore \nmany, many others that will be at the heart of our re\ufb02 ections. Is the law that \nreigns (in a way that is moreover differentiated and heterogeneous) in all \nthe so- called animal societies a law of the same nature as what we under-\nstand by law in human right and human politics? And is the complex, al-\nthough relatively short, history of the concept of sovereignty in the West (a \nconcept that is itself an institution that we shall try to study as well as we \ncan) the history of a law, or is it not, the structure of which is or is not, also \nto be found in the laws that organize the hierarchized relations of authority, \nhegemony, force, power, power of life and death in so- called animal socie-\nties? The question is all the more obscure and necessary for the fact that the \nminimal feature that must be recognized in the position of sovereignty, at \nthis scarcely even preliminary stage, is, as we insisted these last few years \nwith respect to Schmitt,21 a certain power to give, to make, but also to suspend \nthe law; it is the exceptional right to place oneself above right, the right to \nnon- right,22 if I can say this, which both runs the risk of carrying the human \nsovereign above the human, toward divine omnipotence (which will more-\nover most often have grounded the principle of sovereignty in its sacred and \n21. See among others the unpublished seminar \u201cPolitics of Friendship\u201d (1988\u201389), \nand Politics of Friendship.\n22. [Translator\u2019s note:] \u201cDroit\u201d in French can correspond to both \u201claw\u201d (in the gen-\neral sense: \u201cle droit civil\u201d is civil law), and \u201cright.\u201d\n \n37\n \n38\n"
+    },
+    {
+      "document": "Derrida_TheBeastAndTheSovereignVol1",
+      "page_num": 34,
+      "bucket": "C (3-5%)",
+      "error_rate": 4.5,
+      "unknown_words_sample": [
+        "atat",
+        "ical",
+        "iarity",
+        "blance",
+        "unheimlich",
+        "abso",
+        "sov",
+        "fasci",
+        "nonrespect",
+        "mustapha"
+      ],
+      "full_text": "first session  \u2021  17\ntheological origin) and, because of this arbitrary suspension or rupture of \nright, runs the risk of making the sovereign look like the most brutal beast \nwho respects nothing, scorns the law, immediately situates himself above \nthe law, at a distance from the law. For the current representation, to which \nwe are referring for a start, sovereign and beast seem to have in common \ntheir  being- outside- the- law. It is as though both of them were situated by \nde\ufb01 nition at a distance from or above the laws, in nonrespect for the abso-\nlute law, the absolute law that they make or that they are but that they do \nnot have to respect. Being- outside- the- law can, no doubt, on the one hand \n(and this is the \ufb01 gure of sovereignty), take the form of  being- above- the-\n laws, and therefore take the form of the Law itself, of the origin of laws, \nthe guarantor of laws, as though the Law, with a capital L, the condition of \nthe law, were before, above, and therefore outside the law, external or even \nheterogeneous to the law; but  being- outside- the- law can also, on the other \nhand (and this is the \ufb01 gure of what is most often understood by animality \nor bestiality), [being- outside- the- law can also] situate the place where the \nlaw does not appear, or is not respected, or gets violated. These modes of \n being- outside- the- law (be it the mode of what is called the beast, be it that \nof the criminal, even of that grand criminal we were talking about last year \nand of whom Benjamin said that he fascinates the crowd, even when he is \ncondemned and executed, because, along with the law, he de\ufb01 es the sov er-\neignty of the state as monopoly of violence; be it the being- outside- the-\n law of the sovereign himself) \u2014 these different modes of being- outside-\nthe- law can seem to be heterogeneous among themselves, or even apparently \nheterogeneous to the law, but the fact remains, sharing this common being-\n outside- the- law, beast, criminal, and sovereign have a troubling resem-\nblance: they call on each other and recall each other, from one to the other; \nthere is between sovereign, criminal, and beast a sort of obscure and fasci-\nnating complicity, or even a worrying mutual attraction, a worrying famil-\niarity, an unheimlich, uncanny23 reciprocal haunting. Both of them, all three \nof them, the animal, the criminal, and the sovereign, are outside the law, at \na distance from or above the laws: criminal, beast, and sovereign strangely \nresemble each other while seeming to be situated at the antipodes, at each \nother\u2019s antipodes. It happens, moreover \u2014 brief reappearance of the wolf \u2014 \nthat the nickname \u201cwolf\u201d is given to a head of state as Father of the Nation. \nMustapha Kemal who had given himself the name Atat\u00fcrk (Father of the \nTurks) was called the \u201cgray wolf\u201d by his partisans, in memory of the myth-\nical ancestor Genghis Khan, the \u201cblue wolf.\u201d\n23. [Translator\u2019s note:] \u201cUncanny\u201d is in En glish in the text.\n39 \n"
+    },
+    {
+      "document": "Derrida_TheBeastAndTheSovereignVol1",
+      "page_num": 37,
+      "bucket": "C (3-5%)",
+      "error_rate": 4.1,
+      "unknown_words_sample": [
+        "philosophemes",
+        "ibid",
+        "culty",
+        "crimi",
+        "violences",
+        "ceas",
+        "militaro",
+        "tainly",
+        "glish",
+        "dif"
+      ],
+      "full_text": "20  \u2021  first session\nonly from the beginning of the book the example of the long and complex \nhistory of the relations between the USA and Saddam Hussein\u2019s Iraq. Cer-\ntainly, Chomsky has no indulgence for Saddam Hussein or for Iraq, which \nhe describes, relying on a number of well- known facts, as a \u201cleading crimi-\nnal state\u201d (p. 24, read all the pages around this). But if Saddam\u2019s Iraq indeed \ncomes in at the top of the list of criminal states, if, as US diplomacy has been \nreminding us regularly for ten years, Saddam is guilty of using weapons of \nmass destruction against his neighbors and his own people, Chomsky has no \ndif\ufb01 culty recalling that for a very long time Saddam was well treated by the \nUSA, as an ally and a client. This treatment only came to an end, leading to \na terrible biological war whose Iraqi victims are counted by the thousands \n(malnutrition, illness, \ufb01 ve thousand children dying every month accord-\ning to unicef quoted by Chomsky, etc.) \u2014 this treatment of Saddam as \nrespected ally and client only came to an end, then, when Saddam stopped \nfollowing the political and  militaro- economic strategy of the USA (and one \ncould say the same about the Taliban). Only at that moment did Iraq, ceas-\ning to be an ally, an accomplice, or a docile client, become a rogue state and \nonly then did one begin to speak of Saddam Hussein, the leader of a rogue \nstate, as a beast, \u201cthe beast of Baghdad.\u201d29 I make this remark to announce \nthe fact that we will no doubt be talking a lot, later in this seminar, about \nwhat has become known as \u201cSeptember 11.\u201d\nThat, said too brie\ufb02 y and in pure anticipation, is the obscure place to-\nward which we are directed by the word, itself obscure, \u201canalogy,\u201d analogy \nbetween the political sovereign and the beast. This word analogy is not only \nobscure, like a word whose concept or theorem, whose theoretical tenor, is \ninvisible or inaccessible: it is obscure and dark and black, this word analogy, \nlike the reality of a frightening cloud that announces and carries within \nit the threat of thunder, of lightning, of tempest and hurricane; it is dark \nbecause it is heavy with all the (actual and virtual) violences and nameless \nhistorical ravages, disasters we won\u2019t (already don\u2019t) have a name for, when \nthe names of right (national or international), war, civil war or international \nwar, terrorism (national or international) lose their most elementary credit.\n2. The second reason why I quote these \ufb01 rst chapters of the Social Con-\ntract is that we already see cited in them philosophers and philosophemes, \npolitical philosophies, that ought to occupy us as a \ufb01 rst priority: for example, \nas you heard, Aristotle, Grotius, and Hobbes. Rousseau here inscribes all \nthree of them rather quickly into the same tradition, neglecting the massive \nfact that it was in order to break with Aristotle, and with the consequences \n29. Ibid., p. 28. [Translator\u2019s note: Derrida quotes Chomsky here in En glish.]\n \n42\n \n43\n"
+    },
+    {
+      "document": "Derrida_TheBeastAndTheSovereignVol1",
+      "page_num": 38,
+      "bucket": "D (5-10%)",
+      "error_rate": 6.8,
+      "unknown_words_sample": [
+        "ibid",
+        "ght",
+        "ratione",
+        "nition",
+        "seus",
+        "martialled",
+        "bruta",
+        "animalia",
+        "ethi",
+        "ganizes"
+      ],
+      "full_text": "first session  \u2021  21\nthat Aristotle draws from his famous but still just as enigmatic de\ufb01 nition of \nman as political creature or animal (politikon zo\u00afon), that Hobbes wrote his \nLeviathan and his De Cive, and developed a theory of sovereignty that will \ninterest us later. Naturally we shall have to read or reread these texts.\n3. The third reason why I refer to these \ufb01 rst chapters of the Social Con-\ntract is that in the lines I have just quoted, Rousseau adds a footnote to the \nword \u201cbrutishness\u201d [abrutissement] (\u201cthey love their enslavement as Odys-\nseus\u2019s companions loved their brutishness\u201d). The note refers to Plutarch. It \nsays, \u201cSee a little treatise by Plutarch, entitled: That Beasts Have Reason.\u201d \nYou will \ufb01 nd this fascinating text by Plutarch [Bruta Animalia ratione uti], \ntranslated [into French] by Amyot, in the collection published and pref-\naced by \u00c9lisabeth de Fontenay, Trois trait\u00e9s pour les animaux.30 The treatise \nto which Rousseau refers is found there under the title \u201cThat brute beasts \nuse reason.\u201d The word \u201cbrute\u201d will often be very important to us, where it \nseems to connote not only animality but a certain bestiality of the animal. \nI cannot recommend too strongly that you read these texts, which could \ndetain us for a long time. In \u201cThat brute beasts use reason,\u201d the \ufb01 rst words \nof a philosophical discussion with several voices already or again convoke \nthe \ufb01 gure of the wolf, the analogy and the quasi- metamorphosis that or-\nganizes the passage between man and wolf (but also lion). The discussion \nbegins, then, with this metamorphic analogy: \u201cI think I\u2019ve understood what \nyou\u2019re saying, Circe, and I\u2019ll bear it in mind. But please could you tell me \nwhether there are any Greeks among the people you\u2019ve turned into wolves \nand lions?\u201d31\nRead what follows and notice too that in praising a certain virtue of the \nanimal, one of the participants in the discussion, Gryllus, places, precisely, \nthis animal virtue above or at a distance from the law. Let me read this ethi-\ncal and political praise of the animal, whose moral and social, even political, \nvirtue goes above or before the law \u2014 a bit like (a \u201clike\u201d that carries the \nwhole charge of the question of an analogy), a bit \u201clike\u201d the sovereign:\nYou can see, however, that when animals \ufb01 ght with one another or with \nyou humans, they do not employ tricks and stratagems: they rely in their \nbattles on blatant bare bravery backed up by real prowess. They don\u2019t need \na law to be passed [my emphasis] to summon them to battle, and they don\u2019t \n\ufb01 ght because they\u2019re afraid of being  court- martialled for desertion: they see \n30. Plutarque, Trois trait\u00e9s pour les animaux, ed. \u00c9lisabeth de Fontenay (Paris: P.O.L., \n1992); \u201cOn the Use of Reason by \u2018Irrational\u2019 Animals,\u201d in Plutarch, Essays, trans. Robin \nWater\ufb01 eld (London: Penguin Books, 1992), pp. 383\u201399. \n31. Ibid., p. 125 [p. 383].\n44 \n"
+    },
+    {
+      "document": "Derrida_TheBeastAndTheSovereignVol1",
+      "page_num": 39,
+      "bucket": "D (5-10%)",
+      "error_rate": 5.6,
+      "unknown_words_sample": [
+        "ibid",
+        "tively",
+        "ght",
+        "garnier",
+        "instinc",
+        "charac",
+        "ter",
+        "rousseauist",
+        "modi",
+        "dable"
+      ],
+      "full_text": "22  \u2021  first session\nthe \ufb01 ght through to the bitter end and refuse to give in because they instinc-\ntively loathe defeat. [Read what follows; and, further on:]\n \n[. . .] You don\u2019t \ufb01 nd animals begging or pleading for mercy or admitting \ndefeat [error of Plutarch\u2019s: comment]. Cowardice never led a lion to be-\ncome enslaved to another lion, or a horse to another horse, as it does human \nbeings, who readily welcome the condition which is named after coward-\nice. Suppose humans trap or trick animals into captivity: if the animals are \nmature, they choose to reject food, reject thirst and choose to bring about \nand embrace death rather than accept enslavement.32 [Comment.]\nIf we wanted to place this note in the Social Contract referring to Plutarch\u2019s \nplea for animal reason into a network, a Rousseauist network, we should \nhave to study closely, in \u00c9mile (book 2) a very long quotation (more than \nthree pages) from the opening of the \ufb01 rst of Plutarch\u2019s Three Treatises . . . \n(\u201cIf It Is Permissible to Eat Flesh\u201d [De esu carnium]). Before quoting Plu-\ntarch, the one who speaks to \u00c9mile, the imaginary pupil, warns him against \neating meat. Children are naturally vegetarian, and it is important \u201cnot to \nturn them [. . .] into meat eaters.\u201d Both for their health and for their charac-\nter. For, the master says:\nIt is certain that great meat eaters are in general more cruel and ferocious \nthan other men: this observation is for all places and times. The barbarity of \nthe En glish is well known. [. . .] All savages are cruel; and their customs do \nnot lead them to be so: this cruelty comes from their food [comment: cruelty \nand without,33 cruelty and death sentence]. They go to war as they go to \nthe hunt, and treat men like bears [my emphasis: always this \u201clike\u201d of the \n anthropo- zoological analogy]. In England even butchers are not allowed to \nbear witness, and no more are surgeons. Great criminals harden themselves \nfor murder by drinking blood.34\n(Rousseau adds a note here, because of a scruple, because his translator \npointed out to him, and translators are always the most vigilant and formi-\ndable readers, that in fact En glish butchers and surgeons did have the right \nto bear witness and that only butchers, and not surgeons, were refused the \nright to sit as jurors in criminal trials.) Read what follows, and the very long \nquotations from Plutarch\u2019s plea or indictment, one of the most eloquent in \n32. Ibid., pp. 129\u201330 [p. 387, very slightly modi\ufb01 ed].\n33. \u201cCruaut\u00e9 et sans\u201d in the typescript: perhaps a typing error for \u201ccruaut\u00e9 et sang\u201d \n[cruelty and blood].\n34. Jean-Jacques Rousseau, \u00c9mile (Paris:  Garnier-Flammarion, 1966), pp. 196\u201397. \n[Translator\u2019s note: My translation.]\n \n45\n"
+    },
+    {
+      "document": "Derrida_TheBeastAndTheSovereignVol1",
+      "page_num": 40,
+      "bucket": "C (3-5%)",
+      "error_rate": 3.9,
+      "unknown_words_sample": [
+        "tes",
+        "orality",
+        "gure",
+        "devoro",
+        "vocifera",
+        "des",
+        "voix",
+        "tion",
+        "ized",
+        "icted"
+      ],
+      "full_text": "first session  \u2021  23\nhistory in the trial of carnivorous culture and its \u201ccruel delights\u201d (\u201cYou do \nnot eat these carnivorous animals, you imitate them; you hunger only for \nthe innocent and gentle beasts who do no harm to anyone, who are attached \nto you, who serve you, and that you devour [my emphasis] as a reward for \ntheir services.\u201d)\nYou have no doubt already noticed the recurrence of the lexicon of de-\nvourment (\u201cdevour,\u201d \u201cdevouring\u201d): the beast is on this account devouring, \nand man devours the beast. Devourment and voracity. Devoro, vorax, vora-\ntor. It\u2019s about mouth, teeth, tongue, and the violent rush to bite, engulf, \nswallow the other, to take the other into oneself too, to kill it or mourn \nit. Might sovereignty be devouring? Might its force, its power, its greatest \nforce, its absolute potency be, in essence and always in the last instance, a \npower of devourment (mouth, teeth, tongue, violent rush to bite, engulf, \nswallow the other, to take the other into oneself too, to kill it or mourn it)? \nBut what goes via interiorizing devourment, i.e. via orality, via the mouth, \nthe maw, teeth, throat, glottis, and tongue \u2014 which are also the sites of cry \nand speech, of language \u2014 that very thing can also inhabit that other site of \nthe visage or the face, i.e. the ears, the auricular attributes, the visible and \ntherefore audiovisual forms of what allows one not only to speak but also \nto hear and listen. \u201cGrandmother, what big ears you have,\u201d she says to the \nwolf. The place of devourment is also the place of what carries the voice, \nthe topos of the  porte- voix [megaphone, literally \u201cvoice- carrier\u201d], in a word, \nthe place of vociferation. Devourment, vociferation, there, in the \ufb01 gure of \nthe \ufb01 gure,35 in the face, smack in the mouth, but also in the \ufb01 gure as trope, \nthere\u2019s the \ufb01 gure of \ufb01 gure, vociferating devourment or devouring vocifera-\ntion. The one, vociferation, exteriorizes what is eaten, devoured, or interior-\nized: the other, conversely or simultaneously, i.e. devourment, interiorizes \nwhat is exteriorized or proffered. And on this subject of devouring, proffer-\ning, eating, speaking, and therefore listening, of obeying in receiving within \nthrough the ears, on the subject of the beast and the sovereign, I leave you \nto muse on the ass\u2019s ears of King Midas that Apollo in\ufb02 icted on him because \nhe had preferred his rival in a musical competition. The ass is thought, un-\nfairly, to be the most stupid of beasts [la plus b\u00eate des b\u00eates]. Midas hid these \nass\u2019s ears under his crown, and when his hairdresser denounced him and \ndivulged his secret to the earth, the rushes, Ovid tells us, murmured in the \nwind, \u201cKing Midas has ass\u2019s ears!\u201d And then in Tristan and Yseult, another \nking, another animal\u2019s ears, the horse\u2019s ears of King Mark.\n35. [Translator\u2019s note:] \u201cFigure\u201d in French means both \u201c\ufb01 gure\u201d and \u201cface.\u201d\n46 \n47 \n"
+    },
+    {
+      "document": "Derrida_TheBeastAndTheSovereignVol1",
+      "page_num": 43,
+      "bucket": "D (5-10%)",
+      "error_rate": 5.2,
+      "unknown_words_sample": [
+        "tion",
+        "gured",
+        "guration",
+        "fabula",
+        "affabulation",
+        "fol",
+        "ciple",
+        "arti",
+        "prosthstatic",
+        "simulta"
+      ],
+      "full_text": "26  \u2021  first session\nand god, which, each in its own way, would be \u201capolitical\u201d) \u2014 so, to return \nto our point, among all the questions that we shall have to unfold, among all \nthe things we shall have to ask ourselves, there would, then, be this \ufb01 gura-\ntion of man as \u201cpolitical animal\u201d or \u201cpolitical being,\u201d but also a double and \ncontradictory \ufb01 guration (and \ufb01 guration is always the beginning of a fabula-\ntion or an affabulation), the double and contradictory \ufb01 guration of political \nman as on the one hand superior, in his very sovereignty, to the beast that he \nmasters, enslaves, dominates, domesticates, or kills, so that his sovereignty \nconsists in raising himself above the animal and appropriating it, having \nits life at his disposal, but on the other hand (contradictorily) a \ufb01 guration of \nthe political man, and especially of the sovereign state as animality, or even \nas bestiality (we shall also distinguish between these two values), either a \nnormal bestiality or a monstrous bestiality itself mythological or fabulous. \nPolitical man as superior to animality and political man as animality.\nWhence the most abstract and general form of what we shall have to \nask ourselves: Why is political sovereignty, the sovereign or the state or the \npeople, \ufb01 gured sometimes as what rises, through the law of reason, above \nthe beast, above the natural life of the animal, and sometimes (or simulta-\nneously) as the manifestation of bestiality or human animality, i.e. human \nnaturality? I leave these questions as they are for the moment. But the prin-\nciple of a reply (I shall call it prosthetic or prostatic or prosthstatic, i.e. fol-\nlowing the technical or prosthetic logic of a supplement that supplements \nnature by adding to it an arti\ufb01 cial organ, here the state) seems to come to \nus from what is no doubt the most arresting example (the one that is most \npresent to our memory, and we shall return to it) of this \ufb01 guration of the \npolitical, of the state and sovereignty in the allegory or the fable of the mon-\nstrous animal, and precisely the dragon called Leviathan in the Book of \nJob: I am referring to Hobbes\u2019s book Leviathan (1651).38 Right from its In-\ntroduction, and in an opposition to Aristotle that we shall have to specify \nlater, Hobbes\u2019s Leviathan inscribes human art in the logic of an imitation of \ndivine art. Nature is the art of God when he creates and governs the world, \ni.e. when, by an art of life, a genius of life, he produces the living and thus \ncommands the living. Well, man, who is the most eminent living creation \nof God, the art of man that is the most excellent replica of the art of God, \nthe art of this living being, man, imitates the art of God but, being unable to \ncreate, fabricates and, being unable to engender a natural animal, fabricates \nan arti\ufb01 cial animal. Art goes so far as to imitate this excellent life-form that \n38. [Derrida quotes from] Leviathan, Authoritative Text, Backgrounds, Interpreta-\ntions, ed. Richard E. Flathman and David Johnston (New York: Norton, 1997), p. 9.\n \n51\n"
+    }
+  ]
+}

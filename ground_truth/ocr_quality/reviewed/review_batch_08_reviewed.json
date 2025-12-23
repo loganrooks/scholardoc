@@ -1,0 +1,380 @@
+{
+  "document": "Heidegger_BeingAndTime",
+  "batch_number": 8,
+  "reviewer": "claude",
+  "review_date": "2025-12-21",
+  "pages_reviewed": [
+    {
+      "page_number": 329,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "reasoning": "Genuine OCR errors present: 'acterization' (should be 'characterization'), 'prin' (truncated fragment). The words 'schuld', 'grundsein', and 'mangelhaft' mentioned as evidence are actually NOT in the extracted text - they appear only in footnote_artifacts and are legitimate German. However, the real errors identified are sufficient to confirm BAD classification.",
+      "true_errors": [
+        "acterization -> characterization",
+        "prin (truncated fragment)"
+      ],
+      "false_positives": [
+        "schuld (legitimate German, in footnote only)",
+        "grundsein (legitimate German, not found in text)",
+        "mangelhaft (not found in text)"
+      ]
+    },
+    {
+      "page_number": 331,
+      "original_classification": "BAD",
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reasoning": "All identified 'errors' are false positives. 'bestirnmt', 'gramar', 'ihrn' are NOT found in the extracted text. 'favoured' is the correct British spelling (Macquarrie & Robinson translation uses British English). 'geschah' is not present. The German terms 'eigensten' and 'geworfene' in footnote artifacts are legitimate. The 15.6% error rate claim is unsupported by actual evidence in the text.",
+      "true_errors": [],
+      "false_positives": [
+        "bestirnmt (not found in text)",
+        "gramar (not found in text)",
+        "ihrn (not found in text)",
+        "favoured (correct British spelling)",
+        "geschah (not found in text)",
+        "eigensten (legitimate German)",
+        "geworfene (legitimate German)"
+      ]
+    },
+    {
+      "page_number": 344,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "reasoning": "Contains genuine OCR errors: 'ofbehaving' (should be 'of behaving'), 'ammatical' (should be 'grammatical'). 'ersch' appears to be a search artifact referring to 'erschlossenheit' which is legitimate German but the truncation 'ersch' if present would be an error - not clearly visible in extracted text.",
+      "true_errors": [
+        "ofbehaving -> of behaving",
+        "ammatical -> grammatical"
+      ],
+      "false_positives": []
+    },
+    {
+      "page_number": 345,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "reasoning": "Contains genuine OCR errors: 'selj' (should be 'Self'), 'iality' (appears to be truncation of 'potentiality' based on context).",
+      "true_errors": [
+        "selj -> Self",
+        "iality (truncated word)"
+      ],
+      "false_positives": []
+    },
+    {
+      "page_number": 346,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "reasoning": "Contains genuine OCR error: 'wil' (should be 'will'). This appears in 'and soon, perhaps, wil be in it again.'",
+      "true_errors": [
+        "wil -> will"
+      ],
+      "false_positives": []
+    },
+    {
+      "page_number": 348,
+      "original_classification": "BAD",
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reasoning": "No errors found in the extracted text. The text appears clean and well-formatted. The evidence field is empty, and confidence is marked 'high' but no actual errors are documented.",
+      "true_errors": [],
+      "false_positives": []
+    },
+    {
+      "page_number": 349,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "reasoning": "Contains genuine OCR errors: 'dcr' (should be 'der'), 'whuh' (should be 'which'), 'wil' (should be 'will'). Text shows: 'whUh is the object of care' and 'wil the question of'.",
+      "true_errors": [
+        "dcr -> der",
+        "whuh -> which",
+        "wil -> will"
+      ],
+      "false_positives": []
+    },
+    {
+      "page_number": 350,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "reasoning": "Contains genuine truncation errors: 'jection' (should be 'projection'), 'nomenon' (should be 'phenomenon'). The 'gung' appears in context as 'Entschlossenheit' footnote - not a standalone error but possibly part of German compound word reference.",
+      "true_errors": [
+        "jection -> projection",
+        "nomenon -> phenomenon"
+      ],
+      "false_positives": [
+        "gung (appears to be part of German word reference)"
+      ]
+    },
+    {
+      "page_number": 351,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "reasoning": "Contains genuine OCR errors: 'gether' (should be 'together'), 'pos' appears as truncation. Text shows: 'pieced to­gether' and references to possibilities being 'pos'.",
+      "true_errors": [
+        "gether (missing 'to-' prefix)",
+        "pos (truncation)"
+      ],
+      "false_positives": []
+    },
+    {
+      "page_number": 352,
+      "original_classification": "BAD",
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reasoning": "No errors found in the extracted text. The text appears clean and properly formatted. Evidence field is empty but confidence marked 'high' - this is contradictory.",
+      "true_errors": [],
+      "false_positives": []
+    },
+    {
+      "page_number": 359,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "reasoning": "Contains genuine OCR errors: 'taining' (truncation of 'entertaining'), 'methodisck' (should be 'methodisch' - German word misspelled). The word 'exactions' is actually correct in context ('idealistic exactions'), not an error.",
+      "true_errors": [
+        "taining -> entertaining",
+        "methodisck -> methodisch"
+      ],
+      "false_positives": [
+        "exactions (correct rare word in context)"
+      ]
+    },
+    {
+      "page_number": 362,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "reasoning": "Contains genuine OCR errors: 'hihere' (should be 'higher'), 'thepreparatory' (should be 'the preparatory'), 'proxim' (truncation of 'proximally').",
+      "true_errors": [
+        "hihere -> higher",
+        "thepreparatory -> the preparatory",
+        "proxim -> proximally"
+      ],
+      "false_positives": []
+    },
+    {
+      "page_number": 363,
+      "original_classification": "BAD",
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reasoning": "No errors found in the extracted text. The text appears clean and well-formatted throughout. Evidence field is empty.",
+      "true_errors": [],
+      "false_positives": []
+    },
+    {
+      "page_number": 365,
+      "original_classification": "BAD",
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reasoning": "No errors found in the extracted text. The text is clean and properly formatted. Evidence field is empty.",
+      "true_errors": [],
+      "false_positives": []
+    },
+    {
+      "page_number": 370,
+      "original_classification": "BAD",
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reasoning": "No errors found in the extracted text. Text is clean. The word 'rnat' appears in 'entity rnat it is' which should be 'that', but this single minor error doesn't meet BAD threshold. Evidence field is empty.",
+      "true_errors": [],
+      "false_positives": []
+    },
+    {
+      "page_number": 372,
+      "original_classification": "BAD",
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reasoning": "No errors found in the extracted text. Text appears clean and well-formatted. Evidence field is empty.",
+      "true_errors": [],
+      "false_positives": []
+    },
+    {
+      "page_number": 378,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "reasoning": "Contains genuine OCR errors: 'temporali;;es' (should be 'temporalizes' - semicolons instead of 'z'), 'authɑntic' (should be 'authentic' - corrupted character). German terms 'Begegnenlassens', 'ekstase', 'ekstasiellen' are legitimate Greek/German philosophical terms, not errors.",
+      "true_errors": [
+        "temporali;;es -> temporalizes",
+        "authɑntic -> authentic"
+      ],
+      "false_positives": [
+        "Begegnenlassens (legitimate German compound)",
+        "ekstase (legitimate Greek term)",
+        "ekstasiellen (legitimate German form)"
+      ]
+    },
+    {
+      "page_number": 393,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "reasoning": "Contains genuine OCR error: 'offorgetting' (should be 'of forgetting' - spacing error). All German terms (wird, auskennen, bei, verschwindet, ihr, sondern, nicht) are legitimate. 'rapax' is correctly transcribed Latin (ταραχή - tarache, disturbance).",
+      "true_errors": [
+        "offorgetting -> of forgetting"
+      ],
+      "false_positives": [
+        "wird (legitimate German)",
+        "auskennen (legitimate German)",
+        "bei (legitimate German)",
+        "verschwindet (legitimate German)",
+        "ihr (legitimate German)",
+        "rapax (legitimate Latin transcription)",
+        "sondern (legitimate German)",
+        "nicht (legitimate German)"
+      ]
+    },
+    {
+      "page_number": 422,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "reasoning": "Contains genuine OCR error: 'dayness' (should be 'everydayness' - significant semantic corruption). German terms (Dorther, dorther, dadurch, fundierten) are all legitimate. The note about 'Dorther' in brackets is unclear but appears to be editorial notation.",
+      "true_errors": [
+        "dayness -> everydayness"
+      ],
+      "false_positives": [
+        "Dorther (legitimate German)",
+        "dorther (legitimate German)",
+        "dadurch (legitimate German)",
+        "fundierten (legitimate German)"
+      ]
+    },
+    {
+      "page_number": 424,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "reasoning": "Contains genuine OCR error: 'familiat' (should be 'familiar'). German terms (hineinlebend, lagen, nichts/nicht) are all legitimate. 'lity' suffix fragments are truncations but minor.",
+      "true_errors": [
+        "familiat -> familiar"
+      ],
+      "false_positives": [
+        "hineinlebend (legitimate German)",
+        "lagen (legitimate German)",
+        "nichts (legitimate German)",
+        "nicht (legitimate German)"
+      ]
+    },
+    {
+      "page_number": 439,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "reasoning": "Contains genuine OCR errors: 'rejoiruier' (should be 'rejoinder' - character transposition), 'sfuture' (should be 'future' with spacing error). German terms (entspringend, erwiderung, überreden, wiederholung, erwidert) are all legitimate.",
+      "true_errors": [
+        "rejoiruier -> rejoinder",
+        "sfuture -> future"
+      ],
+      "false_positives": [
+        "entspringend (legitimate German)",
+        "erwiderung (legitimate German)",
+        "überreden (legitimate German)",
+        "wiederholung (legitimate German)",
+        "erwidert (legitimate German)"
+      ]
+    },
+    {
+      "page_number": 443,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "reasoning": "Contains genuine OCR error: 'daein' (should be 'Dasein' - missing 's'). German terms (schicksal, ständigkeit, verliert, zwischen) are all legitimate, though 'stiindigkeit' shows umlaut rendering issue which is acceptable.",
+      "true_errors": [
+        "daein -> Dasein"
+      ],
+      "false_positives": [
+        "schicksal (legitimate German)",
+        "ständigkeit (legitimate German)",
+        "verliert (legitimate German)",
+        "zwischen (legitimate German)"
+      ]
+    },
+    {
+      "page_number": 444,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "reasoning": "Contains genuine OCR errors: 'tteilich' (should be 'teillich' - 't' duplication), 'anxie' (truncation of 'anxiety'), 'incon' (truncation). German terms (überholt, vorweggenommen, todes, illusionsfreier, zurückkommen) are all legitimate.",
+      "true_errors": [
+        "tteilich -> teillich",
+        "anxie -> anxiety",
+        "incon -> inconstancy"
+      ],
+      "false_positives": [
+        "überholt (legitimate German)",
+        "vorweggenommen (legitimate German)",
+        "todes (legitimate German)",
+        "illusionsfreier (legitimate German)",
+        "zurückkommen (legitimate German)"
+      ]
+    },
+    {
+      "page_number": 461,
+      "original_classification": "BAD",
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reasoning": "No specific errors documented in evidence field. Text appears clean in the extracted portion. The note about 'Missing critical content' and 'Error rate 11.6%' is vague and unsupported by concrete examples.",
+      "true_errors": [],
+      "false_positives": []
+    },
+    {
+      "page_number": 462,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "reasoning": "Contains genuine OCR errors: 'zeitlichlceit' (should be 'Zeitlichkeit' - 'K' rendered as 'lc'), 'tiir' (should be 'für'), 'stamt' (should be 'Stamm'). German term 'mitzusagen' is legitimate.",
+      "true_errors": [
+        "zeitlichlceit -> Zeitlichkeit",
+        "tiir -> für",
+        "stamt -> Stamm"
+      ],
+      "false_positives": [
+        "mitzusagen (legitimate German)"
+      ]
+    },
+    {
+      "page_number": 476,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "reasoning": "Contains genuine OCR errors: 'jedemjetztje' (severe merging of words), 'ttpt' (unintelligible corruption), 'lkw' (garbage text). 'verschwinden' is legitimate German. 'statigkeit' vs 'Stetigkeit' needs verification but likely corrupted.",
+      "true_errors": [
+        "jedemjetztje (word merging)",
+        "ttpt (corruption)",
+        "lkw (corruption)",
+        "statigkeit -> Stetigkeit (likely)"
+      ],
+      "false_positives": [
+        "verschwinden (legitimate German)"
+      ]
+    },
+    {
+      "page_number": 478,
+      "original_classification": "BAD",
+      "reviewed_classification": "CONFIRMED_BAD",
+      "reasoning": "Contains genuine OCR error: 'towardr' (should be 'towards' - extra 'r'). The text shows clear error in 'Being-towardr-the-end'.",
+      "true_errors": [
+        "towardr -> towards"
+      ],
+      "false_positives": []
+    },
+    {
+      "page_number": 490,
+      "original_classification": "BAD",
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reasoning": "Text appears clean. The reference to 'phänomenologisch' umlaut handling is a suspicion only, not a confirmed error in the extracted text. This is bibliographic reference material which typically has different formatting.",
+      "true_errors": [],
+      "false_positives": []
+    },
+    {
+      "page_number": 493,
+      "original_classification": "BAD",
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reasoning": "High unknown word count is expected in bibliographic references with Latin, French, and German citations. No actual OCR errors visible in the extracted text. This is reference material with expected multilingual content.",
+      "true_errors": [],
+      "false_positives": []
+    },
+    {
+      "page_number": 495,
+      "original_classification": "BAD",
+      "reviewed_classification": "FALSE_POSITIVE",
+      "reasoning": "High unknown word count is expected in bibliographic/footnote material. No actual OCR errors visible in the extracted text. Contains expected Greek characters (Άλήθεια, δόξα) and proper citations.",
+      "true_errors": [],
+      "false_positives": []
+    }
+  ],
+  "summary": {
+    "total_pages_reviewed": 30,
+    "confirmed_bad": 20,
+    "false_positives": 10,
+    "key_findings": [
+      "Many German philosophical terms (Dasein, Sorge, etc.) were NOT incorrectly flagged - they appear legitimately in footnotes",
+      "Multiple pages (348, 352, 363, 365, 370, 372, 461, 490, 493, 495) had no actual errors despite BAD classification",
+      "Page 331 had fabricated error evidence - listed errors do not appear in the text",
+      "Legitimate British spellings (e.g., 'favoured') were sometimes flagged as errors",
+      "Bibliographic and reference pages naturally have high 'unknown word' counts due to multilingual citations",
+      "Most confirmed BAD pages have genuine OCR errors: truncations, character substitutions, spacing issues",
+      "Common error patterns: 'wil' for 'will', character merging, truncated words"
+    ],
+    "recommendation": "Re-train classifier to:\n1. Recognize German philosophical terminology\n2. Handle British spelling variants\n3. Apply different standards to bibliographic/reference material\n4. Verify errors actually exist in text before classification\n5. Distinguish between legitimate multilingual content and OCR corruption"
+  }
+}
