@@ -1,14 +1,29 @@
 # ScholarDoc Technical Specification
 
-> **Status:** Draft  
-> **Last Updated:** December 2025  
+> **Status:** Draft (Phase 0 validated)
+> **Last Updated:** December 18, 2025
 > **Depends On:** REQUIREMENTS.md, QUESTIONS.md
+> **Validated By:** spikes/FINDINGS.md (Phase 0 exploration complete)
 
 ---
 
 ## Overview
 
 ScholarDoc is a Python library for converting scholarly documents to structured Markdown. This specification defines the technical approach, data models, and interfaces.
+
+### Key Findings from Exploration (Phase 0)
+
+These empirical findings inform the specification:
+
+| Finding | Impact | Evidence |
+|---------|--------|----------|
+| PyMuPDF is 32-57x faster than alternatives | ✅ Confirmed library choice | Spike 02 |
+| PDF page labels available (Roman, Arabic, mixed) | Use labels not indices | Spike 01 |
+| Philosophy texts are single-column | Defer multi-column | Spike 01 |
+| Philosophy uses endnotes, not footnotes | Defer note linking to Phase 2 | Spike 04 |
+| OCR errors hurt RAG (0.5-0.6 similarity) | Add quality assessment | Spike 08 |
+| Spell-check correction > re-OCR | Use existing text + correction | Spike 09 |
+| Heading detection: combined method best | Confidence threshold ≥0.6 | Spike 03 |
 
 ---
 
@@ -98,7 +113,7 @@ class RawPage:
     page_label: str | None       # Printed page number if detectable
     blocks: list[TextBlock]
     
-@dataclass  
+@dataclass
 class TextBlock:
     """A block of text with position and style info."""
     text: str
@@ -108,6 +123,25 @@ class TextBlock:
     is_bold: bool
     is_italic: bool
     block_type: BlockType  # PARAGRAPH, HEADING, FOOTNOTE, etc.
+
+    # Quality metadata (NEW - based on Spike 08-09 findings)
+    quality_score: float | None = None  # 0.0-1.0, None if not assessed
+    quality_flags: set[str] | None = None  # {'garbled', 'ocr_corrected', 'low_entropy'}
+
+
+@dataclass
+class QualityAssessment:
+    """Document quality assessment (Spike 08-09 findings)."""
+    overall_score: float  # 0.0-1.0
+    is_usable_for_rag: bool  # True if < 2% error rate
+    is_likely_scanned: bool  # OCR vs born-digital
+    error_rate: float  # Estimated OCR error rate
+    corrections_applied: int  # Number of spell-check corrections
+    flags: set[str]  # {'low_entropy', 'high_symbols', 'ocr_corrected'}
+
+    # Detection evidence (Q3 resolved)
+    creator_tool: str | None  # "Adobe Paper Capture" = scanned
+    font_count: int  # >100 suggests OCR
 ```
 
 ### NormalizedDocument
@@ -168,55 +202,73 @@ The main output type returned to users.
 @dataclass
 class ScholarDocument:
     """The main output type for users."""
-    
+
     # Rendered output
     markdown: str
-    
+
     # Structured data
     metadata: DocumentMetadata
     structure: DocumentStructure
-    
+
+    # Quality assessment (NEW - Spike 08-09 findings)
+    quality: QualityAssessment | None = None
+
     # Diagnostics
     source_path: str
     warnings: list[str]
-    
+
     def save(self, path: str) -> None:
         """Save markdown to file."""
-        
+
     def to_dict(self) -> dict:
         """Convert to dictionary for JSON serialization."""
+
+    def is_rag_ready(self) -> bool:
+        """Check if document quality is sufficient for RAG applications."""
+        if self.quality is None:
+            return True  # Assume OK if not assessed
+        return self.quality.is_usable_for_rag
 ```
 
 ---
 
 ## Configuration
 
-> **⚠️ DRAFT:** Options below depend on unresolved questions. See QUESTIONS.md Q1 (page format), Q2 (multi-column), Q4 (heading strategy).
+> **✅ VALIDATED:** Options below are confirmed by Phase 0 exploration. See QUESTIONS.md for resolutions.
 
 ```python
 @dataclass
 class ConversionConfig:
     """Configuration for document conversion."""
-    
+
     # Output options
     include_metadata_frontmatter: bool = True
     include_page_markers: bool = True
     page_marker_style: Literal["comment", "heading", "inline"] = "comment"
-    
+    # Q1 RESOLVED: Default "comment" produces <!-- page: 42 -->
+
     # Structure options
     detect_headings: bool = True
-    heading_detection_strategy: Literal["font", "heuristic", "none"] = "heuristic"
+    heading_detection_strategy: Literal["combined", "font", "bold", "none"] = "combined"
+    heading_confidence_threshold: float = 0.6  # Q4 RESOLVED: 0.6 works well
     preserve_line_breaks: bool = False  # True = hard breaks, False = soft wrap
-    
+
     # Page options
     page_label_source: Literal["auto", "index", "label"] = "auto"
-    
+    # Q1 RESOLVED: "auto" uses PDF labels when available (e.g., "iii", "42")
+
+    # Quality options (NEW - based on Spike 08-09 findings)
+    enable_quality_assessment: bool = True
+    ocr_correction_enabled: bool = True  # Apply spell-check correction
+    quality_warning_threshold: float = 0.8  # Warn if quality score below this
+
     # Error handling
     on_extraction_error: Literal["raise", "warn", "skip"] = "warn"
-    
+
     # Future phases (no-op for now)
-    extract_footnotes: bool = False  # Phase 2
+    extract_footnotes: bool = False  # Phase 2 - philosophy uses endnotes
     extract_tables: bool = False     # Phase 2
+    multicolumn_handling: Literal["merge", "preserve", "auto"] = "merge"  # Phase 2
 ```
 
 ---
@@ -391,18 +443,29 @@ scholardoc/
 ├── readers/
 │   ├── __init__.py
 │   ├── base.py           # BaseReader ABC
-│   ├── pdf.py            # PDF reader
+│   ├── pdf.py            # PDF reader (PyMuPDF)
 │   └── epub.py           # EPUB reader (Phase 3)
 ├── normalizers/
 │   ├── __init__.py
 │   ├── base.py           # BaseNormalizer ABC
-│   ├── structure.py      # Heading detection
-│   └── pages.py          # Page number mapping
+│   ├── structure.py      # Heading detection (combined method, conf ≥0.6)
+│   ├── pages.py          # Page number mapping (uses PDF labels)
+│   └── ocr_correction.py # ✅ IMPLEMENTED - spell-check OCR correction
 ├── writers/
 │   ├── __init__.py
 │   ├── markdown.py       # Markdown output
 │   └── json.py           # JSON output (future)
 └── utils/
     ├── __init__.py
-    └── detection.py      # Format detection
+    ├── detection.py      # Format detection
+    └── quality.py        # Quality assessment (garbled text, entropy)
 ```
+
+### Implemented Modules (Phase 0)
+
+| Module | Status | Description |
+|--------|--------|-------------|
+| `normalizers/ocr_correction.py` | ✅ Implemented | Spell-check OCR correction with philosophy vocabulary |
+| `spikes/*.py` | ✅ Complete | 10+ exploration scripts validating assumptions |
+
+See `scholardoc/normalizers/ocr_correction.py` for the OCR correction implementation based on Spike 08-09 findings.
