@@ -23,6 +23,34 @@ try:
 except ImportError:
     SpellChecker = None  # type: ignore
 
+# Optional: OCRfixr for BERT-based contextual correction
+# Install with: uv pip install ocrfixr  OR  pip install scholardoc[contextual]
+# Note: OCRfixr has known compatibility issues with Keras 3 / TensorFlow 2.16+
+try:
+    from ocrfixr import spellcheck as ocrfixr_spellcheck
+except (ImportError, ValueError, ModuleNotFoundError):
+    # ValueError: Keras 3 compatibility issue with transformers
+    # ImportError/ModuleNotFoundError: ocrfixr or dependencies not installed
+    ocrfixr_spellcheck = None  # type: ignore
+
+# Optional: wordfreq for probabilistic scoring
+# Install with: uv sync --extra multilingual
+try:
+    from wordfreq import zipf_frequency
+
+    def get_word_frequency(word: str, lang: str = "en") -> float:
+        """Get Zipf frequency for a word (0-8 scale, 0 = not found)."""
+        return zipf_frequency(word.lower(), lang)
+
+    WORD_FREQUENCY_AVAILABLE = True
+except ImportError:
+
+    def get_word_frequency(word: str, lang: str = "en") -> float:
+        """Fallback: return 0 (unknown) for all words."""
+        return 0.0
+
+    WORD_FREQUENCY_AVAILABLE = False
+
 logger = logging.getLogger(__name__)
 
 
@@ -87,6 +115,859 @@ COMMON_OCR_MISSPELLINGS = {
     "beautlful": "beautiful",
     "rnorning": "morning",
 }
+
+# Philosophy/scholarly vocabulary - don't flag these as misspellings
+# These are valid terms that spell checkers often don't recognize
+PHILOSOPHY_VOCABULARY = {
+    # German philosophy terms
+    "dasein",
+    "zeitgeist",
+    "weltanschauung",
+    "aufhebung",
+    "geist",
+    "bildung",
+    "verstehen",
+    "erlebnis",
+    "lebenswelt",
+    "vorstellung",
+    "anschauung",
+    # Kantian terms
+    "apperception",
+    "noumenon",
+    "noumena",
+    "phenomenal",
+    "transcendental",
+    "supersensible",
+    "antinomy",
+    "antinomies",
+    "paralogism",
+    "schematism",
+    "deduction",
+    "intuition",
+    "intuitions",
+    "manifold",
+    "sensibility",
+    "understanding",
+    "judgement",
+    "judgment",
+    "purposiveness",
+    "teleology",
+    "teleological",
+    "aesthetic",
+    "aesthetics",
+    "sublime",
+    "beautiful",
+    # Hegelian terms
+    "dialectic",
+    "dialectical",
+    "aufheben",
+    "sublation",
+    "negation",
+    "determinate",
+    "indeterminate",
+    "mediation",
+    "immediacy",
+    "totality",
+    # Phenomenology (Husserl, Heidegger)
+    "intentionality",
+    "epoché",
+    "epoche",
+    "bracketing",
+    "eidetic",
+    "noesis",
+    "noema",
+    "noematic",
+    "hyletic",
+    "horizonal",
+    "existential",
+    "existentiale",
+    "ontic",
+    "ontological",
+    "ontology",
+    "hermeneutic",
+    "hermeneutics",
+    "facticity",
+    "thrownness",
+    "fallenness",
+    # Deconstruction/Post-structuralism
+    "différance",
+    "differance",
+    "deconstruction",
+    "logocentrism",
+    "aporia",
+    "supplementarity",
+    "iterability",
+    "dissemination",
+    "grammatology",
+    "arche",
+    "telos",
+    "pharmakon",
+    "hymen",
+    "trace",
+    # Other philosophical terms
+    "epistemology",
+    "epistemological",
+    "metaphysics",
+    "metaphysical",
+    "phenomenology",
+    "phenomenological",
+    "axiological",
+    "praxis",
+    "hermeneutical",
+    "intersubjectivity",
+    "intersubjective",
+    "immanent",
+    "immanence",
+    "transcendent",
+    "transcendence",
+    "apodeictic",
+    "apodictic",
+    "aporetic",
+    "categorial",
+    "categorical",
+    # Linguistic/semiotic terms (common in Derrida, Saussure)
+    "phonologism",
+    "phonocentrism",
+    "grapheme",
+    "phoneme",
+    "morpheme",
+    "signifier",
+    "signified",
+    "semiotics",
+    "semiotic",
+    "semiological",
+    "semiology",
+    "scientificity",
+    "fortiori",  # as in "a fortiori"
+    "priori",  # as in "a priori"
+    "posteriori",  # as in "a posteriori"
+    "saussure",
+    "saussurean",
+    # Proper names (philosophers)
+    "kant",
+    "hegel",
+    "husserl",
+    "heidegger",
+    "derrida",
+    "nietzsche",
+    "kierkegaard",
+    "schopenhauer",
+    "fichte",
+    "schelling",
+    "gadamer",
+    "levinas",
+    "merleau",
+    "ponty",
+    "sartre",
+    "beauvoir",
+    "camus",
+    "wittgenstein",
+    "frege",
+    "russell",
+    "carnap",
+    "quine",
+    "kripke",
+    "rawls",
+    "nozick",
+    "rorty",
+    "habermas",
+    "adorno",
+    "horkheimer",
+    "foucault",
+    "deleuze",
+    "guattari",
+    "lacan",
+    "zizek",
+    "badiou",
+    "aristotle",
+    "plato",
+    "socrates",
+    "descartes",
+    "spinoza",
+    "leibniz",
+    "locke",
+    "hume",
+    "berkeley",
+    "hobbes",
+    "rousseau",
+    "montesquieu",
+}
+
+# Latin scholarly terms (common in philosophy, law, academia)
+LATIN_VOCABULARY = {
+    # Common Latin phrases
+    "priori",
+    "posteriori",
+    "fortiori",  # a priori, a posteriori, a fortiori
+    "facto",
+    "jure",  # de facto, de jure
+    "nihilo",  # ex nihilo
+    "ante",
+    "post",  # ante/post
+    "circa",
+    "ergo",
+    "idem",
+    "sic",
+    "ibid",
+    "ibiden",
+    "passim",
+    "infra",
+    "supra",
+    "vide",
+    "viz",
+    "etc",
+    "et",
+    "al",  # et al., etc.
+    # Philosophical Latin
+    "cogito",
+    "sum",  # cogito ergo sum
+    "tabula",
+    "rasa",  # tabula rasa
+    "esse",
+    "ens",
+    "quod",
+    "qua",
+    "sui",
+    "generis",  # sui generis
+    "modus",
+    "ponens",
+    "tollens",
+    "operandi",
+    "vivendi",
+    "reductio",
+    "absurdum",  # reductio ad absurdum
+    "petitio",
+    "principii",  # petitio principii
+    "causa",
+    "causae",
+    "finis",
+    "telos",
+    "substantia",
+    "accidens",
+    "natura",
+    "naturans",
+    "naturata",  # Spinoza
+    "potentia",
+    "actus",
+    "ratio",
+    "intellectus",
+    "voluntas",
+    "liberum",
+    "arbitrium",
+    "res",
+    "extensa",
+    "cogitans",  # Descartes
+    # Legal/academic Latin
+    "corpus",
+    "habeas",
+    "bona",
+    "fide",
+    "mala",
+    "prima",
+    "facie",
+    "mens",
+    "rea",
+    "reus",
+    "pro",
+    "contra",
+    "per",
+    "se",
+    "ipso",
+    "mutatis",
+    "mutandis",
+    "ceteris",
+    "paribus",
+}
+
+# Greek terms (common in philosophy, often transliterated)
+GREEK_VOCABULARY = {
+    # Philosophical Greek
+    "logos",
+    "logoi",
+    "eidos",
+    "eidetic",
+    "physis",
+    "techne",
+    "telos",
+    "teleology",
+    "aletheia",  # Heidegger's truth
+    "nous",
+    "noesis",
+    "noetic",
+    "psyche",
+    "pneuma",
+    "sophia",
+    "philo",
+    "episteme",
+    "doxa",
+    "praxis",
+    "poiesis",
+    "theoria",
+    "arche",
+    "archē",
+    "ousia",
+    "hypostasis",
+    "energeia",
+    "dynamis",
+    "dunamis",
+    "entelechy",
+    "entelecheia",
+    "hexis",
+    "ethos",
+    "pathos",
+    "mythos",
+    "kairos",
+    "chronos",
+    "agape",
+    "eros",
+    "philia",
+    "arete",
+    "virtù",
+    "eudaimonia",
+    "ataraxia",
+    "aporia",
+    "aporias",
+    "catharsis",
+    "mimesis",
+    "polis",
+    "politeia",
+    "kosmos",
+    "cosmos",
+    "demiurge",
+    "demiurgos",
+    # Aristotelian terms
+    "hylomorphism",
+    "hyle",
+    "morphe",
+    "kategoria",
+    "kategoriai",
+}
+
+# German common words (for German philosophy texts)
+GERMAN_COMMON = {
+    # Articles, prepositions, conjunctions
+    "der",
+    "die",
+    "das",
+    "den",
+    "dem",
+    "des",
+    "ein",
+    "eine",
+    "einer",
+    "einem",
+    "einen",
+    "und",
+    "oder",
+    "aber",
+    "denn",
+    "weil",
+    "von",
+    "zu",
+    "mit",
+    "bei",
+    "nach",
+    "aus",
+    "für",
+    "über",
+    "unter",
+    "zwischen",
+    "auf",
+    "in",
+    "an",
+    "um",
+    "ist",
+    "sind",
+    "war",
+    "waren",
+    "wird",
+    "werden",
+    "hat",
+    "haben",
+    "hatte",
+    "hatten",
+    "kann",
+    "können",
+    "muss",
+    "müssen",
+    "als",
+    "wenn",
+    "dass",
+    "ob",
+    "nicht",
+    "nur",
+    "auch",
+    "noch",
+    "schon",
+    "sich",
+    "sein",
+    "ihr",
+    "ihre",
+    # Common German philosophy vocabulary
+    "seiende",
+    "seiendes",  # Heidegger's Being
+    "wesen",
+    "wesentlich",
+    "ding",
+    "dinge",
+    "grund",
+    "gründe",
+    "welt",
+    "welten",
+    "zeit",
+    "zeitlich",
+    "raum",
+    "räumlich",
+    "gegenstand",
+    "gegenstände",
+    "vorstellung",
+    "vorstellungen",
+    "erkenntnis",
+    "erkenntnisse",
+    "vernunft",
+    "verstand",
+    "wille",
+    "willen",
+    "freiheit",
+    "notwendigkeit",
+    "möglichkeit",
+    "wirklichkeit",
+    "erscheinung",
+    "erscheinungen",
+    "wahrheit",
+    "wahrnehmung",
+    "urteil",
+    "urteile",
+    "begriff",
+    "begriffe",
+    "denken",
+    "gedanke",
+    "sprache",
+    "sprechen",
+}
+
+# French scholarly terms (common in theory, Derrida, Lacan, etc.)
+FRENCH_VOCABULARY = {
+    # Articles, prepositions
+    "le",
+    "la",
+    "les",
+    "un",
+    "une",
+    "des",
+    "de",
+    "du",
+    "au",
+    "aux",
+    "et",
+    "ou",
+    "mais",
+    "donc",
+    "dans",
+    "sur",
+    "sous",
+    "avec",
+    "sans",
+    "pour",
+    "par",
+    "entre",
+    "est",
+    "sont",
+    "était",
+    "étaient",
+    # French theory terms (often untranslated)
+    "jouissance",  # Lacan
+    "bricolage",
+    "bricoleur",  # Lévi-Strauss
+    "différance",  # Derrida
+    "écriture",
+    "parole",
+    "mise",
+    "en",
+    "scène",
+    "abyme",  # mise en scène, mise en abyme
+    "avant",
+    "garde",
+    "oeuvre",
+    "œuvre",
+    "esprit",
+    "corps",
+    "raison",
+    "être",
+    "autre",
+    "autrui",
+    "moi",
+    "soi",
+    "sens",
+    "non",
+    "tout",
+    "rien",
+    "temps",
+    "espace",
+    "chose",
+    "choses",
+    "monde",
+    "mondes",
+    "vie",
+    "mort",
+    "nom",
+    "père",  # Lacan: nom-du-père
+    "objet",
+    "petit",  # objet petit a
+    "réel",
+    "imaginaire",
+    "symbolique",  # Lacan's registers
+    "désir",
+    "demande",
+    "besoin",
+    "signifiant",
+    "signifié",
+    "sujet",
+    "subjectivité",
+}
+
+# Combined scholarly vocabulary for quick lookup
+SCHOLARLY_VOCABULARY = (
+    PHILOSOPHY_VOCABULARY | LATIN_VOCABULARY | GREEK_VOCABULARY | GERMAN_COMMON | FRENCH_VOCABULARY
+)
+
+
+# ============================================================================
+# Language Detection (optional)
+# ============================================================================
+
+# Supported spell checker languages (pyspellchecker)
+SUPPORTED_LANGUAGES = {"en", "de", "fr", "es", "pt", "it", "nl", "ru"}
+
+try:
+    from langdetect import DetectorFactory
+    from langdetect import detect as langdetect_detect
+
+    # Make language detection deterministic
+    DetectorFactory.seed = 0
+
+    def detect_language(text: str) -> str:
+        """Detect the dominant language of text using langdetect (Google's algorithm)."""
+        try:
+            # Need sufficient text for reliable detection
+            if len(text.strip()) < 20:
+                return "en"
+            lang = langdetect_detect(text)
+            return lang if lang in SUPPORTED_LANGUAGES else "en"
+        except Exception:
+            return "en"
+
+    LANGUAGE_DETECTION_AVAILABLE = True
+except ImportError:
+
+    def detect_language(text: str) -> str:
+        """Fallback: always return English."""
+        return "en"
+
+    LANGUAGE_DETECTION_AVAILABLE = False
+
+
+# ============================================================================
+# Correction Analysis (Confidence Scoring)
+# ============================================================================
+
+# Foreign language markers - patterns that suggest non-English words
+# Note: These are word ENDINGS only to avoid false positives like "beautiful" (contains "eau")
+FOREIGN_SUFFIXES = {
+    # German suffixes
+    "ung",
+    "heit",
+    "keit",
+    "lich",
+    "isch",
+    "ieren",
+    # French suffixes (excluding common English ones)
+    "eux",
+    "oux",
+    "ique",
+    # Latin/Greek suffixes
+    "ologie",
+    "ismus",
+    "iae",
+    "orum",
+    "ae",  # Latin plural
+}
+
+# Mid-word markers (more conservative - only apply if word is 6+ chars)
+FOREIGN_INFIXES = {
+    "sch",  # German: "Geschichte", but not "school"
+}
+
+
+@dataclass
+class CorrectionConfig:
+    """Configuration for OCR correction confidence scoring.
+
+    Attributes:
+        apply_threshold: Minimum confidence to auto-apply (default 0.7)
+        review_threshold: Minimum confidence to flag for review (default 0.3)
+        skip_threshold: Minimum confidence to even attempt (default 0.1)
+
+        Weight factors (should sum to ~1.0 for interpretability):
+        - edit_distance_weight: Penalty weight for edit distance
+        - frequency_weight: Weight for word frequency difference
+        - ambiguity_weight: Penalty weight for multiple candidates
+        - foreign_marker_weight: Penalty weight for foreign word patterns
+        - first_letter_weight: Penalty weight for first letter changes
+        - scholarly_boost_weight: Bonus for correcting to scholarly terms
+    """
+
+    # Thresholds
+    apply_threshold: float = 0.7
+    review_threshold: float = 0.3
+    skip_threshold: float = 0.1
+
+    # Feature weights
+    edit_distance_weight: float = 0.20
+    frequency_weight: float = 0.25  # Word frequency is highly predictive
+    ambiguity_weight: float = 0.15
+    foreign_marker_weight: float = 0.15
+    first_letter_weight: float = 0.15
+    scholarly_boost_weight: float = 0.10
+
+    # Maximum edit distance to consider
+    max_edit_distance: int = 2
+
+    # Language for frequency lookups
+    language: str = "en"
+
+    @classmethod
+    def conservative(cls) -> "CorrectionConfig":
+        """Very cautious - only correct obvious errors."""
+        return cls(
+            apply_threshold=0.85,
+            review_threshold=0.5,
+            skip_threshold=0.2,
+            frequency_weight=0.30,
+            edit_distance_weight=0.25,
+            max_edit_distance=1,
+        )
+
+    @classmethod
+    def balanced(cls) -> "CorrectionConfig":
+        """Default balanced settings."""
+        return cls()
+
+    @classmethod
+    def aggressive(cls) -> "CorrectionConfig":
+        """More aggressive correction - use with caution."""
+        return cls(
+            apply_threshold=0.5,
+            review_threshold=0.2,
+            skip_threshold=0.05,
+            frequency_weight=0.35,
+            max_edit_distance=3,
+        )
+
+    def validate(self) -> None:
+        """Validate configuration values."""
+        if not (0 <= self.skip_threshold <= self.review_threshold <= self.apply_threshold <= 1):
+            raise ValueError("Thresholds must be: 0 <= skip <= review <= apply <= 1")
+        if self.max_edit_distance < 1:
+            raise ValueError("max_edit_distance must be >= 1")
+
+
+# Default configuration
+DEFAULT_CORRECTION_CONFIG = CorrectionConfig()
+
+
+@dataclass
+class CorrectionCandidate:
+    """Analysis of a potential correction."""
+
+    original: str
+    suggested: str
+    confidence: float  # 0.0-1.0
+    edit_distance: int
+    candidate_count: int  # Number of alternative corrections
+    concerns: list[str] = field(default_factory=list)
+
+    @property
+    def is_safe(self) -> bool:
+        """Whether this correction is safe to apply automatically."""
+        return self.confidence >= 0.7 and self.edit_distance <= 2
+
+    @property
+    def needs_review(self) -> bool:
+        """Whether this correction should be flagged for human review."""
+        return 0.3 <= self.confidence < 0.7
+
+    @property
+    def should_skip(self) -> bool:
+        """Whether this correction should be skipped."""
+        return self.confidence < 0.3
+
+
+def _levenshtein_distance(s1: str, s2: str) -> int:
+    """Calculate Levenshtein edit distance between two strings."""
+    if len(s1) < len(s2):
+        return _levenshtein_distance(s2, s1)
+
+    if len(s2) == 0:
+        return len(s1)
+
+    previous_row = range(len(s2) + 1)
+    for i, c1 in enumerate(s1):
+        current_row = [i + 1]
+        for j, c2 in enumerate(s2):
+            insertions = previous_row[j + 1] + 1
+            deletions = current_row[j] + 1
+            substitutions = previous_row[j] + (c1 != c2)
+            current_row.append(min(insertions, deletions, substitutions))
+        previous_row = current_row
+
+    return previous_row[-1]
+
+
+def analyze_correction(
+    word: str,
+    spell: "SpellChecker",  # type: ignore
+    config: CorrectionConfig | None = None,
+) -> CorrectionCandidate | None:
+    """
+    Analyze a potential correction with weighted confidence scoring.
+
+    Uses a probabilistic approach combining multiple signals:
+    1. Word frequency - is the correction a real, common word?
+    2. Edit distance - how many characters changed?
+    3. Candidate ambiguity - are there multiple plausible corrections?
+    4. Foreign word markers - patterns suggesting non-English origin
+    5. First letter preservation - corrections usually keep first letter
+    6. Scholarly vocabulary - boost for known terms
+
+    Args:
+        word: The word to analyze
+        spell: SpellChecker instance
+        config: CorrectionConfig with thresholds and weights (optional)
+
+    Returns:
+        CorrectionCandidate with analysis, or None if word is correct
+    """
+    if config is None:
+        config = DEFAULT_CORRECTION_CONFIG
+
+    word_lower = word.lower()
+
+    # Word is known - no correction needed
+    if word_lower in spell:
+        return None
+
+    # Word is in scholarly vocabulary - skip
+    if word_lower in SCHOLARLY_VOCABULARY:
+        return None
+
+    candidates = spell.candidates(word_lower) or set()
+    correction = spell.correction(word_lower)
+
+    if not correction or correction == word_lower:
+        return None
+
+    # Calculate metrics
+    edit_dist = _levenshtein_distance(word_lower, correction)
+    candidate_count = len(candidates)
+
+    # =========================================================================
+    # Weighted Scoring System
+    # =========================================================================
+    # Start at 1.0 and subtract weighted penalties
+    confidence = 1.0
+    concerns: list[str] = []
+
+    # --- Signal 1: Word Frequency (most predictive) ---
+    # If wordfreq is available, use it for probabilistic scoring
+    if WORD_FREQUENCY_AVAILABLE:
+        orig_freq = get_word_frequency(word_lower, config.language)
+        corr_freq = get_word_frequency(correction, config.language)
+
+        # High correction frequency + low original frequency = strong signal
+        # Zipf scale: 0 = not found, 7+ = very common
+        if corr_freq > 0 and orig_freq == 0:
+            # Original is NOT a word, correction IS - very good signal
+            freq_boost = min(0.3, corr_freq / 20)  # Cap at 0.3 boost
+            confidence += freq_boost * config.frequency_weight * 4
+        elif corr_freq == 0:
+            # Correction is also not a known word - bad signal
+            penalty = config.frequency_weight
+            confidence -= penalty
+            concerns.append("correction not in frequency dictionary")
+        elif orig_freq > corr_freq:
+            # Original is MORE common than correction - suspicious
+            penalty = config.frequency_weight * 0.5
+            confidence -= penalty
+            concerns.append(f"original more common (zipf {orig_freq:.1f} vs {corr_freq:.1f})")
+
+    # --- Signal 2: Edit Distance ---
+    if edit_dist > config.max_edit_distance:
+        penalty = config.edit_distance_weight * 2
+        confidence -= penalty
+        concerns.append(f"high edit distance ({edit_dist})")
+    elif edit_dist > 1:
+        penalty = config.edit_distance_weight * 0.5
+        confidence -= penalty
+
+    # --- Signal 3: Candidate Ambiguity ---
+    if candidate_count > 10:
+        penalty = config.ambiguity_weight * 1.5
+        confidence -= penalty
+        concerns.append(f"highly ambiguous ({candidate_count} candidates)")
+    elif candidate_count > 5:
+        penalty = config.ambiguity_weight * 0.7
+        confidence -= penalty
+        concerns.append(f"ambiguous ({candidate_count} candidates)")
+    elif candidate_count == 1:
+        # Only one candidate - good signal
+        confidence += config.ambiguity_weight * 0.3
+
+    # --- Signal 4: Foreign Word Markers ---
+    has_foreign_suffix = any(word_lower.endswith(suffix) for suffix in FOREIGN_SUFFIXES)
+    has_foreign_infix = len(word_lower) >= 6 and any(
+        infix in word_lower for infix in FOREIGN_INFIXES
+    )
+    if has_foreign_suffix or has_foreign_infix:
+        penalty = config.foreign_marker_weight
+        confidence -= penalty
+        concerns.append("possible foreign word")
+
+    # --- Signal 5: First Letter Preservation ---
+    if word_lower[0] != correction[0]:
+        penalty = config.first_letter_weight
+        confidence -= penalty
+        concerns.append("first letter changed")
+
+    # --- Signal 6: Scholarly Term Boost ---
+    if correction.lower() in SCHOLARLY_VOCABULARY:
+        boost = config.scholarly_boost_weight
+        confidence += boost
+    else:
+        # Check if original is close to a different scholarly term
+        for vocab_word in SCHOLARLY_VOCABULARY:
+            dist = _levenshtein_distance(word_lower, vocab_word)
+            if dist <= 2 and vocab_word != correction.lower():
+                penalty = config.scholarly_boost_weight
+                confidence -= penalty
+                concerns.append(f"close to scholarly term '{vocab_word}'")
+                break
+
+    # --- Signal 7: Length Similarity ---
+    length_diff = abs(len(word) - len(correction))
+    if length_diff > 2:
+        penalty = 0.1  # Small fixed penalty
+        confidence -= penalty
+        concerns.append(f"length changed by {length_diff}")
+
+    return CorrectionCandidate(
+        original=word,
+        suggested=correction,
+        confidence=max(0.0, min(1.0, confidence)),
+        edit_distance=edit_dist,
+        candidate_count=candidate_count,
+        concerns=concerns,
+    )
 
 
 # ============================================================================
@@ -197,6 +1078,9 @@ def score_ocr_quality(
         misspelled = spell.unknown(unique_words)
 
         for word in misspelled:
+            # Skip known scholarly vocabulary (philosophy, Latin, Greek, German, French)
+            if word in SCHOLARLY_VOCABULARY:
+                continue
             if word not in suspicious_words:
                 suspicious_words.append(word)
                 correction = spell.correction(word)
@@ -204,11 +1088,13 @@ def score_ocr_quality(
                     correctable_words[word] = correction
 
     # Calculate error rate estimate
-    # Weight different error types by severity (based on Spike 08)
+    # Weight different error types by severity (based on Spike 08 & 09)
+    # NOTE: mid_word_caps weight=0 because embeddings are perfectly robust to them
+    # (e.g., "jUdgment" → 1.000 similarity vs clean text - Spike 09)
     pattern_errors = (
-        error_patterns["mid_word_caps"] * 2  # High impact
-        + error_patterns["digits_in_words"] * 2
-        + error_patterns["pipe_in_word"] * 2
+        error_patterns["mid_word_caps"] * 0  # No impact on embeddings! (Spike 09)
+        + error_patterns["digits_in_words"] * 2  # High impact
+        + error_patterns["pipe_in_word"] * 2  # High impact
         + error_patterns["broken_hyphenation"] * 0.5  # Low impact per Spike 08
         + error_patterns["double_punctuation"] * 0.5
     )
@@ -366,6 +1252,11 @@ def correct_with_spellcheck(
             result_words.append(word)
             continue
 
+        # Skip known scholarly vocabulary (philosophy, Latin, Greek, German, French)
+        if core.lower() in SCHOLARLY_VOCABULARY:
+            result_words.append(word)
+            continue
+
         # Check spelling
         if core.lower() in spell:
             result_words.append(word)
@@ -394,10 +1285,351 @@ def correct_with_spellcheck(
     )
 
 
+def correct_with_language_detection(
+    text: str,
+    min_word_length: int = 4,
+    skip_capitalized: bool = True,
+) -> CorrectionResult:
+    """
+    Apply spell-check corrections with automatic language detection.
+
+    Detects the dominant language of the text and uses the appropriate
+    spell checker dictionary. Always preserves scholarly vocabulary
+    regardless of detected language.
+
+    Requires: pip install scholardoc[multilingual]  OR  pip install fast-langdetect
+
+    Args:
+        text: Text to correct
+        min_word_length: Minimum word length to consider for correction
+        skip_capitalized: Skip words that start with capital (proper nouns)
+
+    Returns:
+        CorrectionResult with language-aware corrections
+    """
+    if SpellChecker is None:
+        logger.warning("pyspellchecker not installed, skipping spell check")
+        return CorrectionResult(
+            original_text=text,
+            corrected_text=text,
+            changes_made=[],
+            confidence=0.0,
+        )
+
+    # Detect language
+    detected_lang = detect_language(text)
+    logger.debug(f"Detected language: {detected_lang}")
+
+    # Use appropriate spell checker
+    try:
+        spell = SpellChecker(language=detected_lang)
+    except Exception:
+        # Fallback to English if language not supported
+        logger.warning(f"Language '{detected_lang}' not supported, falling back to English")
+        spell = SpellChecker(language="en")
+        detected_lang = "en"
+
+    changes: list[tuple[str, str]] = []
+    words = text.split()
+    result_words = []
+
+    for word in words:
+        # Extract the core word (without punctuation)
+        prefix = ""
+        suffix = ""
+        core = word
+
+        # Strip leading punctuation
+        while core and not core[0].isalnum():
+            prefix += core[0]
+            core = core[1:]
+
+        # Strip trailing punctuation
+        while core and not core[-1].isalnum():
+            suffix = core[-1] + suffix
+            core = core[:-1]
+
+        # Skip if too short or capitalized proper noun
+        if len(core) < min_word_length:
+            result_words.append(word)
+            continue
+
+        if skip_capitalized and core and core[0].isupper() and core[1:].islower():
+            result_words.append(word)
+            continue
+
+        # Skip known scholarly vocabulary (always, regardless of language)
+        if core.lower() in SCHOLARLY_VOCABULARY:
+            result_words.append(word)
+            continue
+
+        # Check spelling
+        if core.lower() in spell:
+            result_words.append(word)
+            continue
+
+        correction = spell.correction(core.lower())
+        if correction and correction != core.lower():
+            # Preserve case
+            if core.isupper():
+                corrected_core = correction.upper()
+            elif core[0].isupper():
+                corrected_core = correction.capitalize()
+            else:
+                corrected_core = correction
+
+            changes.append((word, prefix + corrected_core + suffix))
+            result_words.append(prefix + corrected_core + suffix)
+        else:
+            result_words.append(word)
+
+    # Higher confidence if language detection is available
+    confidence = 0.75 if LANGUAGE_DETECTION_AVAILABLE else 0.65
+
+    return CorrectionResult(
+        original_text=text,
+        corrected_text=" ".join(result_words),
+        changes_made=changes,
+        confidence=confidence,
+    )
+
+
+def is_language_detection_available() -> bool:
+    """Check if language detection (fast-langdetect) is available."""
+    return LANGUAGE_DETECTION_AVAILABLE
+
+
+@dataclass
+class AnalyzedCorrectionResult:
+    """
+    Result of OCR correction with per-word confidence analysis.
+
+    This provides transparency into correction decisions, allowing
+    callers to review uncertain corrections before applying them.
+    """
+
+    original_text: str
+    corrected_text: str
+    applied_corrections: list[CorrectionCandidate]  # High confidence, applied
+    flagged_corrections: list[CorrectionCandidate]  # Medium confidence, needs review
+    skipped_corrections: list[CorrectionCandidate]  # Low confidence, not applied
+    overall_confidence: float
+
+    @property
+    def has_uncertain_corrections(self) -> bool:
+        """Whether there are corrections that need human review."""
+        return len(self.flagged_corrections) > 0
+
+    @property
+    def total_changes(self) -> int:
+        """Total number of corrections applied."""
+        return len(self.applied_corrections)
+
+    @property
+    def correction_count(self) -> int:
+        """Alias for total_changes - number of corrections applied."""
+        return self.total_changes
+
+
+def correct_with_analysis(
+    text: str,
+    config: CorrectionConfig | None = None,
+    min_word_length: int = 4,
+    skip_capitalized: bool = True,
+) -> AnalyzedCorrectionResult:
+    """
+    Apply spell-check corrections with detailed per-word confidence analysis.
+
+    This function provides safeguards against bad corrections using
+    configurable thresholds and weighted scoring:
+    - Only applies corrections with confidence >= config.apply_threshold
+    - Flags uncertain corrections for human review
+    - Skips corrections that are likely wrong
+
+    Uses word frequency data (if available) for probabilistic scoring.
+
+    Args:
+        text: Text to correct
+        config: CorrectionConfig with thresholds and weights (uses balanced defaults if None)
+        min_word_length: Minimum word length to consider
+        skip_capitalized: Skip words that start with capital
+
+    Returns:
+        AnalyzedCorrectionResult with detailed breakdown
+
+    Example:
+        >>> # Use conservative settings for scholarly texts
+        >>> result = correct_with_analysis(text, CorrectionConfig.conservative())
+        >>> print(f"Applied {len(result.applied_corrections)} corrections")
+        >>> for c in result.flagged_corrections:
+        ...     print(f"  Review: {c.original} → {c.suggested} ({c.confidence:.2f})")
+    """
+    if config is None:
+        config = DEFAULT_CORRECTION_CONFIG
+
+    if SpellChecker is None:
+        return AnalyzedCorrectionResult(
+            original_text=text,
+            corrected_text=text,
+            applied_corrections=[],
+            flagged_corrections=[],
+            skipped_corrections=[],
+            overall_confidence=0.0,
+        )
+
+    spell = SpellChecker()
+    words = text.split()
+    result_words = []
+
+    applied: list[CorrectionCandidate] = []
+    flagged: list[CorrectionCandidate] = []
+    skipped: list[CorrectionCandidate] = []
+
+    for word in words:
+        # Extract core word without punctuation
+        prefix = ""
+        suffix = ""
+        core = word
+
+        while core and not core[0].isalnum():
+            prefix += core[0]
+            core = core[1:]
+
+        while core and not core[-1].isalnum():
+            suffix = core[-1] + suffix
+            core = core[:-1]
+
+        # Skip if too short
+        if len(core) < min_word_length:
+            result_words.append(word)
+            continue
+
+        # Skip capitalized proper nouns
+        if skip_capitalized and core and core[0].isupper() and core[1:].islower():
+            result_words.append(word)
+            continue
+
+        # Analyze the correction using weighted scoring
+        analysis = analyze_correction(core, spell, config)
+
+        if analysis is None:
+            # Word is correct or in vocabulary
+            result_words.append(word)
+            continue
+
+        # Categorize based on config thresholds
+        if (
+            analysis.confidence >= config.apply_threshold
+            and analysis.edit_distance <= config.max_edit_distance
+        ):
+            # High confidence - apply the correction
+            corrected = analysis.suggested
+            if core.isupper():
+                corrected = corrected.upper()
+            elif core[0].isupper():
+                corrected = corrected.capitalize()
+
+            result_words.append(prefix + corrected + suffix)
+            applied.append(analysis)
+        elif analysis.confidence >= config.review_threshold:
+            # Medium confidence - flag for review but don't apply
+            result_words.append(word)
+            flagged.append(analysis)
+        elif analysis.confidence >= config.skip_threshold:
+            # Low confidence - skip but record
+            result_words.append(word)
+            skipped.append(analysis)
+        else:
+            # Below skip threshold - don't even record
+            result_words.append(word)
+
+    # Calculate overall confidence
+    if applied:
+        overall_conf = sum(c.confidence for c in applied) / len(applied)
+    else:
+        overall_conf = 1.0 if not flagged and not skipped else 0.5
+
+    return AnalyzedCorrectionResult(
+        original_text=text,
+        corrected_text=" ".join(result_words),
+        applied_corrections=applied,
+        flagged_corrections=flagged,
+        skipped_corrections=skipped,
+        overall_confidence=overall_conf,
+    )
+
+
+def correct_with_context(text: str) -> CorrectionResult:
+    """
+    Apply BERT-based contextual OCR correction using OCRfixr.
+
+    This uses a two-step validation: spell suggestions are cross-referenced
+    against BERT's context predictions. Corrections only apply when both agree.
+
+    This is more accurate than simple spell check for real-word errors
+    but significantly slower (requires BERT inference).
+
+    Requires: pip install scholardoc[contextual]  OR  pip install ocrfixr
+
+    Args:
+        text: Text to correct
+
+    Returns:
+        CorrectionResult with contextual corrections
+
+    Note:
+        - First call will download BERT model (~400MB)
+        - Slower than spell check (~1-2s per paragraph)
+        - Best for scholarly text where accuracy matters
+    """
+    if ocrfixr_spellcheck is None:
+        logger.warning("OCRfixr not installed. Install with: pip install scholardoc[contextual]")
+        return CorrectionResult(
+            original_text=text,
+            corrected_text=text,
+            changes_made=[],
+            confidence=0.0,
+        )
+
+    try:
+        # OCRfixr returns [corrected_text, {(old, new): count}] when return_fixes="T"
+        result = ocrfixr_spellcheck(text, return_fixes="T").fix()
+
+        if isinstance(result, list) and len(result) == 2:
+            corrected_text, fixes_dict = result
+            # Convert fixes dict to our format: list of (original, corrected)
+            changes = [(old, new) for (old, new), count in fixes_dict.items() for _ in range(count)]
+        else:
+            # Fallback if format changes
+            corrected_text = result if isinstance(result, str) else text
+            changes = []
+
+        return CorrectionResult(
+            original_text=text,
+            corrected_text=corrected_text,
+            changes_made=changes,
+            confidence=0.85,  # High confidence - BERT validates context
+        )
+    except Exception as e:
+        logger.warning(f"OCRfixr correction failed: {e}")
+        return CorrectionResult(
+            original_text=text,
+            corrected_text=text,
+            changes_made=[],
+            confidence=0.0,
+        )
+
+
+def is_contextual_available() -> bool:
+    """Check if contextual (BERT-based) correction is available."""
+    return ocrfixr_spellcheck is not None
+
+
 def correct_ocr_errors(
     text: str,
     use_patterns: bool = True,
     use_spellcheck: bool = True,
+    use_context: bool = False,
     aggressive: bool = False,
 ) -> CorrectionResult:
     """
@@ -405,12 +1637,14 @@ def correct_ocr_errors(
 
     Recommended usage for RAG pipelines:
     - Default settings for general use
+    - use_context=True for highest accuracy (requires OCRfixr)
     - aggressive=True only for severely degraded text
 
     Args:
         text: Text to correct
         use_patterns: Apply known pattern corrections (safe, fast)
         use_spellcheck: Apply spell-check corrections (more aggressive)
+        use_context: Apply BERT-based contextual corrections (slowest, most accurate)
         aggressive: Use aggressive spell-check settings
 
     Returns:
@@ -435,6 +1669,14 @@ def correct_ocr_errors(
         result = spell_result.corrected_text
         all_changes.extend(spell_result.changes_made)
         confidence = min(confidence, spell_result.confidence)
+
+    if use_context:
+        context_result = correct_with_context(result)
+        if context_result.was_modified:
+            result = context_result.corrected_text
+            all_changes.extend(context_result.changes_made)
+            # Context correction has high confidence when it works
+            confidence = max(confidence, context_result.confidence)
 
     return CorrectionResult(
         original_text=text,
