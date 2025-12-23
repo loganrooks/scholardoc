@@ -61,3 +61,6 @@ Thumbs.db
 
 # NOTE: .claude/logs/ is TRACKED for learning purposes
 # Session logs help improve workflows over time
+
+# Serena MCP - session memory (internal state)
+.serena/memories/
