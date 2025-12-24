@@ -8,8 +8,27 @@
 5. Run `/project:plan` before coding
 6. Use Serena memories: `ocr_pipeline_architecture`, `session_2025-12-23_validation_framework`
 
-## About
-Python library for converting scholarly documents (PDF → Markdown) optimized for RAG pipelines. Preserves structure, page numbers, and metadata that researchers need. See REQUIREMENTS.md for full scope.
+## Vision
+<!-- AUTHORITATIVE: All other docs should reference this section, not duplicate it -->
+<!-- Last verified: 2025-12-23 -->
+
+ScholarDoc extracts structured knowledge from scholarly PDFs into a flexible intermediate representation (`ScholarDocument`) designed for multiple downstream applications:
+
+**Primary Applications:**
+- **RAG pipelines** — Clean text with position-accurate metadata for retrieval
+- **Anki/flashcard generation** — Structured content with citation tracking
+- **Research organization** — Metadata-rich documents for knowledge management
+- **Citation management** — Page numbers, references, bibliography extraction
+
+**Additional Applications:**
+- **Knowledge graphs** — Semantic linking between documents and concepts
+- **Literature review tools** — Cross-document analysis and comparison
+- **Academic writing assistants** — Source material with accurate citations
+- **Accessibility** — Clean text for text-to-speech, screen readers
+- **Search/indexing systems** — Structured data for advanced queries
+- **Custom applications** — Extensible output formats (Markdown, JSON, custom)
+
+**Core Insight:** Separate *extraction* (getting clean, structured data) from *presentation* (formatting for specific use cases). The `ScholarDocument` is the intermediate representation; Markdown is one output format, not the goal.
 
 ## Current Phase
 **Phase 1: Core Implementation** - PDF reader and OCR pipeline
@@ -139,35 +158,26 @@ Session logs are kept in `.claude/logs/`. Periodically review for:
 
 ---
 
-## SuperClaude Framework Integration
-
-This project uses SuperClaude framework capabilities from `~/.claude/`.
+## AI Assistant Configuration
 
 ### MCP Servers
-| Server | Usage | Triggers |
-|--------|-------|----------|
-| **Serena** | Symbol operations, project memory | Refactoring, cross-session context |
-| **Context7** | Library docs (PyMuPDF, Pydantic, pytest) | Import statements, framework questions |
-| **Sequential** | Complex debugging, architecture analysis | `--think`, `--think-hard` flags |
+| Server | Purpose |
+|--------|---------|
+| **Serena** | Project memory, symbol operations. Use `project_vision` memory for canonical description. |
+| **Context7** | Library docs (PyMuPDF, Pydantic, pytest) when needed. |
+| **Sequential** | Complex analysis when explicitly requested. |
 
-### Session Lifecycle
-- **Start session**: Load context with Serena memories
-- **During work**: Use TodoWrite for multi-step tasks (>3 steps)
-- **Checkpoint**: Save progress to Serena memory every 30 min
-- **End session**: Verify tests pass, commit changes
+### Code Exploration
+For OCR-related code understanding, prefer precision over speed:
+- Use Serena's `find_symbol`, `get_symbols_overview` (main model, precise)
+- Read files directly when understanding algorithm decisions
+- Reserve Task/Explore agents for broad "where is X" questions only
 
-### Mode Activation
-- **`--brainstorm`**: Vague requirements → discovery mode
-- **`--introspect`**: Error recovery → meta-cognitive analysis
-- **`--task-manage`**: Complex operations (>3 files) → TodoWrite tracking
-- **`--think`**: Standard analysis with Sequential MCP
-- **`--ultrathink`**: Maximum depth analysis for critical decisions
-
-### Hook Philosophy
-All hooks are **advisory only** - they inject context, never block operations.
-- Quality checks provide warnings, not hard stops
-- Pre-commit reminders show checklists, don't prevent commits
-- Only catastrophic operations (rm -rf /, fork bombs) are blocked
+### Hooks (Advisory Only)
+All hooks inject context, never block operations:
+- Quality checks → warnings, not hard stops
+- Pre-commit → checklists, not prevention
+- Only catastrophic operations are blocked (rm -rf /, fork bombs)
 
 ### Version Control Workflow
 

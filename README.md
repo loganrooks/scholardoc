@@ -1,41 +1,19 @@
 # ScholarDoc
 
-> **Status:** Phase 0 - Exploration (validating assumptions before implementation)  
+> **Status:** Phase 1 - Core Implementation (OCR pipeline integration)
 > See [ROADMAP.md](ROADMAP.md) for development phases
 
-Convert scholarly documents (PDF, EPUB) to structured Markdown optimized for RAG pipelines, while preserving the metadata and structure that researchers need.
+<!-- Vision reference: See CLAUDE.md#Vision for authoritative description -->
 
-## Current Status
+**ScholarDoc** extracts structured knowledge from scholarly PDFs into a flexible intermediate representation designed for multiple downstream applications.
 
-🔬 **Phase 0: Exploration**
+## What is ScholarDoc?
 
-Before implementing, we're validating our assumptions with empirical spikes:
+> For the full vision statement, see [CLAUDE.md#Vision](CLAUDE.md#vision).
 
-```bash
-# Install comparison libraries
-uv sync --extra comparison
+In brief: Extract structured knowledge from scholarly PDFs for RAG pipelines, Anki flashcards, research organization, citation management, knowledge graphs, and more.
 
-# Explore what PyMuPDF gives us
-uv run python spikes/01_pymupdf_exploration.py sample.pdf --all
-
-# Compare different PDF libraries
-uv run python spikes/02_library_comparison.py sample.pdf
-
-# Test heading detection strategies
-uv run python spikes/03_heading_detection.py sample.pdf
-
-# Assess footnote detection feasibility
-uv run python spikes/04_footnote_detection.py sample.pdf
-```
-
-**Why exploration first?** 
-
-We have detailed specs (SPEC.md) but they're based on assumptions:
-- "PyMuPDF is the best library" → needs validation
-- "Headings can be detected by font size" → needs testing
-- "Footnote detection is feasible" → needs assessment
-
-The spikes test these assumptions on real philosophy PDFs before we commit to an architecture.
+**Core insight:** Separate *extraction* (structured data) from *presentation* (output format). The `ScholarDocument` is the intermediate representation; Markdown is one output, not the goal.
 
 ## Why ScholarDoc?
 
@@ -43,31 +21,32 @@ Philosophy scholars and humanities researchers need to:
 - Process large bodies of philosophical texts for analysis
 - Maintain page numbers for accurate citations
 - Preserve document structure (chapters, sections)
-- Eventually extract footnotes and references
+- Extract footnotes, references, and bibliographies
 
-Most PDF extraction tools are optimized for business documents or scientific papers. ScholarDoc focuses on the needs of humanities scholarship.
+Most PDF extraction tools are optimized for business documents or scientific papers. ScholarDoc focuses on the needs of humanities scholarship, producing a flexible data structure that powers multiple applications.
 
 ## What ScholarDoc Does
 
 - **Input:** PDF files (EPUB and other formats planned)
-- **Output:** Clean, structured Markdown with metadata
-- **Preserves:** Page numbers, document structure, metadata
+- **Output:** `ScholarDocument` — flexible intermediate representation
+- **Exports:** Markdown, JSON, RAG chunks, plain text (extensible)
+- **Preserves:** Page numbers, document structure, metadata, citations
 
 ## What ScholarDoc Does NOT Do
 
-- **Chunking:** We produce clean Markdown; chunking is a downstream concern
-- **Embedding:** We output text, not vectors
-- **OCR:** We handle born-digital PDFs; scanned documents may be added later
+- **Chunking:** We provide `to_rag_chunks()` but chunking strategies are configurable
+- **Embedding:** We output structured text, not vectors
+- **OCR:** We enhance existing OCR; full scanned document support is Phase 4
 
 ## Current Status
 
-🚧 **Phase 1: MVP Development**
+🔧 **Phase 1: Core Implementation**
 
-We're building the core PDF → Markdown pipeline. See:
+Building the core extraction pipeline with OCR enhancement. See:
+- [CLAUDE.md](CLAUDE.md) - Project context and AI assistant instructions
 - [REQUIREMENTS.md](REQUIREMENTS.md) - What we're building
 - [SPEC.md](SPEC.md) - How we're building it
 - [ROADMAP.md](ROADMAP.md) - Development phases
-- [QUESTIONS.md](QUESTIONS.md) - Open design questions
 
 ## Installation
 
@@ -85,13 +64,21 @@ import scholardoc
 
 # Convert a single PDF
 doc = scholardoc.convert("kant_critique.pdf")
-print(doc.markdown)
+
+# Access the structured document
+print(doc.text)  # Clean text with artifacts removed
+print(doc.pages)  # Page spans with positions
+
+# Export to different formats
+markdown = doc.to_markdown()
+chunks = doc.to_rag_chunks(strategy="semantic")
+data = doc.to_dict()  # JSON-serializable
 
 # Access metadata
 print(f"Title: {doc.metadata.title}")
 print(f"Pages: {doc.metadata.page_count}")
 
-# Save to file
+# Save outputs
 doc.save("output.md")
 ```
 
@@ -107,15 +94,18 @@ uv run pytest
 # Lint and format
 uv run ruff check .
 uv run ruff format .
+
+# Run exploration spikes
+uv run python spikes/01_pymupdf_exploration.py sample.pdf --all
 ```
 
 ## Contributing
 
-This project is in early development. Before contributing:
+This project is in active development. Before contributing:
 
-1. Read [REQUIREMENTS.md](REQUIREMENTS.md) and [ROADMAP.md](ROADMAP.md)
-2. Check [QUESTIONS.md](QUESTIONS.md) for open design questions
-3. Check [SPEC.md](SPEC.md) for technical decisions
+1. Read [CLAUDE.md](CLAUDE.md) for project vision and context
+2. Check [ROADMAP.md](ROADMAP.md) for current phase
+3. Review [SPEC.md](SPEC.md) for technical decisions
 4. Open an issue to discuss before submitting PRs
 
 ## License
