@@ -201,6 +201,82 @@ Commands connect in a typical development cycle:
 - Something broke? → `/project:debug`
 - Code needs cleanup? → `/project:refactor`
 - Ready to ship? → `/project:release`
+- Want fully autonomous? → `/project:auto` (see below)
+
+### Autonomous Development Mode
+
+For minimal human intervention after requirements are confirmed:
+
+**Command:** `/project:auto <feature-description>`
+
+**Philosophy:** Thorough human collaboration upfront (requirements), then autonomous execution with self-review gates.
+
+**Flow:**
+```
+┌──────────────────────────────────────────────────────────────────────┐
+│                    AUTONOMOUS DEVELOPMENT                             │
+│                                                                       │
+│   ┌─────────────┐                                                    │
+│   │ PHASE 0     │  ◀── HUMAN-IN-LOOP                                │
+│   │ Requirements│      Questions, clarification, approval            │
+│   └──────┬──────┘                                                    │
+│          │ approved                                                   │
+│          ▼                                                            │
+│   ┌──────────────────────────────────────────────────────────────┐   │
+│   │                    AUTONOMOUS PHASES                          │   │
+│   │                                                               │   │
+│   │  Phase 1        Phase 2        Phase 3        Phase 4        │   │
+│   │  Explore   ──▶  Plan     ──▶  Implement  ──▶  Document      │   │
+│   │     │             │              │              │            │   │
+│   │     ▼             ▼              ▼              ▼            │   │
+│   │  [REVIEW]      [REVIEW]      [REVIEW]       [REVIEW]        │   │
+│   │  exploration   plan          code           docs            │   │
+│   │  -reviewer     -reviewer     -reviewer      -reviewer       │   │
+│   │                                                               │   │
+│   └──────────────────────────────────────────────────────────────┘   │
+│          │                                                            │
+│          ▼                                                            │
+│   ┌─────────────┐                                                    │
+│   │ PHASE 5     │  Tests + Lint + Type Check                        │
+│   │ Validation  │  All must pass                                     │
+│   └──────┬──────┘                                                    │
+│          │                                                            │
+│          ▼                                                            │
+│   ┌─────────────┐                                                    │
+│   │ PHASE 6     │  Commit, update memory, report to human           │
+│   │ Completion  │                                                    │
+│   └─────────────┘                                                    │
+└──────────────────────────────────────────────────────────────────────┘
+```
+
+**Self-Review Gates:**
+Each phase has a reviewer agent (`.claude/agents/`) that catches issues before they compound:
+
+| Gate | Reviewer | Catches |
+|------|----------|---------|
+| After exploration | exploration-reviewer | Incomplete understanding, missed context |
+| After planning | plan-reviewer | Flawed design, missing requirements |
+| After implementation | code-reviewer | Bugs, security issues, bad patterns |
+| After documentation | documentation-reviewer | Inaccuracies, gaps |
+| After experiment/spike | experiment-reviewer | Inconclusive findings |
+
+**Verdicts:**
+- `APPROVED` → Proceed to next phase
+- `NEEDS_WORK` / `NEEDS_REVISION` → Fix and re-review
+- `BLOCKED` / `REJECTED` → Escalate to human
+
+**Escalation Triggers:**
+- Requirements fundamentally change
+- Architectural decision challenged by evidence
+- Security/data integrity concerns
+- Test failures unresolved after 3 attempts
+- Reviewer gives BLOCKED twice
+
+**Benefits:**
+- Prevents error accumulation from poor preparation
+- Catches issues early when cheaper to fix
+- Reduces back-and-forth with human reviewer
+- Maintains quality without constant oversight
 
 ### If Hooks Block You
 If automated checks prevent legitimate work:

@@ -1,124 +1,184 @@
 ---
-description: Self-improvement review - analyze patterns and enhance workflow
-allowed-tools: Read, Glob, Grep, Bash(git:*), Bash(ls:*), Bash(cat:*), mcp__serena__*
-argument-hint: [trigger: pr-merge|error|weekly|context-loss]
+description: Self-improvement review with self-critique agents
+allowed-tools: Read, Glob, Grep, Bash(git:*), Bash(ls:*), Bash(cat:*), Task, mcp__serena__*
+argument-hint: [trigger: pr-merge|error|weekly|context-loss|full-audit]
 ---
 
 # Self-Improvement Review: $ARGUMENTS
+
+**MODE: SELF-CRITIQUE AND IMPROVEMENT**
+
+## Trigger-Based Scope
+
+| Trigger | Scope | Focus |
+|---------|-------|-------|
+| pr-merge | Recent PR changes | Code quality, patterns introduced |
+| error | Recent errors/failures | Root cause, prevention |
+| weekly | Full workspace | Patterns, friction, debt |
+| context-loss | Session transitions | Memory, documentation gaps |
+| full-audit | Everything | Comprehensive system review |
+
+---
 
 ## Step 1: Gather Evidence
 
 ### Session Logs
 ```bash
-# Recent session logs
 ls -lt .claude/logs/ | head -10
-
-# Review latest session
-cat .claude/logs/$(ls -t .claude/logs/ | head -1)
 ```
 
 ### Serena Memories
 ```
 list_memories()
-# Review each memory for accuracy
-# Check if project_vision is current
+read_memory("decision_log")
+read_memory("improvement_log")  # if exists
 ```
 
 ### Git History
 ```bash
-# Recent commits with fixes
-git log --oneline -20 | grep -i "fix"
+# Recent commits with issues
+git log --oneline -20 | grep -iE "fix|bug|revert|oops"
 
-# PRs with multiple commits (may indicate issues)
-git log --oneline -50
-
-# Files changed most frequently
+# Files changed most (potential hotspots)
 git log --oneline --name-only -50 | grep -v "^[a-f0-9]" | sort | uniq -c | sort -rn | head -10
 ```
 
-## Step 2: Pattern Detection
+### Test Results
+```bash
+uv run pytest --tb=no -q 2>&1 | tail -20
+```
 
-Look for these patterns in the evidence:
+---
+
+## Step 2: Self-Critique by Domain
+
+### 2.1 Exploration Critique
+Launch exploration-reviewer on recent exploration work:
+- Were explorations thorough before planning?
+- Were assumptions validated?
+- Any gaps that caused later issues?
+
+### 2.2 Plan Critique
+Launch plan-reviewer on recent plans:
+- Were plans complete and accurate?
+- Did estimates match reality?
+- Were risks properly identified?
+
+### 2.3 Code Critique
+Launch code-reviewer on recent code:
+- Any patterns that should be rules?
+- Any repeated mistakes?
+- Any tech debt accumulating?
+
+### 2.4 Documentation Critique
+Launch documentation-reviewer:
+- Is CLAUDE.md current?
+- Are memories accurate?
+- Any undocumented patterns?
+
+---
+
+## Step 3: Pattern Detection
 
 ### Repeated Errors
-- [ ] Same error type appears 2+ times
-- [ ] Similar fixes applied in multiple places
+- [ ] Same error type 2+ times
+- [ ] Similar fixes in multiple places
 - [ ] Recurring test failures
 
 ### Context Loss
-- [ ] Questions about project vision/architecture
+- [ ] Questions about project architecture
 - [ ] Confusion about file locations
-- [ ] Misunderstanding of workflow
+- [ ] Workflow misunderstandings
 
 ### Workflow Friction
 - [ ] Multi-step manual processes
 - [ ] Repeated command sequences
-- [ ] Inconsistent approaches to same task
+- [ ] Inconsistent approaches
+
+### Technical Debt
+- [ ] TODO comments accumulating
+- [ ] Temporary fixes becoming permanent
+- [ ] Test coverage decreasing
 
 ### Documentation Gaps
-- [ ] Questions answered by reading code (should be in docs)
-- [ ] Confusion resolved by explanation (should be documented)
+- [ ] Questions answered by code reading
+- [ ] Confusion resolved by explanation
 - [ ] Assumptions that needed correction
 
-## Step 3: Proposed Improvements
+---
 
-For each pattern found, propose an action:
+## Step 4: Improvement Proposals
 
-| Pattern | Finding | Proposed Action | Target Location |
-|---------|---------|-----------------|-----------------|
-| | | | |
+| Pattern | Finding | Proposed Action | Target | Priority |
+|---------|---------|-----------------|--------|----------|
+| | | | | |
 
 ### Action Types
-- **Rule**: Add to CLAUDE.md rules section
+- **Rule**: Add to CLAUDE.md
 - **Memory**: Create/update Serena memory
 - **Command**: Add/modify .claude/commands/
+- **Agent**: Add/modify .claude/agents/
 - **Hook**: Add/modify .claude/hooks/
 - **Doc**: Update documentation
-- **Config**: Modify .serena/project.yml
+- **Config**: Modify settings
 
-## Step 4: Implementation
+### Priority Levels
+- **P0**: Blocking future work
+- **P1**: Causes repeated friction
+- **P2**: Nice to have
+
+---
+
+## Step 5: Implementation
 
 For approved improvements:
 
 1. Make the change
-2. Test it works as intended
-3. Log to improvement_log memory:
+2. Verify it works
+3. Log to improvement_log:
 
 ```
 write_memory("improvement_log", """
 ## Improvement Log
 
 ### [DATE]
-- **Trigger**: [pr-merge|error|weekly|context-loss]
-- **Finding**: [Description of pattern found]
-- **Action**: [What was done]
-- **Files**: [Files modified]
-- **Verification**: [How we know it works]
+- **Trigger**: $ARGUMENTS
+- **Self-Critique Results**:
+  - Exploration: [verdict]
+  - Plan: [verdict]
+  - Code: [verdict]
+  - Documentation: [verdict]
+- **Patterns Found**: [list]
+- **Actions Taken**: [list with locations]
+- **Verification**: [how confirmed]
 
 [Previous entries...]
 """)
 ```
 
-## Step 5: Summary
+---
 
-Provide:
-- Patterns identified (count by type)
-- Actions taken
-- Actions deferred (and why)
-- Recommendations for next review
-
-## Output Format
+## Step 6: Summary
 
 ```markdown
 ## Self-Improvement Summary
 
-**Trigger**: [What prompted this review]
+**Trigger**: $ARGUMENTS
 **Date**: [Current date]
+
+### Self-Critique Results
+| Domain | Verdict | Key Issues |
+|--------|---------|------------|
+| Exploration | | |
+| Planning | | |
+| Code | | |
+| Documentation | | |
 
 ### Patterns Found
 - [N] repeated errors
 - [N] context loss instances
 - [N] workflow friction points
+- [N] technical debt items
 - [N] documentation gaps
 
 ### Actions Taken
@@ -128,7 +188,27 @@ Provide:
 ### Deferred
 - [Item]: [Reason]
 
+### Systemic Issues
+- [Issues requiring architectural change]
+
 ### Next Review
 - Recommended: [weekly|after-next-pr|as-needed]
 - Focus areas: [...]
 ```
+
+---
+
+## Continuous Improvement Loop
+
+This command should be run:
+- After every PR merge (automatic via hooks)
+- After any significant error
+- Weekly for maintenance
+- After context loss incidents
+- Before major feature work (full-audit)
+
+The goal is preventing accumulation of:
+- Technical debt
+- Documentation drift
+- Pattern inconsistencies
+- Workflow friction
