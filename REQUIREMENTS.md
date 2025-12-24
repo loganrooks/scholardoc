@@ -1,20 +1,54 @@
 # ScholarDoc Requirements
 
-> **Status:** Draft - Gathering Requirements  
-> **Last Updated:** December 2025  
-> **Purpose:** Define what we're building before how we build it
+> **Status:** Active Development (Phase 1)
+> **Last Updated:** December 2025
+> **Vision:** See [CLAUDE.md#Vision](CLAUDE.md#vision) for authoritative project vision
 
 ---
 
-## Vision Statement
+## Vision Summary
 
-A Python library that transforms scholarly documents (PDFs, later EPUBs) into clean, structured Markdown optimized for RAG pipelines, while preserving the metadata and structure that scholars and researchers need for citation and close reading.
+<!-- Reference: Full vision in CLAUDE.md#Vision -->
 
-**What we are NOT building (yet):**
-- A chunking library (downstream concern)
-- A RAG pipeline (we produce input for RAG)
-- A citation manager
-- An OCR solution (may integrate later)
+ScholarDoc extracts structured knowledge from scholarly PDFs into a flexible intermediate representation (`ScholarDocument`) designed for multiple downstream applications.
+
+**Core insight:** Separate *extraction* from *presentation*. `ScholarDocument` is the intermediate representation; specific output formats serve specific applications.
+
+**What we ARE building:**
+- Flexible data model (`ScholarDocument`) for structured scholarly content
+- Multiple export methods: `to_markdown()`, `to_rag_chunks()`, `to_dict()`, etc.
+- Clean text with position-accurate metadata (page numbers, sections, citations)
+- Extensible architecture for new input formats and output writers
+
+**What we are NOT building:**
+- A single-purpose Markdown converter (we support multiple outputs)
+- A full RAG pipeline (we produce optimized input for RAG)
+- A chunking-only library (chunking is one feature, not the purpose)
+
+---
+
+## Target Applications
+
+### RAG Pipelines
+Clean text with metadata for retrieval-augmented generation systems.
+
+### Anki / Flashcard Generation
+Structured content with citation tracking for spaced repetition learning.
+
+### Research Organization Tools
+Metadata-rich documents for personal knowledge management systems.
+
+### Citation Management
+Page numbers, references, and bibliography extraction for academic writing.
+
+### Knowledge Graphs
+Semantic linking between documents, concepts, and cross-references.
+
+### Literature Review Tools
+Cross-document analysis and comparison for systematic reviews.
+
+### Additional Applications
+Academic writing assistants, accessibility tools, search/indexing systems, custom applications via extensible output formats.
 
 ---
 
@@ -26,8 +60,8 @@ Researchers who work with philosophical texts, need to process large bodies of w
 ### Secondary: Digital Humanities Projects
 Teams building text analysis pipelines for literature, historical documents, and academic texts.
 
-### Tertiary: RAG Application Developers
-Developers who need high-quality text extraction from PDFs for embedding and retrieval systems.
+### Tertiary: Application Developers
+Developers building RAG systems, Anki integrations, research tools, or custom applications that consume structured scholarly content.
 
 ---
 

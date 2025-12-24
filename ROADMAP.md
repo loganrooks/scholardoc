@@ -2,6 +2,7 @@
 
 > **Status:** Phase 1 In Progress
 > **Last Updated:** December 23, 2025
+> **Vision:** See [CLAUDE.md#Vision](CLAUDE.md#vision) for authoritative project vision
 
 ---
 
@@ -561,7 +562,7 @@ These features may be considered based on user feedback:
 | Date | Decision | Rationale | ADR |
 |------|----------|-----------|-----|
 | Dec 2025 | Start with PDF only | Most common scholarly format, hardest to do well | - |
-| Dec 2025 | Output Markdown, not JSON | Markdown is human-readable and RAG-compatible | - |
+| Dec 2025 | Flexible output via ScholarDocument | Multiple outputs (Markdown, JSON, RAG chunks) from single extraction; separation of concerns | Updated Dec 23 |
 | Dec 2025 | No chunking in scope | Chunking strategies vary; downstream concern; added chunk_hints | - |
 | Dec 2025 | Defer footnotes to Phase 2 | Complex feature requiring careful design | - |
 | Dec 2025 | PyMuPDF as primary PDF lib | Mature, fast, well-documented | ADR-001 ✅ validated |

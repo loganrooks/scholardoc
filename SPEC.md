@@ -1,7 +1,8 @@
 # ScholarDoc Technical Specification
 
 > **Status:** Draft (Phase 0 validated)
-> **Last Updated:** December 18, 2025
+> **Last Updated:** December 23, 2025
+> **Vision:** See [CLAUDE.md#Vision](CLAUDE.md#vision) for authoritative project vision
 > **Depends On:** REQUIREMENTS.md, QUESTIONS.md
 > **Validated By:** spikes/FINDINGS.md (Phase 0 exploration complete)
 
@@ -9,7 +10,11 @@
 
 ## Overview
 
-ScholarDoc is a Python library for converting scholarly documents to structured Markdown. This specification defines the technical approach, data models, and interfaces.
+<!-- Vision reference: See CLAUDE.md#Vision for full vision -->
+
+ScholarDoc is a Python library for extracting structured knowledge from scholarly documents into a flexible intermediate representation (`ScholarDocument`). This specification defines the technical approach, data models, and interfaces.
+
+**Key insight:** The `ScholarDocument` model separates extraction from presentation, enabling multiple output formats (Markdown, JSON, RAG chunks) from a single extraction pass.
 
 ### Key Findings from Exploration (Phase 0)
 

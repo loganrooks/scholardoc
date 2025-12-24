@@ -6,6 +6,8 @@ Checks:
 1. All tests pass
 2. No linting errors
 3. Reminds about uncommitted changes
+4. Doc freshness: warns if core architecture changed but docs weren't updated
+5. Session handoff reminder for context preservation
 
 This hook is advisory - it won't block stopping but will provide warnings.
 """
@@ -26,6 +28,57 @@ def run_command(cmd: list[str], timeout: int = 60) -> tuple[int, str, str]:
         return 1, "", "Command timed out"
     except FileNotFoundError:
         return 1, "", f"Command not found: {cmd[0]}"
+
+
+# Core architecture files that should trigger doc review when changed
+CORE_FILES = {
+    "scholardoc/models.py",
+    "scholardoc/config.py",
+    "scholardoc/__init__.py",
+    "scholardoc/convert.py",
+}
+
+# Documentation files that should be updated when core architecture changes
+DOC_FILES = {
+    "CLAUDE.md",
+    "README.md",
+    "SPEC.md",
+    "REQUIREMENTS.md",
+}
+
+
+def check_doc_freshness(changed_files: list[str]) -> str | None:
+    """
+    Check if core architecture files changed but docs weren't updated.
+
+    Returns a warning message if docs may need updating, None otherwise.
+    """
+    # Parse changed files (git status --porcelain format: "XY filename")
+    modified_paths = set()
+    for line in changed_files:
+        if line.strip():
+            # Handle renamed files (R  old -> new) and normal files
+            parts = line.split()
+            if len(parts) >= 2:
+                path = parts[-1]  # Take the last part (handles renames)
+                modified_paths.add(path)
+
+    # Check if any core files were modified
+    core_modified = modified_paths & CORE_FILES
+    if not core_modified:
+        return None
+
+    # Check if any doc files were also modified
+    doc_modified = modified_paths & DOC_FILES
+    if doc_modified:
+        return None  # Docs were updated, all good
+
+    # Core changed, docs didn't - warn
+    core_list = ", ".join(sorted(core_modified))
+    return (
+        f"📝 Doc freshness check: Core files changed ({core_list}) but no docs updated. "
+        f"Review if CLAUDE.md#Vision or other docs need updating."
+    )
 
 
 def main():
@@ -59,6 +112,11 @@ def main():
             f"Uncommitted changes ({file_count} files). Consider committing your work."
         )
 
+        # Check doc freshness when there are uncommitted changes
+        doc_warning = check_doc_freshness(changed_files)
+        if doc_warning:
+            warnings.append(doc_warning)
+
     # Check for unpushed commits
     returncode, stdout, stderr = run_command(
         ["git", "rev-list", "--count", "@{upstream}..HEAD"]
@@ -73,6 +131,37 @@ def main():
                 warnings.append(
                     f"⚠️ Large sync gap ({unpushed_count} commits). Push soon to avoid conflicts."
                 )
+
+    # Session handoff reminder
+    handoff_reminder = """
+📋 **Session Handoff**: Before stopping, consider updating `session_handoff` memory:
+```
+write_memory("session_handoff", '''
+## Session Handoff - [DATE]
+
+### What I Was Working On
+[Current task/goal]
+
+### What Was Accomplished
+- [Completed items]
+
+### Still In Progress
+- [Unfinished items]
+
+### Key Decisions Made
+- [Important choices and rationale]
+
+### Next Steps
+1. [First priority for next session]
+2. [Second priority]
+
+### Blockers/Questions
+- [Any unresolved issues]
+''')
+```
+Run `/project:resume` next session to restore context.
+"""
+    warnings.append(handoff_reminder)
 
     # Log session end
     log_dir = Path(".claude/logs")

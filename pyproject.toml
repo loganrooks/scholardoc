@@ -1,7 +1,7 @@
 [project]
 name = "scholardoc"
 version = "0.1.0"
-description = "Convert scholarly documents (PDF, EPUB) to structured Markdown for RAG pipelines"
+description = "Extract structured knowledge from scholarly PDFs for RAG, Anki, research tools, and more"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.11"
@@ -10,11 +10,13 @@ authors = [
 ]
 keywords = [
     "pdf",
-    "markdown",
-    "rag",
     "scholarly",
     "document-processing",
-    "text-extraction"
+    "text-extraction",
+    "rag",
+    "anki",
+    "research",
+    "knowledge-management"
 ]
 classifiers = [
     "Development Status :: 2 - Pre-Alpha",
