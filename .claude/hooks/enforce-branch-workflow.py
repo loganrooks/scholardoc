@@ -52,9 +52,12 @@ def main():
 
     if current_branch in protected_branches:
         # BLOCK commits to protected branches
+        # For PreToolUse blocking: use permissionDecision: "deny" in hookSpecificOutput
         output = {
-            "decision": "block",
-            "reason": f"""🚫 BLOCKED: Cannot commit directly to '{current_branch}'.
+            "hookSpecificOutput": {
+                "hookEventName": "PreToolUse",
+                "permissionDecision": "deny",
+                "permissionDecisionReason": f"""🚫 BLOCKED: Cannot commit directly to '{current_branch}'.
 
 Use feature branches for all work:
   git checkout -b feature/<name>
@@ -64,9 +67,10 @@ Use feature branches for all work:
   gh pr create
 
 Then merge via PR after review.""",
+            },
         }
         print(json.dumps(output))
-        sys.exit(2)  # Block the operation
+        sys.exit(0)  # Exit 0 when using JSON output
 
     # Allow commits on feature branches
     sys.exit(0)

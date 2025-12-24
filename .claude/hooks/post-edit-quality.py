@@ -68,17 +68,14 @@ def main():
 
     # Output result - ALWAYS ADVISORY, never block
     if messages:
-        # Categorize severity for informational purposes
-        severity = "warning" if has_errors else "info"
+        # Include severity indicator in the message itself
         prefix = "⚠️ Lint issues (consider fixing):" if has_errors else "ℹ️ Auto-formatted:"
 
+        # For PostToolUse: only additionalContext is supported in hookSpecificOutput
         output = {
-            "decision": "allow",  # Never block - advisory only per SuperClaude framework
-            "reason": None,
             "hookSpecificOutput": {
                 "hookEventName": "PostToolUse",
                 "additionalContext": f"{prefix}\n" + "\n".join(messages),
-                "severity": severity,
             },
         }
         print(json.dumps(output))

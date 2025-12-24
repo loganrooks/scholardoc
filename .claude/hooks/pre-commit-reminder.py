@@ -24,12 +24,12 @@ def main():
         sys.exit(0)
 
     # Provide advisory reminder - NEVER block
+    # For PreToolUse: use permissionDecision in hookSpecificOutput
     output = {
-        "decision": "allow",
-        "reason": None,
         "hookSpecificOutput": {
             "hookEventName": "PreToolUse",
-            "additionalContext": """Pre-commit checklist reminder:
+            "permissionDecision": "allow",
+            "permissionDecisionReason": """Pre-commit checklist reminder:
 • Have you run the tests? (uv run pytest)
 • Have you checked for lint errors? (uv run ruff check .)
 • Are you committing the right files? (git status)
