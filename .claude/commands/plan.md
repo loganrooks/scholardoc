@@ -37,7 +37,42 @@ Check documentation:
 - Future considerations
 - Dependencies to avoid
 
-## Step 4: Break Down Tasks
+## Step 4: Define TDD Anchors
+
+**These are the tests that will drive implementation.** Be specific about behavior.
+
+### Test Cases to Write First
+For each major behavior, define concrete test cases:
+
+```
+test_<behavior>_<scenario>:
+  Given: [preconditions]
+  When: [action]
+  Then: [expected outcome]
+```
+
+Example:
+```
+test_convert_simple_pdf_returns_scholar_document:
+  Given: A single-page PDF with plain text
+  When: convert(path) is called
+  Then: Returns ScholarDocument with text content
+
+test_convert_missing_file_raises_error:
+  Given: Path to non-existent file
+  When: convert(path) is called
+  Then: Raises FileNotFoundError with helpful message
+```
+
+Categories to cover:
+- [ ] Happy path (normal operation)
+- [ ] Edge cases (empty input, boundaries)
+- [ ] Error conditions (invalid input, missing deps)
+- [ ] Integration points (if connecting components)
+
+These test cases become the "done" criteria and drive the `/project:implement` phase.
+
+## Step 5: Break Down Tasks
 
 Create ordered task list:
 1. [ ] First task (prerequisite for others)
@@ -49,20 +84,22 @@ For each task, note:
 - Dependencies on other tasks
 - Risk factors
 
-## Step 5: Identify Risks
+## Step 6: Identify Risks
 
 - What could go wrong?
 - What assumptions are we making?
 - What needs human decision?
 
-## Step 6: Plan Output
+## Step 7: Plan Output
 
 Produce a plan document with:
 - Summary (1-2 sentences)
+- TDD Anchors (specific test cases from Step 4)
 - Tasks with order
 - Files affected
-- Test strategy
 - Open questions
+
+The TDD anchors are the most important output - they define "done" and drive implementation.
 
 ## Ask for Approval
 
