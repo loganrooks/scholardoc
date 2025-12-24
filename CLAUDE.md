@@ -1,5 +1,13 @@
 # ScholarDoc
 
+## Quick Start for AI Assistants
+1. Read this file completely
+2. Check ROADMAP.md for current phase (Phase 1: OCR pipeline integration)
+3. If implementing: Read SPEC.md relevant sections
+4. If exploring: Check spikes/ for prior work
+5. Run `/project:plan` before coding
+6. Use Serena memories: `ocr_pipeline_architecture`, `session_2025-12-23_validation_framework`
+
 ## About
 Python library for converting scholarly documents (PDF → Markdown) optimized for RAG pipelines. Preserves structure, page numbers, and metadata that researchers need. See REQUIREMENTS.md for full scope.
 
@@ -128,6 +136,38 @@ Session logs are kept in `.claude/logs/`. Periodically review for:
 - Repeated errors → add rules to prevent
 - Common patterns → add to CLAUDE.md
 - Workflow friction → improve commands/hooks
+
+---
+
+## SuperClaude Framework Integration
+
+This project uses SuperClaude framework capabilities from `~/.claude/`.
+
+### MCP Servers
+| Server | Usage | Triggers |
+|--------|-------|----------|
+| **Serena** | Symbol operations, project memory | Refactoring, cross-session context |
+| **Context7** | Library docs (PyMuPDF, Pydantic, pytest) | Import statements, framework questions |
+| **Sequential** | Complex debugging, architecture analysis | `--think`, `--think-hard` flags |
+
+### Session Lifecycle
+- **Start session**: Load context with Serena memories
+- **During work**: Use TodoWrite for multi-step tasks (>3 steps)
+- **Checkpoint**: Save progress to Serena memory every 30 min
+- **End session**: Verify tests pass, commit changes
+
+### Mode Activation
+- **`--brainstorm`**: Vague requirements → discovery mode
+- **`--introspect`**: Error recovery → meta-cognitive analysis
+- **`--task-manage`**: Complex operations (>3 files) → TodoWrite tracking
+- **`--think`**: Standard analysis with Sequential MCP
+- **`--ultrathink`**: Maximum depth analysis for critical decisions
+
+### Hook Philosophy
+All hooks are **advisory only** - they inject context, never block operations.
+- Quality checks provide warnings, not hard stops
+- Pre-commit reminders show checklists, don't prevent commits
+- Only catastrophic operations (rm -rf /, fork bombs) are blocked
 
 ---
 

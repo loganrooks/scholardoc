@@ -78,7 +78,21 @@ excluded_tools: []
 
 # initial prompt for the project. It will always be given to the LLM upon activating the project
 # (contrary to the memories, which are loaded on demand).
-initial_prompt: ""
+initial_prompt: |
+  ScholarDoc: PDF → Markdown conversion for scholarly documents, optimized for RAG pipelines.
+
+  Current Phase: Phase 1 - Core implementation (OCR pipeline integration)
+  Stack: Python 3.11+, PyMuPDF, Pydantic, pytest, uv
+
+  Key Constraint: Run exploration spikes BEFORE implementing new features.
+
+  Recent Work: OCR pipeline validated (99.2% detection), block-based line-break filtering.
+
+  Relevant memories:
+  - ocr_pipeline_architecture: Pipeline design and validation metrics
+  - session_2025-12-23_validation_framework: Validation set creation and methodology
+
+  Read CLAUDE.md for full project context and workflow.
 
 project_name: "scholardoc"
 included_optional_tools: []

@@ -66,14 +66,19 @@ def main():
         messages.append(f"Lint issues:\n{result.stdout.strip()}")
         has_errors = True
 
-    # Output result
+    # Output result - ALWAYS ADVISORY, never block
     if messages:
+        # Categorize severity for informational purposes
+        severity = "warning" if has_errors else "info"
+        prefix = "⚠️ Lint issues (consider fixing):" if has_errors else "ℹ️ Auto-formatted:"
+
         output = {
-            "decision": "block" if has_errors else "undefined",
-            "reason": "\n".join(messages) if has_errors else None,
+            "decision": "allow",  # Never block - advisory only per SuperClaude framework
+            "reason": None,
             "hookSpecificOutput": {
                 "hookEventName": "PostToolUse",
-                "additionalContext": "\n".join(messages),
+                "additionalContext": f"{prefix}\n" + "\n".join(messages),
+                "severity": severity,
             },
         }
         print(json.dumps(output))
