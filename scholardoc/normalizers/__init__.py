@@ -14,15 +14,6 @@ Legacy OCR Correction (deprecated for most use cases):
 - Use OCRPipeline instead for new code
 """
 
-from scholardoc.normalizers.ocr_pipeline import (
-    SPELLCHECK_AVAILABLE,
-    AdaptiveDictionary,
-    LineBreakCandidate,
-    LineBreakRejoiner,
-    OCRErrorCandidate,
-    OCRErrorDetector,
-    OCRPipeline,
-)
 from scholardoc.normalizers.ocr_correction import (
     DEFAULT_CORRECTION_CONFIG,
     WORD_FREQUENCY_AVAILABLE,
@@ -44,6 +35,15 @@ from scholardoc.normalizers.ocr_correction import (
     is_contextual_available,
     is_language_detection_available,
     score_ocr_quality,
+)
+from scholardoc.normalizers.ocr_pipeline import (
+    SPELLCHECK_AVAILABLE,
+    AdaptiveDictionary,
+    LineBreakCandidate,
+    LineBreakRejoiner,
+    OCRErrorCandidate,
+    OCRErrorDetector,
+    OCRPipeline,
 )
 
 __all__ = [
