@@ -25,7 +25,9 @@ jobs:
         uses: astral-sh/setup-uv@v4
 
       - name: Install dependencies
-        run: uv sync --dev
+        run: |
+          # Use CPU-only PyTorch for CI (no GPU needed, avoids CUDA index issues)
+          uv pip install -e ".[dev]" --extra-index-url https://download.pytorch.org/whl/cpu
 
       - name: Lint with ruff
         run: uv run ruff check .
