@@ -31,7 +31,7 @@ jobs:
           uv pip install -e ".[dev]" --extra-index-url https://download.pytorch.org/whl/cpu
 
       - name: Lint with ruff
-        run: uv run ruff check .
+        run: .venv/bin/ruff check .
 
       - name: Run tests
-        run: uv run pytest -v
+        run: .venv/bin/pytest -v
