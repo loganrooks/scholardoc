@@ -144,6 +144,8 @@ Use these for structured work:
 - `/project:review` - Review recent changes
 - `/project:annotate <pdf>` - Ground truth annotation
 - `/project:improve [trigger]` - Self-improvement review (see protocol below)
+- `/project:resume` - Restore context from previous session
+- `/project:checkpoint <note>` - Save current state mid-session
 
 ### If Hooks Block You
 If automated checks prevent legitimate work:
@@ -189,6 +191,36 @@ If automated checks prevent legitimate work:
 **Tracking:**
 Improvements logged in Serena memory `improvement_log`:
 - Date, trigger, finding, action taken, files modified
+
+### Session Management
+
+Context preservation across sessions to minimize re-explanation.
+
+**Commands:**
+- `/project:resume` — Restore context from previous session (reads `session_handoff` memory)
+- `/project:checkpoint <note>` — Save current state mid-session (before risky ops)
+
+**Key Memories:**
+| Memory | Purpose |
+|--------|---------|
+| `session_handoff` | What was worked on, accomplished, next steps |
+| `decision_log` | Architectural decisions with rationale |
+| `project_vision` | Canonical project description (AUTHORITATIVE) |
+| `checkpoint_*` | Mid-session state snapshots |
+
+**Session Lifecycle:**
+1. **Start**: Run `/project:resume` to restore context
+2. **During**: Use `/project:checkpoint` before major changes
+3. **End**: Update `session_handoff` memory (prompted by stop-verify hook)
+
+**Decision Log Format:**
+When making architectural decisions, add to `decision_log` memory:
+```
+## YYYY-MM-DD: [Decision Title]
+**Decision**: [What was decided]
+**Rationale**: [Why this choice]
+**Trade-offs**: [Downsides and mitigations]
+```
 
 ---
 

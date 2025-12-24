@@ -7,6 +7,7 @@ Checks:
 2. No linting errors
 3. Reminds about uncommitted changes
 4. Doc freshness: warns if core architecture changed but docs weren't updated
+5. Session handoff reminder for context preservation
 
 This hook is advisory - it won't block stopping but will provide warnings.
 """
@@ -130,6 +131,37 @@ def main():
                 warnings.append(
                     f"⚠️ Large sync gap ({unpushed_count} commits). Push soon to avoid conflicts."
                 )
+
+    # Session handoff reminder
+    handoff_reminder = """
+📋 **Session Handoff**: Before stopping, consider updating `session_handoff` memory:
+```
+write_memory("session_handoff", '''
+## Session Handoff - [DATE]
+
+### What I Was Working On
+[Current task/goal]
+
+### What Was Accomplished
+- [Completed items]
+
+### Still In Progress
+- [Unfinished items]
+
+### Key Decisions Made
+- [Important choices and rationale]
+
+### Next Steps
+1. [First priority for next session]
+2. [Second priority]
+
+### Blockers/Questions
+- [Any unresolved issues]
+''')
+```
+Run `/project:resume` next session to restore context.
+"""
+    warnings.append(handoff_reminder)
 
     # Log session end
     log_dir = Path(".claude/logs")
