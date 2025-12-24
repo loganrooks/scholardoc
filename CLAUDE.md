@@ -286,42 +286,76 @@ If automated checks prevent legitimate work:
 
 ### Self-Improvement Protocol
 
-**Triggers** — When to run `/project:improve`:
-- After PR merge (especially if it required multiple iterations)
-- After repeated errors (same issue 2+ times in session)
-- Weekly maintenance (during active development)
-- After context loss requiring re-explanation
+The self-improvement system follows its own explore → plan → implement → review cycle, creating a closed feedback loop that continuously improves the development infrastructure.
 
-**Review Process:**
+**Commands:**
+- `/project:improve [trigger]` - Full improvement cycle
+- `/project:diagnose <signal>` - Root cause analysis for specific issue
 
-1. **Analyze Session Logs** (`.claude/logs/`)
-   - Pattern: Same error appearing in multiple sessions?
-   - Pattern: Repeated questions about same topic?
-   - Pattern: Workflow steps that could be automated?
+**The Feedback Loop:**
+```
+┌────────────────────────────────────────────────────────────────────┐
+│                    SELF-IMPROVEMENT LOOP                            │
+│                                                                     │
+│   Error/Interruption/Friction                                       │
+│           │                                                         │
+│           ▼                                                         │
+│   ┌───────────────┐     ┌───────────────┐     ┌───────────────┐   │
+│   │    EXPLORE    │ ──▶ │    DIAGNOSE   │ ──▶ │     PLAN      │   │
+│   │ Gather signals│     │ Root cause    │     │ Propose fix   │   │
+│   └───────────────┘     └───────────────┘     └───────────────┘   │
+│           │                                           │             │
+│           │         ┌─────────────────────────────────┘             │
+│           │         ▼                                               │
+│           │   ┌───────────────┐     ┌───────────────┐              │
+│           │   │   IMPLEMENT   │ ──▶ │    REVIEW     │              │
+│           │   │ Apply change  │     │ Validate fix  │              │
+│           │   └───────────────┘     └───────────────┘              │
+│           │                                 │                       │
+│           └─────────────────────────────────┘                       │
+│                         │                                           │
+│                         ▼                                           │
+│              Better development system                              │
+│              (commands, agents, hooks, docs)                        │
+└────────────────────────────────────────────────────────────────────┘
+```
 
-2. **Check Serena Memories** (`list_memories()`)
-   - Are memories still accurate? Update or delete stale ones
-   - Should recent learnings become memories?
-   - Is `project_vision` still current?
+**Signal Types:**
+| Type | Examples | Indicates |
+|------|----------|-----------|
+| Internal | Test failures, lint errors | Missing test strategy or review gate |
+| External | Human corrections ("you should have...") | Missing reminder or unclear docs |
+| Process | Skipped steps, context loss | Missing hook or memory gap |
 
-3. **Review Recent Git History**
-   - Commits requiring follow-up fixes → prevention rule needed?
-   - PRs with extensive back-and-forth → unclear docs?
-   - Reverted commits → what was missed?
+**Improvement Types:**
+| Type | Target | When |
+|------|--------|------|
+| COMMAND_REFINEMENT | .claude/commands/ | Command missing step |
+| AGENT_ADDITION | .claude/agents/ | Missing review gate |
+| HOOK_ADDITION | .claude/hooks/ | Need automated reminder |
+| INSTRUCTION_COMPRESSION | CLAUDE.md | File > 500 lines, rules ignored |
+| DOCUMENTATION_UPDATE | docs/ | Docs out of sync |
+| MEMORY_UPDATE | Serena memories | Context loss between sessions |
 
-**Integration Actions:**
+**Review Agents:**
+- `diagnostic-agent` - Traces errors to root causes
+- `improvement-reviewer` - Validates proposed improvements
 
-| Finding | Action | Location |
-|---------|--------|----------|
-| Repeated error | Add prevention rule | CLAUDE.md rules or hook |
-| Missing context | Create Serena memory | `write_memory()` |
-| Unclear workflow | Update command | `.claude/commands/` |
-| Doc confusion | Clarify docs | Reference CLAUDE.md#Vision |
-| Tool misuse | Add usage note | AI Config section |
+**System Health Limits:**
+- CLAUDE.md: < 500 lines (essential rules only)
+- Agents: < 10 (avoid over-fragmentation)
+- Hooks: < 10 (avoid slowdown)
+
+**Triggers — When to run `/project:improve`:**
+- `pr-merge` — After PR merged
+- `error` — After significant error
+- `weekly` — Weekly during active development
+- `context-loss` — After re-explanation needed
+- `full-audit` — Before major feature work
 
 **Tracking:**
-Improvements logged in Serena memory `improvement_log`:
-- Date, trigger, finding, action taken, files modified
+- Signal log: `.claude/logs/signals/`
+- Improvement log: Serena memory `improvement_log`
 
 ### Session Management
 
