@@ -1,19 +1,19 @@
 # ScholarDoc Automation Configuration
 
 > **Purpose:** Maximize Claude Code autonomy while maintaining quality guardrails
-> **Philosophy:** Pre-approve safe operations, enforce quality checks, block dangerous patterns
-> **Status:** ✅ IMPLEMENTED (Simplified)
-> **Last Updated:** December 15, 2025
+> **Philosophy:** Advisory hooks inject context, never block (except catastrophic commands)
+> **Status:** ✅ IMPLEMENTED (Advisory-Only)
+> **Last Updated:** December 23, 2025
 
 ---
 
 ## Overview
 
-This configuration creates a "trust but verify" ecosystem for AI agent development:
+This configuration creates an "advisory context injection" ecosystem for AI agent development:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                     SCHOLARDOC AUTOMATION LAYERS                            │
+│                SCHOLARDOC AUTOMATION LAYERS (ADVISORY-ONLY)                 │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │  Layer 1: PERMISSIONS (.claude/settings.json)                               │
@@ -23,27 +23,27 @@ This configuration creates a "trust but verify" ecosystem for AI agent developme
 │  │ ASK:   Edit settings.json, rm, git rebase                          │   │
 │  └─────────────────────────────────────────────────────────────────────┘   │
 │                              ↓                                              │
-│  Layer 2: PRE-TOOL HOOKS (block-dangerous.py)                              │
+│  Layer 2: PRE-TOOL HOOKS                                                    │
 │  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │ • Block dangerous bash patterns via regex                          │   │
-│  │ • Catch patterns that slip through permissions                     │   │
+│  │ block-dangerous.py (Bash) - BLOCKING: catastrophic commands only   │   │
+│  │ pre-commit-reminder.py (git commit) - ADVISORY: checklist reminder │   │
 │  └─────────────────────────────────────────────────────────────────────┘   │
 │                              ↓                                              │
-│  Layer 3: POST-TOOL HOOKS (post-edit-quality.py)                           │
+│  Layer 3: POST-TOOL HOOKS (Edit|Write)                                     │
 │  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │ • Run ruff format after Python edits                               │   │
-│  │ • Run ruff check --fix after Python edits                          │   │
-│  │ • Report remaining lint errors                                     │   │
+│  │ post-edit-quality.py - ADVISORY: format, lint, report issues       │   │
+│  │ Never blocks - injects warnings via additionalContext              │   │
 │  └─────────────────────────────────────────────────────────────────────┘   │
 │                              ↓                                              │
-│  Layer 4: STOP HOOKS (stop-verify.py)                                      │
+│  Layer 4: STOP HOOKS                                                        │
 │  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │ • Check tests pass                                                  │   │
-│  │ • Check no lint errors                                              │   │
-│  │ • Remind about uncommitted changes                                  │   │
-│  │ • Log session summary to .claude/logs/                             │   │
+│  │ stop-verify.py - ADVISORY: test status, lint, uncommitted changes  │   │
+│  │ • Warns about unpushed commits (>10 = urgent warning)              │   │
+│  │ • Logs session summary to .claude/logs/                            │   │
 │  └─────────────────────────────────────────────────────────────────────┘   │
 │                                                                             │
+│  HOOK PHILOSOPHY: Inject context, never interrupt workflow                  │
+│  Only block: rm -rf /, fork bombs, curl|sh, dd to disk                     │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 

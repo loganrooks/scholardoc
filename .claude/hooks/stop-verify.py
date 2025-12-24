@@ -59,6 +59,21 @@ def main():
             f"Uncommitted changes ({file_count} files). Consider committing your work."
         )
 
+    # Check for unpushed commits
+    returncode, stdout, stderr = run_command(
+        ["git", "rev-list", "--count", "@{upstream}..HEAD"]
+    )
+    if returncode == 0 and stdout.strip():
+        unpushed_count = int(stdout.strip())
+        if unpushed_count > 0:
+            warnings.append(
+                f"Unpushed commits ({unpushed_count}). Consider `git push` to sync with remote."
+            )
+            if unpushed_count > 10:
+                warnings.append(
+                    f"⚠️ Large sync gap ({unpushed_count} commits). Push soon to avoid conflicts."
+                )
+
     # Log session end
     log_dir = Path(".claude/logs")
     log_dir.mkdir(parents=True, exist_ok=True)
