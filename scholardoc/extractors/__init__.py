@@ -9,11 +9,28 @@ Implements cascading structure detection per Phase 0.5 findings:
 
 Note: Probabilistic fusion was invalidated by 21% source agreement rate.
 See spikes/FINDINGS.md for details.
+
+Supports document profiles for type-specific configuration:
+- BOOK_PROFILE: Multi-chapter books with ToC
+- ARTICLE_PROFILE: Academic articles with abstract
+- ESSAY_PROFILE: Essays with subheadings only
+- REPORT_PROFILE: Technical reports with numbered sections
+- DEFAULT_PROFILE: Fallback for unrecognized documents
 """
 
 from scholardoc.extractors.cascading import (
     CascadingExtractor,
     StructureResult,
+)
+from scholardoc.extractors.profiles import (
+    ARTICLE_PROFILE,
+    BOOK_PROFILE,
+    DEFAULT_PROFILE,
+    ESSAY_PROFILE,
+    PROFILES,
+    REPORT_PROFILE,
+    DocumentProfile,
+    get_profile,
 )
 from scholardoc.extractors.sources import (
     CandidateSource,
@@ -34,6 +51,15 @@ __all__ = [
     # Main extractor
     "CascadingExtractor",
     "StructureResult",
+    # Profiles
+    "DocumentProfile",
+    "get_profile",
+    "PROFILES",
+    "BOOK_PROFILE",
+    "ARTICLE_PROFILE",
+    "ESSAY_PROFILE",
+    "REPORT_PROFILE",
+    "DEFAULT_PROFILE",
     # Sources
     "CandidateSource",
     "PDFOutlineSource",

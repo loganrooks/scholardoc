@@ -180,7 +180,7 @@ Structure Extraction (Cascading with Confidence):
 ## Phase 1: Core Representation & Structure (Current)
 
 **Goal:** Build the canonical data representation and structure extraction system.
-**Status:** In progress - Core model complete, convert() orchestrator complete, integration tests passing
+**Status:** In progress - Core model complete, convert() orchestrator complete, structure extraction complete, document profiles complete
 
 **Design Documents:**
 - [CORE_REPRESENTATION.md](docs/design/CORE_REPRESENTATION.md) - Data structures
@@ -219,21 +219,22 @@ Structure Extraction (Cascading with Confidence):
 - [x] Document type detection (book, article, essay)
 - [ ] Multi-column handling (basic) - deferred
 
-#### 1.4 Structure Extraction (Partial)
+#### 1.4 Structure Extraction ✅ COMPLETE
 - [x] `CandidateSource` abstract interface
 - [x] `PDFOutlineSource` - extract from PDF bookmarks (PRIMARY, conf=0.95)
 - [x] `HeadingDetectionSource` - statistical outlier detection (SECONDARY)
+- [x] `ToCParserSource` - detect and parse ToC (ENRICHMENT - title correction only)
 - [x] `CascadingExtractor` strategy (validated: fusion invalidated by 21% agreement)
-- [ ] `ToCParserSource` - detect and parse ToC (ENRICHMENT - title correction only)
-- [ ] `NoOverlapValidator`, `HierarchyValidator` rules
-- [ ] `StructureExtractor` orchestrator with fallback chain
+- [x] `NoOverlapValidator`, `HierarchyValidator`, `TitleQualityValidator` rules
+- [x] Cascading fallback chain with configurable sources
 
-#### 1.5 Document Profiles (Partial)
+#### 1.5 Document Profiles ✅ COMPLETE
 - [x] Document type detection (100% accuracy on books)
 - [x] `estimate_document_type()` method on PDF reader
-- [ ] `DocumentProfile` configuration dataclass
-- [ ] Profile-specific extraction settings
-- [ ] Auto-detection with confidence scores
+- [x] `DocumentProfile` frozen dataclass with extraction settings
+- [x] Profile-specific extraction settings (BOOK, ARTICLE, ESSAY, REPORT, DEFAULT)
+- [x] Auto-detection via `get_profile()` with `CascadingExtractor.for_document()`
+- [x] Profile used tracked in `StructureResult.profile_used`
 
 #### 1.6 Quality Filtering ✅ COMPLETE (ADR-002, ADR-003)
 - [x] OCR quality assessment - 99.2% detection rate validated
@@ -598,6 +599,7 @@ These features may be considered based on user feedback:
 | Dec 24, 2025 | convert() orchestrator complete | DocumentBuilder wires PDFReader → OCRPipeline → CascadingExtractor → ScholarDocument | convert.py |
 | Dec 24, 2025 | SQLite persistence added | Large documents (>1MB) benefit from SQLite over JSON; added save_sqlite/load_sqlite | models.py |
 | Dec 24, 2025 | Integration tests established | 25 tests using real philosophy PDFs verify end-to-end conversion | test_convert.py |
+| Dec 24, 2025 | Document profiles complete | DocumentProfile frozen dataclass with 5 standard profiles (book, article, essay, report, generic); auto-detection via get_profile(); backward-compatible CascadingExtractor | profiles.py |
 
 ---
 
