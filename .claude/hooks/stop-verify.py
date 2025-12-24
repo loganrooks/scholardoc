@@ -132,36 +132,8 @@ def main():
                     f"⚠️ Large sync gap ({unpushed_count} commits). Push soon to avoid conflicts."
                 )
 
-    # Session handoff reminder
-    handoff_reminder = """
-📋 **Session Handoff**: Before stopping, consider updating `session_handoff` memory:
-```
-write_memory("session_handoff", '''
-## Session Handoff - [DATE]
-
-### What I Was Working On
-[Current task/goal]
-
-### What Was Accomplished
-- [Completed items]
-
-### Still In Progress
-- [Unfinished items]
-
-### Key Decisions Made
-- [Important choices and rationale]
-
-### Next Steps
-1. [First priority for next session]
-2. [Second priority]
-
-### Blockers/Questions
-- [Any unresolved issues]
-''')
-```
-Run `/project:resume` next session to restore context.
-"""
-    warnings.append(handoff_reminder)
+    # Note: Handoff reminder removed - Stop hook fires on every response,
+    # not just session end. Use /project:checkpoint for explicit handoffs.
 
     # Log session end
     log_dir = Path(".claude/logs")
@@ -198,22 +170,17 @@ Run `/project:resume` next session to restore context.
     log_file.write_text(log_content)
 
     # Build output - Stop hooks don't support hookSpecificOutput
+    # Only output if there are actual issues/warnings worth noting
+    # Stay silent otherwise (this hook fires on every response, not just session end)
     all_messages = issues + warnings
 
     if all_messages:
-        # Include session log info in the system message
-        all_messages.append(f"📁 Session logged to {log_file}")
         output = {
             "continue": True,  # Don't block stopping, just inform
-            "systemMessage": "Before stopping:\n\n" + "\n\n".join(all_messages),
+            "systemMessage": "Stop hook notes:\n" + "\n".join(all_messages),
         }
         print(json.dumps(output))
-    else:
-        output = {
-            "continue": True,
-            "systemMessage": f"All checks passed. Session logged to {log_file}",
-        }
-        print(json.dumps(output))
+    # else: stay silent - no need to announce "all checks passed" every response
 
     sys.exit(0)
 
