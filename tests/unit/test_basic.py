@@ -122,26 +122,33 @@ class TestSupportedFormats:
         assert len(formats) == 1
 
 
-class TestNotImplemented:
-    """Test that unimplemented features raise NotImplementedError."""
+class TestConvertAPI:
+    """Test that convert API functions are implemented."""
 
-    def test_convert_not_implemented(self):
-        """convert() raises NotImplementedError in Phase 1."""
+    def test_convert_file_not_found(self):
+        """convert() raises FileNotFoundError for missing file."""
         from scholardoc import convert
 
-        with pytest.raises(NotImplementedError, match="Phase 1"):
-            convert("test.pdf")
+        with pytest.raises(FileNotFoundError):
+            convert("nonexistent.pdf")
 
-    def test_convert_batch_not_implemented(self):
-        """convert_batch() raises NotImplementedError in Phase 1."""
+    def test_convert_batch_empty(self):
+        """convert_batch() handles empty list."""
         from scholardoc import convert_batch
 
-        with pytest.raises(NotImplementedError, match="Phase 1"):
-            list(convert_batch(["test.pdf"]))
+        results = list(convert_batch([]))
+        assert results == []
 
-    def test_detect_format_not_implemented(self):
-        """detect_format() raises NotImplementedError in Phase 1."""
+    def test_detect_format_pdf(self):
+        """detect_format() detects PDF from extension."""
         from scholardoc import detect_format
 
-        with pytest.raises(NotImplementedError, match="Phase 1"):
-            detect_format("test.pdf")
+        assert detect_format("test.pdf") == "pdf"
+        assert detect_format("path/to/document.PDF") == "pdf"
+
+    def test_detect_format_unsupported(self):
+        """detect_format() raises for unsupported formats."""
+        from scholardoc import UnsupportedFormatError, detect_format
+
+        with pytest.raises(UnsupportedFormatError):
+            detect_format("test.xyz")

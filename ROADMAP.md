@@ -1,7 +1,7 @@
 # ScholarDoc Roadmap
 
-> **Status:** Phase 1 In Progress
-> **Last Updated:** December 23, 2025
+> **Status:** Phase 1 In Progress - Core Complete
+> **Last Updated:** December 24, 2025
 > **Vision:** See [CLAUDE.md#Vision](CLAUDE.md#vision) for authoritative project vision
 
 ---
@@ -180,7 +180,7 @@ Structure Extraction (Cascading with Confidence):
 ## Phase 1: Core Representation & Structure (Current)
 
 **Goal:** Build the canonical data representation and structure extraction system.
-**Status:** In progress - PDF reader done, OCR pipeline validated, structure extraction in progress
+**Status:** In progress - Core model complete, convert() orchestrator complete, integration tests passing
 
 **Design Documents:**
 - [CORE_REPRESENTATION.md](docs/design/CORE_REPRESENTATION.md) - Data structures
@@ -197,18 +197,18 @@ Structure Extraction (Cascading with Confidence):
 - [x] Project setup (pyproject.toml, uv, ruff, pytest)
 - [x] Exception hierarchy (basic)
 - [x] Configuration system (basic)
-- [x] Basic test harness (199 tests passing)
+- [x] Basic test harness (257 tests passing)
 
-#### 1.2 Core Data Model (Partial)
+#### 1.2 Core Data Model ✅ COMPLETE
 - [x] `RawDocument`, `RawPage`, `TextBlock` dataclasses
 - [x] `PageLabel` for scholarly pagination (roman, arabic)
 - [x] `DocumentMetadata` with basic fields
-- [ ] `ScholarDocument` with clean text + position annotations
-- [ ] `FootnoteRef`, `CitationRef`, `CrossRef` annotation types
-- [ ] `PageSpan`, `SectionSpan`, `ParagraphSpan` structural spans
-- [ ] `Note`, `ToCEntry`, `TableOfContents` content types
-- [ ] JSON serialization (.scholardoc format)
-- [ ] SQLite serialization (.scholardb for large docs)
+- [x] `ScholarDocument` with clean text + position annotations
+- [x] `FootnoteRef`, `CitationRef`, `CrossRef` annotation types
+- [x] `PageSpan`, `SectionSpan`, `ParagraphSpan` structural spans
+- [x] `Note`, `ToCEntry`, `TableOfContents` content types
+- [x] JSON serialization (.scholardoc format)
+- [x] SQLite serialization (.scholardb for large docs)
 
 #### 1.3 PDF Reader ✅ COMPLETE
 - [x] PyMuPDF integration (`scholardoc/readers/pdf_reader.py`)
@@ -235,26 +235,26 @@ Structure Extraction (Cascading with Confidence):
 - [ ] Profile-specific extraction settings
 - [ ] Auto-detection with confidence scores
 
-#### 1.6 Quality Filtering ✅ VALIDATED (ADR-002, ADR-003)
+#### 1.6 Quality Filtering ✅ COMPLETE (ADR-002, ADR-003)
 - [x] OCR quality assessment - 99.2% detection rate validated
 - [x] Page quality scoring (GOOD/MARGINAL/BAD) - ground truth complete
 - [x] Spellcheck as selector for re-OCR (not auto-correct) - ADR-002
 - [x] Line-break rejoining with block filtering - ADR-003
 - [x] Adaptive dictionary with morphological validation
 - [x] Pipeline design validated (`spikes/29_ocr_pipeline_design.py`)
-- [ ] Integration into main module (next step)
+- [x] Integration into main module (`scholardoc/convert.py`)
 
-#### 1.7 Query Methods
-- [ ] `text_range()`, `annotations_in_range()`
-- [ ] `page_for_position()`, `section_for_position()`
-- [ ] `footnotes_in_range()`, `citations_in_range()`
-- [ ] `to_markdown()`, `to_plain_text()`
-- [ ] `to_rag_chunks()` with `ChunkStrategy`
+#### 1.7 Query Methods ✅ COMPLETE
+- [x] `text_range()`, `annotations_in_range()`
+- [x] `page_for_position()`, `section_for_position()`
+- [x] `footnotes_in_range()`, `citations_in_range()`
+- [x] `to_markdown()`, `to_plain_text()`
+- [x] `to_rag_chunks()` with `ChunkStrategy`
 
-#### 1.8 Testing & Documentation
-- [ ] Unit tests for each component
-- [ ] Integration tests with sample PDFs
-- [ ] Test corpus (philosophy texts)
+#### 1.8 Testing & Documentation (Partial)
+- [x] Unit tests for each component (257 tests passing)
+- [x] Integration tests with sample PDFs (`tests/integration/test_convert.py`)
+- [x] Test corpus (philosophy texts in `spikes/sample_pdfs/`)
 - [ ] API documentation
 - [ ] Usage examples
 
@@ -595,6 +595,9 @@ These features may be considered based on user feedback:
 | Dec 23, 2025 | Block-based line-break filtering | PyMuPDF blocks distinguish margins from text; prevents false matches | ADR-003 |
 | Dec 23, 2025 | Adaptive dictionary with safeguards | Learn vocabulary with frequency thresholds, morphological validation | ADR-002 |
 | Dec 23, 2025 | Validation framework established | 130 error pairs, 77 correct words; test before optimizing | Spike 30 |
+| Dec 24, 2025 | convert() orchestrator complete | DocumentBuilder wires PDFReader → OCRPipeline → CascadingExtractor → ScholarDocument | convert.py |
+| Dec 24, 2025 | SQLite persistence added | Large documents (>1MB) benefit from SQLite over JSON; added save_sqlite/load_sqlite | models.py |
+| Dec 24, 2025 | Integration tests established | 25 tests using real philosophy PDFs verify end-to-end conversion | test_convert.py |
 
 ---
 

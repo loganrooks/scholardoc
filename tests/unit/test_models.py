@@ -276,11 +276,7 @@ class TestScholarDocumentCreation:
         return ScholarDocument(
             text="The question of Being has been forgotten.",
             pages=[PageSpan(start=0, end=41, label="1", index=0)],
-            sections=[
-                SectionSpan(
-                    start=0, end=41, title="Introduction", level=1, confidence=0.95
-                )
-            ],
+            sections=[SectionSpan(start=0, end=41, title="Introduction", level=1, confidence=0.95)],
             paragraphs=[ParagraphSpan(start=0, end=41)],
             metadata=DocumentMetadata(
                 title="Being and Time",
@@ -528,9 +524,7 @@ class TestRAGChunking:
                 PageSpan(start=0, end=len(para1), label="1", index=0),
                 PageSpan(start=len(para1), end=len(text), label="2", index=1),
             ],
-            sections=[
-                SectionSpan(start=0, end=len(text), title="Main Section", level=1)
-            ],
+            sections=[SectionSpan(start=0, end=len(text), title="Main Section", level=1)],
             metadata=DocumentMetadata(title="Chunking Test", author="Test"),
             source_path="/test.pdf",
         )
@@ -553,18 +547,14 @@ class TestRAGChunking:
     def test_chunk_semantic(self, doc_for_chunking):
         """to_rag_chunks with SEMANTIC respects paragraph boundaries."""
         doc = doc_for_chunking
-        chunks = list(
-            doc.to_rag_chunks(strategy=ChunkStrategy.SEMANTIC, max_tokens=100)
-        )
+        chunks = list(doc.to_rag_chunks(strategy=ChunkStrategy.SEMANTIC, max_tokens=100))
         # Should create multiple chunks respecting paragraph boundaries
         assert len(chunks) >= 2
 
     def test_chunk_fixed_size(self, doc_for_chunking):
         """to_rag_chunks with FIXED_SIZE creates uniform chunks."""
         doc = doc_for_chunking
-        chunks = list(
-            doc.to_rag_chunks(strategy=ChunkStrategy.FIXED_SIZE, max_tokens=50)
-        )
+        chunks = list(doc.to_rag_chunks(strategy=ChunkStrategy.FIXED_SIZE, max_tokens=50))
         # Should create many small chunks
         assert len(chunks) >= 3
 
@@ -753,6 +743,176 @@ class TestScholarDocumentPersistence:
         assert data["version"] == "1.0"
         assert "text" in data
         assert "metadata" in data
+
+
+class TestSQLitePersistence:
+    """Test SQLite save/load functionality."""
+
+    @pytest.fixture
+    def complete_document(self) -> ScholarDocument:
+        """Create a complete document with all fields populated."""
+        return ScholarDocument(
+            text="The beautiful morning. The sublime evening.",
+            footnote_refs=[
+                FootnoteRef(position=13, marker="1", target_id="fn1"),
+            ],
+            endnote_refs=[
+                EndnoteRef(position=35, marker="1", target_id="en1"),
+            ],
+            citations=[
+                CitationRef(start=4, end=13, original="beautiful"),
+            ],
+            cross_refs=[
+                CrossRef(start=24, end=31, original="sublime", target_page="42"),
+            ],
+            pages=[
+                PageSpan(start=0, end=22, label="1", index=0),
+                PageSpan(start=22, end=44, label="2", index=1),
+            ],
+            sections=[
+                SectionSpan(start=0, end=44, title="Chapter 1", level=1, confidence=0.9),
+            ],
+            paragraphs=[
+                ParagraphSpan(start=0, end=22),
+                ParagraphSpan(start=22, end=44),
+            ],
+            block_quotes=[
+                BlockQuoteSpan(start=4, end=13, indentation_level=1),
+            ],
+            notes={
+                "fn1": Note(
+                    id="fn1",
+                    text="A footnote about beauty.",
+                    note_type=NoteType.FOOTNOTE,
+                    source=NoteSource.AUTHOR,
+                ),
+                "en1": Note(
+                    id="en1",
+                    text="An endnote about sublimity.",
+                    note_type=NoteType.ENDNOTE,
+                    source=NoteSource.TRANSLATOR,
+                ),
+            },
+            bibliography=[
+                BibEntry(
+                    id="kant1790",
+                    raw="Kant, I. (1790). Critique of Judgment.",
+                    authors=["Immanuel Kant"],
+                    title="Critique of Judgment",
+                    year="1790",
+                ),
+            ],
+            toc=TableOfContents(
+                entries=[
+                    ToCEntry(
+                        title="Chapter 1",
+                        page_label="1",
+                        level=1,
+                        children=[ToCEntry(title="Section 1.1", page_label="5", level=2)],
+                    ),
+                ],
+                page_range=(0, 2),
+                confidence=0.85,
+            ),
+            metadata=DocumentMetadata(
+                title="Test Philosophy Book",
+                author="Test Author",
+                authors=["Test Author", "Second Author"],
+                document_type=DocumentType.BOOK,
+                language="en",
+                page_count=100,
+            ),
+            source_path="/path/to/book.pdf",
+            quality=QualityInfo(
+                overall=QualityLevel.GOOD,
+                overall_confidence=0.92,
+                needs_reocr=[5, 10],
+            ),
+            processing_log=["Extracted with PyMuPDF", "Headings detected"],
+        )
+
+    def test_sqlite_save_and_load_roundtrip(self, complete_document, tmp_path):
+        """Document survives SQLite save/load roundtrip."""
+        doc = complete_document
+        save_path = tmp_path / "test.scholardb"
+
+        # Save
+        doc.save_sqlite(save_path)
+        assert save_path.exists()
+
+        # Load
+        loaded = ScholarDocument.load_sqlite(save_path)
+
+        # Verify text
+        assert loaded.text == doc.text
+
+        # Verify annotations
+        assert len(loaded.footnote_refs) == 1
+        assert loaded.footnote_refs[0].position == 13
+        assert loaded.footnote_refs[0].marker == "1"
+
+        assert len(loaded.endnote_refs) == 1
+        assert len(loaded.citations) == 1
+        assert len(loaded.cross_refs) == 1
+
+        # Verify structural spans
+        assert len(loaded.pages) == 2
+        assert loaded.pages[0].label == "1"
+        assert len(loaded.sections) == 1
+        assert loaded.sections[0].confidence == 0.9
+        assert len(loaded.paragraphs) == 2
+        assert len(loaded.block_quotes) == 1
+
+        # Verify notes
+        assert "fn1" in loaded.notes
+        assert loaded.notes["fn1"].note_type == NoteType.FOOTNOTE
+        assert loaded.notes["en1"].source == NoteSource.TRANSLATOR
+
+        # Verify bibliography
+        assert len(loaded.bibliography) == 1
+        assert loaded.bibliography[0].year == "1790"
+
+        # Verify ToC
+        assert loaded.toc is not None
+        assert len(loaded.toc.entries) == 1
+        assert len(loaded.toc.entries[0].children) == 1
+
+        # Verify metadata
+        assert loaded.metadata.title == "Test Philosophy Book"
+        assert loaded.metadata.document_type == DocumentType.BOOK
+
+        # Verify quality
+        assert loaded.quality.overall == QualityLevel.GOOD
+
+        # Verify processing log
+        assert len(loaded.processing_log) == 2
+
+    def test_sqlite_adds_extension(self, complete_document, tmp_path):
+        """save_sqlite() adds .scholardb extension if missing."""
+        doc = complete_document
+        save_path = tmp_path / "test"  # No extension
+
+        doc.save_sqlite(save_path)
+        assert (tmp_path / "test.scholardb").exists()
+
+    def test_sqlite_is_valid_database(self, complete_document, tmp_path):
+        """Saved file is a valid SQLite database."""
+        import sqlite3
+
+        doc = complete_document
+        save_path = tmp_path / "test.scholardb"
+
+        doc.save_sqlite(save_path)
+
+        conn = sqlite3.connect(save_path)
+        # Verify we can query it
+        cursor = conn.execute("SELECT key, value FROM metadata")
+        rows = cursor.fetchall()
+        conn.close()
+
+        keys = [row[0] for row in rows]
+        assert "version" in keys
+        assert "title" in keys
 
 
 class TestEnumerations:
