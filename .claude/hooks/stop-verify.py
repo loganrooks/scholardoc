@@ -96,9 +96,9 @@ def main():
         elif "error" in stderr.lower():
             issues.append(f"Test error:\n{stderr[:500]}")
 
-    # Check for lint errors
+    # Check for lint errors (only production code, not exploratory spikes)
     returncode, stdout, stderr = run_command(
-        ["uv", "run", "ruff", "check", "scholardoc/", "tests/", "spikes/"]
+        ["uv", "run", "ruff", "check", "scholardoc/", "tests/"]
     )
     if returncode != 0 and stdout.strip():
         issues.append(f"Lint errors:\n{stdout[:500]}")
@@ -197,17 +197,15 @@ Run `/project:resume` next session to restore context.
 
     log_file.write_text(log_content)
 
-    # Build output
+    # Build output - Stop hooks don't support hookSpecificOutput
     all_messages = issues + warnings
 
     if all_messages:
+        # Include session log info in the system message
+        all_messages.append(f"📁 Session logged to {log_file}")
         output = {
             "continue": True,  # Don't block stopping, just inform
             "systemMessage": "Before stopping:\n\n" + "\n\n".join(all_messages),
-            "hookSpecificOutput": {
-                "hookEventName": "Stop",
-                "additionalContext": f"Session logged to {log_file}",
-            },
         }
         print(json.dumps(output))
     else:
