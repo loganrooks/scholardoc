@@ -1033,6 +1033,367 @@ class ScholarDocument:
         )
 
     # ─────────────────────────────────────────────────
+    # SQLite Persistence (for large documents)
+    # ─────────────────────────────────────────────────
+
+    def save_sqlite(self, path: Path | str) -> None:
+        """
+        Save to .scholardb (SQLite) format.
+
+        Recommended for documents with >1MB of text for better performance
+        and random access capabilities.
+
+        Args:
+            path: Output file path
+        """
+        import sqlite3
+
+        path = Path(path)
+        if not path.suffix:
+            path = path.with_suffix(".scholardb")
+
+        # Remove existing file if present
+        if path.exists():
+            path.unlink()
+
+        conn = sqlite3.connect(path)
+        try:
+            self._create_sqlite_schema(conn)
+            self._write_sqlite_data(conn)
+            conn.commit()
+        finally:
+            conn.close()
+
+    def _create_sqlite_schema(self, conn) -> None:
+        """Create SQLite tables for document storage."""
+        # Schema split across multiple statements for readability
+        conn.execute("CREATE TABLE metadata (key TEXT PRIMARY KEY, value TEXT)")
+        conn.execute("CREATE TABLE content (text TEXT)")
+        conn.execute("CREATE TABLE footnote_refs (position INTEGER, marker TEXT, target_id TEXT)")
+        conn.execute("CREATE TABLE endnote_refs (position INTEGER, marker TEXT, target_id TEXT)")
+        conn.execute(
+            "CREATE TABLE citations "
+            "(start INTEGER, end_pos INTEGER, original TEXT, bib_entry_id TEXT)"
+        )
+        conn.execute(
+            "CREATE TABLE cross_refs "
+            "(start INTEGER, end_pos INTEGER, original TEXT, "
+            "target_page TEXT, target_section TEXT)"
+        )
+        conn.execute("CREATE TABLE pages (start INTEGER, end_pos INTEGER, label TEXT, idx INTEGER)")
+        conn.execute(
+            "CREATE TABLE sections "
+            "(start INTEGER, end_pos INTEGER, title TEXT, level INTEGER, confidence REAL)"
+        )
+        conn.execute("CREATE TABLE paragraphs (start INTEGER, end_pos INTEGER)")
+        conn.execute(
+            "CREATE TABLE block_quotes (start INTEGER, end_pos INTEGER, indentation_level INTEGER)"
+        )
+        conn.execute(
+            "CREATE TABLE notes "
+            "(id TEXT PRIMARY KEY, text TEXT, note_type TEXT, page_label TEXT, source TEXT)"
+        )
+        conn.execute(
+            "CREATE TABLE bibliography "
+            "(id TEXT PRIMARY KEY, raw TEXT, authors TEXT, title TEXT, year TEXT)"
+        )
+        conn.execute(
+            "CREATE TABLE toc_entries "
+            "(id INTEGER PRIMARY KEY, title TEXT, page_label TEXT, "
+            "level INTEGER, parent_id INTEGER)"
+        )
+        conn.execute("CREATE TABLE processing_log (idx INTEGER PRIMARY KEY, entry TEXT)")
+
+        # Indexes for common queries
+        conn.execute("CREATE INDEX idx_pages_start ON pages(start)")
+        conn.execute("CREATE INDEX idx_sections_start ON sections(start)")
+        conn.execute("CREATE INDEX idx_footnotes_pos ON footnote_refs(position)")
+
+    def _write_sqlite_data(self, conn) -> None:
+        """Write document data to SQLite tables."""
+        # Metadata
+        meta_items = [
+            ("version", "1.0"),
+            ("source_path", str(self.source_path)),
+            ("title", self.metadata.title or ""),
+            ("author", self.metadata.author or ""),
+            ("document_type", self.metadata.document_type.value),
+            ("language", self.metadata.language),
+            ("page_count", str(self.metadata.page_count)),
+            ("quality_overall", self.quality.overall.value),
+            ("quality_confidence", str(self.quality.overall_confidence)),
+        ]
+        conn.executemany("INSERT INTO metadata VALUES (?, ?)", meta_items)
+
+        # Content
+        conn.execute("INSERT INTO content VALUES (?)", (self.text,))
+
+        # Annotations
+        conn.executemany(
+            "INSERT INTO footnote_refs VALUES (?, ?, ?)",
+            [(fn.position, fn.marker, fn.target_id) for fn in self.footnote_refs],
+        )
+        conn.executemany(
+            "INSERT INTO endnote_refs VALUES (?, ?, ?)",
+            [(en.position, en.marker, en.target_id) for en in self.endnote_refs],
+        )
+        conn.executemany(
+            "INSERT INTO citations VALUES (?, ?, ?, ?)",
+            [(c.start, c.end, c.original, c.bib_entry_id) for c in self.citations],
+        )
+        conn.executemany(
+            "INSERT INTO cross_refs VALUES (?, ?, ?, ?, ?)",
+            [
+                (cr.start, cr.end, cr.original, cr.target_page, cr.target_section)
+                for cr in self.cross_refs
+            ],
+        )
+
+        # Structural spans
+        conn.executemany(
+            "INSERT INTO pages VALUES (?, ?, ?, ?)",
+            [(p.start, p.end, p.label, p.index) for p in self.pages],
+        )
+        conn.executemany(
+            "INSERT INTO sections VALUES (?, ?, ?, ?, ?)",
+            [(s.start, s.end, s.title, s.level, s.confidence) for s in self.sections],
+        )
+        conn.executemany(
+            "INSERT INTO paragraphs VALUES (?, ?)",
+            [(p.start, p.end) for p in self.paragraphs],
+        )
+        conn.executemany(
+            "INSERT INTO block_quotes VALUES (?, ?, ?)",
+            [(b.start, b.end, b.indentation_level) for b in self.block_quotes],
+        )
+
+        # Notes
+        conn.executemany(
+            "INSERT INTO notes VALUES (?, ?, ?, ?, ?)",
+            [
+                (n.id, n.text, n.note_type.value, n.page_label, n.source.value)
+                for n in self.notes.values()
+            ],
+        )
+
+        # Bibliography
+        conn.executemany(
+            "INSERT INTO bibliography VALUES (?, ?, ?, ?, ?)",
+            [(b.id, b.raw, json.dumps(b.authors), b.title, b.year) for b in self.bibliography],
+        )
+
+        # Processing log
+        conn.executemany(
+            "INSERT INTO processing_log VALUES (?, ?)",
+            [(i, entry) for i, entry in enumerate(self.processing_log)],
+        )
+
+        # ToC entries (recursive structure flattened)
+        if self.toc:
+            self._write_toc_entries(conn, self.toc.entries, parent_id=None)
+
+    def _write_toc_entries(self, conn, entries: list[ToCEntry], parent_id: int | None) -> None:
+        """Recursively write ToC entries."""
+        for entry in entries:
+            cursor = conn.execute(
+                "INSERT INTO toc_entries (title, page_label, level, parent_id) VALUES (?, ?, ?, ?)",
+                (entry.title, entry.page_label, entry.level, parent_id),
+            )
+            entry_id = cursor.lastrowid
+            if entry.children:
+                self._write_toc_entries(conn, entry.children, entry_id)
+
+    @classmethod
+    def load_sqlite(cls, path: Path | str) -> ScholarDocument:
+        """
+        Load from .scholardb (SQLite) format.
+
+        Args:
+            path: Input file path
+
+        Returns:
+            ScholarDocument instance
+        """
+        import sqlite3
+
+        path = Path(path)
+        conn = sqlite3.connect(path)
+        conn.row_factory = sqlite3.Row
+        try:
+            return cls._read_sqlite_data(conn)
+        finally:
+            conn.close()
+
+    @classmethod
+    def _read_sqlite_data(cls, conn) -> ScholarDocument:
+        """Read document data from SQLite tables."""
+        # Metadata
+        meta = dict(conn.execute("SELECT key, value FROM metadata").fetchall())
+
+        # Content
+        text = conn.execute("SELECT text FROM content").fetchone()[0]
+
+        # Annotations
+        footnote_refs = [
+            FootnoteRef(position=r["position"], marker=r["marker"], target_id=r["target_id"])
+            for r in conn.execute("SELECT * FROM footnote_refs").fetchall()
+        ]
+        endnote_refs = [
+            EndnoteRef(position=r["position"], marker=r["marker"], target_id=r["target_id"])
+            for r in conn.execute("SELECT * FROM endnote_refs").fetchall()
+        ]
+        citations = [
+            CitationRef(
+                start=r["start"],
+                end=r["end_pos"],
+                original=r["original"],
+                bib_entry_id=r["bib_entry_id"],
+            )
+            for r in conn.execute("SELECT * FROM citations").fetchall()
+        ]
+        cross_refs = [
+            CrossRef(
+                start=r["start"],
+                end=r["end_pos"],
+                original=r["original"],
+                target_page=r["target_page"],
+                target_section=r["target_section"],
+            )
+            for r in conn.execute("SELECT * FROM cross_refs").fetchall()
+        ]
+
+        # Structural spans
+        pages = [
+            PageSpan(start=r["start"], end=r["end_pos"], label=r["label"], index=r["idx"])
+            for r in conn.execute("SELECT * FROM pages").fetchall()
+        ]
+        sections = [
+            SectionSpan(
+                start=r["start"],
+                end=r["end_pos"],
+                title=r["title"],
+                level=r["level"],
+                confidence=r["confidence"],
+            )
+            for r in conn.execute("SELECT * FROM sections").fetchall()
+        ]
+        paragraphs = [
+            ParagraphSpan(start=r["start"], end=r["end_pos"])
+            for r in conn.execute("SELECT * FROM paragraphs").fetchall()
+        ]
+        block_quotes = [
+            BlockQuoteSpan(
+                start=r["start"],
+                end=r["end_pos"],
+                indentation_level=r["indentation_level"],
+            )
+            for r in conn.execute("SELECT * FROM block_quotes").fetchall()
+        ]
+
+        # Notes
+        notes = {
+            r["id"]: Note(
+                id=r["id"],
+                text=r["text"],
+                note_type=NoteType(r["note_type"]),
+                page_label=r["page_label"],
+                source=NoteSource(r["source"]),
+            )
+            for r in conn.execute("SELECT * FROM notes").fetchall()
+        }
+
+        # Bibliography
+        bibliography = [
+            BibEntry(
+                id=r["id"],
+                raw=r["raw"],
+                authors=json.loads(r["authors"]) if r["authors"] else [],
+                title=r["title"],
+                year=r["year"],
+            )
+            for r in conn.execute("SELECT * FROM bibliography").fetchall()
+        ]
+
+        # ToC entries
+        toc = cls._read_toc_entries(conn)
+
+        # Processing log
+        processing_log = [
+            r["entry"]
+            for r in conn.execute("SELECT entry FROM processing_log ORDER BY idx").fetchall()
+        ]
+
+        # Build metadata
+        metadata = DocumentMetadata(
+            title=meta.get("title") or None,
+            author=meta.get("author") or None,
+            document_type=DocumentType(meta.get("document_type", "generic")),
+            language=meta.get("language", "en"),
+            page_count=int(meta.get("page_count", 0)),
+        )
+
+        # Build quality
+        quality = QualityInfo(
+            overall=QualityLevel(meta.get("quality_overall", "good")),
+            overall_confidence=float(meta.get("quality_confidence", 1.0)),
+        )
+
+        return cls(
+            text=text,
+            footnote_refs=footnote_refs,
+            endnote_refs=endnote_refs,
+            citations=citations,
+            cross_refs=cross_refs,
+            pages=pages,
+            sections=sections,
+            paragraphs=paragraphs,
+            block_quotes=block_quotes,
+            notes=notes,
+            bibliography=bibliography,
+            toc=toc,
+            metadata=metadata,
+            source_path=meta.get("source_path", ""),
+            quality=quality,
+            processing_log=processing_log,
+        )
+
+    @classmethod
+    def _read_toc_entries(cls, conn) -> TableOfContents | None:
+        """Read ToC entries from SQLite."""
+        rows = conn.execute(
+            "SELECT id, title, page_label, level, parent_id FROM toc_entries"
+        ).fetchall()
+
+        if not rows:
+            return None
+
+        # Build tree structure
+        entries_by_id: dict[int, ToCEntry] = {}
+        root_entries: list[ToCEntry] = []
+
+        # First pass: create all entries
+        for r in rows:
+            entry = ToCEntry(
+                title=r["title"],
+                page_label=r["page_label"],
+                level=r["level"],
+                children=[],
+            )
+            entries_by_id[r["id"]] = entry
+
+        # Second pass: build hierarchy
+        for r in rows:
+            entry = entries_by_id[r["id"]]
+            if r["parent_id"] is None:
+                root_entries.append(entry)
+            else:
+                parent = entries_by_id.get(r["parent_id"])
+                if parent:
+                    parent.children.append(entry)
+
+        return TableOfContents(entries=root_entries)
+
+    # ─────────────────────────────────────────────────
     # Convenience
     # ─────────────────────────────────────────────────
 

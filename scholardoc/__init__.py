@@ -19,6 +19,12 @@ See SPEC.md and docs/design/CORE_REPRESENTATION.md for full documentation.
 """
 
 from scholardoc.config import ConversionConfig
+from scholardoc.convert import (
+    convert,
+    convert_batch,
+    detect_format,
+    supported_formats,
+)
 from scholardoc.exceptions import (
     ConfigurationError,
     ExtractionError,
@@ -106,71 +112,8 @@ __all__ = [
 ]
 
 
-def convert(
-    source: str,
-    config: ConversionConfig | None = None,
-) -> ScholarDocument:
-    """
-    Convert a single document to structured ScholarDocument.
-
-    Args:
-        source: Path to document file
-        config: Conversion configuration (uses defaults if None)
-
-    Returns:
-        ScholarDocument with text, annotations, and metadata
-
-    Raises:
-        FileNotFoundError: If source doesn't exist
-        UnsupportedFormatError: If format not supported
-        ExtractionError: If extraction fails (when on_extraction_error="raise")
-
-    Example:
-        >>> doc = scholardoc.convert("kant.pdf")
-        >>> print(doc.text[:100])  # Clean text
-        >>> for fn, note in doc.footnotes_in_range(0, 1000):
-        ...     print(f"Note: {note.text}")
-    """
-    # TODO: Implement in Phase 1
-    raise NotImplementedError("Phase 1 implementation in progress")
-
-
-def convert_batch(
-    sources,
-    config: ConversionConfig | None = None,
-    parallel: bool = False,
-    max_workers: int = 4,
-):
-    """
-    Convert multiple documents, yielding results as completed.
-
-    Args:
-        sources: Paths to document files
-        config: Conversion configuration
-        parallel: Whether to process in parallel
-        max_workers: Max parallel workers (if parallel=True)
-
-    Yields:
-        (path, result) tuples where result is ScholarDocument or Exception
-    """
-    # TODO: Implement in Phase 1
-    raise NotImplementedError("Phase 1 implementation in progress")
-
-
-def detect_format(path: str) -> str:
-    """
-    Detect document format from file extension and magic bytes.
-
-    Returns:
-        Format string: "pdf", "epub", "markdown", etc.
-
-    Raises:
-        UnsupportedFormatError: If format cannot be detected or isn't supported
-    """
-    # TODO: Implement in Phase 1
-    raise NotImplementedError("Phase 1 implementation in progress")
-
-
-def supported_formats() -> list[str]:
-    """Return list of currently supported input formats."""
-    return ["pdf"]  # Phase 1: PDF only
+# Public API functions are imported from scholardoc.convert:
+# - convert(source, config) -> ScholarDocument
+# - convert_batch(sources, config, parallel, max_workers) -> Iterator
+# - detect_format(path) -> str
+# - supported_formats() -> list[str]
