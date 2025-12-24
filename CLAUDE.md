@@ -138,14 +138,69 @@ Before stopping:
 
 ### Workflow Commands
 Use these for structured work:
+
+**Discovery & Planning:**
+- `/project:explore <topic>` - Read-only investigation (understand before planning)
+- `/project:plan <feature>` - Create implementation plan with scope, tests, tasks, risks
+- `/project:spike <topic>` - Exploration spike for uncertain features
+
+**Implementation:**
 - `/project:implement <feature>` - TDD workflow (tests first)
 - `/project:tdd` - Start test-driven cycle
-- `/project:plan` - Create implementation plan
+- `/project:refactor <code>` - Safe refactoring with test verification
+- `/project:document <target>` - Generate/update documentation
+
+**Quality & Review:**
 - `/project:review` - Review recent changes
-- `/project:annotate <pdf>` - Ground truth annotation
+- `/project:debug <error>` - Systematic debugging with hypothesis testing
+
+**Release & Maintenance:**
+- `/project:release [version]` - Release preparation and changelog
 - `/project:improve [trigger]` - Self-improvement review (see protocol below)
+
+**Session Management:**
 - `/project:resume` - Restore context from previous session
 - `/project:checkpoint <note>` - Save current state mid-session
+
+**Specialized:**
+- `/project:annotate <pdf>` - Ground truth annotation
+
+### Development Workflow Lifecycle
+
+Commands connect in a typical development cycle:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    DEVELOPMENT LIFECYCLE                         │
+│                                                                  │
+│   explore ──▶ plan ──▶ implement ──▶ review ──▶ release         │
+│      │          │          │           │                         │
+│      │          │          │           │                         │
+│      ▼          ▼          ▼           ▼                         │
+│   understand  scope &    TDD with    quality                     │
+│   codebase    tests      refactor    gates                       │
+│                                                                  │
+│   ◀──────────── iterate ◀───────────────┘                       │
+│                    │                                             │
+│                    ▼                                             │
+│               debug (if issues found)                            │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+**Typical Flow:**
+1. **Explore** → Understand the codebase/problem before planning
+2. **Plan** → Define scope, test strategy, tasks, and risks
+3. **Implement** → Write tests first (TDD), then implementation
+4. **Review** → Quality checks, code review
+5. **Debug** → (if needed) Systematic hypothesis-driven debugging
+6. **Release** → Version bump, changelog, final checks
+
+**When to Use Each:**
+- Starting new work? → `/project:explore` then `/project:plan`
+- Clear requirements? → `/project:plan` then `/project:implement`
+- Something broke? → `/project:debug`
+- Code needs cleanup? → `/project:refactor`
+- Ready to ship? → `/project:release`
 
 ### If Hooks Block You
 If automated checks prevent legitimate work:
