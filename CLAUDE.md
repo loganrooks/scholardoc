@@ -143,6 +143,7 @@ Use these for structured work:
 - `/project:plan` - Create implementation plan
 - `/project:review` - Review recent changes
 - `/project:annotate <pdf>` - Ground truth annotation
+- `/project:improve [trigger]` - Self-improvement review (see protocol below)
 
 ### If Hooks Block You
 If automated checks prevent legitimate work:
@@ -150,11 +151,44 @@ If automated checks prevent legitimate work:
 2. Human can approve exception
 3. Document why bypass was needed
 
-### Self-Improvement
-Session logs are kept in `.claude/logs/`. Periodically review for:
-- Repeated errors → add rules to prevent
-- Common patterns → add to CLAUDE.md
-- Workflow friction → improve commands/hooks
+### Self-Improvement Protocol
+
+**Triggers** — When to run `/project:improve`:
+- After PR merge (especially if it required multiple iterations)
+- After repeated errors (same issue 2+ times in session)
+- Weekly maintenance (during active development)
+- After context loss requiring re-explanation
+
+**Review Process:**
+
+1. **Analyze Session Logs** (`.claude/logs/`)
+   - Pattern: Same error appearing in multiple sessions?
+   - Pattern: Repeated questions about same topic?
+   - Pattern: Workflow steps that could be automated?
+
+2. **Check Serena Memories** (`list_memories()`)
+   - Are memories still accurate? Update or delete stale ones
+   - Should recent learnings become memories?
+   - Is `project_vision` still current?
+
+3. **Review Recent Git History**
+   - Commits requiring follow-up fixes → prevention rule needed?
+   - PRs with extensive back-and-forth → unclear docs?
+   - Reverted commits → what was missed?
+
+**Integration Actions:**
+
+| Finding | Action | Location |
+|---------|--------|----------|
+| Repeated error | Add prevention rule | CLAUDE.md rules or hook |
+| Missing context | Create Serena memory | `write_memory()` |
+| Unclear workflow | Update command | `.claude/commands/` |
+| Doc confusion | Clarify docs | Reference CLAUDE.md#Vision |
+| Tool misuse | Add usage note | AI Config section |
+
+**Tracking:**
+Improvements logged in Serena memory `improvement_log`:
+- Date, trigger, finding, action taken, files modified
 
 ---
 
