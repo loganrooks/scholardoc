@@ -169,6 +169,40 @@ All hooks are **advisory only** - they inject context, never block operations.
 - Pre-commit reminders show checklists, don't prevent commits
 - Only catastrophic operations (rm -rf /, fork bombs) are blocked
 
+### Version Control Workflow
+
+**🔴 CRITICAL: Use feature branches for ALL work, never commit directly to main.**
+
+```bash
+# Start new work
+git checkout -b feature/<name>    # e.g., feature/ocr-pipeline
+
+# During work
+git add -A && git commit -m "feat: description"
+
+# Ready for review
+git push -u origin feature/<name>
+gh pr create --title "feat: <name>" --body "## Summary\n..."
+
+# After PR approval
+git checkout main && git pull
+git branch -d feature/<name>
+```
+
+**Branch Naming:**
+- `feature/<name>` - New functionality
+- `fix/<issue>` - Bug fixes
+- `refactor/<area>` - Code improvements
+- `docs/<topic>` - Documentation only
+
+**Commit Message Format:** `type: description`
+- `feat:` new feature
+- `fix:` bug fix
+- `docs:` documentation
+- `test:` tests
+- `refactor:` code improvement
+- `chore:` maintenance
+
 ---
 
 ## OCR Pipeline Architecture
