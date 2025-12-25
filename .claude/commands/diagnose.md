@@ -23,14 +23,18 @@ Classify it directly.
 Gather signals from recent activity:
 
 ```bash
-# Recent session logs for errors/warnings
-ls -lt .claude/logs/ | head -5
+# Signal files (auto-generated issues)
+ls -la .claude/logs/signals/ 2>/dev/null | grep -v "^d" | grep -v ".gitkeep"
 
 # Recent git commits with fixes (indicate issues)
 git log --oneline -10 | grep -iE "fix|bug|revert"
 
-# Check for signal log
-ls .claude/logs/signals/ 2>/dev/null
+# Native Claude logs (rich data: tool calls, errors, token usage)
+CLAUDE_LOG_DIR="$HOME/.claude/projects$(pwd)"
+if [ -d "$CLAUDE_LOG_DIR" ]; then
+  echo "Native logs available for analysis:"
+  ls -lt "$CLAUDE_LOG_DIR"/*.jsonl 2>/dev/null | head -3
+fi
 ```
 
 ```
@@ -85,6 +89,21 @@ uv run ruff check . 2>&1 | head -20
 - Check session logs for workflow steps
 - Review relevant command definitions
 - Check hook configurations
+
+**For Deep Analysis (any signal type):**
+```bash
+# Parse native Claude logs for tool failures
+CLAUDE_LOG_DIR="$HOME/.claude/projects$(pwd)"
+if [ -d "$CLAUDE_LOG_DIR" ]; then
+  # Find tool errors
+  grep -h '"error"' "$CLAUDE_LOG_DIR"/*.jsonl 2>/dev/null | tail -10
+
+  # Tool usage patterns (what was attempted)
+  grep -oh '"tool":"[^"]*"' "$CLAUDE_LOG_DIR"/*.jsonl 2>/dev/null | sort | uniq -c | sort -rn | head -10
+fi
+```
+
+For comprehensive pattern analysis: `/project:analyze-logs session all`
 
 ### 2.2 Identify What Should Have Happened
 

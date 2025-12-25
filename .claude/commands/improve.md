@@ -28,19 +28,46 @@ This command runs a full improvement cycle: explore → plan → implement → r
 ls -la .claude/logs/signals/ 2>/dev/null | grep -v "^d" | grep -v ".gitkeep"
 ```
 
-### 1.2 Session Logs
+### 1.2 Human Correction Signals
 ```bash
-ls -lt .claude/logs/ | head -10
+# Corrections captured via /project:signal
+if [ -f .claude/signals/corrections.jsonl ]; then
+  echo "=== Human Corrections ==="
+  cat .claude/signals/corrections.jsonl
+  echo ""
+  echo "Count: $(wc -l < .claude/signals/corrections.jsonl) signals"
+fi
 ```
 
-### 1.3 Serena Memories
+These are high-value signals - moments when the user interrupted or corrected Claude.
+Correlate timestamps with native Claude logs to understand what was happening.
+
+### 1.3 Session & Native Logs
+```bash
+# Enhanced session logs (from session-logger hook)
+ls -lt .claude/logs/sessions/ 2>/dev/null | head -10
+
+# Native Claude logs (rich data: tool calls, errors, token usage)
+CLAUDE_LOG_DIR="$HOME/.claude/projects$(pwd)"
+if [ -d "$CLAUDE_LOG_DIR" ]; then
+  echo "Native logs available:"
+  ls -lt "$CLAUDE_LOG_DIR"/*.jsonl 2>/dev/null | head -3
+fi
+```
+
+For comprehensive pattern analysis across sessions:
+```
+/project:analyze-logs week all
+```
+
+### 1.4 Serena Memories
 ```
 list_memories()
 read_memory("improvement_log")  # Previous improvements
 read_memory("decision_log")     # Decisions that may need review
 ```
 
-### 1.4 Git History (Error Indicators)
+### 1.5 Git History (Error Indicators)
 ```bash
 # Commits indicating issues
 git log --oneline -20 | grep -iE "fix|bug|revert|oops|typo"
@@ -49,7 +76,7 @@ git log --oneline -20 | grep -iE "fix|bug|revert|oops|typo"
 git log --oneline --name-only -50 | grep -v "^[a-f0-9]" | sort | uniq -c | sort -rn | head -10
 ```
 
-### 1.5 System Health Check
+### 1.6 System Health Check
 ```bash
 # CLAUDE.md length (should be < 500 lines)
 wc -l CLAUDE.md
@@ -64,7 +91,7 @@ ls .claude/hooks/ | wc -l
 ls .claude/commands/ | wc -l
 ```
 
-### 1.6 Self-Critique by Domain
+### 1.7 Self-Critique by Domain
 
 For each domain, run the relevant reviewer to identify issues:
 
@@ -84,6 +111,7 @@ For each domain, run the relevant reviewer to identify issues:
 
 | Category | Signals | Root Cause Area |
 |----------|---------|-----------------|
+| Human Corrections | `/project:signal` entries | Missing pattern/rule/reminder |
 | Repeated Errors | Same issue 2+ times | Missing command step or agent |
 | Human Interruptions | "You should have..." | Missing reminder/hook |
 | Context Loss | Re-explanation needed | Memory/docs gap |
@@ -91,15 +119,40 @@ For each domain, run the relevant reviewer to identify issues:
 | Rule Ignored | Documented but not followed | CLAUDE.md bloat or missing hook |
 | Technical Debt | TODO accumulation | Missing quality gate |
 
-### 2.2 For Each Pattern Found
+**Human Corrections Priority**: Signals from `/project:signal` are highest priority.
+These are explicit user feedback moments. Correlate with native logs by timestamp.
 
-Run `/project:diagnose <pattern>` to:
+### 2.2 Deep Pattern Analysis
+
+For comprehensive pattern analysis across multiple sessions:
+```
+/project:analyze-logs week all
+```
+
+This provides:
+- Aggregated error/warning frequency
+- Git hotspot analysis
+- Metric trends
+- Prioritized improvement recommendations
+
+### 2.3 For Each Pattern Found
+
+**PARALLELIZATION**: If multiple signals/patterns found, diagnose them in parallel:
+
+```
+# Parallel diagnosis (single message, multiple Task calls)
+Task(subagent_type="root-cause-analyst", model="sonnet", prompt="Diagnose signal: [pattern-1-description]")
+Task(subagent_type="root-cause-analyst", model="sonnet", prompt="Diagnose signal: [pattern-2-description]")
+Task(subagent_type="root-cause-analyst", model="sonnet", prompt="Diagnose signal: [pattern-3-description]")
+```
+
+For each pattern (sequential if few, parallel if many):
 1. Trace to root cause
 2. Identify system component
 3. Propose improvement type
 4. Self-review the diagnosis
 
-### 2.3 Diagnosis Self-Review
+### 2.4 Diagnosis Self-Review
 
 Launch diagnostic-agent (or self-review):
 - Is root cause analysis sound?
@@ -136,7 +189,15 @@ Priority Levels:
 
 ### 3.3 Improvement Self-Review
 
-Launch improvement-reviewer for each proposal:
+**PARALLELIZATION**: Review multiple proposals in parallel if independent:
+
+```
+# Parallel improvement review (single message, multiple Task calls)
+Task(subagent_type="general-purpose", model="sonnet", prompt="Review improvement proposal: [proposal-1]. Check: addresses root cause? proportionate? unintended consequences? bloat?")
+Task(subagent_type="general-purpose", model="sonnet", prompt="Review improvement proposal: [proposal-2]. Check: addresses root cause? proportionate? unintended consequences? bloat?")
+```
+
+For each proposal, validate:
 - Does improvement address root cause?
 - Is it proportionate to the problem?
 - Any unintended consequences?
@@ -221,10 +282,17 @@ write_memory("improvement_log", """
 
 ### 5.3 Archive Processed Signals
 
-Move processed signals to signals/processed/:
+Move processed signals to archived locations:
 ```bash
+# Archive markdown signals
 mkdir -p .claude/logs/signals/processed
 mv .claude/logs/signals/*.md .claude/logs/signals/processed/ 2>/dev/null
+
+# Archive human corrections (rename with date suffix)
+if [ -f .claude/signals/corrections.jsonl ]; then
+  mkdir -p .claude/signals/processed
+  mv .claude/signals/corrections.jsonl ".claude/signals/processed/corrections_$(date +%Y%m%d).jsonl"
+fi
 ```
 
 ---
