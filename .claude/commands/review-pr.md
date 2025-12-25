@@ -1,7 +1,7 @@
 ---
 description: Review a GitHub PR with AI agents and post findings to GitHub
 allowed-tools: Bash(gh:*), Bash(git:*), Bash(jq:*), Bash(mktemp:*), Bash(rm:*), Bash(cat:*), Read, Write, Task, TodoWrite
-argument-hint: <PR-number> [--approve-if-clean] [--dry-run]
+argument-hint: [PR-number|--latest|--current] [--approve-if-clean] [--dry-run]
 ---
 
 # Review PR: $ARGUMENTS
@@ -12,26 +12,62 @@ You are performing an AI-assisted code review that posts findings directly to Gi
 
 ---
 
-## Phase 0: Parse Arguments
+## Phase 0: Resolve PR Number
+
+### 0.1 Parse Arguments
 
 ```
-PR_NUMBER = first numeric argument from $ARGUMENTS
 FLAGS:
+  --latest           : Review the most recently opened PR
+  --current          : Review PR for current branch (default if no args)
   --approve-if-clean : Auto-approve if no issues found
   --dry-run          : Generate review but don't post to GitHub
 ```
+
+### 0.2 Determine PR Number
+
+**Priority order:**
+
+1. **Explicit PR number provided** → Use that number
+   ```
+   /project:review-pr 42 → PR_NUMBER=42
+   ```
+
+2. **`--latest` flag** → Get most recent open PR
+   ```bash
+   gh pr list --state open --limit 1 --json number --jq '.[0].number'
+   ```
+
+3. **`--current` flag OR no arguments** → Get PR for current branch
+   ```bash
+   gh pr view --json number --jq '.number'
+   ```
+   If no PR exists for current branch, show message and offer to list open PRs.
+
+4. **Fallback** → List open PRs and ask user to pick
+   ```bash
+   gh pr list --state open --limit 10 --json number,title,headRefName,author --jq '.[] | "#\(.number) \(.title) (\(.headRefName)) by \(.author.login)"'
+   ```
+
+### 0.3 Validate PR Number
+
+```bash
+gh pr view $PR_NUMBER --json number,state
+```
+
+**STOP if**: PR not found, already merged, or closed (unless `--include-closed` flag).
 
 ---
 
 ## Phase 1: Fetch PR Context
 
-### 1.1 Verify PR Exists and Get Metadata
+### 1.1 Get PR Metadata
 
 ```bash
-gh pr view $PR_NUMBER --json number,title,author,baseRefName,headRefName,body,additions,deletions,changedFiles,state
+gh pr view $PR_NUMBER --json number,title,author,baseRefName,headRefName,body,additions,deletions,changedFiles,state,url
 ```
 
-**STOP if**: PR not found, already merged, or closed.
+Display: `Reviewing PR #[NUMBER]: [TITLE]`
 
 ### 1.2 Get Changed Files
 
@@ -263,17 +299,23 @@ echo '{"ts": "[TIMESTAMP]", "type": "pr_review", "pr": [NUMBER], "issues": [COUN
 ## Examples
 
 ```bash
-# Basic review
+# Review PR for current branch (most common)
+/project:review-pr
+
+# Review the most recently opened PR
+/project:review-pr --latest
+
+# Review specific PR by number
 /project:review-pr 42
 
-# Auto-approve if no issues
-/project:review-pr 42 --approve-if-clean
+# Preview without posting to GitHub
+/project:review-pr --dry-run
 
-# Preview without posting
-/project:review-pr 42 --dry-run
+# Auto-approve if no issues found
+/project:review-pr --latest --approve-if-clean
 
-# Review with verbose output
-/project:review-pr 42 --verbose
+# Combine flags
+/project:review-pr 42 --dry-run --approve-if-clean
 ```
 
 ---
