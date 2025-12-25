@@ -1,0 +1,28 @@
+# Signal Log Directory
+
+This directory captures signals for the self-improvement system.
+
+## Signal Types
+
+- internal-*.md: Test failures, lint errors, runtime errors
+- external-*.md: Human corrections and clarifications
+- process-*.md: Workflow violations, escalations, context loss
+
+## Format
+
+Each signal file should contain:
+```yaml
+timestamp: ISO8601
+type: internal|external|process
+subtype: specific-subtype
+description: what happened
+context: what was being done
+resolution: how it was handled (if any)
+```
+
+## Lifecycle
+
+1. Signals captured by hooks or manually
+2. /project:diagnose processes signals
+3. Diagnosed signals archived to signals/processed/
+4. Undiagnosed signals remain for next review

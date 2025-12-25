@@ -1,134 +1,368 @@
 ---
-description: Self-improvement review - analyze patterns and enhance workflow
-allowed-tools: Read, Glob, Grep, Bash(git:*), Bash(ls:*), Bash(cat:*), mcp__serena__*
-argument-hint: [trigger: pr-merge|error|weekly|context-loss]
+description: Self-improvement cycle with diagnosis and system enhancement
+allowed-tools: Read, Glob, Grep, Bash(git:*), Bash(ls:*), Bash(cat:*), Task, mcp__serena__*
+argument-hint: [trigger: pr-merge|error|weekly|context-loss|full-audit]
 ---
 
-# Self-Improvement Review: $ARGUMENTS
+# Self-Improvement Cycle: $ARGUMENTS
 
-## Step 1: Gather Evidence
+**MODE: META-IMPROVEMENT WITH DIAGNOSTIC FEEDBACK**
 
-### Session Logs
+This command runs a full improvement cycle: explore → plan → implement → review, applied to the development SYSTEM itself.
+
+---
+
+## The Meta-Improvement Principle
+
+> The self-improvement workflow IS a development workflow.
+> It follows the same explore → plan → implement → review pattern.
+> It has its own review gates to catch bad improvements.
+
+---
+
+## Phase 1: EXPLORE (Gather Signals)
+
+### 1.1 Check Signal Log
 ```bash
-# Recent session logs
-ls -lt .claude/logs/ | head -10
-
-# Review latest session
-cat .claude/logs/$(ls -t .claude/logs/ | head -1)
+# Captured signals awaiting diagnosis
+ls -la .claude/logs/signals/ 2>/dev/null | grep -v "^d" | grep -v ".gitkeep"
 ```
 
-### Serena Memories
+### 1.2 Human Correction Signals
+```bash
+# Corrections captured via /project:signal
+if [ -f .claude/signals/corrections.jsonl ]; then
+  echo "=== Human Corrections ==="
+  cat .claude/signals/corrections.jsonl
+  echo ""
+  echo "Count: $(wc -l < .claude/signals/corrections.jsonl) signals"
+fi
+```
+
+These are high-value signals - moments when the user interrupted or corrected Claude.
+Correlate timestamps with native Claude logs to understand what was happening.
+
+### 1.3 Session & Native Logs
+```bash
+# Enhanced session logs (from session-logger hook)
+ls -lt .claude/logs/sessions/ 2>/dev/null | head -10
+
+# Native Claude logs (rich data: tool calls, errors, token usage)
+CLAUDE_LOG_DIR="$HOME/.claude/projects$(pwd)"
+if [ -d "$CLAUDE_LOG_DIR" ]; then
+  echo "Native logs available:"
+  ls -lt "$CLAUDE_LOG_DIR"/*.jsonl 2>/dev/null | head -3
+fi
+```
+
+For comprehensive pattern analysis across sessions:
+```
+/project:analyze-logs week all
+```
+
+### 1.4 Serena Memories
 ```
 list_memories()
-# Review each memory for accuracy
-# Check if project_vision is current
+read_memory("improvement_log")  # Previous improvements
+read_memory("decision_log")     # Decisions that may need review
 ```
 
-### Git History
+### 1.5 Git History (Error Indicators)
 ```bash
-# Recent commits with fixes
-git log --oneline -20 | grep -i "fix"
+# Commits indicating issues
+git log --oneline -20 | grep -iE "fix|bug|revert|oops|typo"
 
-# PRs with multiple commits (may indicate issues)
-git log --oneline -50
-
-# Files changed most frequently
+# Files changed frequently (hotspots)
 git log --oneline --name-only -50 | grep -v "^[a-f0-9]" | sort | uniq -c | sort -rn | head -10
 ```
 
-## Step 2: Pattern Detection
+### 1.6 System Health Check
+```bash
+# CLAUDE.md length (should be < 500 lines)
+wc -l CLAUDE.md
 
-Look for these patterns in the evidence:
+# Agent count (should be < 10)
+ls .claude/agents/ | wc -l
 
-### Repeated Errors
-- [ ] Same error type appears 2+ times
-- [ ] Similar fixes applied in multiple places
-- [ ] Recurring test failures
+# Hook count (should be < 10)
+ls .claude/hooks/ | wc -l
 
-### Context Loss
-- [ ] Questions about project vision/architecture
-- [ ] Confusion about file locations
-- [ ] Misunderstanding of workflow
+# Command count (informational)
+ls .claude/commands/ | wc -l
+```
 
-### Workflow Friction
-- [ ] Multi-step manual processes
-- [ ] Repeated command sequences
-- [ ] Inconsistent approaches to same task
+### 1.7 Self-Critique by Domain
 
-### Documentation Gaps
-- [ ] Questions answered by reading code (should be in docs)
-- [ ] Confusion resolved by explanation (should be documented)
-- [ ] Assumptions that needed correction
+For each domain, run the relevant reviewer to identify issues:
 
-## Step 3: Proposed Improvements
+| Domain | Reviewer | Focus |
+|--------|----------|-------|
+| Exploration work | exploration-reviewer | Were explorations thorough? |
+| Planning work | plan-reviewer | Were plans complete? |
+| Code changes | code-reviewer | Any patterns to extract? |
+| Documentation | documentation-reviewer | Is docs current? |
+| Experiments | experiment-reviewer | Were conclusions valid? |
 
-For each pattern found, propose an action:
+---
 
-| Pattern | Finding | Proposed Action | Target Location |
-|---------|---------|-----------------|-----------------|
-| | | | |
+## Phase 2: DIAGNOSE (Analyze Patterns)
 
-### Action Types
-- **Rule**: Add to CLAUDE.md rules section
-- **Memory**: Create/update Serena memory
-- **Command**: Add/modify .claude/commands/
-- **Hook**: Add/modify .claude/hooks/
-- **Doc**: Update documentation
-- **Config**: Modify .serena/project.yml
+### 2.1 Pattern Categories
 
-## Step 4: Implementation
+| Category | Signals | Root Cause Area |
+|----------|---------|-----------------|
+| Human Corrections | `/project:signal` entries | Missing pattern/rule/reminder |
+| Repeated Errors | Same issue 2+ times | Missing command step or agent |
+| Human Interruptions | "You should have..." | Missing reminder/hook |
+| Context Loss | Re-explanation needed | Memory/docs gap |
+| Workflow Friction | Manual multi-step | Missing command |
+| Rule Ignored | Documented but not followed | CLAUDE.md bloat or missing hook |
+| Technical Debt | TODO accumulation | Missing quality gate |
 
-For approved improvements:
+**Human Corrections Priority**: Signals from `/project:signal` are highest priority.
+These are explicit user feedback moments. Correlate with native logs by timestamp.
 
-1. Make the change
-2. Test it works as intended
-3. Log to improvement_log memory:
+### 2.2 Deep Pattern Analysis
+
+For comprehensive pattern analysis across multiple sessions:
+```
+/project:analyze-logs week all
+```
+
+This provides:
+- Aggregated error/warning frequency
+- Git hotspot analysis
+- Metric trends
+- Prioritized improvement recommendations
+
+### 2.3 For Each Pattern Found
+
+**PARALLELIZATION**: If multiple signals/patterns found, diagnose them in parallel:
+
+```
+# Parallel diagnosis (single message, multiple Task calls)
+Task(subagent_type="root-cause-analyst", model="sonnet", prompt="Diagnose signal: [pattern-1-description]")
+Task(subagent_type="root-cause-analyst", model="sonnet", prompt="Diagnose signal: [pattern-2-description]")
+Task(subagent_type="root-cause-analyst", model="sonnet", prompt="Diagnose signal: [pattern-3-description]")
+```
+
+For each pattern (sequential if few, parallel if many):
+1. Trace to root cause
+2. Identify system component
+3. Propose improvement type
+4. Self-review the diagnosis
+
+### 2.4 Diagnosis Self-Review
+
+Launch diagnostic-agent (or self-review):
+- Is root cause analysis sound?
+- Is evidence sufficient?
+- Were alternatives considered?
+
+---
+
+## Phase 3: PLAN (Propose Improvements)
+
+### 3.1 Improvement Types
+
+| Type | Target | When |
+|------|--------|------|
+| COMMAND_REFINEMENT | .claude/commands/ | Command missing step |
+| AGENT_ADDITION | .claude/agents/ | Missing review gate |
+| AGENT_REFINEMENT | .claude/agents/ | Existing agent missed something |
+| HOOK_ADDITION | .claude/hooks/ | Need automated reminder |
+| INSTRUCTION_COMPRESSION | CLAUDE.md | File too long, rules buried |
+| DOCUMENTATION_UPDATE | docs/, CLAUDE.md | Docs out of sync |
+| MEMORY_UPDATE | Serena memories | Cross-session context gap |
+| WORKFLOW_ADDITION | .claude/commands/ | Process gap |
+
+### 3.2 Improvement Proposals
+
+| Pattern | Diagnosis | Improvement | Type | Priority |
+|---------|-----------|-------------|------|----------|
+| | | | | |
+
+Priority Levels:
+- **P0**: Blocking future work
+- **P1**: Causes repeated friction
+- **P2**: Nice to have
+
+### 3.3 Improvement Self-Review
+
+**PARALLELIZATION**: Review multiple proposals in parallel if independent:
+
+```
+# Parallel improvement review (single message, multiple Task calls)
+Task(subagent_type="general-purpose", model="sonnet", prompt="Review improvement proposal: [proposal-1]. Check: addresses root cause? proportionate? unintended consequences? bloat?")
+Task(subagent_type="general-purpose", model="sonnet", prompt="Review improvement proposal: [proposal-2]. Check: addresses root cause? proportionate? unintended consequences? bloat?")
+```
+
+For each proposal, validate:
+- Does improvement address root cause?
+- Is it proportionate to the problem?
+- Any unintended consequences?
+- Does it bloat the system?
+
+**Verdicts:**
+- APPROVED → Proceed to implement
+- NEEDS_REFINEMENT → Adjust proposal
+- REJECTED → Document why and skip
+
+---
+
+## Phase 4: IMPLEMENT (Apply Changes)
+
+### 4.1 Implementation Order
+1. P0 improvements first
+2. Then P1
+3. P2 only if time permits
+
+### 4.2 For Each Approved Improvement
+
+1. **Make the change** (command, agent, hook, doc, memory)
+2. **Verify it works** (test if applicable)
+3. **Self-review** with relevant domain reviewer
+4. **Log** to improvement_log memory
+
+### 4.3 CLAUDE.md Special Handling
+
+If changing CLAUDE.md:
+- Check current line count
+- If > 500 lines: Consider moving content elsewhere
+- Keep only essential rules in CLAUDE.md
+- Move workflows to commands, details to docs
+
+---
+
+## Phase 5: REVIEW (Validate & Learn)
+
+### 5.1 Verification
+
+For each implemented improvement:
+- [ ] Does it address the original signal?
+- [ ] No unintended side effects?
+- [ ] Tests still pass?
+- [ ] Documentation updated?
+
+### 5.2 Update Improvement Log
 
 ```
 write_memory("improvement_log", """
 ## Improvement Log
 
-### [DATE]
-- **Trigger**: [pr-merge|error|weekly|context-loss]
-- **Finding**: [Description of pattern found]
-- **Action**: [What was done]
-- **Files**: [Files modified]
-- **Verification**: [How we know it works]
+### [DATE] - Trigger: $ARGUMENTS
 
+**Signals Processed**: [count]
+**Diagnoses**:
+- [signal] → [root cause]
+
+**Improvements Implemented**:
+| Type | Target | Change | Verified |
+|------|--------|--------|----------|
+| | | | |
+
+**Improvements Deferred**:
+- [item]: [reason]
+
+**Improvements Rejected**:
+- [item]: [reason]
+
+**System Health After**:
+- CLAUDE.md: [lines] lines
+- Agents: [count]
+- Hooks: [count]
+
+**Lessons Learned**:
+- [insight for future improvements]
+
+---
 [Previous entries...]
 """)
 ```
 
-## Step 5: Summary
+### 5.3 Archive Processed Signals
 
-Provide:
-- Patterns identified (count by type)
-- Actions taken
-- Actions deferred (and why)
-- Recommendations for next review
+Move processed signals to archived locations:
+```bash
+# Archive markdown signals
+mkdir -p .claude/logs/signals/processed
+mv .claude/logs/signals/*.md .claude/logs/signals/processed/ 2>/dev/null
 
-## Output Format
+# Archive human corrections (rename with date suffix)
+if [ -f .claude/signals/corrections.jsonl ]; then
+  mkdir -p .claude/signals/processed
+  mv .claude/signals/corrections.jsonl ".claude/signals/processed/corrections_$(date +%Y%m%d).jsonl"
+fi
+```
+
+---
+
+## Output Summary
 
 ```markdown
-## Self-Improvement Summary
+## Self-Improvement Cycle Complete
 
-**Trigger**: [What prompted this review]
+**Trigger**: $ARGUMENTS
 **Date**: [Current date]
 
-### Patterns Found
-- [N] repeated errors
-- [N] context loss instances
-- [N] workflow friction points
-- [N] documentation gaps
+### Exploration Results
+| Source | Signals Found |
+|--------|---------------|
+| Signal log | [count] |
+| Session logs | [count] |
+| Git history | [count] |
+| Domain reviews | [count] |
 
-### Actions Taken
-1. [Action] → [Location]
-2. ...
+### System Health
+| Metric | Value | Status |
+|--------|-------|--------|
+| CLAUDE.md lines | [N] | [OK if <500, WARN if >500] |
+| Agents | [N] | [OK if <10] |
+| Hooks | [N] | [OK if <10] |
 
-### Deferred
-- [Item]: [Reason]
+### Diagnoses
+| Signal | Root Cause | Component |
+|--------|------------|-----------|
+| | | |
 
-### Next Review
-- Recommended: [weekly|after-next-pr|as-needed]
-- Focus areas: [...]
+### Improvements
+| Status | Type | Target | Change |
+|--------|------|--------|--------|
+| ✅ Implemented | | | |
+| ⏸️ Deferred | | | |
+| ❌ Rejected | | | |
+
+### Self-Review Results
+- Diagnoses: [N] strong, [N] adequate, [N] weak
+- Improvements: [N] approved, [N] refined, [N] rejected
+
+### Next Steps
+- Recommended next review: [trigger/timing]
+- Focus areas: [areas needing attention]
+```
+
+---
+
+## When to Run This Command
+
+| Trigger | When | Focus |
+|---------|------|-------|
+| pr-merge | After PR merged | Patterns from PR work |
+| error | After significant error | Root cause of error |
+| weekly | Weekly during active dev | Accumulated patterns |
+| context-loss | After re-explanation needed | Memory/doc gaps |
+| full-audit | Before major work | Comprehensive review |
+
+---
+
+## Integration with /project:auto
+
+The `/project:auto` command calls `/project:improve` or `/project:diagnose`:
+- On escalation (reviewer BLOCKED)
+- On repeated test failures
+- At end of autonomous run
+
+This creates a closed feedback loop:
+```
+/project:auto → error/escalation → /project:diagnose → improvement → better /project:auto
 ```
