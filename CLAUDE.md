@@ -138,14 +138,145 @@ Before stopping:
 
 ### Workflow Commands
 Use these for structured work:
+
+**Discovery & Planning:**
+- `/project:explore <topic>` - Read-only investigation (understand before planning)
+- `/project:plan <feature>` - Create implementation plan with scope, tests, tasks, risks
+- `/project:spike <topic>` - Exploration spike for uncertain features
+
+**Implementation:**
 - `/project:implement <feature>` - TDD workflow (tests first)
 - `/project:tdd` - Start test-driven cycle
-- `/project:plan` - Create implementation plan
+- `/project:refactor <code>` - Safe refactoring with test verification
+- `/project:document <target>` - Generate/update documentation
+
+**Quality & Review:**
 - `/project:review` - Review recent changes
-- `/project:annotate <pdf>` - Ground truth annotation
+- `/project:debug <error>` - Systematic debugging with hypothesis testing
+
+**Release & Maintenance:**
+- `/project:release [version]` - Release preparation and changelog
 - `/project:improve [trigger]` - Self-improvement review (see protocol below)
+
+**Session Management:**
 - `/project:resume` - Restore context from previous session
 - `/project:checkpoint <note>` - Save current state mid-session
+
+**Specialized:**
+- `/project:annotate <pdf>` - Ground truth annotation
+
+### Development Workflow Lifecycle
+
+Commands connect in a typical development cycle:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    DEVELOPMENT LIFECYCLE                         │
+│                                                                  │
+│   explore ──▶ plan ──▶ implement ──▶ review ──▶ release         │
+│      │          │          │           │                         │
+│      │          │          │           │                         │
+│      ▼          ▼          ▼           ▼                         │
+│   understand  scope &    TDD with    quality                     │
+│   codebase    tests      refactor    gates                       │
+│                                                                  │
+│   ◀──────────── iterate ◀───────────────┘                       │
+│                    │                                             │
+│                    ▼                                             │
+│               debug (if issues found)                            │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+**Typical Flow:**
+1. **Explore** → Understand the codebase/problem before planning
+2. **Plan** → Define scope, test strategy, tasks, and risks
+3. **Implement** → Write tests first (TDD), then implementation
+4. **Review** → Quality checks, code review
+5. **Debug** → (if needed) Systematic hypothesis-driven debugging
+6. **Release** → Version bump, changelog, final checks
+
+**When to Use Each:**
+- Starting new work? → `/project:explore` then `/project:plan`
+- Clear requirements? → `/project:plan` then `/project:implement`
+- Something broke? → `/project:debug`
+- Code needs cleanup? → `/project:refactor`
+- Ready to ship? → `/project:release`
+- Want fully autonomous? → `/project:auto` (see below)
+
+### Autonomous Development Mode
+
+For minimal human intervention after requirements are confirmed:
+
+**Command:** `/project:auto <feature-description>`
+
+**Philosophy:** Thorough human collaboration upfront (requirements), then autonomous execution with self-review gates.
+
+**Flow:**
+```
+┌──────────────────────────────────────────────────────────────────────┐
+│                    AUTONOMOUS DEVELOPMENT                             │
+│                                                                       │
+│   ┌─────────────┐                                                    │
+│   │ PHASE 0     │  ◀── HUMAN-IN-LOOP                                │
+│   │ Requirements│      Questions, clarification, approval            │
+│   └──────┬──────┘                                                    │
+│          │ approved                                                   │
+│          ▼                                                            │
+│   ┌──────────────────────────────────────────────────────────────┐   │
+│   │                    AUTONOMOUS PHASES                          │   │
+│   │                                                               │   │
+│   │  Phase 1        Phase 2        Phase 3        Phase 4        │   │
+│   │  Explore   ──▶  Plan     ──▶  Implement  ──▶  Document      │   │
+│   │     │             │              │              │            │   │
+│   │     ▼             ▼              ▼              ▼            │   │
+│   │  [REVIEW]      [REVIEW]      [REVIEW]       [REVIEW]        │   │
+│   │  exploration   plan          code           docs            │   │
+│   │  -reviewer     -reviewer     -reviewer      -reviewer       │   │
+│   │                                                               │   │
+│   └──────────────────────────────────────────────────────────────┘   │
+│          │                                                            │
+│          ▼                                                            │
+│   ┌─────────────┐                                                    │
+│   │ PHASE 5     │  Tests + Lint + Type Check                        │
+│   │ Validation  │  All must pass                                     │
+│   └──────┬──────┘                                                    │
+│          │                                                            │
+│          ▼                                                            │
+│   ┌─────────────┐                                                    │
+│   │ PHASE 6     │  Commit, update memory, report to human           │
+│   │ Completion  │                                                    │
+│   └─────────────┘                                                    │
+└──────────────────────────────────────────────────────────────────────┘
+```
+
+**Self-Review Gates:**
+Each phase has a reviewer agent (`.claude/agents/`) that catches issues before they compound:
+
+| Gate | Reviewer | Catches |
+|------|----------|---------|
+| After exploration | exploration-reviewer | Incomplete understanding, missed context |
+| After planning | plan-reviewer | Flawed design, missing requirements |
+| After implementation | code-reviewer | Bugs, security issues, bad patterns |
+| After documentation | documentation-reviewer | Inaccuracies, gaps |
+| After experiment/spike | experiment-reviewer | Inconclusive findings |
+
+**Verdicts:**
+- `APPROVED` → Proceed to next phase
+- `NEEDS_WORK` / `NEEDS_REVISION` → Fix and re-review
+- `BLOCKED` / `REJECTED` → Escalate to human
+
+**Escalation Triggers:**
+- Requirements fundamentally change
+- Architectural decision challenged by evidence
+- Security/data integrity concerns
+- Test failures unresolved after 3 attempts
+- Reviewer gives BLOCKED twice
+
+**Benefits:**
+- Prevents error accumulation from poor preparation
+- Catches issues early when cheaper to fix
+- Reduces back-and-forth with human reviewer
+- Maintains quality without constant oversight
 
 ### If Hooks Block You
 If automated checks prevent legitimate work:
@@ -155,42 +286,76 @@ If automated checks prevent legitimate work:
 
 ### Self-Improvement Protocol
 
-**Triggers** — When to run `/project:improve`:
-- After PR merge (especially if it required multiple iterations)
-- After repeated errors (same issue 2+ times in session)
-- Weekly maintenance (during active development)
-- After context loss requiring re-explanation
+The self-improvement system follows its own explore → plan → implement → review cycle, creating a closed feedback loop that continuously improves the development infrastructure.
 
-**Review Process:**
+**Commands:**
+- `/project:improve [trigger]` - Full improvement cycle
+- `/project:diagnose <signal>` - Root cause analysis for specific issue
 
-1. **Analyze Session Logs** (`.claude/logs/`)
-   - Pattern: Same error appearing in multiple sessions?
-   - Pattern: Repeated questions about same topic?
-   - Pattern: Workflow steps that could be automated?
+**The Feedback Loop:**
+```
+┌────────────────────────────────────────────────────────────────────┐
+│                    SELF-IMPROVEMENT LOOP                            │
+│                                                                     │
+│   Error/Interruption/Friction                                       │
+│           │                                                         │
+│           ▼                                                         │
+│   ┌───────────────┐     ┌───────────────┐     ┌───────────────┐   │
+│   │    EXPLORE    │ ──▶ │    DIAGNOSE   │ ──▶ │     PLAN      │   │
+│   │ Gather signals│     │ Root cause    │     │ Propose fix   │   │
+│   └───────────────┘     └───────────────┘     └───────────────┘   │
+│           │                                           │             │
+│           │         ┌─────────────────────────────────┘             │
+│           │         ▼                                               │
+│           │   ┌───────────────┐     ┌───────────────┐              │
+│           │   │   IMPLEMENT   │ ──▶ │    REVIEW     │              │
+│           │   │ Apply change  │     │ Validate fix  │              │
+│           │   └───────────────┘     └───────────────┘              │
+│           │                                 │                       │
+│           └─────────────────────────────────┘                       │
+│                         │                                           │
+│                         ▼                                           │
+│              Better development system                              │
+│              (commands, agents, hooks, docs)                        │
+└────────────────────────────────────────────────────────────────────┘
+```
 
-2. **Check Serena Memories** (`list_memories()`)
-   - Are memories still accurate? Update or delete stale ones
-   - Should recent learnings become memories?
-   - Is `project_vision` still current?
+**Signal Types:**
+| Type | Examples | Indicates |
+|------|----------|-----------|
+| Internal | Test failures, lint errors | Missing test strategy or review gate |
+| External | Human corrections ("you should have...") | Missing reminder or unclear docs |
+| Process | Skipped steps, context loss | Missing hook or memory gap |
 
-3. **Review Recent Git History**
-   - Commits requiring follow-up fixes → prevention rule needed?
-   - PRs with extensive back-and-forth → unclear docs?
-   - Reverted commits → what was missed?
+**Improvement Types:**
+| Type | Target | When |
+|------|--------|------|
+| COMMAND_REFINEMENT | .claude/commands/ | Command missing step |
+| AGENT_ADDITION | .claude/agents/ | Missing review gate |
+| HOOK_ADDITION | .claude/hooks/ | Need automated reminder |
+| INSTRUCTION_COMPRESSION | CLAUDE.md | File > 500 lines, rules ignored |
+| DOCUMENTATION_UPDATE | docs/ | Docs out of sync |
+| MEMORY_UPDATE | Serena memories | Context loss between sessions |
 
-**Integration Actions:**
+**Review Agents:**
+- `diagnostic-agent` - Traces errors to root causes
+- `improvement-reviewer` - Validates proposed improvements
 
-| Finding | Action | Location |
-|---------|--------|----------|
-| Repeated error | Add prevention rule | CLAUDE.md rules or hook |
-| Missing context | Create Serena memory | `write_memory()` |
-| Unclear workflow | Update command | `.claude/commands/` |
-| Doc confusion | Clarify docs | Reference CLAUDE.md#Vision |
-| Tool misuse | Add usage note | AI Config section |
+**System Health Limits:**
+- CLAUDE.md: < 500 lines (essential rules only)
+- Agents: < 10 (avoid over-fragmentation)
+- Hooks: < 10 (avoid slowdown)
+
+**Triggers — When to run `/project:improve`:**
+- `pr-merge` — After PR merged
+- `error` — After significant error
+- `weekly` — Weekly during active development
+- `context-loss` — After re-explanation needed
+- `full-audit` — Before major feature work
 
 **Tracking:**
-Improvements logged in Serena memory `improvement_log`:
-- Date, trigger, finding, action taken, files modified
+- Signal log: `.claude/logs/signals/`
+- Improvement log: Serena memory `improvement_log`
 
 ### Session Management
 
