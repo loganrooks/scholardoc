@@ -396,3 +396,101 @@ class TestIntegration:
         assert isinstance(result, StructureResult)
         assert result.confidence >= 0.0
         assert isinstance(result.sections, list)
+
+
+class TestCascadingExtractorWithProfile:
+    """Test profile-based extraction configuration."""
+
+    def test_accepts_profile_parameter(self, raw_doc):
+        """CascadingExtractor accepts profile parameter."""
+        from scholardoc.extractors.profiles import BOOK_PROFILE
+
+        extractor = CascadingExtractor(profile=BOOK_PROFILE)
+        result = extractor.extract(raw_doc)
+        assert isinstance(result, StructureResult)
+
+    def test_profile_sets_min_confidence(self, raw_doc):
+        """Profile min_confidence is applied."""
+        from scholardoc.extractors.profiles import ARTICLE_PROFILE, BOOK_PROFILE
+
+        # Article profile has min_confidence=0.4
+        article_extractor = CascadingExtractor(profile=ARTICLE_PROFILE)
+        assert article_extractor.min_confidence == 0.4
+
+        # Book profile has min_confidence=0.5
+        book_extractor = CascadingExtractor(profile=BOOK_PROFILE)
+        assert book_extractor.min_confidence == 0.5
+
+    def test_profile_disables_toc_enrichment(self, raw_doc):
+        """Profile use_toc_enrichment=False disables ToC source."""
+        from scholardoc.extractors.profiles import ARTICLE_PROFILE
+
+        # Article profile disables ToC enrichment
+        extractor = CascadingExtractor(profile=ARTICLE_PROFILE)
+        assert extractor.toc_source is None
+
+    def test_profile_used_in_result(self, raw_doc):
+        """StructureResult includes profile_used field."""
+        from scholardoc.extractors.profiles import BOOK_PROFILE
+
+        extractor = CascadingExtractor(profile=BOOK_PROFILE)
+        result = extractor.extract(raw_doc)
+
+        assert result.profile_used == "book"
+
+    def test_no_profile_result_has_none(self, raw_doc):
+        """StructureResult.profile_used is None when no profile used."""
+        extractor = CascadingExtractor()
+        result = extractor.extract(raw_doc)
+
+        assert result.profile_used is None
+
+    def test_for_profile_classmethod(self, raw_doc):
+        """for_profile() creates configured extractor."""
+        from scholardoc.extractors.profiles import ESSAY_PROFILE
+
+        extractor = CascadingExtractor.for_profile(ESSAY_PROFILE)
+
+        assert extractor.min_confidence == 0.4
+        assert extractor.toc_source is None
+
+    def test_for_document_classmethod(self, raw_doc, monkeypatch):
+        """for_document() auto-detects profile."""
+        from scholardoc.extractors.profiles import BOOK_PROFILE
+
+        monkeypatch.setattr(
+            "scholardoc.extractors.profiles.get_profile",
+            lambda _: BOOK_PROFILE,
+        )
+
+        extractor = CascadingExtractor.for_document(raw_doc)
+        result = extractor.extract(raw_doc)
+
+        assert result.profile_used == "book"
+
+    def test_profile_overrides_individual_params(self, raw_doc):
+        """Profile settings override individual parameters."""
+        from scholardoc.extractors.profiles import ARTICLE_PROFILE
+
+        # Even if min_confidence is passed, profile should override
+        extractor = CascadingExtractor(
+            profile=ARTICLE_PROFILE,
+            min_confidence=0.9,  # Should be ignored
+        )
+
+        assert extractor.min_confidence == 0.4  # From profile
+
+    def test_backward_compatible_without_profile(self, raw_doc):
+        """Extractor works without profile (backward compatible)."""
+        # Original API still works
+        extractor = CascadingExtractor(
+            min_confidence=0.6,
+            title_similarity_threshold=0.7,
+        )
+
+        assert extractor.min_confidence == 0.6
+        assert extractor.title_threshold == 0.7
+
+        result = extractor.extract(raw_doc)
+        assert isinstance(result, StructureResult)
+        assert result.profile_used is None

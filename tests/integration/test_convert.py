@@ -313,3 +313,64 @@ class TestConvertPhilosophyBooks:
         # Should have quality info
         # Kant is a scanned PDF, may have some OCR issues
         assert doc.quality is not None
+
+
+class TestProfileBasedExtraction:
+    """Test profile-based structure extraction."""
+
+    def test_extractor_for_document_works(self, philosophy_pdf):
+        """CascadingExtractor.for_document() works with real PDFs."""
+        from scholardoc.extractors import CascadingExtractor
+        from scholardoc.readers import PDFReader
+
+        reader = PDFReader()
+        raw = reader.read(philosophy_pdf)
+
+        # Create extractor with auto-detected profile
+        extractor = CascadingExtractor.for_document(raw)
+        result = extractor.extract(raw)
+
+        # Should have a profile
+        assert result.profile_used is not None
+
+        # Should still produce valid results
+        assert isinstance(result.sections, list)
+        assert result.confidence >= 0.0
+
+    def test_book_profile_on_philosophy_text(self):
+        """Book profile works on philosophy PDFs."""
+        from scholardoc.extractors import BOOK_PROFILE, CascadingExtractor
+        from scholardoc.readers import PDFReader
+
+        pdf = SAMPLE_PDFS / "heidegger_pages_17-24_full_translator_preface.pdf"
+        if not pdf.exists():
+            pytest.skip("Heidegger PDF not available")
+
+        reader = PDFReader()
+        raw = reader.read(pdf)
+
+        # Use book profile explicitly
+        extractor = CascadingExtractor(profile=BOOK_PROFILE)
+        result = extractor.extract(raw)
+
+        assert result.profile_used == "book"
+        assert len(result.processing_log) > 0
+
+    def test_article_profile_disables_toc(self):
+        """Article profile doesn't use ToC enrichment."""
+        from scholardoc.extractors import ARTICLE_PROFILE, CascadingExtractor
+        from scholardoc.readers import PDFReader
+
+        pdf = SAMPLE_PDFS / "kant_critique_pages_64_65.pdf"
+        if not pdf.exists():
+            pytest.skip("Kant PDF not available")
+
+        reader = PDFReader()
+        raw = reader.read(pdf)
+
+        extractor = CascadingExtractor(profile=ARTICLE_PROFILE)
+        result = extractor.extract(raw)
+
+        assert result.profile_used == "article"
+        # ToC entries should not appear in log
+        assert not any("ToC entries" in entry for entry in result.processing_log)
