@@ -27,16 +27,11 @@ classifiers = [
     "Topic :: Text Processing :: General",
 ]
 
-# Phase 1 dependencies - minimal
+# Phase 1 dependencies - Core only (OCR engines are optional)
 dependencies = [
-    "easyocr>=1.7.2",
-    "pillow>=11.3.0",
     "pymupdf>=1.24.0",
     "pyspellchecker>=0.8.4",
-    "pytesseract>=0.3.13",
-    "python-doctr[torch]>=1.0.0",
-    "pyyaml>=6.0.3",
-    "sentence-transformers>=5.2.0",
+    "pillow>=11.3.0",
 ]
 
 [project.optional-dependencies]
@@ -55,12 +50,19 @@ comparison = [
     "pdfplumber>=0.10.0",
     "pypdf>=4.0.0",
     "pymupdf4llm>=0.0.10",
+    "easyocr>=1.7.2",
+    "sentence-transformers>=5.2.0",
 ]
-# TrOCR for re-OCR (Phase 2)
+# OCR correction (CPU-optimized, Tesseract)
 ocr = [
-    "transformers>=4.40.0",
+    "pytesseract>=0.3.10",
+]
+# OCR correction (GPU-optimized, docTR + Tesseract fallback)
+ocr-gpu = [
+    "python-doctr>=0.6.0",
     "torch>=2.0.0",
-    "pillow>=10.0.0",
+    "torchvision>=0.15.0",
+    "pytesseract>=0.3.10",
 ]
 # Contextual OCR correction with BERT
 contextual = [
