@@ -169,49 +169,8 @@ Based on detection, determine the actual commands:
 
 ### 2.1 Quick Assessment (Default)
 
-Run in parallel:
-
-```
-# Security scan
-Task(subagent_type="security-engineer", model="sonnet", prompt="""
-Quick security scan of this codebase:
-1. Check for hardcoded secrets (API keys, passwords, tokens)
-2. Look for .env files that shouldn't be committed
-3. Check dependency vulnerabilities (read package-lock.json or equivalent)
-4. Identify obvious auth/input validation gaps
-Return: Score (1-10), critical issues list, recommendations
-""")
-
-# Test/Quality assessment
-Task(subagent_type="quality-engineer", model="sonnet", prompt="""
-Quick quality assessment:
-1. Do tests exist? What framework?
-2. Estimate coverage from test file count vs source file count
-3. Are there integration/E2E tests?
-4. Check for obvious testing gaps
-Return: Score (1-10), coverage estimate, gaps identified
-""")
-
-# Architecture review
-Task(subagent_type="Explore", model="sonnet", prompt="""
-Quick architecture review:
-1. Is there clear separation of concerns?
-2. Are there obvious circular dependencies?
-3. Is the project structure conventional for the stack?
-4. Any code organization red flags?
-Return: Score (1-10), structure assessment, recommendations
-""")
-
-# Documentation check
-Task(subagent_type="Explore", model="sonnet", prompt="""
-Documentation completeness check:
-1. Does README exist and have setup instructions?
-2. Is there API documentation?
-3. Are there inline comments where needed?
-4. Is there a contributing guide?
-Return: Score (1-10), gaps identified
-""")
-```
+Run parallel agents for: Security, Testing, Architecture, Documentation.
+See [docs/INIT_TEMPLATES.md](../../../docs/INIT_TEMPLATES.md) for agent prompts.
 
 ### 2.2 CLI Scans (Parallel with agents)
 
@@ -242,62 +201,15 @@ fi
 
 ### 2.3 Thorough Assessment (--thorough only)
 
-Additional checks when `$ARGUMENTS` is "thorough":
+Run test coverage and deep agent assessments. See [docs/INIT_TEMPLATES.md](../../../docs/INIT_TEMPLATES.md).
 
-```bash
-# Actually run tests and get coverage
-if [ -f package.json ]; then
-  npm test -- --coverage 2>/dev/null | tail -30
-elif [ -f pyproject.toml ]; then
-  pytest --cov --cov-report=term-missing 2>/dev/null | tail -30
-fi
-```
+### 2.4 Aggregate Results
 
-Additional agent assessments:
-```
-Task(subagent_type="Explore", prompt="Deep architecture review: dependency graph, complexity hotspots, code duplication")
-Task(subagent_type="security-engineer", prompt="Full security audit: auth flows, data handling, API security")
-```
-
-### 2.4 Aggregate Assessment Results
-
-Combine parallel results into health score:
-
-```markdown
-## Codebase Health Assessment
-
-**Overall Score**: [X]/100
-
-| Category | Score | Status | Key Issues |
-|----------|-------|--------|------------|
-| Security | X/10 | [emoji] | [summary] |
-| Testing | X/10 | [emoji] | [summary] |
-| Code Quality | X/10 | [emoji] | [summary] |
-| Architecture | X/10 | [emoji] | [summary] |
-| Dependencies | X/10 | [emoji] | [summary] |
-| Documentation | X/10 | [emoji] | [summary] |
-| CI/CD | X/10 | [emoji] | [summary] |
-
-Status: ✅ Good (8-10) | ⚠️ Needs Work (5-7) | ❌ Critical (<5)
-```
+Combine into health score table (categories: Security, Testing, Code Quality, Architecture, Dependencies, Documentation, CI/CD). Score 1-10 each.
 
 ### 2.5 Prioritize Findings
 
-```markdown
-### Priority Issues
-
-**P0 - Critical** (Security, broken functionality)
-- [ ] [Issue description]
-
-**P1 - Important** (Testing gaps, outdated deps)
-- [ ] [Issue description]
-
-**P2 - Recommended** (Code quality, docs)
-- [ ] [Issue description]
-
-**P3 - Nice to Have** (Minor improvements)
-- [ ] [Issue description]
-```
+Categorize as P0 (Critical), P1 (Important), P2 (Recommended), P3 (Nice to Have).
 
 ---
 
@@ -373,125 +285,20 @@ mkdir -p .claude/{commands,agents,hooks,logs/signals,signals}
 
 ### 4.2 Generate CLAUDE.md
 
-Create project-specific CLAUDE.md incorporating:
-- Detected stack (no placeholders!)
-- Real commands from CI/package.json
-- Assessment findings summary
-- User preferences from Phase 3
-
-```markdown
-# [Project Name]
-
-## Quick Start for AI Assistants
-1. Read this file completely
-2. Check `improvement_roadmap` memory for known issues
-3. Run `/project:plan` before significant coding
-4. Use Serena memories for context
-
-## Stack
-- **Language**: [Detected]
-- **Framework**: [Detected]
-- **Testing**: [Detected framework] - `[actual command]`
-- **Linting**: [Detected] - `[actual command]`
-- **Build**: `[actual command]`
-
-## Health Status
-**Last assessed**: [Date]
-**Score**: [X]/100
-
-### Known Issues (from init assessment)
-- [P0 issues if any]
-- [P1 issues summary]
-
-See `improvement_roadmap` memory for full details.
-
-## Development Phase
-[From user input]
-
-## Rules
-ALWAYS:
-- Run `[test command]` before committing
-- Run `[lint command]` to check style
-- [From constraints]
-
-NEVER:
-- [From constraints]
-- [From security findings if relevant]
-
-## Commands
-- `/project:auto <task>` - Autonomous development
-- `/project:explore <topic>` - Investigate codebase
-- `/project:plan <feature>` - Create implementation plan
-- `/project:improve` - Self-improvement cycle
-- `/project:signal [note]` - Capture correction feedback
-```
+Create project-specific CLAUDE.md with detected stack, real commands, assessment findings, and user preferences. See template in [docs/INIT_TEMPLATES.md](../../../docs/INIT_TEMPLATES.md).
 
 ### 4.3 Initialize Serena Memories
 
-```
-write_memory("project_overview", """
-# Project Overview
+Create three memories:
+- `project_overview` - Stack, architecture, constraints
+- `improvement_roadmap` - Prioritized issues from assessment
+- `decision_log` - For architectural decisions
 
-**Name**: [name]
-**Stack**: [detected stack]
-**Phase**: [from user]
-**Initialized**: [date]
-
-## Architecture
-[From assessment findings]
-
-## Key Patterns
-[Detected patterns and conventions]
-
-## Constraints
-[From user input]
-""")
-
-write_memory("improvement_roadmap", """
-# Improvement Roadmap
-
-**Generated by**: /project:init
-**Date**: [date]
-**Health Score**: [X]/100
-
-## P0 - Critical
-- [ ] [Issue with details]
-
-## P1 - Important
-- [ ] [Issue with details]
-
-## P2 - Recommended
-- [ ] [Issue with details]
-
-## P3 - Nice to Have
-- [ ] [Issue with details]
-
----
-Run `/project:improve` to process these items.
-""")
-
-write_memory("decision_log", """
-# Decision Log
-
-Record architectural decisions here.
-
-## Format
-### YYYY-MM-DD: [Decision Title]
-**Decision**: [What was decided]
-**Rationale**: [Why this choice]
-**Trade-offs**: [Downsides and mitigations]
-
----
-Initialized by /project:init on [date]
-""")
-```
+See templates in [docs/INIT_TEMPLATES.md](../../../docs/INIT_TEMPLATES.md).
 
 ### 4.4 Copy Adapted Templates
 
-Copy from plugin templates, customizing for detected stack:
-- Commands (all core commands)
-- Agents (reviewers adapted for detected stack)
-- Hooks (if applicable)
+Copy from plugin templates, customizing for detected stack (commands, agents, hooks).
 
 ---
 
@@ -541,65 +348,13 @@ list_memories()
 
 ## Phase 6: REPORT
 
-```markdown
-## Initialization Complete!
-
-### Detection Summary
-| Item | Detected |
-|------|----------|
-| Language | [X] |
-| Framework | [X] |
-| Test Command | `[X]` |
-| Lint Command | `[X]` |
-| Build Command | `[X]` |
-| CI/CD | [X] |
-
-### Assessment Summary
-**Health Score**: [X]/100
-
-| Category | Score | Status |
-|----------|-------|--------|
-| Security | X/10 | [emoji] |
-| Testing | X/10 | [emoji] |
-| Code Quality | X/10 | [emoji] |
-| Architecture | X/10 | [emoji] |
-| Dependencies | X/10 | [emoji] |
-| Documentation | X/10 | [emoji] |
-
-### Priority Issues Found
-- **P0 (Critical)**: [count]
-- **P1 (Important)**: [count]
-- **P2 (Recommended)**: [count]
-
-See `improvement_roadmap` memory for details.
-
-### Validation Results
-| Check | Result |
-|-------|--------|
-| Tests | [pass/fail/skip] |
-| Lint | [pass/fail/skip] |
-| Build | [pass/fail/skip] |
-| Structure | ✅ |
-| Memories | ✅ |
-
-### Generated Files
-- CLAUDE.md ([X] lines)
-- .claude/commands/ ([X] commands)
-- .claude/agents/ ([X] agents)
-- Serena memories: project_overview, improvement_roadmap, decision_log
-
-### Recommended Next Steps
-
-1. **Review findings**: `read_memory("improvement_roadmap")`
-2. **Address P0 issues** (if any): `/project:improve`
-3. **Start development**: `/project:auto <task>` or `/project:explore <topic>`
-
-### Quick Commands
-- `/project:auto <task>` - Autonomous development
-- `/project:explore <topic>` - Investigate codebase
-- `/project:improve` - Process improvement roadmap
-- `/project:signal` - Capture feedback for learning
-```
+Output summary including:
+- Detection summary (language, framework, commands, CI)
+- Health score with category breakdown
+- Priority issues count (P0/P1/P2)
+- Validation results
+- Generated files list
+- Next steps: `read_memory("improvement_roadmap")` → `/project:improve` → `/project:auto`
 
 ---
 

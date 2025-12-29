@@ -80,6 +80,18 @@ class QualityLevel(Enum):
     BAD = "bad"  # Significant problems, may need re-OCR
 
 
+class OCRErrorType(Enum):
+    """Classification of OCR errors for analysis and validation."""
+
+    UNKNOWN = "unknown"  # Unclassified error
+    CHARACTER_SUBSTITUTION = "character_substitution"  # e.g., 'l' → 'I', 'tbe' → 'the'
+    SUBSTITUTION = "substitution"  # Word-level substitution
+    UMLAUT = "umlaut"  # Missing or incorrect diacritics
+    HYPHENATION = "hyphenation"  # Line-break hyphenation issues
+    SPACING = "spacing"  # Incorrect word spacing
+    PUNCTUATION = "punctuation"  # Punctuation recognition errors
+
+
 # ═══════════════════════════════════════════════════════════════════════════════
 # Base Span/Annotation Types
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -264,6 +276,19 @@ class TableOfContents:
 
 
 @dataclass
+class OCRCorrectionRecord:
+    """Record of an OCR correction (for debugging/analysis)."""
+
+    page_index: int
+    original_word: str
+    corrected_word: str
+    position: int  # Character position in page text
+    error_type: OCRErrorType = OCRErrorType.UNKNOWN
+    confidence: float = 0.0  # Detection confidence
+    method: str = ""  # e.g., "reocr_doctr", "reocr_tesseract"
+
+
+@dataclass
 class PageQuality:
     """Quality assessment for a single page."""
 
@@ -272,6 +297,90 @@ class PageQuality:
     quality: QualityLevel
     confidence: float  # OCR confidence if available
     issues: list[str] = field(default_factory=list)  # Specific issues detected
+    words_checked: int = 0  # Total words analyzed
+    errors_detected: int = 0  # Errors found before correction
+    corrections_made: int = 0  # Successful corrections applied
+
+
+@dataclass
+class OCRSourceInfo:
+    """Information about the OCR engine that produced the embedded text.
+
+    This helps with:
+    - Traceability: knowing what produced the text layer
+    - Analysis: comparing error patterns across OCR engines
+    - Debugging: identifying engine-specific issues
+    """
+
+    engine: str = "unknown"  # e.g., "adobe_paper_capture", "tesseract", "abbyy"
+    engine_version: str = ""  # e.g., "Acrobat Pro DC 15", "5.0.0"
+    producer: str = ""  # Raw producer string from PDF metadata
+    creator: str = ""  # Raw creator string from PDF metadata
+    creation_date: str = ""  # When OCR was performed
+    confidence: float = 0.0  # How confident we are in engine detection (0-1)
+
+    @classmethod
+    def from_pdf_metadata(
+        cls, producer: str | None, creator: str | None, creation_date: str | None
+    ) -> OCRSourceInfo:
+        """Parse PDF metadata to identify OCR source.
+
+        Known patterns:
+        - Adobe: "Adobe Acrobat * Paper Capture Plug-in"
+        - ABBYY: "ABBYY FineReader *"
+        - Tesseract: "Tesseract *" or in creator
+        """
+        producer = producer or ""
+        creator = creator or ""
+        creation_date = creation_date or ""
+
+        engine = "unknown"
+        engine_version = ""
+        confidence = 0.0
+
+        # Adobe Paper Capture detection
+        if "Paper Capture" in producer:
+            engine = "adobe_paper_capture"
+            confidence = 0.95
+            # Extract version: "Adobe Acrobat Pro DC 15 Paper Capture"
+            if "Acrobat" in producer:
+                parts = producer.split("Paper Capture")[0].strip()
+                engine_version = parts.replace("Adobe ", "").strip()
+
+        # ABBYY FineReader detection
+        elif "ABBYY" in producer or "ABBYY" in creator:
+            engine = "abbyy_finereader"
+            confidence = 0.95
+            # Extract version if present
+            for text in [producer, creator]:
+                if "FineReader" in text:
+                    parts = text.split("FineReader")
+                    if len(parts) > 1:
+                        engine_version = parts[1].strip().split()[0] if parts[1].strip() else ""
+
+        # Tesseract detection
+        elif "Tesseract" in producer or "Tesseract" in creator:
+            engine = "tesseract"
+            confidence = 0.90
+            for text in [producer, creator]:
+                if "Tesseract" in text:
+                    parts = text.split("Tesseract")
+                    if len(parts) > 1:
+                        engine_version = parts[1].strip().split()[0] if parts[1].strip() else ""
+
+        # Check for other known producers that indicate scanned docs
+        elif any(x in producer.lower() for x in ["scan", "ocr", "capture"]):
+            engine = "unknown_ocr"
+            confidence = 0.5
+
+        return cls(
+            engine=engine,
+            engine_version=engine_version,
+            producer=producer,
+            creator=creator,
+            creation_date=creation_date,
+            confidence=confidence,
+        )
 
 
 @dataclass
@@ -282,6 +391,8 @@ class QualityInfo:
     overall_confidence: float = 1.0
     pages: list[PageQuality] = field(default_factory=list)
     needs_reocr: list[int] = field(default_factory=list)  # Page indices needing re-OCR
+    corrections: list[OCRCorrectionRecord] = field(default_factory=list)  # Optional correction log
+    ocr_source: OCRSourceInfo | None = None  # Information about embedded OCR source
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
