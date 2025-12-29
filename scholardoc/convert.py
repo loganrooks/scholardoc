@@ -26,6 +26,7 @@ from scholardoc.extractors.cascading import CascadingExtractor
 from scholardoc.models import (
     DocumentMetadata,
     DocumentType,
+    PageQuality,
     PageSpan,
     ParagraphSpan,
     QualityInfo,
@@ -33,7 +34,8 @@ from scholardoc.models import (
     ScholarDocument,
     SectionSpan,
 )
-from scholardoc.normalizers.ocr_pipeline import OCRPipeline
+from scholardoc.normalizers.ocr_pipeline import OCRPipeline as LegacyOCRPipeline
+from scholardoc.ocr.pipeline import create_pipeline as create_new_ocr_pipeline
 from scholardoc.readers.pdf_reader import PDFReader, RawDocument
 
 if TYPE_CHECKING:
@@ -69,6 +71,7 @@ class BuilderContext:
 
     # Quality info
     quality: QualityInfo = field(default_factory=QualityInfo)
+    page_qualities: list[PageQuality] = field(default_factory=list)
     error_count: int = 0
 
 
@@ -78,12 +81,28 @@ class DocumentBuilder:
 
     This class handles the transformation from RawDocument (position-aware
     blocks) to ScholarDocument (clean text + position annotations).
+
+    OCR correction is controlled by config.ocr.enabled:
+    - False (default): Use legacy pipeline (line-break rejoining + detection only)
+    - True: Use new OCR pipeline with optional re-OCR
     """
 
     def __init__(self, config: ConversionConfig | None = None) -> None:
         """Initialize the builder."""
         self.config = config or ConversionConfig()
-        self.ocr_pipeline = OCRPipeline()
+
+        # Initialize OCR pipeline based on config
+        if self.config.ocr.enabled:
+            self.ocr_pipeline = create_new_ocr_pipeline(
+                enable_reocr=self.config.ocr.enable_reocr,
+                dictionary_path=self.config.ocr.dictionary_path,
+                persist_dictionary=self.config.ocr.persist_dictionary,
+            )
+            self._use_new_ocr = True
+        else:
+            self.ocr_pipeline = LegacyOCRPipeline()
+            self._use_new_ocr = False
+
         self.structure_extractor = CascadingExtractor()
 
     def build(self, raw_doc: RawDocument) -> ScholarDocument:
@@ -136,40 +155,78 @@ class DocumentBuilder:
         Process text through OCR pipeline.
 
         Applies line-break rejoining and detects OCR errors.
+        Uses new OCR pipeline if config.ocr.enabled, otherwise uses legacy.
         """
         raw_text = ctx.raw_doc.text
         ctx.processing_log.append(f"Raw text: {len(raw_text)} chars")
 
-        # Apply line-break rejoining
-        clean_text = self.ocr_pipeline.apply_line_breaks(raw_text)
-        ctx.processing_log.append(f"After line-break rejoining: {len(clean_text)} chars")
+        if self._use_new_ocr:
+            # New OCR pipeline - returns PipelineResult with full stats
+            result = self.ocr_pipeline.process_text(raw_text)
+            clean_text = result.corrected_text
+            ctx.error_count = len(result.errors_detected)
 
-        # Detect OCR errors (for quality info, not correction)
-        errors = self.ocr_pipeline.detect_errors(clean_text)
-        ctx.error_count = len(errors)
+            ctx.processing_log.append(
+                f"After OCR pipeline: {len(clean_text)} chars, "
+                f"{result.linebreak_stats.candidates_joined} linebreaks joined, "
+                f"{ctx.error_count} errors detected"
+            )
 
-        if errors:
-            ctx.processing_log.append(f"OCR errors detected: {len(errors)} words")
-            # Store pages needing re-OCR (position is a tuple: (page, word_index, char_offset))
-            pages_with_errors = {e.position[0] for e in errors}
-            ctx.quality.needs_reocr = sorted(pages_with_errors)
+            if result.errors_detected:
+                # Set quality based on detection stats
+                word_count = max(result.detection_stats.words_checked, 1)
+                error_rate = ctx.error_count / word_count
 
-            # Set quality level based on error rate
-            error_rate = len(errors) / max(len(clean_text.split()), 1)
-            if error_rate > 0.05:
-                ctx.quality.overall = QualityLevel.BAD
-                ctx.quality.overall_confidence = 0.5
-            elif error_rate > 0.02:
-                ctx.quality.overall = QualityLevel.MARGINAL
-                ctx.quality.overall_confidence = 0.7
+                if error_rate > 0.05:
+                    ctx.quality.overall = QualityLevel.BAD
+                    ctx.quality.overall_confidence = 0.5
+                elif error_rate > 0.02:
+                    ctx.quality.overall = QualityLevel.MARGINAL
+                    ctx.quality.overall_confidence = 0.7
+                else:
+                    ctx.quality.overall = QualityLevel.GOOD
+                    ctx.quality.overall_confidence = 0.9
             else:
                 ctx.quality.overall = QualityLevel.GOOD
-                ctx.quality.overall_confidence = 0.9
+                ctx.quality.overall_confidence = 0.95
+
         else:
-            ctx.quality.overall = QualityLevel.GOOD
-            ctx.quality.overall_confidence = 0.95
+            # Legacy OCR pipeline
+            clean_text = self.ocr_pipeline.apply_line_breaks(raw_text)
+            ctx.processing_log.append(f"After line-break rejoining: {len(clean_text)} chars")
+
+            errors = self.ocr_pipeline.detect_errors(clean_text)
+            ctx.error_count = len(errors)
+
+            if errors:
+                ctx.processing_log.append(f"OCR errors detected: {len(errors)} words")
+                # Store pages needing re-OCR (position is tuple: (page, word_index, char_offset))
+                pages_with_errors = {e.position[0] for e in errors}
+                ctx.quality.needs_reocr = sorted(pages_with_errors)
+
+                error_rate = len(errors) / max(len(clean_text.split()), 1)
+                if error_rate > 0.05:
+                    ctx.quality.overall = QualityLevel.BAD
+                    ctx.quality.overall_confidence = 0.5
+                elif error_rate > 0.02:
+                    ctx.quality.overall = QualityLevel.MARGINAL
+                    ctx.quality.overall_confidence = 0.7
+                else:
+                    ctx.quality.overall = QualityLevel.GOOD
+                    ctx.quality.overall_confidence = 0.9
+            else:
+                ctx.quality.overall = QualityLevel.GOOD
+                ctx.quality.overall_confidence = 0.95
 
         ctx.clean_text = clean_text
+
+    def _clean_page_text(self, text: str) -> str:
+        """Clean page text using appropriate pipeline."""
+        if self._use_new_ocr:
+            result = self.ocr_pipeline.process_text(text)
+            return result.corrected_text
+        else:
+            return self.ocr_pipeline.apply_line_breaks(text)
 
     def _build_page_spans(self, ctx: BuilderContext) -> None:
         """Build PageSpan annotations from page positions."""
@@ -183,7 +240,7 @@ class DocumentBuilder:
         for i, page in enumerate(ctx.raw_doc.pages):
             page_text = page.text or ""
             # Apply same cleaning to page text to get accurate length
-            clean_page_text = self.ocr_pipeline.apply_line_breaks(page_text)
+            clean_page_text = self._clean_page_text(page_text)
             page_len = len(clean_page_text)
 
             if page_len > 0:
