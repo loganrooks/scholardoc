@@ -246,39 +246,7 @@ For each implemented improvement:
 
 ### 5.2 Update Improvement Log
 
-```
-write_memory("improvement_log", """
-## Improvement Log
-
-### [DATE] - Trigger: $ARGUMENTS
-
-**Signals Processed**: [count]
-**Diagnoses**:
-- [signal] → [root cause]
-
-**Improvements Implemented**:
-| Type | Target | Change | Verified |
-|------|--------|--------|----------|
-| | | | |
-
-**Improvements Deferred**:
-- [item]: [reason]
-
-**Improvements Rejected**:
-- [item]: [reason]
-
-**System Health After**:
-- CLAUDE.md: [lines] lines
-- Agents: [count]
-- Hooks: [count]
-
-**Lessons Learned**:
-- [insight for future improvements]
-
----
-[Previous entries...]
-""")
-```
+Update `improvement_log` memory with: signals processed, diagnoses, improvements (implemented/deferred/rejected), system health metrics, lessons learned.
 
 ### 5.3 Archive Processed Signals
 
@@ -299,47 +267,12 @@ fi
 
 ## Output Summary
 
-```markdown
-## Self-Improvement Cycle Complete
-
-**Trigger**: $ARGUMENTS
-**Date**: [Current date]
-
-### Exploration Results
-| Source | Signals Found |
-|--------|---------------|
-| Signal log | [count] |
-| Session logs | [count] |
-| Git history | [count] |
-| Domain reviews | [count] |
-
-### System Health
-| Metric | Value | Status |
-|--------|-------|--------|
-| CLAUDE.md lines | [N] | [OK if <500, WARN if >500] |
-| Agents | [N] | [OK if <10] |
-| Hooks | [N] | [OK if <10] |
-
-### Diagnoses
-| Signal | Root Cause | Component |
-|--------|------------|-----------|
-| | | |
-
-### Improvements
-| Status | Type | Target | Change |
-|--------|------|--------|--------|
-| ✅ Implemented | | | |
-| ⏸️ Deferred | | | |
-| ❌ Rejected | | | |
-
-### Self-Review Results
-- Diagnoses: [N] strong, [N] adequate, [N] weak
-- Improvements: [N] approved, [N] refined, [N] rejected
-
-### Next Steps
-- Recommended next review: [trigger/timing]
-- Focus areas: [areas needing attention]
-```
+Report includes:
+- Exploration results (signals by source)
+- System health (CLAUDE.md lines <500, agents <10, hooks <10)
+- Diagnoses table (signal → root cause → component)
+- Improvements table (status, type, target, change)
+- Self-review results and next steps
 
 ---
 
