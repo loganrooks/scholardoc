@@ -190,6 +190,7 @@ Structure Extraction (Cascading with Confidence):
 **Architecture Decision Records:**
 - [ADR-002](docs/adr/ADR-002-ocr-pipeline-architecture.md) - OCR pipeline (spellcheck as selector)
 - [ADR-003](docs/adr/ADR-003-line-break-detection.md) - Line-break detection (block filtering)
+- [ADR-004](docs/adr/ADR-004-ocr-source-tracking.md) - OCR source tracking (engine metadata)
 
 ### Milestones
 
@@ -553,6 +554,7 @@ These features may be considered based on user feedback:
 - **PDF editing/modification** - Different tool
 - **GROBID Integration** - May add for scientific papers if demand exists
 - **Scientific Paper Support** - May add specialized handling if demand exists
+- **Multi-OCR-Engine Validation** - Current validation uses Adobe Paper Capture only (see ADR-004); when samples from Tesseract, ABBYY, Google Vision, etc. become available, validate detection across engines
 
 ---
 
@@ -611,7 +613,8 @@ These features may be considered based on user feedback:
 | Dec 24, 2025 | Integration tests established | 25 tests using real philosophy PDFs verify end-to-end conversion | test_convert.py |
 | Dec 24, 2025 | Document profiles complete | DocumentProfile frozen dataclass with 5 standard profiles (book, article, essay, report, generic); auto-detection via get_profile(); backward-compatible CascadingExtractor | profiles.py |
 | Dec 29, 2025 | OCR pipeline integrated | Production OCR module with 5 components; config.ocr.enabled toggle; disabled by default for backward compatibility | convert.py, scholardoc/ocr/ |
-| Dec 29, 2025 | Phase 1 Complete | 320 tests passing; 96.9% OCR detection rate; all integration tests pass | ROADMAP.md |
+| Dec 29, 2025 | Phase 1 Complete | 349 tests passing; 96.9% OCR detection rate; all integration tests pass | ROADMAP.md |
+| Dec 29, 2025 | OCR source tracking added | Extract OCR engine info from PDF metadata; track in QualityInfo.ocr_source | ADR-004 |
 
 ---
 

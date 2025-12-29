@@ -26,6 +26,7 @@ from scholardoc.extractors.cascading import CascadingExtractor
 from scholardoc.models import (
     DocumentMetadata,
     DocumentType,
+    OCRSourceInfo,
     PageQuality,
     PageSpan,
     ParagraphSpan,
@@ -117,6 +118,19 @@ class DocumentBuilder:
         """
         ctx = BuilderContext(raw_doc=raw_doc, config=self.config)
         ctx.processing_log.append(f"Starting build from {raw_doc.source_path}")
+
+        # Extract OCR source information from PDF metadata
+        raw_meta = raw_doc.metadata
+        ctx.quality.ocr_source = OCRSourceInfo.from_pdf_metadata(
+            producer=raw_meta.get("producer"),
+            creator=raw_meta.get("creator"),
+            creation_date=raw_meta.get("creation_date"),
+        )
+        if ctx.quality.ocr_source.engine != "unknown":
+            ctx.processing_log.append(
+                f"OCR source detected: {ctx.quality.ocr_source.engine} "
+                f"(v{ctx.quality.ocr_source.engine_version})"
+            )
 
         # Step 1: Process text with OCR pipeline
         self._process_text(ctx)
