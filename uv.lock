@@ -2082,19 +2082,15 @@ name = "scholardoc"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
-    { name = "easyocr" },
     { name = "pillow" },
     { name = "pymupdf" },
     { name = "pyspellchecker" },
-    { name = "pytesseract" },
-    { name = "python-doctr" },
-    { name = "pyyaml" },
-    { name = "sentence-transformers" },
 ]
 
 [package.optional-dependencies]
 all = [
     { name = "beautifulsoup4" },
+    { name = "easyocr" },
     { name = "ebooklib" },
     { name = "hypothesis" },
     { name = "lxml" },
@@ -2104,11 +2100,14 @@ all = [
     { name = "pytest" },
     { name = "pytest-cov" },
     { name = "ruff" },
+    { name = "sentence-transformers" },
 ]
 comparison = [
+    { name = "easyocr" },
     { name = "pdfplumber" },
     { name = "pymupdf4llm" },
     { name = "pypdf" },
+    { name = "sentence-transformers" },
 ]
 contextual = [
     { name = "ocrfixr" },
@@ -2132,15 +2131,19 @@ multilingual = [
     { name = "wordfreq" },
 ]
 ocr = [
-    { name = "pillow" },
+    { name = "pytesseract" },
+]
+ocr-gpu = [
+    { name = "pytesseract" },
+    { name = "python-doctr" },
     { name = "torch" },
-    { name = "transformers" },
+    { name = "torchvision" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "beautifulsoup4", marker = "extra == 'epub'", specifier = ">=4.12.0" },
-    { name = "easyocr", specifier = ">=1.7.2" },
+    { name = "easyocr", marker = "extra == 'comparison'", specifier = ">=1.7.2" },
     { name = "ebooklib", marker = "extra == 'epub'", specifier = ">=0.18" },
     { name = "hypothesis", marker = "extra == 'dev'", specifier = ">=6.100.0" },
     { name = "langdetect", marker = "extra == 'multilingual'", specifier = ">=1.0.9" },
@@ -2148,25 +2151,24 @@ requires-dist = [
     { name = "ocrfixr", marker = "extra == 'contextual'", specifier = ">=1.5.0" },
     { name = "pdfplumber", marker = "extra == 'comparison'", specifier = ">=0.10.0" },
     { name = "pillow", specifier = ">=11.3.0" },
-    { name = "pillow", marker = "extra == 'ocr'", specifier = ">=10.0.0" },
     { name = "pymupdf", specifier = ">=1.24.0" },
     { name = "pymupdf4llm", marker = "extra == 'comparison'", specifier = ">=0.0.10" },
     { name = "pymupdf4llm", marker = "extra == 'enhanced'", specifier = ">=0.0.10" },
     { name = "pypdf", marker = "extra == 'comparison'", specifier = ">=4.0.0" },
     { name = "pyspellchecker", specifier = ">=0.8.4" },
-    { name = "pytesseract", specifier = ">=0.3.13" },
+    { name = "pytesseract", marker = "extra == 'ocr'", specifier = ">=0.3.10" },
+    { name = "pytesseract", marker = "extra == 'ocr-gpu'", specifier = ">=0.3.10" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.0.0" },
     { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=4.1.0" },
-    { name = "python-doctr", extras = ["torch"], specifier = ">=1.0.0" },
-    { name = "pyyaml", specifier = ">=6.0.3" },
+    { name = "python-doctr", marker = "extra == 'ocr-gpu'", specifier = ">=0.6.0" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.4.0" },
     { name = "scholardoc", extras = ["enhanced", "epub", "comparison", "dev"], marker = "extra == 'all'" },
-    { name = "sentence-transformers", specifier = ">=5.2.0" },
-    { name = "torch", marker = "extra == 'ocr'", specifier = ">=2.0.0" },
-    { name = "transformers", marker = "extra == 'ocr'", specifier = ">=4.40.0" },
+    { name = "sentence-transformers", marker = "extra == 'comparison'", specifier = ">=5.2.0" },
+    { name = "torch", marker = "extra == 'ocr-gpu'", specifier = ">=2.0.0" },
+    { name = "torchvision", marker = "extra == 'ocr-gpu'", specifier = ">=0.15.0" },
     { name = "wordfreq", marker = "extra == 'multilingual'", specifier = ">=3.0.0" },
 ]
-provides-extras = ["enhanced", "epub", "comparison", "ocr", "contextual", "multilingual", "dev", "all"]
+provides-extras = ["enhanced", "epub", "comparison", "ocr", "ocr-gpu", "contextual", "multilingual", "dev", "all"]
 
 [[package]]
 name = "scikit-image"

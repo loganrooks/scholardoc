@@ -64,3 +64,4 @@ Thumbs.db
 
 # Serena MCP - session memory (internal state)
 .serena/memories/
+.claude-backup-*.tar.gz

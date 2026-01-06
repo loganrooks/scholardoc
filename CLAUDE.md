@@ -1,522 +1,67 @@
 # ScholarDoc
 
-## Quick Start for AI Assistants
-1. Read this file completely
-2. Check ROADMAP.md for current phase (Phase 1: OCR pipeline integration)
+## Quick Start
+1. Read this file
+2. Check ROADMAP.md for current phase
 3. If implementing: Read SPEC.md relevant sections
 4. If exploring: Check spikes/ for prior work
 5. Run `/project:plan` before coding
-6. Use Serena memories: `ocr_pipeline_architecture`, `session_2025-12-23_validation_framework`
+6. Use Serena memories: `ocr_pipeline_architecture`, `session_handoff`
 
 ## Vision
-<!-- AUTHORITATIVE: All other docs should reference this section, not duplicate it -->
-<!-- Last verified: 2025-12-23 -->
+ScholarDoc extracts structured knowledge from scholarly PDFs into `ScholarDocument` for RAG pipelines, Anki generation, citation management, and research organization.
 
-ScholarDoc extracts structured knowledge from scholarly PDFs into a flexible intermediate representation (`ScholarDocument`) designed for multiple downstream applications:
+**Core insight**: Separate *extraction* from *presentation*. ScholarDocument is the intermediate representation; Markdown is one output format.
 
-**Primary Applications:**
-- **RAG pipelines** — Clean text with position-accurate metadata for retrieval
-- **Anki/flashcard generation** — Structured content with citation tracking
-- **Research organization** — Metadata-rich documents for knowledge management
-- **Citation management** — Page numbers, references, bibliography extraction
-
-**Additional Applications:**
-- **Knowledge graphs** — Semantic linking between documents and concepts
-- **Literature review tools** — Cross-document analysis and comparison
-- **Academic writing assistants** — Source material with accurate citations
-- **Accessibility** — Clean text for text-to-speech, screen readers
-- **Search/indexing systems** — Structured data for advanced queries
-- **Custom applications** — Extensible output formats (Markdown, JSON, custom)
-
-**Core Insight:** Separate *extraction* (getting clean, structured data) from *presentation* (formatting for specific use cases). The `ScholarDocument` is the intermediate representation; Markdown is one output format, not the goal.
+See [docs/VISION.md](docs/VISION.md) for full vision and applications.
 
 ## Current Phase
 **Phase 1: Core Implementation** - PDF reader and OCR pipeline
-**Current Task:** Integrate validated OCR pipeline into main module
-**Completed:** PDF reader, cascading extractor, OCR pipeline design (validated)
-See spikes/FINDINGS.md for exploration results, ROADMAP.md for full plan.
+- **Current**: Integrate validated OCR pipeline into main module
+- **Completed**: PDF reader, cascading extractor, OCR pipeline design
+- See ROADMAP.md for full plan
 
 ## Stack
-- Python 3.11+
-- PyMuPDF (fitz) - PDF extraction (see docs/adr/ADR-001)
-- Pydantic - data models
-- pytest, hypothesis, ruff, uv - dev tooling
+Python 3.11+ | PyMuPDF (fitz) | Pydantic | pytest + hypothesis | ruff | uv
 
-## Documentation
-- REQUIREMENTS.md - User stories, acceptance criteria
-- SPEC.md - Technical specification (DRAFT - pending spike validation)
-- ROADMAP.md - Phased development plan with OCR vision
-- QUESTIONS.md - Open questions needing resolution
-- spikes/FINDINGS.md - Exploration results
-- docs/adr/ - Architecture Decision Records:
-  - ADR-001: PDF library choice (PyMuPDF)
-  - ADR-002: OCR pipeline architecture (spellcheck as selector)
-  - ADR-003: Line-break detection (block-based filtering)
-- docs/design/ - Future feature design docs (e.g., CUSTOM_OCR_DESIGN.md)
-
-**Read relevant docs before implementing.** Don't invent requirements.
-
-## Commands
+## Quick Commands
 ```bash
-uv sync                    # Install deps
-uv sync --extra comparison # Include comparison libraries for spikes
-uv run pytest             # Run tests
-uv run ruff check .       # Lint
-uv run ruff format .      # Format
-
-# Exploration spikes (run before implementing!)
-uv run python spikes/01_pymupdf_exploration.py <pdf> --all  # Explore PyMuPDF
-uv run python spikes/02_library_comparison.py <pdf>         # Compare libraries
-uv run python spikes/03_heading_detection.py <pdf>          # Test heading strategies
-uv run python spikes/04_footnote_detection.py <pdf>         # Test footnote strategies
-uv run python spikes/05_ocr_quality_survey.py <pdf>         # Evaluate existing OCR quality
-
-# OCR pipeline validation
-uv run python spikes/29_ocr_pipeline_design.py              # OCR pipeline design/testing
-uv run python spikes/30_validation_framework.py             # Build/test validation set
-
-# Ground truth workflow (Claude + Human)
-# Step 1: Claude annotates (use /project:annotate command or agent)
-# Step 2: Human reviews flagged items
-uv run python spikes/07_annotation_review.py review <annotations.yaml> --pdf <pdf>
-# Step 3: Validate
-uv run python spikes/07_annotation_review.py validate <annotations.yaml>
+uv sync && uv run pytest && uv run ruff check .
 ```
+See [docs/COMMANDS.md](docs/COMMANDS.md) for full reference.
 
 ## Workflow
-1. **Explore first** - Run spikes before implementing (spikes/)
-2. Check ROADMAP.md for current phase/milestone
-3. Read SPEC.md before writing code (note DRAFT sections)
-4. Check QUESTIONS.md - don't implement unresolved decisions
-5. Write tests first (TDD) - use `/project:tdd`
-6. Update spikes/FINDINGS.md with discoveries
+1. **Explore first** - Run spikes before implementing
+2. **Check ROADMAP.md** for current phase
+3. **Read SPEC.md** before writing code
+4. **Check QUESTIONS.md** - don't implement unresolved decisions
+5. **Write tests first** (TDD) - use `/project:tdd`
 
-## Rules
-ALWAYS:
-- Run exploration spikes before implementing new features
-- Consult SPEC.md for data models and API design
-- Write tests before implementation
-- Graceful degradation over hard failures
-- Preserve source information (page numbers, positions)
+See [docs/RULES.md](docs/RULES.md) for complete guidelines.
 
-NEVER:
-- Implement features not validated by spikes
-- Trust SPEC.md over empirical findings
-- Make architectural decisions without ADR
-- Skip the planning documents
-- Add chunking (out of scope - see REQUIREMENTS.md)
+## Git Workflow
+**CRITICAL**: Use feature branches, never commit to main.
+See [docs/GIT_WORKFLOW.md](docs/GIT_WORKFLOW.md) for branching strategy.
 
----
+## Architecture
+Key decisions in docs/adr/:
+- ADR-001: PDF library choice (PyMuPDF)
+- ADR-002: OCR pipeline architecture (spellcheck as selector)
+- ADR-003: Line-break detection (block-based filtering)
 
-## Automation & Guardrails
+## Validation & Testing
+Follow systematic methodology. Use FULL validation set, not subsets.
+See [docs/TESTING_METHODOLOGY.md](docs/TESTING_METHODOLOGY.md) for complete guide.
 
-This project uses automated hooks for quality control. See `docs/AUTOMATION_SETUP.md` for full details.
+## Automation
+This project uses automated hooks. See [docs/AUTOMATION_SETUP.md](docs/AUTOMATION_SETUP.md).
 
-### Pre-Approved Operations (No confirmation needed)
-- Read any file
-- Edit files in: `scholardoc/`, `tests/`, `spikes/`, `docs/`
-- Run: `uv sync/run/add`, `pytest`, `ruff`, `git status/diff/log/add/commit`
-- Standard file operations: `ls`, `cat`, `grep`, `find`, `mkdir`, `cp`, `mv`
+**Pre-approved**: Read files, edit scholardoc/tests/spikes/docs, run uv/pytest/ruff/git
+**Blocked**: rm -rf, sudo, git push --force, pip install
 
-### Blocked Operations (Will be denied)
-- `rm -rf`, `rm -r` (use explicit file deletion)
-- `sudo` anything
-- `git push --force`, `git reset --hard`
-- `pip install` (use `uv add`)
-- Piping to shell (`curl | sh`)
-
-### Automatic Quality Checks
-After editing Python files:
-- `ruff format` runs automatically
-- `ruff check --fix` runs automatically
-- Related tests run (if they exist)
-
-Before stopping:
-- All tests must pass
-- No linting errors
-- Uncommitted changes are flagged
-
-### Workflow Commands
-Use these for structured work:
-
-**Discovery & Planning:**
-- `/project:explore <topic>` - Read-only investigation (understand before planning)
-- `/project:plan <feature>` - Create implementation plan with scope, tests, tasks, risks
-- `/project:spike <topic>` - Exploration spike for uncertain features
-
-**Implementation:**
-- `/project:implement <feature>` - TDD workflow (tests first)
-- `/project:tdd` - Start test-driven cycle
-- `/project:refactor <code>` - Safe refactoring with test verification
-- `/project:document <target>` - Generate/update documentation
-
-**Quality & Review:**
-- `/project:review` - Review recent changes
-- `/project:debug <error>` - Systematic debugging with hypothesis testing
-
-**Release & Maintenance:**
-- `/project:release [version]` - Release preparation and changelog
-- `/project:improve [trigger]` - Self-improvement review (see protocol below)
-
-**Session Management:**
-- `/project:resume` - Restore context from previous session
-- `/project:checkpoint <note>` - Save current state mid-session
-
-**Specialized:**
-- `/project:annotate <pdf>` - Ground truth annotation
-
-### Development Workflow Lifecycle
-
-Commands connect in a typical development cycle:
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    DEVELOPMENT LIFECYCLE                         │
-│                                                                  │
-│   explore ──▶ plan ──▶ implement ──▶ review ──▶ release         │
-│      │          │          │           │                         │
-│      │          │          │           │                         │
-│      ▼          ▼          ▼           ▼                         │
-│   understand  scope &    TDD with    quality                     │
-│   codebase    tests      refactor    gates                       │
-│                                                                  │
-│   ◀──────────── iterate ◀───────────────┘                       │
-│                    │                                             │
-│                    ▼                                             │
-│               debug (if issues found)                            │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-**Typical Flow:**
-1. **Explore** → Understand the codebase/problem before planning
-2. **Plan** → Define scope, test strategy, tasks, and risks
-3. **Implement** → Write tests first (TDD), then implementation
-4. **Review** → Quality checks, code review
-5. **Debug** → (if needed) Systematic hypothesis-driven debugging
-6. **Release** → Version bump, changelog, final checks
-
-**When to Use Each:**
-- Starting new work? → `/project:explore` then `/project:plan`
-- Clear requirements? → `/project:plan` then `/project:implement`
-- Something broke? → `/project:debug`
-- Code needs cleanup? → `/project:refactor`
-- Ready to ship? → `/project:release`
-- Want fully autonomous? → `/project:auto` (see below)
-
-### Autonomous Development Mode
-
-For minimal human intervention after requirements are confirmed:
-
-**Command:** `/project:auto <feature-description>`
-
-**Philosophy:** Thorough human collaboration upfront (requirements), then autonomous execution with self-review gates.
-
-**Flow:**
-```
-┌──────────────────────────────────────────────────────────────────────┐
-│                    AUTONOMOUS DEVELOPMENT                             │
-│                                                                       │
-│   ┌─────────────┐                                                    │
-│   │ PHASE 0     │  ◀── HUMAN-IN-LOOP                                │
-│   │ Requirements│      Questions, clarification, approval            │
-│   └──────┬──────┘                                                    │
-│          │ approved                                                   │
-│          ▼                                                            │
-│   ┌──────────────────────────────────────────────────────────────┐   │
-│   │                    AUTONOMOUS PHASES                          │   │
-│   │                                                               │   │
-│   │  Phase 1        Phase 2        Phase 3        Phase 4        │   │
-│   │  Explore   ──▶  Plan     ──▶  Implement  ──▶  Document      │   │
-│   │     │             │              │              │            │   │
-│   │     ▼             ▼              ▼              ▼            │   │
-│   │  [REVIEW]      [REVIEW]      [REVIEW]       [REVIEW]        │   │
-│   │  exploration   plan          code           docs            │   │
-│   │  -reviewer     -reviewer     -reviewer      -reviewer       │   │
-│   │                                                               │   │
-│   └──────────────────────────────────────────────────────────────┘   │
-│          │                                                            │
-│          ▼                                                            │
-│   ┌─────────────┐                                                    │
-│   │ PHASE 5     │  Tests + Lint + Type Check                        │
-│   │ Validation  │  All must pass                                     │
-│   └──────┬──────┘                                                    │
-│          │                                                            │
-│          ▼                                                            │
-│   ┌─────────────┐                                                    │
-│   │ PHASE 6     │  Commit, update memory, report to human           │
-│   │ Completion  │                                                    │
-│   └─────────────┘                                                    │
-└──────────────────────────────────────────────────────────────────────┘
-```
-
-**Self-Review Gates:**
-Each phase has a reviewer agent (`.claude/agents/`) that catches issues before they compound:
-
-| Gate | Reviewer | Catches |
-|------|----------|---------|
-| After exploration | exploration-reviewer | Incomplete understanding, missed context |
-| After planning | plan-reviewer | Flawed design, missing requirements |
-| After implementation | code-reviewer | Bugs, security issues, bad patterns |
-| After documentation | documentation-reviewer | Inaccuracies, gaps |
-| After experiment/spike | experiment-reviewer | Inconclusive findings |
-
-**Verdicts:**
-- `APPROVED` → Proceed to next phase
-- `NEEDS_WORK` / `NEEDS_REVISION` → Fix and re-review
-- `BLOCKED` / `REJECTED` → Escalate to human
-
-**Escalation Triggers:**
-- Requirements fundamentally change
-- Architectural decision challenged by evidence
-- Security/data integrity concerns
-- Test failures unresolved after 3 attempts
-- Reviewer gives BLOCKED twice
-
-**Benefits:**
-- Prevents error accumulation from poor preparation
-- Catches issues early when cheaper to fix
-- Reduces back-and-forth with human reviewer
-- Maintains quality without constant oversight
-
-### If Hooks Block You
-If automated checks prevent legitimate work:
-1. Explain what you're trying to do and why
-2. Human can approve exception
-3. Document why bypass was needed
-
-### Self-Improvement Protocol
-
-The self-improvement system follows its own explore → plan → implement → review cycle, creating a closed feedback loop that continuously improves the development infrastructure.
-
-**Commands:**
-- `/project:improve [trigger]` - Full improvement cycle
-- `/project:diagnose <signal>` - Root cause analysis for specific issue
-
-**The Feedback Loop:**
-```
-┌────────────────────────────────────────────────────────────────────┐
-│                    SELF-IMPROVEMENT LOOP                            │
-│                                                                     │
-│   Error/Interruption/Friction                                       │
-│           │                                                         │
-│           ▼                                                         │
-│   ┌───────────────┐     ┌───────────────┐     ┌───────────────┐   │
-│   │    EXPLORE    │ ──▶ │    DIAGNOSE   │ ──▶ │     PLAN      │   │
-│   │ Gather signals│     │ Root cause    │     │ Propose fix   │   │
-│   └───────────────┘     └───────────────┘     └───────────────┘   │
-│           │                                           │             │
-│           │         ┌─────────────────────────────────┘             │
-│           │         ▼                                               │
-│           │   ┌───────────────┐     ┌───────────────┐              │
-│           │   │   IMPLEMENT   │ ──▶ │    REVIEW     │              │
-│           │   │ Apply change  │     │ Validate fix  │              │
-│           │   └───────────────┘     └───────────────┘              │
-│           │                                 │                       │
-│           └─────────────────────────────────┘                       │
-│                         │                                           │
-│                         ▼                                           │
-│              Better development system                              │
-│              (commands, agents, hooks, docs)                        │
-└────────────────────────────────────────────────────────────────────┘
-```
-
-**Signal Types:**
-| Type | Examples | Indicates |
-|------|----------|-----------|
-| Internal | Test failures, lint errors | Missing test strategy or review gate |
-| External | Human corrections ("you should have...") | Missing reminder or unclear docs |
-| Process | Skipped steps, context loss | Missing hook or memory gap |
-
-**Improvement Types:**
-| Type | Target | When |
-|------|--------|------|
-| COMMAND_REFINEMENT | .claude/commands/ | Command missing step |
-| AGENT_ADDITION | .claude/agents/ | Missing review gate |
-| HOOK_ADDITION | .claude/hooks/ | Need automated reminder |
-| INSTRUCTION_COMPRESSION | CLAUDE.md | File > 500 lines, rules ignored |
-| DOCUMENTATION_UPDATE | docs/ | Docs out of sync |
-| MEMORY_UPDATE | Serena memories | Context loss between sessions |
-
-**Review Agents:**
-- `diagnostic-agent` - Traces errors to root causes
-- `improvement-reviewer` - Validates proposed improvements
-
-**System Health Limits:**
-- CLAUDE.md: < 500 lines (essential rules only)
-- Agents: < 10 (avoid over-fragmentation)
-- Hooks: < 10 (avoid slowdown)
-
-**Triggers — When to run `/project:improve`:**
-- `pr-merge` — After PR merged
-- `error` — After significant error
-- `weekly` — Weekly during active development
-- `context-loss` — After re-explanation needed
-- `full-audit` — Before major feature work
-
-**Tracking:**
-- Signal log: `.claude/logs/signals/`
-- Improvement log: Serena memory `improvement_log`
-
-### Session Management
-
-Context preservation across sessions to minimize re-explanation.
-
-**Commands:**
-- `/project:resume` — Restore context from previous session (reads `session_handoff` memory)
-- `/project:checkpoint <note>` — Save current state mid-session (before risky ops)
-
-**Key Memories:**
-| Memory | Purpose |
-|--------|---------|
-| `session_handoff` | What was worked on, accomplished, next steps |
-| `decision_log` | Architectural decisions with rationale |
-| `project_vision` | Canonical project description (AUTHORITATIVE) |
-| `checkpoint_*` | Mid-session state snapshots |
-
-**Session Lifecycle:**
-1. **Start**: Run `/project:resume` to restore context
-2. **During**: Use `/project:checkpoint` before major changes
-3. **End**: Update `session_handoff` memory (prompted by stop-verify hook)
-
-**Decision Log Format:**
-When making architectural decisions, add to `decision_log` memory:
-```
-## YYYY-MM-DD: [Decision Title]
-**Decision**: [What was decided]
-**Rationale**: [Why this choice]
-**Trade-offs**: [Downsides and mitigations]
-```
-
----
-
-## AI Assistant Configuration
-
-### MCP Servers
+## MCP Servers
 | Server | Purpose |
 |--------|---------|
-| **Serena** | Project memory, symbol operations. Use `project_vision` memory for canonical description. |
-| **Context7** | Library docs (PyMuPDF, Pydantic, pytest) when needed. |
-| **Sequential** | Complex analysis when explicitly requested. |
-
-### Code Exploration
-For OCR-related code understanding, prefer precision over speed:
-- Use Serena's `find_symbol`, `get_symbols_overview` (main model, precise)
-- Read files directly when understanding algorithm decisions
-- Reserve Task/Explore agents for broad "where is X" questions only
-
-### Hooks (Advisory Only)
-All hooks inject context, never block operations:
-- Quality checks → warnings, not hard stops
-- Pre-commit → checklists, not prevention
-- Only catastrophic operations are blocked (rm -rf /, fork bombs)
-
-### Version Control Workflow
-
-**🔴 CRITICAL: Use feature branches for ALL work, never commit directly to main.**
-
-```bash
-# Start new work
-git checkout -b feature/<name>    # e.g., feature/ocr-pipeline
-
-# During work
-git add -A && git commit -m "feat: description"
-
-# Ready for review
-git push -u origin feature/<name>
-gh pr create --title "feat: <name>" --body "## Summary\n..."
-
-# After PR approval
-git checkout main && git pull
-git branch -d feature/<name>
-```
-
-**Branch Naming:**
-- `feature/<name>` - New functionality
-- `fix/<issue>` - Bug fixes
-- `refactor/<area>` - Code improvements
-- `docs/<topic>` - Documentation only
-
-**Commit Message Format:** `type: description`
-- `feat:` new feature
-- `fix:` bug fix
-- `docs:` documentation
-- `test:` tests
-- `refactor:` code improvement
-- `chore:` maintenance
-
----
-
-## OCR Pipeline Architecture
-
-See ADR-002 and ADR-003 for full details. Key decisions:
-
-### Spellcheck as Selector
-- Spellcheck FLAGS suspicious words, does NOT auto-correct
-- Flagged words go to neural re-OCR for verification
-- Detection rate: 99.2%, False positive rate: 23.4%
-
-### Line-Level Re-OCR
-- Neural OCR needs visual context (word-level crops fail)
-- Crop the LINE from page image, not just the word
-- Replace only the flagged words after re-OCR
-
-### Block-Based Line-Break Detection
-- PyMuPDF block numbers distinguish text regions from margins
-- Only rejoin hyphenations within the SAME block
-- Prevents matching margin content (page markers, headers)
-
-### Adaptive Dictionary
-- Learn specialized vocabulary with safeguards
-- Morphological validation (plurals, verb forms, prefixes)
-- Frequency thresholds to avoid learning OCR errors
-
----
-
-## Validation & Testing Methodology
-
-**CRITICAL: Follow these rules to avoid procedural mistakes.**
-
-### Ground Truth Data
-- **Location:** `ground_truth/` directory
-- **Validation set:** `ground_truth/validation_set.json` (generated by spike 30)
-- **Use the FULL validation set**, not just a subset (e.g., 130 pairs, not 30)
-
-### Before Optimizing Anything
-1. **Inventory your data** - Know what ground truth exists
-2. **Build a proper validation set** - Use `spikes/30_validation_framework.py`
-3. **Establish baseline metrics** - Measure BEFORE changing anything
-4. **Define success criteria** - What detection rate is acceptable?
-
-### Metrics to Track
-- **Detection rate** - % of OCR errors caught (target: >99%)
-- **False positive rate** - % of correct words flagged (target: <10%)
-- **Re-OCR volume** - % of words sent to expensive neural re-OCR
-- **Processing time** - ms per page (for performance optimization)
-
-### Testing Rules
-- **Test on the FULL validation set**, not cherry-picked examples
-- **Report false negatives** - These are critical failures
-- **Report false positives** - These waste resources but aren't critical
-- **Measure timing** - We're optimizing for speed too
-
-### Common Mistakes to Avoid
-1. ❌ Testing on tiny subsets (30 examples) when thousands exist
-2. ❌ Proposing pipelines without actually testing them
-3. ❌ Ignoring edge cases found during testing
-4. ❌ Not measuring performance/timing impact
-5. ❌ Optimizing accuracy without considering resource cost
-
-### Ground Truth Organization
-```
-ground_truth/
-├── ocr_errors/
-│   ├── ocr_error_pairs.json    # 30 verified pairs (high quality)
-│   ├── validated_samples.json   # Additional validated samples
-│   └── challenging_samples.json # Edge cases
-├── ocr_quality/
-│   ├── classified/             # 172 pages, 17k evidence entries
-│   ├── samples/                # Per-document sample reviews
-│   └── reviewed/               # Human-reviewed batches
-├── footnotes/                   # Footnote ground truth
-└── validation_set.json         # COMBINED validation set (use this!)
-```
+| **Serena** | Project memory, symbol operations |
+| **Context7** | Library docs when needed |
+| **Sequential** | Complex analysis when requested |
