@@ -1,0 +1,456 @@
+{
+  "results": [
+    {
+      "category": "dense_footnotes",
+      "pdf": "Heidegger_BeingAndTime.pdf",
+      "page": 150,
+      "expected_fn": 4,
+      "detected_fn": 4,
+      "all_detections": {
+        "Text": 14,
+        "Page-header": 6,
+        "Footnote": 4,
+        "Section-header": 2
+      },
+      "status": "\u2713",
+      "notes": "Complex layout, 26 regions"
+    },
+    {
+      "category": "dense_footnotes",
+      "pdf": "Heidegger_BeingAndTime.pdf",
+      "page": 300,
+      "expected_fn": 4,
+      "detected_fn": 4,
+      "all_detections": {
+        "Text": 13,
+        "Footnote": 4,
+        "Page-header": 7
+      },
+      "status": "\u2713",
+      "notes": "Complex layout"
+    },
+    {
+      "category": "dense_footnotes",
+      "pdf": "Derrida_MarginsOfPhilosophy.pdf",
+      "page": 250,
+      "expected_fn": 4,
+      "detected_fn": 4,
+      "all_detections": {
+        "Text": 6,
+        "Footnote": 4,
+        "Page-footer": 2,
+        "Picture": 3,
+        "Page-header": 2,
+        "Section-header": 1,
+        "Formula": 1
+      },
+      "status": "\u2713",
+      "notes": "Long footnotes, has picture"
+    },
+    {
+      "category": "dense_footnotes",
+      "pdf": "Kant_CritiqueOfJudgement.pdf",
+      "page": 50,
+      "expected_fn": 4,
+      "detected_fn": 4,
+      "all_detections": {
+        "Text": 8,
+        "Footnote": 4,
+        "Page-header": 4
+      },
+      "status": "\u2713",
+      "notes": "18th century style"
+    },
+    {
+      "category": "dense_footnotes",
+      "pdf": "Kant_CritiqueOfJudgement.pdf",
+      "page": 200,
+      "expected_fn": 4,
+      "detected_fn": 4,
+      "all_detections": {
+        "Text": 9,
+        "Page-header": 6,
+        "Footnote": 4,
+        "Page-footer": 3
+      },
+      "status": "\u2713",
+      "notes": "Complex layout"
+    },
+    {
+      "category": "dense_footnotes",
+      "pdf": "Heidegger_DiscourseOnThinking.pdf",
+      "page": 20,
+      "expected_fn": 14,
+      "detected_fn": 14,
+      "all_detections": {
+        "Text": 10,
+        "Footnote": 14,
+        "Page-header": 8
+      },
+      "status": "\u2713",
+      "notes": "Very dense, scanned"
+    },
+    {
+      "category": "moderate_footnotes",
+      "pdf": "Heidegger_BeingAndTime.pdf",
+      "page": 50,
+      "expected_fn": 2,
+      "detected_fn": 2,
+      "all_detections": {
+        "Text": 11,
+        "Footnote": 2,
+        "Page-header": 8
+      },
+      "status": "\u2713",
+      "notes": "Complex layout"
+    },
+    {
+      "category": "moderate_footnotes",
+      "pdf": "Heidegger_BeingAndTime.pdf",
+      "page": 250,
+      "expected_fn": 2,
+      "detected_fn": 2,
+      "all_detections": {
+        "Text": 10,
+        "Page-header": 6,
+        "Footnote": 2
+      },
+      "status": "\u2713",
+      "notes": "Complex layout"
+    },
+    {
+      "category": "moderate_footnotes",
+      "pdf": "Derrida_MarginsOfPhilosophy.pdf",
+      "page": 150,
+      "expected_fn": 2,
+      "detected_fn": 2,
+      "all_detections": {
+        "Text": 6,
+        "Page-footer": 2,
+        "Page-header": 1,
+        "Section-header": 1,
+        "Footnote": 2
+      },
+      "status": "\u2713",
+      "notes": "Long footnotes"
+    },
+    {
+      "category": "moderate_footnotes",
+      "pdf": "Kant_CritiqueOfJudgement.pdf",
+      "page": 300,
+      "expected_fn": 2,
+      "detected_fn": 2,
+      "all_detections": {
+        "Text": 7,
+        "Page-header": 6,
+        "Footnote": 2,
+        "Page-footer": 2
+      },
+      "status": "\u2713",
+      "notes": "Long footnotes"
+    },
+    {
+      "category": "moderate_footnotes",
+      "pdf": "Derrida_TheTruthInPainting.pdf",
+      "page": 50,
+      "expected_fn": 2,
+      "detected_fn": 2,
+      "all_detections": {
+        "Text": 4,
+        "Section-header": 1,
+        "Footnote": 2,
+        "List-item": 3
+      },
+      "status": "\u2713",
+      "notes": "Art theory"
+    },
+    {
+      "category": "moderate_footnotes",
+      "pdf": "Derrida_TheTruthInPainting.pdf",
+      "page": 100,
+      "expected_fn": 2,
+      "detected_fn": 2,
+      "all_detections": {
+        "Text": 10,
+        "Page-header": 4,
+        "Footnote": 2,
+        "List-item": 2
+      },
+      "status": "\u2713",
+      "notes": "Complex layout"
+    },
+    {
+      "category": "no_footnotes_control",
+      "pdf": "Heidegger_BeingAndTime.pdf",
+      "page": 100,
+      "expected_fn": 0,
+      "detected_fn": 0,
+      "all_detections": {
+        "Text": 9,
+        "Page-header": 7,
+        "Page-footer": 2
+      },
+      "status": "\u2713",
+      "notes": "Complex layout, 18 regions"
+    },
+    {
+      "category": "no_footnotes_control",
+      "pdf": "Heidegger_BeingAndTime.pdf",
+      "page": 200,
+      "expected_fn": 0,
+      "detected_fn": 0,
+      "all_detections": {
+        "Text": 7,
+        "Page-header": 6
+      },
+      "status": "\u2713",
+      "notes": "Standard layout"
+    },
+    {
+      "category": "no_footnotes_control",
+      "pdf": "Lenin_StateAndRevolution.pdf",
+      "page": 50,
+      "expected_fn": 0,
+      "detected_fn": 0,
+      "all_detections": {
+        "Text": 6,
+        "Page-header": 2,
+        "Page-footer": 2
+      },
+      "status": "\u2713",
+      "notes": "Political text, endnotes"
+    },
+    {
+      "category": "no_footnotes_control",
+      "pdf": "Lenin_StateAndRevolution.pdf",
+      "page": 100,
+      "expected_fn": 0,
+      "detected_fn": 0,
+      "all_detections": {
+        "Text": 19,
+        "Page-footer": 2,
+        "Page-header": 2,
+        "Section-header": 3
+      },
+      "status": "\u2713",
+      "notes": "Complex layout"
+    },
+    {
+      "category": "no_footnotes_control",
+      "pdf": "Derrida_MarginsOfPhilosophy.pdf",
+      "page": 100,
+      "expected_fn": 0,
+      "detected_fn": 0,
+      "all_detections": {
+        "Text": 8,
+        "Page-header": 2,
+        "Page-footer": 2,
+        "Section-header": 1
+      },
+      "status": "\u2713",
+      "notes": "Standard layout"
+    },
+    {
+      "category": "no_footnotes_control",
+      "pdf": "Derrida_TheTruthInPainting.pdf",
+      "page": 150,
+      "expected_fn": 0,
+      "detected_fn": 0,
+      "all_detections": {
+        "Text": 8,
+        "Page-header": 4
+      },
+      "status": "\u2713",
+      "notes": "Art theory"
+    },
+    {
+      "category": "complex_layout",
+      "pdf": "Heidegger_DiscourseOnThinking.pdf",
+      "page": 10,
+      "expected_fn": 4,
+      "detected_fn": 4,
+      "all_detections": {
+        "Text": 17,
+        "Footnote": 4,
+        "Page-header": 8
+      },
+      "status": "\u2713",
+      "notes": "29 regions, scanned"
+    },
+    {
+      "category": "complex_layout",
+      "pdf": "Heidegger_DiscourseOnThinking.pdf",
+      "page": 30,
+      "expected_fn": 2,
+      "detected_fn": 2,
+      "all_detections": {
+        "Text": 43,
+        "Section-header": 8,
+        "Footnote": 2,
+        "Page-header": 6,
+        "Page-footer": 2,
+        "List-item": 4
+      },
+      "status": "\u2713",
+      "notes": "65 regions! Very complex"
+    },
+    {
+      "category": "complex_layout",
+      "pdf": "Heidegger_BeingAndTime.pdf",
+      "page": 150,
+      "expected_fn": 4,
+      "detected_fn": 4,
+      "all_detections": {
+        "Text": 14,
+        "Page-header": 6,
+        "Footnote": 4,
+        "Section-header": 2
+      },
+      "status": "\u2713",
+      "notes": "26 regions"
+    },
+    {
+      "category": "complex_layout",
+      "pdf": "Kant_CritiqueOfJudgement.pdf",
+      "page": 200,
+      "expected_fn": 4,
+      "detected_fn": 4,
+      "all_detections": {
+        "Text": 9,
+        "Page-header": 6,
+        "Footnote": 4,
+        "Page-footer": 3
+      },
+      "status": "\u2713",
+      "notes": "22 regions"
+    },
+    {
+      "category": "complex_layout",
+      "pdf": "Heidegger_DiscourseOnThinking.pdf",
+      "page": 25,
+      "expected_fn": 2,
+      "detected_fn": 2,
+      "all_detections": {
+        "Text": 19,
+        "Footnote": 2,
+        "Page-header": 8
+      },
+      "status": "\u2713",
+      "notes": "29 regions"
+    },
+    {
+      "category": "complex_layout",
+      "pdf": "Lenin_StateAndRevolution.pdf",
+      "page": 100,
+      "expected_fn": 0,
+      "detected_fn": 0,
+      "all_detections": {
+        "Text": 19,
+        "Page-footer": 2,
+        "Page-header": 2,
+        "Section-header": 3
+      },
+      "status": "\u2713",
+      "notes": "26 regions, no FN"
+    },
+    {
+      "category": "special_content",
+      "pdf": "Derrida_MarginsOfPhilosophy.pdf",
+      "page": 250,
+      "expected_fn": 4,
+      "detected_fn": 4,
+      "all_detections": {
+        "Text": 6,
+        "Footnote": 4,
+        "Page-footer": 2,
+        "Picture": 3,
+        "Page-header": 2,
+        "Section-header": 1,
+        "Formula": 1
+      },
+      "status": "\u2713",
+      "notes": "Has picture + long FN"
+    },
+    {
+      "category": "special_content",
+      "pdf": "Derrida_TheTruthInPainting.pdf",
+      "page": 200,
+      "expected_fn": 0,
+      "detected_fn": 0,
+      "all_detections": {
+        "Picture": 2,
+        "Text": 9,
+        "Page-header": 2,
+        "Caption": 1
+      },
+      "status": "\u2713",
+      "notes": "Has picture"
+    },
+    {
+      "category": "special_content",
+      "pdf": "Derrida_MarginsOfPhilosophy.pdf",
+      "page": 150,
+      "expected_fn": 2,
+      "detected_fn": 2,
+      "all_detections": {
+        "Text": 6,
+        "Page-footer": 2,
+        "Page-header": 1,
+        "Section-header": 1,
+        "Footnote": 2
+      },
+      "status": "\u2713",
+      "notes": "Long footnotes"
+    },
+    {
+      "category": "special_content",
+      "pdf": "Kant_CritiqueOfJudgement.pdf",
+      "page": 300,
+      "expected_fn": 2,
+      "detected_fn": 2,
+      "all_detections": {
+        "Text": 7,
+        "Page-header": 6,
+        "Footnote": 2,
+        "Page-footer": 2
+      },
+      "status": "\u2713",
+      "notes": "Long footnotes"
+    },
+    {
+      "category": "special_content",
+      "pdf": "Heidegger_DiscourseOnThinking.pdf",
+      "page": 15,
+      "expected_fn": 2,
+      "detected_fn": 2,
+      "all_detections": {
+        "Text": 14,
+        "Page-header": 8,
+        "Footnote": 2,
+        "Page-footer": 1
+      },
+      "status": "\u2713",
+      "notes": "Scanned quality"
+    },
+    {
+      "category": "special_content",
+      "pdf": "Heidegger_DiscourseOnThinking.pdf",
+      "page": 20,
+      "expected_fn": 14,
+      "detected_fn": 14,
+      "all_detections": {
+        "Text": 10,
+        "Footnote": 14,
+        "Page-header": 8
+      },
+      "status": "\u2713",
+      "notes": "Very dense footnotes"
+    }
+  ],
+  "summary": {
+    "total_pages": 30,
+    "total_expected_fn": 86,
+    "total_detected_fn": 86,
+    "exact_match_rate": 1.0
+  }
+}
