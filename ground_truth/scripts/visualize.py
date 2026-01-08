@@ -3,7 +3,7 @@
 Visualize Ground Truth Annotations
 
 Renders a PDF with ground truth annotations overlaid for human review.
-Outputs an HTML file that can be opened in a browser.
+Provides both HTML output and PIL Image output for Streamlit integration.
 
 Usage:
     uv run python ground_truth/scripts/visualize.py <yaml_path>
@@ -16,10 +16,13 @@ from __future__ import annotations
 import argparse
 import base64
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 import fitz
 import yaml
+
+if TYPE_CHECKING:
+    from PIL import Image
 
 # Color scheme for region types (RGB)
 REGION_COLORS = {
@@ -89,6 +92,88 @@ def render_page_with_annotations(
     # Re-render with annotations
     pix = pdf_page.get_pixmap(matrix=mat)
     return pix.tobytes("png")
+
+
+def render_page_image(
+    pdf_path: Path,
+    page_idx: int,
+    regions: list[dict[str, Any]],
+    dpi: int = 150,
+    highlight_region_id: str | None = None,
+) -> Image.Image:
+    """Render a PDF page with bbox overlays as a PIL Image.
+
+    This function is designed for Streamlit integration, returning a PIL Image
+    that can be displayed directly with st.image().
+
+    Args:
+        pdf_path: Path to the PDF file
+        page_idx: 0-indexed page number
+        regions: List of region dictionaries with 'id', 'type', 'bbox' keys
+        dpi: Render resolution (default 150)
+        highlight_region_id: Optional region ID to highlight with dashed border
+
+    Returns:
+        PIL Image with bounding box overlays
+    """
+    from PIL import Image
+
+    doc = fitz.open(pdf_path)
+
+    if page_idx >= len(doc):
+        doc.close()
+        raise IndexError(f"Page {page_idx} out of range (document has {len(doc)} pages)")
+
+    pdf_page = doc[page_idx]
+
+    # Render base page
+    mat = fitz.Matrix(dpi / 72, dpi / 72)
+
+    # Draw annotations
+    shape = pdf_page.new_shape()
+
+    for region in regions:
+        bbox = region.get("bbox", [0, 0, 1, 1])
+        region_type = region.get("type", "unknown")
+        region_id = region.get("id", "")
+
+        # Convert normalized coords to PDF points
+        rect = fitz.Rect(
+            bbox[0] * pdf_page.rect.width,
+            bbox[1] * pdf_page.rect.height,
+            bbox[2] * pdf_page.rect.width,
+            bbox[3] * pdf_page.rect.height,
+        )
+
+        # Get color for this region type
+        color = REGION_COLORS.get(region_type, REGION_COLORS["unknown"])
+        color_norm = tuple(c / 255 for c in color)
+
+        # Draw rectangle
+        shape.draw_rect(rect)
+
+        # Use dashed line for highlighted region
+        if highlight_region_id and region_id == highlight_region_id:
+            shape.finish(color=color_norm, width=3, dashes="[3 3]", fill=None)
+        else:
+            shape.finish(color=color_norm, width=2, fill=None)
+
+        # Draw label
+        label = f"{region_id}"
+        point = fitz.Point(rect.x0 + 2, rect.y0 + 12)
+        shape.insert_text(point, label, fontsize=10, color=color_norm)
+
+    shape.commit()
+
+    # Render to pixmap
+    pix = pdf_page.get_pixmap(matrix=mat)
+    doc.close()
+
+    # Convert to PIL Image
+    import io
+
+    img_bytes = pix.tobytes("png")
+    return Image.open(io.BytesIO(img_bytes))
 
 
 def generate_html(
