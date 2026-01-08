@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "timestamp": "2026-01-08T04:00:00Z",
+  "extraction_config": {
+    "extractor": "cascading",
+    "ocr_enabled": true,
+    "dpi": 150
+  },
+  "ground_truth_version": "1.1.0",
+  "documents_evaluated": 0,
+  "pages_evaluated": 0,
+  "note": "Initial placeholder baseline. Update after creating verified ground truth.",
+
+  "aggregate_metrics": {
+    "micro_f1": 0.0,
+    "macro_precision": 0.0,
+    "macro_recall": 0.0,
+    "by_type": {}
+  },
+
+  "thresholds": {
+    "footnote_precision_min": 0.75,
+    "footnote_recall_min": 0.70,
+    "citation_precision_min": 0.70,
+    "citation_recall_min": 0.65,
+    "overall_f1_min": 0.70
+  }
+}

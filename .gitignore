@@ -11,6 +11,7 @@ downloads/
 eggs/
 .eggs/
 lib/
+!ground_truth/lib/
 lib64/
 parts/
 sdist/
