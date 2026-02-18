@@ -5,14 +5,14 @@
 See: .planning/PROJECT.md (updated 2026-02-18)
 
 **Core value:** You cannot improve what you cannot measure. ScholarGT provides the measurement foundation.
-**Current focus:** Phase 1 - Universal GT Schema
+**Current focus:** Phase 0 - Workspace Cleanup
 
 ## Current Position
 
-Phase: 1 of 5 (Universal GT Schema)
+Phase: 0 of 5 (Workspace Cleanup)
 Plan: 0 of 1 in current phase
 Status: Ready to plan
-Last activity: 2026-02-18 -- Roadmap revised (ScholarGT as primary deliverable)
+Last activity: 2026-02-18 -- Phase 0 added (workspace cleanup before design work)
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -65,5 +65,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Roadmap revised, ready to plan Phase 1
-Resume file: None
+Stopped at: Phase 0 context gathered
+Resume file: .planning/phases/00-clean-up-workspace-and-organize-git-backlog/00-CONTEXT.md
