@@ -51,9 +51,9 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| SCH-01 | Phase 1 | Pending |
+| SCH-01 | Phase 1 | Complete |
 | SCH-02 | Phase 1 | Pending |
-| SCH-03 | Phase 1 | Pending |
+| SCH-03 | Phase 1 | Complete |
 | EXT-01 | Phase 2 | Pending |
 | EXT-02 | Phase 2 | Pending |
 | EXT-03 | Phase 2 | Pending |

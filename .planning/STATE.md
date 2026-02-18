@@ -5,33 +5,34 @@
 See: .planning/PROJECT.md (updated 2026-02-18)
 
 **Core value:** You cannot improve what you cannot measure. ScholarGT provides the measurement foundation.
-**Current focus:** Phase 0 Complete -- Ready for Phase 1: Universal GT Schema
+**Current focus:** Phase 1: Universal GT Schema -- Plan 01 complete, continuing with Plan 02
 
 ## Current Position
 
-Phase: 0 of 5 (Workspace Cleanup) -- COMPLETE
-Plan: 3 of 3 in current phase -- ALL DONE
-Status: Phase Complete
-Last activity: 2026-02-18 -- Completed 00-03 (branch archival, stash cleanup, merge to main)
+Phase: 1 of 5 (Universal GT Schema) -- IN PROGRESS
+Plan: 2 of 4 in current phase
+Status: Executing
+Last activity: 2026-02-18 -- Completed 01-01 (schema foundation: base models, labels, page GT)
 
-Progress: [██░░░░░░░░] 17%
+Progress: [██░░░░░░░░] 24%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
-- Average duration: 1.7 min
-- Total execution time: 0.08 hours
+- Total plans completed: 4
+- Average duration: 2.3 min
+- Total execution time: 0.15 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 00 | 3 | 5 min | 1.7 min |
+| 01 | 1 | 5 min | 5.0 min |
 
 **Recent Trend:**
-- Last 5 plans: 00-03 (2min), 00-02 (1min), 00-01 (2min)
-- Trend: Consistent
+- Last 5 plans: 01-01 (5min), 00-03 (2min), 00-02 (1min), 00-01 (2min)
+- Trend: Slightly longer (schema models more complex than cleanup tasks)
 
 *Updated after each plan completion*
 
@@ -55,6 +56,10 @@ Recent decisions affecting current work:
 - [00-03]: Used merge commit refs for archive tags (7 remote branches already deleted via GitHub PRs)
 - [00-03]: archive/* tag convention established for preserving deleted branch history
 - [00-03]: feature/ocr-integration tag preserves 8 pre-squash commits not in main's linear history
+- [01-01]: BBox uses [x0,y0,x1,y1] corners format with to_xywh() helper for CryptOfCogito compat
+- [01-01]: GTElement uses extra="allow" for forward compatibility
+- [01-01]: scholargt created as independent top-level package (imports nothing from scholardoc)
+- [01-01]: Reading order validation warns rather than errors (in-progress annotation support)
 
 ### Pending Todos
 
@@ -70,5 +75,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Phase 1 context gathered. Ready for planning.
-Resume file: .planning/phases/01-universal-gt-schema/01-CONTEXT.md
+Stopped at: Completed 01-01-PLAN.md (schema foundation)
+Resume file: .planning/phases/01-universal-gt-schema/01-01-SUMMARY.md
