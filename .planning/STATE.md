@@ -10,27 +10,27 @@ See: .planning/PROJECT.md (updated 2026-02-18)
 ## Current Position
 
 Phase: 0 of 5 (Workspace Cleanup)
-Plan: 2 of 3 in current phase
+Plan: 3 of 3 in current phase
 Status: Executing
-Last activity: 2026-02-18 -- Completed 00-02 (.claude/ infrastructure transition)
+Last activity: 2026-02-18 -- Completed 00-01 (gitignore cleanup, PDF manifest, ground_truth docs)
 
-Progress: [██░░░░░░░░] 6%
+Progress: [███░░░░░░░] 12%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
-- Average duration: 1 min
-- Total execution time: 0.02 hours
+- Total plans completed: 2
+- Average duration: 1.5 min
+- Total execution time: 0.05 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 00 | 1 | 1 min | 1 min |
+| 00 | 2 | 3 min | 1.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 00-02 (1min)
+- Last 5 plans: 00-02 (1min), 00-01 (2min)
 - Trend: Starting
 
 *Updated after each plan completion*
@@ -50,6 +50,8 @@ Recent decisions affecting current work:
 - [Roadmap revision]: Annotation tool: review Cogito tool, possible rewrite (design during Phase 4 planning)
 - [Roadmap revision]: Planning stays in ScholarDoc repo; code location decided after design
 - [Roadmap revision]: ScholarDoc-specific improvements (IR, Writers, re-OCR, monorepo) deferred to milestone 2
+- [00-01]: Ground truth docs committed as prior-art reference for schema, testing, and annotation phases
+- [00-01]: MANIFEST.md pattern established for documenting local-only gitignored corpus files
 
 ### Pending Todos
 
@@ -65,5 +67,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Completed 00-02-PLAN.md
-Resume file: .planning/phases/00-clean-up-workspace-and-organize-git-backlog/00-02-SUMMARY.md
+Stopped at: Completed 00-01-PLAN.md
+Resume file: .planning/phases/00-clean-up-workspace-and-organize-git-backlog/00-01-SUMMARY.md

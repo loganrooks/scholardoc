@@ -33,8 +33,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 3 plans in 2 waves
 
 Plans:
-- [ ] 00-01-PLAN.md — Gitignore updates, PDF manifest, ground_truth docs
-- [ ] 00-02-PLAN.md — .claude/ infrastructure swap (GSD) and config commits
+- [x] 00-01-PLAN.md — Gitignore updates, PDF manifest, ground_truth docs
+- [x] 00-02-PLAN.md — .claude/ infrastructure swap (GSD) and config commits
 - [ ] 00-03-PLAN.md — Branch archival and merge to main
 
 ### Phase 1: Universal GT Schema
