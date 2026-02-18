@@ -63,6 +63,10 @@ Recent decisions affecting current work:
 - [01-03]: Manual YAML loading with PyYAML instead of pydantic-settings YamlConfigSettingsSource (custom merge logic needed)
 - [01-03]: pyyaml promoted from optional to core dep (config loading is essential)
 - [01-03]: GTProfile uses set[str] for label categories (enables custom project labels beyond enum)
+- [01-02]: SemanticElement uses Pydantic discriminated union on element_type Literal field for polymorphic JSON deserialization
+- [01-02]: DocumentGT uses extra=allow for forward compatibility, consistent with GTElement and PageGT
+- [01-02]: Explicit relationship models (FootnoteLink, CitationBibLink) for inter-element links rather than embedded foreign keys
+- [01-02]: ContentSpan.is_continuation flag for cross-page footnote/endnote content spanning page boundaries
 
 ### Pending Todos
 
