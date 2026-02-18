@@ -72,6 +72,10 @@ Recent decisions affecting current work:
 - [01-04]: Auto-detection of page vs document GT via discriminating keys (regions vs document_id)
 - [01-04]: Generated schema.json committed to repo for IDE autocompletion and CI validation
 
+### Roadmap Evolution
+
+- Phase 1.1 inserted after Phase 1: Schema Taxonomy Review & Revision (URGENT) — SpatialLabel conflates visual position with content type, CitationType mixes format/reference-system/standard, ScanQuality loses information as enum, taxonomy not organized by downstream evaluation task
+
 ### Pending Todos
 
 None yet.
@@ -86,5 +90,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Completed 01-04-PLAN.md (validation, examples, documentation) -- Phase 1 COMPLETE
-Resume file: .planning/phases/01-universal-gt-schema/01-04-SUMMARY.md
+Stopped at: Phase 1.1 context gathered
+Resume file: .planning/phases/01.1-schema-taxonomy-review-revision/01.1-CONTEXT.md
