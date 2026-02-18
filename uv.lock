@@ -1900,6 +1900,20 @@ wheels = [
 ]
 
 [[package]]
+name = "pydantic-settings"
+version = "2.13.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pydantic" },
+    { name = "python-dotenv" },
+    { name = "typing-inspection" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/96/a1/ae859ffac5a3338a66b74c5e29e244fd3a3cc483c89feaf9f56c39898d75/pydantic_settings-2.13.0.tar.gz", hash = "sha256:95d875514610e8595672800a5c40b073e99e4aae467fa7c8f9c263061ea2e1fe", size = 222450, upload-time = "2026-02-15T12:11:23.476Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/b0/1a/dd1b9d7e627486cf8e7523d09b70010e05a4bc41414f4ae6ce184cf0afb6/pydantic_settings-2.13.0-py3-none-any.whl", hash = "sha256:d67b576fff39cd086b595441bf9c75d4193ca9c0ed643b90360694d0f1240246", size = 58429, upload-time = "2026-02-15T12:11:22.133Z" },
+]
+
+[[package]]
 name = "pydeck"
 version = "0.9.1"
 source = { registry = "https://pypi.org/simple" }
@@ -2139,6 +2153,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/0d/87/2e1fb5460fa88c57fdfcdef32b4b45972255985c615c333028521fc87477/python_doctr-1.0.0.tar.gz", hash = "sha256:1d307fee13a7ea82fcbfcf66a56c2223a38c59575ea67703a39763cf09f106a9", size = 222749, upload-time = "2025-07-09T11:40:14.805Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/b0/2e/1fa2767fa4b1c8921783b19cc2d10d6f9ce890d6706e27ff7b6c666e7de5/python_doctr-1.0.0-py3-none-any.whl", hash = "sha256:a6871cb878e52492e3d51521484d96fff4cbd93b9e2ddb1c3f64c76e838e2fe9", size = 288350, upload-time = "2025-07-09T11:40:13.306Z" },
+]
+
+[[package]]
+name = "python-dotenv"
+version = "1.2.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/f0/26/19cadc79a718c5edbec86fd4919a6b6d3f681039a2f6d66d14be94e75fb9/python_dotenv-1.2.1.tar.gz", hash = "sha256:42667e897e16ab0d66954af0e60a9caa94f0fd4ecf3aaf6d2d260eec1aa36ad6", size = 44221, upload-time = "2025-10-26T15:12:10.434Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/14/1b/a298b06749107c305e1fe0f814c6c74aea7b2f1e10989cb30f544a1b3253/python_dotenv-1.2.1-py3-none-any.whl", hash = "sha256:b81ee9561e9ca4004139c6cbba3a238c32b03e4894671e181b671e8cb8425d61", size = 21230, upload-time = "2025-10-26T15:12:09.109Z" },
 ]
 
 [[package]]
@@ -2580,8 +2603,10 @@ source = { editable = "." }
 dependencies = [
     { name = "pillow" },
     { name = "pydantic" },
+    { name = "pydantic-settings" },
     { name = "pymupdf" },
     { name = "pyspellchecker" },
+    { name = "pyyaml" },
 ]
 
 [package.optional-dependencies]
@@ -2661,6 +2686,7 @@ requires-dist = [
     { name = "pdfplumber", marker = "extra == 'comparison'", specifier = ">=0.10.0" },
     { name = "pillow", specifier = ">=11.3.0" },
     { name = "pydantic", specifier = ">=2.12.5" },
+    { name = "pydantic-settings", specifier = ">=2.13.0" },
     { name = "pymupdf", specifier = ">=1.24.0" },
     { name = "pymupdf4llm", marker = "extra == 'comparison'", specifier = ">=0.0.10" },
     { name = "pymupdf4llm", marker = "extra == 'enhanced'", specifier = ">=0.0.10" },
@@ -2671,6 +2697,7 @@ requires-dist = [
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.0.0" },
     { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=4.1.0" },
     { name = "python-doctr", marker = "extra == 'ocr-gpu'", specifier = ">=0.6.0" },
+    { name = "pyyaml", specifier = ">=6.0.3" },
     { name = "pyyaml", marker = "extra == 'ground-truth'", specifier = ">=6.0.0" },
     { name = "rapidfuzz", marker = "extra == 'ground-truth'", specifier = ">=3.0.0" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.4.0" },

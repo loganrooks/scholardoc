@@ -1,0 +1,30 @@
+# Base configuration -- all profiles inherit from this.
+# Provides core spatial labels and semantic types that most annotation
+# projects need. Other profiles extend or override these defaults.
+
+name: base
+description: "Base profile with core annotation types for common scholarly documents"
+schema_version: "1.0.0"
+
+spatial_labels:
+  - text_block
+  - footnote_area
+  - page_header
+  - page_footer
+  - page_number
+  - section_header
+
+semantic_types:
+  - footnote
+  - citation
+
+formatting_types: []
+
+document_types:
+  - metadata
+
+validation:
+  require_reading_order: false
+  require_text: false
+  require_bbox: true
+  confidence_threshold: 0.8
