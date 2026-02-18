@@ -7,11 +7,12 @@
 ## Phases
 
 **Phase Numbering:**
-- Integer phases (1, 2, 3): Planned milestone work
+- Integer phases (0, 1, 2, 3): Planned milestone work
 - Decimal phases (2.1, 2.2): Urgent insertions (marked with INSERTED)
 
 Decimal phases appear between their surrounding integers in numeric order.
 
+- [ ] **Phase 0: Workspace Cleanup** - Clean up workspace and organize git backlog / uncommitted changes
 - [ ] **Phase 1: Universal GT Schema** - Config-driven schema with extensibility and per-element verification
 - [ ] **Phase 2: Extractor Interface** - Pluggable extractor protocol with provenance tracking
 - [ ] **Phase 3: Experimentation & Evaluation Framework** - Structured experiments with metrics at pipeline and component level
@@ -20,9 +21,25 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 ## Phase Details
 
+### Phase 0: Workspace Cleanup
+**Goal**: Clean up the workspace — organize and commit uncommitted changes, resolve git backlog, ensure a clean starting point before design work begins.
+**Depends on**: Nothing (first phase)
+**Requirements**: None (housekeeping)
+**Research**: None
+**Success Criteria** (what must be TRUE):
+  1. All uncommitted changes are reviewed, organized, and committed (or deliberately discarded)
+  2. Working tree is clean — no untracked files that should be tracked, no staged changes left dangling
+  3. Branch strategy is clear and consistent
+**Plans**: 3 plans in 2 waves
+
+Plans:
+- [ ] 00-01-PLAN.md — Gitignore updates, PDF manifest, ground_truth docs
+- [ ] 00-02-PLAN.md — .claude/ infrastructure swap (GSD) and config commits
+- [ ] 00-03-PLAN.md — Branch archival and merge to main
+
 ### Phase 1: Universal GT Schema
 **Goal**: A universal, extensible GT schema where projects select the annotation types they need via configuration, with per-element verification tracking.
-**Depends on**: Nothing (first phase)
+**Depends on**: Phase 0 (clean workspace)
 **Requirements**: SCH-01, SCH-02, SCH-03
 **Research**: Review both existing schemas (ScholarDoc v3/v4, CryptOfCogito v0.3.1) in detail. Analyze what a unified superset looks like. Research extensibility patterns (layered files, plugin registries, JSON-LD).
 **Success Criteria** (what must be TRUE):
@@ -110,10 +127,11 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
+Phases execute in numeric order: 0 -> 1 -> 2 -> 3 -> 4 -> 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|---------------|--------|-----------|
+| 0. Workspace Cleanup | 0/1 | Not started | - |
 | 1. Universal GT Schema | 0/1 | Not started | - |
 | 2. Extractor Interface | 0/2 | Not started | - |
 | 3. Experimentation & Evaluation | 0/2 | Not started | - |
