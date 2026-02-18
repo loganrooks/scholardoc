@@ -1,0 +1,81 @@
+{
+  "version": "0.1.0",
+  "created": "2026-01-07",
+  "description": "Selected pages for layout detection ground truth",
+  "total_pages": 30,
+
+  "categories": {
+    "dense_footnotes": {
+      "description": ">3 footnotes per page",
+      "target_count": 6,
+      "pages": [
+        {"pdf": "Heidegger_BeingAndTime.pdf", "page": 150, "expected_fn": 4, "notes": "Complex layout, 26 regions"},
+        {"pdf": "Heidegger_BeingAndTime.pdf", "page": 300, "expected_fn": 4, "notes": "Complex layout"},
+        {"pdf": "Derrida_MarginsOfPhilosophy.pdf", "page": 250, "expected_fn": 4, "notes": "Long footnotes, has picture"},
+        {"pdf": "Kant_CritiqueOfJudgement.pdf", "page": 50, "expected_fn": 4, "notes": "18th century style"},
+        {"pdf": "Kant_CritiqueOfJudgement.pdf", "page": 200, "expected_fn": 4, "notes": "Complex layout"},
+        {"pdf": "Heidegger_DiscourseOnThinking.pdf", "page": 20, "expected_fn": 14, "notes": "Very dense, scanned"}
+      ]
+    },
+
+    "moderate_footnotes": {
+      "description": "1-3 footnotes per page",
+      "target_count": 6,
+      "pages": [
+        {"pdf": "Heidegger_BeingAndTime.pdf", "page": 50, "expected_fn": 2, "notes": "Complex layout"},
+        {"pdf": "Heidegger_BeingAndTime.pdf", "page": 250, "expected_fn": 2, "notes": "Complex layout"},
+        {"pdf": "Derrida_MarginsOfPhilosophy.pdf", "page": 150, "expected_fn": 2, "notes": "Long footnotes"},
+        {"pdf": "Kant_CritiqueOfJudgement.pdf", "page": 300, "expected_fn": 2, "notes": "Long footnotes"},
+        {"pdf": "Derrida_TheTruthInPainting.pdf", "page": 50, "expected_fn": 2, "notes": "Art theory"},
+        {"pdf": "Derrida_TheTruthInPainting.pdf", "page": 100, "expected_fn": 2, "notes": "Complex layout"}
+      ]
+    },
+
+    "no_footnotes_control": {
+      "description": "Pages without footnotes (for false positive testing)",
+      "target_count": 6,
+      "pages": [
+        {"pdf": "Heidegger_BeingAndTime.pdf", "page": 100, "expected_fn": 0, "notes": "Complex layout, 18 regions"},
+        {"pdf": "Heidegger_BeingAndTime.pdf", "page": 200, "expected_fn": 0, "notes": "Standard layout"},
+        {"pdf": "Lenin_StateAndRevolution.pdf", "page": 50, "expected_fn": 0, "notes": "Political text, endnotes"},
+        {"pdf": "Lenin_StateAndRevolution.pdf", "page": 100, "expected_fn": 0, "notes": "Complex layout"},
+        {"pdf": "Derrida_MarginsOfPhilosophy.pdf", "page": 100, "expected_fn": 0, "notes": "Standard layout"},
+        {"pdf": "Derrida_TheTruthInPainting.pdf", "page": 150, "expected_fn": 0, "notes": "Art theory"}
+      ]
+    },
+
+    "complex_layout": {
+      "description": "Pages with >20 detected regions",
+      "target_count": 6,
+      "pages": [
+        {"pdf": "Heidegger_DiscourseOnThinking.pdf", "page": 10, "expected_fn": 4, "notes": "29 regions, scanned"},
+        {"pdf": "Heidegger_DiscourseOnThinking.pdf", "page": 30, "expected_fn": 2, "notes": "65 regions! Very complex"},
+        {"pdf": "Heidegger_BeingAndTime.pdf", "page": 150, "expected_fn": 4, "notes": "26 regions"},
+        {"pdf": "Kant_CritiqueOfJudgement.pdf", "page": 200, "expected_fn": 4, "notes": "22 regions"},
+        {"pdf": "Heidegger_DiscourseOnThinking.pdf", "page": 25, "expected_fn": 2, "notes": "29 regions"},
+        {"pdf": "Lenin_StateAndRevolution.pdf", "page": 100, "expected_fn": 0, "notes": "26 regions, no FN"}
+      ]
+    },
+
+    "special_content": {
+      "description": "Pages with pictures, long footnotes, or special formatting",
+      "target_count": 6,
+      "pages": [
+        {"pdf": "Derrida_MarginsOfPhilosophy.pdf", "page": 250, "expected_fn": 4, "notes": "Has picture + long FN"},
+        {"pdf": "Derrida_TheTruthInPainting.pdf", "page": 200, "expected_fn": 0, "notes": "Has picture"},
+        {"pdf": "Derrida_MarginsOfPhilosophy.pdf", "page": 150, "expected_fn": 2, "notes": "Long footnotes"},
+        {"pdf": "Kant_CritiqueOfJudgement.pdf", "page": 300, "expected_fn": 2, "notes": "Long footnotes"},
+        {"pdf": "Heidegger_DiscourseOnThinking.pdf", "page": 15, "expected_fn": 2, "notes": "Scanned quality"},
+        {"pdf": "Heidegger_DiscourseOnThinking.pdf", "page": 20, "expected_fn": 14, "notes": "Very dense footnotes"}
+      ]
+    }
+  },
+
+  "gaps_to_fill": [
+    "Scientific papers (two-column, numbered refs) - source from arXiv",
+    "Classics with critical apparatus - source from Perseus/Loeb",
+    "Math-heavy documents with equations",
+    "Poor scan quality examples",
+    "Non-Western philosophy texts"
+  ]
+}

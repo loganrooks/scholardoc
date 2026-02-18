@@ -1,0 +1,91 @@
+schema_version: "1.1.0"
+
+source:
+  pdf: "derrida_footnote_pages_120_125.pdf"
+  page_range: [0, 5]
+  document_type: monograph
+  title: "Derrida Footnote Pages Sample"
+  author: "Jacques Derrida"
+
+annotation_status:
+  footnotes:
+    state: pending
+    count: null
+    annotator: null
+  citations:
+    state: pending
+    count: null
+    annotator: null
+  marginal_refs:
+    state: pending
+    count: null
+    annotator: null
+  sous_rature:
+    state: pending
+    count: null
+    annotator: null
+
+pages:
+  - index: 0
+    label: "120"
+    dimensions:
+      width: 405
+      height: 614
+    tags: []
+    quality:
+      scan_quality: high
+      difficulty: medium
+    regions:
+      - id: body_0
+        type: body
+        bbox: [0.10, 0.08, 0.90, 0.75]
+        text: "Sample body text on page 120"
+      - id: fn_region_0
+        type: footnote_region
+        bbox: [0.10, 0.80, 0.90, 0.95]
+        text: "Sample footnote region"
+
+  - index: 1
+    label: "121"
+    dimensions:
+      width: 405
+      height: 614
+    tags: []
+    quality:
+      scan_quality: high
+      difficulty: medium
+    regions:
+      - id: body_1
+        type: body
+        bbox: [0.10, 0.08, 0.90, 0.75]
+        text: "Sample body text on page 121"
+
+elements:
+  footnotes: []
+  citations: []
+  marginal_refs: []
+  page_numbers: []
+  sous_rature: []
+  bib_entries: []
+  sections: []
+  endnotes: []
+
+relationships:
+  footnote_links: []
+  citation_bib_links: []
+  cross_refs: []
+
+structure:
+  toc: []
+  front_matter:
+    pages: []
+    elements: []
+  back_matter:
+    pages: []
+    elements: []
+
+metadata:
+  tags: [test, sample]
+  created: "2026-01-08"
+  last_modified: "2026-01-08"
+  notes: "Sample ground truth for testing annotation UI"

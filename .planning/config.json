@@ -1,0 +1,16 @@
+{
+  "mode": "interactive",
+  "depth": "thorough",
+  "git_tracking": "atomic",
+  "model_profile": "quality",
+  "research": true,
+  "plan_checker": true,
+  "verifier": true,
+  "models": {
+    "planning": "opus",
+    "research": "opus",
+    "execution": "sonnet",
+    "verification": "sonnet",
+    "simple": "sonnet"
+  }
+}
