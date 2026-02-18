@@ -12,7 +12,7 @@
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 0: Workspace Cleanup** - Clean up workspace and organize git backlog / uncommitted changes
+- [x] **Phase 0: Workspace Cleanup** - Clean up workspace and organize git backlog / uncommitted changes
 - [ ] **Phase 1: Universal GT Schema** - Config-driven schema with extensibility and per-element verification
 - [ ] **Phase 2: Extractor Interface** - Pluggable extractor protocol with provenance tracking
 - [ ] **Phase 3: Experimentation & Evaluation Framework** - Structured experiments with metrics at pipeline and component level
@@ -35,7 +35,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 Plans:
 - [x] 00-01-PLAN.md — Gitignore updates, PDF manifest, ground_truth docs
 - [x] 00-02-PLAN.md — .claude/ infrastructure swap (GSD) and config commits
-- [ ] 00-03-PLAN.md — Branch archival and merge to main
+- [x] 00-03-PLAN.md — Branch archival and merge to main
 
 ### Phase 1: Universal GT Schema
 **Goal**: A universal, extensible GT schema where projects select the annotation types they need via configuration, with per-element verification tracking.
@@ -131,7 +131,7 @@ Phases execute in numeric order: 0 -> 1 -> 2 -> 3 -> 4 -> 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|---------------|--------|-----------|
-| 0. Workspace Cleanup | 0/1 | Not started | - |
+| 0. Workspace Cleanup | 3/3 | Complete | 2026-02-18 |
 | 1. Universal GT Schema | 0/1 | Not started | - |
 | 2. Extractor Interface | 0/2 | Not started | - |
 | 3. Experimentation & Evaluation | 0/2 | Not started | - |
