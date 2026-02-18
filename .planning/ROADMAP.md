@@ -49,10 +49,13 @@ Plans:
   4. Per-element verification status tracks reviewer identity, timestamp, and confidence
   5. New annotation types can be added without modifying existing GT files or breaking the schema
   6. Schema is documented with examples for at least 3 label configurations
-**Plans**: TBD
+**Plans**: 4 plans in 3 waves
 
 Plans:
-- [ ] 01-01: Schema design (unified superset, config-driven selection, extensibility)
+- [ ] 01-01-PLAN.md -- Schema foundation: package structure, base models, label enums, page-level GT
+- [ ] 01-02-PLAN.md -- Semantic models with discriminated unions, document-level GT
+- [ ] 01-03-PLAN.md -- Config system with layered YAML profiles (extraction-eval, layout-annotation, full-scholarly)
+- [ ] 01-04-PLAN.md -- Validation, JSON Schema generation, example GT files, schema guide
 
 ### Phase 2: Extractor Interface
 **Goal**: Any extraction pipeline can plug into ScholarGT to pre-populate draft GT, with full provenance tracking of what was auto-generated vs human-corrected.
@@ -132,7 +135,7 @@ Phases execute in numeric order: 0 -> 1 -> 2 -> 3 -> 4 -> 5
 | Phase | Plans Complete | Status | Completed |
 |-------|---------------|--------|-----------|
 | 0. Workspace Cleanup | 3/3 | Complete | 2026-02-18 |
-| 1. Universal GT Schema | 0/1 | Not started | - |
+| 1. Universal GT Schema | 0/4 | Not started | - |
 | 2. Extractor Interface | 0/2 | Not started | - |
 | 3. Experimentation & Evaluation | 0/2 | Not started | - |
 | 4. Annotation Tool | 0/2 | Not started | - |
