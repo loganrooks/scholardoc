@@ -13,7 +13,7 @@
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 0: Workspace Cleanup** - Clean up workspace and organize git backlog / uncommitted changes
-- [ ] **Phase 1: Universal GT Schema** - Config-driven schema with extensibility and per-element verification
+- [x] **Phase 1: Universal GT Schema** - Config-driven schema with extensibility and per-element verification
 - [ ] **Phase 2: Extractor Interface** - Pluggable extractor protocol with provenance tracking
 - [ ] **Phase 3: Experimentation & Evaluation Framework** - Structured experiments with metrics at pipeline and component level
 - [ ] **Phase 4: Annotation Tool** - Visual, ML-assisted annotation with config-driven UI
@@ -52,10 +52,10 @@ Plans:
 **Plans**: 4 plans in 3 waves
 
 Plans:
-- [ ] 01-01-PLAN.md -- Schema foundation: package structure, base models, label enums, page-level GT
-- [ ] 01-02-PLAN.md -- Semantic models with discriminated unions, document-level GT
-- [ ] 01-03-PLAN.md -- Config system with layered YAML profiles (extraction-eval, layout-annotation, full-scholarly)
-- [ ] 01-04-PLAN.md -- Validation, JSON Schema generation, example GT files, schema guide
+- [x] 01-01-PLAN.md -- Schema foundation: package structure, base models, label enums, page-level GT
+- [x] 01-02-PLAN.md -- Semantic models with discriminated unions, document-level GT
+- [x] 01-03-PLAN.md -- Config system with layered YAML profiles (extraction-eval, layout-annotation, full-scholarly)
+- [x] 01-04-PLAN.md -- Validation, JSON Schema generation, example GT files, schema guide
 
 ### Phase 2: Extractor Interface
 **Goal**: Any extraction pipeline can plug into ScholarGT to pre-populate draft GT, with full provenance tracking of what was auto-generated vs human-corrected.
@@ -135,7 +135,7 @@ Phases execute in numeric order: 0 -> 1 -> 2 -> 3 -> 4 -> 5
 | Phase | Plans Complete | Status | Completed |
 |-------|---------------|--------|-----------|
 | 0. Workspace Cleanup | 3/3 | Complete | 2026-02-18 |
-| 1. Universal GT Schema | 1/4 | In Progress|  |
+| 1. Universal GT Schema | 4/4 | Complete | 2026-02-18 |
 | 2. Extractor Interface | 0/2 | Not started | - |
 | 3. Experimentation & Evaluation | 0/2 | Not started | - |
 | 4. Annotation Tool | 0/2 | Not started | - |

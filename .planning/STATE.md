@@ -5,34 +5,34 @@
 See: .planning/PROJECT.md (updated 2026-02-18)
 
 **Core value:** You cannot improve what you cannot measure. ScholarGT provides the measurement foundation.
-**Current focus:** Phase 1: Universal GT Schema -- Plans 01-03 complete, continuing with Plan 04
+**Current focus:** Phase 1: Universal GT Schema -- COMPLETE (all 4 plans done)
 
 ## Current Position
 
-Phase: 1 of 5 (Universal GT Schema) -- IN PROGRESS
-Plan: 4 of 4 in current phase
-Status: Executing
-Last activity: 2026-02-18 -- Completed 01-03 (config-driven label selection: profiles, loader, tests)
+Phase: 1 of 5 (Universal GT Schema) -- COMPLETE
+Plan: 4 of 4 in current phase -- ALL COMPLETE
+Status: Phase complete, ready for Phase 2 planning
+Last activity: 2026-02-18 -- Completed 01-04 (validation, examples, documentation)
 
-Progress: [███████░░░] 33%
+Progress: [████████░░] 40%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 6
-- Average duration: 2.5 min
-- Total execution time: 0.25 hours
+- Total plans completed: 7
+- Average duration: 3.0 min
+- Total execution time: 0.35 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 00 | 3 | 5 min | 1.7 min |
-| 01 | 3 | 13 min | 4.3 min |
+| 01 | 4 | 19 min | 4.75 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-03 (4min), 01-02 (4min), 01-01 (5min), 00-03 (2min), 00-02 (1min)
-- Trend: Consistent ~4min for schema plans (models + tests + profiles)
+- Last 5 plans: 01-04 (6min), 01-03 (4min), 01-02 (4min), 01-01 (5min), 00-03 (2min)
+- Trend: Consistent ~5min for schema plans, 01-04 slightly longer due to examples + documentation
 
 *Updated after each plan completion*
 
@@ -67,6 +67,10 @@ Recent decisions affecting current work:
 - [01-02]: DocumentGT uses extra=allow for forward compatibility, consistent with GTElement and PageGT
 - [01-02]: Explicit relationship models (FootnoteLink, CitationBibLink) for inter-element links rather than embedded foreign keys
 - [01-02]: ContentSpan.is_continuation flag for cross-page footnote/endnote content spanning page boundaries
+- [01-04]: jsonschema library for runtime JSON Schema validation; Pydantic model_validate as fallback
+- [01-04]: Validation separates errors (invalid) from warnings (informational) for extensibility
+- [01-04]: Auto-detection of page vs document GT via discriminating keys (regions vs document_id)
+- [01-04]: Generated schema.json committed to repo for IDE autocompletion and CI validation
 
 ### Pending Todos
 
@@ -75,12 +79,12 @@ None yet.
 ### Blockers/Concerns
 
 - Zero verified GT documents exist. Phase 5 validates the design by producing a small corpus.
-- Two existing GT schemas (ScholarDoc v3/v4, CryptOfCogito v0.3.1) need unification — Phase 1 core task.
+- ~~Two existing GT schemas (ScholarDoc v3/v4, CryptOfCogito v0.3.1) need unification~~ -- RESOLVED: Phase 1 complete, unified schema with 17 spatial + 9 semantic labels, config-driven profiles.
 - Annotation tool (Cogito) needs design review before deciding rewrite vs adapt — Phase 4 task.
 - Repo location for ScholarGT code undecided — deferred to after design phases.
 
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Completed 01-03-PLAN.md (config-driven label selection)
-Resume file: .planning/phases/01-universal-gt-schema/01-03-SUMMARY.md
+Stopped at: Completed 01-04-PLAN.md (validation, examples, documentation) -- Phase 1 COMPLETE
+Resume file: .planning/phases/01-universal-gt-schema/01-04-SUMMARY.md
