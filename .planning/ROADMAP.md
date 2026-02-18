@@ -1,8 +1,8 @@
-# Roadmap: ScholarDoc
+# Roadmap: ScholarDoc & ScholarGT
 
 ## Overview
 
-**Milestone 1: Measurement Infrastructure and Architectural Foundations** -- Establish the ground truth, evaluation, and experimentation infrastructure so that ScholarDoc's extraction quality can be systematically measured, improved, and integrated with its ecosystem. Without verified ground truth, every quality claim is unverified; without serialization, output cannot be consumed; without clear architectural boundaries, the monorepo migration will restructure prematurely.
+**Milestone 1: ScholarGT — Ground Truth Annotation Platform** — Design and build an independent, config-driven ground truth annotation platform for scholarly documents. ScholarGT provides the measurement foundation that ScholarDoc (and other projects) need to systematically evaluate and improve extraction quality. This milestone is design-heavy: get the schema, extractor interface, experimentation framework, and annotation tool architecture right before producing a large GT corpus.
 
 ## Phases
 
@@ -12,94 +12,100 @@
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Ground Truth Bootstrap** - Verified GT corpus and automated evaluation pipeline
-- [ ] **Phase 2: IR Enrichment and Writers** - Rich intermediate representation and serialization
-- [ ] **Phase 3: Experimentation Framework** - Systematic hypothesis-driven improvement workflow
-- [ ] **Phase 4: Re-OCR Pipeline Integration** - Neural re-OCR wired into main extraction pipeline
-- [ ] **Phase 5: Monorepo Migration** - Unified repository with uv workspaces
+- [ ] **Phase 1: Universal GT Schema** - Config-driven schema with extensibility and per-element verification
+- [ ] **Phase 2: Extractor Interface** - Pluggable extractor protocol with provenance tracking
+- [ ] **Phase 3: Experimentation & Evaluation Framework** - Structured experiments with metrics at pipeline and component level
+- [ ] **Phase 4: Annotation Tool** - Visual, ML-assisted annotation with config-driven UI
+- [ ] **Phase 5: Design Validation** - Small GT corpus proving the entire system works end-to-end
 
 ## Phase Details
 
-### Phase 1: Ground Truth Bootstrap
-**Goal**: Developers can measure ScholarDoc's extraction quality against verified ground truth and catch regressions automatically.
+### Phase 1: Universal GT Schema
+**Goal**: A universal, extensible GT schema where projects select the annotation types they need via configuration, with per-element verification tracking.
 **Depends on**: Nothing (first phase)
-**Requirements**: GT-01, GT-02, GT-03
-**Research**: Standard patterns -- existing evaluation library is sound, three-stage bootstrap well-documented.
+**Requirements**: SCH-01, SCH-02, SCH-03
+**Research**: Review both existing schemas (ScholarDoc v3/v4, CryptOfCogito v0.3.1) in detail. Analyze what a unified superset looks like. Research extensibility patterns (layered files, plugin registries, JSON-LD).
 **Success Criteria** (what must be TRUE):
-  1. At least 10 human-verified GT pages exist across 3+ source texts, covering footnotes, foreign terms, and structural elements
-  2. Running a single command produces a metrics report comparing current extraction against GT (CER/WER, footnote detection F1, per-element breakdown)
-  3. CI regression gate fails the build when extraction metrics regress beyond a configured threshold
-  4. GT schema supports adding new annotation layers (structure, semantics) without modifying existing GT files
-  5. Baseline metrics are recorded and committed as the starting point for improvement tracking
+  1. Schema captures the union of ScholarDoc and CryptOfCogito annotation capabilities (spatial hierarchy, semantic richness, philosophy-specific labels)
+  2. A project config file selects which annotation types are active — UI and validation adapt accordingly
+  3. Default profiles exist for common use cases (extraction evaluation, layout annotation, full scholarly annotation)
+  4. Per-element verification status tracks reviewer identity, timestamp, and confidence
+  5. New annotation types can be added without modifying existing GT files or breaking the schema
+  6. Schema is documented with examples for at least 3 label configurations
 **Plans**: TBD
 
 Plans:
-- [ ] 01-01: GT schema design and bootstrap corpus creation
-- [ ] 01-02: Automated evaluation pipeline and CI regression gate
+- [ ] 01-01: Schema design (unified superset, config-driven selection, extensibility)
 
-### Phase 2: IR Enrichment and Writers
-**Goal**: ScholarDocument captures all extraction information losslessly and can be serialized to JSON (canonical) and Markdown (presentation).
-**Depends on**: Phase 1 (metrics reveal what the IR is missing)
-**Requirements**: IR-01, WR-01
-**Research**: Needs Docling DoclingDocument analysis to determine exactly which fields to add. Cross-reference system design is non-trivial.
+### Phase 2: Extractor Interface
+**Goal**: Any extraction pipeline can plug into ScholarGT to pre-populate draft GT, with full provenance tracking of what was auto-generated vs human-corrected.
+**Depends on**: Phase 1 (schema defines what extractors must produce)
+**Requirements**: EXT-01, EXT-02, EXT-03
+**Research**: Standard patterns — Protocol-based interfaces, adapter patterns for existing tools (ScholarDoc, Docling, GROBID).
 **Success Criteria** (what must be TRUE):
-  1. ScholarDocument includes bounding boxes, font metadata, and confidence scores for extracted elements
-  2. Cross-element references link footnote markers to footnote definitions and citations to bibliography entries
-  3. ContentElement supports a typed annotation layer for consumer-extensible metadata (Stephanus numbers, Bekker numbers) without core schema modification
-  4. JSON round-trip is lossless: serialize then deserialize produces an identical ScholarDocument
-  5. Markdown output is generated from the enriched IR through the Writers module (not ad-hoc string building)
+  1. An extractor protocol defines what any pipeline must implement to produce draft GT conforming to the schema
+  2. A lightweight built-in extractor (PyMuPDF text + basic layout) works without external dependencies
+  3. At least one external extractor adapter exists (ScholarDoc) demonstrating the plugin pattern
+  4. Each GT element records which extractor + config produced it and what (if anything) the human changed
+  5. Extractors can be configured with different parameters for A/B comparison
 **Plans**: TBD
 
 Plans:
-- [ ] 02-01: IR enrichment (bounding boxes, fonts, confidence, cross-references, annotations)
-- [ ] 02-02: Writers module (JSON canonical serializer, Markdown writer)
+- [ ] 02-01: Extractor protocol and built-in lightweight extractor
+- [ ] 02-02: ScholarDoc adapter and provenance tracking
 
-### Phase 3: Experimentation Framework
-**Goal**: Developers can run structured experiments that test extraction improvements against GT with tracked, comparable results.
-**Depends on**: Phase 1 (evaluation infrastructure), Phase 2 (serialization for result persistence)
-**Requirements**: EXP-01
-**Research**: Standard patterns -- custom JSON tooling, no external research needed.
+### Phase 3: Experimentation & Evaluation Framework
+**Goal**: Developers can run structured experiments comparing extractors and components against GT, with tracked and comparable results.
+**Depends on**: Phase 1 (schema for GT format), Phase 2 (extractors to compare)
+**Requirements**: EXP-01, EXP-02, EXP-03, EVAL-01, EVAL-02
+**Research**: Standard patterns — extend existing ScholarDoc evaluation library, custom YAML/JSONL tooling.
 **Success Criteria** (what must be TRUE):
-  1. An experiment spec (YAML) captures hypothesis, parameter changes, success criteria, and can be executed reproducibly
-  2. Experiment results are logged to JSONL with metrics, timestamps, and parameter snapshots for comparison across runs
-  3. Stratified metrics break down performance by element type (footnotes, headings, body text, foreign terms) and by source text
-  4. GT corpus is split into dev/validation sets, and experiments report metrics on both to detect overfitting
+  1. An experiment spec (YAML) captures hypothesis, extractor configs, parameter changes, and success criteria
+  2. Pipeline-level experiments compare end-to-end results from different extraction systems
+  3. Component-level experiments swap individual components (OCR engine, layout detector) while holding others constant
+  4. Experiment results logged to JSONL with metrics, timestamps, and full parameter snapshots
+  5. Stratified metrics break down performance by element type and source text
+  6. A single command evaluates any extractor output against GT and produces a metrics report
+  7. CI regression gate fails on metric regression beyond configured threshold
 **Plans**: TBD
 
 Plans:
-- [ ] 03-01: Experiment spec, runner, and metrics tracking
+- [ ] 03-01: Evaluation pipeline (metrics, reports, CI gate)
+- [ ] 03-02: Experiment framework (YAML spec, runner, JSONL logging, comparison)
 
-### Phase 4: Re-OCR Pipeline Integration
-**Goal**: Flagged OCR errors are automatically corrected by neural re-OCR, measurably reducing the false positive rate on philosophical terms.
-**Depends on**: Phase 1 (metrics to target worst performers), Phase 3 (experimentation framework to validate improvements)
-**Requirements**: OCR-01
-**Research**: Needs spike on GOT-OCR vs Tesseract for philosophy-specific terms on 11GB VRAM (GTX 1080 Ti).
+### Phase 4: Annotation Tool
+**Goal**: A visual, ML-assisted annotation tool where the UI adapts to the project's configured label types, pre-populates via extractors, and flags low-confidence elements for human review.
+**Depends on**: Phase 1 (schema drives UI), Phase 2 (extractors pre-populate), Phase 3 (evaluation validates annotations)
+**Requirements**: ANN-01, ANN-02, ANN-03
+**Research**: Deep review of CryptOfCogito annotation tool (FastAPI + Canvas, RT-DETR, SSE). Decide rewrite vs adapt. Design ML-assisted workflow.
 **Success Criteria** (what must be TRUE):
-  1. The main extraction pipeline invokes neural re-OCR for words flagged by the spellcheck selector, with no manual intervention
-  2. Foreign term CER is tracked as a first-class metric, and re-OCR measurably reduces it compared to baseline
-  3. Re-OCR runs within hardware constraints (11GB VRAM) and does not regress processing time beyond an acceptable threshold
-  4. The OCR false positive rate (currently 23.4%) is reduced, with the improvement validated against the GT corpus
+  1. Annotation tool design is documented with architecture decisions (reviewed against Cogito tool)
+  2. Canvas-based visual annotation of PDF pages with bounding box creation/editing
+  3. Extractors pre-populate draft annotations; low-confidence elements are flagged for human review
+  4. UI dynamically adapts to the project's configured label types (not hardcoded)
+  5. Per-element verification status is set through the UI with reviewer identity
+  6. Annotation workflow minimizes human effort without compromising GT quality
 **Plans**: TBD
 
 Plans:
-- [ ] 04-01: Re-OCR spike and pipeline integration
+- [ ] 04-01: Annotation tool design review (Cogito tool analysis, architecture decisions)
+- [ ] 04-02: Annotation tool implementation
 
-### Phase 5: Monorepo Migration
-**Goal**: ScholarDoc, CryptOfCogito, and shared packages live in a unified uv workspace with clear dependency boundaries.
-**Depends on**: Phase 2 (library boundaries proven through serialization), Phase 4 (package interfaces stable from use)
-**Requirements**: ARCH-01, ARCH-02
-**Research**: Standard patterns -- uv workspaces well-documented with multiple reference implementations.
+### Phase 5: Design Validation
+**Goal**: A small GT corpus validates that the schema, extractors, experimentation framework, and annotation tool work together end-to-end.
+**Depends on**: All prior phases
+**Requirements**: VAL-01
+**Research**: None — this is execution and validation.
 **Success Criteria** (what must be TRUE):
-  1. A single uv workspace contains ScholarDoc, CryptOfCogito, and scholarly_testdata as separate packages under packages/
-  2. CryptOfCogito imports and uses ScholarDoc as a workspace dependency for PDF extraction (replacing its own extraction code)
-  3. scholarly_testdata package provides GT schemas, pytest fixtures, and sample PDFs (via Git LFS) shared by both projects
-  4. Each package can be independently published and versioned
-  5. CryptOfCogito's git history is preserved via subtree merge
+  1. 10-20 verified GT pages exist across 3+ source texts (covering footnotes, foreign terms, structural elements)
+  2. GT was produced using the annotation tool with extractor pre-population (not hand-written JSON)
+  3. At least 2 extractors have been compared using the experimentation framework
+  4. Evaluation pipeline produces meaningful metrics that differentiate extractor quality
+  5. Design issues discovered during validation are documented with proposed fixes
 **Plans**: TBD
 
 Plans:
-- [ ] 05-01: Workspace setup and package migration
-- [ ] 05-02: CryptOfCogito integration and shared testdata package
+- [ ] 05-01: GT corpus creation and end-to-end validation
 
 ## Progress
 
@@ -108,8 +114,8 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|---------------|--------|-----------|
-| 1. Ground Truth Bootstrap | 0/2 | Not started | - |
-| 2. IR Enrichment and Writers | 0/2 | Not started | - |
-| 3. Experimentation Framework | 0/1 | Not started | - |
-| 4. Re-OCR Pipeline Integration | 0/1 | Not started | - |
-| 5. Monorepo Migration | 0/2 | Not started | - |
+| 1. Universal GT Schema | 0/1 | Not started | - |
+| 2. Extractor Interface | 0/2 | Not started | - |
+| 3. Experimentation & Evaluation | 0/2 | Not started | - |
+| 4. Annotation Tool | 0/2 | Not started | - |
+| 5. Design Validation | 0/1 | Not started | - |

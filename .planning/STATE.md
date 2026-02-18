@@ -2,17 +2,17 @@
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-01-28)
+See: .planning/PROJECT.md (updated 2026-02-18)
 
-**Core value:** Accurate, rich extraction from scholarly PDFs into a representation that maximizes downstream workflows.
-**Current focus:** Phase 1 - Ground Truth Bootstrap
+**Core value:** You cannot improve what you cannot measure. ScholarGT provides the measurement foundation.
+**Current focus:** Phase 1 - Universal GT Schema
 
 ## Current Position
 
-Phase: 1 of 5 (Ground Truth Bootstrap)
-Plan: 0 of 2 in current phase
+Phase: 1 of 5 (Universal GT Schema)
+Plan: 0 of 1 in current phase
 Status: Ready to plan
-Last activity: 2026-01-28 -- Roadmap created (Milestone 1)
+Last activity: 2026-02-18 -- Roadmap revised (ScholarGT as primary deliverable)
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -42,8 +42,14 @@ Progress: [░░░░░░░░░░] 0%
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
 
-- [Roadmap]: Measurement before improvement -- GT and evaluation first, extraction changes after.
-- [Roadmap]: No SQLite in library layer -- JSON as canonical serialization, SQLite is consumer responsibility.
+- [Roadmap revision]: ScholarGT is independent of ScholarDoc — GT platform serves multiple consumers
+- [Roadmap revision]: Design-heavy milestone — get architecture right before producing large GT corpus
+- [Roadmap revision]: Config-driven label selection from universal superset schema
+- [Roadmap revision]: Pluggable extractors + built-in lightweight — extractor interface with configs for A/B comparison
+- [Roadmap revision]: Experiments at both pipeline and component levels
+- [Roadmap revision]: Annotation tool: review Cogito tool, possible rewrite (design during Phase 4 planning)
+- [Roadmap revision]: Planning stays in ScholarDoc repo; code location decided after design
+- [Roadmap revision]: ScholarDoc-specific improvements (IR, Writers, re-OCR, monorepo) deferred to milestone 2
 
 ### Pending Todos
 
@@ -51,12 +57,13 @@ None yet.
 
 ### Blockers/Concerns
 
-- Zero verified GT documents exist. Phase 1 is entirely about closing this gap.
-- OCR false positive rate 23.4% on philosophical terms -- deferred to Phase 4.
-- GT schema v1.1.0 has known design issues -- Phase 1 must address before bootstrapping corpus.
+- Zero verified GT documents exist. Phase 5 validates the design by producing a small corpus.
+- Two existing GT schemas (ScholarDoc v3/v4, CryptOfCogito v0.3.1) need unification — Phase 1 core task.
+- Annotation tool (Cogito) needs design review before deciding rewrite vs adapt — Phase 4 task.
+- Repo location for ScholarGT code undecided — deferred to after design phases.
 
 ## Session Continuity
 
-Last session: 2026-01-28
-Stopped at: Roadmap created, ready to plan Phase 1
+Last session: 2026-02-18
+Stopped at: Roadmap revised, ready to plan Phase 1
 Resume file: None
