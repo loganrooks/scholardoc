@@ -1,0 +1,161 @@
+{
+  "schema_version": "1.0.0",
+  "page_index": 127,
+  "page_label": "104",
+  "dimensions": {
+    "width": 612.0,
+    "height": 792.0
+  },
+  "regions": [
+    {
+      "id": "r1",
+      "verifications": [],
+      "tags": [],
+      "label": "page_header",
+      "bbox": {
+        "x0": 0.1,
+        "y0": 0.02,
+        "x1": 0.9,
+        "y1": 0.05
+      },
+      "text": null,
+      "text_anchors": [],
+      "semantic_labels": [],
+      "reading_order_index": null
+    },
+    {
+      "id": "r2",
+      "verifications": [],
+      "tags": [],
+      "label": "section_header",
+      "bbox": {
+        "x0": 0.15,
+        "y0": 0.07,
+        "x1": 0.85,
+        "y1": 0.11
+      },
+      "text": "CHAPTER IV. THE WORLDHOOD OF THE WORLD",
+      "text_anchors": [],
+      "semantic_labels": [],
+      "reading_order_index": null
+    },
+    {
+      "id": "r3",
+      "verifications": [],
+      "tags": [],
+      "label": "text_block",
+      "bbox": {
+        "x0": 0.12,
+        "y0": 0.13,
+        "x1": 0.88,
+        "y1": 0.48
+      },
+      "text": null,
+      "text_anchors": [],
+      "semantic_labels": [],
+      "reading_order_index": null
+    },
+    {
+      "id": "r4",
+      "verifications": [],
+      "tags": [],
+      "label": "block_quote",
+      "bbox": {
+        "x0": 0.18,
+        "y0": 0.5,
+        "x1": 0.82,
+        "y1": 0.58
+      },
+      "text": "'The essence of Dasein lies in its existence.' (Being and Time, p. 67)",
+      "text_anchors": [],
+      "semantic_labels": [],
+      "reading_order_index": null
+    },
+    {
+      "id": "r5",
+      "verifications": [],
+      "tags": [],
+      "label": "text_block",
+      "bbox": {
+        "x0": 0.12,
+        "y0": 0.6,
+        "x1": 0.88,
+        "y1": 0.78
+      },
+      "text": null,
+      "text_anchors": [],
+      "semantic_labels": [],
+      "reading_order_index": null
+    },
+    {
+      "id": "r6",
+      "verifications": [],
+      "tags": [],
+      "label": "footnote_area",
+      "bbox": {
+        "x0": 0.12,
+        "y0": 0.82,
+        "x1": 0.88,
+        "y1": 0.9
+      },
+      "text": null,
+      "text_anchors": [],
+      "semantic_labels": [],
+      "reading_order_index": null
+    },
+    {
+      "id": "r7",
+      "verifications": [],
+      "tags": [],
+      "label": "page_footer",
+      "bbox": {
+        "x0": 0.1,
+        "y0": 0.92,
+        "x1": 0.9,
+        "y1": 0.95
+      },
+      "text": null,
+      "text_anchors": [],
+      "semantic_labels": [],
+      "reading_order_index": null
+    },
+    {
+      "id": "r8",
+      "verifications": [],
+      "tags": [],
+      "label": "page_number",
+      "bbox": {
+        "x0": 0.46,
+        "y0": 0.96,
+        "x1": 0.54,
+        "y1": 0.98
+      },
+      "text": null,
+      "text_anchors": [],
+      "semantic_labels": [],
+      "reading_order_index": null
+    }
+  ],
+  "reading_order": [
+    "r1",
+    "r2",
+    "r3",
+    "r4",
+    "r5",
+    "r6",
+    "r7",
+    "r8"
+  ],
+  "quality": {
+    "scan_quality": "medium",
+    "difficulty": "easy"
+  },
+  "verifications": [
+    {
+      "reviewer_id": "human_bob",
+      "timestamp": "2026-02-16T14:00:00",
+      "confidence": 0.92,
+      "notes": "Bounding boxes verified with overlay tool."
+    }
+  ]
+}

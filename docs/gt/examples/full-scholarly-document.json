@@ -1,0 +1,225 @@
+{
+  "schema_version": "1.0.0",
+  "document_id": "heidegger-bt-macquarrie-1962",
+  "source": {
+    "pdf": "heidegger_being_and_time_1962.pdf",
+    "title": "Being and Time",
+    "author": "Martin Heidegger",
+    "translator": "John Macquarrie & Edward Robinson",
+    "year": 1962,
+    "publisher": "Harper & Row",
+    "isbn": "978-0-06-063850-0",
+    "doi": null,
+    "document_type": "translation"
+  },
+  "page_range": [
+    0,
+    589
+  ],
+  "elements": [
+    {
+      "id": "sec-intro",
+      "verifications": [],
+      "tags": [],
+      "element_type": "section",
+      "title": "Introduction: The Exposition of the Question of the Meaning of Being",
+      "level": 0,
+      "page_start": 19,
+      "page_end": 63,
+      "children": [
+        "sec-intro-ch1",
+        "sec-intro-ch2"
+      ]
+    },
+    {
+      "id": "sec-intro-ch1",
+      "verifications": [],
+      "tags": [],
+      "element_type": "section",
+      "title": "Chapter I. The Necessity, Structure, and Priority of the Question of Being",
+      "level": 1,
+      "page_start": 19,
+      "page_end": 35,
+      "children": []
+    },
+    {
+      "id": "sec-intro-ch2",
+      "verifications": [],
+      "tags": [],
+      "element_type": "section",
+      "title": "Chapter II. The Twofold Task in Working Out the Question of Being",
+      "level": 1,
+      "page_start": 36,
+      "page_end": 63,
+      "children": []
+    },
+    {
+      "id": "fn-1-p21",
+      "verifications": [
+        {
+          "reviewer_id": "human_alice",
+          "timestamp": "2026-02-15T10:30:00",
+          "confidence": 0.95,
+          "notes": "Cross-page footnote verified against print edition."
+        }
+      ],
+      "tags": [],
+      "element_type": "footnote",
+      "marker": {
+        "text": "1",
+        "page": 21,
+        "region_id": "r2",
+        "char_offset": 342
+      },
+      "content": [
+        {
+          "page": 21,
+          "region_id": "fn-area-p21",
+          "text": "Cf. Plato, Sophist 244a. The expression 'battle of giants concerning Being' ",
+          "is_continuation": false
+        },
+        {
+          "page": 22,
+          "region_id": "fn-area-p22",
+          "text": "(gigantomachia peri tes ousias) is used by Plato (loc. cit.) in connection with the contrast between materialists and the 'friends of Ideas'.",
+          "is_continuation": true
+        }
+      ],
+      "note_source": "translator",
+      "location": "page_bottom"
+    },
+    {
+      "id": "cit-sophist-244a",
+      "verifications": [],
+      "tags": [],
+      "element_type": "citation",
+      "raw_text": "Plato, Sophist 244a",
+      "citation_type": "stephanus",
+      "parsed": {
+        "author": "Plato",
+        "year": null,
+        "page_ref": "244a",
+        "work": "Sophist"
+      },
+      "bib_entry_id": "bib-plato-sophist",
+      "page": 21,
+      "region_id": "fn-area-p21"
+    },
+    {
+      "id": "sr-being-p42",
+      "verifications": [
+        {
+          "reviewer_id": "human_carol",
+          "timestamp": "2026-02-16T09:00:00",
+          "confidence": 0.88,
+          "notes": "Strikethrough confirmed in original German text."
+        }
+      ],
+      "tags": [],
+      "element_type": "sous_rature",
+      "text": "Being",
+      "page": 42,
+      "region_id": "r3-p42",
+      "char_offset": 156,
+      "char_length": 5
+    },
+    {
+      "id": "bib-plato-sophist",
+      "verifications": [],
+      "tags": [],
+      "element_type": "bibliography_entry",
+      "raw_text": "Plato. Sophist. Trans. Nicholas P. White. In Plato: Complete Works, ed. John M. Cooper. Indianapolis: Hackett, 1997.",
+      "parsed": {
+        "author": "Plato",
+        "year": "1997",
+        "page_ref": null,
+        "work": "Sophist"
+      },
+      "entry_index": 42
+    }
+  ],
+  "formatting": [
+    {
+      "id": "fmt-italic-1",
+      "verifications": [],
+      "tags": [],
+      "formatting_type": "italic",
+      "page": 19,
+      "region_id": "r2-p19",
+      "char_offset": 0,
+      "char_length": 13,
+      "text": "Being and Time"
+    },
+    {
+      "id": "fmt-bold-1",
+      "verifications": [],
+      "tags": [],
+      "formatting_type": "bold",
+      "page": 21,
+      "region_id": "r1-p21",
+      "char_offset": 0,
+      "char_length": 45,
+      "text": "Section 1. The Necessity for Explicitly Restating"
+    }
+  ],
+  "structure": {
+    "toc": [
+      {
+        "title": "Introduction",
+        "level": 0,
+        "page_label": "19",
+        "page_index": 19
+      },
+      {
+        "title": "Chapter I. The Necessity, Structure, and Priority of the Question of Being",
+        "level": 1,
+        "page_label": "21",
+        "page_index": 21
+      },
+      {
+        "title": "Chapter II. The Twofold Task in Working Out the Question of Being",
+        "level": 1,
+        "page_label": "36",
+        "page_index": 36
+      }
+    ],
+    "sections": [
+      "sec-intro",
+      "sec-intro-ch1",
+      "sec-intro-ch2"
+    ],
+    "front_matter": null,
+    "back_matter": null
+  },
+  "relationships": {
+    "footnote_links": [
+      {
+        "marker_id": "fn-1-p21",
+        "content_id": "fn-1-p21",
+        "link_type": "footnote"
+      }
+    ],
+    "citation_bib_links": [
+      {
+        "citation_id": "cit-sophist-244a",
+        "bib_entry_id": "bib-plato-sophist"
+      }
+    ],
+    "cross_refs": []
+  },
+  "config_profile": "full-scholarly",
+  "verifications": [
+    {
+      "reviewer_id": "human_alice",
+      "timestamp": "2026-02-15T11:00:00",
+      "confidence": 0.93,
+      "notes": "First pass annotation of introduction section."
+    },
+    {
+      "reviewer_id": "human_bob",
+      "timestamp": "2026-02-16T15:00:00",
+      "confidence": 0.9,
+      "notes": "Inter-annotator review: confirmed all elements and relationships."
+    }
+  ]
+}

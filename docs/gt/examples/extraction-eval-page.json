@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0.0",
+  "page_index": 42,
+  "page_label": "21",
+  "dimensions": {
+    "width": 612.0,
+    "height": 792.0
+  },
+  "regions": [
+    {
+      "id": "r1",
+      "verifications": [],
+      "tags": [
+        "heading"
+      ],
+      "label": "section_header",
+      "bbox": {
+        "x0": 0.15,
+        "y0": 0.08,
+        "x1": 0.85,
+        "y1": 0.12
+      },
+      "text": "Section 7. Being-in-the-World as Being-with and Being-one's-Self",
+      "text_anchors": [],
+      "semantic_labels": [],
+      "reading_order_index": null
+    },
+    {
+      "id": "r2",
+      "verifications": [],
+      "tags": [],
+      "label": "text_block",
+      "bbox": {
+        "x0": 0.12,
+        "y0": 0.14,
+        "x1": 0.88,
+        "y1": 0.72
+      },
+      "text": "The answer to the question of the 'who' of everyday Dasein is to be obtained by analysing that kind of Being in which Dasein maintains itself proximally and for the most part. Our investigation takes its orientation from Being-in-the-world. This basic state of Dasein is no less constitutive for Dasein's Being than is its Being-in. If the 'world' has already been shown to be a constitutive item in Being-in-the-world, then the 'who' that is in the world must be clarified with equal primordiality.1",
+      "text_anchors": [],
+      "semantic_labels": [],
+      "reading_order_index": null
+    },
+    {
+      "id": "r3",
+      "verifications": [],
+      "tags": [],
+      "label": "text_block",
+      "bbox": {
+        "x0": 0.12,
+        "y0": 0.73,
+        "x1": 0.88,
+        "y1": 0.84
+      },
+      "text": "By directing our researches towards the phenomenon which is to provide us with an answer to the question of the 'who', we shall be led to certain structures of Dasein which are equiprimordial with Being-in-the-world: Being-with and Dasein-with [Mitsein und Mitdasein]. In this kind of Being is grounded the mode of everyday Being-one's-Self [Man-selbst].",
+      "text_anchors": [],
+      "semantic_labels": [],
+      "reading_order_index": null
+    },
+    {
+      "id": "r4",
+      "verifications": [],
+      "tags": [],
+      "label": "footnote_area",
+      "bbox": {
+        "x0": 0.12,
+        "y0": 0.88,
+        "x1": 0.88,
+        "y1": 0.94
+      },
+      "text": "1. Cf. sections 12-13 above, where the existential constitution of the 'there' is set forth.",
+      "text_anchors": [],
+      "semantic_labels": [],
+      "reading_order_index": null
+    }
+  ],
+  "reading_order": [
+    "r1",
+    "r2",
+    "r3",
+    "r4"
+  ],
+  "quality": {
+    "scan_quality": "high",
+    "difficulty": "medium"
+  },
+  "verifications": [
+    {
+      "reviewer_id": "human_alice",
+      "timestamp": "2026-02-15T10:30:00",
+      "confidence": 0.95,
+      "notes": "Text carefully transcribed from 1962 Macquarrie & Robinson translation."
+    }
+  ]
+}
