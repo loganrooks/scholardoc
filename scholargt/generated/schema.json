@@ -1,0 +1,1894 @@
+{
+  "$defs": {
+    "BBox": {
+      "description": "Normalized bounding box in [x0, y0, x1, y1] corners format.\n\nAll coordinates are normalized to [0.0, 1.0] relative to page dimensions.\nUses corners format (ScholarDoc convention) with a to_xywh() helper for\nCryptOfCogito compatibility.",
+      "properties": {
+        "x0": {
+          "description": "Left edge (normalized)",
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "X0",
+          "type": "number"
+        },
+        "y0": {
+          "description": "Top edge (normalized)",
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Y0",
+          "type": "number"
+        },
+        "x1": {
+          "description": "Right edge (normalized)",
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "X1",
+          "type": "number"
+        },
+        "y1": {
+          "description": "Bottom edge (normalized)",
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Y1",
+          "type": "number"
+        }
+      },
+      "required": [
+        "x0",
+        "y0",
+        "x1",
+        "y1"
+      ],
+      "title": "BBox",
+      "type": "object"
+    },
+    "BibEntry": {
+      "additionalProperties": true,
+      "description": "A bibliography/references list entry.",
+      "properties": {
+        "id": {
+          "description": "Unique identifier for this element",
+          "title": "Id",
+          "type": "string"
+        },
+        "verifications": {
+          "description": "Verification records from reviewers",
+          "items": {
+            "$ref": "#/$defs/VerificationRecord"
+          },
+          "title": "Verifications",
+          "type": "array"
+        },
+        "tags": {
+          "description": "Ad-hoc grouping tags",
+          "items": {
+            "type": "string"
+          },
+          "title": "Tags",
+          "type": "array"
+        },
+        "element_type": {
+          "const": "bibliography_entry",
+          "default": "bibliography_entry",
+          "title": "Element Type",
+          "type": "string"
+        },
+        "raw_text": {
+          "description": "Full bibliography entry text",
+          "title": "Raw Text",
+          "type": "string"
+        },
+        "parsed": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ParsedCitation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Structured parsed citation data"
+        },
+        "entry_index": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Position in bibliography list (0-based)",
+          "title": "Entry Index"
+        }
+      },
+      "required": [
+        "id",
+        "raw_text"
+      ],
+      "title": "BibEntry",
+      "type": "object"
+    },
+    "Citation": {
+      "additionalProperties": true,
+      "description": "An in-text citation reference.\n\nSupports 7 citation types including philosophy-specific Stephanus, Bekker,\nand Akademie reference systems.",
+      "properties": {
+        "id": {
+          "description": "Unique identifier for this element",
+          "title": "Id",
+          "type": "string"
+        },
+        "verifications": {
+          "description": "Verification records from reviewers",
+          "items": {
+            "$ref": "#/$defs/VerificationRecord"
+          },
+          "title": "Verifications",
+          "type": "array"
+        },
+        "tags": {
+          "description": "Ad-hoc grouping tags",
+          "items": {
+            "type": "string"
+          },
+          "title": "Tags",
+          "type": "array"
+        },
+        "element_type": {
+          "const": "citation",
+          "default": "citation",
+          "title": "Element Type",
+          "type": "string"
+        },
+        "raw_text": {
+          "description": "Citation text as it appears in source",
+          "title": "Raw Text",
+          "type": "string"
+        },
+        "citation_type": {
+          "$ref": "#/$defs/CitationType",
+          "description": "Classification of citation style"
+        },
+        "parsed": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ParsedCitation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Structured parsed citation data"
+        },
+        "bib_entry_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Link to bibliography entry element ID",
+          "title": "Bib Entry Id"
+        },
+        "page": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Page where citation appears",
+          "title": "Page"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Region containing the citation",
+          "title": "Region Id"
+        }
+      },
+      "required": [
+        "id",
+        "raw_text",
+        "citation_type"
+      ],
+      "title": "Citation",
+      "type": "object"
+    },
+    "CitationBibLink": {
+      "description": "Link between an in-text citation and its bibliography entry.",
+      "properties": {
+        "citation_id": {
+          "description": "Element ID of the citation",
+          "title": "Citation Id",
+          "type": "string"
+        },
+        "bib_entry_id": {
+          "description": "Element ID of the bibliography entry",
+          "title": "Bib Entry Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "citation_id",
+        "bib_entry_id"
+      ],
+      "title": "CitationBibLink",
+      "type": "object"
+    },
+    "CitationType": {
+      "description": "Citation style sublabels.",
+      "enum": [
+        "author_date",
+        "numeric",
+        "abbreviated",
+        "footnote_style",
+        "stephanus",
+        "bekker",
+        "ak_reference"
+      ],
+      "title": "CitationType",
+      "type": "string"
+    },
+    "ContentSpan": {
+      "description": "A span of content text, potentially spanning multiple pages.\n\nUsed for footnote/endnote content that may continue across page boundaries.\nThe is_continuation flag marks spans after the first page.",
+      "properties": {
+        "page": {
+          "description": "0-based page index for this span",
+          "title": "Page",
+          "type": "integer"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Region ID containing this span",
+          "title": "Region Id"
+        },
+        "text": {
+          "description": "Text content of this span",
+          "title": "Text",
+          "type": "string"
+        },
+        "is_continuation": {
+          "default": false,
+          "description": "True if this span continues from a previous page",
+          "title": "Is Continuation",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "page",
+        "text"
+      ],
+      "title": "ContentSpan",
+      "type": "object"
+    },
+    "CrossReference": {
+      "additionalProperties": true,
+      "description": "An internal cross-reference within the document (e.g., 'see section 3').",
+      "properties": {
+        "id": {
+          "description": "Unique identifier for this element",
+          "title": "Id",
+          "type": "string"
+        },
+        "verifications": {
+          "description": "Verification records from reviewers",
+          "items": {
+            "$ref": "#/$defs/VerificationRecord"
+          },
+          "title": "Verifications",
+          "type": "array"
+        },
+        "tags": {
+          "description": "Ad-hoc grouping tags",
+          "items": {
+            "type": "string"
+          },
+          "title": "Tags",
+          "type": "array"
+        },
+        "element_type": {
+          "const": "cross_reference",
+          "default": "cross_reference",
+          "title": "Element Type",
+          "type": "string"
+        },
+        "raw_text": {
+          "description": "Cross-reference text as displayed",
+          "title": "Raw Text",
+          "type": "string"
+        },
+        "target_page": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Target page index (0-based)",
+          "title": "Target Page"
+        },
+        "target_section_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Target section element ID",
+          "title": "Target Section Id"
+        },
+        "page": {
+          "description": "Page where reference appears (0-based)",
+          "title": "Page",
+          "type": "integer"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Region containing the reference",
+          "title": "Region Id"
+        }
+      },
+      "required": [
+        "id",
+        "raw_text",
+        "page"
+      ],
+      "title": "CrossReference",
+      "type": "object"
+    },
+    "DocumentGT": {
+      "additionalProperties": true,
+      "description": "Document-level ground truth: the companion to page-level PageGT.\n\nCaptures cross-page semantic elements, document metadata, structural\nhierarchy, and inter-element relationships. Forward-compatible via\nextra=\"allow\".",
+      "properties": {
+        "schema_version": {
+          "default": "1.0.0",
+          "description": "Schema version for migration support",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "document_id": {
+          "description": "Unique document identifier",
+          "title": "Document Id",
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/$defs/DocumentSource",
+          "description": "Document source metadata and bibliographic info"
+        },
+        "page_range": {
+          "anyOf": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "integer"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "(first_page, last_page) 0-based page indices",
+          "title": "Page Range"
+        },
+        "elements": {
+          "description": "Cross-page semantic elements (discriminated union)",
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "bibliography_entry": "#/$defs/BibEntry",
+                "citation": "#/$defs/Citation",
+                "cross_reference": "#/$defs/CrossReference",
+                "endnote": "#/$defs/Endnote",
+                "footnote": "#/$defs/Footnote",
+                "marginal_reference": "#/$defs/MarginalReference",
+                "page_number_annotation": "#/$defs/PageNumberAnnotation",
+                "section": "#/$defs/Section",
+                "sous_rature": "#/$defs/SousRature"
+              },
+              "propertyName": "element_type"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/Footnote"
+              },
+              {
+                "$ref": "#/$defs/Endnote"
+              },
+              {
+                "$ref": "#/$defs/Citation"
+              },
+              {
+                "$ref": "#/$defs/BibEntry"
+              },
+              {
+                "$ref": "#/$defs/Section"
+              },
+              {
+                "$ref": "#/$defs/SousRature"
+              },
+              {
+                "$ref": "#/$defs/CrossReference"
+              },
+              {
+                "$ref": "#/$defs/MarginalReference"
+              },
+              {
+                "$ref": "#/$defs/PageNumberAnnotation"
+              }
+            ]
+          },
+          "title": "Elements",
+          "type": "array"
+        },
+        "formatting": {
+          "description": "Text formatting annotations",
+          "items": {
+            "$ref": "#/$defs/FormattingAnnotation"
+          },
+          "title": "Formatting",
+          "type": "array"
+        },
+        "structure": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DocumentStructure"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Document structure (ToC, sections)"
+        },
+        "relationships": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DocumentRelationships"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Inter-element relationships"
+        },
+        "config_profile": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Configuration profile used for annotation",
+          "title": "Config Profile"
+        },
+        "verifications": {
+          "description": "Document-level verification records",
+          "items": {
+            "$ref": "#/$defs/VerificationRecord"
+          },
+          "title": "Verifications",
+          "type": "array"
+        }
+      },
+      "required": [
+        "document_id",
+        "source"
+      ],
+      "title": "DocumentGT",
+      "type": "object"
+    },
+    "DocumentRelationships": {
+      "description": "Cross-element relationships within a document.\n\nLinks between footnote markers and content, citations and bibliography\nentries, and cross-reference element IDs.",
+      "properties": {
+        "footnote_links": {
+          "description": "Footnote/endnote marker-to-content links",
+          "items": {
+            "$ref": "#/$defs/FootnoteLink"
+          },
+          "title": "Footnote Links",
+          "type": "array"
+        },
+        "citation_bib_links": {
+          "description": "Citation-to-bibliography entry links",
+          "items": {
+            "$ref": "#/$defs/CitationBibLink"
+          },
+          "title": "Citation Bib Links",
+          "type": "array"
+        },
+        "cross_refs": {
+          "description": "Cross-reference element IDs",
+          "items": {
+            "type": "string"
+          },
+          "title": "Cross Refs",
+          "type": "array"
+        }
+      },
+      "title": "DocumentRelationships",
+      "type": "object"
+    },
+    "DocumentSource": {
+      "description": "Document source metadata and bibliographic information.",
+      "properties": {
+        "pdf": {
+          "description": "PDF filename or path",
+          "title": "Pdf",
+          "type": "string"
+        },
+        "title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Document title",
+          "title": "Title"
+        },
+        "author": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Primary author",
+          "title": "Author"
+        },
+        "translator": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Translator (if translated work)",
+          "title": "Translator"
+        },
+        "year": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Publication year",
+          "title": "Year"
+        },
+        "publisher": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Publisher name",
+          "title": "Publisher"
+        },
+        "isbn": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "ISBN identifier",
+          "title": "Isbn"
+        },
+        "doi": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "DOI identifier",
+          "title": "Doi"
+        },
+        "document_type": {
+          "anyOf": [
+            {
+              "enum": [
+                "book",
+                "article",
+                "essay",
+                "report",
+                "translation",
+                "other"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Document classification",
+          "title": "Document Type"
+        }
+      },
+      "required": [
+        "pdf"
+      ],
+      "title": "DocumentSource",
+      "type": "object"
+    },
+    "DocumentStructure": {
+      "description": "Document structural hierarchy: table of contents and section organization.",
+      "properties": {
+        "toc": {
+          "description": "Table of contents entries",
+          "items": {
+            "$ref": "#/$defs/ToCEntry"
+          },
+          "title": "Toc",
+          "type": "array"
+        },
+        "sections": {
+          "description": "Section element IDs (referencing Section elements)",
+          "items": {
+            "type": "string"
+          },
+          "title": "Sections",
+          "type": "array"
+        },
+        "front_matter": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Front matter metadata (preface, dedication, etc.)",
+          "title": "Front Matter"
+        },
+        "back_matter": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Back matter metadata (index, appendices, etc.)",
+          "title": "Back Matter"
+        }
+      },
+      "title": "DocumentStructure",
+      "type": "object"
+    },
+    "Endnote": {
+      "additionalProperties": true,
+      "description": "An endnote with marker location and content spans.\n\nSimilar to Footnote but collected at end of chapter/book rather than page bottom.",
+      "properties": {
+        "id": {
+          "description": "Unique identifier for this element",
+          "title": "Id",
+          "type": "string"
+        },
+        "verifications": {
+          "description": "Verification records from reviewers",
+          "items": {
+            "$ref": "#/$defs/VerificationRecord"
+          },
+          "title": "Verifications",
+          "type": "array"
+        },
+        "tags": {
+          "description": "Ad-hoc grouping tags",
+          "items": {
+            "type": "string"
+          },
+          "title": "Tags",
+          "type": "array"
+        },
+        "element_type": {
+          "const": "endnote",
+          "default": "endnote",
+          "title": "Element Type",
+          "type": "string"
+        },
+        "marker": {
+          "$ref": "#/$defs/MarkerInfo",
+          "description": "Marker location in source text"
+        },
+        "content": {
+          "description": "Content spans (may cross pages)",
+          "items": {
+            "$ref": "#/$defs/ContentSpan"
+          },
+          "title": "Content",
+          "type": "array"
+        },
+        "note_source": {
+          "anyOf": [
+            {
+              "enum": [
+                "author",
+                "translator",
+                "editor"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Who wrote the note",
+          "title": "Note Source"
+        },
+        "section_title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Title of the endnote section",
+          "title": "Section Title"
+        }
+      },
+      "required": [
+        "id",
+        "marker",
+        "content"
+      ],
+      "title": "Endnote",
+      "type": "object"
+    },
+    "Footnote": {
+      "additionalProperties": true,
+      "description": "A footnote with marker location and content spans.\n\nSupports multi-page footnotes via ContentSpan list with is_continuation flags.",
+      "properties": {
+        "id": {
+          "description": "Unique identifier for this element",
+          "title": "Id",
+          "type": "string"
+        },
+        "verifications": {
+          "description": "Verification records from reviewers",
+          "items": {
+            "$ref": "#/$defs/VerificationRecord"
+          },
+          "title": "Verifications",
+          "type": "array"
+        },
+        "tags": {
+          "description": "Ad-hoc grouping tags",
+          "items": {
+            "type": "string"
+          },
+          "title": "Tags",
+          "type": "array"
+        },
+        "element_type": {
+          "const": "footnote",
+          "default": "footnote",
+          "title": "Element Type",
+          "type": "string"
+        },
+        "marker": {
+          "$ref": "#/$defs/MarkerInfo",
+          "description": "Marker location in source text"
+        },
+        "content": {
+          "description": "Content spans (may cross pages)",
+          "items": {
+            "$ref": "#/$defs/ContentSpan"
+          },
+          "title": "Content",
+          "type": "array"
+        },
+        "note_source": {
+          "anyOf": [
+            {
+              "enum": [
+                "author",
+                "translator",
+                "editor"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Who wrote the note",
+          "title": "Note Source"
+        },
+        "location": {
+          "description": "Where the note content appears",
+          "enum": [
+            "page_bottom",
+            "endnote",
+            "margin"
+          ],
+          "title": "Location",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "marker",
+        "content",
+        "location"
+      ],
+      "title": "Footnote",
+      "type": "object"
+    },
+    "FootnoteLink": {
+      "description": "Link between a footnote marker and its content element.",
+      "properties": {
+        "marker_id": {
+          "description": "Element ID of the marker location",
+          "title": "Marker Id",
+          "type": "string"
+        },
+        "content_id": {
+          "description": "Element ID of the content element",
+          "title": "Content Id",
+          "type": "string"
+        },
+        "link_type": {
+          "default": "footnote",
+          "description": "Type of note link",
+          "enum": [
+            "footnote",
+            "endnote"
+          ],
+          "title": "Link Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "marker_id",
+        "content_id"
+      ],
+      "title": "FootnoteLink",
+      "type": "object"
+    },
+    "FormattingAnnotation": {
+      "additionalProperties": true,
+      "description": "A text formatting/decoration annotation with character-level positioning.\n\nTracks formatting at character granularity within a page region, enabling\nprecise reconstruction of bold, italic, small caps, and other decorations.",
+      "properties": {
+        "id": {
+          "description": "Unique identifier for this element",
+          "title": "Id",
+          "type": "string"
+        },
+        "verifications": {
+          "description": "Verification records from reviewers",
+          "items": {
+            "$ref": "#/$defs/VerificationRecord"
+          },
+          "title": "Verifications",
+          "type": "array"
+        },
+        "tags": {
+          "description": "Ad-hoc grouping tags",
+          "items": {
+            "type": "string"
+          },
+          "title": "Tags",
+          "type": "array"
+        },
+        "formatting_type": {
+          "$ref": "#/$defs/FormattingType",
+          "description": "Type of text formatting (bold, italic, etc.)"
+        },
+        "page": {
+          "description": "Page where formatting appears (0-based)",
+          "title": "Page",
+          "type": "integer"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Region containing the formatted text",
+          "title": "Region Id"
+        },
+        "char_offset": {
+          "description": "Character offset of formatting start within region text",
+          "title": "Char Offset",
+          "type": "integer"
+        },
+        "char_length": {
+          "description": "Length of formatted text span in characters",
+          "title": "Char Length",
+          "type": "integer"
+        },
+        "text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The formatted text span (optional, for convenience)",
+          "title": "Text"
+        }
+      },
+      "required": [
+        "id",
+        "formatting_type",
+        "page",
+        "char_offset",
+        "char_length"
+      ],
+      "title": "FormattingAnnotation",
+      "type": "object"
+    },
+    "FormattingType": {
+      "description": "Text formatting/decoration types.",
+      "enum": [
+        "bold",
+        "italic",
+        "underline",
+        "strikethrough",
+        "small_caps",
+        "superscript"
+      ],
+      "title": "FormattingType",
+      "type": "string"
+    },
+    "GTProfile": {
+      "additionalProperties": true,
+      "description": "Configuration profile defining active annotation types and validation.\n\nA GTProfile captures which labels from the universal superset are active\nfor a specific use case. The three default profiles are:\n- extraction-eval: Text extraction quality evaluation\n- layout-annotation: Visual layout detection (IoU, mAP)\n- full-scholarly: Comprehensive scholarly annotation\n\nProfiles are loaded from layered YAML files via the config loader.",
+      "properties": {
+        "name": {
+          "default": "base",
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "default": "",
+          "title": "Description",
+          "type": "string"
+        },
+        "inherits": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Inherits"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "spatial_labels": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Spatial Labels",
+          "type": "array",
+          "uniqueItems": true
+        },
+        "semantic_types": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Semantic Types",
+          "type": "array",
+          "uniqueItems": true
+        },
+        "formatting_types": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Formatting Types",
+          "type": "array",
+          "uniqueItems": true
+        },
+        "document_types": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Document Types",
+          "type": "array",
+          "uniqueItems": true
+        },
+        "validation": {
+          "$ref": "#/$defs/ValidationConfig"
+        }
+      },
+      "title": "GTProfile",
+      "type": "object"
+    },
+    "MarginalRefType": {
+      "description": "Marginal reference system sublabels.",
+      "enum": [
+        "stephanus",
+        "bekker",
+        "akademie",
+        "custom"
+      ],
+      "title": "MarginalRefType",
+      "type": "string"
+    },
+    "MarginalReference": {
+      "additionalProperties": true,
+      "description": "A marginal reference system annotation (Stephanus, Bekker, Akademie, custom).\n\nPhilosophy texts use standard reference systems in margins: Stephanus pagination\nfor Plato, Bekker numbers for Aristotle, Akademie edition numbers for Kant.",
+      "properties": {
+        "id": {
+          "description": "Unique identifier for this element",
+          "title": "Id",
+          "type": "string"
+        },
+        "verifications": {
+          "description": "Verification records from reviewers",
+          "items": {
+            "$ref": "#/$defs/VerificationRecord"
+          },
+          "title": "Verifications",
+          "type": "array"
+        },
+        "tags": {
+          "description": "Ad-hoc grouping tags",
+          "items": {
+            "type": "string"
+          },
+          "title": "Tags",
+          "type": "array"
+        },
+        "element_type": {
+          "const": "marginal_reference",
+          "default": "marginal_reference",
+          "title": "Element Type",
+          "type": "string"
+        },
+        "raw_text": {
+          "description": "Reference text as displayed in margin",
+          "title": "Raw Text",
+          "type": "string"
+        },
+        "ref_type": {
+          "$ref": "#/$defs/MarginalRefType",
+          "description": "Type of marginal reference system"
+        },
+        "page": {
+          "description": "Page where reference appears (0-based)",
+          "title": "Page",
+          "type": "integer"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Region containing the reference",
+          "title": "Region Id"
+        }
+      },
+      "required": [
+        "id",
+        "raw_text",
+        "ref_type",
+        "page"
+      ],
+      "title": "MarginalReference",
+      "type": "object"
+    },
+    "MarkerInfo": {
+      "description": "Information about a footnote/endnote marker in the source text.",
+      "properties": {
+        "text": {
+          "description": "Marker text as displayed (e.g., '1', '*', 'a')",
+          "title": "Text",
+          "type": "string"
+        },
+        "page": {
+          "description": "0-based page index where marker appears",
+          "title": "Page",
+          "type": "integer"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Region ID containing the marker",
+          "title": "Region Id"
+        },
+        "char_offset": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Character offset of marker within region text",
+          "title": "Char Offset"
+        }
+      },
+      "required": [
+        "text",
+        "page"
+      ],
+      "title": "MarkerInfo",
+      "type": "object"
+    },
+    "PageGT": {
+      "additionalProperties": true,
+      "description": "Page-level ground truth containing spatial annotations.\n\nEach page file captures regions (spatial + semantic annotations),\nreading order, quality metadata, and page-level verifications.\nForward-compatible via extra=\"allow\".",
+      "properties": {
+        "schema_version": {
+          "default": "1.0.0",
+          "description": "Schema version for migration support",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "page_index": {
+          "description": "0-based PDF page index",
+          "title": "Page Index",
+          "type": "integer"
+        },
+        "page_label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Printed page number (e.g., '127', 'xiv')",
+          "title": "Page Label"
+        },
+        "dimensions": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "type": "number"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Page dimensions, e.g., {'width': 612, 'height': 792}",
+          "title": "Dimensions"
+        },
+        "regions": {
+          "description": "Spatial annotations",
+          "items": {
+            "$ref": "#/$defs/Region"
+          },
+          "title": "Regions",
+          "type": "array"
+        },
+        "reading_order": {
+          "description": "Ordered list of region IDs",
+          "items": {
+            "type": "string"
+          },
+          "title": "Reading Order",
+          "type": "array"
+        },
+        "quality": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PageQuality"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Page quality metadata"
+        },
+        "verifications": {
+          "description": "Page-level verification records",
+          "items": {
+            "$ref": "#/$defs/VerificationRecord"
+          },
+          "title": "Verifications",
+          "type": "array"
+        }
+      },
+      "required": [
+        "page_index"
+      ],
+      "title": "PageGT",
+      "type": "object"
+    },
+    "PageNumberAnnotation": {
+      "additionalProperties": true,
+      "description": "A page number annotation capturing the display format and mapping.\n\nMaps between printed page labels (roman, arabic) and PDF page indices.",
+      "properties": {
+        "id": {
+          "description": "Unique identifier for this element",
+          "title": "Id",
+          "type": "string"
+        },
+        "verifications": {
+          "description": "Verification records from reviewers",
+          "items": {
+            "$ref": "#/$defs/VerificationRecord"
+          },
+          "title": "Verifications",
+          "type": "array"
+        },
+        "tags": {
+          "description": "Ad-hoc grouping tags",
+          "items": {
+            "type": "string"
+          },
+          "title": "Tags",
+          "type": "array"
+        },
+        "element_type": {
+          "const": "page_number_annotation",
+          "default": "page_number_annotation",
+          "title": "Element Type",
+          "type": "string"
+        },
+        "display_text": {
+          "description": "Page number as displayed (e.g., 'xiv', '127')",
+          "title": "Display Text",
+          "type": "string"
+        },
+        "number_type": {
+          "description": "Type of page numbering system",
+          "enum": [
+            "arabic",
+            "roman",
+            "mixed"
+          ],
+          "title": "Number Type",
+          "type": "string"
+        },
+        "page_index": {
+          "description": "0-based PDF page index",
+          "title": "Page Index",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "display_text",
+        "number_type",
+        "page_index"
+      ],
+      "title": "PageNumberAnnotation",
+      "type": "object"
+    },
+    "PageQuality": {
+      "description": "Page-level quality assessment metadata.",
+      "properties": {
+        "scan_quality": {
+          "anyOf": [
+            {
+              "enum": [
+                "low",
+                "medium",
+                "high"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Scan quality assessment",
+          "title": "Scan Quality"
+        },
+        "difficulty": {
+          "anyOf": [
+            {
+              "enum": [
+                "easy",
+                "medium",
+                "hard"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Annotation difficulty for test stratification",
+          "title": "Difficulty"
+        }
+      },
+      "title": "PageQuality",
+      "type": "object"
+    },
+    "ParsedCitation": {
+      "description": "Structured citation data extracted from raw citation text.",
+      "properties": {
+        "author": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Author name(s)",
+          "title": "Author"
+        },
+        "year": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Publication year",
+          "title": "Year"
+        },
+        "page_ref": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Page reference within cited work",
+          "title": "Page Ref"
+        },
+        "work": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Work title or abbreviation (e.g., 'SZ', 'KrV')",
+          "title": "Work"
+        }
+      },
+      "title": "ParsedCitation",
+      "type": "object"
+    },
+    "Region": {
+      "additionalProperties": true,
+      "description": "A spatial region on a page with optional semantic annotations.\n\nInherits GTElement's id, verifications, tags, and extra=\"allow\".",
+      "properties": {
+        "id": {
+          "description": "Unique identifier for this element",
+          "title": "Id",
+          "type": "string"
+        },
+        "verifications": {
+          "description": "Verification records from reviewers",
+          "items": {
+            "$ref": "#/$defs/VerificationRecord"
+          },
+          "title": "Verifications",
+          "type": "array"
+        },
+        "tags": {
+          "description": "Ad-hoc grouping tags",
+          "items": {
+            "type": "string"
+          },
+          "title": "Tags",
+          "type": "array"
+        },
+        "label": {
+          "$ref": "#/$defs/SpatialLabel",
+          "description": "Spatial layout type (where on page)"
+        },
+        "bbox": {
+          "$ref": "#/$defs/BBox",
+          "description": "Normalized bounding box [x0, y0, x1, y1]"
+        },
+        "text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Transcribed text content (optional)",
+          "title": "Text"
+        },
+        "text_anchors": {
+          "description": "Notable text spans within region",
+          "items": {
+            "type": "string"
+          },
+          "title": "Text Anchors",
+          "type": "array"
+        },
+        "semantic_labels": {
+          "description": "Semantic meaning (independent dimension from spatial label)",
+          "items": {
+            "$ref": "#/$defs/SemanticType"
+          },
+          "title": "Semantic Labels",
+          "type": "array"
+        },
+        "reading_order_index": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Position in reading order (optional)",
+          "title": "Reading Order Index"
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "bbox"
+      ],
+      "title": "Region",
+      "type": "object"
+    },
+    "Section": {
+      "additionalProperties": true,
+      "description": "A document section/chapter with hierarchical structure.",
+      "properties": {
+        "id": {
+          "description": "Unique identifier for this element",
+          "title": "Id",
+          "type": "string"
+        },
+        "verifications": {
+          "description": "Verification records from reviewers",
+          "items": {
+            "$ref": "#/$defs/VerificationRecord"
+          },
+          "title": "Verifications",
+          "type": "array"
+        },
+        "tags": {
+          "description": "Ad-hoc grouping tags",
+          "items": {
+            "type": "string"
+          },
+          "title": "Tags",
+          "type": "array"
+        },
+        "element_type": {
+          "const": "section",
+          "default": "section",
+          "title": "Element Type",
+          "type": "string"
+        },
+        "title": {
+          "description": "Section title text",
+          "title": "Title",
+          "type": "string"
+        },
+        "level": {
+          "description": "Nesting level (0 = top-level)",
+          "title": "Level",
+          "type": "integer"
+        },
+        "page_start": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "First page of section (0-based)",
+          "title": "Page Start"
+        },
+        "page_end": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Last page of section (0-based)",
+          "title": "Page End"
+        },
+        "children": {
+          "description": "Child section element IDs",
+          "items": {
+            "type": "string"
+          },
+          "title": "Children",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "level"
+      ],
+      "title": "Section",
+      "type": "object"
+    },
+    "SemanticType": {
+      "description": "Semantic element types -- WHAT it means.\n\nIndependent dimension from spatial labels. A region can be spatially\n'text_block' and semantically 'footnote'.",
+      "enum": [
+        "footnote",
+        "endnote",
+        "citation",
+        "bibliography_entry",
+        "section",
+        "sous_rature",
+        "cross_reference",
+        "marginal_reference",
+        "page_number_annotation"
+      ],
+      "title": "SemanticType",
+      "type": "string"
+    },
+    "SousRature": {
+      "additionalProperties": true,
+      "description": "Text written 'under erasure' (sous rature) -- a Derridean philosophical concept.\n\nRepresents text that is simultaneously present and crossed out, indicating\na term that is inadequate yet necessary. Common in continental philosophy.",
+      "properties": {
+        "id": {
+          "description": "Unique identifier for this element",
+          "title": "Id",
+          "type": "string"
+        },
+        "verifications": {
+          "description": "Verification records from reviewers",
+          "items": {
+            "$ref": "#/$defs/VerificationRecord"
+          },
+          "title": "Verifications",
+          "type": "array"
+        },
+        "tags": {
+          "description": "Ad-hoc grouping tags",
+          "items": {
+            "type": "string"
+          },
+          "title": "Tags",
+          "type": "array"
+        },
+        "element_type": {
+          "const": "sous_rature",
+          "default": "sous_rature",
+          "title": "Element Type",
+          "type": "string"
+        },
+        "text": {
+          "description": "The text under erasure",
+          "title": "Text",
+          "type": "string"
+        },
+        "page": {
+          "description": "Page where it appears (0-based)",
+          "title": "Page",
+          "type": "integer"
+        },
+        "region_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Region containing the text",
+          "title": "Region Id"
+        },
+        "char_offset": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Character offset within region text",
+          "title": "Char Offset"
+        },
+        "char_length": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Length of crossed-out text in characters",
+          "title": "Char Length"
+        }
+      },
+      "required": [
+        "id",
+        "text",
+        "page"
+      ],
+      "title": "SousRature",
+      "type": "object"
+    },
+    "SpatialLabel": {
+      "description": "Spatial layout region types -- WHERE on the page.\n\nUnified from ScholarDoc region types and CryptOfCogito region labels.",
+      "enum": [
+        "text_block",
+        "footnote_area",
+        "endnote_area",
+        "page_header",
+        "page_footer",
+        "page_number",
+        "section_header",
+        "title",
+        "block_quote",
+        "list_item",
+        "table",
+        "figure",
+        "caption",
+        "formula",
+        "marginal_note",
+        "bibliography_area",
+        "footnote_continuation"
+      ],
+      "title": "SpatialLabel",
+      "type": "string"
+    },
+    "ToCEntry": {
+      "description": "A single entry in a table of contents.",
+      "properties": {
+        "title": {
+          "description": "Section/chapter title",
+          "title": "Title",
+          "type": "string"
+        },
+        "level": {
+          "description": "Nesting level (0 = top-level)",
+          "title": "Level",
+          "type": "integer"
+        },
+        "page_label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Printed page number (e.g., '127', 'xiv')",
+          "title": "Page Label"
+        },
+        "page_index": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "0-based PDF page index",
+          "title": "Page Index"
+        }
+      },
+      "required": [
+        "title",
+        "level"
+      ],
+      "title": "ToCEntry",
+      "type": "object"
+    },
+    "ValidationConfig": {
+      "description": "Validation requirements for a GT profile.\n\nControls what is required when validating GT annotations.\nDifferent profiles have different requirements -- e.g., layout-annotation\nrequires bbox but not text, while extraction-eval requires text.",
+      "properties": {
+        "require_reading_order": {
+          "default": false,
+          "title": "Require Reading Order",
+          "type": "boolean"
+        },
+        "require_text": {
+          "default": false,
+          "title": "Require Text",
+          "type": "boolean"
+        },
+        "require_bbox": {
+          "default": true,
+          "title": "Require Bbox",
+          "type": "boolean"
+        },
+        "confidence_threshold": {
+          "default": 0.8,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence Threshold",
+          "type": "number"
+        }
+      },
+      "title": "ValidationConfig",
+      "type": "object"
+    },
+    "VerificationRecord": {
+      "description": "A single verification event for a GT element.\n\nMultiple records per element support inter-annotator agreement.\nConfidence is a reviewer property, not an element property -- GT is truth\nby definition; confidence reflects how sure the reviewer is.",
+      "properties": {
+        "reviewer_id": {
+          "description": "Unique identifier for the reviewer (e.g., 'human_alice', 'claude_opus')",
+          "title": "Reviewer Id",
+          "type": "string"
+        },
+        "timestamp": {
+          "description": "When the verification occurred",
+          "format": "date-time",
+          "title": "Timestamp",
+          "type": "string"
+        },
+        "confidence": {
+          "description": "Reviewer's confidence in the annotation correctness",
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "notes": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Optional notes about the verification",
+          "title": "Notes"
+        }
+      },
+      "required": [
+        "reviewer_id",
+        "timestamp",
+        "confidence"
+      ],
+      "title": "VerificationRecord",
+      "type": "object"
+    }
+  },
+  "title": "ScholarGT Schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0"
+}
