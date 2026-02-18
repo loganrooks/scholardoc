@@ -55,7 +55,7 @@ Thumbs.db
 
 # Project specific
 *.pdf
-!spikes/sample_pdfs/*.pdf
+spikes/output/
 
 # Claude Code - personal settings only
 .claude/settings.local.json
