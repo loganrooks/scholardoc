@@ -5,34 +5,34 @@
 See: .planning/PROJECT.md (updated 2026-02-18)
 
 **Core value:** You cannot improve what you cannot measure. ScholarGT provides the measurement foundation.
-**Current focus:** Phase 1: Universal GT Schema -- Plan 01 complete, continuing with Plan 02
+**Current focus:** Phase 1: Universal GT Schema -- Plans 01-03 complete, continuing with Plan 04
 
 ## Current Position
 
 Phase: 1 of 5 (Universal GT Schema) -- IN PROGRESS
-Plan: 2 of 4 in current phase
+Plan: 4 of 4 in current phase
 Status: Executing
-Last activity: 2026-02-18 -- Completed 01-01 (schema foundation: base models, labels, page GT)
+Last activity: 2026-02-18 -- Completed 01-03 (config-driven label selection: profiles, loader, tests)
 
-Progress: [██░░░░░░░░] 24%
+Progress: [███████░░░] 33%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4
-- Average duration: 2.3 min
-- Total execution time: 0.15 hours
+- Total plans completed: 6
+- Average duration: 2.5 min
+- Total execution time: 0.25 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 00 | 3 | 5 min | 1.7 min |
-| 01 | 1 | 5 min | 5.0 min |
+| 01 | 3 | 13 min | 4.3 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (5min), 00-03 (2min), 00-02 (1min), 00-01 (2min)
-- Trend: Slightly longer (schema models more complex than cleanup tasks)
+- Last 5 plans: 01-03 (4min), 01-02 (4min), 01-01 (5min), 00-03 (2min), 00-02 (1min)
+- Trend: Consistent ~4min for schema plans (models + tests + profiles)
 
 *Updated after each plan completion*
 
@@ -60,6 +60,9 @@ Recent decisions affecting current work:
 - [01-01]: GTElement uses extra="allow" for forward compatibility
 - [01-01]: scholargt created as independent top-level package (imports nothing from scholardoc)
 - [01-01]: Reading order validation warns rather than errors (in-progress annotation support)
+- [01-03]: Manual YAML loading with PyYAML instead of pydantic-settings YamlConfigSettingsSource (custom merge logic needed)
+- [01-03]: pyyaml promoted from optional to core dep (config loading is essential)
+- [01-03]: GTProfile uses set[str] for label categories (enables custom project labels beyond enum)
 
 ### Pending Todos
 
@@ -75,5 +78,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Completed 01-01-PLAN.md (schema foundation)
-Resume file: .planning/phases/01-universal-gt-schema/01-01-SUMMARY.md
+Stopped at: Completed 01-03-PLAN.md (config-driven label selection)
+Resume file: .planning/phases/01-universal-gt-schema/01-03-SUMMARY.md
