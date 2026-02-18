@@ -1,0 +1,29 @@
+# Extraction evaluation profile -- focused on text extraction quality.
+# Requires text transcription and reading order for CER/WER computation.
+# Includes text-focused spatial labels and semantic types for evaluating
+# footnote, endnote, citation, section, and bibliography extraction.
+
+name: extraction-eval
+inherits: base
+description: "Text extraction quality evaluation (CER/WER, reading order accuracy)"
+
+spatial_labels:
+  - text_block
+  - footnote_area
+  - endnote_area
+  - page_header
+  - page_footer
+  - page_number
+  - section_header
+  - block_quote
+
+semantic_types:
+  - footnote
+  - endnote
+  - citation
+  - section
+  - bibliography_entry
+
+validation:
+  require_text: true
+  require_reading_order: true

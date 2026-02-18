@@ -1,0 +1,59 @@
+# Full scholarly profile -- everything enabled for comprehensive annotation.
+# All 17 spatial labels, all 9 semantic types, all 6 formatting types,
+# and all 5 document types. Higher confidence threshold (0.9) reflects
+# the rigor expected for comprehensive scholarly ground truth.
+
+name: full-scholarly
+inherits: base
+description: "Comprehensive scholarly annotation with all label types enabled"
+
+spatial_labels:
+  - text_block
+  - footnote_area
+  - endnote_area
+  - page_header
+  - page_footer
+  - page_number
+  - section_header
+  - title
+  - block_quote
+  - list_item
+  - table
+  - figure
+  - caption
+  - formula
+  - marginal_note
+  - bibliography_area
+  - footnote_continuation
+
+semantic_types:
+  - footnote
+  - endnote
+  - citation
+  - bibliography_entry
+  - section
+  - sous_rature
+  - cross_reference
+  - marginal_reference
+  - page_number_annotation
+
+formatting_types:
+  - bold
+  - italic
+  - underline
+  - strikethrough
+  - small_caps
+  - superscript
+
+document_types:
+  - metadata
+  - toc
+  - front_matter
+  - back_matter
+  - note_schema
+
+validation:
+  require_reading_order: true
+  require_text: true
+  require_bbox: true
+  confidence_threshold: 0.9

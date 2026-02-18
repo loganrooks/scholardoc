@@ -1,0 +1,34 @@
+# Layout annotation profile -- focused on visual layout detection (IoU, mAP).
+# Includes all 17 spatial labels for comprehensive layout evaluation.
+# Semantic types are empty since layout detection doesn't need semantic analysis.
+# Requires bbox and reading order but not text transcription.
+
+name: layout-annotation
+inherits: base
+description: "Visual layout detection evaluation (IoU, mAP metrics)"
+
+spatial_labels:
+  - text_block
+  - footnote_area
+  - endnote_area
+  - page_header
+  - page_footer
+  - page_number
+  - section_header
+  - title
+  - block_quote
+  - list_item
+  - table
+  - figure
+  - caption
+  - formula
+  - marginal_note
+  - bibliography_area
+  - footnote_continuation
+
+semantic_types: []
+
+validation:
+  require_bbox: true
+  require_reading_order: true
+  require_text: false
