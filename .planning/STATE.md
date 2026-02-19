@@ -12,7 +12,7 @@ See: .planning/PROJECT.md (updated 2026-02-18)
 Phase: 1.1 of 5 (Schema Taxonomy Review & Revision)
 Plan: 0 of 5 in current phase -- All planned, ready for execution
 Status: Planning complete, ready for execution
-Last activity: 2026-02-19 -- Quick task 1 complete (gap analysis), Phase 1.1 plans verified, ready for execution
+Last activity: 2026-02-19 -- Quick task 2 complete (non-conservative gap analysis v2), Phase 1.1 plans ready for execution pending SFP adoption decision
 
 Progress: [████████░░] 40%
 
@@ -43,6 +43,12 @@ Progress: [████████░░] 40%
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
 
+- [Quick-2]: Non-conservative gap analysis v2 identifies 9 Partial-Structural gaps with 7 Structural Fix Proposals
+- [Quick-2]: LayoutRegister (SFP-1) is highest priority -- 57% of corpus uses multi-register layouts
+- [Quick-2]: Text direction (SFP-2) must be explicit -- 33% of corpus is RTL, derivation from BCP 47 is insufficient
+- [Quick-2]: ScriptVariant (SFP-3) needed for Rashi vs square Hebrew -- 1,300 pages, BCP 47 cannot distinguish
+- [Quick-2]: All SFPs can be absorbed by existing Phase 1.1 plans with ~41 lines of additions
+- [Quick-2]: Decision required: which SFPs to adopt before executing Phase 1.1 plans
 - [Quick-1]: Phase 1.1 gap analysis confirms zero blocking gaps -- all 85 structural phenomena representable in v2.0.0 schema
 - [Quick-1]: Phase 1.2 conditional -- beneficial for text_direction, script_variant, register_identity but not required
 - [Quick-1]: 5 degraded gaps all covered by GTElement.extra="allow" mechanism (by design)
@@ -93,5 +99,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-19
-Stopped at: Quick task 1 complete (gap analysis). Phase 1.1 ready for execution.
-Resume file: none -- proceed to /gsd:execute-phase 1.1
+Stopped at: Quick task 2 complete (non-conservative gap analysis v2). Decision pending: SFP adoption scope before Phase 1.1 execution.
+Resume file: none -- user reviews .planning/phases/01.1-schema-taxonomy-review-revision/01.1-GAP-ANALYSIS-v2.md, decides SFP scope, then /gsd:execute-phase 1.1
