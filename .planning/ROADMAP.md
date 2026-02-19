@@ -59,13 +59,13 @@ Plans:
 - [x] 01-04-PLAN.md -- Validation, JSON Schema generation, example GT files, schema guide
 
 ### Phase 1.1: Schema Taxonomy Review & Revision (INSERTED)
-**Goal**: Redesign the schema from first principles — restructure label taxonomies by downstream evaluation task, consolidate note/footnote/endnote models, add commentary apparatus and cross-page relationship modeling, decompose CitationType into orthogonal axes, replace categorical ScanQuality with measurable attributes, make pages self-describing for partial annotation, and resolve all identified structural tensions.
+**Goal**: Redesign the schema from first principles — restructure label taxonomies by downstream evaluation task, consolidate note/footnote/endnote models, add commentary apparatus and cross-page relationship modeling, decompose CitationType into orthogonal axes, replace categorical ScanQuality with measurable attributes, make pages self-describing for partial annotation, resolve all identified structural tensions, AND incorporate SFP-1 through SFP-6 for register modeling, text direction, script variants, color annotation, index areas, and catchword references.
 **Depends on**: Phase 1 (existing schema to revise)
 **Requirements**: SCH-01 (revised), SCH-02 (revised)
 **Research**: TEI note/apparatus/annotation models, DocLayNet/PubLayNet label taxonomy comparison, philosophy-specific reference system inventory, ALTO/PAGE XML text properties and cross-page models, text span annotation patterns (standoff annotation, overlapping spans), Chicago Manual citation classification, BCP 47 language tagging, multi-label and hierarchical label patterns.
 **Success Criteria** (what must be TRUE):
   1. Every label in every enum has a clear justification tied to a specific downstream evaluation task
-  2. SpatialLabel contains only labels identifiable from visual page layout — no content-type labels; missing labels added (TOC_AREA, ABSTRACT, etc.); UNKNOWN/AMBIGUOUS available
+  2. SpatialLabel contains only labels identifiable from visual page layout — no content-type labels; missing labels added (TOC_AREA, ABSTRACT, INDEX_AREA, etc.); UNKNOWN available
   3. Footnote and Endnote consolidated into single Note model with differentiating properties (placement, scope, note_source, marker locations); NoteSchema at document level
   4. Commentary apparatus modeled separately from Notes (passage-ref based, multi-layer, external reference coordinates)
   5. CitationType decomposed into orthogonal axes (CitationFormat x ReferenceSystem x citation style) eliminating MarginalRefType duplication
@@ -75,14 +75,20 @@ Plans:
   9. Pages are self-describing: section_context with hierarchical path, cross-page dependencies declared, partial GT annotation supported
   10. DocumentRelationships eliminated -- linkage via embedded references in Note, Citation, CrossReference models; utility graph construction on demand
   11. All structural tensions resolved: LocationRef standardization, BibliographicRecord for full bibliography, semantic element extensibility, consistent cross-page patterns, FormattingType completion
-  12. All existing tests updated or replaced, all new tests pass
-  13. Config profiles, examples, and schema guide updated to match revised taxonomy
+  12. LayoutRegister model provides first-class register/column identity for multi-register documents (SFP-1, 57% corpus)
+  13. Explicit text_direction on Region and base_direction on PageGT for RTL corpus support (SFP-2, 33% corpus)
+  14. ScriptVariant enum distinguishes Rashi from square Hebrew where BCP 47 is insufficient (SFP-3, 25% corpus)
+  15. COLOR in FormattingType with color_value/color_semantic for semantic color annotation (SFP-4, 9% corpus)
+  16. INDEX_AREA spatial label for standard scholarly back-of-book indexes (SFP-5)
+  17. CATCHWORD reference system for dibbur ha-matchil commentary anchoring (SFP-6, 25% corpus)
+  18. All existing tests updated or replaced, all new tests pass
+  19. Config profiles, examples, and schema guide updated to match revised taxonomy
 **Plans**: 5 plans in 5 waves
 
 Plans:
-- [ ] 01.1-01-PLAN.md — Foundation: LocationRef in base.py, label enum overhaul in labels.py, version bump to 2.0.0
-- [ ] 01.1-02-PLAN.md — Core models: Note, Commentary, NoteSchema in semantic.py, Region continuation flags, FormattingAnnotation language field
-- [ ] 01.1-03-PLAN.md — Container models: Hybrid PageQuality, PageDependency, SectionContextEntry on PageGT, DocumentGT with NoteSchema
+- [ ] 01.1-01-PLAN.md — Foundation: LocationRef in base.py, label enum overhaul (ScriptVariant SFP-3, COLOR SFP-4, INDEX_AREA SFP-5, CATCHWORD SFP-6), version bump to 2.0.0
+- [ ] 01.1-02-PLAN.md — Core models: Note, Commentary, NoteSchema, Region flags + register_id (SFP-1) + text_direction (SFP-2), FormattingAnnotation + language + script_variant (SFP-3) + color (SFP-4)
+- [ ] 01.1-03-PLAN.md — Container models: Hybrid PageQuality, PageDependency, SectionContextEntry, PageGT base_direction (SFP-2), LayoutRegister (SFP-1) + DocumentGT registers
 - [ ] 01.1-04-PLAN.md — Integration: __init__.py re-exports, GTProfile new categories, YAML profile updates, validator updates
 - [ ] 01.1-05-PLAN.md — Verification: All tests updated, example GT files, schema.json regeneration, SCHEMA_GUIDE.md
 
