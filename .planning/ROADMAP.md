@@ -14,6 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 0: Workspace Cleanup** - Clean up workspace and organize git backlog / uncommitted changes
 - [x] **Phase 1: Universal GT Schema** - Config-driven schema with extensibility and per-element verification
+- [ ] **Phase 1.1: Schema Taxonomy Review & Revision** - Use-case-driven redesign of label taxonomy, CitationType, ScanQuality, and spatial/semantic distinction (INSERTED)
 - [ ] **Phase 2: Extractor Interface** - Pluggable extractor protocol with provenance tracking
 - [ ] **Phase 3: Experimentation & Evaluation Framework** - Structured experiments with metrics at pipeline and component level
 - [ ] **Phase 4: Annotation Tool** - Visual, ML-assisted annotation with config-driven UI
@@ -56,6 +57,30 @@ Plans:
 - [x] 01-02-PLAN.md -- Semantic models with discriminated unions, document-level GT
 - [x] 01-03-PLAN.md -- Config system with layered YAML profiles (extraction-eval, layout-annotation, full-scholarly)
 - [x] 01-04-PLAN.md -- Validation, JSON Schema generation, example GT files, schema guide
+
+### Phase 1.1: Schema Taxonomy Review & Revision (INSERTED)
+**Goal**: Redesign the schema from first principles — restructure label taxonomies by downstream evaluation task, consolidate note/footnote/endnote models, add commentary apparatus and cross-page relationship modeling, decompose CitationType into orthogonal axes, replace categorical ScanQuality with measurable attributes, make pages self-describing for partial annotation, and resolve all identified structural tensions.
+**Depends on**: Phase 1 (existing schema to revise)
+**Requirements**: SCH-01 (revised), SCH-02 (revised)
+**Research**: TEI note/apparatus/annotation models, DocLayNet/PubLayNet label taxonomy comparison, philosophy-specific reference system inventory, ALTO/PAGE XML text properties and cross-page models, text span annotation patterns (standoff annotation, overlapping spans), Chicago Manual citation classification, BCP 47 language tagging, multi-label and hierarchical label patterns.
+**Success Criteria** (what must be TRUE):
+  1. Every label in every enum has a clear justification tied to a specific downstream evaluation task
+  2. SpatialLabel contains only labels identifiable from visual page layout — no content-type labels; missing labels added (TOC_AREA, ABSTRACT, etc.); UNKNOWN/AMBIGUOUS available
+  3. Footnote and Endnote consolidated into single Note model with differentiating properties (placement, scope, note_source, marker locations); NoteSchema at document level
+  4. Commentary apparatus modeled separately from Notes (passage-ref based, multi-layer, external reference coordinates)
+  5. CitationType decomposed into orthogonal axes (CitationFormat × ReferenceSystem × citation style) eliminating MarginalRefType duplication
+  6. ScanQuality replaced with hybrid model: quick categorical + optional numeric metrics + specific artifact flags + is_scan flag
+  7. Page→Region→Text→Span hierarchy explicit; canonical text in Region.text; ContentSpan references by location (page + region_id + char_offset + char_length)
+  8. Cross-page relationships modeled explicitly: Region-level continuation flags + page-level dependency metadata (continues_from/to, unresolved_markers, orphan_continuations)
+  9. Pages are self-describing: section_context with hierarchical path, cross-page dependencies declared, partial GT annotation supported
+  10. DocumentRelationships eliminated — linkage via embedded references in Note, Citation, CrossReference models; utility graph construction on demand
+  11. All structural tensions resolved: LocationRef standardization, BibliographicRecord for full bibliography, semantic element extensibility, consistent cross-page patterns, FormattingType completion
+  12. All existing tests updated or replaced, all new tests pass
+  13. Config profiles, examples, and schema guide updated to match revised taxonomy
+**Plans**: TBD
+
+Plans:
+- [ ] TBD (run /gsd:plan-phase 1.1 to break down)
 
 ### Phase 2: Extractor Interface
 **Goal**: Any extraction pipeline can plug into ScholarGT to pre-populate draft GT, with full provenance tracking of what was auto-generated vs human-corrected.
@@ -130,12 +155,13 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 0 -> 1 -> 2 -> 3 -> 4 -> 5
+Phases execute in numeric order: 0 -> 1 -> 1.1 -> 2 -> 3 -> 4 -> 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|---------------|--------|-----------|
 | 0. Workspace Cleanup | 3/3 | Complete | 2026-02-18 |
-| 1. Universal GT Schema | 4/4 | Complete    | 2026-02-18 |
+| 1. Universal GT Schema | 4/4 | Complete | 2026-02-18 |
+| 1.1 Schema Taxonomy Review | 0/? | Not started | - |
 | 2. Extractor Interface | 0/2 | Not started | - |
 | 3. Experimentation & Evaluation | 0/2 | Not started | - |
 | 4. Annotation Tool | 0/2 | Not started | - |
