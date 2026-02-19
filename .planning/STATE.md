@@ -96,6 +96,13 @@ None yet.
 - Annotation tool (Cogito) needs design review before deciding rewrite vs adapt — Phase 4 task.
 - Repo location for ScholarGT code undecided — deferred to after design phases.
 
+### Quick Tasks Completed
+
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 1 | Gap analysis of Phase 1.1 schema vs structural phenomena | 2026-02-19 | 358691d | [1-gap-analysis](.planning/quick/1-gap-analysis/) |
+| 2 | Non-conservative gap analysis v2: structural schema review | 2026-02-19 | 08dd742 | [2-non-conservative-gap-analysis-v2-structu](.planning/quick/2-non-conservative-gap-analysis-v2-structu/) |
+
 ## Session Continuity
 
 Last session: 2026-02-19
