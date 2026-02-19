@@ -68,19 +68,23 @@ Plans:
   2. SpatialLabel contains only labels identifiable from visual page layout — no content-type labels; missing labels added (TOC_AREA, ABSTRACT, etc.); UNKNOWN/AMBIGUOUS available
   3. Footnote and Endnote consolidated into single Note model with differentiating properties (placement, scope, note_source, marker locations); NoteSchema at document level
   4. Commentary apparatus modeled separately from Notes (passage-ref based, multi-layer, external reference coordinates)
-  5. CitationType decomposed into orthogonal axes (CitationFormat × ReferenceSystem × citation style) eliminating MarginalRefType duplication
+  5. CitationType decomposed into orthogonal axes (CitationFormat x ReferenceSystem x citation style) eliminating MarginalRefType duplication
   6. ScanQuality replaced with hybrid model: quick categorical + optional numeric metrics + specific artifact flags + is_scan flag
-  7. Page→Region→Text→Span hierarchy explicit; canonical text in Region.text; ContentSpan references by location (page + region_id + char_offset + char_length)
+  7. Page->Region->Text->Span hierarchy explicit; canonical text in Region.text; ContentSpan references by location (page + region_id + char_offset + char_length)
   8. Cross-page relationships modeled explicitly: Region-level continuation flags + page-level dependency metadata (continues_from/to, unresolved_markers, orphan_continuations)
   9. Pages are self-describing: section_context with hierarchical path, cross-page dependencies declared, partial GT annotation supported
-  10. DocumentRelationships eliminated — linkage via embedded references in Note, Citation, CrossReference models; utility graph construction on demand
+  10. DocumentRelationships eliminated -- linkage via embedded references in Note, Citation, CrossReference models; utility graph construction on demand
   11. All structural tensions resolved: LocationRef standardization, BibliographicRecord for full bibliography, semantic element extensibility, consistent cross-page patterns, FormattingType completion
   12. All existing tests updated or replaced, all new tests pass
   13. Config profiles, examples, and schema guide updated to match revised taxonomy
-**Plans**: TBD
+**Plans**: 5 plans in 5 waves
 
 Plans:
-- [ ] TBD (run /gsd:plan-phase 1.1 to break down)
+- [ ] 01.1-01-PLAN.md — Foundation: LocationRef in base.py, label enum overhaul in labels.py, version bump to 2.0.0
+- [ ] 01.1-02-PLAN.md — Core models: Note, Commentary, NoteSchema in semantic.py, Region continuation flags, FormattingAnnotation language field
+- [ ] 01.1-03-PLAN.md — Container models: Hybrid PageQuality, PageDependency, SectionContextEntry on PageGT, DocumentGT with NoteSchema
+- [ ] 01.1-04-PLAN.md — Integration: __init__.py re-exports, GTProfile new categories, YAML profile updates, validator updates
+- [ ] 01.1-05-PLAN.md — Verification: All tests updated, example GT files, schema.json regeneration, SCHEMA_GUIDE.md
 
 ### Phase 2: Extractor Interface
 **Goal**: Any extraction pipeline can plug into ScholarGT to pre-populate draft GT, with full provenance tracking of what was auto-generated vs human-corrected.
@@ -161,7 +165,7 @@ Phases execute in numeric order: 0 -> 1 -> 1.1 -> 2 -> 3 -> 4 -> 5
 |-------|---------------|--------|-----------|
 | 0. Workspace Cleanup | 3/3 | Complete | 2026-02-18 |
 | 1. Universal GT Schema | 4/4 | Complete | 2026-02-18 |
-| 1.1 Schema Taxonomy Review | 0/? | Not started | - |
+| 1.1 Schema Taxonomy Review | 0/5 | Not started | - |
 | 2. Extractor Interface | 0/2 | Not started | - |
 | 3. Experimentation & Evaluation | 0/2 | Not started | - |
 | 4. Annotation Tool | 0/2 | Not started | - |
