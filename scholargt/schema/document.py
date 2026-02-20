@@ -101,7 +101,7 @@ class LayoutRegister(BaseModel):
     )
     position_convention: str | None = Field(
         default=None,
-        description="Layout convention (e.g., 'left_column', 'upper_register', 'inner_margin', 'central')",
+        description="Layout convention (e.g., 'left_column', 'upper_register')",
     )
     typeface_convention: str | None = Field(
         default=None,
@@ -151,7 +151,7 @@ class DocumentGT(BaseModel):
     )
     note_schemas: list[NoteSchema] = Field(
         default_factory=list,
-        description="Document-level note numbering conventions (multiple simultaneous schemas supported)",
+        description="Document-level note numbering conventions",
     )
     citation_style: CitationStyle | None = Field(
         default=None, description="Document-level citation convention"

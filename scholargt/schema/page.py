@@ -89,7 +89,7 @@ class PageDependency(BaseModel):
     )
     unresolved_markers: list[str] = Field(
         default_factory=list,
-        description="Body markers on this page with no corresponding note on this page (endnote refs)",
+        description="Body markers with no corresponding note on this page",
     )
     orphan_continuations: list[str] = Field(
         default_factory=list,

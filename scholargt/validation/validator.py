@@ -292,7 +292,7 @@ def validate_document_gt(
             target_section_id = elem.get("target_section_id")
             if target_section_id and target_section_id not in element_ids:
                 result.add_warning(
-                    f"CrossReference element {i} references unknown target_section_id: '{target_section_id}'"
+                    f"CrossReference {i}: unknown target_section_id: '{target_section_id}'"
                 )
 
     # COLOR formatting consistency: warn if formatting_type=color but no color_value

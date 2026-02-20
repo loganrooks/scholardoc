@@ -74,7 +74,7 @@ class Region(GTElement):
     # SFP-1: Register identity
     register_id: str | None = Field(
         default=None,
-        description="LayoutRegister this region belongs to (SFP-1, e.g., 'main_text', 'commentary_rashi')",
+        description="LayoutRegister this region belongs to (SFP-1)",
     )
 
     # SFP-2: Text direction

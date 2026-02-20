@@ -56,7 +56,7 @@ class FormattingAnnotation(GTElement):
     # SFP-3: Script variant
     script_variant: ScriptVariant | None = Field(
         default=None,
-        description="Script variant when BCP 47 script subtag is insufficient (SFP-3, e.g., Rashi vs square Hebrew)",
+        description="Script variant when BCP 47 subtag is insufficient (SFP-3)",
     )
 
     # SFP-4: Color fields

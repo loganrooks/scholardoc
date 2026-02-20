@@ -50,11 +50,11 @@ class ContentSpan(BaseModel):
     )
     char_offset: int | None = Field(
         default=None,
-        description="Character offset within region text (for endnote positioning in shared regions)",
+        description="Char offset in region text (endnote positioning)",
     )
     char_length: int | None = Field(
         default=None,
-        description="Length of this span within region text (for endnote positioning in shared regions)",
+        description="Span length in region text (endnote positioning)",
     )
 
 
@@ -95,7 +95,7 @@ class BibliographicRecord(BaseModel):
     translator: str | None = Field(default=None, description="Translator name(s)")
     work_abbreviation: str | None = Field(
         default=None,
-        description="Standard abbreviation (e.g., 'SZ' for Sein und Zeit, 'KrV' for Kritik der reinen Vernunft)",
+        description="Standard abbreviation (e.g., 'SZ', 'KrV')",
     )
 
 
@@ -132,7 +132,7 @@ class NoteSchema(BaseModel):
     ] = Field(description="Type of marker used for notes")
     symbol_sequence: list[str] | None = Field(
         default=None,
-        description="For symbolic markers: sequence of symbols (e.g., ['*', 'dagger', 'double_dagger', 'section', 'parallel', 'pilcrow'])",
+        description="Symbol sequence (e.g., '*', 'dagger', 'double_dagger')",
     )
     reset_boundary: Literal["page", "chapter", "section", "essay", "document"] | None = Field(
         default=None,
@@ -166,7 +166,7 @@ class Note(GTElement):
     )
     content_marker: LocationRef | None = Field(
         default=None,
-        description="Where note content begins (important for endnotes where content is distant from marker)",
+        description="Where note content begins (for distant endnotes)",
     )
     content: list[ContentSpan] = Field(
         description="Content spans (may cross pages)"
@@ -218,7 +218,7 @@ class Commentary(GTElement):
     )
     layer: str | None = Field(
         default=None,
-        description="Commentary layer identifier for multi-layer commentary (e.g., 'rashi', 'tosafot')",
+        description="Commentary layer ID (e.g., 'rashi', 'tosafot')",
     )
 
 
