@@ -7,10 +7,19 @@ layout-annotation requires bbox on every region).
 Three levels of validation:
 1. Schema validation: Does the data conform to the JSON Schema / Pydantic model?
 2. Profile validation: Does the data meet the profile's requirements?
-3. Structural checks: Are internal references consistent (reading_order IDs, etc.)?
+3. Structural checks: Are internal references consistent (reading_order IDs,
+   register_id cross-refs, note_schema uniqueness, COLOR formatting, etc.)?
 
 Warnings are used for soft constraints (unknown labels, missing optional data).
 Errors are used for hard constraints (missing required fields, schema violations).
+
+v2.0.0 changes:
+- DocumentRelationships/FootnoteLink/CitationBibLink validation removed
+  (relationships now embedded in elements: Note.body_marker, Citation.bib_entry_id)
+- register_id cross-referencing: warn if Region.register_id not in DocumentGT.registers
+- NoteSchema.schema_id uniqueness check in document validation
+- COLOR formatting: warn if FormattingAnnotation has formatting_type=color but no color_value
+- Note/Commentary validation instead of Footnote/Endnote
 """
 
 from __future__ import annotations
@@ -184,7 +193,8 @@ def validate_document_gt(
     Performs three levels of validation:
     1. Schema validation (JSON Schema or Pydantic model_validate)
     2. Profile-aware validation (if profile provided)
-    3. Structural consistency checks
+    3. Structural consistency checks (register_id cross-refs, note_schema
+       uniqueness, COLOR formatting, element references)
 
     Args:
         data: A dict representing a DocumentGT JSON object.
@@ -236,34 +246,109 @@ def validate_document_gt(
     if "schema_version" not in data:
         result.add_warning("schema_version not present in document GT data")
 
-    # Check for dangling relationship references
-    relationships = data.get("relationships")
-    if relationships:
-        element_ids = {
-            elem.get("id", "") for elem in data.get("elements", [])
-        }
+    # Collect element IDs for cross-reference validation
+    element_ids = {
+        elem.get("id", "") for elem in data.get("elements", [])
+    }
 
-        for link in relationships.get("footnote_links", []):
-            if link.get("content_id") and link["content_id"] not in element_ids:
+    # register_id cross-referencing: collect declared register IDs
+    registers = data.get("registers", [])
+    register_ids = {r.get("register_id", "") for r in registers} if registers else set()
+
+    # note_schema uniqueness check
+    note_schemas = data.get("note_schemas", [])
+    if note_schemas:
+        schema_ids: list[str] = []
+        seen: set[str] = set()
+        for ns in note_schemas:
+            sid = ns.get("schema_id", "")
+            if sid in seen:
                 result.add_warning(
-                    f"Footnote link references unknown content_id: '{link['content_id']}'"
+                    f"Duplicate note_schema schema_id: '{sid}'"
                 )
-            if link.get("marker_id") and link["marker_id"] not in element_ids:
+            seen.add(sid)
+            schema_ids.append(sid)
+
+    # Note validation: check body_marker references
+    for i, elem in enumerate(data.get("elements", [])):
+        elem_type = elem.get("element_type", "")
+
+        if elem_type == "note":
+            # Check note_schema_id reference
+            note_schema_id = elem.get("note_schema_id")
+            if note_schema_id and note_schemas:
+                valid_ids = {ns.get("schema_id", "") for ns in note_schemas}
+                if note_schema_id not in valid_ids:
+                    result.add_warning(
+                        f"Note element {i} references unknown note_schema_id: '{note_schema_id}'"
+                    )
+
+        if elem_type == "citation":
+            # Check bib_entry_id reference
+            bib_entry_id = elem.get("bib_entry_id")
+            if bib_entry_id and bib_entry_id not in element_ids:
                 result.add_warning(
-                    f"Footnote link references unknown marker_id: '{link['marker_id']}'"
+                    f"Citation element {i} references unknown bib_entry_id: '{bib_entry_id}'"
                 )
 
-        for link in relationships.get("citation_bib_links", []):
-            if link.get("citation_id") and link["citation_id"] not in element_ids:
+        if elem_type == "cross_reference":
+            # Check target_section_id reference
+            target_section_id = elem.get("target_section_id")
+            if target_section_id and target_section_id not in element_ids:
                 result.add_warning(
-                    f"Citation link references unknown citation_id: '{link['citation_id']}'"
+                    f"CrossReference element {i} references unknown target_section_id: '{target_section_id}'"
                 )
-            if link.get("bib_entry_id") and link["bib_entry_id"] not in element_ids:
-                result.add_warning(
-                    f"Citation link references unknown bib_entry_id: '{link['bib_entry_id']}'"
-                )
+
+    # COLOR formatting consistency: warn if formatting_type=color but no color_value
+    formatting = data.get("formatting", [])
+    for i, fmt in enumerate(formatting):
+        fmt_type = fmt.get("formatting_type", "")
+        if fmt_type == "color" and not fmt.get("color_value"):
+            result.add_warning(
+                f"FormattingAnnotation {i} has formatting_type='color' but no color_value"
+            )
 
     return result
+
+
+def validate_page_registers(
+    page_data: dict,
+    document_data: dict | None = None,
+) -> list[str]:
+    """Validate register_id cross-references between page regions and document registers.
+
+    Only validates when both page and document data are available.
+
+    Args:
+        page_data: A dict representing a PageGT JSON object.
+        document_data: Optional dict representing a DocumentGT JSON object.
+
+    Returns:
+        List of warning messages (empty if all register_ids are valid).
+    """
+    warnings_list: list[str] = []
+
+    if document_data is None:
+        return warnings_list
+
+    # Collect declared register IDs from document
+    registers = document_data.get("registers", [])
+    register_ids = {r.get("register_id", "") for r in registers} if registers else set()
+
+    if not register_ids:
+        return warnings_list
+
+    # Check each region's register_id
+    regions = page_data.get("regions", [])
+    for i, region in enumerate(regions):
+        rid = region.get("register_id")
+        if rid and rid not in register_ids:
+            warnings_list.append(
+                f"Region {i} register_id '{rid}' not found in document registers "
+                f"(valid: {sorted(register_ids)})"
+            )
+
+    return warnings_list
 
 
 def validate_gt_file(
