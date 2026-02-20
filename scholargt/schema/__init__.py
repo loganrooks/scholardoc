@@ -3,38 +3,40 @@
 Re-exports all public models for convenient imports:
 
     from scholargt.schema import PageGT, DocumentGT, SemanticElement, Region
+
+v2.0.0: Note replaces Footnote+Endnote, Commentary added, LayoutRegister (SFP-1),
+LocationRef standardizes position references, label enums reorganized.
 """
 
-from scholargt.schema.base import BBox, GTElement, VerificationRecord
+from scholargt.schema.base import BBox, GTElement, LocationRef, VerificationRecord
 from scholargt.schema.document import (
-    CitationBibLink,
     DocumentGT,
-    DocumentRelationships,
     DocumentSource,
     DocumentStructure,
-    FootnoteLink,
+    LayoutRegister,
 )
 from scholargt.schema.formatting import FormattingAnnotation
 from scholargt.schema.labels import (
-    CitationType,
-    Difficulty,
-    DocumentType,
+    CitationFormat,
+    CitationStyle,
+    DocumentSectionType,
     FormattingType,
-    MarginalRefType,
-    ScanQuality,
+    ReferenceSystem,
+    ScriptVariant,
     SemanticType,
     SpatialLabel,
 )
-from scholargt.schema.page import PageGT, PageQuality
+from scholargt.schema.page import PageDependency, PageGT, PageQuality, SectionContextEntry
 from scholargt.schema.semantic import (
     BibEntry,
+    BibliographicRecord,
     Citation,
+    Commentary,
     ContentSpan,
     CrossReference,
-    Endnote,
-    Footnote,
     MarginalReference,
-    MarkerInfo,
+    Note,
+    NoteSchema,
     PageNumberAnnotation,
     ParsedCitation,
     Section,
@@ -52,42 +54,45 @@ __all__ = [
     "BBox",
     "GTElement",
     "VerificationRecord",
+    "LocationRef",
     # Spatial
     "Region",
     # Page-level
     "PageGT",
     "PageQuality",
+    "PageDependency",
+    "SectionContextEntry",
     # Semantic elements
-    "BibEntry",
+    "Note",
+    "Commentary",
     "Citation",
-    "ContentSpan",
-    "CrossReference",
-    "Endnote",
-    "Footnote",
-    "MarginalReference",
-    "MarkerInfo",
-    "PageNumberAnnotation",
-    "ParsedCitation",
+    "BibEntry",
     "Section",
-    "SemanticElement",
     "SousRature",
+    "CrossReference",
+    "MarginalReference",
+    "PageNumberAnnotation",
+    "SemanticElement",
+    # Supporting models
+    "ContentSpan",
+    "ParsedCitation",
+    "BibliographicRecord",
     "ToCEntry",
+    "NoteSchema",
     # Formatting
     "FormattingAnnotation",
     # Document-level
-    "CitationBibLink",
     "DocumentGT",
-    "DocumentRelationships",
     "DocumentSource",
     "DocumentStructure",
-    "FootnoteLink",
+    "LayoutRegister",
     # Label enums
-    "CitationType",
-    "Difficulty",
-    "DocumentType",
-    "FormattingType",
-    "MarginalRefType",
-    "ScanQuality",
-    "SemanticType",
     "SpatialLabel",
+    "SemanticType",
+    "FormattingType",
+    "ScriptVariant",
+    "CitationFormat",
+    "ReferenceSystem",
+    "CitationStyle",
+    "DocumentSectionType",
 ]
