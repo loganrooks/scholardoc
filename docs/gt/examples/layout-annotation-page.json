@@ -1,11 +1,12 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "2.0.0",
   "page_index": 127,
   "page_label": "104",
   "dimensions": {
     "width": 612.0,
     "height": 792.0
   },
+  "base_direction": "ltr",
   "regions": [
     {
       "id": "r1",
@@ -91,7 +92,7 @@
       "id": "r6",
       "verifications": [],
       "tags": [],
-      "label": "footnote_area",
+      "label": "note_area",
       "bbox": {
         "x0": 0.12,
         "y0": 0.82,
@@ -134,10 +135,27 @@
       "text_anchors": [],
       "semantic_labels": [],
       "reading_order_index": null
+    },
+    {
+      "id": "r9",
+      "verifications": [],
+      "tags": [],
+      "label": "index_area",
+      "bbox": {
+        "x0": 0.7,
+        "y0": 0.02,
+        "x1": 0.9,
+        "y1": 0.05
+      },
+      "text": null,
+      "text_anchors": [],
+      "semantic_labels": [],
+      "reading_order_index": null
     }
   ],
   "reading_order": [
     "r1",
+    "r9",
     "r2",
     "r3",
     "r4",
@@ -147,8 +165,17 @@
     "r8"
   ],
   "quality": {
-    "scan_quality": "medium",
-    "difficulty": "easy"
+    "overall": "medium",
+    "is_scan": true,
+    "artifacts": [
+      "binding_shadow"
+    ],
+    "difficulty_factors": [],
+    "dpi_estimate": 300,
+    "contrast_ratio": null,
+    "skew_angle": 0.3,
+    "noise_level": null,
+    "ocr_confidence": null
   },
   "verifications": [
     {

@@ -1,10 +1,26 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "2.0.0",
   "page_index": 42,
   "page_label": "21",
   "dimensions": {
     "width": 612.0,
     "height": 792.0
+  },
+  "base_direction": "ltr",
+  "section_context": [
+    {
+      "section_id": "sec-div1-ch7",
+      "title": "Chapter VII. Being-in-the-World as Being-with and Being-one's-Self",
+      "level": 1,
+      "starts_on_this_page": true,
+      "ends_on_this_page": false
+    }
+  ],
+  "page_dependency": {
+    "continues_from_previous": false,
+    "continues_to_next": false,
+    "unresolved_markers": [],
+    "orphan_continuations": []
   },
   "regions": [
     {
@@ -39,7 +55,9 @@
       "text": "The answer to the question of the 'who' of everyday Dasein is to be obtained by analysing that kind of Being in which Dasein maintains itself proximally and for the most part. Our investigation takes its orientation from Being-in-the-world. This basic state of Dasein is no less constitutive for Dasein's Being than is its Being-in. If the 'world' has already been shown to be a constitutive item in Being-in-the-world, then the 'who' that is in the world must be clarified with equal primordiality.1",
       "text_anchors": [],
       "semantic_labels": [],
-      "reading_order_index": null
+      "reading_order_index": null,
+      "register_id": "main_text",
+      "text_direction": "ltr"
     },
     {
       "id": "r3",
@@ -61,7 +79,7 @@
       "id": "r4",
       "verifications": [],
       "tags": [],
-      "label": "footnote_area",
+      "label": "note_area",
       "bbox": {
         "x0": 0.12,
         "y0": 0.88,
@@ -81,8 +99,17 @@
     "r4"
   ],
   "quality": {
-    "scan_quality": "high",
-    "difficulty": "medium"
+    "overall": "high",
+    "is_scan": false,
+    "artifacts": [],
+    "difficulty_factors": [
+      "complex_typography"
+    ],
+    "dpi_estimate": null,
+    "contrast_ratio": null,
+    "skew_angle": null,
+    "noise_level": null,
+    "ocr_confidence": 0.97
   },
   "verifications": [
     {

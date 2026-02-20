@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "2.0.0",
   "document_id": "heidegger-bt-macquarrie-1962",
   "source": {
     "pdf": "heidegger_being_and_time_1962.pdf",
@@ -16,6 +16,37 @@
     0,
     589
   ],
+  "registers": [
+    {
+      "register_id": "main_text",
+      "name": "Main Text",
+      "author": "Martin Heidegger",
+      "language": "en",
+      "text_direction": "ltr",
+      "position_convention": "central",
+      "typeface_convention": "serif_11pt"
+    },
+    {
+      "register_id": "marginal_refs",
+      "name": "Marginal References",
+      "author": null,
+      "language": "en",
+      "text_direction": "ltr",
+      "position_convention": "outer_margin",
+      "typeface_convention": "serif_8pt"
+    }
+  ],
+  "note_schemas": [
+    {
+      "schema_id": "translator_footnotes",
+      "marker_type": "arabic",
+      "symbol_sequence": null,
+      "reset_boundary": "page",
+      "placement": "page_bottom",
+      "note_source": "translator"
+    }
+  ],
+  "citation_style": "chicago_nb",
   "elements": [
     {
       "id": "sec-intro",
@@ -54,23 +85,24 @@
       "children": []
     },
     {
-      "id": "fn-1-p21",
+      "id": "note-1-p21",
       "verifications": [
         {
           "reviewer_id": "human_alice",
           "timestamp": "2026-02-15T10:30:00",
           "confidence": 0.95,
-          "notes": "Cross-page footnote verified against print edition."
+          "notes": "Cross-page note verified against print edition."
         }
       ],
       "tags": [],
-      "element_type": "footnote",
-      "marker": {
-        "text": "1",
+      "element_type": "note",
+      "body_marker": {
         "page": 21,
         "region_id": "r2",
-        "char_offset": 342
+        "char_offset": 342,
+        "char_length": null
       },
+      "content_marker": null,
       "content": [
         {
           "page": 21,
@@ -85,8 +117,11 @@
           "is_continuation": true
         }
       ],
+      "placement": "page_bottom",
+      "scope": "page",
       "note_source": "translator",
-      "location": "page_bottom"
+      "marker_text": "1",
+      "note_schema_id": "translator_footnotes"
     },
     {
       "id": "cit-sophist-244a",
@@ -94,7 +129,8 @@
       "tags": [],
       "element_type": "citation",
       "raw_text": "Plato, Sophist 244a",
-      "citation_type": "stephanus",
+      "citation_format": "parenthetical",
+      "reference_system": "stephanus",
       "parsed": {
         "author": "Plato",
         "year": null,
@@ -129,13 +165,50 @@
       "tags": [],
       "element_type": "bibliography_entry",
       "raw_text": "Plato. Sophist. Trans. Nicholas P. White. In Plato: Complete Works, ed. John M. Cooper. Indianapolis: Hackett, 1997.",
-      "parsed": {
+      "record": {
         "author": "Plato",
+        "title": "Sophist",
         "year": "1997",
-        "page_ref": null,
-        "work": "Sophist"
+        "publisher": "Hackett",
+        "translator": "Nicholas P. White",
+        "editor": "John M. Cooper",
+        "work_abbreviation": null
       },
       "entry_index": 42
+    },
+    {
+      "id": "comm-editor-p50",
+      "verifications": [],
+      "tags": [],
+      "element_type": "commentary",
+      "source": "editor",
+      "passage_ref": "p. 50, line 15",
+      "reference_system": "catchword",
+      "target_location": {
+        "page": 50,
+        "region_id": "r2-p50",
+        "char_offset": 320,
+        "char_length": 45
+      },
+      "content": [
+        {
+          "page": 500,
+          "region_id": "r-editor-notes",
+          "text": "Heidegger's use of 'Dasein' here echoes his earlier formulation in the Marburg lectures (GA 20).",
+          "is_continuation": false
+        }
+      ],
+      "layer": null
+    },
+    {
+      "id": "mr-sz-p41",
+      "verifications": [],
+      "tags": [],
+      "element_type": "marginal_reference",
+      "raw_text": "SZ 41",
+      "reference_system": "sz_pagination",
+      "page": 65,
+      "region_id": "r-margin-p65"
     }
   ],
   "formatting": [
@@ -148,7 +221,11 @@
       "region_id": "r2-p19",
       "char_offset": 0,
       "char_length": 13,
-      "text": "Being and Time"
+      "text": "Being and Time",
+      "language": null,
+      "script_variant": null,
+      "color_value": null,
+      "color_semantic": null
     },
     {
       "id": "fmt-bold-1",
@@ -159,7 +236,60 @@
       "region_id": "r1-p21",
       "char_offset": 0,
       "char_length": 45,
-      "text": "Section 1. The Necessity for Explicitly Restating"
+      "text": "Section 1. The Necessity for Explicitly Restating",
+      "language": null,
+      "script_variant": null,
+      "color_value": null,
+      "color_semantic": null
+    },
+    {
+      "id": "fmt-italic-de",
+      "verifications": [],
+      "tags": [],
+      "formatting_type": "italic",
+      "page": 25,
+      "region_id": "r2-p25",
+      "char_offset": 150,
+      "char_length": 13,
+      "text": "Sein und Zeit",
+      "language": "de",
+      "script_variant": null,
+      "color_value": null,
+      "color_semantic": null
+    },
+    {
+      "id": "fmt-color-mishnah",
+      "verifications": [],
+      "tags": [
+        "sfp-4-example"
+      ],
+      "formatting_type": "color",
+      "page": 100,
+      "region_id": "r2-p100",
+      "char_offset": 0,
+      "char_length": 200,
+      "text": null,
+      "language": null,
+      "script_variant": null,
+      "color_value": "#0000FF",
+      "color_semantic": "mishnah_text"
+    },
+    {
+      "id": "fmt-rashi-script",
+      "verifications": [],
+      "tags": [
+        "sfp-3-example"
+      ],
+      "formatting_type": "italic",
+      "page": 100,
+      "region_id": "r3-p100",
+      "char_offset": 0,
+      "char_length": 150,
+      "text": null,
+      "language": "he",
+      "script_variant": "rashi_script",
+      "color_value": null,
+      "color_semantic": null
     }
   ],
   "structure": {
@@ -191,22 +321,6 @@
     "front_matter": null,
     "back_matter": null
   },
-  "relationships": {
-    "footnote_links": [
-      {
-        "marker_id": "fn-1-p21",
-        "content_id": "fn-1-p21",
-        "link_type": "footnote"
-      }
-    ],
-    "citation_bib_links": [
-      {
-        "citation_id": "cit-sophist-244a",
-        "bib_entry_id": "bib-plato-sophist"
-      }
-    ],
-    "cross_refs": []
-  },
   "config_profile": "full-scholarly",
   "verifications": [
     {
@@ -219,7 +333,7 @@
       "reviewer_id": "human_bob",
       "timestamp": "2026-02-16T15:00:00",
       "confidence": 0.9,
-      "notes": "Inter-annotator review: confirmed all elements and relationships."
+      "notes": "Inter-annotator review: confirmed all elements."
     }
   ]
 }
