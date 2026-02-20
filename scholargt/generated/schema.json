@@ -43,7 +43,7 @@
     },
     "BibEntry": {
       "additionalProperties": true,
-      "description": "A bibliography/references list entry.",
+      "description": "A bibliography/references list entry.\n\nv2.0.0: Uses BibliographicRecord for full bibliography fields instead of\nParsedCitation which is designed for in-text citation parsing.",
       "properties": {
         "id": {
           "description": "Unique identifier for this element",
@@ -77,17 +77,17 @@
           "title": "Raw Text",
           "type": "string"
         },
-        "parsed": {
+        "record": {
           "anyOf": [
             {
-              "$ref": "#/$defs/ParsedCitation"
+              "$ref": "#/$defs/BibliographicRecord"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "description": "Structured parsed citation data"
+          "description": "Structured bibliographic record data"
         },
         "entry_index": {
           "anyOf": [
@@ -110,9 +110,211 @@
       "title": "BibEntry",
       "type": "object"
     },
+    "BibliographicRecord": {
+      "description": "Full bibliography entry data for BibEntry.\n\nProvides richer bibliographic fields than ParsedCitation, which is designed\nfor in-text citation parsing. BibliographicRecord captures complete reference\nlist entries with all standard bibliographic metadata.",
+      "properties": {
+        "author": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Author name(s)",
+          "title": "Author"
+        },
+        "title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Work title",
+          "title": "Title"
+        },
+        "year": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Publication year",
+          "title": "Year"
+        },
+        "journal": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Journal name",
+          "title": "Journal"
+        },
+        "volume": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Volume number",
+          "title": "Volume"
+        },
+        "issue": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Issue number",
+          "title": "Issue"
+        },
+        "pages": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Page range (e.g., '1-25')",
+          "title": "Pages"
+        },
+        "publisher": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Publisher name",
+          "title": "Publisher"
+        },
+        "doi": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Digital Object Identifier",
+          "title": "Doi"
+        },
+        "isbn": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "ISBN number",
+          "title": "Isbn"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "URL for online resources",
+          "title": "Url"
+        },
+        "edition": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Edition (e.g., '2nd')",
+          "title": "Edition"
+        },
+        "editor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Editor name(s)",
+          "title": "Editor"
+        },
+        "translator": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Translator name(s)",
+          "title": "Translator"
+        },
+        "work_abbreviation": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Standard abbreviation (e.g., 'SZ' for Sein und Zeit, 'KrV' for Kritik der reinen Vernunft)",
+          "title": "Work Abbreviation"
+        }
+      },
+      "title": "BibliographicRecord",
+      "type": "object"
+    },
     "Citation": {
       "additionalProperties": true,
-      "description": "An in-text citation reference.\n\nSupports 7 citation types including philosophy-specific Stephanus, Bekker,\nand Akademie reference systems.",
+      "description": "An in-text citation reference.\n\nv2.0.0: Decomposes the old CitationType into two dimensions:\n- citation_format: How it appears in text (parenthetical, numeric, etc.)\n- reference_system: What coordinates locate the passage (Stephanus, Bekker, etc.)",
       "properties": {
         "id": {
           "description": "Unique identifier for this element",
@@ -146,9 +348,21 @@
           "title": "Raw Text",
           "type": "string"
         },
-        "citation_type": {
-          "$ref": "#/$defs/CitationType",
-          "description": "Classification of citation style"
+        "citation_format": {
+          "$ref": "#/$defs/CitationFormat",
+          "description": "How the citation appears in text (e.g., parenthetical, numeric)"
+        },
+        "reference_system": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ReferenceSystem"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "What coordinates locate the referenced passage (e.g., Stephanus, Bekker)"
         },
         "parsed": {
           "anyOf": [
@@ -205,48 +419,128 @@
       "required": [
         "id",
         "raw_text",
-        "citation_type"
+        "citation_format"
       ],
       "title": "Citation",
       "type": "object"
     },
-    "CitationBibLink": {
-      "description": "Link between an in-text citation and its bibliography entry.",
+    "CitationFormat": {
+      "description": "How a citation appears in the text -- citation format evaluation.\n\n5 values replacing the old CitationType enum. Decomposes the format\ndimension from the reference system dimension (now in ReferenceSystem).",
+      "enum": [
+        "parenthetical",
+        "numeric",
+        "inline_author",
+        "note_based",
+        "author_title"
+      ],
+      "title": "CitationFormat",
+      "type": "string"
+    },
+    "CitationStyle": {
+      "description": "Document-level citation convention -- citation style evaluation.\n\n7 values describing the overall citation style used in a document.\nSet at the document level, not per-citation.",
+      "enum": [
+        "apa",
+        "chicago_nb",
+        "chicago_ad",
+        "mla",
+        "vancouver",
+        "turabian",
+        "custom"
+      ],
+      "title": "CitationStyle",
+      "type": "string"
+    },
+    "Commentary": {
+      "additionalProperties": true,
+      "description": "A running commentary annotation (philosophical/rabbinic commentary apparatus).\n\nRepresents structured commentary that references a specific passage using\na reference system. Supports multi-layer commentary (e.g., Rashi + Tosafot\non the same Talmudic passage, or editor + translator commentary).",
       "properties": {
-        "citation_id": {
-          "description": "Element ID of the citation",
-          "title": "Citation Id",
+        "id": {
+          "description": "Unique identifier for this element",
+          "title": "Id",
           "type": "string"
         },
-        "bib_entry_id": {
-          "description": "Element ID of the bibliography entry",
-          "title": "Bib Entry Id",
+        "verifications": {
+          "description": "Verification records from reviewers",
+          "items": {
+            "$ref": "#/$defs/VerificationRecord"
+          },
+          "title": "Verifications",
+          "type": "array"
+        },
+        "tags": {
+          "description": "Ad-hoc grouping tags",
+          "items": {
+            "type": "string"
+          },
+          "title": "Tags",
+          "type": "array"
+        },
+        "element_type": {
+          "const": "commentary",
+          "default": "commentary",
+          "title": "Element Type",
           "type": "string"
+        },
+        "source": {
+          "description": "Who wrote the commentary (e.g., 'Rashi', 'editor', 'translator')",
+          "title": "Source",
+          "type": "string"
+        },
+        "passage_ref": {
+          "description": "What passage it comments on (canonical coordinates, e.g., 'Gen 1:1', '264a')",
+          "title": "Passage Ref",
+          "type": "string"
+        },
+        "reference_system": {
+          "$ref": "#/$defs/ReferenceSystem",
+          "description": "How it locates the passage (e.g., CATCHWORD, CHAPTER_VERSE)"
+        },
+        "target_location": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LocationRef"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Optional precise location of the referenced passage in the GT corpus"
+        },
+        "content": {
+          "description": "Commentary content spans (may cross pages)",
+          "items": {
+            "$ref": "#/$defs/ContentSpan"
+          },
+          "title": "Content",
+          "type": "array"
+        },
+        "layer": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Commentary layer identifier for multi-layer commentary (e.g., 'rashi', 'tosafot')",
+          "title": "Layer"
         }
       },
       "required": [
-        "citation_id",
-        "bib_entry_id"
+        "id",
+        "source",
+        "passage_ref",
+        "reference_system",
+        "content"
       ],
-      "title": "CitationBibLink",
+      "title": "Commentary",
       "type": "object"
     },
-    "CitationType": {
-      "description": "Citation style sublabels.",
-      "enum": [
-        "author_date",
-        "numeric",
-        "abbreviated",
-        "footnote_style",
-        "stephanus",
-        "bekker",
-        "ak_reference"
-      ],
-      "title": "CitationType",
-      "type": "string"
-    },
     "ContentSpan": {
-      "description": "A span of content text, potentially spanning multiple pages.\n\nUsed for footnote/endnote content that may continue across page boundaries.\nThe is_continuation flag marks spans after the first page.",
+      "description": "A span of content text, potentially spanning multiple pages.\n\nUsed for note/commentary content that may continue across page boundaries.\nThe is_continuation flag marks spans after the first page.\nchar_offset and char_length support endnote positioning within shared regions.",
       "properties": {
         "page": {
           "description": "0-based page index for this span",
@@ -276,6 +570,32 @@
           "description": "True if this span continues from a previous page",
           "title": "Is Continuation",
           "type": "boolean"
+        },
+        "char_offset": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Character offset within region text (for endnote positioning in shared regions)",
+          "title": "Char Offset"
+        },
+        "char_length": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Length of this span within region text (for endnote positioning in shared regions)",
+          "title": "Char Length"
         }
       },
       "required": [
@@ -376,10 +696,10 @@
     },
     "DocumentGT": {
       "additionalProperties": true,
-      "description": "Document-level ground truth: the companion to page-level PageGT.\n\nCaptures cross-page semantic elements, document metadata, structural\nhierarchy, and inter-element relationships. Forward-compatible via\nextra=\"allow\".",
+      "description": "Document-level ground truth: the companion to page-level PageGT.\n\nCaptures cross-page semantic elements, document metadata, structural\nhierarchy, layout registers (SFP-1), note schemas, and citation style.\nForward-compatible via extra=\"allow\".\n\nv2.0.0: DocumentRelationships, FootnoteLink, CitationBibLink removed.\nRelationships are now embedded in elements (Note.body_marker,\nCitation.bib_entry_id, CrossReference.target_section_id).",
       "properties": {
         "schema_version": {
-          "default": "1.0.0",
+          "default": "2.0.0",
           "description": "Schema version for migration support",
           "title": "Schema Version",
           "type": "string"
@@ -423,10 +743,10 @@
               "mapping": {
                 "bibliography_entry": "#/$defs/BibEntry",
                 "citation": "#/$defs/Citation",
+                "commentary": "#/$defs/Commentary",
                 "cross_reference": "#/$defs/CrossReference",
-                "endnote": "#/$defs/Endnote",
-                "footnote": "#/$defs/Footnote",
                 "marginal_reference": "#/$defs/MarginalReference",
+                "note": "#/$defs/Note",
                 "page_number_annotation": "#/$defs/PageNumberAnnotation",
                 "section": "#/$defs/Section",
                 "sous_rature": "#/$defs/SousRature"
@@ -435,10 +755,10 @@
             },
             "oneOf": [
               {
-                "$ref": "#/$defs/Footnote"
+                "$ref": "#/$defs/Note"
               },
               {
-                "$ref": "#/$defs/Endnote"
+                "$ref": "#/$defs/Commentary"
               },
               {
                 "$ref": "#/$defs/Citation"
@@ -486,17 +806,33 @@
           "default": null,
           "description": "Document structure (ToC, sections)"
         },
-        "relationships": {
+        "note_schemas": {
+          "description": "Document-level note numbering conventions (multiple simultaneous schemas supported)",
+          "items": {
+            "$ref": "#/$defs/NoteSchema"
+          },
+          "title": "Note Schemas",
+          "type": "array"
+        },
+        "citation_style": {
           "anyOf": [
             {
-              "$ref": "#/$defs/DocumentRelationships"
+              "$ref": "#/$defs/CitationStyle"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "description": "Inter-element relationships"
+          "description": "Document-level citation convention"
+        },
+        "registers": {
+          "description": "SFP-1: named reading streams / column identities",
+          "items": {
+            "$ref": "#/$defs/LayoutRegister"
+          },
+          "title": "Registers",
+          "type": "array"
         },
         "config_profile": {
           "anyOf": [
@@ -525,37 +861,6 @@
         "source"
       ],
       "title": "DocumentGT",
-      "type": "object"
-    },
-    "DocumentRelationships": {
-      "description": "Cross-element relationships within a document.\n\nLinks between footnote markers and content, citations and bibliography\nentries, and cross-reference element IDs.",
-      "properties": {
-        "footnote_links": {
-          "description": "Footnote/endnote marker-to-content links",
-          "items": {
-            "$ref": "#/$defs/FootnoteLink"
-          },
-          "title": "Footnote Links",
-          "type": "array"
-        },
-        "citation_bib_links": {
-          "description": "Citation-to-bibliography entry links",
-          "items": {
-            "$ref": "#/$defs/CitationBibLink"
-          },
-          "title": "Citation Bib Links",
-          "type": "array"
-        },
-        "cross_refs": {
-          "description": "Cross-reference element IDs",
-          "items": {
-            "type": "string"
-          },
-          "title": "Cross Refs",
-          "type": "array"
-        }
-      },
-      "title": "DocumentRelationships",
       "type": "object"
     },
     "DocumentSource": {
@@ -736,204 +1041,9 @@
       "title": "DocumentStructure",
       "type": "object"
     },
-    "Endnote": {
-      "additionalProperties": true,
-      "description": "An endnote with marker location and content spans.\n\nSimilar to Footnote but collected at end of chapter/book rather than page bottom.",
-      "properties": {
-        "id": {
-          "description": "Unique identifier for this element",
-          "title": "Id",
-          "type": "string"
-        },
-        "verifications": {
-          "description": "Verification records from reviewers",
-          "items": {
-            "$ref": "#/$defs/VerificationRecord"
-          },
-          "title": "Verifications",
-          "type": "array"
-        },
-        "tags": {
-          "description": "Ad-hoc grouping tags",
-          "items": {
-            "type": "string"
-          },
-          "title": "Tags",
-          "type": "array"
-        },
-        "element_type": {
-          "const": "endnote",
-          "default": "endnote",
-          "title": "Element Type",
-          "type": "string"
-        },
-        "marker": {
-          "$ref": "#/$defs/MarkerInfo",
-          "description": "Marker location in source text"
-        },
-        "content": {
-          "description": "Content spans (may cross pages)",
-          "items": {
-            "$ref": "#/$defs/ContentSpan"
-          },
-          "title": "Content",
-          "type": "array"
-        },
-        "note_source": {
-          "anyOf": [
-            {
-              "enum": [
-                "author",
-                "translator",
-                "editor"
-              ],
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Who wrote the note",
-          "title": "Note Source"
-        },
-        "section_title": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Title of the endnote section",
-          "title": "Section Title"
-        }
-      },
-      "required": [
-        "id",
-        "marker",
-        "content"
-      ],
-      "title": "Endnote",
-      "type": "object"
-    },
-    "Footnote": {
-      "additionalProperties": true,
-      "description": "A footnote with marker location and content spans.\n\nSupports multi-page footnotes via ContentSpan list with is_continuation flags.",
-      "properties": {
-        "id": {
-          "description": "Unique identifier for this element",
-          "title": "Id",
-          "type": "string"
-        },
-        "verifications": {
-          "description": "Verification records from reviewers",
-          "items": {
-            "$ref": "#/$defs/VerificationRecord"
-          },
-          "title": "Verifications",
-          "type": "array"
-        },
-        "tags": {
-          "description": "Ad-hoc grouping tags",
-          "items": {
-            "type": "string"
-          },
-          "title": "Tags",
-          "type": "array"
-        },
-        "element_type": {
-          "const": "footnote",
-          "default": "footnote",
-          "title": "Element Type",
-          "type": "string"
-        },
-        "marker": {
-          "$ref": "#/$defs/MarkerInfo",
-          "description": "Marker location in source text"
-        },
-        "content": {
-          "description": "Content spans (may cross pages)",
-          "items": {
-            "$ref": "#/$defs/ContentSpan"
-          },
-          "title": "Content",
-          "type": "array"
-        },
-        "note_source": {
-          "anyOf": [
-            {
-              "enum": [
-                "author",
-                "translator",
-                "editor"
-              ],
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Who wrote the note",
-          "title": "Note Source"
-        },
-        "location": {
-          "description": "Where the note content appears",
-          "enum": [
-            "page_bottom",
-            "endnote",
-            "margin"
-          ],
-          "title": "Location",
-          "type": "string"
-        }
-      },
-      "required": [
-        "id",
-        "marker",
-        "content",
-        "location"
-      ],
-      "title": "Footnote",
-      "type": "object"
-    },
-    "FootnoteLink": {
-      "description": "Link between a footnote marker and its content element.",
-      "properties": {
-        "marker_id": {
-          "description": "Element ID of the marker location",
-          "title": "Marker Id",
-          "type": "string"
-        },
-        "content_id": {
-          "description": "Element ID of the content element",
-          "title": "Content Id",
-          "type": "string"
-        },
-        "link_type": {
-          "default": "footnote",
-          "description": "Type of note link",
-          "enum": [
-            "footnote",
-            "endnote"
-          ],
-          "title": "Link Type",
-          "type": "string"
-        }
-      },
-      "required": [
-        "marker_id",
-        "content_id"
-      ],
-      "title": "FootnoteLink",
-      "type": "object"
-    },
     "FormattingAnnotation": {
       "additionalProperties": true,
-      "description": "A text formatting/decoration annotation with character-level positioning.\n\nTracks formatting at character granularity within a page region, enabling\nprecise reconstruction of bold, italic, small caps, and other decorations.",
+      "description": "A text formatting/decoration annotation with character-level positioning.\n\nTracks formatting at character granularity within a page region, enabling\nprecise reconstruction of bold, italic, small caps, and other decorations.\n\nSupports language tagging (BCP 47), script variant identification (SFP-3),\nand color annotation with semantic meaning (SFP-4).",
       "properties": {
         "id": {
           "description": "Unique identifier for this element",
@@ -1000,6 +1110,57 @@
           "default": null,
           "description": "The formatted text span (optional, for convenience)",
           "title": "Text"
+        },
+        "language": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "BCP 47 language tag for this span (e.g., 'de', 'el', 'la', 'he')",
+          "title": "Language"
+        },
+        "script_variant": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ScriptVariant"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Script variant when BCP 47 script subtag is insufficient (SFP-3, e.g., Rashi vs square Hebrew)"
+        },
+        "color_value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "CSS color value when formatting_type is COLOR (e.g., '#FF0000', 'red')",
+          "title": "Color Value"
+        },
+        "color_semantic": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Semantic meaning of the color (e.g., 'gemara_text', 'mishnah_text')",
+          "title": "Color Semantic"
         }
       },
       "required": [
@@ -1013,21 +1174,24 @@
       "type": "object"
     },
     "FormattingType": {
-      "description": "Text formatting/decoration types.",
+      "description": "Text formatting/decoration types -- HOW text is decorated.\n\n9 values for inline formatting evaluation. SUBSCRIPT, MONOSPACE,\nand COLOR added per SFP-4 for mathematical notation, code samples,\nand highlighted/colored text spans.",
       "enum": [
         "bold",
         "italic",
         "underline",
         "strikethrough",
         "small_caps",
-        "superscript"
+        "superscript",
+        "subscript",
+        "monospace",
+        "color"
       ],
       "title": "FormattingType",
       "type": "string"
     },
     "GTProfile": {
       "additionalProperties": true,
-      "description": "Configuration profile defining active annotation types and validation.\n\nA GTProfile captures which labels from the universal superset are active\nfor a specific use case. The three default profiles are:\n- extraction-eval: Text extraction quality evaluation\n- layout-annotation: Visual layout detection (IoU, mAP)\n- full-scholarly: Comprehensive scholarly annotation\n\nProfiles are loaded from layered YAML files via the config loader.",
+      "description": "Configuration profile defining active annotation types and validation.\n\nA GTProfile captures which labels from the universal superset are active\nfor a specific use case. The three default profiles are:\n- extraction-eval: Text extraction quality evaluation\n- layout-annotation: Visual layout detection (IoU, mAP)\n- full-scholarly: Comprehensive scholarly annotation\n\nProfiles are loaded from layered YAML files via the config loader.\n\nv2.0.0: Added citation_formats, reference_systems, note_placements,\nscript_variants categories. Renamed document_types to document_section_types.\nUpdated defaults to use note_area/note (not footnote_area/footnote).",
       "properties": {
         "name": {
           "default": "base",
@@ -1052,7 +1216,7 @@
           "title": "Inherits"
         },
         "schema_version": {
-          "default": "1.0.0",
+          "default": "2.0.0",
           "title": "Schema Version",
           "type": "string"
         },
@@ -1080,11 +1244,43 @@
           "type": "array",
           "uniqueItems": true
         },
-        "document_types": {
+        "document_section_types": {
           "items": {
             "type": "string"
           },
-          "title": "Document Types",
+          "title": "Document Section Types",
+          "type": "array",
+          "uniqueItems": true
+        },
+        "citation_formats": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Citation Formats",
+          "type": "array",
+          "uniqueItems": true
+        },
+        "reference_systems": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reference Systems",
+          "type": "array",
+          "uniqueItems": true
+        },
+        "note_placements": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Note Placements",
+          "type": "array",
+          "uniqueItems": true
+        },
+        "script_variants": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Script Variants",
           "type": "array",
           "uniqueItems": true
         },
@@ -1095,20 +1291,146 @@
       "title": "GTProfile",
       "type": "object"
     },
-    "MarginalRefType": {
-      "description": "Marginal reference system sublabels.",
-      "enum": [
-        "stephanus",
-        "bekker",
-        "akademie",
-        "custom"
+    "LayoutRegister": {
+      "description": "A named reading stream or column in a multi-register document.\n\nProvides first-class identity for parallel text streams, commentary layers,\nbilingual columns, and multi-register layouts. Each register describes a\ndistinct reading stream with its own author, language, text direction,\nand typographic conventions.\n\nExamples:\n- Talmud page: registers for Mishnah text, Gemara, Rashi commentary, Tosafot\n- Bilingual edition: registers for original language and translation\n- Critical edition: registers for main text, apparatus criticus, editor notes\n- Multi-column layout: registers for left_column, right_column",
+      "properties": {
+        "register_id": {
+          "description": "Unique register identifier (e.g., 'hegel', 'genet', 'rashi')",
+          "title": "Register Id",
+          "type": "string"
+        },
+        "name": {
+          "description": "Human-readable register name",
+          "title": "Name",
+          "type": "string"
+        },
+        "author": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Author or attributed source",
+          "title": "Author"
+        },
+        "language": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Primary BCP 47 language tag (e.g., 'he', 'de', 'ar')",
+          "title": "Language"
+        },
+        "text_direction": {
+          "anyOf": [
+            {
+              "enum": [
+                "ltr",
+                "rtl"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Base text direction for this register",
+          "title": "Text Direction"
+        },
+        "position_convention": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Layout convention (e.g., 'left_column', 'upper_register', 'inner_margin', 'central')",
+          "title": "Position Convention"
+        },
+        "typeface_convention": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Expected typeface family (e.g., 'rashi_script', 'square_hebrew', 'serif_9pt')",
+          "title": "Typeface Convention"
+        }
+      },
+      "required": [
+        "register_id",
+        "name"
       ],
-      "title": "MarginalRefType",
-      "type": "string"
+      "title": "LayoutRegister",
+      "type": "object"
+    },
+    "LocationRef": {
+      "description": "Reference to a specific location in the GT corpus.\n\nStandardizes the scattered page/region_id/char_offset/char_length pattern\nused across semantic elements. Use for body_marker, content_marker,\ntarget_location, and any element that references a position in a page region.",
+      "properties": {
+        "page": {
+          "description": "0-based page index",
+          "title": "Page",
+          "type": "integer"
+        },
+        "region_id": {
+          "description": "Region ID on the page",
+          "title": "Region Id",
+          "type": "string"
+        },
+        "char_offset": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Character offset within region text",
+          "title": "Char Offset"
+        },
+        "char_length": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Length of referenced text span",
+          "title": "Char Length"
+        }
+      },
+      "required": [
+        "page",
+        "region_id"
+      ],
+      "title": "LocationRef",
+      "type": "object"
     },
     "MarginalReference": {
       "additionalProperties": true,
-      "description": "A marginal reference system annotation (Stephanus, Bekker, Akademie, custom).\n\nPhilosophy texts use standard reference systems in margins: Stephanus pagination\nfor Plato, Bekker numbers for Aristotle, Akademie edition numbers for Kant.",
+      "description": "A marginal reference system annotation (Stephanus, Bekker, Akademie, custom).\n\nPhilosophy texts use standard reference systems in margins: Stephanus pagination\nfor Plato, Bekker numbers for Aristotle, Akademie edition numbers for Kant.\n\nv2.0.0: Uses shared ReferenceSystem enum instead of the old MarginalRefType,\neliminating duplication between Citation and MarginalReference.",
       "properties": {
         "id": {
           "description": "Unique identifier for this element",
@@ -1142,9 +1464,9 @@
           "title": "Raw Text",
           "type": "string"
         },
-        "ref_type": {
-          "$ref": "#/$defs/MarginalRefType",
-          "description": "Type of marginal reference system"
+        "reference_system": {
+          "$ref": "#/$defs/ReferenceSystem",
+          "description": "Type of marginal reference system (e.g., Stephanus, Bekker)"
         },
         "page": {
           "description": "Page where reference appears (0-based)",
@@ -1168,26 +1490,117 @@
       "required": [
         "id",
         "raw_text",
-        "ref_type",
+        "reference_system",
         "page"
       ],
       "title": "MarginalReference",
       "type": "object"
     },
-    "MarkerInfo": {
-      "description": "Information about a footnote/endnote marker in the source text.",
+    "Note": {
+      "additionalProperties": true,
+      "description": "A note (unified model replacing Footnote + Endnote).\n\nUses LocationRef for precise marker positioning instead of the old MarkerInfo.\nSupports multi-page notes via ContentSpan list with is_continuation flags.\nPlacement distinguishes footnotes (page_bottom) from endnotes (end_of_chapter,\nend_of_book) and marginal notes (margin).",
       "properties": {
-        "text": {
-          "description": "Marker text as displayed (e.g., '1', '*', 'a')",
-          "title": "Text",
+        "id": {
+          "description": "Unique identifier for this element",
+          "title": "Id",
           "type": "string"
         },
-        "page": {
-          "description": "0-based page index where marker appears",
-          "title": "Page",
-          "type": "integer"
+        "verifications": {
+          "description": "Verification records from reviewers",
+          "items": {
+            "$ref": "#/$defs/VerificationRecord"
+          },
+          "title": "Verifications",
+          "type": "array"
         },
-        "region_id": {
+        "tags": {
+          "description": "Ad-hoc grouping tags",
+          "items": {
+            "type": "string"
+          },
+          "title": "Tags",
+          "type": "array"
+        },
+        "element_type": {
+          "const": "note",
+          "default": "note",
+          "title": "Element Type",
+          "type": "string"
+        },
+        "body_marker": {
+          "$ref": "#/$defs/LocationRef",
+          "description": "Where reference marker appears in body text"
+        },
+        "content_marker": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LocationRef"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Where note content begins (important for endnotes where content is distant from marker)"
+        },
+        "content": {
+          "description": "Content spans (may cross pages)",
+          "items": {
+            "$ref": "#/$defs/ContentSpan"
+          },
+          "title": "Content",
+          "type": "array"
+        },
+        "placement": {
+          "description": "Where the note content appears in the document",
+          "enum": [
+            "page_bottom",
+            "end_of_chapter",
+            "end_of_book",
+            "margin"
+          ],
+          "title": "Placement",
+          "type": "string"
+        },
+        "scope": {
+          "anyOf": [
+            {
+              "enum": [
+                "page",
+                "chapter",
+                "section",
+                "essay",
+                "document"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Scope of the numbering reset boundary for this note",
+          "title": "Scope"
+        },
+        "note_source": {
+          "anyOf": [
+            {
+              "enum": [
+                "author",
+                "translator",
+                "editor"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Who wrote the note",
+          "title": "Note Source"
+        },
+        "marker_text": {
           "anyOf": [
             {
               "type": "string"
@@ -1197,36 +1610,176 @@
             }
           ],
           "default": null,
-          "description": "Region ID containing the marker",
-          "title": "Region Id"
+          "description": "Marker display text (e.g., '1', '*', 'a')",
+          "title": "Marker Text"
         },
-        "char_offset": {
+        "note_schema_id": {
           "anyOf": [
             {
-              "type": "integer"
+              "type": "string"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "description": "Character offset of marker within region text",
-          "title": "Char Offset"
+          "description": "Reference to NoteSchema in DocumentGT for numbering convention",
+          "title": "Note Schema Id"
         }
       },
       "required": [
-        "text",
-        "page"
+        "id",
+        "body_marker",
+        "content",
+        "placement"
       ],
-      "title": "MarkerInfo",
+      "title": "Note",
+      "type": "object"
+    },
+    "NoteSchema": {
+      "description": "Document-level note numbering convention.\n\nDescribes how notes are numbered/marked throughout a document or section.\nMultiple NoteSchemas can coexist (e.g., author footnotes use symbols,\ntranslator footnotes use arabic numerals). Referenced by Note.note_schema_id.",
+      "properties": {
+        "schema_id": {
+          "description": "Unique identifier for this note schema",
+          "title": "Schema Id",
+          "type": "string"
+        },
+        "marker_type": {
+          "description": "Type of marker used for notes",
+          "enum": [
+            "arabic",
+            "roman_lower",
+            "roman_upper",
+            "alphabetical_lower",
+            "alphabetical_upper",
+            "symbolic",
+            "custom"
+          ],
+          "title": "Marker Type",
+          "type": "string"
+        },
+        "symbol_sequence": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "For symbolic markers: sequence of symbols (e.g., ['*', 'dagger', 'double_dagger', 'section', 'parallel', 'pilcrow'])",
+          "title": "Symbol Sequence"
+        },
+        "reset_boundary": {
+          "anyOf": [
+            {
+              "enum": [
+                "page",
+                "chapter",
+                "section",
+                "essay",
+                "document"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Where note numbering resets (e.g., per-page, per-chapter)",
+          "title": "Reset Boundary"
+        },
+        "placement": {
+          "anyOf": [
+            {
+              "enum": [
+                "page_bottom",
+                "end_of_chapter",
+                "end_of_book",
+                "margin"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Where note content is placed in the document",
+          "title": "Placement"
+        },
+        "note_source": {
+          "anyOf": [
+            {
+              "enum": [
+                "author",
+                "translator",
+                "editor"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Who wrote the notes using this schema",
+          "title": "Note Source"
+        }
+      },
+      "required": [
+        "schema_id",
+        "marker_type"
+      ],
+      "title": "NoteSchema",
+      "type": "object"
+    },
+    "PageDependency": {
+      "description": "Cross-page relationship metadata.\n\nCaptures how this page relates to its neighbors: whether content continues\nacross page boundaries, and whether note markers or note content are orphaned\n(body marker on one page, note content on another -- common with endnotes).",
+      "properties": {
+        "continues_from_previous": {
+          "default": false,
+          "description": "Some content on this page continues from the prior page",
+          "title": "Continues From Previous",
+          "type": "boolean"
+        },
+        "continues_to_next": {
+          "default": false,
+          "description": "Some content on this page continues to the next page",
+          "title": "Continues To Next",
+          "type": "boolean"
+        },
+        "unresolved_markers": {
+          "description": "Body markers on this page with no corresponding note on this page (endnote refs)",
+          "items": {
+            "type": "string"
+          },
+          "title": "Unresolved Markers",
+          "type": "array"
+        },
+        "orphan_continuations": {
+          "description": "Note content on this page with no corresponding body marker on this page",
+          "items": {
+            "type": "string"
+          },
+          "title": "Orphan Continuations",
+          "type": "array"
+        }
+      },
+      "title": "PageDependency",
       "type": "object"
     },
     "PageGT": {
       "additionalProperties": true,
-      "description": "Page-level ground truth containing spatial annotations.\n\nEach page file captures regions (spatial + semantic annotations),\nreading order, quality metadata, and page-level verifications.\nForward-compatible via extra=\"allow\".",
+      "description": "Page-level ground truth containing spatial annotations.\n\nEach page file captures regions (spatial + semantic annotations),\nreading order, quality metadata, cross-page dependencies, section\ncontext, and page-level verifications. Forward-compatible via extra=\"allow\".\n\nv2.0.0 additions:\n- section_context: hierarchical section path for self-describing pages\n- page_dependency: cross-page dependency metadata\n- base_direction: default text direction for this page (SFP-2)",
       "properties": {
         "schema_version": {
-          "default": "1.0.0",
+          "default": "2.0.0",
           "description": "Schema version for migration support",
           "title": "Schema Version",
           "type": "string"
@@ -1292,6 +1845,43 @@
           ],
           "default": null,
           "description": "Page quality metadata"
+        },
+        "section_context": {
+          "description": "Hierarchical section path for self-describing pages",
+          "items": {
+            "$ref": "#/$defs/SectionContextEntry"
+          },
+          "title": "Section Context",
+          "type": "array"
+        },
+        "page_dependency": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PageDependency"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Cross-page dependency metadata"
+        },
+        "base_direction": {
+          "anyOf": [
+            {
+              "enum": [
+                "ltr",
+                "rtl"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "SFP-2: default text direction for this page",
+          "title": "Base Direction"
         },
         "verifications": {
           "description": "Page-level verification records",
@@ -1370,9 +1960,9 @@
       "type": "object"
     },
     "PageQuality": {
-      "description": "Page-level quality assessment metadata.",
+      "description": "Page-level quality assessment -- hybrid categorical + numeric model.\n\nReplaces the old ScanQuality and Difficulty enums with a richer model:\n- Categorical: overall quality, is_scan flag\n- Artifact list: specific quality issues (free-form, documented recommended values)\n- Difficulty factors: signals affecting annotation difficulty\n- Numeric metrics: optional DPI, contrast, skew, noise, OCR confidence\n\nRecommended artifact values: \"bleed_through\", \"foxing\", \"skew\",\n\"margin_cropping\", \"water_damage\", \"faded_ink\", \"handwritten_overlay\",\n\"binding_shadow\", \"staining\", \"torn_page\".\n\nRecommended difficulty_factors values: \"dense_footnotes\", \"multi_column\",\n\"mixed_language\", \"complex_typography\", \"poor_scan\", \"non_latin_script\",\n\"overlapping_regions\", \"marginal_annotations\", \"tables_with_text\".",
       "properties": {
-        "scan_quality": {
+        "overall": {
           "anyOf": [
             {
               "enum": [
@@ -1387,26 +1977,102 @@
             }
           ],
           "default": null,
-          "description": "Scan quality assessment",
-          "title": "Scan Quality"
+          "description": "Quick categorical quality assessment for human annotation",
+          "title": "Overall"
         },
-        "difficulty": {
+        "is_scan": {
           "anyOf": [
             {
-              "enum": [
-                "easy",
-                "medium",
-                "hard"
-              ],
-              "type": "string"
+              "type": "boolean"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "description": "Annotation difficulty for test stratification",
-          "title": "Difficulty"
+          "description": "True if scanned document, False if born-digital",
+          "title": "Is Scan"
+        },
+        "artifacts": {
+          "description": "Specific quality issues (e.g., 'bleed_through', 'foxing', 'skew')",
+          "items": {
+            "type": "string"
+          },
+          "title": "Artifacts",
+          "type": "array"
+        },
+        "difficulty_factors": {
+          "description": "Specific difficulty signals (e.g., 'dense_footnotes', 'multi_column')",
+          "items": {
+            "type": "string"
+          },
+          "title": "Difficulty Factors",
+          "type": "array"
+        },
+        "dpi_estimate": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Estimated DPI of the page image",
+          "title": "Dpi Estimate"
+        },
+        "contrast_ratio": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Estimated contrast ratio",
+          "title": "Contrast Ratio"
+        },
+        "skew_angle": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Page skew angle in degrees",
+          "title": "Skew Angle"
+        },
+        "noise_level": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Noise estimate on [0, 1] scale",
+          "title": "Noise Level"
+        },
+        "ocr_confidence": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Mean OCR confidence if available",
+          "title": "Ocr Confidence"
         }
       },
       "title": "PageQuality",
@@ -1471,9 +2137,29 @@
       "title": "ParsedCitation",
       "type": "object"
     },
+    "ReferenceSystem": {
+      "description": "What coordinates locate the referenced passage.\n\n13 values shared by Citation and MarginalReference, eliminating\nthe old MarginalRefType duplication. CATCHWORD added per SFP-6\nfor pre-modern printed books where page headers serve as navigation\naids rather than standard pagination.",
+      "enum": [
+        "standard",
+        "stephanus",
+        "bekker",
+        "akademie",
+        "ab_edition",
+        "paragraph",
+        "sz_pagination",
+        "diels_kranz",
+        "line_number",
+        "chapter_verse",
+        "legal",
+        "catchword",
+        "custom"
+      ],
+      "title": "ReferenceSystem",
+      "type": "string"
+    },
     "Region": {
       "additionalProperties": true,
-      "description": "A spatial region on a page with optional semantic annotations.\n\nInherits GTElement's id, verifications, tags, and extra=\"allow\".",
+      "description": "A spatial region on a page with optional semantic annotations.\n\nInherits GTElement's id, verifications, tags, and extra=\"allow\".\n\nSupports cross-page continuation (is_continuation, continues_to_next),\nsub-region hierarchy (children), register identity (register_id, SFP-1),\nand explicit text direction (text_direction, SFP-2).",
       "properties": {
         "id": {
           "description": "Unique identifier for this element",
@@ -1545,6 +2231,65 @@
           "default": null,
           "description": "Position in reading order (optional)",
           "title": "Reading Order Index"
+        },
+        "is_continuation": {
+          "default": false,
+          "description": "True if this region continues content from a previous page",
+          "title": "Is Continuation",
+          "type": "boolean"
+        },
+        "continues_to_next": {
+          "default": false,
+          "description": "True if this region's content continues to the next page",
+          "title": "Continues To Next",
+          "type": "boolean"
+        },
+        "semantic_element_ids": {
+          "description": "IDs of DocumentGT semantic elements associated with this region",
+          "items": {
+            "type": "string"
+          },
+          "title": "Semantic Element Ids",
+          "type": "array"
+        },
+        "children": {
+          "description": "Sub-regions (table cells, figures within figures, block quotes within notes)",
+          "items": {
+            "$ref": "#/$defs/Region"
+          },
+          "title": "Children",
+          "type": "array"
+        },
+        "register_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "LayoutRegister this region belongs to (SFP-1, e.g., 'main_text', 'commentary_rashi')",
+          "title": "Register Id"
+        },
+        "text_direction": {
+          "anyOf": [
+            {
+              "enum": [
+                "ltr",
+                "rtl",
+                "bidi"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Base text direction for this region's content (SFP-2)",
+          "title": "Text Direction"
         }
       },
       "required": [
@@ -1554,6 +2299,19 @@
       ],
       "title": "Region",
       "type": "object"
+    },
+    "ScriptVariant": {
+      "description": "Script variants where BCP 47 script subtag is insufficient (SFP-3).\n\n6 values for script variant detection. Primary use case: Rashi script\nvs square Hebrew -- both are \"he-Hebr\" in BCP 47 but typographically\ndistinct with different OCR models. Also covers Arabic calligraphic\nstyles (Nastaliq vs Naskh) and historical European scripts (Fraktur).\nCUSTOM allows project-specific script variants beyond the built-in set.",
+      "enum": [
+        "square_hebrew",
+        "rashi_script",
+        "nastaliq",
+        "naskh",
+        "fraktur",
+        "custom"
+      ],
+      "title": "ScriptVariant",
+      "type": "string"
     },
     "Section": {
       "additionalProperties": true,
@@ -1639,18 +2397,57 @@
       "title": "Section",
       "type": "object"
     },
+    "SectionContextEntry": {
+      "description": "A single entry in the hierarchical section path for a page.\n\nProvides per-page section context so each page is self-describing:\nan annotator or evaluation pipeline can determine which section(s)\na page belongs to without loading the full DocumentGT.",
+      "properties": {
+        "section_id": {
+          "description": "Reference to Section element in DocumentGT",
+          "title": "Section Id",
+          "type": "string"
+        },
+        "title": {
+          "description": "Section title text",
+          "title": "Title",
+          "type": "string"
+        },
+        "level": {
+          "description": "Nesting level (0 = top-level)",
+          "title": "Level",
+          "type": "integer"
+        },
+        "starts_on_this_page": {
+          "default": false,
+          "description": "True if this section begins on this page",
+          "title": "Starts On This Page",
+          "type": "boolean"
+        },
+        "ends_on_this_page": {
+          "default": false,
+          "description": "True if this section ends on this page",
+          "title": "Ends On This Page",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "section_id",
+        "title",
+        "level"
+      ],
+      "title": "SectionContextEntry",
+      "type": "object"
+    },
     "SemanticType": {
-      "description": "Semantic element types -- WHAT it means.\n\nIndependent dimension from spatial labels. A region can be spatially\n'text_block' and semantically 'footnote'.",
+      "description": "Semantic element types -- WHAT it means.\n\n9 values independent from spatial labels. A region can be spatially\n'text_block' and semantically 'note'. Used by the semantic element\nevaluation task to assess element classification accuracy.\nNOTE replaces the old FOOTNOTE + ENDNOTE split; COMMENTARY added\nfor philosophical/rabbinic running commentary.",
       "enum": [
-        "footnote",
-        "endnote",
+        "note",
         "citation",
         "bibliography_entry",
         "section",
         "sous_rature",
         "cross_reference",
         "marginal_reference",
-        "page_number_annotation"
+        "page_number_annotation",
+        "commentary"
       ],
       "title": "SemanticType",
       "type": "string"
@@ -1745,11 +2542,11 @@
       "type": "object"
     },
     "SpatialLabel": {
-      "description": "Spatial layout region types -- WHERE on the page.\n\nUnified from ScholarDoc region types and CryptOfCogito region labels.",
+      "description": "Spatial layout region types -- WHERE on the page.\n\n21 values for visual layout detection. Used by the spatial label\nevaluation task to assess region classification accuracy.\nNOTE_AREA and NOTE_CONTINUATION replace the old FOOTNOTE_AREA,\nENDNOTE_AREA, and FOOTNOTE_CONTINUATION (notes are unified).",
       "enum": [
         "text_block",
-        "footnote_area",
-        "endnote_area",
+        "note_area",
+        "note_continuation",
         "page_header",
         "page_footer",
         "page_number",
@@ -1763,7 +2560,11 @@
         "formula",
         "marginal_note",
         "bibliography_area",
-        "footnote_continuation"
+        "toc_area",
+        "abstract",
+        "code_block",
+        "index_area",
+        "unknown"
       ],
       "title": "SpatialLabel",
       "type": "string"
@@ -1890,5 +2691,5 @@
   },
   "title": "ScholarGT Schema",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "version": "1.0.0"
+  "version": "2.0.0"
 }

@@ -1,35 +1,49 @@
 """Tests for DocumentGT and related document-level models.
 
 Covers DocumentGT creation, cross-page semantic elements via discriminated union,
-document structure (ToC, sections), relationships (footnote/citation links),
-round-trip JSON serialization, extra field compatibility, and a realistic
-Heidegger Being and Time example.
+document structure (ToC, sections), LayoutRegister (SFP-1), NoteSchema,
+CitationStyle, round-trip JSON serialization, extra field compatibility,
+and a realistic Heidegger Being and Time example using v2.0.0 models.
+
+v2.0.0 changes:
+- Note replaces Footnote/Endnote in elements
+- Citation uses CitationFormat/ReferenceSystem (not CitationType)
+- DocumentRelationships/FootnoteLink/CitationBibLink removed
+- LayoutRegister (SFP-1) for multi-register documents
+- NoteSchema for note numbering conventions
+- citation_style at document level
 """
 
 from datetime import UTC, datetime
 
+import pytest
+
 from scholargt.schema import (
     SCHEMA_VERSION,
     BibEntry,
+    BibliographicRecord,
     Citation,
-    CitationBibLink,
     ContentSpan,
     DocumentGT,
-    DocumentRelationships,
     DocumentSource,
     DocumentStructure,
-    Footnote,
-    FootnoteLink,
     FormattingAnnotation,
-    MarkerInfo,
+    LayoutRegister,
+    Note,
+    NoteSchema,
     PageNumberAnnotation,
     ParsedCitation,
     Section,
     SemanticElement,
     ToCEntry,
 )
-from scholargt.schema.base import VerificationRecord
-from scholargt.schema.labels import CitationType, FormattingType
+from scholargt.schema.base import LocationRef, VerificationRecord
+from scholargt.schema.labels import (
+    CitationFormat,
+    CitationStyle,
+    FormattingType,
+    ReferenceSystem,
+)
 
 # ---------- DocumentSource tests ----------
 
@@ -101,59 +115,102 @@ class TestDocumentStructure:
         assert ds.back_matter["bibliography"] is True
 
 
-# ---------- Relationship model tests ----------
+# ---------- LayoutRegister tests (SFP-1) ----------
 
 
-class TestRelationshipModels:
-    def test_footnote_link(self):
-        fl = FootnoteLink(
-            marker_id="fn1_marker",
-            content_id="fn1_content",
-            link_type="footnote",
+class TestLayoutRegister:
+    def test_create_layout_register(self):
+        reg = LayoutRegister(
+            register_id="main_text",
+            name="Main Text",
         )
-        assert fl.marker_id == "fn1_marker"
-        assert fl.link_type == "footnote"
+        assert reg.register_id == "main_text"
+        assert reg.name == "Main Text"
+        assert reg.author is None
+        assert reg.language is None
 
-    def test_footnote_link_default_type(self):
-        fl = FootnoteLink(marker_id="m1", content_id="c1")
-        assert fl.link_type == "footnote"
-
-    def test_endnote_link(self):
-        fl = FootnoteLink(
-            marker_id="en1_marker",
-            content_id="en1_content",
-            link_type="endnote",
+    def test_layout_register_full(self):
+        reg = LayoutRegister(
+            register_id="rashi",
+            name="Rashi Commentary",
+            author="Rashi",
+            language="he",
+            text_direction="rtl",
+            position_convention="inner_margin",
+            typeface_convention="rashi_script",
         )
-        assert fl.link_type == "endnote"
+        assert reg.register_id == "rashi"
+        assert reg.author == "Rashi"
+        assert reg.language == "he"
+        assert reg.text_direction == "rtl"
+        assert reg.position_convention == "inner_margin"
+        assert reg.typeface_convention == "rashi_script"
 
-    def test_citation_bib_link(self):
-        cbl = CitationBibLink(
-            citation_id="ct1", bib_entry_id="bib1"
+    def test_layout_register_bilingual(self):
+        """Bilingual edition: Hebrew + English registers."""
+        he_reg = LayoutRegister(
+            register_id="hebrew_text",
+            name="Hebrew Original",
+            language="he",
+            text_direction="rtl",
+            position_convention="right_column",
         )
-        assert cbl.citation_id == "ct1"
-        assert cbl.bib_entry_id == "bib1"
-
-    def test_document_relationships(self):
-        rels = DocumentRelationships(
-            footnote_links=[
-                FootnoteLink(marker_id="m1", content_id="c1"),
-            ],
-            citation_bib_links=[
-                CitationBibLink(
-                    citation_id="ct1", bib_entry_id="bib1"
-                ),
-            ],
-            cross_refs=["xref1", "xref2"],
+        en_reg = LayoutRegister(
+            register_id="english_text",
+            name="English Translation",
+            language="en",
+            text_direction="ltr",
+            position_convention="left_column",
         )
-        assert len(rels.footnote_links) == 1
-        assert len(rels.citation_bib_links) == 1
-        assert rels.cross_refs == ["xref1", "xref2"]
+        assert he_reg.text_direction == "rtl"
+        assert en_reg.text_direction == "ltr"
 
-    def test_document_relationships_defaults(self):
-        rels = DocumentRelationships()
-        assert rels.footnote_links == []
-        assert rels.citation_bib_links == []
-        assert rels.cross_refs == []
+    def test_layout_register_talmud(self):
+        """Talmud page layout: Gemara + Rashi + Tosafot registers."""
+        registers = [
+            LayoutRegister(
+                register_id="gemara",
+                name="Gemara",
+                language="he-arc",
+                text_direction="rtl",
+                position_convention="central",
+                typeface_convention="square_hebrew",
+            ),
+            LayoutRegister(
+                register_id="rashi",
+                name="Rashi",
+                author="Rashi",
+                language="he",
+                text_direction="rtl",
+                position_convention="inner_margin",
+                typeface_convention="rashi_script",
+            ),
+            LayoutRegister(
+                register_id="tosafot",
+                name="Tosafot",
+                author="Tosafot",
+                language="he",
+                text_direction="rtl",
+                position_convention="outer_margin",
+                typeface_convention="square_hebrew",
+            ),
+        ]
+        assert len(registers) == 3
+        assert registers[1].typeface_convention == "rashi_script"
+
+    def test_layout_register_json_round_trip(self):
+        reg = LayoutRegister(
+            register_id="hegel",
+            name="Hegel Text",
+            author="Hegel",
+            language="de",
+            text_direction="ltr",
+            position_convention="left_column",
+        )
+        json_str = reg.model_dump_json()
+        restored = LayoutRegister.model_validate_json(json_str)
+        assert restored.register_id == "hegel"
+        assert restored.author == "Hegel"
 
 
 # ---------- DocumentGT tests ----------
@@ -170,7 +227,9 @@ class TestDocumentGT:
         assert doc.elements == []
         assert doc.formatting == []
         assert doc.structure is None
-        assert doc.relationships is None
+        assert doc.registers == []
+        assert doc.note_schemas == []
+        assert doc.citation_style is None
         assert doc.config_profile is None
         assert doc.verifications == []
 
@@ -197,21 +256,21 @@ class TestDocumentGT:
         assert doc.source.translator == "John Macquarrie"
 
     def test_document_with_mixed_elements(self):
-        """DocumentGT.elements accepts mixed SemanticElement types."""
+        """DocumentGT.elements accepts mixed SemanticElement types (v2.0.0)."""
         doc = DocumentGT(
             document_id="d1",
             source=DocumentSource(pdf="test.pdf"),
             elements=[
-                Footnote(
-                    id="fn1",
-                    marker=MarkerInfo(text="1", page=0),
+                Note(
+                    id="n1",
+                    body_marker=LocationRef(page=0, region_id="r1"),
                     content=[ContentSpan(page=0, text="Note")],
-                    location="page_bottom",
+                    placement="page_bottom",
                 ),
                 Citation(
                     id="ct1",
                     raw_text="(Heidegger 1927)",
-                    citation_type=CitationType.AUTHOR_DATE,
+                    citation_format=CitationFormat.PARENTHETICAL,
                 ),
                 Section(
                     id="sec1",
@@ -221,34 +280,34 @@ class TestDocumentGT:
             ],
         )
         assert len(doc.elements) == 3
-        assert isinstance(doc.elements[0], Footnote)
+        assert isinstance(doc.elements[0], Note)
         assert isinstance(doc.elements[1], Citation)
         assert isinstance(doc.elements[2], Section)
 
     def test_document_elements_discriminated_union_from_json(self):
-        """Elements deserialize correctly via discriminated union."""
+        """Elements deserialize correctly via discriminated union (v2.0.0)."""
         json_str = """{
             "document_id": "d1",
             "source": {"pdf": "test.pdf"},
             "elements": [
                 {
-                    "id": "fn1",
-                    "element_type": "footnote",
-                    "marker": {"text": "1", "page": 0},
+                    "id": "n1",
+                    "element_type": "note",
+                    "body_marker": {"page": 0, "region_id": "r1"},
                     "content": [{"page": 0, "text": "Note"}],
-                    "location": "page_bottom"
+                    "placement": "page_bottom"
                 },
                 {
                     "id": "ct1",
                     "element_type": "citation",
                     "raw_text": "(Heidegger 1927)",
-                    "citation_type": "author_date"
+                    "citation_format": "parenthetical"
                 }
             ]
         }"""
         doc = DocumentGT.model_validate_json(json_str)
         assert len(doc.elements) == 2
-        assert isinstance(doc.elements[0], Footnote)
+        assert isinstance(doc.elements[0], Note)
         assert isinstance(doc.elements[1], Citation)
 
     def test_document_with_structure(self):
@@ -266,25 +325,75 @@ class TestDocumentGT:
         assert len(doc.structure.toc) == 1
         assert doc.structure.sections == ["sec_intro"]
 
-    def test_document_with_relationships(self):
+    def test_document_with_registers(self):
+        """SFP-1: DocumentGT with LayoutRegister list."""
+        doc = DocumentGT(
+            document_id="talmud_1",
+            source=DocumentSource(pdf="talmud.pdf"),
+            registers=[
+                LayoutRegister(
+                    register_id="gemara",
+                    name="Gemara",
+                    language="he-arc",
+                    text_direction="rtl",
+                ),
+                LayoutRegister(
+                    register_id="rashi",
+                    name="Rashi",
+                    author="Rashi",
+                    language="he",
+                    text_direction="rtl",
+                ),
+            ],
+        )
+        assert len(doc.registers) == 2
+        assert doc.registers[0].register_id == "gemara"
+        assert doc.registers[1].author == "Rashi"
+
+    def test_document_with_note_schemas(self):
         doc = DocumentGT(
             document_id="d1",
             source=DocumentSource(pdf="test.pdf"),
-            relationships=DocumentRelationships(
-                footnote_links=[
-                    FootnoteLink(marker_id="m1", content_id="c1"),
-                ],
-                citation_bib_links=[
-                    CitationBibLink(
-                        citation_id="ct1",
-                        bib_entry_id="bib1",
-                    ),
-                ],
-            ),
+            note_schemas=[
+                NoteSchema(
+                    schema_id="translator_footnotes",
+                    marker_type="arabic",
+                    reset_boundary="page",
+                    placement="page_bottom",
+                    note_source="translator",
+                ),
+                NoteSchema(
+                    schema_id="author_footnotes",
+                    marker_type="symbolic",
+                    symbol_sequence=["*", "dagger"],
+                    reset_boundary="page",
+                    placement="page_bottom",
+                    note_source="author",
+                ),
+            ],
         )
-        assert doc.relationships is not None
-        assert len(doc.relationships.footnote_links) == 1
-        assert len(doc.relationships.citation_bib_links) == 1
+        assert len(doc.note_schemas) == 2
+        assert doc.note_schemas[0].schema_id == "translator_footnotes"
+
+    def test_document_note_schema_duplicate_warns(self):
+        """NoteSchema uniqueness validator warns on duplicate schema_id."""
+        with pytest.warns(UserWarning, match="duplicate schema_id"):
+            DocumentGT(
+                document_id="d1",
+                source=DocumentSource(pdf="test.pdf"),
+                note_schemas=[
+                    NoteSchema(schema_id="dup", marker_type="arabic"),
+                    NoteSchema(schema_id="dup", marker_type="roman_lower"),
+                ],
+            )
+
+    def test_document_with_citation_style(self):
+        doc = DocumentGT(
+            document_id="d1",
+            source=DocumentSource(pdf="test.pdf"),
+            citation_style=CitationStyle.CHICAGO_NB,
+        )
+        assert doc.citation_style == CitationStyle.CHICAGO_NB
 
     def test_document_with_formatting(self):
         doc = DocumentGT(
@@ -339,7 +448,7 @@ class TestDocumentGT:
         assert doc.future_field == "v2_data"  # type: ignore[attr-defined]
 
     def test_document_json_round_trip(self):
-        """Full DocumentGT round-trip serialization."""
+        """Full DocumentGT round-trip serialization (v2.0.0)."""
         doc = DocumentGT(
             document_id="d1",
             source=DocumentSource(
@@ -348,27 +457,29 @@ class TestDocumentGT:
                 author="Author",
             ),
             elements=[
-                Footnote(
-                    id="fn1",
-                    marker=MarkerInfo(text="1", page=0),
+                Note(
+                    id="n1",
+                    body_marker=LocationRef(page=0, region_id="r1"),
                     content=[ContentSpan(page=0, text="Note")],
-                    location="page_bottom",
+                    placement="page_bottom",
                 ),
                 Citation(
                     id="ct1",
                     raw_text="(Author 2024)",
-                    citation_type=CitationType.AUTHOR_DATE,
+                    citation_format=CitationFormat.PARENTHETICAL,
                 ),
             ],
             structure=DocumentStructure(
                 toc=[ToCEntry(title="Ch 1", level=0)],
                 sections=["sec1"],
             ),
-            relationships=DocumentRelationships(
-                footnote_links=[
-                    FootnoteLink(marker_id="m1", content_id="fn1"),
-                ],
-            ),
+            registers=[
+                LayoutRegister(register_id="main", name="Main Text"),
+            ],
+            note_schemas=[
+                NoteSchema(schema_id="default", marker_type="arabic"),
+            ],
+            citation_style=CitationStyle.CHICAGO_NB,
         )
         json_str = doc.model_dump_json(indent=2)
         restored = DocumentGT.model_validate_json(json_str)
@@ -377,12 +488,13 @@ class TestDocumentGT:
         assert restored.schema_version == SCHEMA_VERSION
         assert restored.source.title == "Test"
         assert len(restored.elements) == 2
-        assert isinstance(restored.elements[0], Footnote)
+        assert isinstance(restored.elements[0], Note)
         assert isinstance(restored.elements[1], Citation)
         assert restored.structure is not None
         assert len(restored.structure.toc) == 1
-        assert restored.relationships is not None
-        assert len(restored.relationships.footnote_links) == 1
+        assert len(restored.registers) == 1
+        assert len(restored.note_schemas) == 1
+        assert restored.citation_style == CitationStyle.CHICAGO_NB
 
     def test_document_extra_fields_round_trip(self):
         """Extra fields survive JSON round-trip."""
@@ -408,11 +520,12 @@ class TestDocumentGT:
 
 
 class TestHeideggerExample:
-    """Full realistic example: Heidegger Being and Time snippet."""
+    """Full realistic example: Heidegger Being and Time snippet (v2.0.0)."""
 
     def test_heidegger_being_and_time(self):
-        """A realistic DocumentGT for Being and Time with cross-page
-        footnote, citation, section structure, and relationships."""
+        """A realistic DocumentGT for Being and Time with Note (not Footnote),
+        Citation with CitationFormat/ReferenceSystem, Commentary, LayoutRegister,
+        NoteSchema, and no DocumentRelationships."""
         doc = DocumentGT(
             document_id="heidegger_sz_1962",
             source=DocumentSource(
@@ -425,12 +538,21 @@ class TestHeideggerExample:
                 document_type="translation",
             ),
             page_range=(0, 524),
+            note_schemas=[
+                NoteSchema(
+                    schema_id="translator_notes",
+                    marker_type="arabic",
+                    reset_boundary="page",
+                    placement="page_bottom",
+                    note_source="translator",
+                ),
+            ],
+            citation_style=CitationStyle.CHICAGO_NB,
             elements=[
-                # Cross-page footnote
-                Footnote(
-                    id="fn_p41_1",
-                    marker=MarkerInfo(
-                        text="1",
+                # Cross-page note (was footnote in v1.0.0)
+                Note(
+                    id="n_p41_1",
+                    body_marker=LocationRef(
                         page=65,
                         region_id="r_text_main",
                         char_offset=312,
@@ -448,14 +570,17 @@ class TestHeideggerExample:
                             is_continuation=True,
                         ),
                     ],
-                    location="page_bottom",
+                    placement="page_bottom",
                     note_source="translator",
+                    marker_text="1",
+                    note_schema_id="translator_notes",
                 ),
                 # Citation using SZ abbreviation
                 Citation(
                     id="ct_sz_41",
                     raw_text="(SZ, 41)",
-                    citation_type=CitationType.ABBREVIATED,
+                    citation_format=CitationFormat.PARENTHETICAL,
+                    reference_system=ReferenceSystem.SZ_PAGINATION,
                     parsed=ParsedCitation(
                         author="Heidegger",
                         work="SZ",
@@ -471,10 +596,12 @@ class TestHeideggerExample:
                         "Heidegger, M. (1927). Sein und Zeit. "
                         "Halle: Max Niemeyer."
                     ),
-                    parsed=ParsedCitation(
-                        author="Heidegger",
+                    record=BibliographicRecord(
+                        author="Heidegger, M.",
+                        title="Sein und Zeit",
                         year="1927",
-                        work="Sein und Zeit",
+                        publisher="Max Niemeyer",
+                        work_abbreviation="SZ",
                     ),
                     entry_index=0,
                 ),
@@ -505,6 +632,7 @@ class TestHeideggerExample:
                     char_offset=100,
                     char_length=13,
                     text="Sein und Zeit",
+                    language="de",
                 ),
             ],
             structure=DocumentStructure(
@@ -523,20 +651,6 @@ class TestHeideggerExample:
                 ],
                 sections=["sec_div1"],
             ),
-            relationships=DocumentRelationships(
-                footnote_links=[
-                    FootnoteLink(
-                        marker_id="fn_p41_1",
-                        content_id="fn_p41_1",
-                    ),
-                ],
-                citation_bib_links=[
-                    CitationBibLink(
-                        citation_id="ct_sz_41",
-                        bib_entry_id="bib_sz",
-                    ),
-                ],
-            ),
         )
 
         # Verify structure
@@ -545,32 +659,35 @@ class TestHeideggerExample:
         assert "Macquarrie" in doc.source.translator
         assert doc.page_range == (0, 524)
         assert len(doc.elements) == 5
+        assert doc.citation_style == CitationStyle.CHICAGO_NB
+        assert len(doc.note_schemas) == 1
 
         # Verify discriminated union types
-        assert isinstance(doc.elements[0], Footnote)
+        assert isinstance(doc.elements[0], Note)
         assert isinstance(doc.elements[1], Citation)
         assert isinstance(doc.elements[2], BibEntry)
         assert isinstance(doc.elements[3], Section)
         assert isinstance(doc.elements[4], PageNumberAnnotation)
 
-        # Verify cross-page footnote
-        fn = doc.elements[0]
-        assert isinstance(fn, Footnote)
-        assert len(fn.content) == 2
-        assert fn.content[1].is_continuation is True
+        # Verify cross-page note
+        note = doc.elements[0]
+        assert isinstance(note, Note)
+        assert len(note.content) == 2
+        assert note.content[1].is_continuation is True
+        assert note.placement == "page_bottom"
+        assert note.note_schema_id == "translator_notes"
 
-        # Verify relationships
-        assert doc.relationships is not None
-        assert len(doc.relationships.footnote_links) == 1
-        assert len(doc.relationships.citation_bib_links) == 1
+        # Verify no relationships attribute (v2.0.0 removed it)
+        assert not hasattr(doc, "relationships") or doc.model_fields.get("relationships") is None
 
         # Round-trip
         json_str = doc.model_dump_json(indent=2)
         restored = DocumentGT.model_validate_json(json_str)
         assert restored.document_id == doc.document_id
         assert len(restored.elements) == 5
-        assert isinstance(restored.elements[0], Footnote)
+        assert isinstance(restored.elements[0], Note)
         assert restored.formatting[0].text == "Sein und Zeit"
+        assert restored.formatting[0].language == "de"
 
 
 # ---------- Import from scholargt.schema tests ----------
@@ -580,37 +697,48 @@ class TestSchemaPackageExports:
     """Verify all public models are importable from scholargt.schema."""
 
     def test_base_models_importable(self):
-        from scholargt.schema import BBox, GTElement, VerificationRecord
+        from scholargt.schema import BBox, GTElement, LocationRef, VerificationRecord
 
         assert BBox is not None
         assert GTElement is not None
         assert VerificationRecord is not None
+        assert LocationRef is not None
 
     def test_page_models_importable(self):
-        from scholargt.schema import PageGT, PageQuality, Region
+        from scholargt.schema import (
+            PageDependency,
+            PageGT,
+            PageQuality,
+            Region,
+            SectionContextEntry,
+        )
 
         assert PageGT is not None
         assert PageQuality is not None
         assert Region is not None
+        assert PageDependency is not None
+        assert SectionContextEntry is not None
 
     def test_semantic_models_importable(self):
-        from scholargt.schema import (
-            Footnote,
-            ToCEntry,
-        )
+        from scholargt.schema import Commentary as Comm
+        from scholargt.schema import Note as Note_
+        from scholargt.schema import NoteSchema as NS
+        from scholargt.schema import ToCEntry as ToC
 
-        assert Footnote is not None
+        assert Note_ is not None
+        assert Comm is not None
         assert SemanticElement is not None
-        assert ToCEntry is not None
+        assert ToC is not None
+        assert NS is not None
 
     def test_document_models_importable(self):
         from scholargt.schema import (
             DocumentGT,
-            FootnoteLink,
+            LayoutRegister,
         )
 
         assert DocumentGT is not None
-        assert FootnoteLink is not None
+        assert LayoutRegister is not None
 
     def test_formatting_importable(self):
         from scholargt.schema import FormattingAnnotation
@@ -619,14 +747,22 @@ class TestSchemaPackageExports:
 
     def test_labels_importable(self):
         from scholargt.schema import (
-            CitationType,
+            CitationFormat,
+            CitationStyle,
+            DocumentSectionType,
+            ReferenceSystem,
+            ScriptVariant,
             SpatialLabel,
         )
 
-        assert len(CitationType) == 7
-        assert len(SpatialLabel) == 17
+        assert len(CitationFormat) == 5
+        assert len(ReferenceSystem) == 13
+        assert len(CitationStyle) == 7
+        assert len(ScriptVariant) == 6
+        assert len(DocumentSectionType) == 5
+        assert len(SpatialLabel) == 21
 
     def test_version_importable(self):
         from scholargt.schema import SCHEMA_VERSION
 
-        assert SCHEMA_VERSION == "1.0.0"
+        assert SCHEMA_VERSION == "2.0.0"

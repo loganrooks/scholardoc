@@ -2,6 +2,10 @@
 
 Tests profile loading, layered YAML merging, validation config,
 project overrides, and cross-validation with label enums.
+
+v2.0.0: Updated for new label categories (citation_formats, reference_systems,
+note_placements, script_variants), renamed document_types to document_section_types,
+updated enum values (note_area, note instead of footnote_area, footnote).
 """
 
 from __future__ import annotations
@@ -15,8 +19,11 @@ import yaml
 from scholargt.config.loader import get_profiles_dir, list_profiles, load_profile
 from scholargt.config.models import GTProfile, ValidationConfig
 from scholargt.schema.labels import (
-    DocumentType,
+    CitationFormat,
+    DocumentSectionType,
     FormattingType,
+    ReferenceSystem,
+    ScriptVariant,
     SemanticType,
     SpatialLabel,
 )
@@ -45,10 +52,10 @@ class TestBaseProfile:
         profile = load_profile("base")
         assert len(profile.formatting_types) == 0
 
-    def test_base_has_1_document_type(self):
+    def test_base_has_1_document_section_type(self):
         profile = load_profile("base")
-        assert len(profile.document_types) == 1
-        assert "metadata" in profile.document_types
+        assert len(profile.document_section_types) == 1
+        assert "metadata" in profile.document_section_types
 
     def test_base_validation_defaults(self):
         profile = load_profile("base")
@@ -61,7 +68,7 @@ class TestBaseProfile:
         profile = load_profile("base")
         expected = {
             "text_block",
-            "footnote_area",
+            "note_area",
             "page_header",
             "page_footer",
             "page_number",
@@ -71,7 +78,15 @@ class TestBaseProfile:
 
     def test_base_semantic_types_content(self):
         profile = load_profile("base")
-        assert profile.semantic_types == {"footnote", "citation"}
+        assert profile.semantic_types == {"note", "citation"}
+
+    def test_base_empty_new_categories(self):
+        """Base has no citation_formats, reference_systems, note_placements, script_variants."""
+        profile = load_profile("base")
+        assert len(profile.citation_formats) == 0
+        assert len(profile.reference_systems) == 0
+        assert len(profile.note_placements) == 0
+        assert len(profile.script_variants) == 0
 
 
 # ---------------------------------------------------------------------------
@@ -94,21 +109,31 @@ class TestExtractionEvalProfile:
         profile = load_profile("extraction-eval")
         assert profile.validation.require_reading_order is True
 
-    def test_extraction_eval_has_8_spatial_labels(self):
+    def test_extraction_eval_has_21_spatial_labels(self):
         profile = load_profile("extraction-eval")
-        assert len(profile.spatial_labels) == 8
+        assert len(profile.spatial_labels) == 21
 
-    def test_extraction_eval_includes_text_focused_labels(self):
+    def test_extraction_eval_includes_note_labels(self):
         profile = load_profile("extraction-eval")
-        assert "endnote_area" in profile.spatial_labels
+        assert "note_area" in profile.spatial_labels
+        assert "note_continuation" in profile.spatial_labels
         assert "block_quote" in profile.spatial_labels
+        assert "index_area" in profile.spatial_labels
 
-    def test_extraction_eval_has_5_semantic_types(self):
+    def test_extraction_eval_has_9_semantic_types(self):
         profile = load_profile("extraction-eval")
-        assert len(profile.semantic_types) == 5
-        assert "endnote" in profile.semantic_types
+        assert len(profile.semantic_types) == 9
+        assert "note" in profile.semantic_types
+        assert "commentary" in profile.semantic_types
         assert "section" in profile.semantic_types
         assert "bibliography_entry" in profile.semantic_types
+
+    def test_extraction_eval_has_new_categories(self):
+        profile = load_profile("extraction-eval")
+        assert len(profile.citation_formats) == 5
+        assert len(profile.reference_systems) == 13
+        assert len(profile.note_placements) == 4
+        assert len(profile.script_variants) == 6
 
     def test_extraction_eval_inherits_base_bbox(self):
         """Extraction-eval inherits require_bbox=true from base."""
@@ -128,9 +153,9 @@ class TestLayoutAnnotationProfile:
         profile = load_profile("layout-annotation")
         assert profile.name == "layout-annotation"
 
-    def test_layout_has_all_17_spatial_labels(self):
+    def test_layout_has_all_21_spatial_labels(self):
         profile = load_profile("layout-annotation")
-        assert len(profile.spatial_labels) == 17
+        assert len(profile.spatial_labels) == 21
 
     def test_layout_has_empty_semantic_types(self):
         profile = load_profile("layout-annotation")
@@ -161,23 +186,42 @@ class TestFullScholarlyProfile:
         profile = load_profile("full-scholarly")
         assert profile.name == "full-scholarly"
 
-    def test_full_has_all_17_spatial_labels(self):
+    def test_full_has_all_21_spatial_labels(self):
         profile = load_profile("full-scholarly")
-        assert len(profile.spatial_labels) == 17
+        assert len(profile.spatial_labels) == 21
 
     def test_full_has_all_9_semantic_types(self):
         profile = load_profile("full-scholarly")
         assert len(profile.semantic_types) == 9
         assert "sous_rature" in profile.semantic_types
+        assert "commentary" in profile.semantic_types
 
-    def test_full_has_all_6_formatting_types(self):
+    def test_full_has_all_9_formatting_types(self):
         profile = load_profile("full-scholarly")
-        assert len(profile.formatting_types) == 6
+        assert len(profile.formatting_types) == 9
         assert "superscript" in profile.formatting_types
+        assert "color" in profile.formatting_types
 
-    def test_full_has_all_5_document_types(self):
+    def test_full_has_all_5_document_section_types(self):
         profile = load_profile("full-scholarly")
-        assert len(profile.document_types) == 5
+        assert len(profile.document_section_types) == 5
+
+    def test_full_has_all_5_citation_formats(self):
+        profile = load_profile("full-scholarly")
+        assert len(profile.citation_formats) == 5
+
+    def test_full_has_all_13_reference_systems(self):
+        profile = load_profile("full-scholarly")
+        assert len(profile.reference_systems) == 13
+        assert "catchword" in profile.reference_systems
+
+    def test_full_has_4_note_placements(self):
+        profile = load_profile("full-scholarly")
+        assert len(profile.note_placements) == 4
+
+    def test_full_has_6_script_variants(self):
+        profile = load_profile("full-scholarly")
+        assert len(profile.script_variants) == 6
 
     def test_full_confidence_threshold_09(self):
         profile = load_profile("full-scholarly")
@@ -231,14 +275,47 @@ class TestLabelEnumCrossValidation:
                     f"Valid values: {sorted(valid_values)}"
                 )
 
-    def test_all_document_types_match_enum(self):
-        """Every document type in every profile must be a valid DocumentType value."""
-        valid_values = {e.value for e in DocumentType}
+    def test_all_document_section_types_match_enum(self):
+        """Document section types in profiles must be valid DocumentSectionType values."""
+        valid_values = {e.value for e in DocumentSectionType}
         for profile_name in list_profiles():
             profile = load_profile(profile_name)
-            for label in profile.document_types:
+            for label in profile.document_section_types:
                 assert label in valid_values, (
-                    f"Profile '{profile_name}' has invalid document type '{label}'. "
+                    f"Profile '{profile_name}' has invalid document section type '{label}'. "
+                    f"Valid values: {sorted(valid_values)}"
+                )
+
+    def test_all_citation_formats_match_enum(self):
+        """Every citation format in every profile must be a valid CitationFormat value."""
+        valid_values = {e.value for e in CitationFormat}
+        for profile_name in list_profiles():
+            profile = load_profile(profile_name)
+            for label in profile.citation_formats:
+                assert label in valid_values, (
+                    f"Profile '{profile_name}' has invalid citation format '{label}'. "
+                    f"Valid values: {sorted(valid_values)}"
+                )
+
+    def test_all_reference_systems_match_enum(self):
+        """Every reference system in every profile must be a valid ReferenceSystem value."""
+        valid_values = {e.value for e in ReferenceSystem}
+        for profile_name in list_profiles():
+            profile = load_profile(profile_name)
+            for label in profile.reference_systems:
+                assert label in valid_values, (
+                    f"Profile '{profile_name}' has invalid reference system '{label}'. "
+                    f"Valid values: {sorted(valid_values)}"
+                )
+
+    def test_all_script_variants_match_enum(self):
+        """Every script variant in every profile must be a valid ScriptVariant value."""
+        valid_values = {e.value for e in ScriptVariant}
+        for profile_name in list_profiles():
+            profile = load_profile(profile_name)
+            for label in profile.script_variants:
+                assert label in valid_values, (
+                    f"Profile '{profile_name}' has invalid script variant '{label}'. "
                     f"Valid values: {sorted(valid_values)}"
                 )
 
@@ -282,7 +359,7 @@ class TestProjectConfigOverrides:
             profile = load_profile("base", project_config_path=project_path)
             assert "custom_philosophy_label" in profile.semantic_types
             # Original types preserved
-            assert "footnote" in profile.semantic_types
+            assert "note" in profile.semantic_types
             assert "citation" in profile.semantic_types
         finally:
             project_path.unlink()
@@ -369,7 +446,7 @@ class TestIsLabelEnabled:
 
     def test_enabled_semantic_type(self):
         profile = load_profile("base")
-        assert profile.is_label_enabled("semantic", "footnote") is True
+        assert profile.is_label_enabled("semantic", "note") is True
 
     def test_disabled_semantic_type(self):
         profile = load_profile("base")
@@ -387,6 +464,27 @@ class TestIsLabelEnabled:
         profile = load_profile("base")
         assert profile.is_label_enabled("nonexistent", "text_block") is False
 
+    def test_document_section_category(self):
+        profile = load_profile("full-scholarly")
+        assert profile.is_label_enabled("document_section", "metadata") is True
+
+    def test_citation_format_category(self):
+        profile = load_profile("full-scholarly")
+        assert profile.is_label_enabled("citation_format", "parenthetical") is True
+
+    def test_reference_system_category(self):
+        profile = load_profile("full-scholarly")
+        assert profile.is_label_enabled("reference_system", "stephanus") is True
+        assert profile.is_label_enabled("reference_system", "catchword") is True
+
+    def test_note_placement_category(self):
+        profile = load_profile("full-scholarly")
+        assert profile.is_label_enabled("note_placement", "page_bottom") is True
+
+    def test_script_variant_category(self):
+        profile = load_profile("full-scholarly")
+        assert profile.is_label_enabled("script_variant", "rashi_script") is True
+
 
 # ---------------------------------------------------------------------------
 # enabled_labels and round-trip tests
@@ -399,7 +497,16 @@ class TestEnabledLabelsAndRoundTrip:
     def test_enabled_labels_returns_all_categories(self):
         profile = load_profile("base")
         labels = profile.enabled_labels()
-        assert set(labels.keys()) == {"spatial", "semantic", "formatting", "document"}
+        assert set(labels.keys()) == {
+            "spatial",
+            "semantic",
+            "formatting",
+            "document_section",
+            "citation_format",
+            "reference_system",
+            "note_placement",
+            "script_variant",
+        }
 
     def test_enabled_labels_spatial_matches_profile(self):
         profile = load_profile("base")
@@ -414,7 +521,11 @@ class TestEnabledLabelsAndRoundTrip:
         assert restored.spatial_labels == profile.spatial_labels
         assert restored.semantic_types == profile.semantic_types
         assert restored.formatting_types == profile.formatting_types
-        assert restored.document_types == profile.document_types
+        assert restored.document_section_types == profile.document_section_types
+        assert restored.citation_formats == profile.citation_formats
+        assert restored.reference_systems == profile.reference_systems
+        assert restored.note_placements == profile.note_placements
+        assert restored.script_variants == profile.script_variants
         assert restored.validation.confidence_threshold == profile.validation.confidence_threshold
 
 

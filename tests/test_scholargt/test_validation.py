@@ -2,6 +2,10 @@
 
 Tests JSON Schema generation, config-aware validation, extensibility,
 auto-detection of page vs document GT, and end-to-end file validation.
+
+v2.0.0: Updated for Note (not Footnote), Citation with CitationFormat,
+register_id cross-referencing, NoteSchema uniqueness, COLOR formatting
+validation, removed DocumentRelationships tests.
 """
 
 from __future__ import annotations
@@ -10,7 +14,7 @@ import json
 from pathlib import Path
 
 from scholargt.config.loader import load_profile
-from scholargt.schema.base import BBox
+from scholargt.schema.base import BBox, LocationRef
 from scholargt.schema.document import (
     DocumentGT,
     DocumentSource,
@@ -19,8 +23,7 @@ from scholargt.schema.labels import SpatialLabel
 from scholargt.schema.page import PageGT
 from scholargt.schema.semantic import (
     ContentSpan,
-    Footnote,
-    MarkerInfo,
+    Note,
     Section,
 )
 from scholargt.schema.spatial import Region
@@ -31,6 +34,7 @@ from scholargt.validation.validator import (
     validate_document_gt,
     validate_gt_file,
     validate_page_gt,
+    validate_page_registers,
 )
 
 # ---------- Schema generation tests ----------
@@ -71,6 +75,16 @@ class TestGenerateSchema:
     def test_schema_contains_gt_profile_def(self):
         schema = generate_schema()
         assert "GTProfile" in schema["$defs"]
+
+    def test_schema_contains_v2_model_defs(self):
+        """v2.0.0: Schema must include new model definitions."""
+        schema = generate_schema()
+        schema_str = json.dumps(schema)
+        assert "LayoutRegister" in schema_str
+        assert "NoteSchema" in schema_str
+        assert "ScriptVariant" in schema_str
+        assert "LocationRef" in schema_str
+        assert "Commentary" in schema_str
 
 
 class TestWriteSchema:
@@ -179,6 +193,10 @@ class TestValidatePageGTWithProfile:
         )
         profile = load_profile("extraction-eval")
         result = validate_page_gt(data, profile)
+        # extraction-eval now has all 21 spatial labels, so formula IS in it
+        # Use base profile instead for this test
+        base_profile = load_profile("base")
+        result = validate_page_gt(data, base_profile)
         assert result.valid  # warnings don't affect validity
         assert any("formula" in w and "spatial_labels" in w for w in result.warnings)
 
@@ -221,9 +239,6 @@ class TestValidatePageGTWithProfile:
             "reading_order": ["r1"],
         }
         profile = load_profile("layout-annotation")
-        # This test validates profile checking -- the actual Pydantic model
-        # requires bbox, so we pass data that bypasses Pydantic validation.
-        # The profile check catches bbox=None independently.
         result = validate_page_gt(data, profile)
         # Either schema validation catches it or profile check does
         assert not result.valid or any("bbox" in w for w in result.warnings)
@@ -265,8 +280,8 @@ class TestValidateDocumentGTWithProfile:
                 }
             ]
         )
-        # extraction-eval doesn't include sous_rature
-        profile = load_profile("extraction-eval")
+        # Use base profile -- sous_rature is NOT in base
+        profile = load_profile("base")
         result = validate_document_gt(data, profile)
         assert result.valid
         assert any("sous_rature" in w for w in result.warnings)
@@ -284,8 +299,8 @@ class TestValidateDocumentGTWithProfile:
                 }
             ]
         )
-        # extraction-eval has no formatting_types
-        profile = load_profile("extraction-eval")
+        # base profile has no formatting_types
+        profile = load_profile("base")
         result = validate_document_gt(data, profile)
         assert any("formatting" in w.lower() for w in result.warnings)
 
@@ -295,11 +310,11 @@ class TestValidateDocumentGTWithProfile:
             elements=[
                 {"id": "s1", "element_type": "section", "title": "Ch 1", "level": 0},
                 {
-                    "id": "fn1",
-                    "element_type": "footnote",
-                    "marker": {"text": "1", "page": 0},
+                    "id": "n1",
+                    "element_type": "note",
+                    "body_marker": {"page": 0, "region_id": "r1"},
                     "content": [{"page": 0, "text": "A note."}],
-                    "location": "page_bottom",
+                    "placement": "page_bottom",
                 },
             ]
         )
@@ -308,6 +323,128 @@ class TestValidateDocumentGTWithProfile:
         assert result.valid
         # No warnings about semantic types
         assert not any("semantic_types" in w for w in result.warnings)
+
+
+# ---------- Register cross-referencing tests ----------
+
+
+class TestRegisterCrossRef:
+    """Tests for register_id cross-referencing validation."""
+
+    def test_valid_register_id(self):
+        """register_id matching document registers produces no warnings."""
+        page_data = {
+            "schema_version": SCHEMA_VERSION,
+            "page_index": 0,
+            "regions": [
+                {
+                    "id": "r1",
+                    "label": "text_block",
+                    "bbox": {"x0": 0.1, "y0": 0.1, "x1": 0.9, "y1": 0.9},
+                    "register_id": "main_text",
+                }
+            ],
+        }
+        doc_data = {
+            "schema_version": SCHEMA_VERSION,
+            "document_id": "doc-001",
+            "source": {"pdf": "test.pdf"},
+            "registers": [
+                {"register_id": "main_text", "name": "Main Text"},
+            ],
+        }
+        warnings = validate_page_registers(page_data, doc_data)
+        assert warnings == []
+
+    def test_invalid_register_id_warns(self):
+        """register_id not in document registers produces warning."""
+        page_data = {
+            "schema_version": SCHEMA_VERSION,
+            "page_index": 0,
+            "regions": [
+                {
+                    "id": "r1",
+                    "label": "text_block",
+                    "bbox": {"x0": 0.1, "y0": 0.1, "x1": 0.9, "y1": 0.9},
+                    "register_id": "unknown_register",
+                }
+            ],
+        }
+        doc_data = {
+            "schema_version": SCHEMA_VERSION,
+            "document_id": "doc-001",
+            "source": {"pdf": "test.pdf"},
+            "registers": [
+                {"register_id": "main_text", "name": "Main Text"},
+            ],
+        }
+        warnings = validate_page_registers(page_data, doc_data)
+        assert any("unknown_register" in w for w in warnings)
+
+    def test_no_document_data_no_warnings(self):
+        """Without document data, no register validation occurs."""
+        page_data = {
+            "regions": [
+                {
+                    "id": "r1",
+                    "label": "text_block",
+                    "bbox": {"x0": 0.1, "y0": 0.1, "x1": 0.9, "y1": 0.9},
+                    "register_id": "anything",
+                }
+            ],
+        }
+        warnings = validate_page_registers(page_data)
+        assert warnings == []
+
+
+# ---------- COLOR formatting validation tests ----------
+
+
+class TestCOLORValidation:
+    """Tests for COLOR formatting validation warnings."""
+
+    def test_color_without_value_warns(self):
+        """COLOR formatting without color_value should warn."""
+        data = {
+            "schema_version": SCHEMA_VERSION,
+            "document_id": "doc-001",
+            "source": {"pdf": "test.pdf"},
+            "elements": [],
+            "formatting": [
+                {
+                    "id": "f1",
+                    "formatting_type": "color",
+                    "page": 0,
+                    "char_offset": 10,
+                    "char_length": 5,
+                    # no color_value
+                }
+            ],
+        }
+        result = validate_document_gt(data)
+        assert any("color" in w.lower() and "color_value" in w for w in result.warnings)
+
+    def test_color_with_value_no_warning(self):
+        """COLOR formatting with color_value should not produce that specific warning."""
+        data = {
+            "schema_version": SCHEMA_VERSION,
+            "document_id": "doc-001",
+            "source": {"pdf": "test.pdf"},
+            "elements": [],
+            "formatting": [
+                {
+                    "id": "f1",
+                    "formatting_type": "color",
+                    "page": 0,
+                    "char_offset": 10,
+                    "char_length": 5,
+                    "color_value": "#FF0000",
+                    "color_semantic": "emphasis",
+                }
+            ],
+        }
+        result = validate_document_gt(data)
+        assert not any("color_value" in w for w in result.warnings)
 
 
 # ---------- Extensibility tests ----------
@@ -477,27 +614,28 @@ class TestStructuralChecks:
         result = validate_page_gt(data)
         assert any("schema_version" in w for w in result.warnings)
 
-    def test_dangling_footnote_link_warns(self):
-        """Footnote link referencing non-existent element should warn."""
+    def test_note_schema_id_cross_ref_warns(self):
+        """Note referencing non-existent note_schema_id should warn."""
         data = {
             "schema_version": SCHEMA_VERSION,
             "document_id": "doc-001",
             "source": {"pdf": "test.pdf"},
             "elements": [
-                {"id": "s1", "element_type": "section", "title": "Ch1", "level": 0}
+                {
+                    "id": "n1",
+                    "element_type": "note",
+                    "body_marker": {"page": 0, "region_id": "r1"},
+                    "content": [{"page": 0, "text": "Note text"}],
+                    "placement": "page_bottom",
+                    "note_schema_id": "nonexistent_schema",
+                }
             ],
-            "relationships": {
-                "footnote_links": [
-                    {
-                        "marker_id": "fn_marker_1",
-                        "content_id": "fn_content_1",
-                    }
-                ]
-            },
+            "note_schemas": [
+                {"schema_id": "real_schema", "marker_type": "arabic"}
+            ],
         }
         result = validate_document_gt(data)
-        assert any("fn_content_1" in w for w in result.warnings)
-        assert any("fn_marker_1" in w for w in result.warnings)
+        assert any("nonexistent_schema" in w for w in result.warnings)
 
 
 # ---------- End-to-end test ----------
@@ -520,7 +658,7 @@ class TestEndToEnd:
                 ),
                 Region(
                     id="r2",
-                    label=SpatialLabel.FOOTNOTE_AREA,
+                    label=SpatialLabel.NOTE_AREA,
                     bbox=BBox(x0=0.1, y0=0.85, x1=0.9, y1=0.95),
                     text="1. Cf. Plato, Sophist 244a.",
                 ),
@@ -547,11 +685,11 @@ class TestEndToEnd:
             ),
             elements=[
                 Section(id="sec1", title="Introduction", level=0, page_start=0),
-                Footnote(
-                    id="fn1",
-                    marker=MarkerInfo(text="1", page=0),
+                Note(
+                    id="n1",
+                    body_marker=LocationRef(page=0, region_id="r1"),
                     content=[ContentSpan(page=0, text="Cf. Plato, Sophist 244a.")],
-                    location="page_bottom",
+                    placement="page_bottom",
                 ),
             ],
             config_profile="full-scholarly",

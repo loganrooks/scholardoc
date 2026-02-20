@@ -251,10 +251,6 @@ def validate_document_gt(
         elem.get("id", "") for elem in data.get("elements", [])
     }
 
-    # register_id cross-referencing: collect declared register IDs
-    registers = data.get("registers", [])
-    register_ids = {r.get("register_id", "") for r in registers} if registers else set()
-
     # note_schema uniqueness check
     note_schemas = data.get("note_schemas", [])
     if note_schemas:

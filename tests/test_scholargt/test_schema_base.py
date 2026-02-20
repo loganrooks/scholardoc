@@ -1,7 +1,11 @@
-"""Tests for scholargt base schema models: BBox, VerificationRecord, GTElement.
+"""Tests for scholargt base schema models: BBox, LocationRef, VerificationRecord, GTElement.
 
 Covers creation, validation, helper methods, extra field compatibility,
 JSON round-trip serialization, and label enum serialization.
+
+v2.0.0: Added LocationRef tests. Updated label enum tests for new taxonomy
+(DocumentSectionType replaces DocumentType, CitationFormat/ReferenceSystem/
+CitationStyle/ScriptVariant replace CitationType/MarginalRefType/ScanQuality/Difficulty).
 """
 
 from datetime import UTC, datetime
@@ -9,14 +13,14 @@ from datetime import UTC, datetime
 import pytest
 from pydantic import ValidationError
 
-from scholargt.schema.base import BBox, GTElement, VerificationRecord
+from scholargt.schema.base import BBox, GTElement, LocationRef, VerificationRecord
 from scholargt.schema.labels import (
-    CitationType,
-    Difficulty,
-    DocumentType,
+    CitationFormat,
+    CitationStyle,
+    DocumentSectionType,
     FormattingType,
-    MarginalRefType,
-    ScanQuality,
+    ReferenceSystem,
+    ScriptVariant,
     SemanticType,
     SpatialLabel,
 )
@@ -68,6 +72,39 @@ class TestBBox:
         json_str = bbox.model_dump_json()
         restored = BBox.model_validate_json(json_str)
         assert restored == bbox
+
+
+# ---------- LocationRef tests ----------
+
+
+class TestLocationRef:
+    def test_create_with_required_fields(self):
+        loc = LocationRef(page=0, region_id="r1")
+        assert loc.page == 0
+        assert loc.region_id == "r1"
+        assert loc.char_offset is None
+        assert loc.char_length is None
+
+    def test_create_with_all_fields(self):
+        loc = LocationRef(page=5, region_id="r3", char_offset=42, char_length=10)
+        assert loc.page == 5
+        assert loc.region_id == "r3"
+        assert loc.char_offset == 42
+        assert loc.char_length == 10
+
+    def test_json_round_trip(self):
+        loc = LocationRef(page=10, region_id="r_text", char_offset=100, char_length=25)
+        json_str = loc.model_dump_json()
+        restored = LocationRef.model_validate_json(json_str)
+        assert restored == loc
+
+    def test_json_round_trip_minimal(self):
+        loc = LocationRef(page=0, region_id="r1")
+        json_str = loc.model_dump_json()
+        restored = LocationRef.model_validate_json(json_str)
+        assert restored.page == 0
+        assert restored.region_id == "r1"
+        assert restored.char_offset is None
 
 
 # ---------- VerificationRecord tests ----------
@@ -218,28 +255,28 @@ class TestGTElement:
 
 class TestLabelEnums:
     def test_spatial_label_count(self):
-        assert len(SpatialLabel) == 17
+        assert len(SpatialLabel) == 21
 
     def test_semantic_type_count(self):
         assert len(SemanticType) == 9
 
     def test_formatting_type_count(self):
-        assert len(FormattingType) == 6
+        assert len(FormattingType) == 9
 
-    def test_document_type_count(self):
-        assert len(DocumentType) == 5
+    def test_document_section_type_count(self):
+        assert len(DocumentSectionType) == 5
 
-    def test_citation_type_count(self):
-        assert len(CitationType) == 7
+    def test_citation_format_count(self):
+        assert len(CitationFormat) == 5
 
-    def test_marginal_ref_type_count(self):
-        assert len(MarginalRefType) == 4
+    def test_reference_system_count(self):
+        assert len(ReferenceSystem) == 13
 
-    def test_scan_quality_values(self):
-        assert {q.value for q in ScanQuality} == {"low", "medium", "high"}
+    def test_citation_style_count(self):
+        assert len(CitationStyle) == 7
 
-    def test_difficulty_values(self):
-        assert {d.value for d in Difficulty} == {"easy", "medium", "hard"}
+    def test_script_variant_count(self):
+        assert len(ScriptVariant) == 6
 
     def test_spatial_label_serializes_as_string(self):
         """str, Enum pattern ensures JSON serialization as string."""
@@ -250,9 +287,20 @@ class TestLabelEnums:
         assert isinstance(SpatialLabel.TEXT_BLOCK, str)
 
     def test_semantic_type_serializes_as_string(self):
-        assert SemanticType.FOOTNOTE == "footnote"
-        assert SemanticType.FOOTNOTE.value == "footnote"
-        assert isinstance(SemanticType.FOOTNOTE, str)
+        assert SemanticType.NOTE == "note"
+        assert SemanticType.NOTE.value == "note"
+        assert isinstance(SemanticType.NOTE, str)
+
+    def test_spatial_label_includes_new_values(self):
+        """v2.0.0 additions: NOTE_AREA, NOTE_CONTINUATION, INDEX_AREA."""
+        assert SpatialLabel.NOTE_AREA == "note_area"
+        assert SpatialLabel.NOTE_CONTINUATION == "note_continuation"
+        assert SpatialLabel.INDEX_AREA == "index_area"
+
+    def test_semantic_type_includes_new_values(self):
+        """v2.0.0: NOTE replaces FOOTNOTE, COMMENTARY added."""
+        assert SemanticType.NOTE == "note"
+        assert SemanticType.COMMENTARY == "commentary"
 
     def test_label_in_json_output(self):
         """Labels serialize as plain strings in Pydantic JSON output."""
