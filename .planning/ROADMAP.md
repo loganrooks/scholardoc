@@ -171,7 +171,7 @@ Phases execute in numeric order: 0 -> 1 -> 1.1 -> 2 -> 3 -> 4 -> 5
 |-------|---------------|--------|-----------|
 | 0. Workspace Cleanup | 3/3 | Complete | 2026-02-18 |
 | 1. Universal GT Schema | 4/4 | Complete | 2026-02-18 |
-| 1.1 Schema Taxonomy Review | 0/5 | Not started | - |
+| 1.1 Schema Taxonomy Review | 3/5 | In Progress|  |
 | 2. Extractor Interface | 0/2 | Not started | - |
 | 3. Experimentation & Evaluation | 0/2 | Not started | - |
 | 4. Annotation Tool | 0/2 | Not started | - |

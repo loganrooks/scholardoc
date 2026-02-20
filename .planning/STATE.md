@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-18)
 
 **Core value:** You cannot improve what you cannot measure. ScholarGT provides the measurement foundation.
-**Current focus:** Phase 1.1: Schema Taxonomy Review & Revision -- Executing (Plan 01 complete, 4 remaining)
+**Current focus:** Phase 1.1: Schema Taxonomy Review & Revision -- Executing (Plan 03 complete, 2 remaining)
 
 ## Current Position
 
 Phase: 1.1 of 5 (Schema Taxonomy Review & Revision)
-Plan: 2 of 5 in current phase
+Plan: 3 of 5 in current phase
 Status: Executing
-Last activity: 2026-02-20 -- Plan 02 (Core Models) executed: Region continuation/hierarchy/SFP, Note/Commentary, FormattingAnnotation language/script/color
+Last activity: 2026-02-20 -- Plan 03 (Container Models) executed: hybrid PageQuality, PageDependency, SectionContextEntry, LayoutRegister (SFP-1), base_direction (SFP-2), DocumentRelationships removed
 
-Progress: [█████████░] 45%
+Progress: [██████████░] 50%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 9
-- Average duration: 2.9 min
-- Total execution time: 0.43 hours
+- Total plans completed: 10
+- Average duration: 2.8 min
+- Total execution time: 0.47 hours
 
 **By Phase:**
 
@@ -29,11 +29,11 @@ Progress: [█████████░] 45%
 |-------|-------|-------|----------|
 | 00 | 3 | 5 min | 1.7 min |
 | 01 | 4 | 19 min | 4.75 min |
-| 01.1 | 2 | 5 min | 2.5 min |
+| 01.1 | 3 | 7 min | 2.3 min |
 
 **Recent Trend:**
-- Last 5 plans: 01.1-02 (3min), 01.1-01 (2min), 01-04 (6min), 01-03 (4min), 01-02 (4min)
-- Trend: Core model rewrites fast (3min) -- straightforward field additions and model refactoring
+- Last 5 plans: 01.1-03 (2min), 01.1-02 (3min), 01.1-01 (2min), 01-04 (6min), 01-03 (4min)
+- Trend: Container model rewrites very fast (2min) -- straightforward field additions/removals with clear plan specs
 
 *Updated after each plan completion*
 
@@ -91,6 +91,10 @@ Recent decisions affecting current work:
 - [01.1-02]: BibEntry.record (BibliographicRecord) replaces BibEntry.parsed (ParsedCitation) for richer bibliography fields
 - [01.1-02]: FormattingAnnotation color validator warns rather than errors (supports incremental annotation)
 - [01.1-02]: Region.children uses self-referencing list[Region] with forward reference for sub-region nesting
+- [01.1-03]: PageQuality is hybrid model -- categorical overall + is_scan + artifact/difficulty lists + 5 numeric metrics (replaces ScanQuality/Difficulty enums)
+- [01.1-03]: LayoutRegister (SFP-1) stores register_id, name, author, language, text_direction, position_convention, typeface_convention
+- [01.1-03]: DocumentRelationships eliminated -- relationships now embedded in elements (Note.body_marker, Citation.bib_entry_id)
+- [01.1-03]: NoteSchema validator warns on duplicate schema_id (not error) for incremental annotation
 
 ### Roadmap Evolution
 
@@ -117,5 +121,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-20
-Stopped at: Completed 01.1-02-PLAN.md (Core Models). Continue with 01.1-03-PLAN.md.
+Stopped at: Completed 01.1-03-PLAN.md (Container Models). Continue with 01.1-04-PLAN.md.
 Resume file: none -- /gsd:execute-phase 1.1
