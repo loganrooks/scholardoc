@@ -44,6 +44,24 @@ class BBox(BaseModel):
         return (self.x1 - self.x0) * (self.y1 - self.y0)
 
 
+class LocationRef(BaseModel):
+    """Reference to a specific location in the GT corpus.
+
+    Standardizes the scattered page/region_id/char_offset/char_length pattern
+    used across semantic elements. Use for body_marker, content_marker,
+    target_location, and any element that references a position in a page region.
+    """
+
+    page: int = Field(description="0-based page index")
+    region_id: str = Field(description="Region ID on the page")
+    char_offset: int | None = Field(
+        default=None, description="Character offset within region text"
+    )
+    char_length: int | None = Field(
+        default=None, description="Length of referenced text span"
+    )
+
+
 class VerificationRecord(BaseModel):
     """A single verification event for a GT element.
 
