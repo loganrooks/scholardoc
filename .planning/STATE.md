@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-18)
 
 **Core value:** You cannot improve what you cannot measure. ScholarGT provides the measurement foundation.
-**Current focus:** Phase 1.1: Schema Taxonomy Review & Revision -- Executing (Plan 03 complete, 2 remaining)
+**Current focus:** Phase 1.1: Schema Taxonomy Review & Revision -- Executing (Plan 04 complete, 1 remaining)
 
 ## Current Position
 
 Phase: 1.1 of 5 (Schema Taxonomy Review & Revision)
-Plan: 3 of 5 in current phase
+Plan: 4 of 5 in current phase
 Status: Executing
-Last activity: 2026-02-20 -- Plan 03 (Container Models) executed: hybrid PageQuality, PageDependency, SectionContextEntry, LayoutRegister (SFP-1), base_direction (SFP-2), DocumentRelationships removed
+Last activity: 2026-02-20 -- Plan 04 (Integration) executed: v2.0.0 __init__.py re-exports, 8-category GTProfile, 4 YAML profiles updated, validator with register_id/NoteSchema/COLOR checks
 
-Progress: [██████████░] 50%
+Progress: [████████████░] 60%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 10
-- Average duration: 2.8 min
-- Total execution time: 0.47 hours
+- Total plans completed: 11
+- Average duration: 2.9 min
+- Total execution time: 0.53 hours
 
 **By Phase:**
 
@@ -29,11 +29,11 @@ Progress: [██████████░] 50%
 |-------|-------|-------|----------|
 | 00 | 3 | 5 min | 1.7 min |
 | 01 | 4 | 19 min | 4.75 min |
-| 01.1 | 3 | 7 min | 2.3 min |
+| 01.1 | 4 | 11 min | 2.75 min |
 
 **Recent Trend:**
-- Last 5 plans: 01.1-03 (2min), 01.1-02 (3min), 01.1-01 (2min), 01-04 (6min), 01-03 (4min)
-- Trend: Container model rewrites very fast (2min) -- straightforward field additions/removals with clear plan specs
+- Last 5 plans: 01.1-04 (4min), 01.1-03 (2min), 01.1-02 (3min), 01.1-01 (2min), 01-04 (6min)
+- Trend: Integration tasks slightly longer (4min) than pure model rewrites (2-3min) -- multiple files to coordinate
 
 *Updated after each plan completion*
 
@@ -95,6 +95,9 @@ Recent decisions affecting current work:
 - [01.1-03]: LayoutRegister (SFP-1) stores register_id, name, author, language, text_direction, position_convention, typeface_convention
 - [01.1-03]: DocumentRelationships eliminated -- relationships now embedded in elements (Note.body_marker, Citation.bib_entry_id)
 - [01.1-03]: NoteSchema validator warns on duplicate schema_id (not error) for incremental annotation
+- [01.1-04]: GTProfile uses 8 independent set[str] categories for flat config-driven label selection
+- [01.1-04]: validate_page_registers is separate function (needs both page + document data)
+- [01.1-04]: COLOR formatting warns (not errors) when color_value missing -- incremental annotation pattern
 
 ### Roadmap Evolution
 
@@ -121,5 +124,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-20
-Stopped at: Completed 01.1-03-PLAN.md (Container Models). Continue with 01.1-04-PLAN.md.
+Stopped at: Completed 01.1-04-PLAN.md (Integration). Continue with 01.1-05-PLAN.md.
 Resume file: none -- /gsd:execute-phase 1.1
