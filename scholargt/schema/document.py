@@ -2,22 +2,32 @@
 
 Companion to PageGT: while PageGT captures per-page spatial annotations,
 DocumentGT captures cross-page semantic elements, document metadata,
-structural hierarchy (ToC, sections), and inter-element relationships
-(footnote-content links, citation-bibliography links).
+structural hierarchy (ToC, sections), layout registers (SFP-1), note
+schemas, and citation style.
 
 Together, PageGT + DocumentGT form the hybrid file scope where spatial data
 lives per-page and semantic/structural data lives per-document.
+
+v2.0.0 changes from v1.0.0:
+- LayoutRegister added (SFP-1): named reading streams / column identities
+- note_schemas added: document-level note numbering conventions
+- citation_style added: document-level citation convention
+- DocumentRelationships, FootnoteLink, CitationBibLink REMOVED
+  (relationships now embedded in elements: Note.body_marker, Citation.bib_entry_id,
+  CrossReference.target_section_id)
 """
 
 from __future__ import annotations
 
+import warnings
 from typing import Any, Literal
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from scholargt.schema.base import VerificationRecord
 from scholargt.schema.formatting import FormattingAnnotation
-from scholargt.schema.semantic import SemanticElement, ToCEntry
+from scholargt.schema.labels import CitationStyle
+from scholargt.schema.semantic import NoteSchema, SemanticElement, ToCEntry
 from scholargt.schema.version import SCHEMA_VERSION
 
 # ---------- Supporting models ----------
@@ -61,43 +71,41 @@ class DocumentStructure(BaseModel):
     )
 
 
-class FootnoteLink(BaseModel):
-    """Link between a footnote marker and its content element."""
+class LayoutRegister(BaseModel):
+    """A named reading stream or column in a multi-register document.
 
-    marker_id: str = Field(description="Element ID of the marker location")
-    content_id: str = Field(description="Element ID of the content element")
-    link_type: Literal["footnote", "endnote"] = Field(
-        default="footnote", description="Type of note link"
-    )
+    Provides first-class identity for parallel text streams, commentary layers,
+    bilingual columns, and multi-register layouts. Each register describes a
+    distinct reading stream with its own author, language, text direction,
+    and typographic conventions.
 
-
-class CitationBibLink(BaseModel):
-    """Link between an in-text citation and its bibliography entry."""
-
-    citation_id: str = Field(description="Element ID of the citation")
-    bib_entry_id: str = Field(
-        description="Element ID of the bibliography entry"
-    )
-
-
-class DocumentRelationships(BaseModel):
-    """Cross-element relationships within a document.
-
-    Links between footnote markers and content, citations and bibliography
-    entries, and cross-reference element IDs.
+    Examples:
+    - Talmud page: registers for Mishnah text, Gemara, Rashi commentary, Tosafot
+    - Bilingual edition: registers for original language and translation
+    - Critical edition: registers for main text, apparatus criticus, editor notes
+    - Multi-column layout: registers for left_column, right_column
     """
 
-    footnote_links: list[FootnoteLink] = Field(
-        default_factory=list,
-        description="Footnote/endnote marker-to-content links",
+    register_id: str = Field(
+        description="Unique register identifier (e.g., 'hegel', 'genet', 'rashi')"
     )
-    citation_bib_links: list[CitationBibLink] = Field(
-        default_factory=list,
-        description="Citation-to-bibliography entry links",
+    name: str = Field(description="Human-readable register name")
+    author: str | None = Field(
+        default=None, description="Author or attributed source"
     )
-    cross_refs: list[str] = Field(
-        default_factory=list,
-        description="Cross-reference element IDs",
+    language: str | None = Field(
+        default=None, description="Primary BCP 47 language tag (e.g., 'he', 'de', 'ar')"
+    )
+    text_direction: Literal["ltr", "rtl"] | None = Field(
+        default=None, description="Base text direction for this register"
+    )
+    position_convention: str | None = Field(
+        default=None,
+        description="Layout convention (e.g., 'left_column', 'upper_register', 'inner_margin', 'central')",
+    )
+    typeface_convention: str | None = Field(
+        default=None,
+        description="Expected typeface family (e.g., 'rashi_script', 'square_hebrew', 'serif_9pt')",
     )
 
 
@@ -108,8 +116,12 @@ class DocumentGT(BaseModel):
     """Document-level ground truth: the companion to page-level PageGT.
 
     Captures cross-page semantic elements, document metadata, structural
-    hierarchy, and inter-element relationships. Forward-compatible via
-    extra="allow".
+    hierarchy, layout registers (SFP-1), note schemas, and citation style.
+    Forward-compatible via extra="allow".
+
+    v2.0.0: DocumentRelationships, FootnoteLink, CitationBibLink removed.
+    Relationships are now embedded in elements (Note.body_marker,
+    Citation.bib_entry_id, CrossReference.target_section_id).
     """
 
     model_config = ConfigDict(extra="allow")
@@ -137,9 +149,16 @@ class DocumentGT(BaseModel):
     structure: DocumentStructure | None = Field(
         default=None, description="Document structure (ToC, sections)"
     )
-    relationships: DocumentRelationships | None = Field(
-        default=None,
-        description="Inter-element relationships",
+    note_schemas: list[NoteSchema] = Field(
+        default_factory=list,
+        description="Document-level note numbering conventions (multiple simultaneous schemas supported)",
+    )
+    citation_style: CitationStyle | None = Field(
+        default=None, description="Document-level citation convention"
+    )
+    registers: list[LayoutRegister] = Field(
+        default_factory=list,
+        description="SFP-1: named reading streams / column identities",
     )
     config_profile: str | None = Field(
         default=None,
@@ -149,3 +168,25 @@ class DocumentGT(BaseModel):
         default_factory=list,
         description="Document-level verification records",
     )
+
+    @model_validator(mode="after")
+    def _validate_note_schema_uniqueness(self) -> DocumentGT:
+        """Warn if note_schemas contain duplicate schema_id values.
+
+        Uses warning rather than error because annotation may be in progress.
+        """
+        if self.note_schemas:
+            ids = [ns.schema_id for ns in self.note_schemas]
+            seen: set[str] = set()
+            duplicates: list[str] = []
+            for sid in ids:
+                if sid in seen:
+                    duplicates.append(sid)
+                seen.add(sid)
+            if duplicates:
+                warnings.warn(
+                    f"note_schemas contains duplicate schema_id values: {duplicates}",
+                    UserWarning,
+                    stacklevel=2,
+                )
+        return self
