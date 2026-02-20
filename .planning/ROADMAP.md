@@ -86,7 +86,7 @@ Plans:
 **Plans**: 5 plans in 5 waves
 
 Plans:
-- [ ] 01.1-01-PLAN.md — Foundation: LocationRef in base.py, label enum overhaul (ScriptVariant SFP-3, COLOR SFP-4, INDEX_AREA SFP-5, CATCHWORD SFP-6), version bump to 2.0.0
+- [x] 01.1-01-PLAN.md — Foundation: LocationRef in base.py, label enum overhaul (ScriptVariant SFP-3, COLOR SFP-4, INDEX_AREA SFP-5, CATCHWORD SFP-6), version bump to 2.0.0
 - [ ] 01.1-02-PLAN.md — Core models: Note, Commentary, NoteSchema, Region flags + register_id (SFP-1) + text_direction (SFP-2), FormattingAnnotation + language + script_variant (SFP-3) + color (SFP-4)
 - [ ] 01.1-03-PLAN.md — Container models: Hybrid PageQuality, PageDependency, SectionContextEntry, PageGT base_direction (SFP-2), LayoutRegister (SFP-1) + DocumentGT registers
 - [ ] 01.1-04-PLAN.md — Integration: __init__.py re-exports, GTProfile new categories, YAML profile updates, validator updates

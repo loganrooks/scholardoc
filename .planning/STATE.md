@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-18)
 
 **Core value:** You cannot improve what you cannot measure. ScholarGT provides the measurement foundation.
-**Current focus:** Phase 1.1: Schema Taxonomy Review & Revision -- PLANNED (5 plans ready for execution)
+**Current focus:** Phase 1.1: Schema Taxonomy Review & Revision -- Executing (Plan 01 complete, 4 remaining)
 
 ## Current Position
 
 Phase: 1.1 of 5 (Schema Taxonomy Review & Revision)
-Plan: 0 of 5 in current phase -- All planned, ready for execution
-Status: Planning complete, ready for execution
-Last activity: 2026-02-19 -- Quick task 2 complete (non-conservative gap analysis v2), Phase 1.1 plans ready for execution pending SFP adoption decision
+Plan: 1 of 5 in current phase
+Status: Executing
+Last activity: 2026-02-20 -- Plan 01 (Foundation Types) executed: LocationRef, 8 label enums, schema v2.0.0
 
-Progress: [████████░░] 40%
+Progress: [█████████░] 45%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 7
-- Average duration: 3.0 min
-- Total execution time: 0.35 hours
+- Total plans completed: 8
+- Average duration: 2.9 min
+- Total execution time: 0.38 hours
 
 **By Phase:**
 
@@ -29,10 +29,11 @@ Progress: [████████░░] 40%
 |-------|-------|-------|----------|
 | 00 | 3 | 5 min | 1.7 min |
 | 01 | 4 | 19 min | 4.75 min |
+| 01.1 | 1 | 2 min | 2.0 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-04 (6min), 01-03 (4min), 01-02 (4min), 01-01 (5min), 00-03 (2min)
-- Trend: Consistent ~5min for schema plans, 01-04 slightly longer due to examples + documentation
+- Last 5 plans: 01.1-01 (2min), 01-04 (6min), 01-03 (4min), 01-02 (4min), 01-01 (5min)
+- Trend: Foundation types fast (2min) -- straightforward enum overhaul and model addition
 
 *Updated after each plan completion*
 
@@ -48,7 +49,8 @@ Recent decisions affecting current work:
 - [Quick-2]: Text direction (SFP-2) must be explicit -- 33% of corpus is RTL, derivation from BCP 47 is insufficient
 - [Quick-2]: ScriptVariant (SFP-3) needed for Rashi vs square Hebrew -- 1,300 pages, BCP 47 cannot distinguish
 - [Quick-2]: All SFPs can be absorbed by existing Phase 1.1 plans with ~41 lines of additions
-- [Quick-2]: Decision required: which SFPs to adopt before executing Phase 1.1 plans
+- [SFP Decision]: Adopted Tier 1+2 (SFP-1 through SFP-6): LayoutRegister, text_direction, ScriptVariant, COLOR, INDEX_AREA, CATCHWORD. Deferred SFP-7 (content_layer, 4 pages).
+- [Replan]: Phase 1.1 replanned from scratch incorporating all 6 adopted SFPs. Research re-run. Verification passed all 7 dimensions.
 - [Quick-1]: Phase 1.1 gap analysis confirms zero blocking gaps -- all 85 structural phenomena representable in v2.0.0 schema
 - [Quick-1]: Phase 1.2 conditional -- beneficial for text_direction, script_variant, register_identity but not required
 - [Quick-1]: 5 degraded gaps all covered by GTElement.extra="allow" mechanism (by design)
@@ -80,6 +82,10 @@ Recent decisions affecting current work:
 - [01-04]: Validation separates errors (invalid) from warnings (informational) for extensibility
 - [01-04]: Auto-detection of page vs document GT via discriminating keys (regions vs document_id)
 - [01-04]: Generated schema.json committed to repo for IDE autocompletion and CI validation
+- [01.1-01]: LocationRef uses Optional[int] for char_offset/char_length (not all references need character-level precision)
+- [01.1-01]: NOTE_AREA/NOTE_CONTINUATION unify footnote/endnote spatial labels (position-independent)
+- [01.1-01]: ReferenceSystem shared by Citation and MarginalReference (eliminates MarginalRefType duplication)
+- [01.1-01]: DocumentType renamed to DocumentSectionType (avoid collision with DocumentSource.document_type Literal)
 
 ### Roadmap Evolution
 
@@ -105,6 +111,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-19
-Stopped at: Quick task 2 complete (non-conservative gap analysis v2). Decision pending: SFP adoption scope before Phase 1.1 execution.
-Resume file: none -- user reviews .planning/phases/01.1-schema-taxonomy-review-revision/01.1-GAP-ANALYSIS-v2.md, decides SFP scope, then /gsd:execute-phase 1.1
+Last session: 2026-02-20
+Stopped at: Completed 01.1-01-PLAN.md (Foundation Types). Continue with 01.1-02-PLAN.md.
+Resume file: none -- /gsd:execute-phase 1.1
