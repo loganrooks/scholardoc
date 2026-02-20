@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-18)
 ## Current Position
 
 Phase: 1.1 of 5 (Schema Taxonomy Review & Revision)
-Plan: 1 of 5 in current phase
+Plan: 2 of 5 in current phase
 Status: Executing
-Last activity: 2026-02-20 -- Plan 01 (Foundation Types) executed: LocationRef, 8 label enums, schema v2.0.0
+Last activity: 2026-02-20 -- Plan 02 (Core Models) executed: Region continuation/hierarchy/SFP, Note/Commentary, FormattingAnnotation language/script/color
 
 Progress: [█████████░] 45%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 8
+- Total plans completed: 9
 - Average duration: 2.9 min
-- Total execution time: 0.38 hours
+- Total execution time: 0.43 hours
 
 **By Phase:**
 
@@ -29,11 +29,11 @@ Progress: [█████████░] 45%
 |-------|-------|-------|----------|
 | 00 | 3 | 5 min | 1.7 min |
 | 01 | 4 | 19 min | 4.75 min |
-| 01.1 | 1 | 2 min | 2.0 min |
+| 01.1 | 2 | 5 min | 2.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 01.1-01 (2min), 01-04 (6min), 01-03 (4min), 01-02 (4min), 01-01 (5min)
-- Trend: Foundation types fast (2min) -- straightforward enum overhaul and model addition
+- Last 5 plans: 01.1-02 (3min), 01.1-01 (2min), 01-04 (6min), 01-03 (4min), 01-02 (4min)
+- Trend: Core model rewrites fast (3min) -- straightforward field additions and model refactoring
 
 *Updated after each plan completion*
 
@@ -86,6 +86,11 @@ Recent decisions affecting current work:
 - [01.1-01]: NOTE_AREA/NOTE_CONTINUATION unify footnote/endnote spatial labels (position-independent)
 - [01.1-01]: ReferenceSystem shared by Citation and MarginalReference (eliminates MarginalRefType duplication)
 - [01.1-01]: DocumentType renamed to DocumentSectionType (avoid collision with DocumentSource.document_type Literal)
+- [01.1-02]: Note unifies Footnote+Endnote via placement field (page_bottom, end_of_chapter, end_of_book, margin)
+- [01.1-02]: Commentary uses shared ReferenceSystem for passage location (consistent with Citation, MarginalReference)
+- [01.1-02]: BibEntry.record (BibliographicRecord) replaces BibEntry.parsed (ParsedCitation) for richer bibliography fields
+- [01.1-02]: FormattingAnnotation color validator warns rather than errors (supports incremental annotation)
+- [01.1-02]: Region.children uses self-referencing list[Region] with forward reference for sub-region nesting
 
 ### Roadmap Evolution
 
@@ -112,5 +117,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-20
-Stopped at: Completed 01.1-01-PLAN.md (Foundation Types). Continue with 01.1-02-PLAN.md.
+Stopped at: Completed 01.1-02-PLAN.md (Core Models). Continue with 01.1-03-PLAN.md.
 Resume file: none -- /gsd:execute-phase 1.1
