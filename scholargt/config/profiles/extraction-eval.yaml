@@ -1,28 +1,100 @@
 # Extraction evaluation profile -- focused on text extraction quality.
 # Requires text transcription and reading order for CER/WER computation.
-# Includes text-focused spatial labels and semantic types for evaluating
-# footnote, endnote, citation, section, and bibliography extraction.
+# Includes all spatial labels, semantic types, formatting types, and
+# new v2.0.0 categories for comprehensive extraction evaluation.
 
 name: extraction-eval
 inherits: base
 description: "Text extraction quality evaluation (CER/WER, reading order accuracy)"
+schema_version: "2.0.0"
 
 spatial_labels:
   - text_block
-  - footnote_area
-  - endnote_area
+  - note_area
+  - note_continuation
   - page_header
   - page_footer
   - page_number
   - section_header
+  - title
   - block_quote
+  - list_item
+  - table
+  - figure
+  - caption
+  - formula
+  - marginal_note
+  - bibliography_area
+  - toc_area
+  - abstract
+  - code_block
+  - index_area
+  - unknown
 
 semantic_types:
-  - footnote
-  - endnote
+  - note
   - citation
-  - section
   - bibliography_entry
+  - section
+  - sous_rature
+  - cross_reference
+  - marginal_reference
+  - page_number_annotation
+  - commentary
+
+formatting_types:
+  - bold
+  - italic
+  - underline
+  - strikethrough
+  - small_caps
+  - superscript
+  - subscript
+  - monospace
+  - color
+
+document_section_types:
+  - metadata
+  - toc
+  - front_matter
+  - back_matter
+  - note_schema
+
+citation_formats:
+  - parenthetical
+  - numeric
+  - inline_author
+  - note_based
+  - author_title
+
+reference_systems:
+  - standard
+  - stephanus
+  - bekker
+  - akademie
+  - ab_edition
+  - paragraph
+  - sz_pagination
+  - diels_kranz
+  - line_number
+  - chapter_verse
+  - legal
+  - catchword
+  - custom
+
+note_placements:
+  - page_bottom
+  - end_of_chapter
+  - end_of_book
+  - margin
+
+script_variants:
+  - square_hebrew
+  - rashi_script
+  - nastaliq
+  - naskh
+  - fraktur
+  - custom
 
 validation:
   require_text: true

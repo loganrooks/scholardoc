@@ -1,16 +1,19 @@
 # Full scholarly profile -- everything enabled for comprehensive annotation.
-# All 17 spatial labels, all 9 semantic types, all 6 formatting types,
-# and all 5 document types. Higher confidence threshold (0.9) reflects
-# the rigor expected for comprehensive scholarly ground truth.
+# All 21 spatial labels, all 9 semantic types, all 9 formatting types,
+# all 5 document section types, all 5 citation formats, all 13 reference
+# systems, all note placements, and all 6 script variants.
+# Higher confidence threshold (0.9) reflects the rigor expected for
+# comprehensive scholarly ground truth.
 
 name: full-scholarly
 inherits: base
 description: "Comprehensive scholarly annotation with all label types enabled"
+schema_version: "2.0.0"
 
 spatial_labels:
   - text_block
-  - footnote_area
-  - endnote_area
+  - note_area
+  - note_continuation
   - page_header
   - page_footer
   - page_number
@@ -24,11 +27,14 @@ spatial_labels:
   - formula
   - marginal_note
   - bibliography_area
-  - footnote_continuation
+  - toc_area
+  - abstract
+  - code_block
+  - index_area
+  - unknown
 
 semantic_types:
-  - footnote
-  - endnote
+  - note
   - citation
   - bibliography_entry
   - section
@@ -36,6 +42,7 @@ semantic_types:
   - cross_reference
   - marginal_reference
   - page_number_annotation
+  - commentary
 
 formatting_types:
   - bold
@@ -44,13 +51,52 @@ formatting_types:
   - strikethrough
   - small_caps
   - superscript
+  - subscript
+  - monospace
+  - color
 
-document_types:
+document_section_types:
   - metadata
   - toc
   - front_matter
   - back_matter
   - note_schema
+
+citation_formats:
+  - parenthetical
+  - numeric
+  - inline_author
+  - note_based
+  - author_title
+
+reference_systems:
+  - standard
+  - stephanus
+  - bekker
+  - akademie
+  - ab_edition
+  - paragraph
+  - sz_pagination
+  - diels_kranz
+  - line_number
+  - chapter_verse
+  - legal
+  - catchword
+  - custom
+
+note_placements:
+  - page_bottom
+  - end_of_chapter
+  - end_of_book
+  - margin
+
+script_variants:
+  - square_hebrew
+  - rashi_script
+  - nastaliq
+  - naskh
+  - fraktur
+  - custom
 
 validation:
   require_reading_order: true

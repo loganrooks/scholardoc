@@ -1,16 +1,17 @@
 # Layout annotation profile -- focused on visual layout detection (IoU, mAP).
-# Includes all 17 spatial labels for comprehensive layout evaluation.
-# Semantic types are empty since layout detection doesn't need semantic analysis.
-# Requires bbox and reading order but not text transcription.
+# Includes all 21 spatial labels for comprehensive layout evaluation.
+# Semantic types and other categories are empty since layout detection
+# doesn't need semantic analysis. Requires bbox and reading order but not text.
 
 name: layout-annotation
 inherits: base
 description: "Visual layout detection evaluation (IoU, mAP metrics)"
+schema_version: "2.0.0"
 
 spatial_labels:
   - text_block
-  - footnote_area
-  - endnote_area
+  - note_area
+  - note_continuation
   - page_header
   - page_footer
   - page_number
@@ -24,9 +25,22 @@ spatial_labels:
   - formula
   - marginal_note
   - bibliography_area
-  - footnote_continuation
+  - toc_area
+  - abstract
+  - code_block
+  - index_area
+  - unknown
 
 semantic_types: []
+
+formatting_types: []
+
+document_section_types: []
+
+citation_formats: []
+reference_systems: []
+note_placements: []
+script_variants: []
 
 validation:
   require_bbox: true

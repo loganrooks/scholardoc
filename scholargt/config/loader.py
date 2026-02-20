@@ -103,7 +103,11 @@ def load_profile(
             "additional_spatial_labels": "spatial_labels",
             "additional_semantic_types": "semantic_types",
             "additional_formatting_types": "formatting_types",
-            "additional_document_types": "document_types",
+            "additional_document_section_types": "document_section_types",
+            "additional_citation_formats": "citation_formats",
+            "additional_reference_systems": "reference_systems",
+            "additional_note_placements": "note_placements",
+            "additional_script_variants": "script_variants",
         }
         for additional_key, target_key in _label_set_keys.items():
             additional = getattr(project_config, additional_key)
@@ -118,7 +122,11 @@ def load_profile(
                 "spatial_labels",
                 "semantic_types",
                 "formatting_types",
-                "document_types",
+                "document_section_types",
+                "citation_formats",
+                "reference_systems",
+                "note_placements",
+                "script_variants",
             ]:
                 if label_key in config:
                     config[label_key] = [

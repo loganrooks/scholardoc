@@ -4,24 +4,29 @@
 
 name: base
 description: "Base profile with core annotation types for common scholarly documents"
-schema_version: "1.0.0"
+schema_version: "2.0.0"
 
 spatial_labels:
   - text_block
-  - footnote_area
+  - note_area
   - page_header
   - page_footer
   - page_number
   - section_header
 
 semantic_types:
-  - footnote
+  - note
   - citation
 
 formatting_types: []
 
-document_types:
+document_section_types:
   - metadata
+
+citation_formats: []
+reference_systems: []
+note_placements: []
+script_variants: []
 
 validation:
   require_reading_order: false
