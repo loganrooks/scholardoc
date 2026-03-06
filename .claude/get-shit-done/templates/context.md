@@ -1,6 +1,6 @@
 # Phase Context Template
 
-Template for `.planning/phases/XX-name/{phase_num}-CONTEXT.md` - captures implementation decisions for a phase.
+Template for `.planning/phases/XX-name/{phase}-CONTEXT.md` - captures implementation decisions for a phase.
 
 **Purpose:** Document decisions that downstream agents need. Researcher uses this to know WHAT to investigate. Planner uses this to know WHAT choices are locked vs flexible.
 
@@ -276,8 +276,39 @@ The output should answer: "What does the researcher need to investigate? What ch
 - "Easy to use"
 
 **After creation:**
-- File lives in phase directory: `.planning/phases/XX-name/{phase_num}-CONTEXT.md`
+- File lives in phase directory: `.planning/phases/XX-name/{phase}-CONTEXT.md`
 - `gsd-phase-researcher` uses decisions to focus investigation
 - `gsd-planner` uses decisions + research to create executable tasks
 - Downstream agents should NOT need to ask the user again about captured decisions
 </guidelines>
+
+<open_questions>
+
+## Open Questions
+
+Add to CONTEXT.md during phase discussion:
+
+```markdown
+## Open Questions
+
+| Question | Why It Matters | Criticality | Status |
+|----------|----------------|-------------|--------|
+| {Question from phase discussion} | {Impact on this phase} | {Critical/Medium/Low} | Pending |
+
+Capture uncertainties during phase discussion. Phase research will attempt to resolve these.
+```
+
+**Purpose:** Questions identified during discuss-phase that need investigation before planning. Research agent reads these and either resolves them or flags them as genuine gaps.
+
+**When to add questions:**
+- User expresses uncertainty about an approach
+- Implementation choice depends on unknown factors
+- Technology selection needs validation
+
+**Flow:**
+1. Captured here during discuss-phase
+2. Research attempts to resolve
+3. Unresolved critical questions may trigger spikes
+4. Resolved questions inform planning
+
+</open_questions>

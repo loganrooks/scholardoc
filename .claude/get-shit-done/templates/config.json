@@ -4,8 +4,7 @@
   "workflow": {
     "research": true,
     "plan_check": true,
-    "verifier": true,
-    "auto_advance": false
+    "verifier": true
   },
   "planning": {
     "commit_docs": true,
@@ -32,5 +31,17 @@
   "safety": {
     "always_confirm_destructive": true,
     "always_confirm_external_services": true
+  },
+  "gsd_reflect_version": "1.13.0",
+  "health_check": {
+    "frequency": "milestone-only",
+    "stale_threshold_days": 7,
+    "blocking_checks": false
+  },
+  "devops": {
+    "ci_provider": "none",
+    "deploy_target": "none",
+    "commit_convention": "freeform",
+    "environments": []
   }
 }

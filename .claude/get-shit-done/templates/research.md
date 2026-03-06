@@ -1,6 +1,6 @@
 # Research Template
 
-Template for `.planning/phases/XX-name/{phase_num}-RESEARCH.md` - comprehensive ecosystem research before planning.
+Template for `.planning/phases/XX-name/{phase}-RESEARCH.md` - comprehensive ecosystem research before planning.
 
 **Purpose:** Document what Claude needs to know to implement a phase well - not just "which library" but "how do experts build this."
 
@@ -191,17 +191,42 @@ What's changed recently:
 <open_questions>
 ## Open Questions
 
+### Resolved
+- {Question from CONTEXT.md}: {How research answered it}
+
+### Genuine Gaps
+| Question | Criticality | Recommendation |
+|----------|-------------|----------------|
+| {Question research couldn't answer} | {Critical/Medium/Low} | {Spike/Defer/Accept-risk} |
+
+Recommendation guidance:
+- **Spike:** Critical question, empirical answer possible, worth investigating
+- **Defer:** Not blocking this phase, can answer later
+- **Accept-risk:** Proceed with assumption, acknowledge uncertainty
+
+### Resolved by Spike
+{Section populated by orchestrator after spike completes}
+
+1. **{Question}**
+   - Decision: {one-line answer}
+   - Evidence: {brief summary}
+   - Full analysis: {path to DECISION.md}
+   - Confidence: {HIGH|MEDIUM|LOW}
+
+### Still Open
+{Questions that couldn't be resolved - flagged for downstream attention}
+- {Question}: {Why unresolved, what assumption made}
+
+---
+
+**Legacy format (for questions discovered during research):**
+
 Things that couldn't be fully resolved:
 
 1. **[Question]**
    - What we know: [partial info]
    - What's unclear: [the gap]
    - Recommendation: [how to handle during planning/execution]
-
-2. **[Question]**
-   - What we know: [partial info]
-   - What's unclear: [the gap]
-   - Recommendation: [how to handle]
 </open_questions>
 
 <sources>
@@ -547,6 +572,6 @@ function useVehicleControls(rigidBodyRef) {
 - Code examples can be referenced in task actions
 
 **After creation:**
-- File lives in phase directory: `.planning/phases/XX-name/{phase_num}-RESEARCH.md`
+- File lives in phase directory: `.planning/phases/XX-name/{phase}-RESEARCH.md`
 - Referenced during planning workflow
 - plan-phase loads it automatically when present

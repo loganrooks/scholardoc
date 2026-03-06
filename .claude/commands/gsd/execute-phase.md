@@ -32,7 +32,8 @@ Phase: $ARGUMENTS
 **Flags:**
 - `--gaps-only` — Execute only gap closure plans (plans with `gap_closure: true` in frontmatter). Use after verify-work creates fix plans.
 
-Context files are resolved inside the workflow via `gsd-tools init execute-phase` and per-subagent `<files_to_read>` blocks.
+@.planning/ROADMAP.md
+@.planning/STATE.md
 </context>
 
 <process>

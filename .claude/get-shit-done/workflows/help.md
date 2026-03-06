@@ -9,16 +9,17 @@ Display the complete GSD command reference. Output ONLY the reference content. D
 
 ## Quick Start
 
-1. `/gsd:new-project` - Initialize project (includes research, requirements, roadmap)
-2. `/gsd:plan-phase 1` - Create detailed plan for first phase
-3. `/gsd:execute-phase 1` - Execute the phase
+1. `npx get-shit-done-reflect-cc` - Install GSD Reflect
+2. `/gsd:new-project` - Initialize project (includes research, requirements, roadmap)
+3. `/gsd:plan-phase 1` - Create detailed plan for first phase
+4. `/gsd:execute-phase 1` - Execute the phase
 
 ## Staying Updated
 
 GSD evolves fast. Update periodically:
 
 ```bash
-npx get-shit-done-cc@latest
+npx get-shit-done-reflect-cc@latest
 ```
 
 ## Core Workflow
@@ -312,16 +313,6 @@ Usage: `/gsd:set-profile budget`
 
 ### Utility Commands
 
-**`/gsd:cleanup`**
-Archive accumulated phase directories from completed milestones.
-
-- Identifies phases from completed milestones still in `.planning/phases/`
-- Shows dry-run summary before moving anything
-- Moves phase dirs to `.planning/milestones/v{X.Y}-phases/`
-- Use after multiple milestones to reduce `.planning/phases/` clutter
-
-Usage: `/gsd:cleanup`
-
 **`/gsd:help`**
 Show this command reference.
 
@@ -332,17 +323,32 @@ Update GSD to latest version with changelog preview.
 - Displays changelog entries for versions you've missed
 - Highlights breaking changes
 - Confirms before running install
-- Better than raw `npx get-shit-done-cc`
+- Better than raw `npx get-shit-done-reflect-cc`
 
 Usage: `/gsd:update`
 
-**`/gsd:join-discord`**
-Join the GSD Discord community.
+**`/gsd:community`**
+Connect with the GSD Reflect community.
 
 - Get help, share what you're building, stay updated
-- Connect with other GSD users
+- Connect with other GSD Reflect users via GitHub Discussions
 
-Usage: `/gsd:join-discord`
+Usage: `/gsd:community`
+
+### GSD Reflect
+
+GSD Reflect adds learning capabilities on top of GSD:
+
+| Command | What it does |
+|---------|--------------|
+| `/gsd:signal` | Manually log a signal from current conversation |
+| `/gsd:collect-signals <N>` | Analyze phase execution for deviations |
+| `/gsd:reflect` | Analyze accumulated signals and distill patterns into lessons |
+| `/gsd:health-check` | Validate workspace state (KB, config, stale artifacts) |
+| `/gsd:upgrade-project` | Migrate project to current version with mini-onboarding |
+| `/gsd:spike` | Translate design uncertainty into a structured experiment |
+
+*Reflection (`/gsd:reflect`) runs as part of milestone completion. Knowledge surfacing happens automatically during research and planning.*
 
 ## Files & Structure
 
@@ -357,12 +363,6 @@ Usage: `/gsd:join-discord`
 │   └── done/             # Completed todos
 ├── debug/                # Active debug sessions
 │   └── resolved/         # Archived resolved issues
-├── milestones/
-│   ├── v1.0-ROADMAP.md       # Archived roadmap snapshot
-│   ├── v1.0-REQUIREMENTS.md  # Archived requirements
-│   └── v1.0-phases/          # Archived phase dirs (via /gsd:cleanup or --archive-phases)
-│       ├── 01-foundation/
-│       └── 02-core-features/
 ├── codebase/             # Codebase map (brownfield projects)
 │   ├── STACK.md          # Languages, frameworks, dependencies
 │   ├── ARCHITECTURE.md   # Patterns, layers, data flow

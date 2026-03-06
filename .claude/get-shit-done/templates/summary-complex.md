@@ -49,10 +49,32 @@ completed: YYYY-MM-DD
 [Key decisions with brief rationale]
 
 ## Deviations from Plan (Auto-fixed)
-[Detailed auto-fix records per GSD deviation rules]
+
+[If no deviations: "None - plan executed exactly as written."]
+
+[If deviations occurred:]
+
+**1. [Rule X - Category] Brief description**
+- **Found during:** Task [N] ([task name])
+- **Issue:** [What was wrong]
+- **Fix:** [What was done]
+- **Verification:** [How it was verified]
+- **Committed in:** [commit hash]
+
+---
+
+**Total deviations:** [N] auto-fixed ([breakdown by rule])
+**Impact on plan:** [Brief assessment]
 
 ## Issues Encountered
 [Problems during planned work and resolutions]
+
+## User Setup Required
+<!-- If USER-SETUP.md was generated during execution: -->
+<!-- **External services require manual configuration.** -->
+<!-- See `USER-SETUP.md` in the phase directory for details. -->
+<!-- If no USER-SETUP.md: -->
+None - no external service configuration required.
 
 ## Next Phase Readiness
 [What's ready for next phase]

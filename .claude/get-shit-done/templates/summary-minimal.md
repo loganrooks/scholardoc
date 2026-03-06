@@ -3,6 +3,9 @@ phase: XX-name
 plan: YY
 subsystem: [primary category]
 tags: [searchable tech]
+requires:
+  - phase: [prior phase identifier]
+    provides: [what that phase established that this plan needed]
 provides:
   - [bullet list of what was built/delivered]
 affects: [list of phase names or keywords]
@@ -13,6 +16,8 @@ key-files:
   created: [important files created]
   modified: [important files modified]
 key-decisions: []
+patterns-established:
+  - "[Pattern name]: [brief description]"
 duration: Xmin
 completed: YYYY-MM-DD
 ---

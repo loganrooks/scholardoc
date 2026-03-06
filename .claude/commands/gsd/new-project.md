@@ -32,6 +32,7 @@ Initialize a new project through unified flow: questioning → research (optiona
 @./.claude/get-shit-done/workflows/new-project.md
 @./.claude/get-shit-done/references/questioning.md
 @./.claude/get-shit-done/references/ui-brand.md
+@./.claude/get-shit-done/references/devops-detection.md
 @./.claude/get-shit-done/templates/project.md
 @./.claude/get-shit-done/templates/requirements.md
 </execution_context>

@@ -3,6 +3,9 @@ phase: XX-name
 plan: YY
 subsystem: [primary category]
 tags: [searchable tech]
+requires:
+  - phase: [prior phase identifier]
+    provides: [what that phase established that this plan needed]
 provides:
   - [bullet list of what was built/delivered]
 affects: [list of phase names or keywords]
@@ -14,6 +17,8 @@ key-files:
   modified: [important files modified]
 key-decisions:
   - "Decision 1"
+patterns-established:
+  - "[Pattern name]: [brief description]"
 duration: Xmin
 completed: YYYY-MM-DD
 ---
@@ -43,6 +48,13 @@ completed: YYYY-MM-DD
 ## Decisions & Deviations
 [Key decisions or "None - followed plan as specified"]
 [Minor deviations if any, or "None"]
+
+## User Setup Required
+<!-- If USER-SETUP.md was generated during execution: -->
+<!-- **External services require manual configuration.** -->
+<!-- See `USER-SETUP.md` in the phase directory for details. -->
+<!-- If no USER-SETUP.md: -->
+None - no external service configuration required.
 
 ## Next Phase Readiness
 [What's ready for next phase]

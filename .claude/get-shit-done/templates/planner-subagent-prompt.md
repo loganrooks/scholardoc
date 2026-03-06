@@ -22,14 +22,14 @@ Template for spawning gsd-planner agent. The agent contains all planning experti
 @.planning/REQUIREMENTS.md
 
 **Phase Context (if exists):**
-@.planning/phases/{phase_dir}/{phase_num}-CONTEXT.md
+@.planning/phases/{phase_dir}/{phase}-CONTEXT.md
 
 **Research (if exists):**
-@.planning/phases/{phase_dir}/{phase_num}-RESEARCH.md
+@.planning/phases/{phase_dir}/{phase}-RESEARCH.md
 
 **Gap Closure (if --gaps mode):**
-@.planning/phases/{phase_dir}/{phase_num}-VERIFICATION.md
-@.planning/phases/{phase_dir}/{phase_num}-UAT.md
+@.planning/phases/{phase_dir}/{phase}-VERIFICATION.md
+@.planning/phases/{phase_dir}/{phase}-UAT.md
 
 </planning_context>
 

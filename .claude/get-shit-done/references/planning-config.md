@@ -12,7 +12,8 @@ Configuration options for `.planning/` directory behavior.
   "branching_strategy": "none",
   "phase_branch_template": "gsd/phase-{phase}-{slug}",
   "milestone_branch_template": "gsd/{milestone}-{slug}"
-}
+},
+"knowledge_debug": false
 ```
 
 | Option | Default | Description |
@@ -22,6 +23,7 @@ Configuration options for `.planning/` directory behavior.
 | `git.branching_strategy` | `"none"` | Git branching approach: `"none"`, `"phase"`, or `"milestone"` |
 | `git.phase_branch_template` | `"gsd/phase-{phase}-{slug}"` | Branch template for phase strategy |
 | `git.milestone_branch_template` | `"gsd/{milestone}-{slug}"` | Branch template for milestone strategy |
+| `knowledge_debug` | `false` | When true, agents log all KB entries considered during knowledge surfacing |
 </config_schema>
 
 <commit_docs_behavior>
@@ -36,18 +38,18 @@ Configuration options for `.planning/` directory behavior.
 - User must add `.planning/` to `.gitignore`
 - Useful for: OSS contributions, client projects, keeping planning private
 
-**Using gsd-tools.cjs (preferred):**
+**Using gsd-tools.js (preferred):**
 
 ```bash
 # Commit with automatic commit_docs + gitignore checks:
-node ./.claude/get-shit-done/bin/gsd-tools.cjs commit "docs: update state" --files .planning/STATE.md
+node ./.claude/get-shit-done/bin/gsd-tools.js commit "docs: update state" --files .planning/STATE.md
 
 # Load config via state load (returns JSON):
-INIT=$(node ./.claude/get-shit-done/bin/gsd-tools.cjs state load)
+INIT=$(node ./.claude/get-shit-done/bin/gsd-tools.js state load)
 # commit_docs is available in the JSON output
 
 # Or use init commands which include commit_docs:
-INIT=$(node ./.claude/get-shit-done/bin/gsd-tools.cjs init execute-phase "1")
+INIT=$(node ./.claude/get-shit-done/bin/gsd-tools.js init execute-phase "1")
 # commit_docs is included in all init command outputs
 ```
 
@@ -56,7 +58,7 @@ INIT=$(node ./.claude/get-shit-done/bin/gsd-tools.cjs init execute-phase "1")
 **Commit via CLI (handles checks automatically):**
 
 ```bash
-node ./.claude/get-shit-done/bin/gsd-tools.cjs commit "docs: update state" --files .planning/STATE.md
+node ./.claude/get-shit-done/bin/gsd-tools.js commit "docs: update state" --files .planning/STATE.md
 ```
 
 The CLI checks `commit_docs` config and gitignore status internally — no manual conditionals needed.
@@ -101,8 +103,6 @@ To use uncommitted mode:
    git commit -m "chore: stop tracking planning docs"
    ```
 
-4. **Branch merges:** When using `branching_strategy: phase` or `milestone`, the `complete-milestone` workflow automatically strips `.planning/` files from staging before merge commits when `commit_docs: false`.
-
 </setup_uncommitted_mode>
 
 <branching_strategy_behavior>
@@ -144,13 +144,13 @@ To use uncommitted mode:
 
 Use `init execute-phase` which returns all config as JSON:
 ```bash
-INIT=$(node ./.claude/get-shit-done/bin/gsd-tools.cjs init execute-phase "1")
+INIT=$(node ./.claude/get-shit-done/bin/gsd-tools.js init execute-phase "1")
 # JSON output includes: branching_strategy, phase_branch_template, milestone_branch_template
 ```
 
 Or use `state load` for the config values:
 ```bash
-INIT=$(node ./.claude/get-shit-done/bin/gsd-tools.cjs state load)
+INIT=$(node ./.claude/get-shit-done/bin/gsd-tools.js state load)
 # Parse branching_strategy, phase_branch_template, milestone_branch_template from JSON
 ```
 
@@ -192,5 +192,30 @@ Squash merge is recommended — keeps main branch history clean while preserving
 | `milestone` | Release branches, staging environments, PR per version |
 
 </branching_strategy_behavior>
+
+<knowledge_surfacing_config>
+
+**Knowledge surfacing configuration:**
+
+| Option | Default | Description |
+|--------|---------|-------------|
+| `knowledge_debug` | `false` | When true, agents log all KB entries considered during knowledge surfacing (not just applied entries). Useful for diagnosing why entries were or weren't surfaced. |
+
+**Checking the config:**
+
+```bash
+KNOWLEDGE_DEBUG=$(cat .planning/config.json 2>/dev/null | grep -o '"knowledge_debug"[[:space:]]*:[[:space:]]*[^,}]*' | grep -o 'true\|false' || echo "false")
+```
+
+**When `knowledge_debug: true`:**
+- Agents include a "## KB Debug Log" section listing all entries they read from index.md
+- Each entry shows: ID, tags, relevance assessment (why included or excluded), freshness status
+- This section is in addition to the standard "## Knowledge Applied" section
+
+**When `knowledge_debug: false` (default):**
+- Standard behavior: only "## Knowledge Applied" section with applied/dismissed entries
+- No debug logging overhead
+
+</knowledge_surfacing_config>
 
 </planning_config>
