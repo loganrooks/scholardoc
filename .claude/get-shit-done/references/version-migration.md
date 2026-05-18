@@ -59,32 +59,18 @@ fi
 
 **Default values:** Every new field has a sensible default that preserves existing behavior. A project that migrates without changing any setting behaves identically to before.
 
-### Current Migration Actions (v1.12.0)
+### Migration Actions
 
-When migrating from any version prior to 1.12.0:
+Migration actions are now manifest-driven. Running `manifest apply-migration` reads `feature-manifest.json`, detects config gaps, fills missing features/fields with schema defaults, and coerces mismatched types.
 
-1. **Add `gsd_reflect_version` field** -- set to the installed version string
-2. **Add `health_check` section** (if absent):
-   ```json
-   "health_check": {
-     "frequency": "milestone-only",
-     "stale_threshold_days": 7,
-     "blocking_checks": false
-   }
-   ```
-3. **Add `devops` section** (if absent):
-   ```json
-   "devops": {
-     "ci_provider": "none",
-     "deploy_target": "none",
-     "commit_convention": "freeform",
-     "environments": []
-   }
-   ```
+**To see what would change:** `node ./.claude/get-shit-done/bin/gsd-tools.js manifest diff-config --raw`
+**To apply changes:** `node ./.claude/get-shit-done/bin/gsd-tools.js manifest apply-migration --raw`
+
+Adding a new feature requires only adding it to `feature-manifest.json`. The migration commands automatically handle existing projects.
 
 ### Future Migrations
 
-Follow the same pattern: check if field/section exists, add with default if missing. Each version increment documents its migration actions in this section. The migration function patches from any older version to current -- there are no versioned migration scripts.
+Adding new features follows the same pattern: add the feature schema to `feature-manifest.json`. The `apply-migration` command automatically detects and fills gaps.
 
 ## Mini-Onboarding
 
@@ -94,24 +80,13 @@ When migration introduces new configurable features, the user may be prompted fo
 
 **Interactive mode:** Use `AskUserQuestion` for each new feature section. Keep questions minimal (2-3 max per migration).
 
-### Current Onboarding Questions (v1.12.0)
+### Onboarding Questions
 
-**Question 1: Health check frequency**
-> "GSD Reflect now includes workspace health checks. How often should they run?"
-> Options: `milestone-only` (default), `on-resume`, `every-phase`, `explicit-only`
+Questions and options for each feature are declared in `feature-manifest.json` via `init_prompts`. Use `manifest get-prompts <feature>` to retrieve them.
 
-**Question 2: Health check blocking**
-> "Should health check warnings block execution?"
-> Options: `false` (default), `true`
+**YOLO mode:** Apply all defaults silently. Log what was added. No questions asked.
 
-**Question 3: DevOps context**
-> "Would you like to configure DevOps context (CI provider, deploy target, commit convention) now?"
-> Options: `skip` (default -- applies empty defaults), `configure` (asks follow-up questions)
-
-If the user chooses "configure" for DevOps, ask:
-- CI provider: `none` (default), `github-actions`, `gitlab-ci`, `circleci`, `jenkins`, `other`
-- Deploy target: `none` (default), `vercel`, `docker`, `fly-io`, `railway`, `other`
-- Commit convention: `freeform` (default), `conventional`
+**Interactive mode:** Use `AskUserQuestion` for each feature's prompts. Features with `_gate` prompts allow the user to skip configuration entirely (accepting all defaults).
 
 ## Migration Log
 

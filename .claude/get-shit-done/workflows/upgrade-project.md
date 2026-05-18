@@ -9,7 +9,7 @@ Upgrades are additive and non-destructive. Existing settings are preserved exact
 </core_principle>
 
 <required_reading>
-Read version-migration.md for migration actions and mini-onboarding questions.
+Read version-migration.md for migration principles and log format. Feature-specific migration actions come from the manifest via `manifest apply-migration`.
 Read ui-brand.md for output formatting conventions.
 Read .planning/config.json for current project configuration.
 </required_reading>
@@ -65,33 +65,51 @@ Check if `--auto` flag was passed in arguments OR if `.planning/config.json` has
 <step name="apply_patches">
 ## 5. Apply Additive Config Patches
 
-Read the current `.planning/config.json` content. For each migration action defined in version-migration.md:
+Run manifest diff to detect config gaps:
+```bash
+DIFF=$(node ./.claude/get-shit-done/bin/gsd-tools.js manifest diff-config --raw)
+```
 
-1. **`gsd_reflect_version`** -- if absent, will be set at the end (after all other changes succeed)
-2. **`health_check` section** -- if absent, add with defaults (or user-chosen values in interactive mode)
-3. **`devops` section** -- if absent, add with defaults (or user-chosen values in interactive mode)
+Parse the JSON result. Extract `missing_features`, `missing_fields`, and `type_mismatches`.
 
-**In interactive mode**, before adding each new section, ask the user for their preferences per the mini-onboarding questions in version-migration.md:
+**If no gaps found** (all arrays empty and `manifest_version` matches `config_manifest_version`):
+Report "Config is up to date" and skip to Step 6.
 
-- Health check frequency: `milestone-only` (default), `on-resume`, `every-phase`, `explicit-only`
-- Health check blocking: `false` (default), `true`
-- DevOps context: `skip` (apply defaults) or `configure` (ask follow-up questions)
+**In YOLO/auto mode:** Apply all defaults without prompting:
+```bash
+RESULT=$(node ./.claude/get-shit-done/bin/gsd-tools.js manifest apply-migration --raw)
+```
 
-**In YOLO/auto mode**, apply all defaults without prompting.
+**In interactive mode:** For each missing feature:
+1. Get prompts: `node ./.claude/get-shit-done/bin/gsd-tools.js manifest get-prompts <feature> --raw`
+2. Check for `_gate` prompt (field === "_gate"):
+   - If present: ask the gate question first via AskUserQuestion
+   - If user selects `skip_value`: skip remaining prompts, feature gets all defaults
+   - If user selects other value: continue with remaining prompts
+3. For each non-gate prompt: present question and options via AskUserQuestion
+4. Write user choices: `node ./.claude/get-shit-done/bin/gsd-tools.js config-set <config_key>.<field> <value>`
+5. After all user choices, fill remaining defaults and coerce types:
+   ```bash
+   node ./.claude/get-shit-done/bin/gsd-tools.js manifest apply-migration --raw
+   ```
 
-Write the updated config.json with the new fields added. Preserve ALL existing fields and values exactly as they are. Add new fields at the end of the JSON object (before the closing `}`).
+Update version stamps LAST (only after all changes succeed):
+```bash
+node ./.claude/get-shit-done/bin/gsd-tools.js config-set gsd_reflect_version "<installed_version>"
+```
 
-Update `gsd_reflect_version` to the installed version LAST (only after all other changes succeed). This ensures partial migrations are retried on next run.
+This ensures partial migrations are retried on next run.
 </step>
 
 <step name="log_migration">
 ## 6. Log Migration
 
-Append a migration entry to `.planning/migration-log.md`:
+Log the migration using the changes from Step 5:
+```bash
+node ./.claude/get-shit-done/bin/gsd-tools.js manifest log-migration --from "<old_version>" --to "<new_version>" --changes '<changes_json_from_step_5>' --raw
+```
 
-- If the file does not exist, create it with the header from the migration log template in version-migration.md
-- Prepend the new entry (most recent first, after the header)
-- Include: source version, target version, ISO timestamp, changes applied, user choices
+The `--changes` argument is the `changes` array from the `manifest apply-migration` output in Step 5. If interactive mode added user choices via `config-set`, include those as additional `field_added` entries in the changes array.
 </step>
 
 <step name="report_results">

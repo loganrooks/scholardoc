@@ -61,9 +61,10 @@ const child = spawn(process.execPath, ['-e', `
   }
 
   // Compare versions (simple numeric dot-separated comparison)
+  // Strip +dev suffix from local dev installs before comparing
   function versionGreaterThan(a, b) {
-    const pa = a.split('.').map(Number);
-    const pb = b.split('.').map(Number);
+    const pa = a.replace(/\\+.*$/, '').split('.').map(Number);
+    const pb = b.replace(/\\+.*$/, '').split('.').map(Number);
     for (let i = 0; i < 3; i++) {
       const va = pa[i] || 0;
       const vb = pb[i] || 0;

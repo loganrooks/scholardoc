@@ -1,6 +1,6 @@
 ---
 name: gsd:health-check
-description: Validate workspace state and report actionable findings
+description: Validate workspace state and report actionable findings (v1.16.0+dev)
 argument-hint: "[--full] [--focus kb|planning] [--fix] [--stale-days N]"
 allowed-tools:
   - Read

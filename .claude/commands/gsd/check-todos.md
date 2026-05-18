@@ -1,6 +1,6 @@
 ---
 name: gsd:check-todos
-description: List pending todos and select one to work on
+description: List pending todos and select one to work on (v1.16.0+dev)
 argument-hint: [area filter]
 allowed-tools:
   - Read

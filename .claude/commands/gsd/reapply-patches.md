@@ -1,5 +1,5 @@
 ---
-description: Reapply local modifications after a GSD update
+description: Reapply local modifications after a GSD update (v1.16.0+dev)
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep, AskUserQuestion
 ---
 

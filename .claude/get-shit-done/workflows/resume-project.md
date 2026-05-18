@@ -23,11 +23,27 @@ Load all context in one call:
 INIT=$(node ./.claude/get-shit-done/bin/gsd-tools.js init resume)
 ```
 
-Parse JSON for: `state_exists`, `roadmap_exists`, `project_exists`, `planning_exists`, `has_interrupted_agent`, `interrupted_agent_id`, `commit_docs`.
+Parse JSON for: `state_exists`, `roadmap_exists`, `project_exists`, `planning_exists`, `has_interrupted_agent`, `interrupted_agent_id`, `commit_docs`, `dual_install`.
 
 **If `state_exists` is true:** Proceed to load_state
 **If `state_exists` is false but `roadmap_exists` or `project_exists` is true:** Offer to reconstruct STATE.md
 **If `planning_exists` is false:** This is a new project - route to /gsd:new-project
+</step>
+
+<step name="detect_runtime">
+Detect which runtime this workflow is executing in by examining the path prefix
+used in this file. The installer replaces ~/.claude/ with the target runtime's
+path prefix during installation.
+
+Runtime detection from path prefix:
+- ~/.claude/ paths -> Claude Code (command prefix: /gsd:)
+- ~/.config/opencode/ paths -> OpenCode (command prefix: /gsd-)
+- ~/.gemini/ paths -> Gemini CLI (command prefix: /gsd:)
+- ~/.codex/ paths -> Codex CLI (command prefix: $gsd-)
+
+Store the detected command prefix for use when rendering command suggestions.
+For example, if this file contains ~/.codex/ paths, the command prefix is $gsd-
+and "plan-phase 3" renders as "$gsd-plan-phase 3".
 </step>
 
 <step name="load_state">
@@ -62,8 +78,11 @@ cat .planning/PROJECT.md
 Look for incomplete work that needs attention:
 
 ```bash
-# Check for continue-here files (mid-plan resumption)
+# Check for phase-level handoffs (mid-plan resumption)
 ls .planning/phases/*/.continue-here*.md 2>/dev/null
+
+# Check for project-level handoffs (not tied to a specific phase)
+ls .planning/.continue-here.md 2>/dev/null
 
 # Check for plans without summaries (incomplete execution)
 for plan in .planning/phases/*/*-PLAN.md; do
@@ -81,7 +100,14 @@ fi
 
 - This is a mid-plan resumption point
 - Read the file for specific resumption context
+- If <next_action> contains /gsd: or $gsd- command syntax (old format),
+  display it as-is -- it may not match the current runtime but provides
+  useful context. New-format files have semantic-only next_action.
 - Flag: "Found mid-plan checkpoint"
+
+**Note:** The .continue-here.md file contains semantic state only (no command
+syntax). When presenting resumption options, render commands using the detected
+runtime prefix from detect_runtime step.
 
 **If PLAN without SUMMARY exists:**
 
@@ -93,7 +119,19 @@ fi
 - Subagent was spawned but session ended before completion
 - Read agent-history.json for task details
 - Flag: "Found interrupted agent"
-  </step>
+
+**After loading .continue-here context, delete the file:**
+
+```bash
+# Delete the loaded handoff file (phase-level or project-level)
+rm -f "$CONTINUE_HERE_PATH"
+```
+
+The handoff context is now loaded into this session. The file is stale.
+The continue-here template contract states: "This file gets DELETED after resume -- it's not permanent storage."
+If the session ends unexpectedly before work completes, the user can re-create
+a handoff with /gsd:pause-work.
+</step>
 
 <step name="present_status">
 Present complete project status to user:
@@ -110,6 +148,12 @@ Present complete project status to user:
 ║                                                               ║
 ║  Last activity: [date] - [what happened]                     ║
 ╚══════════════════════════════════════════════════════════════╝
+
+[If dual_install.detected is true (from init JSON):]
+ℹ️  Dual GSD installation detected:
+    Local: v[dual_install.local.version] (this project — active)
+    Global: v[dual_install.global.version] (baseline)
+    See: references/dual-installation.md
 
 [If incomplete work found:]
 ⚠️  Incomplete work detected:
@@ -172,6 +216,13 @@ Based on project state, determine the most logical next action:
 </step>
 
 <step name="offer_options">
+**Command rendering:** When presenting command suggestions below, use the
+command prefix detected in the detect_runtime step. All /gsd: references
+in the examples below are SOURCE-format placeholders -- the installer
+transforms them to the correct prefix for the installed runtime. When
+displaying commands to the user (especially from .continue-here.md semantic
+state), construct the command using the detected prefix.
+
 Present contextual options based on project state:
 
 ```
@@ -205,6 +256,10 @@ Wait for user selection.
 </step>
 
 <step name="route_to_workflow">
+**Note:** The command references below (e.g., /gsd:execute-phase) are in source
+format. When this file is installed to a runtime, the installer transforms them
+to the correct syntax. No additional runtime adaptation needed in this step.
+
 Based on user selection, route to appropriate workflow:
 
 - **Execute plan** → Show command for user to run after clearing:

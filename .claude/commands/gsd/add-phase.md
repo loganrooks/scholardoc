@@ -1,6 +1,6 @@
 ---
 name: gsd:add-phase
-description: Add phase to end of current milestone in roadmap
+description: Add phase to end of current milestone in roadmap (v1.16.0+dev)
 argument-hint: <description>
 allowed-tools:
   - Read

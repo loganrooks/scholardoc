@@ -36,6 +36,11 @@
  *   phase remove <phase> [--force]     Remove phase, renumber all subsequent
  *   phase complete <phase>             Mark phase done, update state + roadmap
  *
+ * Manifest Operations:
+ *   manifest diff-config               Compare manifest vs config.json
+ *   manifest validate                  Validate config against manifest
+ *   manifest get-prompts <feature>     Get init prompts for a feature
+ *
  * Roadmap Operations:
  *   roadmap get-phase <phase>          Extract phase section from ROADMAP.md
  *   roadmap analyze                    Full roadmap parse with disk status
@@ -477,6 +482,132 @@ function error(message) {
   process.exit(1);
 }
 
+// ─── Manifest Helpers ─────────────────────────────────────────────────────────
+
+function loadManifest(cwd) {
+  const localPath = path.join(cwd, '.claude', 'get-shit-done', 'feature-manifest.json');
+  const globalPath = path.join(require('os').homedir(), '.claude', 'get-shit-done', 'feature-manifest.json');
+  // Also check relative to the script location (for running from source repo)
+  const scriptRelPath = path.join(__dirname, '..', 'feature-manifest.json');
+  const manifestPath = fs.existsSync(localPath) ? localPath
+    : fs.existsSync(globalPath) ? globalPath
+    : fs.existsSync(scriptRelPath) ? scriptRelPath : null;
+  if (!manifestPath) return null;
+  try {
+    return JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
+  } catch {
+    return null;
+  }
+}
+
+function loadProjectConfig(cwd) {
+  const configPath = path.join(cwd, '.planning', 'config.json');
+  if (!fs.existsSync(configPath)) return null;
+  try {
+    return JSON.parse(fs.readFileSync(configPath, 'utf-8'));
+  } catch {
+    return null;
+  }
+}
+
+function validateFieldType(value, schema) {
+  if (value === undefined || value === null) return true; // missing is not a type error
+  const expectedType = schema.type;
+  if (expectedType === 'string') return typeof value === 'string';
+  if (expectedType === 'number') return typeof value === 'number';
+  if (expectedType === 'boolean') return typeof value === 'boolean';
+  if (expectedType === 'array') return Array.isArray(value);
+  if (expectedType === 'object') return typeof value === 'object' && !Array.isArray(value);
+  return true; // unknown type = pass
+}
+
+function validateFieldEnum(value, schema) {
+  if (!schema.enum || value === undefined) return true;
+  return schema.enum.includes(value);
+}
+
+// ─── Module-Level Constants ───────────────────────────────────────────────────
+
+const KNOWN_TOP_LEVEL_KEYS = new Set([
+  'mode', 'depth', 'model_profile', 'commit_docs', 'search_gitignored',
+  'branching_strategy', 'phase_branch_template', 'milestone_branch_template',
+  'workflow', 'planning', 'parallelization', 'gates', 'safety',
+  'gsd_reflect_version', 'manifest_version', 'brave_search',
+]);
+
+const FEATURE_CAPABILITY_MAP = {
+  signal_collection: {
+    hook_dependent_above: null,  // workflow postlude, not hook-based
+    task_tool_dependent: false,
+  },
+  reflection: {
+    hook_dependent_above: null,  // counter-based in workflow
+    task_tool_dependent: true,   // spawns reflector as subagent
+  },
+  health_check: {
+    hook_dependent_above: 2,     // session-start nudge needs hooks above level 2
+    task_tool_dependent: false,
+  },
+  ci_status: {
+    hook_dependent_above: 1,     // session-start display needs hooks above level 1
+    task_tool_dependent: false,
+  },
+};
+
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+
+function coerceValue(value, schema) {
+  const target = schema.type;
+  if (target === 'boolean') {
+    if (value === 'true') return true;
+    if (value === 'false') return false;
+  }
+  if (target === 'number') {
+    if (typeof value === 'string') {
+      const trimmed = value.trim();
+      if (trimmed !== '' && !isNaN(trimmed)) return Number(trimmed);
+    }
+  }
+  if (target === 'string') {
+    if (typeof value === 'boolean') return String(value);
+    if (typeof value === 'number') return String(value);
+  }
+  if (target === 'array') {
+    if (!Array.isArray(value) && value !== null && value !== undefined) {
+      return [value];
+    }
+  }
+  return value;
+}
+
+function atomicWriteJson(filePath, data) {
+  const tmpPath = filePath + '.tmp';
+  const content = JSON.stringify(data, null, 2) + '\n';
+  fs.writeFileSync(tmpPath, content, 'utf-8');
+  fs.renameSync(tmpPath, filePath);
+}
+
+function formatMigrationEntry(fromVersion, toVersion, timestamp, changes) {
+  let entry = `## ${fromVersion} -> ${toVersion} (${timestamp})\n\n`;
+  entry += `### Changes Applied\n`;
+  for (const change of changes) {
+    if (change.type === 'feature_added') {
+      entry += `- Added \`${change.config_key}\` section`;
+      if (change.fields_added) {
+        entry += ` (${change.fields_added.join(', ')})`;
+      }
+      entry += '\n';
+    } else if (change.type === 'field_added') {
+      entry += `- Added \`${change.feature}.${change.field}\`: ${JSON.stringify(change.default_value)}\n`;
+    } else if (change.type === 'type_coerced') {
+      entry += `- Coerced \`${change.feature}.${change.field}\` from ${JSON.stringify(change.from)} to ${JSON.stringify(change.to)}\n`;
+    } else if (change.type === 'manifest_version_updated') {
+      entry += `- Updated manifest_version: ${change.from} -> ${change.to}\n`;
+    }
+  }
+  return entry;
+}
+
 // ─── Commands ─────────────────────────────────────────────────────────────────
 
 function cmdGenerateSlug(text, raw) {
@@ -528,6 +659,9 @@ function cmdListTodos(cwd, area, raw) {
         const createdMatch = content.match(/^created:\s*(.+)$/m);
         const titleMatch = content.match(/^title:\s*(.+)$/m);
         const areaMatch = content.match(/^area:\s*(.+)$/m);
+        const priorityMatch = content.match(/^priority:\s*(.+)$/m);
+        const sourceMatch = content.match(/^source:\s*(.+)$/m);
+        const statusMatch = content.match(/^status:\s*(.+)$/m);
 
         const todoArea = areaMatch ? areaMatch[1].trim() : 'general';
 
@@ -540,6 +674,9 @@ function cmdListTodos(cwd, area, raw) {
           created: createdMatch ? createdMatch[1].trim() : 'unknown',
           title: titleMatch ? titleMatch[1].trim() : 'Untitled',
           area: todoArea,
+          priority: priorityMatch ? priorityMatch[1].trim() : 'MEDIUM',
+          source: sourceMatch ? sourceMatch[1].trim() : 'unknown',
+          status: statusMatch ? statusMatch[1].trim() : 'pending',
           path: path.join('.planning', 'todos', 'pending', file),
         });
       } catch {}
@@ -2110,6 +2247,30 @@ const FRONTMATTER_SCHEMAS = {
   plan: { required: ['phase', 'plan', 'type', 'wave', 'depends_on', 'files_modified', 'autonomous', 'must_haves'] },
   summary: { required: ['phase', 'plan', 'subsystem', 'tags', 'duration', 'completed'] },
   verification: { required: ['phase', 'verified', 'status', 'score'] },
+  signal: {
+    required: ['id', 'type', 'project', 'tags', 'created', 'severity', 'signal_type'],
+    conditional: [
+      {
+        when: { field: 'severity', value: 'critical' },
+        require: ['evidence'],
+        recommend: ['confidence', 'confidence_basis'],
+      },
+      {
+        when: { field: 'severity', value: 'notable' },
+        recommend: ['evidence', 'confidence'],
+      },
+    ],
+    // Backward compat: when lifecycle_state is absent, conditional require -> recommend (warnings).
+    // Pre-Phase 31 signals lack lifecycle_state. New signals from the template always have it.
+    // IMPORTANT: Phase 33 bulk triage must add evidence BEFORE adding lifecycle_state to critical
+    // signals, or they will fail validation once the backward_compat exemption no longer applies.
+    backward_compat: { field: 'lifecycle_state' },
+    recommended: ['lifecycle_state', 'signal_category', 'confidence', 'confidence_basis'],
+    optional: ['triage', 'remediation', 'verification', 'lifecycle_log',
+               'recurrence_of', 'phase', 'plan', 'polarity', 'source',
+               'occurrence_count', 'related_signals', 'runtime', 'model',
+               'gsd_version', 'durability', 'status'],
+  },
 };
 
 function cmdFrontmatterValidate(cwd, filePath, schemaName, raw) {
@@ -2120,9 +2281,73 @@ function cmdFrontmatterValidate(cwd, filePath, schemaName, raw) {
   const content = safeReadFile(fullPath);
   if (!content) { output({ error: 'File not found', path: filePath }, raw); return; }
   const fm = extractFrontmatter(content);
+
+  // Check required fields
   const missing = schema.required.filter(f => fm[f] === undefined);
   const present = schema.required.filter(f => fm[f] !== undefined);
-  output({ valid: missing.length === 0, missing, present, schema: schemaName }, raw, missing.length === 0 ? 'valid' : 'invalid');
+
+  // Check conditional requirements
+  const conditionalMissing = [];
+  const conditionalWarnings = [];
+  // Determine backward compatibility mode: signals without lifecycle_state predate Phase 31
+  const backwardCompat = schema.backward_compat && fm[schema.backward_compat.field] === undefined;
+  if (schema.conditional) {
+    for (const cond of schema.conditional) {
+      if (fm[cond.when.field] === cond.when.value) {
+        if (cond.require) {
+          for (const f of cond.require) {
+            if (fm[f] === undefined) {
+              if (backwardCompat) {
+                conditionalWarnings.push(`backward_compat: ${f}`);
+              } else {
+                conditionalMissing.push(f);
+              }
+            }
+          }
+        }
+        if (cond.recommend) {
+          for (const f of cond.recommend) {
+            if (fm[f] === undefined) conditionalWarnings.push(f);
+          }
+        }
+      }
+    }
+  }
+
+  // Evidence content validation: empty evidence objects don't satisfy the epistemic rigor requirement.
+  // evidence: {} or evidence: { supporting: [], counter: [] } are structurally present but epistemically empty.
+  if (!backwardCompat && schema.conditional) {
+    for (const cond of schema.conditional) {
+      if (fm[cond.when.field] === cond.when.value && cond.require) {
+        for (const f of cond.require) {
+          if (f === 'evidence' && fm.evidence !== undefined) {
+            const ev = fm.evidence;
+            const hasContent = ev.supporting && ev.supporting.length > 0;
+            if (!hasContent) {
+              conditionalMissing.push('evidence (empty)');
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Check recommended fields (warnings only)
+  const recommendedMissing = [];
+  if (schema.recommended) {
+    for (const f of schema.recommended) {
+      if (fm[f] === undefined) recommendedMissing.push(f);
+    }
+  }
+
+  const allMissing = [...missing, ...conditionalMissing];
+  output({
+    valid: allMissing.length === 0,
+    missing: allMissing,
+    present,
+    warnings: [...conditionalWarnings, ...recommendedMissing.map(f => `recommended: ${f}`)],
+    schema: schemaName,
+  }, raw, allMissing.length === 0 ? 'valid' : 'invalid');
 }
 
 // ─── Verification Suite ──────────────────────────────────────────────────────
@@ -3548,6 +3773,339 @@ function generateSlugInternal(text) {
   return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 }
 
+// ─── Backlog Helpers ─────────────────────────────────────────────────────────
+
+function resolveBacklogDir(cwd, isGlobal) {
+  if (isGlobal) {
+    const gsdHome = process.env.GSD_HOME || path.join(require('os').homedir(), '.gsd');
+    return path.join(gsdHome, 'backlog', 'items');
+  }
+  return path.join(cwd, '.planning', 'backlog', 'items');
+}
+
+function readBacklogItems(cwd, isGlobal) {
+  const itemsDir = resolveBacklogDir(cwd, isGlobal);
+  const items = [];
+  try {
+    const files = fs.readdirSync(itemsDir).filter(f => f.endsWith('.md'));
+    for (const file of files) {
+      try {
+        const content = fs.readFileSync(path.join(itemsDir, file), 'utf-8');
+        const fm = extractFrontmatter(content);
+        items.push({
+          id: fm.id || file.replace('.md', ''),
+          title: fm.title || 'Untitled',
+          priority: fm.priority || 'MEDIUM',
+          status: fm.status || 'captured',
+          tags: Array.isArray(fm.tags) ? fm.tags : [],
+          theme: fm.theme || null,
+          source: fm.source || 'unknown',
+          promoted_to: fm.promoted_to === 'null' ? null : (fm.promoted_to || null),
+          milestone: fm.milestone === 'null' ? null : (fm.milestone || null),
+          created: fm.created || 'unknown',
+          updated: fm.updated || 'unknown',
+          file,
+        });
+      } catch {}
+    }
+  } catch {}
+  return items;
+}
+
+// ─── Backlog Commands ────────────────────────────────────────────────────────
+
+function cmdBacklogAdd(cwd, options, raw) {
+  const { title, tags, priority, theme, source, global: isGlobal } = options;
+  if (!title) { error('--title required for backlog add'); }
+
+  const itemsDir = resolveBacklogDir(cwd, isGlobal);
+  fs.mkdirSync(itemsDir, { recursive: true });
+
+  const now = new Date();
+  const date = now.toISOString().split('T')[0];
+  const slug = generateSlugInternal(title);
+  const id = `blog-${date}-${slug}`;
+
+  // Check for collision
+  let filename = `${date}-${slug}.md`;
+  let fullPath = path.join(itemsDir, filename);
+  let counter = 2;
+  while (fs.existsSync(fullPath)) {
+    filename = `${date}-${slug}-${counter}.md`;
+    fullPath = path.join(itemsDir, filename);
+    counter++;
+  }
+
+  const tagArray = tags ? tags.split(',').map(t => t.trim()) : [];
+  const frontmatter = {
+    id,
+    title,
+    tags: tagArray,
+    theme: theme || 'null',
+    priority: (priority || 'MEDIUM').toUpperCase(),
+    status: 'captured',
+    source: source || 'command',
+    promoted_to: 'null',
+    milestone: 'null',
+    created: now.toISOString(),
+    updated: now.toISOString(),
+  };
+
+  const fmStr = reconstructFrontmatter(frontmatter);
+  const content = `---\n${fmStr}\n---\n\n## Description\n\n_No description provided._\n`;
+
+  fs.writeFileSync(fullPath, content, 'utf-8');
+
+  // Auto-regenerate index
+  try { regenerateBacklogIndex(cwd, isGlobal); } catch {}
+
+  output({
+    created: true,
+    id,
+    file: filename,
+    path: fullPath,
+    global: isGlobal || false,
+  }, raw, id);
+}
+
+function cmdBacklogList(cwd, filters, raw) {
+  const { priority, status, tags, global: isGlobal } = filters;
+  const allItems = readBacklogItems(cwd, isGlobal);
+
+  const items = allItems.filter(item => {
+    if (priority && item.priority !== priority.toUpperCase()) return false;
+    if (status && !status.split(',').map(s => s.trim()).includes(item.status)) return false;
+    if (tags) {
+      const filterTags = tags.split(',').map(t => t.trim());
+      if (!filterTags.some(ft => item.tags.includes(ft))) return false;
+    }
+    return true;
+  });
+
+  output({ count: items.length, items }, raw, items.length.toString());
+}
+
+function cmdBacklogUpdate(cwd, itemId, updates, raw) {
+  if (!itemId) { error('item ID required for backlog update'); }
+
+  const itemsDir = resolveBacklogDir(cwd, false);
+  let targetFile = null;
+  let targetPath = null;
+
+  try {
+    const files = fs.readdirSync(itemsDir).filter(f => f.endsWith('.md'));
+    for (const file of files) {
+      const content = fs.readFileSync(path.join(itemsDir, file), 'utf-8');
+      const fm = extractFrontmatter(content);
+      if (fm.id === itemId) {
+        targetFile = file;
+        targetPath = path.join(itemsDir, file);
+        break;
+      }
+    }
+  } catch {}
+
+  if (!targetPath) { error(`Backlog item not found: ${itemId}`); }
+
+  const content = fs.readFileSync(targetPath, 'utf-8');
+  const fm = extractFrontmatter(content);
+
+  // Apply updates
+  const updatedFields = [];
+  for (const [key, value] of Object.entries(updates)) {
+    if (value !== undefined && value !== null) {
+      fm[key] = key === 'priority' ? value.toUpperCase() : value;
+      updatedFields.push(key);
+    }
+  }
+  fm.updated = new Date().toISOString();
+
+  // Reconstruct file content (preserve body after frontmatter)
+  const bodyMatch = content.match(/^---\n[\s\S]+?\n---\n([\s\S]*)$/);
+  const body = bodyMatch ? bodyMatch[1] : '\n\n## Description\n\n_No description provided._\n';
+  const fmStr = reconstructFrontmatter(fm);
+  const newContent = `---\n${fmStr}\n---\n${body}`;
+
+  fs.writeFileSync(targetPath, newContent, 'utf-8');
+
+  // Auto-regenerate index
+  try { regenerateBacklogIndex(cwd, false); } catch {}
+
+  output({
+    updated: true,
+    id: itemId,
+    fields: updatedFields,
+    file: targetFile,
+  }, raw, itemId);
+}
+
+function cmdBacklogStats(cwd, raw) {
+  const localItems = readBacklogItems(cwd, false);
+  const globalItems = readBacklogItems(cwd, true);
+  const allItems = [...localItems, ...globalItems];
+
+  const byStatus = {};
+  const byPriority = {};
+  for (const item of allItems) {
+    const s = item.status || 'captured';
+    const p = item.priority || 'MEDIUM';
+    byStatus[s] = (byStatus[s] || 0) + 1;
+    byPriority[p] = (byPriority[p] || 0) + 1;
+  }
+
+  output({
+    total: allItems.length,
+    local: localItems.length,
+    global: globalItems.length,
+    by_status: byStatus,
+    by_priority: byPriority,
+  }, raw, `${allItems.length} items`);
+}
+
+function cmdBacklogGroup(cwd, groupBy, isGlobal, raw) {
+  const items = readBacklogItems(cwd, isGlobal);
+  const groups = {};
+
+  if (groupBy === 'tags') {
+    for (const item of items) {
+      const tags = Array.isArray(item.tags) ? item.tags : [];
+      if (tags.length === 0) {
+        const key = '(untagged)';
+        if (!groups[key]) groups[key] = [];
+        groups[key].push(item);
+      } else {
+        for (const tag of tags) {
+          if (!groups[tag]) groups[tag] = [];
+          groups[tag].push(item);
+        }
+      }
+    }
+  } else {
+    // Default: group by theme
+    for (const item of items) {
+      const key = item.theme || '(no theme)';
+      if (!groups[key]) groups[key] = [];
+      groups[key].push(item);
+    }
+  }
+
+  output({
+    group_by: groupBy || 'theme',
+    group_count: Object.keys(groups).length,
+    total_items: items.length,
+    groups,
+  }, raw, `${Object.keys(groups).length} groups`);
+}
+
+function cmdBacklogPromote(cwd, itemId, target, milestone, raw) {
+  if (!itemId) { error('item ID required for backlog promote'); }
+
+  const itemsDir = resolveBacklogDir(cwd, false);
+  let targetFile = null;
+  let targetPath = null;
+
+  try {
+    const files = fs.readdirSync(itemsDir).filter(f => f.endsWith('.md'));
+    for (const file of files) {
+      const content = fs.readFileSync(path.join(itemsDir, file), 'utf-8');
+      const fm = extractFrontmatter(content);
+      if (fm.id === itemId) {
+        targetFile = file;
+        targetPath = path.join(itemsDir, file);
+        break;
+      }
+    }
+  } catch {}
+
+  if (!targetPath) { error(`Backlog item not found: ${itemId}`); }
+
+  const content = fs.readFileSync(targetPath, 'utf-8');
+  const fm = extractFrontmatter(content);
+
+  fm.status = 'planned';
+  if (target) {
+    fm.promoted_to = target;
+  }
+  if (milestone) {
+    fm.milestone = milestone;
+  }
+  fm.updated = new Date().toISOString();
+
+  const bodyMatch = content.match(/^---\n[\s\S]+?\n---\n([\s\S]*)$/);
+  const body = bodyMatch ? bodyMatch[1] : '\n\n## Description\n\n_No description provided._\n';
+  const fmStr = reconstructFrontmatter(fm);
+  const newContent = `---\n${fmStr}\n---\n${body}`;
+
+  fs.writeFileSync(targetPath, newContent, 'utf-8');
+
+  // Auto-regenerate index
+  try { regenerateBacklogIndex(cwd, false); } catch {}
+
+  output({
+    promoted: true,
+    id: itemId,
+    status: 'planned',
+    promoted_to: target || null,
+    milestone: milestone || null,
+    file: targetFile,
+  }, raw, itemId);
+}
+
+/**
+ * Silent index regeneration -- called by add, update, promote.
+ * Does not call output() so it won't interfere with the caller's output.
+ */
+function regenerateBacklogIndex(cwd, isGlobal) {
+  const itemsDir = resolveBacklogDir(cwd, isGlobal);
+  const indexPath = path.join(path.dirname(itemsDir), 'index.md');
+
+  let items = [];
+  try {
+    const files = fs.readdirSync(itemsDir).filter(f => f.endsWith('.md'));
+    for (const file of files) {
+      const content = fs.readFileSync(path.join(itemsDir, file), 'utf-8');
+      const fm = extractFrontmatter(content);
+      items.push({
+        id: fm.id || file.replace('.md', ''),
+        title: fm.title || 'Untitled',
+        priority: fm.priority || 'MEDIUM',
+        status: fm.status || 'captured',
+        tags: Array.isArray(fm.tags) ? fm.tags.join(', ') : (fm.tags || ''),
+        milestone: fm.milestone === 'null' ? null : (fm.milestone || null),
+        created: (fm.created || '').split('T')[0],
+      });
+    }
+  } catch {}
+
+  // Sort by priority (HIGH first), then date (newest first)
+  const priorityOrder = { HIGH: 0, MEDIUM: 1, LOW: 2 };
+  items.sort((a, b) =>
+    (priorityOrder[a.priority] ?? 1) - (priorityOrder[b.priority] ?? 1)
+    || b.created.localeCompare(a.created)
+  );
+
+  const generated = new Date().toISOString();
+  let md = `# Backlog Index\n\n**Generated:** ${generated}\n**Total items:** ${items.length}\n\n`;
+  md += `| ID | Title | Priority | Status | Tags | Milestone | Date |\n`;
+  md += `|----|-------|----------|--------|------|-----------|------|\n`;
+  for (const item of items) {
+    md += `| ${item.id} | ${item.title} | ${item.priority} | ${item.status} | ${item.tags} | ${item.milestone || '\u2014'} | ${item.created} |\n`;
+  }
+
+  // Ensure parent directory exists and write atomically
+  fs.mkdirSync(path.dirname(indexPath), { recursive: true });
+  const tmpPath = indexPath + '.tmp';
+  fs.writeFileSync(tmpPath, md, 'utf-8');
+  fs.renameSync(tmpPath, indexPath);
+
+  return { generated, total: items.length, path: indexPath };
+}
+
+function cmdBacklogIndex(cwd, isGlobal, raw) {
+  const result = regenerateBacklogIndex(cwd, isGlobal);
+  output(result, raw, `Index rebuilt: ${result.total} items`);
+}
+
 function getMilestoneInfo(cwd) {
   try {
     const roadmap = fs.readFileSync(path.join(cwd, '.planning', 'ROADMAP.md'), 'utf-8');
@@ -3965,6 +4523,9 @@ function cmdInitTodos(cwd, area, raw) {
         const createdMatch = content.match(/^created:\s*(.+)$/m);
         const titleMatch = content.match(/^title:\s*(.+)$/m);
         const areaMatch = content.match(/^area:\s*(.+)$/m);
+        const priorityMatch = content.match(/^priority:\s*(.+)$/m);
+        const sourceMatch = content.match(/^source:\s*(.+)$/m);
+        const statusMatch = content.match(/^status:\s*(.+)$/m);
         const todoArea = areaMatch ? areaMatch[1].trim() : 'general';
 
         if (area && todoArea !== area) continue;
@@ -3975,6 +4536,9 @@ function cmdInitTodos(cwd, area, raw) {
           created: createdMatch ? createdMatch[1].trim() : 'unknown',
           title: titleMatch ? titleMatch[1].trim() : 'Untitled',
           area: todoArea,
+          priority: priorityMatch ? priorityMatch[1].trim() : 'MEDIUM',
+          source: sourceMatch ? sourceMatch[1].trim() : 'unknown',
+          status: statusMatch ? statusMatch[1].trim() : 'pending',
           path: path.join('.planning', 'todos', 'pending', file),
         });
       } catch {}
@@ -4209,6 +4773,804 @@ function cmdInitProgress(cwd, includes, raw) {
   output(result, raw);
 }
 
+// ─── Manifest Commands ────────────────────────────────────────────────────────
+
+function cmdManifestDiffConfig(cwd, raw) {
+  const manifest = loadManifest(cwd);
+  if (!manifest) { error('Manifest not found. Is GSD installed?'); }
+  const config = loadProjectConfig(cwd);
+  if (!config) { error('No .planning/config.json found. Run /gsd:new-project first.'); }
+
+  const result = {
+    missing_features: [],
+    missing_fields: [],
+    type_mismatches: [],
+    enum_mismatches: [],
+    unknown_fields: [],
+    manifest_version: manifest.manifest_version,
+    config_manifest_version: config.manifest_version || null,
+  };
+
+  // Known config keys declared by manifest
+  const declaredKeys = new Set();
+
+  for (const [featureName, featureDef] of Object.entries(manifest.features)) {
+    if (featureDef.scope !== 'project' || !featureDef.config_key) continue;
+    declaredKeys.add(featureDef.config_key);
+
+    const section = config[featureDef.config_key];
+    if (!section) {
+      result.missing_features.push({
+        feature: featureName,
+        config_key: featureDef.config_key,
+        introduced: featureDef.introduced,
+      });
+      continue;
+    }
+
+    // Check each field in the schema
+    for (const [fieldName, fieldSchema] of Object.entries(featureDef.schema)) {
+      const value = section[fieldName];
+      if (value === undefined) {
+        result.missing_fields.push({
+          feature: featureName,
+          field: fieldName,
+          expected_type: fieldSchema.type,
+          default: fieldSchema.default,
+        });
+      } else if (!validateFieldType(value, fieldSchema)) {
+        result.type_mismatches.push({
+          feature: featureName,
+          field: fieldName,
+          expected: fieldSchema.type,
+          actual: typeof value,
+          value,
+        });
+      } else if (!validateFieldEnum(value, fieldSchema)) {
+        result.enum_mismatches.push({
+          feature: featureName,
+          field: fieldName,
+          expected_values: fieldSchema.enum,
+          actual: value,
+        });
+      }
+    }
+  }
+
+  // Detect unknown top-level config fields
+  for (const key of Object.keys(config)) {
+    if (!declaredKeys.has(key) && !KNOWN_TOP_LEVEL_KEYS.has(key)) {
+      result.unknown_fields.push({
+        path: key,
+        info: 'Not declared in manifest (user/legacy field)',
+      });
+    }
+  }
+
+  output(result, raw);
+}
+
+function cmdManifestValidate(cwd, raw) {
+  const manifest = loadManifest(cwd);
+  if (!manifest) { error('Manifest not found. Is GSD installed?'); }
+  const config = loadProjectConfig(cwd);
+  if (!config) { error('No .planning/config.json found.'); }
+
+  const warnings = [];
+  const errors = [];
+  let featuresChecked = 0;
+  let featuresPresent = 0;
+
+  for (const [featureName, featureDef] of Object.entries(manifest.features)) {
+    if (featureDef.scope !== 'project' || !featureDef.config_key) continue;
+    featuresChecked++;
+
+    const section = config[featureDef.config_key];
+    if (!section) {
+      warnings.push({
+        type: 'missing_feature',
+        feature: featureName,
+        message: `Feature "${featureName}" not configured (section "${featureDef.config_key}" absent)`,
+      });
+      continue;
+    }
+    featuresPresent++;
+
+    for (const [fieldName, fieldSchema] of Object.entries(featureDef.schema)) {
+      const value = section[fieldName];
+      if (value !== undefined) {
+        if (!validateFieldType(value, fieldSchema)) {
+          errors.push({
+            type: 'type_mismatch',
+            feature: featureName,
+            field: fieldName,
+            message: `${featureName}.${fieldName}: expected ${fieldSchema.type}, got ${typeof value}`,
+          });
+        }
+        if (!validateFieldEnum(value, fieldSchema)) {
+          errors.push({
+            type: 'enum_mismatch',
+            feature: featureName,
+            field: fieldName,
+            message: `${featureName}.${fieldName}: "${value}" not in [${fieldSchema.enum.join(', ')}]`,
+          });
+        }
+      }
+    }
+  }
+
+  // Unknown fields are warnings, never errors
+  const knownKeys = new Set(Object.values(manifest.features)
+    .filter(f => f.config_key).map(f => f.config_key));
+  for (const key of Object.keys(config)) {
+    if (!knownKeys.has(key) && !KNOWN_TOP_LEVEL_KEYS.has(key)) {
+      warnings.push({
+        type: 'unknown_field',
+        path: key,
+        message: `"${key}" is not declared in the manifest`,
+      });
+    }
+  }
+
+  output({
+    valid: errors.length === 0,
+    warnings,
+    errors,
+    features_checked: featuresChecked,
+    features_present: featuresPresent,
+    features_missing: featuresChecked - featuresPresent,
+  }, raw);
+}
+
+function cmdManifestGetPrompts(cwd, feature, raw) {
+  const manifest = loadManifest(cwd);
+  if (!manifest) { error('Manifest not found.'); }
+  if (!feature) { error('Feature name required. Usage: manifest get-prompts <feature>'); }
+  const featureDef = manifest.features[feature];
+  if (!featureDef) { error(`Unknown feature: ${feature}. Available: ${Object.keys(manifest.features).join(', ')}`); }
+  output({
+    feature,
+    config_key: featureDef.config_key,
+    prompts: featureDef.init_prompts || [],
+    schema: featureDef.schema,
+  }, raw);
+}
+
+function cmdManifestApplyMigration(cwd, raw) {
+  const manifest = loadManifest(cwd);
+  if (!manifest) { error('Manifest not found. Is GSD installed?'); }
+  const configPath = path.join(cwd, '.planning', 'config.json');
+  const config = loadProjectConfig(cwd);
+  if (!config) { error('No .planning/config.json found. Run /gsd:new-project first.'); }
+
+  const changes = [];
+
+  for (const [featureName, featureDef] of Object.entries(manifest.features)) {
+    if (featureDef.scope !== 'project' || !featureDef.config_key) continue;
+    const key = featureDef.config_key;
+
+    if (!config[key]) {
+      // Add entire missing feature section with defaults
+      config[key] = {};
+      for (const [field, schema] of Object.entries(featureDef.schema)) {
+        config[key][field] = schema.default;
+      }
+      changes.push({
+        type: 'feature_added',
+        feature: featureName,
+        config_key: key,
+        fields_added: Object.keys(featureDef.schema),
+      });
+    } else {
+      // Add missing fields and coerce types in existing section
+      for (const [field, schema] of Object.entries(featureDef.schema)) {
+        if (config[key][field] === undefined) {
+          config[key][field] = schema.default;
+          changes.push({
+            type: 'field_added',
+            feature: featureName,
+            field,
+            default_value: schema.default,
+          });
+        } else {
+          const coerced = coerceValue(config[key][field], schema);
+          if (coerced !== config[key][field]) {
+            changes.push({
+              type: 'type_coerced',
+              feature: featureName,
+              field,
+              from: config[key][field],
+              to: coerced,
+            });
+            config[key][field] = coerced;
+          }
+        }
+      }
+    }
+  }
+
+  // Update manifest_version
+  if (config.manifest_version !== manifest.manifest_version) {
+    changes.push({
+      type: 'manifest_version_updated',
+      from: config.manifest_version || null,
+      to: manifest.manifest_version,
+    });
+    config.manifest_version = manifest.manifest_version;
+  }
+
+  if (changes.length > 0) {
+    atomicWriteJson(configPath, config);
+  }
+
+  output({ changes, total_changes: changes.length }, raw);
+}
+
+function cmdManifestLogMigration(cwd, raw) {
+  const args = process.argv.slice(2);
+  const fromIdx = args.indexOf('--from');
+  const toIdx = args.indexOf('--to');
+  const changesIdx = args.indexOf('--changes');
+
+  if (fromIdx === -1 || toIdx === -1 || changesIdx === -1) {
+    error('Usage: manifest log-migration --from <version> --to <version> --changes <json>');
+  }
+
+  const fromVersion = args[fromIdx + 1];
+  const toVersion = args[toIdx + 1];
+  let changes;
+  try {
+    changes = JSON.parse(args[changesIdx + 1]);
+  } catch (e) {
+    error('Invalid JSON for --changes: ' + e.message);
+  }
+
+  const logPath = path.join(cwd, '.planning', 'migration-log.md');
+  const timestamp = new Date().toISOString();
+  const entry = formatMigrationEntry(fromVersion, toVersion, timestamp, changes);
+
+  const header = '# Migration Log\n\nTracks version upgrades applied to this project.\n';
+  const footer = '\n---\n\n*Log is append-only.*\n';
+
+  if (!fs.existsSync(logPath)) {
+    fs.writeFileSync(logPath, header + '\n' + entry + footer, 'utf-8');
+  } else {
+    const existing = fs.readFileSync(logPath, 'utf-8');
+    const headerMarker = '# Migration Log';
+    const headerPos = existing.indexOf(headerMarker);
+    if (headerPos === -1) {
+      fs.writeFileSync(logPath, header + '\n' + entry + '\n---\n\n' + existing, 'utf-8');
+    } else {
+      const headerEnd = existing.indexOf('\n\n', headerPos + headerMarker.length);
+      if (headerEnd === -1) {
+        fs.writeFileSync(logPath, existing + '\n\n' + entry + footer, 'utf-8');
+      } else {
+        const before = existing.substring(0, headerEnd + 2);
+        const after = existing.substring(headerEnd + 2);
+        fs.writeFileSync(logPath, before + entry + '\n---\n\n' + after, 'utf-8');
+      }
+    }
+  }
+
+  output({ logged: true, path: '.planning/migration-log.md', timestamp }, raw);
+}
+
+function cmdManifestAutoDetect(cwd, raw) {
+  const args = process.argv.slice(2);
+  const feature = args[2]; // manifest auto-detect <feature>
+
+  const manifest = loadManifest(cwd);
+  if (!manifest) { error('Manifest not found. Is GSD installed?'); }
+  if (!feature) { error('Feature name required. Usage: manifest auto-detect <feature>'); }
+  const featureDef = manifest.features[feature];
+  if (!featureDef) {
+    error(`Unknown feature: ${feature}. Available: ${Object.keys(manifest.features).join(', ')}`);
+  }
+  if (!featureDef.auto_detect) {
+    output({ feature, detected: {} }, raw);
+    return;
+  }
+
+  const detected = {};
+  for (const [field, rules] of Object.entries(featureDef.auto_detect)) {
+    for (const rule of rules) {
+      if (rule.check === 'file_exists') {
+        const fullPath = path.join(cwd, rule.path);
+        if (fs.existsSync(fullPath) && !fs.statSync(fullPath).isDirectory()) {
+          detected[field] = rule.value;
+          break;
+        }
+      } else if (rule.check === 'dir_exists') {
+        const fullPath = path.join(cwd, rule.path);
+        if (fs.existsSync(fullPath) && fs.statSync(fullPath).isDirectory()) {
+          detected[field] = rule.value;
+          break;
+        }
+      } else if (rule.check === 'git_log_pattern') {
+        try {
+          const logs = execSync('git log --oneline -20 2>/dev/null', { cwd, encoding: 'utf-8' }).trim();
+          const lines = logs.split('\n').filter(l => l.length > 0);
+          if (lines.length > 0) {
+            const regex = new RegExp(rule.pattern);
+            const matches = lines.filter(l => regex.test(l.replace(/^[a-f0-9]+ /, '')));
+            if (matches.length / lines.length >= (rule.threshold || 0.5)) {
+              detected[field] = rule.value;
+            }
+          }
+        } catch (e) {
+          // git not available or not a git repo -- skip
+        }
+        break;
+      }
+    }
+  }
+
+  output({ feature, detected }, raw);
+}
+
+// ─── Automation ───────────────────────────────────────────────────────────────
+
+function cmdAutomationResolveLevel(cwd, feature, options, raw) {
+  if (!feature) {
+    error('Usage: automation resolve-level <feature> [--context-pct N] [--runtime NAME]');
+  }
+
+  const config = loadProjectConfig(cwd);
+  if (!config) {
+    error('No .planning/config.json found.');
+  }
+
+  const automation = config.automation || {};
+  const globalLevel = automation.level ?? 1; // Default: nudge
+
+  // Normalize feature name: hyphens -> underscores
+  const normalizedFeature = feature.replace(/-/g, '_');
+
+  let effectiveLevel = globalLevel;
+  let overrideValue = null;
+  const reasons = [];
+
+  // Step 2: Per-feature override (AUTO-02)
+  const overrides = automation.overrides || {};
+  if (overrides[normalizedFeature] !== undefined) {
+    overrideValue = overrides[normalizedFeature];
+    effectiveLevel = overrideValue;
+    reasons.push(`override: ${normalizedFeature}=${overrideValue}`);
+  }
+
+  // Step 3: Context-aware deferral (AUTO-04)
+  // Only applies to level 3 (auto) -- levels 0-2 are not context-sensitive
+  if (options.contextPct !== undefined) {
+    const threshold = automation.context_threshold_pct ?? 60;
+    if (options.contextPct > threshold && effectiveLevel >= 3) {
+      effectiveLevel = 1; // Downgrade to nudge
+      reasons.push(`context_deferred: ${options.contextPct}% > ${threshold}% threshold`);
+    }
+  }
+
+  // Step 4: Runtime capability cap
+  const capEntry = FEATURE_CAPABILITY_MAP[normalizedFeature];
+  if (capEntry) {
+    // Determine runtime capabilities
+    let hasHooks = false;
+    let hasTaskTool = false;
+
+    if (options.runtime) {
+      // Explicit runtime flag
+      hasHooks = options.runtime === 'claude-code' || options.runtime === 'full';
+      hasTaskTool = options.runtime === 'claude-code' || options.runtime === 'full';
+    } else {
+      // Heuristic: check for .claude/settings.json with hooks
+      try {
+        const settingsPath = path.join(cwd, '.claude', 'settings.json');
+        if (fs.existsSync(settingsPath)) {
+          const settings = JSON.parse(fs.readFileSync(settingsPath, 'utf-8'));
+          hasHooks = settings.hooks !== undefined;
+          hasTaskTool = true; // Claude Code has task tool if settings exist
+        }
+      } catch {
+        // settings.json not found or invalid -- assume constrained
+      }
+    }
+
+    // Cap based on hook dependency
+    if (capEntry.hook_dependent_above !== null && !hasHooks) {
+      const cap = capEntry.hook_dependent_above;
+      if (effectiveLevel > cap) {
+        reasons.push(`runtime_capped: ${normalizedFeature} needs hooks above level ${cap}`);
+        effectiveLevel = cap;
+      }
+    }
+
+    // Cap based on task_tool dependency
+    if (capEntry.task_tool_dependent && !hasTaskTool) {
+      const taskToolCap = 2;
+      if (effectiveLevel > taskToolCap) {
+        reasons.push(`runtime_capped: ${normalizedFeature} needs task_tool above level ${taskToolCap}`);
+        effectiveLevel = taskToolCap;
+      }
+    }
+  }
+
+  // Step 5: Fine-grained knobs (AUTO-03)
+  const knobs = automation[normalizedFeature] || {};
+
+  const result = {
+    feature: normalizedFeature,
+    configured: globalLevel,
+    override: overrideValue,
+    effective: effectiveLevel,
+    reasons,
+    knobs,
+    level_names: { 0: 'manual', 1: 'nudge', 2: 'prompt', 3: 'auto' }
+  };
+
+  output(result, raw);
+}
+
+function cmdAutomationTrackEvent(cwd, feature, event, reason, raw) {
+  if (!feature || !event) {
+    error('Usage: automation track-event <feature> <fire|skip> [reason]');
+  }
+  if (event !== 'fire' && event !== 'skip') {
+    error('Event must be "fire" or "skip"');
+  }
+
+  const configPath = path.join(cwd, '.planning', 'config.json');
+  if (!fs.existsSync(configPath)) {
+    error('No .planning/config.json found.');
+  }
+
+  // Normalize feature name
+  const normalizedFeature = feature.replace(/-/g, '_');
+
+  // Read-modify-write with atomic write
+  const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+  if (!config.automation) config.automation = {};
+  if (!config.automation.stats) config.automation.stats = {};
+  if (!config.automation.stats[normalizedFeature]) {
+    config.automation.stats[normalizedFeature] = {
+      fires: 0,
+      skips: 0,
+      last_triggered: null,
+      last_skip_reason: null,
+    };
+  }
+
+  const stats = config.automation.stats[normalizedFeature];
+  if (event === 'fire') {
+    stats.fires++;
+    stats.last_triggered = new Date().toISOString();
+  } else if (event === 'skip') {
+    stats.skips++;
+    stats.last_skip_reason = reason || 'unknown';
+  }
+
+  // Atomic write: write to tmp, then rename
+  const tmpPath = configPath + '.tmp';
+  fs.writeFileSync(tmpPath, JSON.stringify(config, null, 2) + '\n');
+  fs.renameSync(tmpPath, configPath);
+
+  output({ feature: normalizedFeature, event, stats }, raw);
+}
+
+// ─── Automation Lock/Unlock ──────────────────────────────────────────────────
+
+function cmdAutomationLock(cwd, feature, options, raw) {
+  if (!feature) {
+    error('Usage: automation lock <feature> [--source <source>] [--ttl <seconds>]');
+  }
+
+  const normalizedFeature = feature.replace(/-/g, '_');
+  const lockPath = path.join(cwd, '.planning', `.${normalizedFeature}.lock`);
+  const ttl = options.ttl || 300;
+
+  // Check for existing lock
+  if (fs.existsSync(lockPath)) {
+    const stat = fs.statSync(lockPath);
+    const ageSeconds = Math.floor((Date.now() - stat.mtimeMs) / 1000);
+
+    if (ageSeconds > ttl) {
+      // Stale lock — remove and proceed to acquire
+      fs.unlinkSync(lockPath);
+      const lockContent = {
+        pid: process.pid,
+        timestamp: new Date().toISOString(),
+        trigger_source: options.source || 'unknown',
+        ttl_seconds: ttl,
+      };
+      fs.writeFileSync(lockPath, JSON.stringify(lockContent, null, 2));
+      output({ locked: false, acquired: true, stale_removed: true, stale_age_seconds: ageSeconds }, raw);
+    } else {
+      // Active lock — report it
+      let holder = {};
+      try {
+        holder = JSON.parse(fs.readFileSync(lockPath, 'utf8'));
+      } catch (e) {
+        holder = { error: 'could not parse lock file' };
+      }
+      output({ locked: true, holder, age_seconds: ageSeconds }, raw);
+    }
+  } else {
+    // No lock exists — acquire
+    const lockContent = {
+      pid: process.pid,
+      timestamp: new Date().toISOString(),
+      trigger_source: options.source || 'unknown',
+      ttl_seconds: ttl,
+    };
+    fs.writeFileSync(lockPath, JSON.stringify(lockContent, null, 2));
+    output({ locked: false, acquired: true }, raw);
+  }
+}
+
+function cmdAutomationUnlock(cwd, feature, raw) {
+  if (!feature) {
+    error('Usage: automation unlock <feature>');
+  }
+
+  const normalizedFeature = feature.replace(/-/g, '_');
+  const lockPath = path.join(cwd, '.planning', `.${normalizedFeature}.lock`);
+
+  if (fs.existsSync(lockPath)) {
+    fs.unlinkSync(lockPath);
+    output({ released: true }, raw);
+  } else {
+    output({ released: false, reason: 'no_lock_found' }, raw);
+  }
+}
+
+function cmdAutomationCheckLock(cwd, feature, options, raw) {
+  if (!feature) {
+    error('Usage: automation check-lock <feature> [--ttl <seconds>]');
+  }
+
+  const normalizedFeature = feature.replace(/-/g, '_');
+  const lockPath = path.join(cwd, '.planning', `.${normalizedFeature}.lock`);
+  const ttl = options.ttl || 300;
+
+  if (!fs.existsSync(lockPath)) {
+    output({ locked: false }, raw);
+    return;
+  }
+
+  const stat = fs.statSync(lockPath);
+  const ageSeconds = Math.floor((Date.now() - stat.mtimeMs) / 1000);
+
+  let holder = {};
+  try {
+    holder = JSON.parse(fs.readFileSync(lockPath, 'utf8'));
+  } catch (e) {
+    holder = { error: 'could not parse lock file' };
+  }
+
+  if (ageSeconds > ttl) {
+    output({ locked: true, stale: true, age_seconds: ageSeconds, holder }, raw);
+  } else {
+    output({ locked: true, stale: false, age_seconds: ageSeconds, holder }, raw);
+  }
+}
+
+// ─── Automation Regime Change ────────────────────────────────────────────────
+
+function cmdAutomationRegimeChange(cwd, description, options, raw) {
+  if (!description) {
+    error('Usage: automation regime-change <description> [--impact <impact>] [--prior <prior-regime>]');
+  }
+
+  // KB path resolution: project-local primary, ~/.gsd/ fallback
+  let kbDir = path.join(cwd, '.planning', 'knowledge');
+  if (!fs.existsSync(kbDir)) {
+    const globalKbDir = path.join(require('os').homedir(), '.gsd', 'knowledge');
+    if (fs.existsSync(globalKbDir)) {
+      kbDir = globalKbDir;
+    }
+    // If neither exists, use project-local and create it
+  }
+
+  // Build entry ID
+  const now = new Date();
+  const dateStr = now.toISOString().split('T')[0];
+  const slug = description.toLowerCase().replace(/[^a-z0-9]+/g, '-').substring(0, 40).replace(/-$/, '');
+  const entryId = `regime-${dateStr}-${slug}`;
+
+  // Project name from cwd basename
+  const projectName = path.basename(cwd).toLowerCase().replace(/[^a-z0-9]+/g, '-');
+
+  // Signal directory
+  const signalDir = path.join(kbDir, 'signals', projectName);
+  fs.mkdirSync(signalDir, { recursive: true });
+
+  const filePath = path.join(signalDir, `${entryId}.md`);
+  const isoTimestamp = now.toISOString();
+  const impact = options.impact || 'Not assessed';
+  const prior = options.prior || 'Not recorded';
+
+  const content = `---
+id: ${entryId}
+type: regime_change
+project: ${projectName}
+tags: [observation-regime, signal-collection, automation]
+created: ${isoTimestamp}
+status: active
+---
+
+# Regime Change: ${description}
+
+## Change
+
+${description}
+
+## Expected Impact
+
+${impact}
+
+## Timestamp
+
+${isoTimestamp}
+
+## Prior Regime
+
+${prior}
+`;
+
+  fs.writeFileSync(filePath, content);
+
+  // Attempt to rebuild KB index
+  try {
+    const projectLocalScript = path.join(cwd, 'get-shit-done', 'bin', 'kb-rebuild-index.sh');
+    const globalScript = path.join(require('os').homedir(), '.gsd', 'bin', 'kb-rebuild-index.sh');
+    let rebuildScript = null;
+    if (fs.existsSync(projectLocalScript)) {
+      rebuildScript = projectLocalScript;
+    } else if (fs.existsSync(globalScript)) {
+      rebuildScript = globalScript;
+    }
+    if (rebuildScript) {
+      execSync(`bash "${rebuildScript}"`, { cwd: cwd, timeout: 10000, stdio: 'pipe' });
+    }
+  } catch (e) {
+    // Non-blocking: warn but don't fail
+    process.stderr.write(`Warning: KB index rebuild failed: ${e.message}\n`);
+  }
+
+  output({ written: true, path: filePath, id: entryId }, raw);
+}
+
+// ─── Sensors ──────────────────────────────────────────────────────────────────
+
+function cmdSensorsList(cwd, raw) {
+  // 1. Discover sensors from file system
+  // Try .claude/agents/ first (runtime installed path), fall back to agents/ (dev path)
+  let agentsDir = path.join(cwd, '.claude', 'agents');
+  if (!fs.existsSync(agentsDir)) {
+    agentsDir = path.join(cwd, 'agents');
+  }
+  if (!fs.existsSync(agentsDir)) {
+    error('No agents directory found. Run install first.');
+  }
+
+  // Find all sensor agent spec files
+  const allFiles = fs.readdirSync(agentsDir);
+  const sensorFiles = allFiles.filter(f => /^gsd-.*-sensor\.md$/.test(f));
+
+  if (sensorFiles.length === 0) {
+    output({ sensors: [], message: 'No sensors discovered' }, raw);
+    return;
+  }
+
+  // 2. Parse each sensor's frontmatter for contract metadata
+  const sensors = sensorFiles.map(file => {
+    const content = fs.readFileSync(path.join(agentsDir, file), 'utf8');
+    const fmMatch = content.match(/^---\n([\s\S]*?)\n---/);
+    const frontmatter = {};
+    if (fmMatch) {
+      const lines = fmMatch[1].split('\n');
+      for (const line of lines) {
+        const kvMatch = line.match(/^(\w[\w_]*):\s*(.+)$/);
+        if (kvMatch) {
+          let val = kvMatch[2].trim();
+          if (val === 'null') val = null;
+          else if (val === 'true') val = true;
+          else if (val === 'false') val = false;
+          else if (/^\d+$/.test(val)) val = parseInt(val, 10);
+          frontmatter[kvMatch[1]] = val;
+        }
+      }
+    }
+    const name = file.replace(/^gsd-/, '').replace(/-sensor\.md$/, '');
+    return {
+      name: frontmatter.sensor_name || name,
+      file,
+      timeout_seconds: frontmatter.timeout_seconds || 45,
+      config_schema: frontmatter.config_schema || null,
+    };
+  });
+
+  // 3. Cross-reference config for enable/disable
+  const configPath = path.join(cwd, '.planning', 'config.json');
+  let config = {};
+  if (fs.existsSync(configPath)) {
+    try { config = JSON.parse(fs.readFileSync(configPath, 'utf8')); } catch (e) { /* ignore */ }
+  }
+  const sensorConfig = (config.signal_collection && config.signal_collection.sensors) || {};
+  const stats = (config.automation && config.automation.stats) || {};
+
+  // 4. Build output rows
+  const result = sensors.map(sensor => {
+    const cfg = sensorConfig[sensor.name];
+    const enabled = cfg && cfg.enabled !== undefined ? cfg.enabled : true;
+    const sensorStats = stats['sensor_' + sensor.name];
+
+    // Infer last_run_status from stats
+    let lastStatus = 'never';
+    if (sensorStats) {
+      if (sensorStats.fires > 0 && !sensorStats.last_skip_reason) {
+        lastStatus = 'success';
+      } else if (sensorStats.last_skip_reason) {
+        lastStatus = sensorStats.last_skip_reason;
+      } else if (sensorStats.last_triggered) {
+        lastStatus = 'success';
+      }
+    }
+
+    return {
+      name: sensor.name,
+      enabled,
+      timeout: sensor.timeout_seconds,
+      last_run: (sensorStats && sensorStats.last_triggered) || 'never',
+      last_status: lastStatus,
+      signals: (sensorStats && sensorStats.last_signal_count !== undefined) ? sensorStats.last_signal_count : 'N/A',
+      fires: (sensorStats && sensorStats.fires) || 0,
+      skips: (sensorStats && sensorStats.skips) || 0,
+    };
+  });
+
+  output({ sensors: result }, raw);
+}
+
+function cmdSensorsBlindSpots(cwd, sensorName, raw) {
+  // Same discovery logic as cmdSensorsList
+  let agentsDir = path.join(cwd, '.claude', 'agents');
+  if (!fs.existsSync(agentsDir)) {
+    agentsDir = path.join(cwd, 'agents');
+  }
+  if (!fs.existsSync(agentsDir)) {
+    error('No agents directory found.');
+  }
+
+  const pattern = sensorName
+    ? 'gsd-' + sensorName + '-sensor.md'
+    : null;
+
+  const allFiles = fs.readdirSync(agentsDir);
+  const sensorFiles = allFiles.filter(f => {
+    if (!/^gsd-.*-sensor\.md$/.test(f)) return false;
+    if (pattern && f !== pattern) return false;
+    return true;
+  });
+
+  if (sensorFiles.length === 0) {
+    if (sensorName) {
+      error('No sensor found matching "' + sensorName + '"');
+    }
+    output({ blind_spots: [], message: 'No sensors discovered' }, raw);
+    return;
+  }
+
+  const blindSpots = sensorFiles.map(file => {
+    const content = fs.readFileSync(path.join(agentsDir, file), 'utf8');
+    const name = file.replace(/^gsd-/, '').replace(/-sensor\.md$/, '');
+    const match = content.match(/<blind_spots>([\s\S]*?)<\/blind_spots>/);
+    return {
+      sensor: name,
+      blind_spots: match ? match[1].trim() : 'No blind spots documented',
+    };
+  });
+
+  output({ blind_spots: blindSpots }, raw);
+}
+
 // ─── CLI Router ───────────────────────────────────────────────────────────────
 
 async function main() {
@@ -4221,7 +5583,7 @@ async function main() {
   const cwd = process.cwd();
 
   if (!command) {
-    error('Usage: gsd-tools <command> [args] [--raw]\nCommands: state, resolve-model, find-phase, commit, verify-summary, verify, frontmatter, template, generate-slug, current-timestamp, list-todos, verify-path-exists, config-ensure-section, init');
+    error('Usage: gsd-tools <command> [args] [--raw]\nCommands: state, resolve-model, find-phase, commit, verify-summary, verify, frontmatter, template, generate-slug, current-timestamp, list-todos, verify-path-exists, config-ensure-section, init, manifest, sensors');
   }
 
   switch (command) {
@@ -4586,6 +5948,152 @@ async function main() {
         limit: limitIdx !== -1 ? parseInt(args[limitIdx + 1], 10) : 10,
         freshness: freshnessIdx !== -1 ? args[freshnessIdx + 1] : null,
       }, raw);
+      break;
+    }
+
+    case 'manifest': {
+      const subcommand = args[1];
+      if (subcommand === 'diff-config') {
+        cmdManifestDiffConfig(cwd, raw);
+      } else if (subcommand === 'validate') {
+        cmdManifestValidate(cwd, raw);
+      } else if (subcommand === 'get-prompts') {
+        const feature = args[2];
+        cmdManifestGetPrompts(cwd, feature, raw);
+      } else if (subcommand === 'apply-migration') {
+        cmdManifestApplyMigration(cwd, raw);
+      } else if (subcommand === 'log-migration') {
+        cmdManifestLogMigration(cwd, raw);
+      } else if (subcommand === 'auto-detect') {
+        cmdManifestAutoDetect(cwd, raw);
+      } else {
+        error('Unknown manifest subcommand. Available: diff-config, validate, get-prompts, apply-migration, log-migration, auto-detect');
+      }
+      break;
+    }
+
+    case 'backlog': {
+      const subcommand = args[1];
+      if (subcommand === 'add') {
+        const titleIdx = args.indexOf('--title');
+        const tagsIdx = args.indexOf('--tags');
+        const priorityIdx = args.indexOf('--priority');
+        const themeIdx = args.indexOf('--theme');
+        const sourceIdx = args.indexOf('--source');
+        const globalFlag = args.includes('--global');
+        cmdBacklogAdd(cwd, {
+          title: titleIdx !== -1 ? args[titleIdx + 1] : null,
+          tags: tagsIdx !== -1 ? args[tagsIdx + 1] : null,
+          priority: priorityIdx !== -1 ? args[priorityIdx + 1] : 'MEDIUM',
+          theme: themeIdx !== -1 ? args[themeIdx + 1] : null,
+          source: sourceIdx !== -1 ? args[sourceIdx + 1] : 'command',
+          global: globalFlag,
+        }, raw);
+      } else if (subcommand === 'list') {
+        const priorityIdx = args.indexOf('--priority');
+        const statusIdx = args.indexOf('--status');
+        const tagsIdx = args.indexOf('--tags');
+        const globalFlag = args.includes('--global');
+        cmdBacklogList(cwd, {
+          priority: priorityIdx !== -1 ? args[priorityIdx + 1] : null,
+          status: statusIdx !== -1 ? args[statusIdx + 1] : null,
+          tags: tagsIdx !== -1 ? args[tagsIdx + 1] : null,
+          global: globalFlag,
+        }, raw);
+      } else if (subcommand === 'update') {
+        const itemId = args[2];
+        const priorityIdx = args.indexOf('--priority');
+        const statusIdx = args.indexOf('--status');
+        const themeIdx = args.indexOf('--theme');
+        const tagsIdx = args.indexOf('--tags');
+        const milestoneIdx = args.indexOf('--milestone');
+        cmdBacklogUpdate(cwd, itemId, {
+          priority: priorityIdx !== -1 ? args[priorityIdx + 1] : undefined,
+          status: statusIdx !== -1 ? args[statusIdx + 1] : undefined,
+          theme: themeIdx !== -1 ? args[themeIdx + 1] : undefined,
+          tags: tagsIdx !== -1 ? args[tagsIdx + 1].split(',').map(t => t.trim()) : undefined,
+          milestone: milestoneIdx !== -1 ? args[milestoneIdx + 1] : undefined,
+        }, raw);
+      } else if (subcommand === 'stats') {
+        cmdBacklogStats(cwd, raw);
+      } else if (subcommand === 'group') {
+        const byIdx = args.indexOf('--by');
+        const globalFlag = args.includes('--global');
+        cmdBacklogGroup(cwd, byIdx !== -1 ? args[byIdx + 1] : 'theme', globalFlag, raw);
+      } else if (subcommand === 'promote') {
+        const itemId = args[2];
+        const toIdx = args.indexOf('--to');
+        const milestoneIdx = args.indexOf('--milestone');
+        cmdBacklogPromote(cwd, itemId, toIdx !== -1 ? args[toIdx + 1] : null, milestoneIdx !== -1 ? args[milestoneIdx + 1] : null, raw);
+      } else if (subcommand === 'index') {
+        const globalFlag = args.includes('--global');
+        cmdBacklogIndex(cwd, globalFlag, raw);
+      } else {
+        error('Unknown backlog subcommand. Available: add, list, update, stats, group, promote, index');
+      }
+      break;
+    }
+
+    case 'automation': {
+      const subcommand = args[1];
+      if (subcommand === 'resolve-level') {
+        const feature = args[2];
+        const contextPctIdx = args.indexOf('--context-pct');
+        const runtimeIdx = args.indexOf('--runtime');
+        const options = {
+          contextPct: contextPctIdx !== -1 ? parseFloat(args[contextPctIdx + 1]) : undefined,
+          runtime: runtimeIdx !== -1 ? args[runtimeIdx + 1] : undefined,
+        };
+        cmdAutomationResolveLevel(cwd, feature, options, raw);
+      } else if (subcommand === 'track-event') {
+        const feature = args[2];
+        const event = args[3];
+        const reason = args[4] || undefined;
+        cmdAutomationTrackEvent(cwd, feature, event, reason, raw);
+      } else if (subcommand === 'lock') {
+        const feature = args[2];
+        const sourceIdx = args.indexOf('--source');
+        const ttlIdx = args.indexOf('--ttl');
+        const options = {
+          source: sourceIdx !== -1 ? args[sourceIdx + 1] : undefined,
+          ttl: ttlIdx !== -1 ? parseInt(args[ttlIdx + 1], 10) : undefined,
+        };
+        cmdAutomationLock(cwd, feature, options, raw);
+      } else if (subcommand === 'unlock') {
+        const feature = args[2];
+        cmdAutomationUnlock(cwd, feature, raw);
+      } else if (subcommand === 'check-lock') {
+        const feature = args[2];
+        const ttlIdx = args.indexOf('--ttl');
+        const options = {
+          ttl: ttlIdx !== -1 ? parseInt(args[ttlIdx + 1], 10) : undefined,
+        };
+        cmdAutomationCheckLock(cwd, feature, options, raw);
+      } else if (subcommand === 'regime-change') {
+        const desc = args[2];
+        const impactIdx = args.indexOf('--impact');
+        const priorIdx = args.indexOf('--prior');
+        const options = {
+          impact: impactIdx !== -1 ? args[impactIdx + 1] : 'Not assessed',
+          prior: priorIdx !== -1 ? args[priorIdx + 1] : 'Not recorded',
+        };
+        cmdAutomationRegimeChange(cwd, desc, options, raw);
+      } else {
+        error('Unknown automation subcommand. Available: resolve-level, track-event, lock, unlock, check-lock, regime-change');
+      }
+      break;
+    }
+
+    case 'sensors': {
+      const subcommand = args[1];
+      if (subcommand === 'list') {
+        cmdSensorsList(cwd, raw);
+      } else if (subcommand === 'blind-spots') {
+        const sensorName = args[2] || undefined;
+        cmdSensorsBlindSpots(cwd, sensorName, raw);
+      } else {
+        error('Unknown sensors subcommand. Available: list, blind-spots');
+      }
       break;
     }
 

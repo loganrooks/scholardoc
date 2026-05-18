@@ -395,6 +395,10 @@ Return structured report to milestone auditor:
 
 </output>
 
+<required_reading>
+@./.claude/get-shit-done/references/agent-protocol.md
+</required_reading>
+
 <critical_rules>
 
 **Check connections, not existence.** Files existing is phase-level. Files connecting is integration-level.

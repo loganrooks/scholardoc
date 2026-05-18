@@ -713,27 +713,9 @@ Ready for orchestrator summary.
 
 </templates>
 
-<forbidden_files>
-**NEVER read or quote contents from these files (even if they exist):**
-
-- `.env`, `.env.*`, `*.env` - Environment variables with secrets
-- `credentials.*`, `secrets.*`, `*secret*`, `*credential*` - Credential files
-- `*.pem`, `*.key`, `*.p12`, `*.pfx`, `*.jks` - Certificates and private keys
-- `id_rsa*`, `id_ed25519*`, `id_dsa*` - SSH private keys
-- `.npmrc`, `.pypirc`, `.netrc` - Package manager auth tokens
-- `config/secrets/*`, `.secrets/*`, `secrets/` - Secret directories
-- `*.keystore`, `*.truststore` - Java keystores
-- `serviceAccountKey.json`, `*-credentials.json` - Cloud service credentials
-- `docker-compose*.yml` sections with passwords - May contain inline secrets
-- Any file in `.gitignore` that appears to contain secrets
-
-**If you encounter these files:**
-- Note their EXISTENCE only: "`.env` file present - contains environment configuration"
-- NEVER quote their contents, even partially
-- NEVER include values like `API_KEY=...` or `sk-...` in any output
-
-**Why this matters:** Your output gets committed to git. Leaked secrets = security incident.
-</forbidden_files>
+<required_reading>
+@./.claude/get-shit-done/references/agent-protocol.md
+</required_reading>
 
 <critical_rules>
 
@@ -743,7 +725,7 @@ Ready for orchestrator summary.
 
 **USE THE TEMPLATES.** Fill in the template structure. Don't invent your own format.
 
-**BE THOROUGH.** Explore deeply. Read actual files. Don't guess. **But respect <forbidden_files>.**
+**BE THOROUGH.** Explore deeply. Read actual files. Don't guess. **But respect Forbidden Files rules in the shared agent protocol (Section 13).**
 
 **RETURN ONLY CONFIRMATION.** Your response should be ~10 lines max. Just confirm what was written.
 

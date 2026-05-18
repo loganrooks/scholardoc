@@ -54,9 +54,9 @@ This is the "pick up exactly where you left off" context.]
 </context>
 
 <next_action>
-[The very first thing to do when resuming]
-
-Start with: [specific action]
+Resume from task 3 of the current plan. The remaining work is
+[describe what's left]. After completing this plan, proceed to
+[next plan or phase transition].
 </next_action>
 ```
 
@@ -74,5 +74,8 @@ Required YAML frontmatter:
 - Be specific enough that a fresh Claude instance understands immediately
 - Include WHY decisions were made, not just what
 - The `<next_action>` should be actionable without reading anything else
+- The <next_action> section must describe WHAT to do semantically, never HOW to invoke it.
+  Do NOT include runtime-specific commands like /gsd:, /gsd-, or $gsd- in any section.
+  Command rendering is the resume workflow's responsibility.
 - This file gets DELETED after resume - it's not permanent storage
 </guidelines>

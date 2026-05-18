@@ -332,6 +332,70 @@ Include: duration, start/end times, task count, file count.
 Next: more plans → "Ready for {next-plan}" | last → "Phase complete, ready for transition".
 </step>
 
+<step name="update_resolved_signals">
+If the completed plan has `resolves_signals` in its PLAN.md frontmatter, update referenced signals to remediated status.
+
+**Skip if:** No `resolves_signals` field in plan frontmatter, or the array is empty.
+
+```bash
+# Check for resolves_signals in the plan (use `frontmatter get`, NOT `extract` which doesn't exist)
+RESOLVES=$(node ./.claude/get-shit-done/bin/gsd-tools.js frontmatter get "$PLAN_PATH" --field resolves_signals --raw 2>/dev/null)
+```
+
+**IMPORTANT: Field-not-found handling.** When the field is absent, `frontmatter get --field` returns an error JSON object `{"error":"Field not found",...}` which is non-empty and would pass naive checks. Use `--raw` flag and validate the result is a JSON array before proceeding:
+
+```bash
+# Validate RESOLVES is actually a JSON array (starts with '['), not an error object
+if [ -n "$RESOLVES" ] && echo "$RESOLVES" | grep -q '^\[' && [ "$RESOLVES" != "[]" ]; then
+  # Valid resolves_signals array -- proceed with processing
+else
+  # No resolves_signals or field not found -- skip signal updates
+  RESOLVES=""
+fi
+```
+
+If `RESOLVES` is a valid non-empty JSON array:
+
+1. Parse the signal IDs from the resolves_signals array
+2. Read the project's `lifecycle_strictness` from config (default: `flexible`):
+   ```bash
+   STRICTNESS=$(node -e "try { const c = require('./.planning/config.json'); console.log(c.signal_lifecycle?.lifecycle_strictness || 'flexible') } catch(e) { console.log('flexible') }")
+   ```
+3. For each signal ID:
+   a. Locate the signal file in `.planning/knowledge/signals/{project}/` (or `~/.gsd/knowledge/signals/{project}/` fallback)
+   b. If file not found: log warning "Signal {sig-id} not found or archived, skipping remediation update" and continue
+   c. Read the signal file content
+   d. Parse frontmatter with `extractFrontmatter()` (conceptually -- the workflow instructs the executor to use gsd-tools.js or direct file manipulation)
+   e. Check current `lifecycle_state`:
+      - If already `remediated`, `verified`, or `invalidated`: skip (log "Signal {sig-id} already {state}, skipping")
+      - If `detected` and `STRICTNESS` is `strict`: skip (log "Signal {sig-id} is detected but lifecycle_strictness is strict -- requires triage first")
+      - If `detected` and `STRICTNESS` is `flexible` or `minimal`: proceed
+      - If `triaged`: proceed (normal path)
+   f. Update ONLY mutable lifecycle fields:
+      - `lifecycle_state`: "remediated"
+      - `remediation.status`: "complete"
+      - `remediation.resolved_by_plan`: "{phase}-{plan}" (e.g., "34-01")
+      - `remediation.approach`: plan objective from PLAN.md (first line of `<objective>`)
+      - `remediation.at`: current ISO-8601 timestamp
+      - `lifecycle_log`: **Initialize as empty array if absent** (`lifecycle_log = lifecycle_log || []`), then append entry "triaged->remediated by executor at {timestamp}: plan {phase}-{plan} completed" (or "detected->remediated" if was detected). Pre-Phase-31 signals may lack this field entirely.
+      - `updated`: current ISO-8601 timestamp
+   g. Write back using `spliceFrontmatter()` approach (read -> parse -> modify ONLY mutable fields -> splice)
+   h. Validate with: `node ./.claude/get-shit-done/bin/gsd-tools.js frontmatter validate {file} --schema signal`
+   i. If validation fails: revert the file to its original content and log warning "Validation failed for {sig-id}, reverted"
+4. After all signals processed, rebuild KB index:
+   ```bash
+   bash ~/.gsd/bin/kb-rebuild-index.sh
+   ```
+5. Log: "Updated {N} signal(s) to remediated status"
+
+**Key constraints:**
+- Signal updates happen at the WORKFLOW level, not in the executor agent. The executor focuses on task execution; the workflow manages lifecycle transitions after completion.
+- NEVER modify frozen detection payload fields (severity, tags, evidence, confidence, signal_type, etc.). Only lifecycle fields (lifecycle_state, remediation, lifecycle_log, updated) may change.
+- Use the Phase 33 roundtrip validation pattern: read original content, parse, modify only mutable fields, splice, validate, revert on failure.
+- Per lesson [les-2026-02-28-plans-must-verify-system-behavior-not-assume]: the correct subcommand is `frontmatter get` (not `extract`). Use `--raw` flag and validate the output is a JSON array before processing to avoid false-positive handling of error responses.
+- **Pre-Phase-31 signal compatibility:** Older signals (before Phase 31) lack lifecycle fields entirely (no `lifecycle_state`, `lifecycle_log`, `triage`, `remediation`, `verification`). Always initialize missing fields before appending (e.g., `lifecycle_log = lifecycle_log || []`, `remediation = remediation || {}`).
+</step>
+
 <step name="update_current_position">
 Update STATE.md using gsd-tools:
 
@@ -434,4 +498,5 @@ All routes: `/clear` first for fresh context.
 - ROADMAP.md updated
 - If codebase map exists: map updated with execution changes (or skipped if no significant changes)
 - If USER-SETUP.md created: prominently surfaced in completion output
+- If resolves_signals in plan: referenced signals updated to remediated status (or warnings logged for missing/invalid signals)
 </success_criteria>

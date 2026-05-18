@@ -620,3 +620,7 @@ Plan verification complete when:
 - [ ] Result returned to orchestrator
 
 </success_criteria>
+
+<required_reading>
+@./.claude/get-shit-done/references/agent-protocol.md
+</required_reading>

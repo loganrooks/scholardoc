@@ -19,6 +19,40 @@ Read all files referenced by the invoking prompt's execution_context before star
 - Read STATE.md (pending todos, blockers)
 - Check for MILESTONE-CONTEXT.md (from /gsd:discuss-milestone)
 
+## 1b. Review Backlog Items
+
+Read backlog items to inform milestone scoping:
+
+```bash
+BACKLOG_GROUPS=$(node ./.claude/get-shit-done/bin/gsd-tools.js backlog group --by theme --raw)
+BACKLOG_STATS=$(node ./.claude/get-shit-done/bin/gsd-tools.js backlog stats --raw)
+```
+
+Parse BACKLOG_STATS for `total` count. If total is 0, skip to Step 2.
+
+If items exist, display grouped by theme with priority indicators:
+
+```
+## Backlog Items ([total] items)
+
+### [Theme]
+- [HIGH] Title (tags: x, y)
+- [MEDIUM] Title (tags: z)
+
+### (no theme)
+- [LOW] Title
+```
+
+Use AskUserQuestion (multiSelect: true):
+- header: "Milestone Scope"
+- question: "Select backlog items to include in this milestone:"
+- options: one per item formatted as "[PRIORITY] Title (theme/tags)"
+- Include "None -- start fresh" option
+
+**CRITICAL:** Track selected item IDs for Step 9b. Do NOT promote yet -- REQ-IDs don't exist until Step 9.
+
+**Deduplication:** Items with multiple tags may appear in multiple theme groups. After collecting selections, deduplicate by item ID before tracking.
+
 ## 2. Gather Milestone Goals
 
 **If MILESTONE-CONTEXT.md exists:**
@@ -248,6 +282,34 @@ If "adjust": Return to scoping.
 ```bash
 node ./.claude/get-shit-done/bin/gsd-tools.js commit "docs: define milestone v[X.Y] requirements" --files .planning/REQUIREMENTS.md
 ```
+
+## 9b. Promote Selected Backlog Items
+
+Only execute if items were selected in Step 1b.
+
+For each selected backlog item:
+
+1. Match item to the most closely related generated requirement (by title/tags/theme similarity)
+2. Promote with milestone version and requirement ID:
+
+```bash
+node ./.claude/get-shit-done/bin/gsd-tools.js backlog promote <item-id> --to <REQ-ID> --milestone v[X.Y]
+```
+
+**Deduplication:** Before promoting, deduplicate selected items by ID (safety check against double-select from overlapping theme/tag groups).
+
+Present mapping table for confirmation:
+
+```
+## Backlog Items Promoted
+
+| Backlog Item | Requirement | Milestone |
+|--------------|-------------|-----------|
+| [Title 1]    | AUTH-01     | v1.2      |
+| [Title 2]    | NOTIF-03    | v1.2      |
+```
+
+If no items were selected in Step 1b, skip this step entirely.
 
 ## 10. Create Roadmap
 

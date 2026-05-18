@@ -39,6 +39,9 @@ Formulate:
 - `problem`: What's wrong or why this is needed
 - `solution`: Approach hints or "TBD" if just an idea
 - `files`: Relevant paths with line numbers from conversation
+- `priority`: If user specified (e.g., "high priority", "P1", "critical"), map to HIGH/MEDIUM/LOW. Default: MEDIUM
+- `source`: Infer from context -- `command` if from /gsd:add-todo arguments, `conversation` if extracted from chat, `phase` if during phase execution, `signal` if from signal review. Default: command
+- `status`: Default: pending (todo system's initial state)
 </step>
 
 <step name="infer_area">
@@ -93,6 +96,9 @@ Write to `.planning/todos/pending/${date}-${slug}.md`:
 created: [timestamp]
 title: [title]
 area: [area]
+priority: [priority or MEDIUM]
+source: [source or command]
+status: pending
 files:
   - [file:lines]
 ---

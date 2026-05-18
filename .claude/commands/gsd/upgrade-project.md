@@ -1,6 +1,6 @@
 ---
 name: gsd:upgrade-project
-description: Migrate project to current GSD Reflect version with mini-onboarding for new features
+description: Migrate project to current GSD Reflect version with mini-onboarding for new features (v1.16.0+dev)
 argument-hint: "[--auto]"
 allowed-tools:
   - Read

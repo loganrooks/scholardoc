@@ -183,6 +183,22 @@ Archive completed milestone and prepare for next version.
 
 Usage: `/gsd:complete-milestone 1.0.0`
 
+### Release
+
+**`/gsd:release [patch|minor|major]`**
+Automate version bump, changelog update, git tag, and GitHub Release.
+
+- Bumps version in package.json (patch/minor/major)
+- Moves [Unreleased] changelog content under new version header
+- Creates annotated git tag and pushes to origin
+- Creates GitHub Release (triggers npm publish via CI)
+- If bump type omitted, analyzes commits and recommends
+
+Safety: Verifies clean working tree, main branch, and up-to-date remote before any mutations.
+
+Usage: `/gsd:release patch` (explicit bump)
+Usage: `/gsd:release` (auto-detect from commits)
+
 ### Progress Tracking
 
 **`/gsd:progress`**

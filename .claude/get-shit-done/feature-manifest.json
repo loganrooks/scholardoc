@@ -1,0 +1,341 @@
+{
+  "manifest_version": 1,
+  "features": {
+    "health_check": {
+      "scope": "project",
+      "introduced": "1.12.0",
+      "config_key": "health_check",
+      "schema": {
+        "frequency": {
+          "type": "string",
+          "enum": ["milestone-only", "on-resume", "every-phase", "explicit-only"],
+          "default": "milestone-only",
+          "description": "How often health checks run"
+        },
+        "stale_threshold_days": {
+          "type": "number",
+          "default": 7,
+          "description": "Days before artifacts are considered stale"
+        },
+        "blocking_checks": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether health warnings block execution"
+        }
+      },
+      "init_prompts": [
+        {
+          "field": "frequency",
+          "question": "How often should health checks run?",
+          "options": [
+            { "value": "milestone-only", "label": "Milestone only (default)" },
+            { "value": "on-resume", "label": "On resume" },
+            { "value": "every-phase", "label": "Every phase" },
+            { "value": "explicit-only", "label": "Explicit only" }
+          ]
+        }
+      ]
+    },
+    "devops": {
+      "scope": "project",
+      "introduced": "1.12.0",
+      "config_key": "devops",
+      "schema": {
+        "ci_provider": {
+          "type": "string",
+          "enum": ["none", "github-actions", "gitlab-ci", "circleci", "jenkins", "bitbucket-pipelines", "travis-ci", "other"],
+          "default": "none",
+          "description": "CI/CD provider"
+        },
+        "deploy_target": {
+          "type": "string",
+          "enum": ["none", "vercel", "docker", "fly-io", "railway", "netlify", "serverless", "aws", "gcp", "other"],
+          "default": "none",
+          "description": "Deployment target"
+        },
+        "commit_convention": {
+          "type": "string",
+          "enum": ["freeform", "conventional"],
+          "default": "freeform",
+          "description": "Commit message convention"
+        },
+        "environments": {
+          "type": "array",
+          "default": [],
+          "description": "Environment names (e.g., staging, production)"
+        }
+      },
+      "init_prompts": [
+        {
+          "field": "_gate",
+          "question": "Configure DevOps context now?",
+          "options": [
+            { "value": "skip", "label": "Skip (use defaults)" },
+            { "value": "configure", "label": "Configure now" }
+          ],
+          "skip_value": "skip"
+        }
+      ],
+      "auto_detect": {
+        "ci_provider": [
+          { "check": "dir_exists", "path": ".github/workflows", "value": "github-actions" },
+          { "check": "file_exists", "path": ".gitlab-ci.yml", "value": "gitlab-ci" },
+          { "check": "file_exists", "path": ".circleci/config.yml", "value": "circleci" },
+          { "check": "file_exists", "path": "Jenkinsfile", "value": "jenkins" },
+          { "check": "file_exists", "path": "bitbucket-pipelines.yml", "value": "bitbucket-pipelines" }
+        ],
+        "deploy_target": [
+          { "check": "file_exists", "path": "vercel.json", "value": "vercel" },
+          { "check": "dir_exists", "path": ".vercel", "value": "vercel" },
+          { "check": "file_exists", "path": "Dockerfile", "value": "docker" },
+          { "check": "file_exists", "path": "fly.toml", "value": "fly-io" },
+          { "check": "file_exists", "path": "netlify.toml", "value": "netlify" }
+        ],
+        "commit_convention": [
+          { "check": "git_log_pattern", "pattern": "^(feat|fix|chore|docs|style|refactor|test|ci|build|perf)\\(", "threshold": 0.5, "value": "conventional" }
+        ]
+      }
+    },
+    "release": {
+      "scope": "project",
+      "introduced": "1.15.0",
+      "config_key": "release",
+      "schema": {
+        "version_file": {
+          "type": "string",
+          "enum": ["package.json", "Cargo.toml", "pyproject.toml", "VERSION", "none"],
+          "default": "none",
+          "description": "File containing project version"
+        },
+        "changelog": {
+          "type": "string",
+          "default": "CHANGELOG.md",
+          "description": "Changelog file path"
+        },
+        "changelog_format": {
+          "type": "string",
+          "enum": ["keepachangelog", "conventional", "freeform", "none"],
+          "default": "keepachangelog",
+          "description": "Changelog format"
+        },
+        "ci_trigger": {
+          "type": "string",
+          "enum": ["github-release", "tag-push", "manual", "none"],
+          "default": "none",
+          "description": "What triggers CI/CD on release"
+        },
+        "registry": {
+          "type": "string",
+          "enum": ["npm", "crates", "pypi", "none"],
+          "default": "none",
+          "description": "Package registry"
+        },
+        "branch": {
+          "type": "string",
+          "default": "main",
+          "description": "Branch releases are made from"
+        }
+      },
+      "init_prompts": [
+        {
+          "field": "version_file",
+          "question": "Where is your version tracked?",
+          "options": [
+            { "value": "package.json", "label": "package.json (Node.js)" },
+            { "value": "Cargo.toml", "label": "Cargo.toml (Rust)" },
+            { "value": "pyproject.toml", "label": "pyproject.toml (Python)" },
+            { "value": "VERSION", "label": "VERSION file" },
+            { "value": "none", "label": "Not configured yet" }
+          ]
+        }
+      ],
+      "auto_detect": {
+        "version_file": [
+          { "check": "file_exists", "path": "package.json", "value": "package.json" },
+          { "check": "file_exists", "path": "Cargo.toml", "value": "Cargo.toml" },
+          { "check": "file_exists", "path": "pyproject.toml", "value": "pyproject.toml" }
+        ]
+      }
+    },
+    "signal_lifecycle": {
+      "scope": "project",
+      "introduced": "1.16.0",
+      "config_key": "signal_lifecycle",
+      "schema": {
+        "lifecycle_strictness": {
+          "type": "string",
+          "enum": ["strict", "flexible", "minimal"],
+          "default": "flexible",
+          "description": "How strictly lifecycle state transitions are enforced"
+        },
+        "manual_signal_trust": {
+          "type": "string",
+          "enum": ["full", "standard", "cautious"],
+          "default": "standard",
+          "description": "Rigor expected from user-submitted signals"
+        },
+        "rigor_enforcement": {
+          "type": "string",
+          "enum": ["strict", "warn", "permissive"],
+          "default": "warn",
+          "description": "What happens when rigor requirements are not met"
+        },
+        "severity_conflict_handling": {
+          "type": "string",
+          "enum": ["sensor-wins", "triage-wins", "record-both"],
+          "default": "record-both",
+          "description": "How sensor vs triage severity disagreements are handled"
+        },
+        "recurrence_escalation": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether signal recurrence automatically escalates severity"
+        },
+        "verification_window": {
+          "type": "number",
+          "default": 3,
+          "min": 1,
+          "max": 10,
+          "description": "Number of phases with no recurrence before a remediated signal is verified"
+        }
+      },
+      "init_prompts": [
+        {
+          "field": "_gate",
+          "question": "Configure signal lifecycle settings?",
+          "options": [
+            { "value": "skip", "label": "Skip (use defaults)" },
+            { "value": "configure", "label": "Configure now" }
+          ],
+          "skip_value": "skip"
+        }
+      ]
+    },
+    "signal_collection": {
+      "scope": "project",
+      "introduced": "1.16.0",
+      "config_key": "signal_collection",
+      "schema": {
+        "sensors": {
+          "type": "object",
+          "default": {},
+          "description": "Per-sensor overrides (enabled/disabled, model). Discovered sensors not listed here default to enabled with model 'auto'. To disable a sensor, add \"sensor_name\": {\"enabled\": false}. Note: projects upgrading from pre-v1.17 that had the log sensor disabled should add \"log\": {\"enabled\": false} to preserve that behavior."
+        },
+        "synthesizer_model": {
+          "type": "string",
+          "default": "auto",
+          "description": "Model for the signal synthesizer agent"
+        },
+        "per_phase_cap": {
+          "type": "number",
+          "default": 10,
+          "description": "Maximum persistent signals per phase per project"
+        },
+        "auto_collect": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether signal collection auto-triggers after phase execution via workflow postlude"
+        },
+        "reentrancy": {
+          "type": "object",
+          "default": {},
+          "description": "Reentrancy lock settings for auto-collection",
+          "properties": {
+            "ttl_seconds": {
+              "type": "number",
+              "default": 300,
+              "description": "Time-to-live for reentrancy lock before it is considered stale"
+            }
+          }
+        }
+      },
+      "init_prompts": [
+        {
+          "field": "_gate",
+          "question": "Configure signal collection sensors?",
+          "options": [
+            { "value": "skip", "label": "Skip (use defaults)" },
+            { "value": "configure", "label": "Configure now" }
+          ],
+          "skip_value": "skip"
+        }
+      ]
+    },
+    "spike": {
+      "scope": "project",
+      "introduced": "1.16.0",
+      "config_key": "spike",
+      "schema": {
+        "enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether the spike system is active"
+        },
+        "sensitivity": {
+          "type": "string",
+          "enum": ["conservative", "balanced", "aggressive"],
+          "default": "balanced",
+          "description": "Which gap criticalities trigger spikes (conservative=Critical only, balanced=Critical+Medium, aggressive=all)"
+        },
+        "auto_trigger": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether plan-phase automatically triggers spikes for genuine gaps (false=advisory only)"
+        }
+      },
+      "init_prompts": [
+        {
+          "field": "_gate",
+          "question": "Configure spike experiment settings?",
+          "options": [
+            { "value": "skip", "label": "Skip (use defaults)" },
+            { "value": "configure", "label": "Configure now" }
+          ],
+          "skip_value": "skip"
+        }
+      ]
+    },
+    "automation": {
+      "scope": "project",
+      "introduced": "1.17.0",
+      "config_key": "automation",
+      "schema": {
+        "level": {
+          "type": "number",
+          "enum": [0, 1, 2, 3],
+          "default": 1,
+          "description": "Global automation level: 0=manual, 1=nudge, 2=prompt, 3=auto"
+        },
+        "overrides": {
+          "type": "object",
+          "default": {},
+          "description": "Per-feature level overrides keyed by feature config_key (e.g., {signal_collection: 3})"
+        },
+        "context_threshold_pct": {
+          "type": "number",
+          "default": 60,
+          "min": 20,
+          "max": 90,
+          "description": "Context usage % above which level-3 features downgrade to nudge"
+        },
+        "stats": {
+          "type": "object",
+          "default": {},
+          "description": "Per-feature automation statistics (fires, skips, timestamps). Auto-populated by track-event."
+        }
+      },
+      "init_prompts": [
+        {
+          "field": "level",
+          "question": "What automation level do you want?",
+          "options": [
+            { "value": 0, "label": "Manual (everything requires explicit commands)" },
+            { "value": 1, "label": "Nudge (statusline indicators and suggestions) [default]" },
+            { "value": 2, "label": "Prompt (system asks before auto-triggering)" },
+            { "value": 3, "label": "Auto (system auto-triggers with thresholds)" }
+          ]
+        }
+      ]
+    }
+  }
+}

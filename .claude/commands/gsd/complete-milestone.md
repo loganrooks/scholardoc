@@ -1,7 +1,7 @@
 ---
 type: prompt
 name: gsd:complete-milestone
-description: Archive completed milestone and prepare for next version
+description: Archive completed milestone and prepare for next version (v1.16.0+dev)
 argument-hint: <version>
 allowed-tools:
   - Read

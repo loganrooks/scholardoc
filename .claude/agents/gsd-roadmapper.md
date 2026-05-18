@@ -573,6 +573,10 @@ When unable to proceed:
 
 </anti_patterns>
 
+<required_reading>
+@./.claude/get-shit-done/references/agent-protocol.md
+</required_reading>
+
 <success_criteria>
 
 Roadmap is complete when:

@@ -329,18 +329,8 @@ Create `.planning/config.json` with all settings:
     "plan_check": true|false,
     "verifier": true|false
   },
-  "gsd_reflect_version": "1.13.0",
-  "health_check": {
-    "frequency": "milestone-only",
-    "stale_threshold_days": 7,
-    "blocking_checks": false
-  },
-  "devops": {
-    "ci_provider": "none",
-    "deploy_target": "none",
-    "commit_convention": "freeform",
-    "environments": []
-  }
+  "gsd_reflect_version": "<installed_version>",
+  "manifest_version": <manifest_version_from_feature_manifest_json>
 }
 ```
 
@@ -363,86 +353,39 @@ node ./.claude/get-shit-done/bin/gsd-tools.js commit "chore: add project config"
 
 Use models from init: `researcher_model`, `synthesizer_model`, `roadmapper_model`.
 
-## 5.7. DevOps Context (Conditional)
+## 5.6. Feature Configuration (Manifest-Driven)
 
-**Skip condition:** If greenfield (no existing code detected in Step 1 setup, i.e. `has_existing_code` is false from init) AND user did not mention deployment, CI, production, or release during Step 3 questioning, skip to Step 6.
+After creating the initial config.json with core preferences, configure manifest-declared features.
 
-**If auto mode:** Skip entirely (DevOps context can be added later).
+For each feature in the manifest:
 
-**If brownfield project OR DevOps signals detected:**
+1. **Auto-detect:** Run `node ./.claude/get-shit-done/bin/gsd-tools.js manifest auto-detect <feature> --raw` to detect values from the project filesystem
+2. **Get prompts:** Run `node ./.claude/get-shit-done/bin/gsd-tools.js manifest get-prompts <feature> --raw`
+3. **Handle _gate prompts:** If the feature has a prompt with `field: "_gate"`:
+   - Ask the gate question via AskUserQuestion
+   - If user selects `skip_value`: apply all defaults for this feature (skip remaining prompts)
+   - If user selects configure: continue with remaining prompts
+4. **Interactive mode:** For each non-gate prompt:
+   - Present question and options via AskUserQuestion
+   - Use auto-detected values as pre-selected defaults where available
+   - Write user choice: `node ./.claude/get-shit-done/bin/gsd-tools.js config-set <config_key>.<field> <value>`
+5. **Auto/YOLO mode:** Use auto-detected values where available, manifest defaults for the rest
 
-Display stage banner:
-```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- GSD ► DEVOPS CONTEXT
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-```
-
-**Step 1: Auto-detect existing DevOps configuration:**
-
-Run detection patterns from `devops-detection.md`:
+After all features processed, fill any remaining gaps:
 ```bash
-# CI/CD detection
-DEVOPS_CI="none"
-[ -d ".github/workflows" ] && DEVOPS_CI="github-actions"
-[ -f ".gitlab-ci.yml" ] && DEVOPS_CI="gitlab-ci"
-[ -f ".circleci/config.yml" ] && DEVOPS_CI="circleci"
-[ -f "Jenkinsfile" ] && DEVOPS_CI="jenkins"
-
-# Deployment detection
-DEVOPS_DEPLOY="none"
-[ -f "vercel.json" ] || [ -d ".vercel" ] && DEVOPS_DEPLOY="vercel"
-[ -f "Dockerfile" ] && DEVOPS_DEPLOY="docker"
-[ -f "fly.toml" ] && DEVOPS_DEPLOY="fly-io"
-[ -f "netlify.toml" ] && DEVOPS_DEPLOY="netlify"
-
-# Commit convention detection
-CONVENTIONAL=$(git log --oneline -20 2>/dev/null | grep -cE "^[a-f0-9]+ (feat|fix|chore|docs|style|refactor|test|ci|build|perf)\(" || echo "0")
-TOTAL=$(git log --oneline -20 2>/dev/null | wc -l | tr -d ' ')
-DEVOPS_COMMITS="freeform"
-if [ "$TOTAL" -gt "0" ] && [ "$CONVENTIONAL" -gt "$((TOTAL / 2))" ]; then
-  DEVOPS_COMMITS="conventional"
-fi
-
-# Git hygiene
-HAS_GITIGNORE=$([ -f ".gitignore" ] && echo "true" || echo "false")
-HAS_ENV_TEMPLATE=$([ -f ".env.example" ] || [ -f ".env.template" ] && echo "true" || echo "false")
+node ./.claude/get-shit-done/bin/gsd-tools.js manifest apply-migration --raw
 ```
 
-**Step 2: Report detections and ask about gaps:**
-
-Display what was detected:
-```
-Found:
-- CI/CD: {detected or "none detected"}
-- Deployment: {detected or "none detected"}
-- Commits: {conventional or freeform}
+Log the initial configuration:
+```bash
+node ./.claude/get-shit-done/bin/gsd-tools.js manifest log-migration --from "0.0.0" --to "<installed_version>" --changes '<changes_from_apply_migration>' --raw
 ```
 
-For each gap (where detection returned "none" or missing hygiene files), ask up to 3-5 adaptive questions using AskUserQuestion. Follow the question templates and project-type heuristics in `devops-detection.md`. Skip questions for items already detected.
+## 5.7. DevOps Context
 
-**Step 3: Store DevOps context in config.json:**
+DevOps detection is now handled by Step 5.6 via `manifest auto-detect devops`. The manifest's auto_detect rules check for CI/CD directories, deployment config files, and commit conventions automatically. No separate DevOps step is needed.
 
-Add the `devops` section to the project's `.planning/config.json` with detected values and user responses. The devops section structure is defined in `devops-detection.md`.
-
-```json
-{
-  "devops": {
-    "ci_provider": "{detected or user-selected}",
-    "deploy_target": "{detected or user-selected}",
-    "commit_convention": "{detected or user-selected}",
-    "environments": [],
-    "detected": {
-      "ci_files": [],
-      "deploy_files": [],
-      "gitignore": true,
-      "env_template": false
-    }
-  }
-}
-```
-
-**If no gaps found:** Report "DevOps context captured from existing configuration" and continue without questions.
+**Skip condition logic from Step 5.7 is preserved:** If greenfield project AND no DevOps signals during questioning, the _gate prompt in the devops feature handles this -- the user can select "Skip (use defaults)" to apply all defaults without further questions.
 
 ## 6. Research Decision
 

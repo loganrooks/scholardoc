@@ -169,6 +169,59 @@ rm -f ./.claude/cache/gsd-update-check.json
 ```
 </step>
 
+<step name="check_config_gaps">
+## Post-Install Config Check
+
+After installation completes, check if the updated version introduces new features:
+
+```bash
+DIFF=$(node ./.claude/get-shit-done/bin/gsd-tools.js manifest diff-config --raw 2>/dev/null)
+```
+
+**If command fails** (no config.json, no manifest, or any error): Skip this step silently. The user may not have an initialized project.
+
+**If command succeeds**, parse the JSON and count gaps:
+- Count `missing_features` and `missing_fields` arrays
+- Check if `manifest_version` > `config_manifest_version`
+
+**If no gaps found:** Skip silently (config is already up to date).
+
+**If gaps found:**
+
+Read mode from `.planning/config.json`:
+
+**YOLO mode:** Auto-apply the migration:
+```bash
+RESULT=$(node ./.claude/get-shit-done/bin/gsd-tools.js manifest apply-migration --raw)
+```
+
+Then log the migration:
+```bash
+node ./.claude/get-shit-done/bin/gsd-tools.js manifest log-migration --from "<old_version>" --to "<new_version>" --changes '<changes_from_result>' --raw
+```
+
+Update version stamp:
+```bash
+node ./.claude/get-shit-done/bin/gsd-tools.js config-set gsd_reflect_version "<new_version>"
+```
+
+Display:
+```
+Config updated automatically: {N} new feature(s) configured with defaults.
+```
+
+**Interactive mode:** Display an informational message:
+```
+New features available after update:
+- {feature_name}: {feature description from manifest}
+  (missing {N} field(s))
+
+Run `/gsd:upgrade-project` to configure these features.
+```
+
+Do NOT auto-apply in interactive mode -- the user may want to choose non-default values via the upgrade-project flow.
+</step>
+
 <step name="display_result">
 Format completion message (changelog was already shown in confirmation step):
 
@@ -208,5 +261,8 @@ Run /gsd:reapply-patches to merge your modifications into the new version.
 - [ ] Clean install warning shown
 - [ ] User confirmation obtained
 - [ ] Update executed successfully
+- [ ] Post-install config gaps checked
+- [ ] YOLO mode auto-applies config migration
+- [ ] Interactive mode offers /gsd:upgrade-project
 - [ ] Restart reminder shown
 </success_criteria>

@@ -2,8 +2,8 @@
 
 Reference specification for pattern detection, lesson distillation, phase-end reflection, and semantic drift detection in the GSD self-improvement loop.
 
-**Version:** 1.0.0
-**Phase:** 04-reflection-engine
+**Version:** 1.2.0
+**Phase:** 04-reflection-engine, 31-signal-schema-foundation, 33-enhanced-reflector
 
 ---
 
@@ -33,29 +33,66 @@ The Reflection Engine is the closing loop of the GSD self-improvement cycle. It 
 
 ## 2. Pattern Detection Rules
 
-### 2.1 Severity-Weighted Thresholds
+### 2.1 Confidence-Weighted Scoring
 
-Pattern detection uses severity-weighted occurrence thresholds rather than a single number. This catches critical issues early while filtering noise from minor friction.
+Pattern detection uses confidence-weighted scoring rather than raw occurrence counts. This weights high-confidence signals more heavily, so a cluster of 3 high-confidence signals surfaces a pattern that 5 low-confidence signals would not.
 
-| Signal Severity | Threshold | Rationale |
-|-----------------|-----------|-----------|
-| `critical` | 2 occurrences | Cannot risk missing dangerous patterns |
-| `high` | 2 occurrences | High-impact issues warrant early attention |
-| `medium` | 4 occurrences | Moderate issues need recurrence confirmation |
-| `low` | 5+ occurrences | Must be truly recurring, not noise |
+**Scoring formula:**
+
+```
+weighted_score = sum(weight(signal) for signal in cluster)
+
+weight(signal) = confidence_weight * severity_multiplier
+
+confidence_weight:
+  high   -> 2.0
+  medium -> 1.0
+  low    -> 0.5
+
+severity_multiplier:
+  critical -> 1.5
+  notable  -> 1.0
+  minor    -> 0.7
+```
+
+**Pattern qualification thresholds (by max severity in cluster):**
+
+| Max Severity | Weighted Score Threshold | Rationale |
+|-------------|--------------------------|-----------|
+| `critical` | 3.0 | Cannot risk missing dangerous patterns |
+| `notable` | 4.0 | High-impact issues warrant attention |
+| `minor` | 5.0 | Must be truly recurring, not noise |
+| `trace` | N/A | Not persisted to KB, not in pattern detection pool |
+
+**Default confidence for legacy signals:** Signals missing the `confidence` field default to `medium` (weight 1.0). This gives legacy signals neutral weight -- neither penalized nor boosted -- preserving backward compatibility with pre-Phase 31 signals.
 
 **Threshold application:**
-```bash
-# Pseudocode for severity-weighted threshold check
-case "$max_severity" in
-  critical|high)
-    [ "$count" -ge 2 ] && emit_pattern ;;
-  medium)
-    [ "$count" -ge 4 ] && emit_pattern ;;
-  low)
-    [ "$count" -ge 5 ] && emit_pattern ;;
-esac
 ```
+# Pseudocode for confidence-weighted threshold check
+
+for each cluster:
+  weighted_score = 0
+  for each signal in cluster:
+    confidence = signal.confidence or "medium"  # default for legacy
+    confidence_weight = { high: 2.0, medium: 1.0, low: 0.5 }[confidence]
+    severity_mult = { critical: 1.5, notable: 1.0, minor: 0.7 }[signal.severity]
+    weighted_score += confidence_weight * severity_mult
+
+  max_severity = max(signal.severity for signal in cluster)
+  threshold = { critical: 3.0, notable: 4.0, minor: 5.0 }[max_severity]
+
+  if weighted_score >= threshold:
+    emit_pattern(cluster, weighted_score)
+```
+
+**Worked examples:**
+
+| Scenario | Signals | Calculation | Score | Threshold | Qualifies? |
+|----------|---------|-------------|-------|-----------|------------|
+| 3 high-confidence critical | 3 signals (high, critical) | 3 * 2.0 * 1.5 | 9.0 | 3.0 | YES -- well above threshold |
+| 5 low-confidence minor | 5 signals (low, minor) | 5 * 0.5 * 0.7 | 1.75 | 5.0 | NO -- correctly filters noise |
+| 4 medium-confidence notable | 4 signals (medium, notable) | 4 * 1.0 * 1.0 | 4.0 | 4.0 | YES -- qualifies at boundary |
+| 2 high-confidence notable + 1 low-confidence notable | 3 mixed signals | 2 * 2.0 * 1.0 + 1 * 0.5 * 1.0 | 4.5 | 4.0 | YES -- mixed confidence works |
 
 ### 2.2 Signal Clustering Criteria
 
@@ -67,44 +104,69 @@ Signals cluster into patterns based on shared characteristics. Criteria in prior
 | 2 | Same project + same `signal_type` + similar slug | Strong | Project-specific recurrence |
 | 3 | Cross-project: same tags + same `signal_type` | Moderate | Candidate global pattern |
 
-**Clustering algorithm:**
-1. Group signals by `signal_type` (deviation, struggle, config-mismatch)
+**Primary clustering algorithm:**
+1. Group signals by `signal_type` (deviation, struggle, config-mismatch, epistemic-gap, baseline, improvement, good-pattern)
 2. Within each group, cluster by tag overlap (2+ shared tags)
 3. For each cluster, take the highest severity among members
-4. Apply severity-weighted threshold to cluster count
+4. Calculate confidence-weighted score for cluster (see Section 2.1)
+5. Apply weighted score threshold based on cluster's max severity
+
+**Secondary clustering fallback:** When primary clustering yields fewer than 5 qualifying patterns, apply a relaxed mode to catch thematic patterns fragmented across signal types:
+- **Criteria:** Same project + 3+ overlapping tags + any `signal_type`
+- **Constraint:** Positive and negative signals still cluster separately (respects `signal_category`)
+- **Marking:** Secondary clusters are marked as "cross-type" in output
+- **Score penalty:** Secondary clusters receive a 0.8x score multiplier (slightly penalized for weaker `signal_type` coherence)
+- **Rationale:** Signals about the same issue may be typed as `deviation`, `struggle`, and `config-mismatch` depending on context. Without secondary clustering, these related signals fragment into separate under-threshold groups and the pattern is missed
+
+**Signal category clustering rules:**
+- **Positive and negative signals cluster separately.** A positive baseline and a negative deviation with overlapping tags should NOT cluster together -- they represent fundamentally different observations.
+- **Epistemic gap signals may cluster with related deviation or struggle signals** if tags overlap. An epistemic gap about auth and a deviation about auth are related -- they share the same knowledge domain and the gap may explain the deviation.
+- Clustering respects `signal_category` first, then applies the standard `signal_type` + tag overlap criteria within each category.
 
 **Example clustering:**
 ```bash
 # Extract pattern keys from index
-# Pattern key = signal_type + first two tags
+# Primary: Pattern key = signal_type + first two tags
+# Secondary (fallback): Pattern key = project + first three tags (any signal_type)
 extract_patterns() {
   grep "^| sig-" "$KB_DIR/index.md" | while read -r row; do
     signal_type=$(get_signal_type_from_file "$row")
     tags=$(echo "$row" | cut -d'|' -f5 | tr -d ' ')
     primary_tags=$(echo "$tags" | cut -d',' -f1-2)
-    echo "${signal_type}:${primary_tags}"
+    echo "primary:${signal_type}:${primary_tags}"
+  done
+}
+
+extract_secondary_patterns() {
+  grep "^| sig-" "$KB_DIR/index.md" | while read -r row; do
+    project=$(echo "$row" | cut -d'|' -f3 | tr -d ' ')
+    tags=$(echo "$row" | cut -d'|' -f5 | tr -d ' ')
+    top_tags=$(echo "$tags" | cut -d',' -f1-3)
+    echo "secondary:${project}:${top_tags}"
   done
 }
 ```
 
 ### 2.3 Pattern Output Format
 
-When a pattern qualifies (meets threshold), emit in this structure:
+When a pattern qualifies (meets weighted score threshold), emit in this structure:
 
 ```markdown
 ## Pattern: {pattern-name}
 
 **Signal type:** {deviation|struggle|config-mismatch}
+**Cluster type:** {primary | cross-type}
 **Occurrences:** {count}
+**Weighted score:** {score} (threshold: {threshold})
 **Severity:** {highest severity among grouped signals}
-**Confidence:** {HIGH|MEDIUM|LOW} ({count} occurrences)
+**Confidence:** {high|medium|low}
 
 **Signals in pattern:**
 
-| ID | Project | Date | Tags |
-|----|---------|------|------|
-| sig-X | project-a | 2026-02-01 | tag1, tag2 |
-| sig-Y | project-b | 2026-02-03 | tag1, tag3 |
+| ID | Project | Date | Tags | Confidence | Severity |
+|----|---------|------|------|------------|----------|
+| sig-X | project-a | 2026-02-01 | tag1, tag2 | high | critical |
+| sig-Y | project-b | 2026-02-03 | tag1, tag3 | medium | notable |
 
 **Root cause hypothesis:** {Agent's assessment of why this pattern recurs}
 
@@ -121,6 +183,43 @@ Time-based windows lose infrequent but persistent issues (e.g., library bug recu
 - Old signals with same tags/type still cluster with new signals
 - Signals remain in pattern detection pool regardless of age
 - Archival (via `status: archived`) is the only exclusion mechanism
+
+### 2.5 Counter-Evidence Seeking (REFLECT-03)
+
+Before confirming a pattern, the reflector actively seeks evidence that contradicts the pattern. This prevents false positives and confirmation bias.
+
+**Counter-evidence sources** (in priority order):
+
+1. **Positive signals with same tags:** Signals with overlapping tags but `signal_category: positive` (positive signals contradict negative patterns). A positive baseline about auth and a negative deviation about auth represent conflicting observations.
+2. **Remediated/verified signals:** Signals where the same issue was resolved (`lifecycle_state: remediated` or `verified`). If the issue has been fixed, the pattern may be stale.
+3. **Time-decay indicator:** If ALL pattern signals are older than 30 days with no recent recurrence, flag as "potentially stale" (advisory only -- does NOT exclude from detection, per Section 2.4).
+
+**Bounded search:** Examine up to 3 potential counter-examples per pattern. This bounds the analysis effort while still checking for obvious contradictions.
+
+**Index-first counter-evidence search:** Counter-evidence candidates may NOT be in qualifying clusters (e.g., a lone positive signal). To avoid breaking the two-pass context budget model, counter-evidence search MUST use index metadata (tags, signal_category, lifecycle_state columns) to identify candidates first. Only read the full signal file for confirmed counter-evidence candidates (max 3 per pattern). This keeps the additional file reads bounded to 3 * N_patterns, not the entire signal corpus.
+
+**Counter-evidence impact:**
+
+| Counter-Examples Found | Impact |
+|----------------------|--------|
+| 0 | Pattern confirmed at current confidence |
+| 1 | Reduce pattern confidence one level (e.g., high -> medium) |
+| 2-3 | Reduce pattern confidence two levels (e.g., high -> low) or flag as "investigate" triage candidate |
+
+Counter-evidence is always cited in the pattern report. The original (pre-adjustment) confidence is preserved alongside the adjusted confidence for transparency.
+
+**Counter-evidence output format:**
+
+```markdown
+**Counter-evidence ({N} found):**
+- {signal-id}: {why it contradicts the pattern}
+- **Impact:** Confidence reduced from {original} to {adjusted}
+```
+
+If no counter-evidence is found:
+```markdown
+**Counter-evidence (0 found):** Pattern confirmed at {confidence} confidence.
+```
 
 ---
 
@@ -170,7 +269,7 @@ Compare against VERIFICATION.md success criteria results. Any failed criterion i
 
 **Plan:** {phase}-{plan}-PLAN.md
 **Summary:** {phase}-{plan}-SUMMARY.md
-**Overall alignment:** {HIGH|MEDIUM|LOW}
+**Overall alignment:** {high|medium|low}
 
 ### Deviations Found
 
@@ -231,9 +330,8 @@ A pattern qualifies for lesson distillation when ALL of:
    - Apply heuristics (see 4.3)
        |
        v
-4. Write lesson file
-   - Use kb-templates/lesson.md
-   - Write to ./.claude/gsd-knowledge/lessons/{category}/
+4. Document in reflection report
+   - Lesson candidates are recorded in the reflection report only (lesson files deprecated)
        |
        v
 5. Rebuild index
@@ -324,7 +422,9 @@ A pattern qualifies as global lesson when:
 # Query index for cross-project patterns
 # Group by signal_type + tags, ignoring project column
 
-KB_INDEX="$HOME/.claude/gsd-knowledge/index.md"
+# KB path resolution -- project-local primary, user-global fallback
+if [ -d ".planning/knowledge" ]; then KB_DIR=".planning/knowledge"; else KB_DIR="$HOME/.gsd/knowledge"; fi
+KB_INDEX="$KB_DIR/index.md"
 
 # Extract all signal rows
 grep "^| sig-" "$KB_INDEX" | while read row; do
@@ -357,7 +457,7 @@ No ML required. Track these metrics across phases:
 |--------|--------|------------------|
 | Verification gap rate | VERIFICATION.md `gaps_found` | Are more plans failing verification? |
 | Auto-fix frequency | SUMMARY.md "Deviations" | Are plans needing more corrections? |
-| Signal severity rate | Signal index | Is critical/high proportion increasing? |
+| Signal severity rate | Signal index | Is critical/notable proportion increasing? |
 | Deviation-to-plan ratio | PLAN vs SUMMARY comparison | Are executions deviating more from plans? |
 
 ### 6.2 Detection Algorithm
@@ -425,7 +525,7 @@ Generate actionable improvement suggestions based on recurring signal patterns.
 ### 7.1 Suggestion Triggers
 
 Generate suggestions when:
-- Pattern reaches HIGH confidence (6+ occurrences)
+- Pattern reaches `high` confidence (6+ occurrences)
 - Pattern spans multiple phases or plans
 - Root cause analysis points to workflow issue
 
@@ -462,20 +562,20 @@ Generate suggestions when:
 
 ---
 
-## 8. Category Taxonomy
+## 8. Category Taxonomy (Authoritative)
 
-Predefined top-level categories with emergent subcategories.
+Predefined top-level categories with emergent subcategories. **This taxonomy is authoritative.** The reflector agent and lesson templates use these categories. Legacy categories (`debugging`, `performance`, `other`) from earlier agent spec versions map to: `debugging` -> `testing`, `performance` -> `architecture`, `other` -> `workflow`.
 
 ### 8.1 Top-Level Categories
 
-| Category | Scope | Examples |
-|----------|-------|----------|
-| `tooling` | Build tools, test runners, linters | Vitest, ESLint, Webpack |
-| `architecture` | Code structure, patterns, design | Barrel exports, service layers |
-| `testing` | Test strategies, fixtures, mocking | Snapshot testing, mock setup |
-| `workflow` | GSD workflow, CI/CD, automation | Plan structure, verification |
-| `external` | Third-party services, APIs, libraries | Claude API, npm, OAuth providers |
-| `environment` | OS, runtime, configuration | Node versions, env vars |
+| Category | Scope | Examples | Legacy Mappings |
+|----------|-------|----------|-----------------|
+| `tooling` | Build tools, test runners, linters | Vitest, ESLint, Webpack | -- |
+| `architecture` | Code structure, patterns, design, performance | Barrel exports, service layers | `performance` -> `architecture` |
+| `testing` | Test strategies, fixtures, mocking, debugging | Snapshot testing, mock setup | `debugging` -> `testing` |
+| `workflow` | GSD workflow, CI/CD, automation, uncategorized | Plan structure, verification | `other` -> `workflow` |
+| `external` | Third-party services, APIs, libraries | Claude API, npm, OAuth providers | -- |
+| `environment` | OS, runtime, configuration | Node versions, env vars | -- |
 
 ### 8.2 Subcategory Emergence
 
@@ -502,11 +602,13 @@ Use categorical confidence with occurrence count evidence.
 
 ### 9.1 Confidence Levels
 
-| Level | Criteria | Expression |
-|-------|----------|------------|
-| **HIGH** | 6+ occurrences, empirical evidence, consistent root cause | "HIGH (7 occurrences across 3 projects)" |
-| **MEDIUM** | 3-5 occurrences, inference from patterns | "MEDIUM (4 occurrences, same root cause)" |
-| **LOW** | 2-3 occurrences, educated guess | "LOW (2 occurrences, similar symptoms)" |
+Confidence uses the three-tier categorical model (`high`, `medium`, `low`) matching the signal schema's `confidence` field values. Confidence levels now feed into weighted scoring (Section 2.1), not just reporting -- a signal's confidence directly affects whether its cluster qualifies as a pattern.
+
+| Level | Criteria | Weighted Score Impact | Expression |
+|-------|----------|----------------------|------------|
+| `high` | 6+ occurrences, empirical evidence, consistent root cause | 2.0x weight per signal | "high (7 occurrences across 3 projects)" |
+| `medium` | 3-5 occurrences, inference from patterns | 1.0x weight per signal (baseline) | "medium (4 occurrences, same root cause)" |
+| `low` | 2-3 occurrences, educated guess, or epistemic gap | 0.5x weight per signal | "low (2 occurrences, similar symptoms)" |
 
 ### 9.2 Actionability Levels
 
@@ -514,16 +616,16 @@ Based on confidence, lessons have different actionability:
 
 | Confidence | Actionability | Lesson Framing |
 |------------|--------------|----------------|
-| HIGH | Directive | "Always do X when Y occurs" |
-| MEDIUM | Recommendation | "Consider X when encountering Y" |
-| LOW | Observation | "Pattern observed: X tends to cause Y" |
+| `high` | Directive | "Always do X when Y occurs" |
+| `medium` | Recommendation | "Consider X when encountering Y" |
+| `low` | Observation | "Pattern observed: X tends to cause Y" |
 
 ### 9.3 Confidence in Output
 
 Always include occurrence count when stating confidence:
-- "Confidence: HIGH (12 occurrences, 4 projects)"
-- "Confidence: MEDIUM (4 occurrences, consistent root cause)"
-- "Confidence: LOW (2 occurrences, same tags)"
+- "Confidence: high (12 occurrences, 4 projects)"
+- "Confidence: medium (4 occurrences, consistent root cause)"
+- "Confidence: low (2 occurrences, same tags)"
 
 ---
 
@@ -541,7 +643,7 @@ Common mistakes in reflection implementation.
 
 **Anti-pattern:** Auto-promoting lessons to global scope without user confirmation
 **Problem:** Pollutes global namespace with project-specific noise
-**Correct approach:** In interactive mode, suggest promotion and wait for user confirmation. Auto-promote only in YOLO mode for HIGH confidence lessons.
+**Correct approach:** In interactive mode, suggest promotion and wait for user confirmation. Auto-promote only in YOLO mode for `high` confidence lessons.
 
 ### 10.3 Pattern Detection on Every Signal Write
 
@@ -561,11 +663,11 @@ Common mistakes in reflection implementation.
 **Problem:** Adds dependencies, opacity, unpredictability
 **Correct approach:** Signals have explicit tags and types. String matching on structured frontmatter is sufficient and debuggable.
 
-### 10.6 Modifying Existing Signals
+### 10.6 Modifying Signal Detection Payload
 
-**Anti-pattern:** Editing signal files to update or correct information
-**Problem:** Signals are immutable snapshots of moments in time
-**Correct approach:** Only status field changes are allowed (for archival). Create new signal for new information.
+**Anti-pattern:** Editing signal detection payload fields (id, type, project, tags, created, severity, signal_type, signal_category, phase, plan, polarity, source, evidence, confidence, confidence_basis) after creation.
+**Problem:** Detection payload captures a moment in time -- the original observation. Modifying it destroys the historical record.
+**Correct approach:** Detection payload fields are frozen after creation. Lifecycle fields (`lifecycle_state`, `triage`, `remediation`, `verification`, `lifecycle_log`, `updated`) may be modified as the signal progresses through its lifecycle. See knowledge-store.md Section 10 for the full mutability boundary specification.
 
 ---
 
@@ -573,10 +675,10 @@ Common mistakes in reflection implementation.
 
 ### 11.1 Knowledge Store Integration
 
-- Read from: `./.claude/gsd-knowledge/index.md` (signal listing)
-- Read from: `./.claude/gsd-knowledge/signals/{project}/` (signal details)
-- Write to: `./.claude/gsd-knowledge/lessons/{category}/` (new lessons)
-- Execute: `./.claude/agents/kb-rebuild-index.sh` (after writes)
+- Read from: `.planning/knowledge/index.md` (or `~/.gsd/knowledge/index.md` fallback) (signal listing)
+- Read from: `.planning/knowledge/signals/{project}/` (or `~/.gsd/knowledge/signals/{project}/` fallback) (signal details)
+- Lesson files deprecated -- lesson candidates documented in reflection report only
+- Execute: `~/.gsd/bin/kb-rebuild-index.sh` (after writes)
 
 ### 11.2 Phase Artifact Integration
 
@@ -591,6 +693,71 @@ Common mistakes in reflection implementation.
 
 ---
 
-*Reference version: 1.0.0*
+## 12. Reflect-to-Spike Pipeline (REFLECT-08)
+
+Patterns that cannot be resolved through analysis alone are formatted as spike candidates for investigation via `/gsd:spike`.
+
+### 12.1 Spike Candidate Triggers
+
+A pattern becomes a spike candidate when any of these conditions is met:
+
+| Trigger | Condition | Why a Spike |
+|---------|-----------|-------------|
+| Investigate triage | `triage.decision = "investigate"` | Pattern exists but root cause is unclear |
+| Low confidence after counter-evidence | Adjusted confidence = `low` after counter-evidence seeking (Section 2.5) | Uncertain whether the pattern is real |
+| Marginal score | Weighted score below threshold but within 20% of threshold | Borderline pattern that needs more data to confirm or reject |
+
+**Marginal score calculation:**
+```
+threshold = { critical: 3.0, notable: 4.0, minor: 5.0 }[max_severity]
+marginal_threshold = threshold * 0.8
+
+# Pattern is a spike candidate if:
+marginal_threshold <= weighted_score < threshold
+```
+
+### 12.2 Spike Candidate Output Format
+
+```markdown
+### Spike Candidate: {pattern-name}
+
+**Trigger:** {investigate triage | low-confidence pattern | marginal score}
+**Question:** {framed as a testable hypothesis}
+**Why a spike:** {why analysis alone is insufficient}
+**Suggested experiment:** {what to test}
+**Related signals:** {signal IDs}
+```
+
+**Example:**
+```markdown
+### Spike Candidate: Context bloat in signal workflow
+
+**Trigger:** marginal score (3.0 weighted, threshold 4.0 for notable, margin 3.2)
+**Question:** Does progressive disclosure (index-first, detail-on-demand) reduce signal workflow context usage below 15%?
+**Suggested experiment:** Implement index-first approach in signal collector, measure context usage across 5 plan executions, compare against current baseline.
+**Related signals:** sig-2026-02-11-signal-workflow-context-bloat, sig-2026-02-18-signal-workflow-context-bloat, sig-2026-02-11-agent-inline-research-context-bloat
+```
+
+### 12.3 Spike vs Lesson Distinction
+
+| Root Cause Known? | Actionable? | Output |
+|-------------------|-------------|--------|
+| Yes | Yes | Lesson (distill into knowledge base) |
+| Yes | No (needs structural change) | Spike candidate with architectural question |
+| No | N/A | Spike candidate with diagnostic question |
+
+**Key principle:** If the root cause is known and actionable, create a lesson. If the root cause is unclear and needs investigation, create a spike candidate. The reflector does NOT create spike files -- it only identifies candidates.
+
+### 12.4 Integration
+
+- Spike candidates appear in the reflection report under a dedicated "Spike Candidates" section
+- Spike candidates can be fed into `/gsd:spike` for investigation
+- The reflector does NOT create spike files -- it only identifies and formats candidates
+- After a spike is completed, its findings may produce new lessons or invalidate the original pattern
+
+---
+
+*Reference version: 1.2.0*
 *Created: 2026-02-05*
-*Phase: 04-reflection-engine, Plan: 01*
+*Updated: 2026-02-28*
+*Phase: 04-reflection-engine, 31-signal-schema-foundation, 33-enhanced-reflector*

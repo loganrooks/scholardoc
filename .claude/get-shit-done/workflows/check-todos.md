@@ -35,9 +35,19 @@ Exit.
 </step>
 
 <step name="parse_filter">
-Check for area filter in arguments:
+Check for area filter and optional priority/status filters in arguments:
 - `/gsd:check-todos` → show all
 - `/gsd:check-todos api` → filter to area:api only
+- `/gsd:check-todos --priority HIGH` → filter to priority:HIGH only
+- `/gsd:check-todos --status pending` → filter to status:pending only
+- `/gsd:check-todos api --priority HIGH` → area + priority filter (additive)
+
+Parse arguments for:
+1. **Area filter** (positional argument, no `--` prefix): filter todos by area field
+2. **Priority filter** (`--priority VALUE`): filter todos by priority field (HIGH, MEDIUM, LOW)
+3. **Status filter** (`--status VALUE`): filter todos by status field
+
+All filters are additive -- a todo must match ALL specified filters to be included.
 </step>
 
 <step name="list_todos">
@@ -108,6 +118,7 @@ Use AskUserQuestion:
   - "Work on it now" — move to done, start working
   - "Add to phase plan" — include when planning Phase [N]
   - "Brainstorm approach" — think through before deciding
+  - "Promote to backlog" — create structured backlog item from this todo
   - "Put it back" — return to list
 
 **If no roadmap match:**
@@ -119,6 +130,7 @@ Use AskUserQuestion:
   - "Work on it now" — move to done, start working
   - "Create a phase" — /gsd:add-phase with this scope
   - "Brainstorm approach" — think through before deciding
+  - "Promote to backlog" — create structured backlog item from this todo
   - "Put it back" — return to list
 </step>
 
@@ -138,6 +150,27 @@ Keep in pending. User runs command in fresh context.
 
 **Brainstorm approach:**
 Keep in pending. Start discussion about problem and approaches.
+
+**Promote to backlog:**
+Create a backlog item from the todo:
+
+```bash
+node ./.claude/get-shit-done/bin/gsd-tools.js backlog add \
+  --title "[todo title]" \
+  --tags "[todo area]" \
+  --priority [todo priority or MEDIUM] \
+  --source "command" \
+  --theme "[inferred from area]"
+```
+
+Then ask user via AskUserQuestion:
+- header: "Todo Status"
+- question: "Todo promoted to backlog. Mark original todo as done?"
+- options:
+  - "Yes -- mark done" → mv todo to `.planning/todos/done/`, update STATE.md, commit
+  - "No -- keep in pending" → leave todo as-is
+
+Report: "Backlog item created: [id]. Todo [kept/completed]."
 
 **Put it back:**
 Return to list_todos step.

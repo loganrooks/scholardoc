@@ -71,14 +71,9 @@ PLAN.md IS the prompt (not a document that becomes one). Contains:
 - Tasks (with verification criteria)
 - Success criteria (measurable)
 
-## Quality Degradation Curve
+## Quality & Context Budget
 
-| Context Usage | Quality | Claude's State |
-|---------------|---------|----------------|
-| 0-30% | PEAK | Thorough, comprehensive |
-| 30-50% | GOOD | Confident, solid work |
-| 50-70% | DEGRADING | Efficiency mode begins |
-| 70%+ | POOR | Rushed, minimal |
+See Quality & Context Budget in the shared agent protocol for the quality degradation curve.
 
 **Rule:** Plans should complete within ~50% context. More plans, smaller scope, consistent quality. Each plan: 2-3 tasks max.
 
@@ -346,6 +341,7 @@ depends_on: []              # Plan IDs this plan requires
 files_modified: []          # Files this plan touches
 autonomous: true            # false if plan has checkpoints
 user_setup: []              # Human-required setup (omit if empty)
+resolves_signals: []          # Optional: signal IDs this plan resolves
 
 must_haves:
   truths: []                # Observable behaviors
@@ -411,6 +407,7 @@ After completion, create `.planning/phases/XX-name/{phase}-{plan}-SUMMARY.md`
 | `files_modified` | Yes | Files this plan touches |
 | `autonomous` | Yes | `true` if no checkpoints |
 | `user_setup` | No | Human-required setup items |
+| `resolves_signals` | No | Signal IDs this plan addresses |
 | `must_haves` | Yes | Goal-backward verification criteria |
 
 Wave numbers are pre-computed during planning. Execute-phase reads `wave` directly from frontmatter.
@@ -827,6 +824,84 @@ node ./.claude/get-shit-done/bin/gsd-tools.js commit "fix($PHASE): revise plans 
 
 </revision_mode>
 
+<knowledge_surfacing>
+
+## Knowledge Surfacing: Optional KB Consultation for Strategic Lessons
+
+**Activation:** If `get-shit-done/references/knowledge-surfacing.md` exists, apply the guidance in this section. If it does not exist (upstream GSD without the reflect fork), skip this entire section.
+
+@get-shit-done/references/knowledge-surfacing.md
+
+### When to Query
+
+Knowledge surfacing for the planner is OPTIONAL, at your discretion. The phase researcher already performs a mandatory KB query and includes findings in RESEARCH.md. You benefit from that work automatically.
+
+**Query the KB when:**
+- Making technology choices where accumulated wisdom might inform the decision
+- Designing task structure and encountering familiar-sounding patterns
+- The phase involves a domain where prior projects have established conventions
+
+**Do NOT query when:**
+- RESEARCH.md already contains a "## Knowledge Applied" section with relevant findings
+- The planning work is straightforward and follows established patterns
+- You are in gap closure or revision mode (time-sensitive, focused work)
+
+### What to Query For
+
+- **Lessons only** -- NOT spikes. Spike decisions are the researcher's domain and should already be reflected in RESEARCH.md.
+- **Priority:** Strategic lessons about conventions, patterns, architectural decisions, and workflow preferences.
+- **Filter by tags** relevant to the current phase's technology domain.
+
+### Query Pattern
+
+1. **Check RESEARCH.md first:** Read the "## Knowledge Applied" section if it exists. This may already contain everything you need -- avoid redundant KB queries.
+2. **If additional KB context is needed:** Read `.planning/knowledge/index.md` (or `~/.gsd/knowledge/index.md` fallback)
+3. **Scan the Lessons table:** Look for strategic/architectural entries matching the phase's technology domain and goals.
+4. **Read top 2-3 matching entries** for full context.
+5. **Apply findings** to plan structure, task design, or technology recommendations.
+
+### Token Budget
+
+**Soft cap:** ~500 tokens of surfaced knowledge. The planner's knowledge contribution is typically smaller than the researcher's since RESEARCH.md already carries the primary knowledge payload.
+
+### Output
+
+- **Inline citations in PLAN.md** where knowledge influenced the plan: "Task uses jose library per prior lesson [les-xxx] on Edge runtime compatibility"
+- No separate "Knowledge Applied" section needed -- the researcher already produces one in RESEARCH.md.
+
+### Downstream Propagation
+
+Knowledge the planner applies becomes part of the PLAN.md task instructions. The executor reads PLAN.md and receives knowledge indirectly through the plan's action descriptions, library choices, and architectural guidance. This is the knowledge chain: KB -> researcher -> RESEARCH.md -> planner -> PLAN.md -> executor.
+
+</knowledge_surfacing>
+
+<signal_awareness>
+## Signal Awareness (resolves_signals)
+
+When `<triaged_signals>` context is provided by the plan-phase workflow:
+
+1. Review each triaged signal's root cause and remediation suggestion
+2. For each plan being created, assess: "Does any task in this plan directly address the root cause of a triaged signal?"
+3. If YES: add the signal ID to `resolves_signals` in the plan's frontmatter
+4. In the relevant task's `<action>`, include: "This task addresses signal {sig-id}: {root cause summary}"
+5. In `must_haves.truths`, include a truth that reflects the signal's resolution
+
+**Rules:**
+- Do NOT force-fit signals. Only declare resolves_signals when the plan genuinely addresses the root cause.
+- Do NOT create tasks solely to resolve signals -- the primary planning objective takes precedence.
+- Do NOT add resolves_signals for signals with `triage.decision` other than "address" (skip dismiss/defer/investigate).
+- Maximum 5 signal IDs per plan (focus on the most relevant).
+- If no triaged signals match the current phase's work, omit resolves_signals entirely.
+
+**Validation:** Before including a signal ID, verify it exists in the KB index. Non-existent IDs produce a warning but do not block plan creation (signals could be archived between planning and execution).
+
+**When triaged_signals is empty or not provided:** Omit resolves_signals from plan frontmatter. Do not query the KB independently -- the plan-phase workflow handles signal loading.
+</signal_awareness>
+
+<required_reading>
+@./.claude/get-shit-done/references/agent-protocol.md
+</required_reading>
+
 <execution_flow>
 
 <step name="load_project_state" priority="first">
@@ -1054,6 +1129,8 @@ Plans:
 </step>
 
 <step name="git_commit">
+Commit using gsd-tools.js commit pattern (see protocol Section 4):
+
 ```bash
 node ./.claude/get-shit-done/bin/gsd-tools.js commit "docs($PHASE): create phase plan" --files .planning/phases/$PHASE-*/$PHASE-*-PLAN.md .planning/ROADMAP.md
 ```

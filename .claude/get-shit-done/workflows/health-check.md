@@ -91,7 +91,7 @@ Else if FOCUS_MODE == "planning":
 Else if FULL_MODE:
   categories = [KB Integrity, Config Validity, Stale Artifacts, Planning Consistency, Config Drift]
 Else (default):
-  categories = [KB Integrity, Config Validity, Stale Artifacts]
+  categories = [KB Integrity, Config Validity, Stale Artifacts, Signal Lifecycle Consistency]
 ```
 
 Report scope to user:
@@ -123,8 +123,9 @@ For each category in scope, execute the checks defined in the reference specific
 1. KB Integrity (KB-01 through KB-06) -- if in scope
 2. Config Validity (CFG-01 through CFG-06) -- if in scope
 3. Stale Artifacts (STALE-01 through STALE-03) -- if in scope
-4. Planning Consistency (PLAN-01 through PLAN-03) -- if in scope (full/focus only)
-5. Config Drift (DRIFT-01 through DRIFT-02) -- if in scope (full only)
+4. Signal Lifecycle Consistency (SIG-01 through SIG-02) -- if in scope
+5. Planning Consistency (PLAN-01 through PLAN-03) -- if in scope (full/focus only)
+6. Config Drift (DRIFT-01 through DRIFT-02) -- if in scope (full only)
 
 **For each check:**
 1. Run the shell pattern from the reference specification
@@ -181,7 +182,7 @@ If `--fix` flag is set and repairable issues exist, execute repairs.
   - "abort" -- stop all repairs
 
 **Repair actions (from reference Section 5):**
-- KB index mismatch: Run `./.claude/agents/kb-rebuild-index.sh`
+- KB index mismatch: Run `~/.gsd/bin/kb-rebuild-index.sh`
 - Missing gsd_reflect_version: Set to installed VERSION value
 - Missing health_check section: Add default config section
 - Missing config template fields: Add with template defaults
@@ -202,7 +203,7 @@ If findings include WARNING or FAIL results, optionally persist a health-check s
 - Interactive mode: ask user via AskUserQuestion
 
 **Signal creation (if persisting):**
-Write a signal file to `./.claude/gsd-knowledge/signals/{project-name}/` following the signal schema from knowledge-store.md.
+Write a signal file to `.planning/knowledge/signals/{project-name}/` (or `~/.gsd/knowledge/signals/{project-name}/` fallback) following the signal schema from knowledge-store.md.
 
 Signal fields:
 - `type: signal`
@@ -212,7 +213,7 @@ Signal fields:
 - `tags: [workspace/health-check, workspace/{failing-category}]`
 - `source: auto`
 
-After writing, run `./.claude/agents/kb-rebuild-index.sh` to update the index.
+After writing, run `~/.gsd/bin/kb-rebuild-index.sh` to update the index.
 </step>
 
 <step name="final_summary">

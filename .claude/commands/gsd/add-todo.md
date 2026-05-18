@@ -1,6 +1,6 @@
 ---
 name: gsd:add-todo
-description: Capture idea or task as todo from current conversation context
+description: Capture idea or task as todo from current conversation context (v1.16.0+dev)
 argument-hint: [optional description]
 allowed-tools:
   - Read
@@ -16,6 +16,8 @@ Routes to the add-todo workflow which handles:
 - Directory structure creation
 - Content extraction from arguments or conversation
 - Area inference from file paths
+- Priority inference (HIGH/MEDIUM/LOW, defaults to MEDIUM)
+- Source tracking (command/conversation/phase/signal)
 - Duplicate detection and resolution
 - Todo file creation with frontmatter
 - STATE.md updates
@@ -35,8 +37,9 @@ The workflow handles all logic including:
 2. Existing area checking
 3. Content extraction (arguments or conversation)
 4. Area inference
-5. Duplicate checking
-6. File creation with slug generation
-7. STATE.md updates
-8. Git commits
+5. Priority and source inference
+6. Duplicate checking
+7. File creation with slug generation (includes priority, source, status fields)
+8. STATE.md updates
+9. Git commits
 </process>

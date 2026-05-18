@@ -1,6 +1,5 @@
 {
   "mode": "interactive",
-  "depth": "thorough",
   "git_tracking": "atomic",
   "model_profile": "quality",
   "research": true,
@@ -12,5 +11,18 @@
     "execution": "sonnet",
     "verification": "sonnet",
     "simple": "sonnet"
-  }
+  },
+  "workflow": {
+    "research": true,
+    "plan_check": true,
+    "verifier": true,
+    "nyquist_validation": true,
+    "auto_advance": false,
+    "text_mode": false,
+    "research_before_questions": false,
+    "discuss_mode": "exploratory",
+    "skip_discuss": false
+  },
+  "gsd_reflect_version": "1.18.3",
+  "granularity": "thorough"
 }

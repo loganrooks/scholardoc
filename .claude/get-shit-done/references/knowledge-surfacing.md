@@ -9,7 +9,7 @@ Reference specification for how agents query, rank, cite, and propagate knowledg
 
 ## 1. Overview
 
-Knowledge surfacing makes passive knowledge (lessons and spike decisions stored in `./.claude/gsd-knowledge/`) active by instructing agents to query and apply it during their workflows.
+Knowledge surfacing makes passive knowledge (lessons and spike decisions stored in `.planning/knowledge/` or `~/.gsd/knowledge/` fallback) active by instructing agents to query and apply it during their workflows.
 
 **Scope:** Lessons (from reflection) and spike decisions only. Raw signals are NOT surfaced -- they are unprocessed noise. The reflection engine distills signals into lessons; agents consume the distilled form.
 
@@ -36,7 +36,9 @@ Agents query the knowledge base by reading the index file and then selectively r
 
 1. **Read the KB index:**
    ```bash
-   cat ./.claude/gsd-knowledge/index.md
+   # KB path resolution -- project-local primary, user-global fallback
+   if [ -d ".planning/knowledge" ]; then KB_DIR=".planning/knowledge"; else KB_DIR="$HOME/.gsd/knowledge"; fi
+   cat $KB_DIR/index.md
    ```
    The index contains all active entries across all projects, organized by type (Signals, Spikes, Lessons).
 
@@ -49,8 +51,8 @@ Agents query the knowledge base by reading the index file and then selectively r
 
 4. **Read full entry files:**
    ```bash
-   cat ./.claude/gsd-knowledge/lessons/{category}/{lesson-name}.md
-   cat ./.claude/gsd-knowledge/spikes/{project}/{spike-name}.md
+   cat $KB_DIR/lessons/{category}/{lesson-name}.md
+   cat $KB_DIR/spikes/{project}/{spike-name}.md
    ```
 
 5. **Check freshness** (see Section 4)
@@ -59,7 +61,7 @@ Agents query the knowledge base by reading the index file and then selectively r
 
 ### 2.2 Index Format Reference
 
-The KB index at `./.claude/gsd-knowledge/index.md` has this structure:
+The KB index at `.planning/knowledge/index.md` (or `~/.gsd/knowledge/index.md` fallback) has this structure:
 
 ```markdown
 # Knowledge Store Index
@@ -254,7 +256,7 @@ Spike deduplication is part of the mandatory initial KB query -- not a separate 
 
 During the initial KB query:
 
-1. Read the **Spikes** table in `./.claude/gsd-knowledge/index.md`
+1. Read the **Spikes** table in the KB index (`.planning/knowledge/index.md` or `~/.gsd/knowledge/index.md` fallback)
 2. For each spike entry, check if:
    - Tags overlap with current research question or technology
    - Hypothesis is similar to current question
@@ -319,7 +321,7 @@ Spikes avoided: N (spk-xxx, spk-yyy)
 ### 8.1 Phase Researcher
 
 **Mandatory initial check** before beginning external research:
-1. Read `./.claude/gsd-knowledge/index.md`
+1. Read `.planning/knowledge/index.md` (or `~/.gsd/knowledge/index.md` fallback)
 2. Scan Lessons and Spikes tables for tag overlap with phase technology domain, goal keywords, and specific libraries from CONTEXT.md
 3. For matching entries (max 5), read full entry files
 4. Check spike deduplication (Section 7)
@@ -350,8 +352,10 @@ Queries both lessons and spikes equally -- prior experiments and distilled wisdo
 **ONLY on deviation (Rules 1-3).** When the executor enters an auto-fix path:
 1. Before fixing, check KB for similar past issues:
    ```bash
-   grep -i "{error-keyword}" ./.claude/gsd-knowledge/index.md
-   grep -i "{technology}" ./.claude/gsd-knowledge/index.md
+   # KB path resolution -- project-local primary, user-global fallback
+   if [ -d ".planning/knowledge" ]; then KB_DIR=".planning/knowledge"; else KB_DIR="$HOME/.gsd/knowledge"; fi
+   grep -i "{error-keyword}" $KB_DIR/index.md
+   grep -i "{technology}" $KB_DIR/index.md
    ```
 2. If matching entry exists, read it and apply to the fix
 3. Cite in deviation tracking:
@@ -401,7 +405,7 @@ Upstream agents propagate their interpretation (conclusion, not raw entry). Down
 
 The knowledge store already has progressive disclosure built in:
 
-- **Tier 1: Index summaries** (`./.claude/gsd-knowledge/index.md`) -- one-line entry per knowledge item with ID, tags, date, and status. Always read first.
+- **Tier 1: Index summaries** (`.planning/knowledge/index.md` or `~/.gsd/knowledge/index.md` fallback) -- one-line entry per knowledge item with ID, tags, date, and status. Always read first.
 - **Tier 2: Full entry files** (individual `.md` files) -- complete frontmatter, context, recommendations, evidence. Read on-demand for top matches only.
 
 ### 10.2 Agent Flow

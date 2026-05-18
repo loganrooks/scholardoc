@@ -1,6 +1,6 @@
 ---
 name: gsd:collect-signals
-description: Analyze execution artifacts for a phase and detect workflow deviations, struggles, and config mismatches as signals
+description: Analyze execution artifacts for a phase using parallel sensors (artifact, git) and synthesize signals into the knowledge base (v1.16.0+dev)
 argument-hint: "<phase-number>"
 allowed-tools:
   - Read
@@ -33,9 +33,6 @@ Phase: $ARGUMENTS
 
 <process>
 1. **Parse phase number** from arguments
-2. **Delegate to workflow** at `get-shit-done/workflows/collect-signals.md`
-   - Workflow validates phase, locates artifacts, checks prerequisites
-   - Spawns `gsd-signal-collector` agent for detection and persistence
-   - Presents structured results with severity breakdown
+2. **Delegate to workflow** at `get-shit-done/workflows/collect-signals.md` -- workflow reads sensor config, spawns enabled sensors in parallel (artifact sensor, git sensor), collects their output, and passes to the signal synthesizer for deduplication, rigor enforcement, and KB persistence
 3. **Report completion** with signal counts and files written
 </process>

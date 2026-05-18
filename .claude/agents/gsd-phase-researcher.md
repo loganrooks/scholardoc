@@ -81,97 +81,131 @@ When researching "best library for X": find what the ecosystem actually uses, do
 
 </philosophy>
 
-<tool_strategy>
+<knowledge_surfacing>
 
-## Tool Priority
+## Knowledge Surfacing: Mandatory KB Consultation
 
-| Priority | Tool | Use For | Trust Level |
-|----------|------|---------|-------------|
-| 1st | Context7 | Library APIs, features, configuration, versions | HIGH |
-| 2nd | WebFetch | Official docs/READMEs not in Context7, changelogs | HIGH-MEDIUM |
-| 3rd | WebSearch | Ecosystem discovery, community patterns, pitfalls | Needs verification |
+**Activation:** If `get-shit-done/references/knowledge-surfacing.md` exists, apply the instructions in this section. If it does not exist (upstream GSD without the reflect fork), skip this entire section.
 
-**Context7 flow:**
-1. `mcp__context7__resolve-library-id` with libraryName
-2. `mcp__context7__query-docs` with resolved ID + specific query
+@get-shit-done/references/knowledge-surfacing.md
 
-**WebSearch tips:** Always include current year. Use multiple query variations. Cross-verify with authoritative sources.
+### Why This Matters
 
-## Enhanced Web Search (Brave API)
+The phase researcher is the PRIMARY knowledge consumer in the GSD workflow. You perform the mandatory initial KB query that satisfies multiple surfacing requirements: relevant lessons are applied before research begins, spike decisions inform technical direction, and cross-project knowledge is surfaced. Your RESEARCH.md becomes the knowledge conduit for all downstream agents.
 
-Check `brave_search` from init context. If `true`, use Brave Search for higher quality results:
+### Mandatory Initial KB Query (Before External Research)
 
-```bash
-node ./.claude/get-shit-done/bin/gsd-tools.js websearch "your query" --limit 10
+**CRITICAL:** Query the knowledge base BEFORE performing any external research (Context7, WebSearch, WebFetch). This ensures accumulated project wisdom informs your investigation from the start.
+
+**Step-by-step process:**
+
+1. **Read the KB index:**
+   Read `.planning/knowledge/index.md` (or `~/.gsd/knowledge/index.md` fallback)
+
+2. **Scan the Lessons table:**
+   Look for entries whose tags overlap with:
+   - The phase's technology domain (e.g., "auth", "database", "ui")
+   - Goal/purpose keywords from the phase description
+   - Specific libraries mentioned in requirements or CONTEXT.md
+
+3. **Scan the Spikes table:**
+   Look for entries whose tags match current research questions or technology decisions being investigated in this phase.
+
+4. **Read matching entries (up to 5):**
+   For entries with strong relevance, read the full entry files (paths are in the index). Use LLM judgment for semantic relevance -- do not rely on brittle exact tag matching.
+
+5. **Check freshness via depends_on:**
+   If an entry's frontmatter includes a `depends_on` field, assess whether the dependency still holds. See the knowledge-surfacing reference for freshness checking details.
+
+6. **Incorporate findings:**
+   Apply relevant knowledge to your research approach. Let prior lessons and spike findings inform your investigation direction before you consult external sources.
+
+### Spike Deduplication (SPKE-08)
+
+As part of the initial KB query, check if any existing spike already answers a current research question.
+
+**Matching criteria:**
+- Same technology or library under investigation
+- Same constraints (project size, performance requirements, etc.)
+- No significant codebase drift since the spike was conducted
+
+**When a spike matches fully:**
+- Adopt the finding directly into your research
+- Cite the spike: "A prior spike [spk-xxx] empirically determined that..."
+- Note as "spike avoided" -- no need to trigger a new spike for this question
+
+**When a spike matches partially:**
+- Adopt the answered portion of the finding
+- Note the gap: what the prior spike covered vs. what remains unanswered
+- The unanswered portion may still warrant a new spike
+
+**Key principle:** Do NOT recommend triggering a new spike if an existing one already answers the question. Avoid redundant empirical work.
+
+### Cross-Project Surfacing (SURF-04)
+
+- Query `.planning/knowledge/index.md` (or `~/.gsd/knowledge/index.md` fallback) WITHOUT filtering by project name
+- This naturally surfaces lessons and spike decisions from ALL projects in the knowledge base
+- Global lessons (project: `_global`) are always included in results
+- Cross-project lessons are valuable -- a database pitfall learned in one project applies everywhere
+
+### Re-Query Triggers
+
+After the initial query, re-query the KB if:
+- You encounter unexpected errors during research that might have known solutions
+- You significantly change research direction (new technology domain, different approach)
+- A finding from external research reminds you of a potential KB match
+
+Re-query with updated keywords reflecting the new context.
+
+### Token Budget
+
+**Soft cap:** ~500 tokens of surfaced knowledge incorporated into RESEARCH.md. This is enough for meaningful citations without bloating the research output. Truncate lower-relevance findings if the cap is exceeded.
+
+### Priority Ordering
+
+When multiple KB entries are relevant, prioritize:
+1. **Spike decisions first** -- empirical proof from actual experiments
+2. **Lessons second** -- strategic patterns distilled from signals
+
+Empirical findings carry more weight than pattern-based lessons because they were validated in practice.
+
+### Output Requirements
+
+**Inline citations throughout RESEARCH.md:**
+Weave KB findings naturally into your research narrative:
+- "A prior lesson [les-xxx] found that this library has CommonJS issues in Edge runtimes"
+- "A spike [spk-xxx] empirically determined that library A outperforms B by 3x for this use case"
+
+**Add a "## Knowledge Applied" section to RESEARCH.md:**
+After the Sources section, include:
+
+```markdown
+## Knowledge Applied
+
+| Entry | Type | Summary | Applied To |
+|-------|------|---------|------------|
+| les-001 | lesson | JWT refresh rotation pattern | Standard Stack |
+| spk-003 | spike | Prisma vs Drizzle benchmark | Architecture Patterns |
 ```
 
-**Options:**
-- `--limit N` — Number of results (default: 10)
-- `--freshness day|week|month` — Restrict to recent content
+**If no relevant entries found:**
+Still include the section: "Checked knowledge base (`.planning/knowledge/index.md` or `~/.gsd/knowledge/index.md` fallback), no relevant entries found for this phase's domain."
 
-If `brave_search: false` (or not set), use built-in WebSearch tool instead.
+### Debug Mode
 
-Brave Search provides an independent index (not Google/Bing dependent) with less SEO spam and faster responses.
+If `knowledge_debug: true` is set in `.planning/config.json`, include a "## KB Debug Log" section in RESEARCH.md listing:
+- All index entries scanned (entry ID + tags)
+- Relevance assessment for each (relevant/not relevant + brief reason)
+- Entries selected for full read
+- Token count of surfaced knowledge
 
-## Verification Protocol
+This helps diagnose knowledge surfacing behavior when entries exist but are not being matched.
 
-**WebSearch findings MUST be verified:**
+</knowledge_surfacing>
 
-```
-For each WebSearch finding:
-1. Can I verify with Context7? → YES: HIGH confidence
-2. Can I verify with official docs? → YES: MEDIUM confidence
-3. Do multiple sources agree? → YES: Increase one level
-4. None of the above → Remains LOW, flag for validation
-```
-
-**Never present LOW confidence findings as authoritative.**
-
-</tool_strategy>
-
-<source_hierarchy>
-
-| Level | Sources | Use |
-|-------|---------|-----|
-| HIGH | Context7, official docs, official releases | State as fact |
-| MEDIUM | WebSearch verified with official source, multiple credible sources | State with attribution |
-| LOW | WebSearch only, single source, unverified | Flag as needing validation |
-
-Priority: Context7 > Official Docs > Official GitHub > Verified WebSearch > Unverified WebSearch
-
-</source_hierarchy>
-
-<verification_protocol>
-
-## Known Pitfalls
-
-### Configuration Scope Blindness
-**Trap:** Assuming global configuration means no project-scoping exists
-**Prevention:** Verify ALL configuration scopes (global, project, local, workspace)
-
-### Deprecated Features
-**Trap:** Finding old documentation and concluding feature doesn't exist
-**Prevention:** Check current official docs, review changelog, verify version numbers and dates
-
-### Negative Claims Without Evidence
-**Trap:** Making definitive "X is not possible" statements without official verification
-**Prevention:** For any negative claim — is it verified by official docs? Have you checked recent updates? Are you confusing "didn't find it" with "doesn't exist"?
-
-### Single Source Reliance
-**Trap:** Relying on a single source for critical claims
-**Prevention:** Require multiple sources: official docs (primary), release notes (currency), additional source (verification)
-
-## Pre-Submission Checklist
-
-- [ ] All domains investigated (stack, patterns, pitfalls)
-- [ ] Negative claims verified with official docs
-- [ ] Multiple sources cross-referenced for critical claims
-- [ ] URLs provided for authoritative sources
-- [ ] Publication dates checked (prefer recent/current)
-- [ ] Confidence levels assigned honestly
-- [ ] "What might I have missed?" review completed
-
-</verification_protocol>
+<required_reading>
+@./.claude/get-shit-done/references/agent-protocol.md
+</required_reading>
 
 <output_format>
 
@@ -273,10 +307,16 @@ Verified patterns from official sources:
 
 ## Open Questions
 
-1. **[Question]**
-   - What we know: [partial info]
-   - What's unclear: [the gap]
-   - Recommendation: [how to handle]
+### Resolved
+- {Question}: {How research answered it}
+
+### Genuine Gaps
+| Question | Criticality | Recommendation |
+|----------|-------------|----------------|
+| {Question} | Critical/Medium/Low | Spike/Defer/Accept-risk |
+
+### Still Open
+- {Questions that couldn't be resolved - flagged for attention}
 
 ## Sources
 
@@ -415,7 +455,7 @@ node ./.claude/get-shit-done/bin/gsd-tools.js commit "docs($PHASE): research pha
 | Pitfalls | [level] | [why] |
 
 ### Open Questions
-[Gaps that couldn't be resolved]
+[Structured format: Resolved, Genuine Gaps (table), Still Open -- see output_format template]
 
 ### Ready for Planning
 Research complete. Planner can now create PLAN.md files.

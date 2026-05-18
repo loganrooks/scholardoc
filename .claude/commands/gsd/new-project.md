@@ -1,6 +1,6 @@
 ---
 name: gsd:new-project
-description: Initialize a new project with deep context gathering and PROJECT.md
+description: Initialize a new project with deep context gathering and PROJECT.md (v1.16.0+dev)
 argument-hint: "[--auto]"
 allowed-tools:
   - Read

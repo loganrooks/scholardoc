@@ -234,3 +234,7 @@ Quality indicators:
 - **Honest:** Confidence levels reflect actual source quality
 
 </success_criteria>
+
+<required_reading>
+@./.claude/get-shit-done/references/agent-protocol.md
+</required_reading>

@@ -33,6 +33,25 @@ Standard format for presenting next steps after completing a command or workflow
 5. **"Also available" not "Other options"** — sounds more app-like
 6. **Visual separators** — `---` above and below to make it stand out
 
+## Runtime Adaptation
+
+Command references in continuation format are written in source syntax (/gsd:command).
+The GSD installer transforms these to the correct runtime syntax during installation:
+
+| Runtime | Command Syntax | Example |
+|---------|---------------|---------|
+| Claude Code | /gsd:command | /gsd:plan-phase 3 |
+| OpenCode | /gsd-command | /gsd-plan-phase 3 |
+| Gemini CLI | /gsd:command | /gsd:plan-phase 3 |
+| Codex CLI | $gsd-command | $gsd-plan-phase 3 |
+
+Workflow authors write commands using /gsd: source syntax. No conditional
+logic is needed -- the installer handles per-runtime transformation.
+
+The one exception is `.continue-here.md` files, which must contain NO command
+syntax at all (semantic state only). The resume-project.md workflow renders
+runtime-appropriate commands when presenting resumption options.
+
 ## Variants
 
 ### Execute Next Plan

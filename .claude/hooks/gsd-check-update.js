@@ -45,8 +45,10 @@ const child = spawn(process.execPath, ['-e', `
     latest = execSync('npm view get-shit-done-reflect-cc version', { encoding: 'utf8', timeout: 10000, windowsHide: true }).trim();
   } catch (e) {}
 
+  // Strip +dev suffix for comparison (dev installs match their base version)
+  const installedBase = installed.replace(/\\+.*$/, '');
   const result = {
-    update_available: latest && installed !== latest,
+    update_available: latest && installedBase !== latest,
     installed,
     latest: latest || 'unknown',
     checked: Math.floor(Date.now() / 1000)

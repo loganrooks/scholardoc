@@ -66,6 +66,123 @@ Store `$QUICK_DIR` for use in orchestration.
 
 ---
 
+**Step 4b: Assess task complexity**
+
+<!-- Complexity gate: routes trivial tasks to inline execution, complex tasks to planner+executor -->
+<!--                                                                                             -->
+<!-- TRIVIAL examples (inline execution):                                                        -->
+<!--   "fix typo in README"              - short, single concern, no keywords                    -->
+<!--   "update version to 1.5.0"         - short, single concern                                -->
+<!--   "add .gitignore entry"            - short, single concern                                 -->
+<!--   "remove unused import in utils"   - short, single concern                                 -->
+<!--                                                                                             -->
+<!-- COMPLEX examples (planner+executor):                                                        -->
+<!--   "update the tests and fix the linting errors"  - multi-concern ("and" joining two tasks)  -->
+<!--   "refactor auth module"                         - complexity keyword ("refactor")           -->
+<!--   "integrate Stripe webhooks with the order service" - complexity keyword ("integrate")     -->
+<!--   "fix the build across all packages"            - multi-concern keyword ("across", "all")  -->
+<!--   multi-line descriptions                        - multiple sentences signal complexity      -->
+
+Evaluate `$DESCRIPTION` for complexity signals:
+
+```
+isTrivial = true  IF ALL of the following are true:
+  - length(DESCRIPTION) < 100 characters
+  - DESCRIPTION does NOT contain multi-step indicators: "and then", "and", "then", "also", "additionally", "as well"
+  - DESCRIPTION does NOT contain multi-concern indicators: "multiple", "several", "across", "each", "all"
+  - DESCRIPTION does NOT contain complexity keywords: "refactor", "migrate", "integrate", "architecture", "redesign"
+  - DESCRIPTION does NOT contain numbered steps (patterns like "1." "2." or bullet lists)
+  - DESCRIPTION is a single sentence (no newlines, no semicolons separating clauses)
+
+isTrivial = false  OTHERWISE (fall back to planner+executor flow)
+```
+
+Note: The "and" check uses word-boundary matching to avoid false positives on words containing "and" (e.g., "handler", "standard"). Match the standalone word "and" only.
+
+> **Conservative by design:** This heuristic errs on the side of caution. False positives (treating trivial as complex) only waste a planner spawn. False negatives (treating complex as trivial) risk incomplete execution. When in doubt, the task is classified as complex.
+
+**If `isTrivial` is true:** proceed to Step 5a (inline execution).
+
+**If `isTrivial` is false:** proceed to Step 5 (planner spawn) as normal.
+
+---
+
+**Step 5a: Execute inline (trivial task)**
+
+*This step is only reached when `isTrivial` is true (from Step 4b).*
+
+The orchestrating agent executes the task directly -- no `Task()` spawn for planner or executor:
+
+1. Read relevant files identified from `$DESCRIPTION`
+2. Make the changes directly (edit files, create files, etc.)
+3. Run verification (tests, linting, build) as appropriate for the change
+4. Commit changes atomically per normal GSD patterns (individual file staging, conventional commit message)
+5. Store the commit hash as `$commit_hash`
+
+After execution completes, proceed to Step 6a.
+
+---
+
+**Step 6a: Create minimal tracking artifacts**
+
+*This step is only reached when `isTrivial` is true (from Step 5a).*
+
+Create minimal PLAN.md and SUMMARY.md so that Step 7 (STATE.md update) and Step 8 (final commit) work identically regardless of which path was taken.
+
+**6a-i. Create minimal PLAN.md:**
+
+Write `${QUICK_DIR}/${next_num}-PLAN.md`:
+
+```markdown
+---
+phase: quick
+plan: ${next_num}
+type: execute
+wave: 1
+---
+
+# Quick Task ${next_num}: ${DESCRIPTION}
+
+<tasks>
+<task type="auto">
+  <name>${DESCRIPTION}</name>
+  <done>Completed inline (trivial task)</done>
+</task>
+</tasks>
+```
+
+**6a-ii. Create minimal SUMMARY.md:**
+
+Write `${QUICK_DIR}/${next_num}-SUMMARY.md`:
+
+```markdown
+---
+phase: quick
+plan: ${next_num}
+duration: ${duration}
+completed: ${date}
+---
+
+# Quick Task ${next_num}: ${DESCRIPTION}
+
+**Executed inline (trivial task -- skipped planner+executor spawn)**
+
+## Performance
+- **Duration:** ${duration}
+- **Tasks:** 1
+- **Files modified:** ${file_count}
+
+## Task Commits
+1. **${DESCRIPTION}** - \`${commit_hash}\`
+
+## Files Modified
+${list of files modified}
+```
+
+After artifacts are created, proceed to Step 7 (unchanged).
+
+---
+
 **Step 5: Spawn planner (quick mode)**
 
 Spawn gsd-planner with quick mode context:
@@ -227,4 +344,8 @@ Ready for next task: /gsd:quick
 - [ ] `${next_num}-SUMMARY.md` created by executor
 - [ ] STATE.md updated with quick task row
 - [ ] Artifacts committed
+- [ ] Complexity gate evaluates task description
+- [ ] Trivial tasks execute inline (no agent spawn)
+- [ ] Complex tasks use full planner+executor flow
+- [ ] Minimal PLAN.md and SUMMARY.md created for inline tasks
 </success_criteria>

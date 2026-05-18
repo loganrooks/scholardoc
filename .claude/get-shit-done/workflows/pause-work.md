@@ -78,11 +78,14 @@ last_updated: [timestamp from current-timestamp]
 </context>
 
 <next_action>
-Start with: [specific first action when resuming]
+Resume from: [specific task/plan]. Next step: [describe what to do].
+After completing: [what comes next].
 </next_action>
 ```
 
 Be specific enough for a fresh Claude to understand immediately.
+
+IMPORTANT: All sections must use semantic descriptions only. Never include runtime-specific command syntax (/gsd:, /gsd-, $gsd-) in the handoff file. The resume workflow handles command rendering.
 
 Use `current-timestamp` for last_updated field. You can use init todos (which provides timestamps) or call directly:
 ```bash
@@ -107,7 +110,7 @@ Current state:
 - Status: [in_progress/blocked]
 - Committed as WIP
 
-To resume: /gsd:resume-work
+To resume: start a new session and use the resume-work command.
 
 ```
 </step>

@@ -1,6 +1,6 @@
 ---
 name: gsd:community
-description: Connect with the GSD Reflect community
+description: Connect with the GSD Reflect community (v1.16.0+dev)
 ---
 
 <objective>

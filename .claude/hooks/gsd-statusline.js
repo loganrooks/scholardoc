@@ -78,12 +78,73 @@ process.stdin.on('end', () => {
       } catch (e) {}
     }
 
+    // CI status from SessionStart hook cache
+    let ciStatus = '';
+    const ciCacheFile = path.join(homeDir, '.claude', 'cache', 'gsd-ci-status.json');
+    if (fs.existsSync(ciCacheFile)) {
+      try {
+        const ciCache = JSON.parse(fs.readFileSync(ciCacheFile, 'utf8'));
+        // Only show if cache is less than 1 hour old and not degraded
+        const age = Math.floor(Date.now() / 1000) - (ciCache.checked || 0);
+        if (age < 3600 && ciCache.latest_run && ciCache.latest_run.conclusion === 'failure') {
+          ciStatus = '\x1b[31mCI FAIL\x1b[0m | ';
+        }
+      } catch (e) {}
+    }
+
+    // Dev install indicator (VERSION file contains +dev suffix on local installs)
+    let devTag = '';
+    try {
+      const versionFile = path.join(dir, '.claude', 'get-shit-done', 'VERSION');
+      if (fs.existsSync(versionFile)) {
+        const ver = fs.readFileSync(versionFile, 'utf8').trim();
+        if (ver.includes('+dev')) {
+          devTag = '\x1b[43;30m DEV \x1b[0m │ ';
+        }
+      }
+    } catch {}
+
+
+    // Automation level indicator
+    let autoTag = '';
+    try {
+      const autoConfigPath = path.join(dir, '.planning', 'config.json');
+      if (fs.existsSync(autoConfigPath)) {
+        const cfg = JSON.parse(fs.readFileSync(autoConfigPath, 'utf8'));
+        if (cfg.automation && cfg.automation.level !== undefined) {
+          const configured = cfg.automation.level;
+          // Runtime cap heuristic: check if hooks are available
+          // If .claude/settings.json has hooks configured, assume full capability
+          let effective = configured;
+          try {
+            const settingsPath = path.join(dir, '.claude', 'settings.json');
+            if (fs.existsSync(settingsPath)) {
+              const settings = JSON.parse(fs.readFileSync(settingsPath, 'utf8'));
+              if (!settings.hooks || Object.keys(settings.hooks).length === 0) {
+                // No hooks configured -- cap features that need hooks
+                if (configured > 2) effective = 2;
+              }
+            } else {
+              // No settings.json -- assume hookless runtime
+              if (configured > 2) effective = 2;
+            }
+          } catch {}
+
+          if (effective < configured) {
+            autoTag = `\x1b[36mAuto:${configured}(${effective})\x1b[0m │ `;
+          } else {
+            autoTag = `\x1b[36mAuto:${configured}\x1b[0m │ `;
+          }
+        }
+      }
+    } catch {}
+
     // Output
     const dirname = path.basename(dir);
     if (task) {
-      process.stdout.write(`${gsdUpdate}\x1b[2m${model}\x1b[0m │ \x1b[1m${task}\x1b[0m │ \x1b[2m${dirname}\x1b[0m${ctx}`);
+      process.stdout.write(`${devTag}${gsdUpdate}${ciStatus}${autoTag}\x1b[2m${model}\x1b[0m │ \x1b[1m${task}\x1b[0m │ \x1b[2m${dirname}\x1b[0m${ctx}`);
     } else {
-      process.stdout.write(`${gsdUpdate}\x1b[2m${model}\x1b[0m │ \x1b[2m${dirname}\x1b[0m${ctx}`);
+      process.stdout.write(`${devTag}${gsdUpdate}${ciStatus}${autoTag}\x1b[2m${model}\x1b[0m │ \x1b[2m${dirname}\x1b[0m${ctx}`);
     }
   } catch (e) {
     // Silent fail - don't break statusline on parse errors

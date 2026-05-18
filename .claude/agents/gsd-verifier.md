@@ -504,6 +504,10 @@ return <div>No messages</div>  // Always shows "no messages"
 
 </stub_detection_patterns>
 
+<required_reading>
+@./.claude/get-shit-done/references/agent-protocol.md
+</required_reading>
+
 <success_criteria>
 
 - [ ] Previous VERIFICATION.md checked (Step 0)

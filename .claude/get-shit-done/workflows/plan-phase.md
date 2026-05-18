@@ -53,6 +53,20 @@ Use `context_content` from init JSON (already loaded via `--include context`).
 
 If `context_content` is not null, display: `Using phase context from: ${PHASE_DIR}/*-CONTEXT.md`
 
+<capability_check name="agent_spawning">
+Check the runtime capability matrix (get-shit-done/references/capability-matrix.md):
+
+If has_capability("task_tool"):
+  Spawn gsd-phase-researcher and gsd-planner via Task() as designed in steps 5 and 8.
+
+Else:
+  Note (first occurrence): "Note: Running without parallel agents -- research and planning happen sequentially in this context."
+  Instead of spawning agents:
+  1. Read the researcher agent spec and perform research inline
+  2. Read the planner agent spec and perform planning inline
+  3. Continue with plan creation in the same context
+</capability_check>
+
 ## 5. Handle Research
 
 **Skip if:** `--gaps` flag, `--skip-research` flag, or `research_enabled` is false (from init) without `--research` override.
@@ -119,8 +133,83 @@ Task(
 
 ### Handle Researcher Return
 
-- **`## RESEARCH COMPLETE`:** Display confirmation, continue to step 6
+- **`## RESEARCH COMPLETE`:** Display confirmation, continue to step 5.5
 - **`## RESEARCH BLOCKED`:** Display blocker, offer: 1) Provide context, 2) Skip research, 3) Abort
+
+## 5.5. Handle Spike Decision Point
+
+**Skip if:** `--gaps` flag is set (gap closure mode does not use spike integration) OR `--skip-research` flag is set (no RESEARCH.md to parse for gaps).
+
+**Fork-compatibility guard:** Check if `get-shit-done/references/spike-integration.md` exists. If not (upstream GSD), skip this step entirely and proceed to step 6.
+
+```bash
+if [ ! -f "get-shit-done/references/spike-integration.md" ]; then
+  # Upstream GSD -- skip spike decision point
+  # Proceed to step 6
+fi
+```
+
+**Check for genuine gaps:**
+
+Read `{PHASE_DIR}/*-RESEARCH.md`. Look for a "### Genuine Gaps" section.
+
+If no Genuine Gaps section or section is empty: proceed to step 6.
+
+If Genuine Gaps exist:
+
+1. **Parse gaps from the table:**
+   ```
+   For each gap in Genuine Gaps table:
+     - question: the question text
+     - criticality: Critical | Medium | Low
+     - recommendation: Spike | Defer | Accept-risk
+   ```
+
+2. **Read spike config from `.planning/config.json`:**
+   ```
+   spike.enabled    (default: true)   -- whether the spike system is active
+   spike.sensitivity (default: "balanced") -- which criticalities trigger spikes
+   spike.auto_trigger (default: false)  -- whether to auto-trigger or advise only
+   ```
+
+   If `spike.enabled` is false: skip spike processing, proceed to step 6.
+
+3. **Apply sensitivity filter:**
+   ```
+   sensitivity = config.spike.sensitivity OR derive from config.depth:
+     - depth: quick       -> conservative
+     - depth: standard    -> balanced
+     - depth: comprehensive -> aggressive
+
+   Explicit spike.sensitivity overrides derivation.
+
+   - conservative: only process Critical gaps with Spike recommendation
+   - balanced: process Critical + Medium gaps with Spike recommendation
+   - aggressive: process all gaps with Spike recommendation
+   ```
+
+4. **Apply auto_trigger setting:**
+
+   If `spike.auto_trigger` is **false** (default): Present gaps as advisory only.
+   ```
+   Display filtered gaps and suggest:
+   "These gaps could benefit from a spike investigation via /gsd:spike"
+   ```
+   Do NOT auto-execute spikes. Proceed to step 6.
+
+   If `spike.auto_trigger` is **true**: Apply autonomy mode:
+   ```
+   mode = config.mode
+
+   - interactive: present filtered gaps, ask user which to spike
+   - yolo: auto-spike all filtered gaps
+   ```
+
+   For each approved spike, invoke `get-shit-done/workflows/run-spike.md` with:
+   - question: gap.question
+   - phase: current phase number
+
+5. **Proceed to step 6** with RESEARCH.md updated (if spikes were run, "Resolved by Spike" entries added).
 
 ## 6. Check Existing Plans
 
@@ -144,6 +233,57 @@ VERIFICATION_CONTENT=$(echo "$INIT" | jq -r '.verification_content // empty')
 UAT_CONTENT=$(echo "$INIT" | jq -r '.uat_content // empty')
 CONTEXT_CONTENT=$(echo "$INIT" | jq -r '.context_content // empty')
 ```
+
+## 7b. Load Triaged Signals
+
+**Skip if:** `--gaps` flag is set (gap closure mode does not use signal awareness).
+
+**Skip if:** KB index does not exist (`.planning/knowledge/index.md` and `~/.gsd/knowledge/index.md` both missing -- project may not have run signal collection yet). Set `TRIAGED_SIGNALS=""` and continue.
+
+Load active triaged signals for the current project to pass to the planner:
+
+```bash
+# Read KB index and filter for triaged "address" signals
+# Guard against missing KB -- not all projects use signal collection
+# KB path resolution -- project-local primary, user-global fallback
+if [ -d ".planning/knowledge" ]; then KB_DIR=".planning/knowledge"; else KB_DIR="$HOME/.gsd/knowledge"; fi
+KB_INDEX=$(cat $KB_DIR/index.md 2>/dev/null)
+if [ -z "$KB_INDEX" ]; then
+  TRIAGED_SIGNALS=""
+  # Skip signal loading -- no KB index exists
+else
+  PROJECT_NAME=$(basename "$(pwd)")
+  # ... continue with filtering
+fi
+```
+
+1. Parse the KB index table for signals matching:
+   - Project = current project name
+   - Lifecycle = "triaged"
+   - Status = "active"
+2. For matching signals, read the full signal files (max 10, prioritized by severity: critical > notable > minor):
+   ```bash
+   # Example: read top signal files
+   cat $KB_DIR/signals/{project}/{date}-{slug}.md
+   ```
+3. From each signal file, extract: `id`, `severity`, `signal_type`, `tags`, `triage.decision`, `triage.remediation_suggestion`
+4. Filter to signals with `triage.decision: address` only (skip dismiss/defer/investigate)
+5. Format as `<triaged_signals>` context block:
+   ```markdown
+   <triaged_signals>
+   {N} triaged signals with decision "address" for project {project_name}:
+
+   - **{sig-id}** ({severity}): {summary}
+     Root cause: {from triage or evidence}
+     Remediation suggestion: {triage.remediation_suggestion}
+     Tags: {tags}
+   ...
+   </triaged_signals>
+   ```
+
+**If no matching signals:** Set `TRIAGED_SIGNALS=""` (empty). The planner will omit resolves_signals.
+
+**Context budget note:** Reading 10 signal files costs ~5-10% context. This is acceptable because signal loading replaces the need for the planner to independently discover these issues.
 
 ## 8. Spawn gsd-planner Agent
 
@@ -176,6 +316,10 @@ IMPORTANT: If context exists below, it contains USER DECISIONS from /gsd:discuss
 {context_content}
 
 **Research:** {research_content}
+
+**Triaged Signals:**
+{TRIAGED_SIGNALS}
+
 **Gap Closure (if --gaps):** {verification_content} {uat_content}
 </planning_context>
 
@@ -366,6 +510,7 @@ Verification: {Passed | Passed with override | Skipped}
 - [ ] CONTEXT.md loaded early (step 4) and passed to ALL agents
 - [ ] Research completed (unless --skip-research or --gaps or exists)
 - [ ] gsd-phase-researcher spawned with CONTEXT.md
+- [ ] Spike decision point evaluated (step 5.5) if spike-integration.md exists
 - [ ] Existing plans checked
 - [ ] gsd-planner spawned with CONTEXT.md + RESEARCH.md
 - [ ] Plans created (PLANNING COMPLETE or CHECKPOINT handled)
