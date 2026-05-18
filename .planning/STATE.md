@@ -102,6 +102,7 @@ Recent decisions affecting current work:
 ### Roadmap Evolution
 
 - Phase 1.1 inserted after Phase 1: Schema Taxonomy Review & Revision (URGENT) — SpatialLabel conflates visual position with content type, CitationType mixes format/reference-system/standard, ScanQuality loses information as enum, taxonomy not organized by downstream evaluation task
+- Phase 1.2 inserted after Phase 1: Repo Governing Reset & Phase 2 Contract Definition (URGENT) — repo authority drift, stale verification commands, legacy `ground_truth/` ambiguity, and missing runtime contract boundaries made direct Phase 2 work too risky
 
 ### Pending Todos
 

@@ -15,6 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 0: Workspace Cleanup** - Clean up workspace and organize git backlog / uncommitted changes
 - [x] **Phase 1: Universal GT Schema** - Config-driven schema with extensibility and per-element verification
 - [x] **Phase 1.1: Schema Taxonomy Review & Revision** - Use-case-driven redesign of label taxonomy, CitationType, ScanQuality, and spatial/semantic distinction (INSERTED) (completed 2026-02-20)
+- [ ] **Phase 1.2: Repo Governing Reset & Phase 2 Contract Definition** - Restore repo authority, repair verification truthfulness, classify legacy subsystems, and define the ScholarGT runtime contract boundary before extractor work (INSERTED)
 - [ ] **Phase 2: Extractor Interface** - Pluggable extractor protocol with provenance tracking
 - [ ] **Phase 3: Experimentation & Evaluation Framework** - Structured experiments with metrics at pipeline and component level
 - [ ] **Phase 4: Annotation Tool** - Visual, ML-assisted annotation with config-driven UI
@@ -92,9 +93,28 @@ Plans:
 - [x] 01.1-04-PLAN.md — Integration: __init__.py re-exports, GTProfile new categories, YAML profile updates, validator updates
 - [ ] 01.1-05-PLAN.md — Verification: All tests updated, example GT files, schema.json regeneration, SCHEMA_GUIDE.md
 
+### Phase 1.2: Repo Governing Reset & Phase 2 Contract Definition (INSERTED)
+**Goal**: Restore a single authoritative project story before Phase 2 by reconciling repo-level docs and planning state, repairing the verification path so documented commands truthfully reflect repo health, explicitly classifying legacy `ground_truth/` assets, and defining the ScholarGT runtime contract boundary between persisted GT artifacts and live workflow models.
+**Depends on**: Phase 1.1 (schema and review complete; repo drift surfaced during closeout and review)
+**Requirements**: EXT-01, EXT-03, EVAL-01, ARCH-01
+**Research**: Use the existing repo review, `repo-governing-reset-before-phase-2` deliberation, current test/output evidence, and current package/docs state. No new external research required; this is a bounded architectural and verification reset.
+**Success Criteria** (what must be TRUE):
+  1. Top-level repo docs and planning files agree on the current milestone, active package identity, and authoritative status sources
+  2. One documented verification command truthfully reflects repo health; fixture-dependent failures are either restored or explicitly handled and documented
+  3. Legacy `ground_truth/` status is explicit: either active transitional tooling or historical/legacy subsystem, with stale entry points and examples corrected or fenced off
+  4. ScholarGT has an explicit Phase 2 runtime boundary: extractor protocol expectations, provenance/change-event model expectations, and a documented split between runtime workflow objects and persisted GT schema artifacts
+  5. Phase 2 can be planned without mixing extractor design with repo-authority cleanup
+**Plans**: 4 plans in 4 waves
+
+Plans:
+- [ ] 01.2-01: Authority reset — align `README.md`, `CLAUDE.md`, root `ROADMAP.md`, `docs/VISION.md`, and `.planning/STATE.md`
+- [ ] 01.2-02: Verification reset — fix documented commands, pytest marks, fixture policy, and stale regression harness references
+- [ ] 01.2-03: Legacy boundary + packaging decision — classify `ground_truth/`, clean metadata, and decide whether uv workspace changes are needed now
+- [ ] 01.2-04: Phase 2 contract definition — document extractor/provenance/runtime-vs-persistence boundaries and prepare the planning handoff
+
 ### Phase 2: Extractor Interface
 **Goal**: Any extraction pipeline can plug into ScholarGT to pre-populate draft GT, with full provenance tracking of what was auto-generated vs human-corrected.
-**Depends on**: Phase 1 (schema defines what extractors must produce)
+**Depends on**: Phase 1 (schema defines what extractors must produce), Phase 1.2 (repo authority, verification baseline, and runtime contract boundary)
 **Requirements**: EXT-01, EXT-02, EXT-03
 **Research**: Standard patterns — Protocol-based interfaces, adapter patterns for existing tools (ScholarDoc, Docling, GROBID).
 **Success Criteria** (what must be TRUE):
@@ -165,13 +185,14 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 0 -> 1 -> 1.1 -> 2 -> 3 -> 4 -> 5
+Phases execute in numeric order: 0 -> 1 -> 1.1 -> 1.2 -> 2 -> 3 -> 4 -> 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|---------------|--------|-----------|
 | 0. Workspace Cleanup | 3/3 | Complete | 2026-02-18 |
 | 1. Universal GT Schema | 4/4 | Complete | 2026-02-18 |
 | 1.1 Schema Taxonomy Review | 4/5 | Complete    | 2026-02-20 |
+| 1.2 Repo Governing Reset | 0/4 | Not started | - |
 | 2. Extractor Interface | 0/2 | Not started | - |
 | 3. Experimentation & Evaluation | 0/2 | Not started | - |
 | 4. Annotation Tool | 0/2 | Not started | - |
